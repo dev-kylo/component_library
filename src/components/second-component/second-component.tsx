@@ -2,7 +2,7 @@ import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'second-component',
-  shadow: true
+  shadow: false
 })
 export class MyComponent {
   /**
@@ -11,6 +11,6 @@ export class MyComponent {
   @Prop() first: string;
 
   render() {
-    return <div>Okay seriously man, come on {this.first}</div>;
+    return <h3>Okay seriously man, come on {this.first}</h3>;
   }
 }
