@@ -10,6 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface ChildComponent {
+    'number': number;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -24,6 +27,9 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface ParentComponent {
+    'number': number;
+  }
   interface SecondComponent {
     /**
     * The first name
@@ -35,10 +41,22 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {}
+  const HTMLChildComponentElement: {
+    prototype: HTMLChildComponentElement;
+    new (): HTMLChildComponentElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
+  };
+
+  interface HTMLParentComponentElement extends Components.ParentComponent, HTMLStencilElement {}
+  const HTMLParentComponentElement: {
+    prototype: HTMLParentComponentElement;
+    new (): HTMLParentComponentElement;
   };
 
   interface HTMLSecondComponentElement extends Components.SecondComponent, HTMLStencilElement {}
@@ -47,12 +65,17 @@ declare global {
     new (): HTMLSecondComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'child-component': HTMLChildComponentElement;
     'my-component': HTMLMyComponentElement;
+    'parent-component': HTMLParentComponentElement;
     'second-component': HTMLSecondComponentElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface ChildComponent {
+    'number'?: number;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -67,6 +90,9 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface ParentComponent {
+    'number'?: number;
+  }
   interface SecondComponent {
     /**
     * The first name
@@ -75,7 +101,9 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'child-component': ChildComponent;
     'my-component': MyComponent;
+    'parent-component': ParentComponent;
     'second-component': SecondComponent;
   }
 }
@@ -86,7 +114,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
     }
   }
