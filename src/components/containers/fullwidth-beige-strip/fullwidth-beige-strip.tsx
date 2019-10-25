@@ -11,7 +11,7 @@ export class FullWidthBeigeStrip {
     return (
         <div class="row ulStyle liBullet">
             <page-content>
-
+              <slot></slot>
             </page-content>
         </div>
     );
