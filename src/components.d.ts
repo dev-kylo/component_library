@@ -10,6 +10,26 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface CampaignAim {
+    'aim': string;
+  }
+  interface CampaignPage {
+    'campaignId': number;
+    'logo': string;
+    'name': string;
+  }
+  interface ChildComponent {
+    'number': number;
+  }
+  interface FlexContainer {
+    'alignx': string;
+    'aligny': String;
+    'direction': String;
+    'mobColumn': Boolean;
+    'wrap': Boolean;
+  }
+  interface FullwidthBeigeStrip {}
+  interface GetInvolved {}
   interface MyComponent {
     /**
     * The first name
@@ -24,21 +44,70 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface PageContent {}
+  interface ParentComponent {
+    'number': number;
+  }
   interface SecondComponent {
-    /**
-    * The first name
-    */
-    'first': string;
+    'animal': string;
   }
 }
 
 declare global {
 
 
+  interface HTMLCampaignAimElement extends Components.CampaignAim, HTMLStencilElement {}
+  const HTMLCampaignAimElement: {
+    prototype: HTMLCampaignAimElement;
+    new (): HTMLCampaignAimElement;
+  };
+
+  interface HTMLCampaignPageElement extends Components.CampaignPage, HTMLStencilElement {}
+  const HTMLCampaignPageElement: {
+    prototype: HTMLCampaignPageElement;
+    new (): HTMLCampaignPageElement;
+  };
+
+  interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {}
+  const HTMLChildComponentElement: {
+    prototype: HTMLChildComponentElement;
+    new (): HTMLChildComponentElement;
+  };
+
+  interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {}
+  const HTMLFlexContainerElement: {
+    prototype: HTMLFlexContainerElement;
+    new (): HTMLFlexContainerElement;
+  };
+
+  interface HTMLFullwidthBeigeStripElement extends Components.FullwidthBeigeStrip, HTMLStencilElement {}
+  const HTMLFullwidthBeigeStripElement: {
+    prototype: HTMLFullwidthBeigeStripElement;
+    new (): HTMLFullwidthBeigeStripElement;
+  };
+
+  interface HTMLGetInvolvedElement extends Components.GetInvolved, HTMLStencilElement {}
+  const HTMLGetInvolvedElement: {
+    prototype: HTMLGetInvolvedElement;
+    new (): HTMLGetInvolvedElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
+  };
+
+  interface HTMLPageContentElement extends Components.PageContent, HTMLStencilElement {}
+  const HTMLPageContentElement: {
+    prototype: HTMLPageContentElement;
+    new (): HTMLPageContentElement;
+  };
+
+  interface HTMLParentComponentElement extends Components.ParentComponent, HTMLStencilElement {}
+  const HTMLParentComponentElement: {
+    prototype: HTMLParentComponentElement;
+    new (): HTMLParentComponentElement;
   };
 
   interface HTMLSecondComponentElement extends Components.SecondComponent, HTMLStencilElement {}
@@ -47,12 +116,40 @@ declare global {
     new (): HTMLSecondComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'campaign-aim': HTMLCampaignAimElement;
+    'campaign-page': HTMLCampaignPageElement;
+    'child-component': HTMLChildComponentElement;
+    'flex-container': HTMLFlexContainerElement;
+    'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
+    'get-involved': HTMLGetInvolvedElement;
     'my-component': HTMLMyComponentElement;
+    'page-content': HTMLPageContentElement;
+    'parent-component': HTMLParentComponentElement;
     'second-component': HTMLSecondComponentElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface CampaignAim {
+    'aim'?: string;
+  }
+  interface CampaignPage {
+    'campaignId'?: number;
+    'logo'?: string;
+    'name'?: string;
+  }
+  interface ChildComponent {
+    'number'?: number;
+  }
+  interface FlexContainer {
+    'alignx'?: string;
+    'aligny'?: String;
+    'direction'?: String;
+    'mobColumn'?: Boolean;
+    'wrap'?: Boolean;
+  }
+  interface FullwidthBeigeStrip {}
+  interface GetInvolved {}
   interface MyComponent {
     /**
     * The first name
@@ -67,15 +164,24 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface PageContent {}
+  interface ParentComponent {
+    'number'?: number;
+  }
   interface SecondComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
+    'animal'?: string;
   }
 
   interface IntrinsicElements {
+    'campaign-aim': CampaignAim;
+    'campaign-page': CampaignPage;
+    'child-component': ChildComponent;
+    'flex-container': FlexContainer;
+    'fullwidth-beige-strip': FullwidthBeigeStrip;
+    'get-involved': GetInvolved;
     'my-component': MyComponent;
+    'page-content': PageContent;
+    'parent-component': ParentComponent;
     'second-component': SecondComponent;
   }
 }
@@ -86,7 +192,15 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
+      'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
+      'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
+      'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
+      'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
+      'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
+      'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
     }
   }
