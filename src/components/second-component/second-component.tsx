@@ -2,15 +2,14 @@ import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'second-component',
-  shadow: false
+  shadow: true
 })
-export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
+export class SecondComponent {
+
+  @Prop() animal: string;
 
   render() {
-    return <h3>Okay seriously man, come on {this.first}</h3>;
+    return <h3 id="llama">Damien has an obsession with {this.animal}</h3>;
   }
 }
+

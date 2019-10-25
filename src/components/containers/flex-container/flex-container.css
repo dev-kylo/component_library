@@ -1,0 +1,68 @@
+/* FLEXBOX SYLES */
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+
+.flex-center-center {
+    justify-content: center;
+    align-items: center;
+            
+  }
+  
+  .flex-center-end {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .flex-center-start {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .flex-start-center {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .flex-end-center {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .flex-end-end {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  
+  .flex-between-center {
+        justify-content: space-between;
+        align-items: center;
+  }
+  
+  .flex-around-center {
+      justify-content: space-around;
+      align-items: center;
+  }
+  
+  
+  .flex-start-start {
+        justify-content: flex-start;
+        align-items: flex-start;
+  }
+  
+  .flex-column {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+  }
+  
+  .wrap {
+      flex-wrap: wrap;
+  }
+  
