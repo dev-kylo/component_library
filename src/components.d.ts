@@ -29,6 +29,10 @@ export namespace Components {
     'wrap': Boolean;
   }
   interface FullwidthBeigeStrip {}
+  interface FullwidthStrip {
+    'background': string;
+    'height': string;
+  }
   interface GetInvolved {}
   interface MyComponent {
     /**
@@ -47,6 +51,12 @@ export namespace Components {
   interface PageContent {}
   interface ParentComponent {
     'number': number;
+  }
+  interface QuickLink {
+    'to': string;
+  }
+  interface QuickLinks {
+    'title': string;
   }
   interface SecondComponent {
     'animal': string;
@@ -86,6 +96,12 @@ declare global {
     new (): HTMLFullwidthBeigeStripElement;
   };
 
+  interface HTMLFullwidthStripElement extends Components.FullwidthStrip, HTMLStencilElement {}
+  const HTMLFullwidthStripElement: {
+    prototype: HTMLFullwidthStripElement;
+    new (): HTMLFullwidthStripElement;
+  };
+
   interface HTMLGetInvolvedElement extends Components.GetInvolved, HTMLStencilElement {}
   const HTMLGetInvolvedElement: {
     prototype: HTMLGetInvolvedElement;
@@ -110,6 +126,18 @@ declare global {
     new (): HTMLParentComponentElement;
   };
 
+  interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {}
+  const HTMLQuickLinkElement: {
+    prototype: HTMLQuickLinkElement;
+    new (): HTMLQuickLinkElement;
+  };
+
+  interface HTMLQuickLinksElement extends Components.QuickLinks, HTMLStencilElement {}
+  const HTMLQuickLinksElement: {
+    prototype: HTMLQuickLinksElement;
+    new (): HTMLQuickLinksElement;
+  };
+
   interface HTMLSecondComponentElement extends Components.SecondComponent, HTMLStencilElement {}
   const HTMLSecondComponentElement: {
     prototype: HTMLSecondComponentElement;
@@ -121,10 +149,13 @@ declare global {
     'child-component': HTMLChildComponentElement;
     'flex-container': HTMLFlexContainerElement;
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
+    'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
     'my-component': HTMLMyComponentElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
+    'quick-link': HTMLQuickLinkElement;
+    'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
   }
 }
@@ -149,6 +180,10 @@ declare namespace LocalJSX {
     'wrap'?: Boolean;
   }
   interface FullwidthBeigeStrip {}
+  interface FullwidthStrip {
+    'background'?: string;
+    'height'?: string;
+  }
   interface GetInvolved {}
   interface MyComponent {
     /**
@@ -168,6 +203,12 @@ declare namespace LocalJSX {
   interface ParentComponent {
     'number'?: number;
   }
+  interface QuickLink {
+    'to'?: string;
+  }
+  interface QuickLinks {
+    'title'?: string;
+  }
   interface SecondComponent {
     'animal'?: string;
   }
@@ -178,10 +219,13 @@ declare namespace LocalJSX {
     'child-component': ChildComponent;
     'flex-container': FlexContainer;
     'fullwidth-beige-strip': FullwidthBeigeStrip;
+    'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
     'my-component': MyComponent;
     'page-content': PageContent;
     'parent-component': ParentComponent;
+    'quick-link': QuickLink;
+    'quick-links': QuickLinks;
     'second-component': SecondComponent;
   }
 }
@@ -197,10 +241,13 @@ declare module "@stencil/core" {
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
+      'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
+      'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
+      'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
     }
   }
