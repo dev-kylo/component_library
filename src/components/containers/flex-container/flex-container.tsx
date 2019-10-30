@@ -13,7 +13,7 @@ export class FlexContainer {
     @Prop() aligny: String = 'center';
     @Prop() wrap: Boolean;
     @Prop() direction: String;
-    @Prop() mobColumn: Boolean;
+    @Prop() mobcolumn: Boolean;
 
     setPosition = () => {
         return ` flex-${this.alignx}-${this.aligny} `
