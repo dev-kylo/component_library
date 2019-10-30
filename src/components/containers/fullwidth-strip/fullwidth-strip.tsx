@@ -9,14 +9,14 @@ export class FullwidthStrip {
     @Element() fullStrip: HTMLElement;
 
     @Prop() height: string = '';
-    @Prop() background: string = '#502765';
+    @Prop() color: string = '#502765';
 
     private strip: HTMLElement;
 
   componentDidLoad(){
     this.strip = this.fullStrip.querySelector('.relContent');
     if (this.height) this.styleElement('height', this.height);
-    if (this.background) this.styleElement('background', this.background);
+    if (this.color) this.styleElement('background', this.color);
   }
 
   styleElement = (styleProp, val) => {
