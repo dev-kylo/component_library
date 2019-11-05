@@ -55,7 +55,7 @@
         align-items: flex-start;
   }
   
-  .flex-column {
+  .column {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
           -ms-flex-direction: column;

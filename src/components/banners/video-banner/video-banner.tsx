@@ -11,7 +11,7 @@ export class VideoBanner {
   render() {
     return (
         <div id="topVideoEmbed">
-            <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src={this.url} width="560"></iframe>
+            <slot></slot>
         </div>
     );
   }
