@@ -21,7 +21,8 @@ export class FlexContainer {
 
     setDirection = () => {
 
-        let direction = ' row';
+        let direction = 'row'
+        if (this.direction === 'column') direction = 'column'
 
         if (this.wrap){
             direction += ' wrap';
