@@ -9,14 +9,15 @@ import { Component, h, Prop } from '@stencil/core';
 
 export class FlexContainer {
 
-    @Prop() alignx: string = 'center';
-    @Prop() aligny: String = 'center';
-    @Prop() wrap: Boolean;
-    @Prop() direction: String;
-    @Prop() mobcolumn: Boolean;
+    @Prop() alignx: string;
+    @Prop() aligny: string;
+    @Prop() wrap: boolean;
+    @Prop() direction: string;
+    @Prop() mobcolumn: boolean;
 
     setPosition = () => {
-        return ` flex-${this.alignx}-${this.aligny} `
+        if (!this.alignx || !this.aligny) return ' '
+        else return ` flex-${this.alignx}-${this.aligny} `
     }
 
     setDirection = () => {

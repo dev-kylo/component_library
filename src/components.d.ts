@@ -10,6 +10,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface AccordionContainer {}
+  interface AccordionDropdown {
+    'title': string;
+  }
   interface CampaignAim {
     'aim': string;
   }
@@ -23,14 +27,14 @@ export namespace Components {
   }
   interface FlexContainer {
     'alignx': string;
-    'aligny': String;
-    'direction': String;
-    'mobColumn': Boolean;
-    'wrap': Boolean;
+    'aligny': string;
+    'direction': string;
+    'mobcolumn': boolean;
+    'wrap': boolean;
   }
   interface FullwidthBeigeStrip {}
   interface FullwidthStrip {
-    'background': string;
+    'color': string;
     'height': string;
   }
   interface GetInvolved {}
@@ -61,10 +65,29 @@ export namespace Components {
   interface SecondComponent {
     'animal': string;
   }
+  interface TabMenu {
+    'title': string;
+  }
+  interface TabsContainer {}
+  interface VideoBanner {
+    'url': string;
+  }
 }
 
 declare global {
 
+
+  interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {}
+  const HTMLAccordionContainerElement: {
+    prototype: HTMLAccordionContainerElement;
+    new (): HTMLAccordionContainerElement;
+  };
+
+  interface HTMLAccordionDropdownElement extends Components.AccordionDropdown, HTMLStencilElement {}
+  const HTMLAccordionDropdownElement: {
+    prototype: HTMLAccordionDropdownElement;
+    new (): HTMLAccordionDropdownElement;
+  };
 
   interface HTMLCampaignAimElement extends Components.CampaignAim, HTMLStencilElement {}
   const HTMLCampaignAimElement: {
@@ -143,7 +166,27 @@ declare global {
     prototype: HTMLSecondComponentElement;
     new (): HTMLSecondComponentElement;
   };
+
+  interface HTMLTabMenuElement extends Components.TabMenu, HTMLStencilElement {}
+  const HTMLTabMenuElement: {
+    prototype: HTMLTabMenuElement;
+    new (): HTMLTabMenuElement;
+  };
+
+  interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
+  const HTMLTabsContainerElement: {
+    prototype: HTMLTabsContainerElement;
+    new (): HTMLTabsContainerElement;
+  };
+
+  interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {}
+  const HTMLVideoBannerElement: {
+    prototype: HTMLVideoBannerElement;
+    new (): HTMLVideoBannerElement;
+  };
   interface HTMLElementTagNameMap {
+    'accordion-container': HTMLAccordionContainerElement;
+    'accordion-dropdown': HTMLAccordionDropdownElement;
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-page': HTMLCampaignPageElement;
     'child-component': HTMLChildComponentElement;
@@ -157,10 +200,17 @@ declare global {
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
+    'tab-menu': HTMLTabMenuElement;
+    'tabs-container': HTMLTabsContainerElement;
+    'video-banner': HTMLVideoBannerElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface AccordionContainer {}
+  interface AccordionDropdown {
+    'title'?: string;
+  }
   interface CampaignAim {
     'aim'?: string;
   }
@@ -174,14 +224,14 @@ declare namespace LocalJSX {
   }
   interface FlexContainer {
     'alignx'?: string;
-    'aligny'?: String;
-    'direction'?: String;
-    'mobColumn'?: Boolean;
-    'wrap'?: Boolean;
+    'aligny'?: string;
+    'direction'?: string;
+    'mobcolumn'?: boolean;
+    'wrap'?: boolean;
   }
   interface FullwidthBeigeStrip {}
   interface FullwidthStrip {
-    'background'?: string;
+    'color'?: string;
     'height'?: string;
   }
   interface GetInvolved {}
@@ -212,8 +262,17 @@ declare namespace LocalJSX {
   interface SecondComponent {
     'animal'?: string;
   }
+  interface TabMenu {
+    'title'?: string;
+  }
+  interface TabsContainer {}
+  interface VideoBanner {
+    'url'?: string;
+  }
 
   interface IntrinsicElements {
+    'accordion-container': AccordionContainer;
+    'accordion-dropdown': AccordionDropdown;
     'campaign-aim': CampaignAim;
     'campaign-page': CampaignPage;
     'child-component': ChildComponent;
@@ -227,6 +286,9 @@ declare namespace LocalJSX {
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
+    'tab-menu': TabMenu;
+    'tabs-container': TabsContainer;
+    'video-banner': VideoBanner;
   }
 }
 
@@ -236,6 +298,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
+      'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
@@ -249,6 +313,9 @@ declare module "@stencil/core" {
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
+      'tab-menu': LocalJSX.TabMenu & JSXBase.HTMLAttributes<HTMLTabMenuElement>;
+      'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
+      'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
   }
 }
