@@ -1,31 +1,27 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Host } from '@stencil/core';
 
 @Component({
   tag: 'campaign-page',
-  shadow: true
+  shadow: false 
 })
 
 export class CampaignPage {
 
   @Prop() campaignId: number;
   @Prop() name: string;
-  @Prop() logo: string;
 
   render() {
     return (
-        <div>
-            <div id="intro">
-                <h1>{this.name}</h1>
-                <slot name="campaign-aim"></slot>
-                <slot name="get-involved"></slot>
-            </div>
-            <div id="logo">
-                <img src={this.logo} alt={"The logo for the campaign: " + this.name} />
-            </div>
-            <div id="accordion">
-                <slot name="campaign-tabs"></slot>
-            </div>
-        </div>
+      <Host>
+        <campaign-aim-container title={this.name}>
+          <slot name="campaign-aim"></slot>
+        </campaign-aim-container>
+        <slot name="get-involved"></slot>
+        <slot name="show-support"></slot>
+        <campaign-tabs newsid={this.campaignId} facebook=''>
+            <slot name="campaign-tabs"></slot>
+        </campaign-tabs>
+      </Host>
     );
   }
 }

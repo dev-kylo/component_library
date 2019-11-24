@@ -14,12 +14,12 @@ export namespace Components {
   interface AccordionDropdown {
     'title': string;
   }
-  interface CampaignAim {
-    'aim': string;
+  interface CampaignAim {}
+  interface CampaignAimContainer {
+    'title': string;
   }
   interface CampaignPage {
     'campaignId': number;
-    'logo': string;
     'name': string;
   }
   interface ChildComponent {
@@ -93,6 +93,12 @@ declare global {
   const HTMLCampaignAimElement: {
     prototype: HTMLCampaignAimElement;
     new (): HTMLCampaignAimElement;
+  };
+
+  interface HTMLCampaignAimContainerElement extends Components.CampaignAimContainer, HTMLStencilElement {}
+  const HTMLCampaignAimContainerElement: {
+    prototype: HTMLCampaignAimContainerElement;
+    new (): HTMLCampaignAimContainerElement;
   };
 
   interface HTMLCampaignPageElement extends Components.CampaignPage, HTMLStencilElement {}
@@ -188,6 +194,7 @@ declare global {
     'accordion-container': HTMLAccordionContainerElement;
     'accordion-dropdown': HTMLAccordionDropdownElement;
     'campaign-aim': HTMLCampaignAimElement;
+    'campaign-aim-container': HTMLCampaignAimContainerElement;
     'campaign-page': HTMLCampaignPageElement;
     'child-component': HTMLChildComponentElement;
     'flex-container': HTMLFlexContainerElement;
@@ -211,12 +218,12 @@ declare namespace LocalJSX {
   interface AccordionDropdown {
     'title'?: string;
   }
-  interface CampaignAim {
-    'aim'?: string;
+  interface CampaignAim {}
+  interface CampaignAimContainer {
+    'title'?: string;
   }
   interface CampaignPage {
     'campaignId'?: number;
-    'logo'?: string;
     'name'?: string;
   }
   interface ChildComponent {
@@ -274,6 +281,7 @@ declare namespace LocalJSX {
     'accordion-container': AccordionContainer;
     'accordion-dropdown': AccordionDropdown;
     'campaign-aim': CampaignAim;
+    'campaign-aim-container': CampaignAimContainer;
     'campaign-page': CampaignPage;
     'child-component': ChildComponent;
     'flex-container': FlexContainer;
@@ -301,6 +309,7 @@ declare module "@stencil/core" {
       'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
+      'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
