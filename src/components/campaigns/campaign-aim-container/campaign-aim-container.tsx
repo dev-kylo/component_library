@@ -7,13 +7,13 @@ import { Component, Prop, h} from '@stencil/core';
 
 export class CampaignAimContainer {
 
-  @Prop()title: string;
+  @Prop()campaignname: string;
 
   render() {
       const slot = 'campaign-aim'
     return (
         <page-container>
-            <h1>{this.title}</h1>
+            <h1>{this.campaignname}</h1>
             <slot></slot>
         </page-container>
     );
