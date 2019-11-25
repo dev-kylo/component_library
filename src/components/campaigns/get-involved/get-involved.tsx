@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'get-involved',
-  shadow: true
+  shadow: false
 })
 
 export class GetInvolved {
@@ -11,9 +11,11 @@ export class GetInvolved {
     const slot = "get-involved";
     return (
         <Host slot={slot}>
+          <fullwidth-strip>
             <h3>Get Involved</h3>
             <p>Join to get updates about the campaign and how to get involved.</p>
             <slot></slot>
+          </fullwidth-strip>
         </Host>
     );
   }
