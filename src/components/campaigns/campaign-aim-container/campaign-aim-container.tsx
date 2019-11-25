@@ -10,7 +10,6 @@ export class CampaignAimContainer {
   @Prop()campaignname: string;
 
   render() {
-      const slot = 'campaign-aim'
     return (
         <page-container>
             <h1>{this.campaignname}</h1>

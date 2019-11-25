@@ -13,8 +13,8 @@ export class CampaignPage {
   render() {
     return (
       <Host>
-        <campaign-aim-container title={this.name}>
-          <slot name="campaign-aim"></slot>
+        <campaign-aim-container>
+          <slot></slot>
         </campaign-aim-container>
         <slot name="get-involved"></slot>
         <slot name="show-support"></slot>
