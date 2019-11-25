@@ -2,7 +2,7 @@ import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'accordion-dropdown',
-  shadow: false
+  shadow: true
 })
 
 export class AccordionDropdown {
