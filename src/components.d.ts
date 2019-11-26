@@ -18,6 +18,9 @@ export namespace Components {
   interface CampaignAimContainer {
     'campaignname': string;
   }
+  interface CampaignNews {
+    'newsid': string;
+  }
   interface CampaignPage {
     'campaignId': number;
     'name': string;
@@ -107,6 +110,12 @@ declare global {
   const HTMLCampaignAimContainerElement: {
     prototype: HTMLCampaignAimContainerElement;
     new (): HTMLCampaignAimContainerElement;
+  };
+
+  interface HTMLCampaignNewsElement extends Components.CampaignNews, HTMLStencilElement {}
+  const HTMLCampaignNewsElement: {
+    prototype: HTMLCampaignNewsElement;
+    new (): HTMLCampaignNewsElement;
   };
 
   interface HTMLCampaignPageElement extends Components.CampaignPage, HTMLStencilElement {}
@@ -221,6 +230,7 @@ declare global {
     'accordion-dropdown': HTMLAccordionDropdownElement;
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-aim-container': HTMLCampaignAimContainerElement;
+    'campaign-news': HTMLCampaignNewsElement;
     'campaign-page': HTMLCampaignPageElement;
     'campaign-tabs': HTMLCampaignTabsElement;
     'child-component': HTMLChildComponentElement;
@@ -250,6 +260,9 @@ declare namespace LocalJSX {
   interface CampaignAim {}
   interface CampaignAimContainer {
     'campaignname'?: string;
+  }
+  interface CampaignNews {
+    'newsid'?: string;
   }
   interface CampaignPage {
     'campaignId'?: number;
@@ -319,6 +332,7 @@ declare namespace LocalJSX {
     'accordion-dropdown': AccordionDropdown;
     'campaign-aim': CampaignAim;
     'campaign-aim-container': CampaignAimContainer;
+    'campaign-news': CampaignNews;
     'campaign-page': CampaignPage;
     'campaign-tabs': CampaignTabs;
     'child-component': ChildComponent;
@@ -350,6 +364,7 @@ declare module "@stencil/core" {
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
+      'campaign-news': LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
