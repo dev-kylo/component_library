@@ -12,7 +12,7 @@ export class CampaignNews {
   @State() testdata;
 
   componentDidLoad() {
-    fetch('https://kclsu.org/svc/feeds/news/6013?subtree=true')
+    fetch('https://kclsu-heroku.herokuapp.com/newslist/17592')
         .then(res => res.json())
         .then(newsData => {
             this.data = newsData;
@@ -21,7 +21,7 @@ export class CampaignNews {
 
   @Method()
   async fetchNews() {
-    fetch('https://kclsu.org/svc/feeds/news/6013?subtree=true')
+    fetch('https://kclsu-heroku.herokuapp.com/newslist/17592')
     .then(res => res.json())
     .then(newsData => {
         this.testdata = newsData;
