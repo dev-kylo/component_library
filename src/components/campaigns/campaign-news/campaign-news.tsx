@@ -9,17 +9,35 @@ export class CampaignNews {
 
   @Prop()newsid: string;
   @State() data;
+  @State() testdata;
 
   componentDidLoad() {
-    fetch(' http://kclsu.org/svc/feeds/news/6013?subtree=true')
+    fetch(' https://kclsu.org/svc/feeds/news/6013?subtree=true')
         .then(res => res.json())
         .then(newsData => {
             this.data = newsData;
         })
   }
 
+  @Method()
+  async fetchNews() {
+    fetch(' https://kclsu.org/svc/feeds/news/6013?subtree=true')
+    .then(res => res.json())
+    .then(newsData => {
+        this.testdata = newsData;
+    })
+  }
+}
+
   render() {
-      console.log(this.data)
+    console.log("Component Did Load Method")
+    console.log(this.data)
+
+    const ell = document.querySelector('campaign-news');
+    ell.fetchNews();
+    console.log("Method data")
+    console.log(this.testdata)
+
     return (
         <h1>Campaign News</h1>
     );
