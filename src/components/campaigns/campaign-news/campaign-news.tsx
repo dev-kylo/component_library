@@ -27,7 +27,7 @@ export class CampaignNews {
         this.testdata = newsData;
     })
   }
-}
+
 
   render() {
     console.log("Component Did Load Method")
