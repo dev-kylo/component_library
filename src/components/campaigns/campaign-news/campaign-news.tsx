@@ -33,11 +33,6 @@ export class CampaignNews {
     console.log("Component Did Load Method")
     console.log(this.data)
 
-    const ell = document.querySelector('campaign-news');
-    ell.fetchNews();
-    console.log("Method data")
-    console.log(this.testdata)
-
     return (
         <h1>Campaign News</h1>
     );
