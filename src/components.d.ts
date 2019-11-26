@@ -19,6 +19,7 @@ export namespace Components {
     'campaignname': string;
   }
   interface CampaignNews {
+    'fetchNews': () => Promise<void>;
     'newsid': string;
   }
   interface CampaignPage {
