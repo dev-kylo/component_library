@@ -18,7 +18,7 @@ export class CampaignPage {
         </campaign-aim-container>
         <slot name="get-involved"></slot>
         <slot name="show-support"></slot>
-        <campaign-tabs newsid={this.campaignId} facebook=''>
+        <campaign-tabs>
             <slot name="campaign-tabs"></slot>
         </campaign-tabs>
       </Host>

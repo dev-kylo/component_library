@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'get-involved',
@@ -7,16 +7,18 @@ import { Component, Host, h } from '@stencil/core';
 
 export class GetInvolved {
 
+  @Prop()typeform: string;
+
   render() {
-    const slot = "get-involved";
     return (
-        <Host slot={slot}>
-          <fullwidth-strip>
-            <h3>Get Involved</h3>
-            <p>Join to get updates about the campaign and how to get involved.</p>
+        <fullwidth-beige-strip>
+          <div id="getInvolved">
+            <h2>Get invoved!</h2>
+            <p>Join to get updates about the campaign and more on how to get involved.</p>
+            <div class="buttonCTA green"><a href={this.typeform}>Sign up</a></div>
             <slot></slot>
-          </fullwidth-strip>
-        </Host>
+          </div>
+        </fullwidth-beige-strip>
     );
   }
 }

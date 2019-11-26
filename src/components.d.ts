@@ -16,12 +16,13 @@ export namespace Components {
   }
   interface CampaignAim {}
   interface CampaignAimContainer {
-    'title': string;
+    'campaignname': string;
   }
   interface CampaignPage {
     'campaignId': number;
     'name': string;
   }
+  interface CampaignTabs {}
   interface ChildComponent {
     'number': number;
   }
@@ -37,7 +38,9 @@ export namespace Components {
     'color': string;
     'height': string;
   }
-  interface GetInvolved {}
+  interface GetInvolved {
+    'typeform': string;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -64,6 +67,11 @@ export namespace Components {
   }
   interface SecondComponent {
     'animal': string;
+  }
+  interface ShowSupport {}
+  interface SupportOption {
+    'heading': string;
+    'supportname': string;
   }
   interface TabMenu {
     'title': string;
@@ -105,6 +113,12 @@ declare global {
   const HTMLCampaignPageElement: {
     prototype: HTMLCampaignPageElement;
     new (): HTMLCampaignPageElement;
+  };
+
+  interface HTMLCampaignTabsElement extends Components.CampaignTabs, HTMLStencilElement {}
+  const HTMLCampaignTabsElement: {
+    prototype: HTMLCampaignTabsElement;
+    new (): HTMLCampaignTabsElement;
   };
 
   interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {}
@@ -173,6 +187,18 @@ declare global {
     new (): HTMLSecondComponentElement;
   };
 
+  interface HTMLShowSupportElement extends Components.ShowSupport, HTMLStencilElement {}
+  const HTMLShowSupportElement: {
+    prototype: HTMLShowSupportElement;
+    new (): HTMLShowSupportElement;
+  };
+
+  interface HTMLSupportOptionElement extends Components.SupportOption, HTMLStencilElement {}
+  const HTMLSupportOptionElement: {
+    prototype: HTMLSupportOptionElement;
+    new (): HTMLSupportOptionElement;
+  };
+
   interface HTMLTabMenuElement extends Components.TabMenu, HTMLStencilElement {}
   const HTMLTabMenuElement: {
     prototype: HTMLTabMenuElement;
@@ -196,6 +222,7 @@ declare global {
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-aim-container': HTMLCampaignAimContainerElement;
     'campaign-page': HTMLCampaignPageElement;
+    'campaign-tabs': HTMLCampaignTabsElement;
     'child-component': HTMLChildComponentElement;
     'flex-container': HTMLFlexContainerElement;
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
@@ -207,6 +234,8 @@ declare global {
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
+    'show-support': HTMLShowSupportElement;
+    'support-option': HTMLSupportOptionElement;
     'tab-menu': HTMLTabMenuElement;
     'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
@@ -220,12 +249,13 @@ declare namespace LocalJSX {
   }
   interface CampaignAim {}
   interface CampaignAimContainer {
-    'title'?: string;
+    'campaignname'?: string;
   }
   interface CampaignPage {
     'campaignId'?: number;
     'name'?: string;
   }
+  interface CampaignTabs {}
   interface ChildComponent {
     'number'?: number;
   }
@@ -241,7 +271,9 @@ declare namespace LocalJSX {
     'color'?: string;
     'height'?: string;
   }
-  interface GetInvolved {}
+  interface GetInvolved {
+    'typeform'?: string;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -269,6 +301,11 @@ declare namespace LocalJSX {
   interface SecondComponent {
     'animal'?: string;
   }
+  interface ShowSupport {}
+  interface SupportOption {
+    'heading'?: string;
+    'supportname'?: string;
+  }
   interface TabMenu {
     'title'?: string;
   }
@@ -283,6 +320,7 @@ declare namespace LocalJSX {
     'campaign-aim': CampaignAim;
     'campaign-aim-container': CampaignAimContainer;
     'campaign-page': CampaignPage;
+    'campaign-tabs': CampaignTabs;
     'child-component': ChildComponent;
     'flex-container': FlexContainer;
     'fullwidth-beige-strip': FullwidthBeigeStrip;
@@ -294,6 +332,8 @@ declare namespace LocalJSX {
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
+    'show-support': ShowSupport;
+    'support-option': SupportOption;
     'tab-menu': TabMenu;
     'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
@@ -311,6 +351,7 @@ declare module "@stencil/core" {
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
+      'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
@@ -322,6 +363,8 @@ declare module "@stencil/core" {
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
+      'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
+      'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
       'tab-menu': LocalJSX.TabMenu & JSXBase.HTMLAttributes<HTMLTabMenuElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
