@@ -89,6 +89,7 @@ export namespace Components {
     'heading': string;
     'supportname': string;
   }
+  interface SupportProgress {}
   interface TabsContainer {}
   interface VideoBanner {
     'url': string;
@@ -236,6 +237,12 @@ declare global {
     new (): HTMLSupportOptionElement;
   };
 
+  interface HTMLSupportProgressElement extends Components.SupportProgress, HTMLStencilElement {}
+  const HTMLSupportProgressElement: {
+    prototype: HTMLSupportProgressElement;
+    new (): HTMLSupportProgressElement;
+  };
+
   interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
   const HTMLTabsContainerElement: {
     prototype: HTMLTabsContainerElement;
@@ -271,6 +278,7 @@ declare global {
     'show-support': HTMLShowSupportElement;
     'single-tab': HTMLSingleTabElement;
     'support-option': HTMLSupportOptionElement;
+    'support-progress': HTMLSupportProgressElement;
     'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
   }
@@ -356,6 +364,7 @@ declare namespace LocalJSX {
     'heading'?: string;
     'supportname'?: string;
   }
+  interface SupportProgress {}
   interface TabsContainer {}
   interface VideoBanner {
     'url'?: string;
@@ -385,6 +394,7 @@ declare namespace LocalJSX {
     'show-support': ShowSupport;
     'single-tab': SingleTab;
     'support-option': SupportOption;
+    'support-progress': SupportProgress;
     'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
   }
@@ -419,6 +429,7 @@ declare module "@stencil/core" {
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
       'single-tab': LocalJSX.SingleTab & JSXBase.HTMLAttributes<HTMLSingleTabElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
+      'support-progress': LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
