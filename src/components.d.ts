@@ -89,7 +89,11 @@ export namespace Components {
     'heading': string;
     'supportname': string;
   }
-  interface SupportProgress {}
+  interface SupportProgress {
+    'current': any;
+    'maxtotal': any;
+    'supportname': string;
+  }
   interface TabsContainer {}
   interface VideoBanner {
     'url': string;
@@ -364,7 +368,11 @@ declare namespace LocalJSX {
     'heading'?: string;
     'supportname'?: string;
   }
-  interface SupportProgress {}
+  interface SupportProgress {
+    'current'?: any;
+    'maxtotal'?: any;
+    'supportname'?: string;
+  }
   interface TabsContainer {}
   interface VideoBanner {
     'url'?: string;
