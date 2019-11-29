@@ -15,7 +15,7 @@ export class SupportOption {
             <div class="well">
                 <h5>{this.heading}</h5>
                 <div id={this.supportname + "_progress"}>&nbsp;</div>
-                <p><slot></slot></p>
+                <slot></slot>
             </div>
         </div>
     );
