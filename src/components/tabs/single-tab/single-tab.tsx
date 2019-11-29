@@ -2,7 +2,7 @@ import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'single-tab',
-  shadow: false
+  shadow: true
 })
 
 export class SingleTab {
