@@ -7,7 +7,7 @@ import { Component, h } from '@stencil/core';
 
 export class CampaignAim {
 
-  render() {
+  render() {    
     return (
         <page-content>
             <h2>Campaign Aim</h2>
