@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'campaign-tabs',
@@ -6,6 +6,9 @@ import { Component, h } from '@stencil/core';
 })
 
 export class CampaignTabs {
+
+@Prop() newsid: string;
+@Prop() socials: string;
 
   render() {
     return (
@@ -17,7 +20,7 @@ export class CampaignTabs {
                         <div class="news cardBorder green container">
                             <div class="mobileView news_full">
                                 <h3>Campaign News</h3>
-                                <campaign-news></campaign-news>
+                                <campaign-news newsid={this.newsid}></campaign-news>
                             </div>
                             <div class="buttonCTA purpleBorder arrow"><a href="/latest-news/">View all News</a></div>
                         </div>
@@ -45,10 +48,11 @@ export class CampaignTabs {
                     <p>Once the threshold is reached, it means the campaign will receive guidance and support from KCLSU staff to create a strategy and deliver the campaign aim. </p>
                     <p>To find out more about this campaign and how to get involved, be sure to&nbsp;join up!</p>
                 </div>
-                {/* <div tabheading="DOCUMENTS">
-                    <h3>You must be logged in as a student to view these documents.</h3>
-                    
-                </div> */}
+                <h2>DOCUMENTS</h2>
+                <div>
+                    <h3>You must be logged in as a student to access the document below:</h3>
+                    <primary-button to={this.socials}> Download </primary-button>
+                </div>
             </tabs-container>
         </page-content>
     );
