@@ -90,8 +90,8 @@ export namespace Components {
     'supportname': string;
   }
   interface SupportProgress {
-    'current': string;
-    'maxtotal': string;
+    'current': any;
+    'maxtotal': any;
     'supportname': string;
   }
   interface TabsContainer {}
@@ -369,8 +369,8 @@ declare namespace LocalJSX {
     'supportname'?: string;
   }
   interface SupportProgress {
-    'current'?: string;
-    'maxtotal'?: string;
+    'current'?: any;
+    'maxtotal'?: any;
     'supportname'?: string;
   }
   interface TabsContainer {}

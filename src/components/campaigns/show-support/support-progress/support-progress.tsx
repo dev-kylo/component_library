@@ -8,14 +8,15 @@ import { Component,h, Element, Prop} from '@stencil/core';
 export class SupportProgress {
 
     @Element() el: HTMLElement;
-    @Prop() maxtotal: string;
-    @Prop() current: string;
+    @Prop() maxtotal: any;
+    @Prop() current: any;
     @Prop() supportname: string;
     private progressBar: HTMLElement;
 
     componentDidLoad(){
         this.progressBar = this.el.querySelector('.ui-progressbar-value');
-        this.progressBar.style.width = this.current / this.maxtotal * 100;
+        let amt = Number(this.current) / Number(this.maxtotal) * 100;
+        this.progressBar.style.width =  `${amt}%`
     }
 
   render() {
