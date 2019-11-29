@@ -9,10 +9,10 @@ export class CampaignNews {
 
   @Prop()newsid: string;
   @State() data;
-  @State() testdata;
 
   componentDidLoad() {
-    fetch('https://kclsu-heroku.herokuapp.com/newslist/17592')
+    let url = `https://kclsu-heroku.herokuapp.com/newslist/${this.newsid}`
+    fetch(url)
         .then(res => res.json())
         .then(newsData => {
             this.data = newsData;
@@ -20,9 +20,9 @@ export class CampaignNews {
   }
 
   render() {
-    console.log("Component Did Load Method")
-    console.log(this.data)
-    let news = this.data.map(ob => <news-card newstitle={ob.Title} newslink={ob.Url} ></news-card>)
+    let news;
+    if (this.data <= 0  || !this.data) news = <p>There is no current news.</p>
+    else news = this.data.map(ob => <news-card newstitle={ob.Title} newslink={ob.Url} ></news-card>)
 
     return (
         <div>

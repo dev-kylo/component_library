@@ -25,7 +25,10 @@ export namespace Components {
     'campaignId': number;
     'name': string;
   }
-  interface CampaignTabs {}
+  interface CampaignTabs {
+    'newsid': string;
+    'socials': string;
+  }
   interface ChildComponent {
     'number': number;
   }
@@ -65,6 +68,9 @@ export namespace Components {
   interface PageContent {}
   interface ParentComponent {
     'number': number;
+  }
+  interface PrimaryButton {
+    'to': string;
   }
   interface QuickLink {
     'to': string;
@@ -188,6 +194,12 @@ declare global {
     new (): HTMLParentComponentElement;
   };
 
+  interface HTMLPrimaryButtonElement extends Components.PrimaryButton, HTMLStencilElement {}
+  const HTMLPrimaryButtonElement: {
+    prototype: HTMLPrimaryButtonElement;
+    new (): HTMLPrimaryButtonElement;
+  };
+
   interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {}
   const HTMLQuickLinkElement: {
     prototype: HTMLQuickLinkElement;
@@ -252,6 +264,7 @@ declare global {
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
+    'primary-button': HTMLPrimaryButtonElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
@@ -279,7 +292,10 @@ declare namespace LocalJSX {
     'campaignId'?: number;
     'name'?: string;
   }
-  interface CampaignTabs {}
+  interface CampaignTabs {
+    'newsid'?: string;
+    'socials'?: string;
+  }
   interface ChildComponent {
     'number'?: number;
   }
@@ -320,6 +336,9 @@ declare namespace LocalJSX {
   interface ParentComponent {
     'number'?: number;
   }
+  interface PrimaryButton {
+    'to'?: string;
+  }
   interface QuickLink {
     'to'?: string;
   }
@@ -359,6 +378,7 @@ declare namespace LocalJSX {
     'news-card': NewsCard;
     'page-content': PageContent;
     'parent-component': ParentComponent;
+    'primary-button': PrimaryButton;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
@@ -392,6 +412,7 @@ declare module "@stencil/core" {
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
+      'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
