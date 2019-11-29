@@ -26,7 +26,7 @@ export class SupportProgress {
             <div class="well setwell">
                 <h5> {this.supportname} </h5>
                 <div aria-valuemax={this.maxtotal} aria-valuemin="0" aria-valuenow={this.current} class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
-                    <div class="setcaption caption">3 of 75</div>
+                    <div class="setcaption caption"> {this.current + ' of ' + this.maxtotal} </div>
                     <div class="ui-progressbar-value ui-corner-left ui-widget-header"></div>
                 </div>
                 <p>Petition Closed</p>
