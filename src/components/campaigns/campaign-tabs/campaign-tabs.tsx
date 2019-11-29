@@ -51,7 +51,7 @@ export class CampaignTabs {
                 <h2>DOCUMENTS</h2>
                 <div>
                     <h3>You must be logged in as a student to access the document below:</h3>
-                    <primary-button to={this.socials}> Download </primary-button>
+                    <primary-button to={this.socials}> Campaign Strategy Document </primary-button>
                 </div>
             </tabs-container>
         </page-content>
