@@ -7,7 +7,8 @@ import { Component, Prop, h } from '@stencil/core';
 
 export class NewsCard {
 
-  @Prop()typeform: string;
+  @Prop() newslink: string;
+  @Prop() newstitle: string;
 
   render() {
     return (

@@ -59,6 +59,10 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface NewsCard {
+    'newslink': string;
+    'newstitle': string;
+  }
   interface PageContent {}
   interface ParentComponent {
     'number': number;
@@ -73,12 +77,12 @@ export namespace Components {
     'animal': string;
   }
   interface ShowSupport {}
+  interface SingleTab {
+    'tabheading': string;
+  }
   interface SupportOption {
     'heading': string;
     'supportname': string;
-  }
-  interface TabMenu {
-    'title': string;
   }
   interface TabsContainer {}
   interface VideoBanner {
@@ -167,6 +171,12 @@ declare global {
     new (): HTMLMyComponentElement;
   };
 
+  interface HTMLNewsCardElement extends Components.NewsCard, HTMLStencilElement {}
+  const HTMLNewsCardElement: {
+    prototype: HTMLNewsCardElement;
+    new (): HTMLNewsCardElement;
+  };
+
   interface HTMLPageContentElement extends Components.PageContent, HTMLStencilElement {}
   const HTMLPageContentElement: {
     prototype: HTMLPageContentElement;
@@ -203,16 +213,16 @@ declare global {
     new (): HTMLShowSupportElement;
   };
 
+  interface HTMLSingleTabElement extends Components.SingleTab, HTMLStencilElement {}
+  const HTMLSingleTabElement: {
+    prototype: HTMLSingleTabElement;
+    new (): HTMLSingleTabElement;
+  };
+
   interface HTMLSupportOptionElement extends Components.SupportOption, HTMLStencilElement {}
   const HTMLSupportOptionElement: {
     prototype: HTMLSupportOptionElement;
     new (): HTMLSupportOptionElement;
-  };
-
-  interface HTMLTabMenuElement extends Components.TabMenu, HTMLStencilElement {}
-  const HTMLTabMenuElement: {
-    prototype: HTMLTabMenuElement;
-    new (): HTMLTabMenuElement;
   };
 
   interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
@@ -240,14 +250,15 @@ declare global {
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
     'my-component': HTMLMyComponentElement;
+    'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
     'show-support': HTMLShowSupportElement;
+    'single-tab': HTMLSingleTabElement;
     'support-option': HTMLSupportOptionElement;
-    'tab-menu': HTMLTabMenuElement;
     'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
   }
@@ -302,6 +313,10 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface NewsCard {
+    'newslink'?: string;
+    'newstitle'?: string;
+  }
   interface PageContent {}
   interface ParentComponent {
     'number'?: number;
@@ -316,12 +331,12 @@ declare namespace LocalJSX {
     'animal'?: string;
   }
   interface ShowSupport {}
+  interface SingleTab {
+    'tabheading'?: string;
+  }
   interface SupportOption {
     'heading'?: string;
     'supportname'?: string;
-  }
-  interface TabMenu {
-    'title'?: string;
   }
   interface TabsContainer {}
   interface VideoBanner {
@@ -342,14 +357,15 @@ declare namespace LocalJSX {
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
     'my-component': MyComponent;
+    'news-card': NewsCard;
     'page-content': PageContent;
     'parent-component': ParentComponent;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
     'show-support': ShowSupport;
+    'single-tab': SingleTab;
     'support-option': SupportOption;
-    'tab-menu': TabMenu;
     'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
   }
@@ -374,14 +390,15 @@ declare module "@stencil/core" {
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
+      'single-tab': LocalJSX.SingleTab & JSXBase.HTMLAttributes<HTMLSingleTabElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
-      'tab-menu': LocalJSX.TabMenu & JSXBase.HTMLAttributes<HTMLTabMenuElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
