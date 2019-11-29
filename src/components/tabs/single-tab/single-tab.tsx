@@ -7,12 +7,12 @@ import { Component, Prop, Host, h } from '@stencil/core';
 
 export class SingleTab {
 
-  @Prop() title: string;
+  @Prop() tabheading: string;
 
   render() {
     return (
         <Host>
-            <h2> { this.title } </h2>
+            <h2> { this.tabheading } </h2>
             <div>
                 <slot></slot>
             </div>
