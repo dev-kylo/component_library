@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Method} from '@stencil/core';
+import { Component, Prop, h, State} from '@stencil/core';
 
 @Component({
   tag: 'campaign-news',
@@ -19,22 +19,15 @@ export class CampaignNews {
         })
   }
 
-  @Method()
-  async fetchNews() {
-    fetch('https://kclsu-heroku.herokuapp.com/newslist/17592')
-    .then(res => res.json())
-    .then(newsData => {
-        this.testdata = newsData;
-    })
-  }
-
-
   render() {
     console.log("Component Did Load Method")
     console.log(this.data)
+    let news = this.data.map(ob => <news-card newstitle={ob.Title} newslink={ob.Url} ></news-card>)
 
     return (
-        <h1>Campaign News</h1>
+        <div>
+          {news}
+        </div>
     );
   }
 }
