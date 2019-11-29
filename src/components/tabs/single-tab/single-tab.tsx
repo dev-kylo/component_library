@@ -1,11 +1,11 @@
 import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'tab-menu',
+  tag: 'single-tab',
   shadow: false
 })
 
-export class TabMenu {
+export class SingleTab {
 
   @Prop() title: string;
 

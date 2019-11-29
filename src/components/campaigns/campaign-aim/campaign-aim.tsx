@@ -12,9 +12,8 @@ export class CampaignAim {
         <page-content>
             <h2>Campaign Aim</h2>
             <p><slot></slot></p>
-            <p>Sign the petition, vote to end the assessment cap to achieve fairer assessments for all.</p>
-            <div class="buttonCTA purpleBorder icon like"><a href="https://www.facebook.com/groups/1758956314405344/" target="_blank">Like</a></div>
-            <div class="buttonCTA purpleBorder icon share" id="fb-share-button"><span>Share</span></div>
+            <p>Sign the petition, or get involved by signing up for news and updates.<em>Your voice counts!</em></p>
+            <div id="social_links"></div>
         </page-content>
     );
   }
