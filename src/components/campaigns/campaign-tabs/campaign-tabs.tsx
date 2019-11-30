@@ -29,7 +29,7 @@ export class CampaignTabs {
                     <section class="col-md-6">
                         <h3>Social Media</h3>
                         <div class="social-col">
-                            <div class="fb-group" data-href="" data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
+                            <div class="fb-group" data-href="https://www.facebook.com/groups/1758956314405344/" data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
                         </div>
                     </section>
                 </div>
