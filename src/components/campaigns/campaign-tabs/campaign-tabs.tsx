@@ -11,6 +11,9 @@ export class CampaignTabs {
 @Prop() socials: string;
 
   render() {
+    let fbclass;
+    if (this.socials) fbclass = this.socials.includes('group') ? 'fb-group' : 'fb-page';
+
     return (
         <page-content>
             <tabs-container>
@@ -29,7 +32,7 @@ export class CampaignTabs {
                     <section class="col-md-6">
                         <h3>Social Media</h3>
                         <div class="social-col">
-                            <div class="fb-group" data-href="https://www.facebook.com/groups/1758956314405344/" data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
+                            <div class={fbclass} data-href={this.socials} data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
                         </div>
                     </section>
                 </div>
@@ -51,7 +54,7 @@ export class CampaignTabs {
                 <h2>DOCUMENTS</h2>
                 <div>
                     <h3>You must be logged in as a student to access the document below:</h3>
-                    <primary-button to={this.socials}> Campaign Strategy Document </primary-button>
+                    {/* <primary-button to={this.socials}> Campaign Strategy Document </primary-button> */}
                 </div>
             </tabs-container>
         </page-content>
