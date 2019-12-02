@@ -9,10 +9,34 @@ export class CampaignTabs {
 
 @Prop() newsid: string;
 @Prop() socials: string;
+@Prop() facebook: string;
+@Prop() strategydoc: string;
 
   render() {
     let fbclass;
-    if (this.socials) fbclass = this.socials.includes('group') ? 'fb-group' : 'fb-page';
+    let socialFeed;
+    let documents;
+
+
+    if (this.facebook){
+        fbclass = this.facebook.includes('group') ? 'fb-group' : 'fb-page';
+        socialFeed = `
+            <h3>Social Media</h3>
+            <div class="social-col">
+                <div class=${fbclass} data-href=${this.facebook} data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
+            </div>
+       `
+    }
+    
+    if (this.strategydoc){
+        documents = `
+        <h2>STRATEGY</h2>
+        <div>
+            <h3>You must be logged in as a student to access the document below:</h3>
+            <primary-button to=${this.strategydoc}> Campaign Strategy Document </primary-button> 
+        </div>
+        `
+    }
 
     return (
         <page-content>
@@ -30,10 +54,7 @@ export class CampaignTabs {
                     </section>
 
                     <section class="col-md-6">
-                        <h3>Social Media</h3>
-                        <div class="social-col">
-                            <div class={fbclass} data-href={this.socials} data-show-metadata="false" data-show-social-context="true" data-width="320">&nbsp;</div>
-                        </div>
+                        {socialFeed}
                     </section>
                 </div>
 
@@ -51,11 +72,7 @@ export class CampaignTabs {
                     <p>Once the threshold is reached, it means the campaign will receive guidance and support from KCLSU staff to create a strategy and deliver the campaign aim. </p>
                     <p>To find out more about this campaign and how to get involved, be sure to&nbsp;join up!</p>
                 </div>
-                <h2>DOCUMENTS</h2>
-                <div>
-                    <h3>You must be logged in as a student to access the document below:</h3>
-                    {/* <primary-button to={this.socials}> Campaign Strategy Document </primary-button> */}
-                </div>
+                {documents}
             </tabs-container>
         </page-content>
     );
