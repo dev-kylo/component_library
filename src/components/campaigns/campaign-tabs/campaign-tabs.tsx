@@ -15,7 +15,7 @@ export class CampaignTabs {
   render() {
     let fbclass;
     let socialFeed;
-    let documents;
+    // let documents;
 
 
     if (this.facebook){
@@ -28,15 +28,15 @@ export class CampaignTabs {
        `
     }
     
-    if (this.strategydoc){
-        documents = `
-        <h2>STRATEGY</h2>
-        <div>
-            <h3>You must be logged in as a student to access the document below:</h3>
-            <primary-button to=${this.strategydoc}> Campaign Strategy Document </primary-button> 
-        </div>
-        `
-    }
+    // if (this.strategydoc){
+    //     documents = `
+    //     <h2>STRATEGY</h2>
+    //     <div>
+    //         <h3>You must be logged in as a student to access the document below:</h3>
+    //         <primary-button to={this.strategydoc}> Campaign Strategy Document </primary-button> 
+    //     </div>
+    //     `
+    // }
 
     return (
         <page-content>
@@ -53,8 +53,8 @@ export class CampaignTabs {
                         </div>
                     </section>
 
-                    <section class="col-md-6">
-                        {socialFeed}
+                    <section class="col-md-6" innerHTML={socialFeed}>
+                        
                     </section>
                 </div>
 
@@ -72,7 +72,8 @@ export class CampaignTabs {
                     <p>Once the threshold is reached, it means the campaign will receive guidance and support from KCLSU staff to create a strategy and deliver the campaign aim. </p>
                     <p>To find out more about this campaign and how to get involved, be sure to&nbsp;join up!</p>
                 </div>
-                {documents}
+                {!this.strategydoc ? null : <h2>STRATEGY</h2> }
+                {!this.strategydoc ?  null : <div><h3>You must be logged in as a student to access the document below:</h3><primary-button to={this.strategydoc}> Campaign Strategy Document </primary-button></div>}
             </tabs-container>
         </page-content>
     );
