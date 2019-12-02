@@ -26,8 +26,10 @@ export namespace Components {
     'name': string;
   }
   interface CampaignTabs {
+    'facebook': string;
     'newsid': string;
     'socials': string;
+    'strategydoc': string;
   }
   interface ChildComponent {
     'number': number;
@@ -305,8 +307,10 @@ declare namespace LocalJSX {
     'name'?: string;
   }
   interface CampaignTabs {
+    'facebook'?: string;
     'newsid'?: string;
     'socials'?: string;
+    'strategydoc'?: string;
   }
   interface ChildComponent {
     'number'?: number;
