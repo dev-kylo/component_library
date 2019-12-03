@@ -15,8 +15,6 @@ export class CampaignTabs {
   render() {
     let fbclass;
     let socialFeed;
-    // let documents;
-
 
     if (this.facebook){
         fbclass = this.facebook.includes('group') ? 'fb-group' : 'fb-page';
@@ -27,16 +25,7 @@ export class CampaignTabs {
             </div>
        `
     }
-    
-    // if (this.strategydoc){
-    //     documents = `
-    //     <h2>STRATEGY</h2>
-    //     <div>
-    //         <h3>You must be logged in as a student to access the document below:</h3>
-    //         <primary-button to={this.strategydoc}> Campaign Strategy Document </primary-button> 
-    //     </div>
-    //     `
-    // }
+
 
     return (
         <page-content>

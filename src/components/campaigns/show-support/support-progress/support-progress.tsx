@@ -8,7 +8,7 @@ import { Component,h, Element, Prop} from '@stencil/core';
 export class SupportProgress {
 
     @Element() el: HTMLElement;
-    @Prop() maxtotal: any;
+    @Prop() maxtotal: any = 75;
     @Prop() current: any;
     @Prop() supportname: string;
     private progressBar: HTMLElement;
