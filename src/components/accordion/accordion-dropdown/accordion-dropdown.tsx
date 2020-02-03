@@ -7,13 +7,13 @@ import { Component, Prop, Host, h } from '@stencil/core';
 
 export class AccordionDropdown {
 
-  @Prop() title: string;
+  @Prop() header: string;
 
   render() {
     return (
         <Host>
             <div class="acc-btn selected">
-                <p>{this.title}</p>
+                <p>{this.header}</p>
             </div>
             <div class="acc-content open">
                 <div class="acc-content-inner">

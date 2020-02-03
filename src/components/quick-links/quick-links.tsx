@@ -6,12 +6,12 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class QuickLinks {
 
-  @Prop() title: string = 'quick access.';
+  @Prop() name: string = 'quick access.';
 
   render() {
     return (
         <fullwidth-strip>
-            <p>Useful links for {this.title}:</p>
+            <p>Useful links for {this.name}:</p>
             <ul>
                 <slot></slot>  
             </ul>

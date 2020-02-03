@@ -12,7 +12,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface AccordionContainer {}
   interface AccordionDropdown {
-    'title': string;
+    'header': string;
   }
   interface CampaignAim {}
   interface CampaignAimContainer {
@@ -34,6 +34,7 @@ export namespace Components {
   interface ChildComponent {
     'number': number;
   }
+  interface ElectionsFooter {}
   interface FlexContainer {
     'alignx': string;
     'aligny': string;
@@ -74,11 +75,15 @@ export namespace Components {
   interface PrimaryButton {
     'to': string;
   }
+  interface PurpleButton {
+    'link': string;
+    'whitetext': boolean;
+  }
   interface QuickLink {
     'to': string;
   }
   interface QuickLinks {
-    'title': string;
+    'name': string;
   }
   interface SecondComponent {
     'animal': string;
@@ -153,6 +158,12 @@ declare global {
     new (): HTMLChildComponentElement;
   };
 
+  interface HTMLElectionsFooterElement extends Components.ElectionsFooter, HTMLStencilElement {}
+  const HTMLElectionsFooterElement: {
+    prototype: HTMLElectionsFooterElement;
+    new (): HTMLElectionsFooterElement;
+  };
+
   interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {}
   const HTMLFlexContainerElement: {
     prototype: HTMLFlexContainerElement;
@@ -205,6 +216,12 @@ declare global {
   const HTMLPrimaryButtonElement: {
     prototype: HTMLPrimaryButtonElement;
     new (): HTMLPrimaryButtonElement;
+  };
+
+  interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {}
+  const HTMLPurpleButtonElement: {
+    prototype: HTMLPurpleButtonElement;
+    new (): HTMLPurpleButtonElement;
   };
 
   interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {}
@@ -269,6 +286,7 @@ declare global {
     'campaign-page': HTMLCampaignPageElement;
     'campaign-tabs': HTMLCampaignTabsElement;
     'child-component': HTMLChildComponentElement;
+    'elections-footer': HTMLElectionsFooterElement;
     'flex-container': HTMLFlexContainerElement;
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
@@ -278,6 +296,7 @@ declare global {
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
     'primary-button': HTMLPrimaryButtonElement;
+    'purple-button': HTMLPurpleButtonElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
@@ -293,7 +312,7 @@ declare global {
 declare namespace LocalJSX {
   interface AccordionContainer {}
   interface AccordionDropdown {
-    'title'?: string;
+    'header'?: string;
   }
   interface CampaignAim {}
   interface CampaignAimContainer {
@@ -315,6 +334,7 @@ declare namespace LocalJSX {
   interface ChildComponent {
     'number'?: number;
   }
+  interface ElectionsFooter {}
   interface FlexContainer {
     'alignx'?: string;
     'aligny'?: string;
@@ -355,11 +375,15 @@ declare namespace LocalJSX {
   interface PrimaryButton {
     'to'?: string;
   }
+  interface PurpleButton {
+    'link'?: string;
+    'whitetext'?: boolean;
+  }
   interface QuickLink {
     'to'?: string;
   }
   interface QuickLinks {
-    'title'?: string;
+    'name'?: string;
   }
   interface SecondComponent {
     'animal'?: string;
@@ -391,6 +415,7 @@ declare namespace LocalJSX {
     'campaign-page': CampaignPage;
     'campaign-tabs': CampaignTabs;
     'child-component': ChildComponent;
+    'elections-footer': ElectionsFooter;
     'flex-container': FlexContainer;
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
@@ -400,6 +425,7 @@ declare namespace LocalJSX {
     'page-content': PageContent;
     'parent-component': ParentComponent;
     'primary-button': PrimaryButton;
+    'purple-button': PurpleButton;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
@@ -426,6 +452,7 @@ declare module "@stencil/core" {
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
+      'elections-footer': LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
@@ -435,6 +462,7 @@ declare module "@stencil/core" {
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
+      'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;

@@ -25,5 +25,9 @@
   "devDependencies": {
     "@stencil/core": "^1.3.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/sass": "^1.1.1",
+    "bootstrap": "^4.4.1"
+  }
 }
