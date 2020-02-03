@@ -38,7 +38,7 @@ export class ElectionsFooter {
 			<div class="col col-xs-12 col-md-4">
 				<h3>Complaints</h3>
 				<p>If you'd like to make a complaint, please click through to the&nbsp;<strong><a class="link" href="/elections/resources/complaints/">Elections Complaints page.</a></strong></p>
-				<purple-button link="/elections"> Elections Home Page </purple-button>
+				<purple-button whitetext link="/elections"> Elections Home Page </purple-button>
 		    </div>
 		</div>
 		</div>
