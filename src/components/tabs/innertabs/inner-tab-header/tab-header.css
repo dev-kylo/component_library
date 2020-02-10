@@ -1,0 +1,25 @@
+@import '../../../../global/globalstyles.css';
+
+.tab-header {
+    min-height: 40px;
+    min-width: 100px;
+    margin: 0 1em;
+    padding: 5px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@media (max-width: 599px) {
+    .tab-header {
+        min-width: 100px;
+    }
+}
+
+.tab-header-active {
+    border-bottom: 3px solid #1BA39C;
+}

@@ -1,0 +1,28 @@
+@import '../../../../global/globalstyles.css';
+
+.tab-header {
+    min-height: 20px;
+    /* min-width: 150px; */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-transform: uppercase;
+    padding: 15px;
+    color: #502766;
+    background: #e8e8e2;
+    font-weight: 500;
+    /* border-right: 1px solid #deded7; */
+}
+
+
+@media (max-width: 599px) {
+    .tab-header {
+        min-width: 100px;
+    }
+}
+
+.tab-header-active {
+    border-bottom: 3px solid #1BA39C;
+}

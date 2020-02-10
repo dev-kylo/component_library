@@ -50,6 +50,18 @@ export namespace Components {
   interface GetInvolved {
     'typeform': string;
   }
+  interface InnerTabContent {
+    'active': boolean;
+    'name': string;
+  }
+  interface InnerTabHeader {
+    'active': boolean;
+    'id': string;
+    'name': string;
+  }
+  interface InnerTabsContainer {
+    'innertab': boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -89,9 +101,6 @@ export namespace Components {
     'animal': string;
   }
   interface ShowSupport {}
-  interface SingleTab {
-    'tabheading': string;
-  }
   interface SupportOption {
     'heading': string;
     'supportname': string;
@@ -101,7 +110,18 @@ export namespace Components {
     'maxtotal': any;
     'supportname': string;
   }
-  interface TabsContainer {}
+  interface TabContent {
+    'active': boolean;
+    'name': string;
+  }
+  interface TabHeader {
+    'active': boolean;
+    'id': string;
+    'name': string;
+  }
+  interface TabsContainer {
+    'innertab': boolean;
+  }
   interface VideoBanner {
     'url': string;
   }
@@ -188,6 +208,24 @@ declare global {
     new (): HTMLGetInvolvedElement;
   };
 
+  interface HTMLInnerTabContentElement extends Components.InnerTabContent, HTMLStencilElement {}
+  const HTMLInnerTabContentElement: {
+    prototype: HTMLInnerTabContentElement;
+    new (): HTMLInnerTabContentElement;
+  };
+
+  interface HTMLInnerTabHeaderElement extends Components.InnerTabHeader, HTMLStencilElement {}
+  const HTMLInnerTabHeaderElement: {
+    prototype: HTMLInnerTabHeaderElement;
+    new (): HTMLInnerTabHeaderElement;
+  };
+
+  interface HTMLInnerTabsContainerElement extends Components.InnerTabsContainer, HTMLStencilElement {}
+  const HTMLInnerTabsContainerElement: {
+    prototype: HTMLInnerTabsContainerElement;
+    new (): HTMLInnerTabsContainerElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -248,12 +286,6 @@ declare global {
     new (): HTMLShowSupportElement;
   };
 
-  interface HTMLSingleTabElement extends Components.SingleTab, HTMLStencilElement {}
-  const HTMLSingleTabElement: {
-    prototype: HTMLSingleTabElement;
-    new (): HTMLSingleTabElement;
-  };
-
   interface HTMLSupportOptionElement extends Components.SupportOption, HTMLStencilElement {}
   const HTMLSupportOptionElement: {
     prototype: HTMLSupportOptionElement;
@@ -264,6 +296,18 @@ declare global {
   const HTMLSupportProgressElement: {
     prototype: HTMLSupportProgressElement;
     new (): HTMLSupportProgressElement;
+  };
+
+  interface HTMLTabContentElement extends Components.TabContent, HTMLStencilElement {}
+  const HTMLTabContentElement: {
+    prototype: HTMLTabContentElement;
+    new (): HTMLTabContentElement;
+  };
+
+  interface HTMLTabHeaderElement extends Components.TabHeader, HTMLStencilElement {}
+  const HTMLTabHeaderElement: {
+    prototype: HTMLTabHeaderElement;
+    new (): HTMLTabHeaderElement;
   };
 
   interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
@@ -291,6 +335,9 @@ declare global {
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
+    'inner-tab-content': HTMLInnerTabContentElement;
+    'inner-tab-header': HTMLInnerTabHeaderElement;
+    'inner-tabs-container': HTMLInnerTabsContainerElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
@@ -301,9 +348,10 @@ declare global {
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
     'show-support': HTMLShowSupportElement;
-    'single-tab': HTMLSingleTabElement;
     'support-option': HTMLSupportOptionElement;
     'support-progress': HTMLSupportProgressElement;
+    'tab-content': HTMLTabContentElement;
+    'tab-header': HTMLTabHeaderElement;
     'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
   }
@@ -350,6 +398,19 @@ declare namespace LocalJSX {
   interface GetInvolved {
     'typeform'?: string;
   }
+  interface InnerTabContent {
+    'active'?: boolean;
+    'name'?: string;
+  }
+  interface InnerTabHeader {
+    'active'?: boolean;
+    'id'?: string;
+    'name'?: string;
+    'onSelectInnerTab'?: (event: CustomEvent<any>) => void;
+  }
+  interface InnerTabsContainer {
+    'innertab'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -389,9 +450,6 @@ declare namespace LocalJSX {
     'animal'?: string;
   }
   interface ShowSupport {}
-  interface SingleTab {
-    'tabheading'?: string;
-  }
   interface SupportOption {
     'heading'?: string;
     'supportname'?: string;
@@ -401,7 +459,19 @@ declare namespace LocalJSX {
     'maxtotal'?: any;
     'supportname'?: string;
   }
-  interface TabsContainer {}
+  interface TabContent {
+    'active'?: boolean;
+    'name'?: string;
+  }
+  interface TabHeader {
+    'active'?: boolean;
+    'id'?: string;
+    'name'?: string;
+    'onSelectTab'?: (event: CustomEvent<any>) => void;
+  }
+  interface TabsContainer {
+    'innertab'?: boolean;
+  }
   interface VideoBanner {
     'url'?: string;
   }
@@ -420,6 +490,9 @@ declare namespace LocalJSX {
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
+    'inner-tab-content': InnerTabContent;
+    'inner-tab-header': InnerTabHeader;
+    'inner-tabs-container': InnerTabsContainer;
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
@@ -430,9 +503,10 @@ declare namespace LocalJSX {
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
     'show-support': ShowSupport;
-    'single-tab': SingleTab;
     'support-option': SupportOption;
     'support-progress': SupportProgress;
+    'tab-content': TabContent;
+    'tab-header': TabHeader;
     'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
   }
@@ -457,6 +531,9 @@ declare module "@stencil/core" {
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
+      'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
+      'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
+      'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
@@ -467,9 +544,10 @@ declare module "@stencil/core" {
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
-      'single-tab': LocalJSX.SingleTab & JSXBase.HTMLAttributes<HTMLSingleTabElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
       'support-progress': LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
+      'tab-content': LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
+      'tab-header': LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
