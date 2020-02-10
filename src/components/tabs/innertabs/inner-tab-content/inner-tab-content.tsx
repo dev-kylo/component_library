@@ -15,7 +15,7 @@ export class InnerTabContent {
     @State() isSelected: boolean = this.active;
 
     
-    
+        
     render() {
         const classes = {
             'tab-content': true,
