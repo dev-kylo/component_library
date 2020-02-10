@@ -1,0 +1,11 @@
+@import '../../../../global/globalstyles.css';
+
+.tab-content {
+    display: none;
+    background: #f1f1ee;
+    padding: 40px 30px;
+}
+
+.tab-content-active {
+    display: block;
+}

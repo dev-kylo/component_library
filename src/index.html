@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <title>KCLSU Components</title>
 
   <!--Fonts-->
   <link rel="stylesheet" href="https://use.typekit.net/mgu1jus.css">
@@ -14,40 +14,41 @@
 
 </head>
 <body>
-  <elections-footer></elections-footer>
-  <flex-container direction="column">
-    <span>This a line of text which will hopefully appear where it should.</span>
-    <span>Number 2</span>
-  </flex-container>
-  <!-- <fullwidth-strip height='150px'> </fullwidth-strip>
-  <quick-links title="The Advice Service">
-    <quick-link to='#'>Bereavement</quick-link>
-    <quick-link to='#'>Serious short term illness</quick-link>
-    <quick-link to='#'>Deterioration of a long term health condition</quick-link>
-    <quick-link to='#'>Mental health condition</quick-link>
-    <quick-link to='#'>Being in an accident</quick-link>
-  </quick-links> -->
+  
+  <tabs-container activeTab>
+    <tab-header name="Tab1" active slot="tab-headers"> Student Officers</tab-header>
+    <tab-content name="Tab1" active slot="tab-content">
 
-  <!-- <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component> -->
-   <!-- <second-component animal="Llamas"></second-component>
-  <parent-component number=50 /> -->
+      <inner-tabs-container activeTab>
 
-  <show-support>
+        <inner-tab-header name="Tab2" slot="tab-headers"> Presient</inner-tab-header>
+        <inner-tab-content name="Tab2" slot="tab-content">Tab 2 dsddsdfsdfsdsds</inner-tab-content>
+    
+    
+        <inner-tab-header name="Tab3" active=false slot="tab-headers"> VPEducation and Sciences</inner-tab-header>
+        <inner-tab-content name="Tab3" active=false slot="tab-content">Tab 3 dsddsdfsdfsdsds</inner-tab-content>
+        <inner-tab-header name="Tab4" active=false slot="tab-headers"> VP Arts & Humanities</inner-tab-header>
+        <inner-tab-content name="Tab4" active=false slot="tab-content">Vp Arts   dsddsdfsdfsdsds</inner-tab-content>
+      </inner-tabs-container>
 
-    <support-option supportName='KCLSU' heading='KCLSU Members'>
-       {KCLSUSupport}
-    </support-option>
+    </tab-content>
 
-    <support-option supportName='Mature' heading='Mature Students Association Members'>
-        {MatureSupport}
-    </support-option>
+    <tab-header name="Tab2" active=false slot="tab-headers"> Network Officers</tab-header>
+    <tab-content name="Tab2" active=false slot="tab-content">Tab 2 dsddsdfsdfsdsds</tab-content>
 
-  </show-support>
 
-  <support-progress current='14' maxtotal='20' supportname='Braai'></support-progress>
-  <support-progress current='14' maxtotal='20' supportname='Braai'></support-progress>
+    <tab-header name="Tab3" active=false slot="tab-headers"> NUS & Trustees</tab-header>
+    <tab-content name="Tab3" active=false slot="tab-content">Tab 3 dsddsdfsdfsdsds</tab-content>
 
-    <purple-button link='/'>Buttons here</purple-button>
+    <tab-header name="Tab4" active=false slot="tab-headers"> Academic</tab-header>
+    <tab-content name="Tab4" active=false slot="tab-content">Tab 3 dsddsdfsdfsdsds</tab-content>
+
+  </tabs-container>
+
+
+
+
+
 
     
  

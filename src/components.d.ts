@@ -89,9 +89,6 @@ export namespace Components {
     'animal': string;
   }
   interface ShowSupport {}
-  interface SingleTab {
-    'tabheading': string;
-  }
   interface SupportOption {
     'heading': string;
     'supportname': string;
@@ -101,7 +98,6 @@ export namespace Components {
     'maxtotal': any;
     'supportname': string;
   }
-  interface TabsContainer {}
   interface VideoBanner {
     'url': string;
   }
@@ -248,12 +244,6 @@ declare global {
     new (): HTMLShowSupportElement;
   };
 
-  interface HTMLSingleTabElement extends Components.SingleTab, HTMLStencilElement {}
-  const HTMLSingleTabElement: {
-    prototype: HTMLSingleTabElement;
-    new (): HTMLSingleTabElement;
-  };
-
   interface HTMLSupportOptionElement extends Components.SupportOption, HTMLStencilElement {}
   const HTMLSupportOptionElement: {
     prototype: HTMLSupportOptionElement;
@@ -264,12 +254,6 @@ declare global {
   const HTMLSupportProgressElement: {
     prototype: HTMLSupportProgressElement;
     new (): HTMLSupportProgressElement;
-  };
-
-  interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
-  const HTMLTabsContainerElement: {
-    prototype: HTMLTabsContainerElement;
-    new (): HTMLTabsContainerElement;
   };
 
   interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {}
@@ -301,10 +285,8 @@ declare global {
     'quick-links': HTMLQuickLinksElement;
     'second-component': HTMLSecondComponentElement;
     'show-support': HTMLShowSupportElement;
-    'single-tab': HTMLSingleTabElement;
     'support-option': HTMLSupportOptionElement;
     'support-progress': HTMLSupportProgressElement;
-    'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
   }
 }
@@ -389,9 +371,6 @@ declare namespace LocalJSX {
     'animal'?: string;
   }
   interface ShowSupport {}
-  interface SingleTab {
-    'tabheading'?: string;
-  }
   interface SupportOption {
     'heading'?: string;
     'supportname'?: string;
@@ -401,7 +380,6 @@ declare namespace LocalJSX {
     'maxtotal'?: any;
     'supportname'?: string;
   }
-  interface TabsContainer {}
   interface VideoBanner {
     'url'?: string;
   }
@@ -430,10 +408,8 @@ declare namespace LocalJSX {
     'quick-links': QuickLinks;
     'second-component': SecondComponent;
     'show-support': ShowSupport;
-    'single-tab': SingleTab;
     'support-option': SupportOption;
     'support-progress': SupportProgress;
-    'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
   }
 }
@@ -467,10 +443,8 @@ declare module "@stencil/core" {
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
       'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
-      'single-tab': LocalJSX.SingleTab & JSXBase.HTMLAttributes<HTMLSingleTabElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
       'support-progress': LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
-      'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
   }
