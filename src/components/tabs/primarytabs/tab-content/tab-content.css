@@ -7,3 +7,9 @@
 .tab-content-active {
     display: block;
 }
+
+@media screen and (max-width: 780px){
+    .tab-content {
+        padding: 1em;
+    }
+}

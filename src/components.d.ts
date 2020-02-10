@@ -50,6 +50,18 @@ export namespace Components {
   interface GetInvolved {
     'typeform': string;
   }
+  interface InnerTabContent {
+    'active': boolean;
+    'name': string;
+  }
+  interface InnerTabHeader {
+    'active': boolean;
+    'id': string;
+    'name': string;
+  }
+  interface InnerTabsContainer {
+    'innertab': boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -75,6 +87,13 @@ export namespace Components {
   interface PrimaryButton {
     'to': string;
   }
+  interface ProfileCard {
+    'cta': string;
+    'image': string;
+    'link': string;
+    'name': string;
+    'position': string;
+  }
   interface PurpleButton {
     'link': string;
     'whitetext': boolean;
@@ -97,6 +116,18 @@ export namespace Components {
     'current': any;
     'maxtotal': any;
     'supportname': string;
+  }
+  interface TabContent {
+    'active': boolean;
+    'name': string;
+  }
+  interface TabHeader {
+    'active': boolean;
+    'id': string;
+    'name': string;
+  }
+  interface TabsContainer {
+    'innertab': boolean;
   }
   interface VideoBanner {
     'url': string;
@@ -184,6 +215,24 @@ declare global {
     new (): HTMLGetInvolvedElement;
   };
 
+  interface HTMLInnerTabContentElement extends Components.InnerTabContent, HTMLStencilElement {}
+  const HTMLInnerTabContentElement: {
+    prototype: HTMLInnerTabContentElement;
+    new (): HTMLInnerTabContentElement;
+  };
+
+  interface HTMLInnerTabHeaderElement extends Components.InnerTabHeader, HTMLStencilElement {}
+  const HTMLInnerTabHeaderElement: {
+    prototype: HTMLInnerTabHeaderElement;
+    new (): HTMLInnerTabHeaderElement;
+  };
+
+  interface HTMLInnerTabsContainerElement extends Components.InnerTabsContainer, HTMLStencilElement {}
+  const HTMLInnerTabsContainerElement: {
+    prototype: HTMLInnerTabsContainerElement;
+    new (): HTMLInnerTabsContainerElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -212,6 +261,12 @@ declare global {
   const HTMLPrimaryButtonElement: {
     prototype: HTMLPrimaryButtonElement;
     new (): HTMLPrimaryButtonElement;
+  };
+
+  interface HTMLProfileCardElement extends Components.ProfileCard, HTMLStencilElement {}
+  const HTMLProfileCardElement: {
+    prototype: HTMLProfileCardElement;
+    new (): HTMLProfileCardElement;
   };
 
   interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {}
@@ -256,6 +311,24 @@ declare global {
     new (): HTMLSupportProgressElement;
   };
 
+  interface HTMLTabContentElement extends Components.TabContent, HTMLStencilElement {}
+  const HTMLTabContentElement: {
+    prototype: HTMLTabContentElement;
+    new (): HTMLTabContentElement;
+  };
+
+  interface HTMLTabHeaderElement extends Components.TabHeader, HTMLStencilElement {}
+  const HTMLTabHeaderElement: {
+    prototype: HTMLTabHeaderElement;
+    new (): HTMLTabHeaderElement;
+  };
+
+  interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {}
+  const HTMLTabsContainerElement: {
+    prototype: HTMLTabsContainerElement;
+    new (): HTMLTabsContainerElement;
+  };
+
   interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {}
   const HTMLVideoBannerElement: {
     prototype: HTMLVideoBannerElement;
@@ -275,11 +348,15 @@ declare global {
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
+    'inner-tab-content': HTMLInnerTabContentElement;
+    'inner-tab-header': HTMLInnerTabHeaderElement;
+    'inner-tabs-container': HTMLInnerTabsContainerElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
     'primary-button': HTMLPrimaryButtonElement;
+    'profile-card': HTMLProfileCardElement;
     'purple-button': HTMLPurpleButtonElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
@@ -287,6 +364,9 @@ declare global {
     'show-support': HTMLShowSupportElement;
     'support-option': HTMLSupportOptionElement;
     'support-progress': HTMLSupportProgressElement;
+    'tab-content': HTMLTabContentElement;
+    'tab-header': HTMLTabHeaderElement;
+    'tabs-container': HTMLTabsContainerElement;
     'video-banner': HTMLVideoBannerElement;
   }
 }
@@ -332,6 +412,19 @@ declare namespace LocalJSX {
   interface GetInvolved {
     'typeform'?: string;
   }
+  interface InnerTabContent {
+    'active'?: boolean;
+    'name'?: string;
+  }
+  interface InnerTabHeader {
+    'active'?: boolean;
+    'id'?: string;
+    'name'?: string;
+    'onSelectInnerTab'?: (event: CustomEvent<any>) => void;
+  }
+  interface InnerTabsContainer {
+    'innertab'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -357,6 +450,13 @@ declare namespace LocalJSX {
   interface PrimaryButton {
     'to'?: string;
   }
+  interface ProfileCard {
+    'cta'?: string;
+    'image'?: string;
+    'link'?: string;
+    'name'?: string;
+    'position'?: string;
+  }
   interface PurpleButton {
     'link'?: string;
     'whitetext'?: boolean;
@@ -380,6 +480,19 @@ declare namespace LocalJSX {
     'maxtotal'?: any;
     'supportname'?: string;
   }
+  interface TabContent {
+    'active'?: boolean;
+    'name'?: string;
+  }
+  interface TabHeader {
+    'active'?: boolean;
+    'id'?: string;
+    'name'?: string;
+    'onSelectTab'?: (event: CustomEvent<any>) => void;
+  }
+  interface TabsContainer {
+    'innertab'?: boolean;
+  }
   interface VideoBanner {
     'url'?: string;
   }
@@ -398,11 +511,15 @@ declare namespace LocalJSX {
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
+    'inner-tab-content': InnerTabContent;
+    'inner-tab-header': InnerTabHeader;
+    'inner-tabs-container': InnerTabsContainer;
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
     'parent-component': ParentComponent;
     'primary-button': PrimaryButton;
+    'profile-card': ProfileCard;
     'purple-button': PurpleButton;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
@@ -410,6 +527,9 @@ declare namespace LocalJSX {
     'show-support': ShowSupport;
     'support-option': SupportOption;
     'support-progress': SupportProgress;
+    'tab-content': TabContent;
+    'tab-header': TabHeader;
+    'tabs-container': TabsContainer;
     'video-banner': VideoBanner;
   }
 }
@@ -433,11 +553,15 @@ declare module "@stencil/core" {
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
+      'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
+      'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
+      'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
+      'profile-card': LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
@@ -445,6 +569,9 @@ declare module "@stencil/core" {
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
       'support-progress': LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
+      'tab-content': LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
+      'tab-header': LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
+      'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
   }

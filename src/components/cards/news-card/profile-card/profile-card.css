@@ -1,0 +1,69 @@
+@import '../../../../global/globalstyles.css';
+
+.profile-card {
+    width: 100%;
+    max-width: 250px;
+    display: inline-block;
+    -webkit-box-shadow: -5px -2px 2px 4px rgb(25, 163, 156, 0.6);
+    box-shadow: -6px -5px 1px 0px rgb(25, 163, 156, 0.6);
+}
+
+/* 
+.profile-card::before{
+    content: "";
+    background: #5EBDB0;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 4px;
+    height: 95%;
+} */
+
+.image {
+    background-color: red;
+    min-height: 250px;
+    background-size: cover;
+    background-position: center center
+}
+
+.label {
+    margin: 0;
+    padding: 1em;
+    background-color: white;
+    max-height: 100px;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+}
+
+.name {
+    color: #502865;
+    font-family: bree-serif, serif;
+    font-family: bree_serifsemibold;
+    line-height: 32px;
+    font-size: 21px; 
+    font-weight: 600;
+
+} 
+
+.position {
+    font-family: 'open sans';
+    color: #515151;
+    font-size: 16px;
+    margin-bottom: 0;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-bottom: 30px;
+}
+
+.link{
+    margin: 0 15px 20px 0px;
+    display: inline-block;
+    font-size: 14px;
+    color: #1aa29c;
+    border-bottom: 1px dashed #1aa29cb0;
+}
+
+span {
+    display: block;
+}

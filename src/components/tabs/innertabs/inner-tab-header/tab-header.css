@@ -17,6 +17,7 @@
 @media (max-width: 599px) {
     .tab-header {
         min-width: 100px;
+        margin: 0;
     }
 }
 
