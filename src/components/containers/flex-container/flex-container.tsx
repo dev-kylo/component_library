@@ -15,31 +15,19 @@ export class FlexContainer {
     @Prop() direction: string;
     @Prop() mobcolumn: boolean;
 
-    setPosition = () => {
-        if (!this.alignx || !this.aligny) return ' '
-        else return ` flex-${this.alignx}-${this.aligny} `
-    }
-
-    setDirection = () => {
-
-        let direction = 'row'
-        if (this.direction === 'column') direction = 'column'
-
-        if (this.wrap){
-            direction += ' wrap';
-        }
-
-        return direction;
-    }
-
   render() {
 
-    let position = this.setPosition();
-    let flow = this.setDirection();
+    let classes = {
+      'display': 'flex',
+      'justify-content': this.alignx || '',
+      'align-items': this.aligny || '',
+      'flex-wrap': this.wrap? 'wrap': 'nowrap',
+      'flex-direction': this.direction || 'row',
+    }
 
     
     return (
-        <div class={'flex ' + position + flow}>
+        <div style={classes}>
             <slot></slot>
         </div>
     );
