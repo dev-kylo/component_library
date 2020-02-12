@@ -1,0 +1,17 @@
+span {
+    color: #502669;
+    margin: 5px 10px;
+    padding: 0 10px;
+    /* border-left: 1px solid #502669; */
+    border-right: 1px solid #502669;
+}
+
+span:hover{
+    cursor: pointer;
+}
+
+.positions {
+    padding: 0;
+    margin: 0;
+    margin-bottom:2em;
+}

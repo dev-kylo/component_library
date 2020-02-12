@@ -10,6 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface AcademicCandidateDisplay {
+    'data': any;
+  }
   interface AccordionContainer {}
   interface AccordionDropdown {
     'header': string;
@@ -31,9 +34,13 @@ export namespace Components {
     'socials': string;
     'strategydoc': string;
   }
+  interface CandidateDisplay {
+    'data': any;
+  }
   interface ChildComponent {
     'number': number;
   }
+  interface ElectionsCandidates {}
   interface ElectionsFooter {}
   interface FlexContainer {
     'alignx': string;
@@ -137,6 +144,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLAcademicCandidateDisplayElement extends Components.AcademicCandidateDisplay, HTMLStencilElement {}
+  const HTMLAcademicCandidateDisplayElement: {
+    prototype: HTMLAcademicCandidateDisplayElement;
+    new (): HTMLAcademicCandidateDisplayElement;
+  };
+
   interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {}
   const HTMLAccordionContainerElement: {
     prototype: HTMLAccordionContainerElement;
@@ -179,10 +192,22 @@ declare global {
     new (): HTMLCampaignTabsElement;
   };
 
+  interface HTMLCandidateDisplayElement extends Components.CandidateDisplay, HTMLStencilElement {}
+  const HTMLCandidateDisplayElement: {
+    prototype: HTMLCandidateDisplayElement;
+    new (): HTMLCandidateDisplayElement;
+  };
+
   interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {}
   const HTMLChildComponentElement: {
     prototype: HTMLChildComponentElement;
     new (): HTMLChildComponentElement;
+  };
+
+  interface HTMLElectionsCandidatesElement extends Components.ElectionsCandidates, HTMLStencilElement {}
+  const HTMLElectionsCandidatesElement: {
+    prototype: HTMLElectionsCandidatesElement;
+    new (): HTMLElectionsCandidatesElement;
   };
 
   interface HTMLElectionsFooterElement extends Components.ElectionsFooter, HTMLStencilElement {}
@@ -335,6 +360,7 @@ declare global {
     new (): HTMLVideoBannerElement;
   };
   interface HTMLElementTagNameMap {
+    'academic-candidate-display': HTMLAcademicCandidateDisplayElement;
     'accordion-container': HTMLAccordionContainerElement;
     'accordion-dropdown': HTMLAccordionDropdownElement;
     'campaign-aim': HTMLCampaignAimElement;
@@ -342,7 +368,9 @@ declare global {
     'campaign-news': HTMLCampaignNewsElement;
     'campaign-page': HTMLCampaignPageElement;
     'campaign-tabs': HTMLCampaignTabsElement;
+    'candidate-display': HTMLCandidateDisplayElement;
     'child-component': HTMLChildComponentElement;
+    'elections-candidates': HTMLElectionsCandidatesElement;
     'elections-footer': HTMLElectionsFooterElement;
     'flex-container': HTMLFlexContainerElement;
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
@@ -372,6 +400,9 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface AcademicCandidateDisplay {
+    'data'?: any;
+  }
   interface AccordionContainer {}
   interface AccordionDropdown {
     'header'?: string;
@@ -393,9 +424,13 @@ declare namespace LocalJSX {
     'socials'?: string;
     'strategydoc'?: string;
   }
+  interface CandidateDisplay {
+    'data'?: any;
+  }
   interface ChildComponent {
     'number'?: number;
   }
+  interface ElectionsCandidates {}
   interface ElectionsFooter {}
   interface FlexContainer {
     'alignx'?: string;
@@ -498,6 +533,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'academic-candidate-display': AcademicCandidateDisplay;
     'accordion-container': AccordionContainer;
     'accordion-dropdown': AccordionDropdown;
     'campaign-aim': CampaignAim;
@@ -505,7 +541,9 @@ declare namespace LocalJSX {
     'campaign-news': CampaignNews;
     'campaign-page': CampaignPage;
     'campaign-tabs': CampaignTabs;
+    'candidate-display': CandidateDisplay;
     'child-component': ChildComponent;
+    'elections-candidates': ElectionsCandidates;
     'elections-footer': ElectionsFooter;
     'flex-container': FlexContainer;
     'fullwidth-beige-strip': FullwidthBeigeStrip;
@@ -540,6 +578,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'academic-candidate-display': LocalJSX.AcademicCandidateDisplay & JSXBase.HTMLAttributes<HTMLAcademicCandidateDisplayElement>;
       'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
@@ -547,7 +586,9 @@ declare module "@stencil/core" {
       'campaign-news': LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
+      'candidate-display': LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
+      'elections-candidates': LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
       'elections-footer': LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
