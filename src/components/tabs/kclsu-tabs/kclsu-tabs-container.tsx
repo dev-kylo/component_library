@@ -2,7 +2,7 @@ import { Component, h } from '@stencil/core';
 
 
 @Component({
-    tag: 'tabs-container',
+    tag: 'kclsu-tabs-container',
 })
 export class TabsContainer {
     
