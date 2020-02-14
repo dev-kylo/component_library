@@ -72,6 +72,7 @@ export namespace Components {
   interface InnerTabsContainer {
     'innertab': boolean;
   }
+  interface KclsuTabsContainer {}
   interface MyComponent {
     /**
     * The first name
@@ -269,6 +270,12 @@ declare global {
     new (): HTMLInnerTabsContainerElement;
   };
 
+  interface HTMLKclsuTabsContainerElement extends Components.KclsuTabsContainer, HTMLStencilElement {}
+  const HTMLKclsuTabsContainerElement: {
+    prototype: HTMLKclsuTabsContainerElement;
+    new (): HTMLKclsuTabsContainerElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -391,6 +398,7 @@ declare global {
     'inner-tab-content': HTMLInnerTabContentElement;
     'inner-tab-header': HTMLInnerTabHeaderElement;
     'inner-tabs-container': HTMLInnerTabsContainerElement;
+    'kclsu-tabs-container': HTMLKclsuTabsContainerElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
@@ -475,6 +483,7 @@ declare namespace LocalJSX {
   interface InnerTabsContainer {
     'innertab'?: boolean;
   }
+  interface KclsuTabsContainer {}
   interface MyComponent {
     /**
     * The first name
@@ -570,6 +579,7 @@ declare namespace LocalJSX {
     'inner-tab-content': InnerTabContent;
     'inner-tab-header': InnerTabHeader;
     'inner-tabs-container': InnerTabsContainer;
+    'kclsu-tabs-container': KclsuTabsContainer;
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
@@ -616,6 +626,7 @@ declare module "@stencil/core" {
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
       'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
       'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
+      'kclsu-tabs-container': LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
