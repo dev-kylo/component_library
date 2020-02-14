@@ -1,4 +1,4 @@
-import { Component, h, Prop, State} from '@stencil/core';
+import { Component, h, Prop, State, Element} from '@stencil/core';
 
 
 @Component({
@@ -12,14 +12,14 @@ export class AcademicCandidateDisplay {
     @Prop() data;
 
     @State() activePosition;
-
-    // @Event() activeData: EventEmitter;
-
     @State() current;
+
+    @Element() host: HTMLElement;
+
 
     createSubLinks(){
         let positions = [];
-        let nodes = []
+        let nodes:HTMLSpanElement[] = []
         if (this.data){
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
@@ -35,26 +35,24 @@ export class AcademicCandidateDisplay {
 
 
     clickHandler(e){
-        console.log("data from click handler")
-        console.log(e)
-        console.log(e.target.textContent)
-        this.current = e.target.textContent
-        // this.activePosition = data;
+        this.current = e.target.textContent;
+        let collection:HTMLCollection = e.target.parentNode.children;
+        for(let x = 0; x < collection.length; x++){
+           collection[x].setAttribute('style', 'font-weight:  ')
+        }
+         e.target.style.fontWeight = 'bold';
+   
     }
 
-    // @Listen('activeData') 
-    // seeNow(event){
-    //     console.log(event.detail)
-    // }
     
     render() {
         let candidates = !this.current ? '' : <candidate-display data={this.data.filter(candidate => candidate.Post === this.current)}></candidate-display>;
         return (
             <div>
                 <div class="positions">
-                    <flex-container alignx="center" wrap>
+                    <div class="submenu">
                         {this.createSubLinks()}
-                    </flex-container>
+                    </div>
                 </div>
                 {candidates}
             </div>
