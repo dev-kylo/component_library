@@ -3,9 +3,16 @@
 .kclsu-tab-headers {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     /* border-bottom: 1px solid rgba(0, 0,0, 0.3); */
 }
 
 .kclsu-tab-headers {
     padding: 0px;
+}
+
+@media (max-width: 599px) {
+    .kclsu-tab-headers{
+        justify-content: space-around;
+    }
 }

@@ -17,6 +17,7 @@ export namespace Components {
   interface AccordionDropdown {
     'header': string;
   }
+  interface AuxComp {}
   interface CampaignAim {}
   interface CampaignAimContainer {
     'campaignname': string;
@@ -40,7 +41,9 @@ export namespace Components {
   interface ChildComponent {
     'number': number;
   }
-  interface ElectionsCandidates {}
+  interface ElectionsCandidates {
+    'results': boolean;
+  }
   interface ElectionsFooter {}
   interface FlexContainer {
     'alignx': string;
@@ -100,6 +103,8 @@ export namespace Components {
     'link': string;
     'name': string;
     'position': string;
+    'secondcta': string;
+    'secondlink': string;
   }
   interface PurpleButton {
     'link': string;
@@ -160,6 +165,12 @@ declare global {
   const HTMLAccordionDropdownElement: {
     prototype: HTMLAccordionDropdownElement;
     new (): HTMLAccordionDropdownElement;
+  };
+
+  interface HTMLAuxCompElement extends Components.AuxComp, HTMLStencilElement {}
+  const HTMLAuxCompElement: {
+    prototype: HTMLAuxCompElement;
+    new (): HTMLAuxCompElement;
   };
 
   interface HTMLCampaignAimElement extends Components.CampaignAim, HTMLStencilElement {}
@@ -363,6 +374,7 @@ declare global {
     'academic-candidate-display': HTMLAcademicCandidateDisplayElement;
     'accordion-container': HTMLAccordionContainerElement;
     'accordion-dropdown': HTMLAccordionDropdownElement;
+    'aux-comp': HTMLAuxCompElement;
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-aim-container': HTMLCampaignAimContainerElement;
     'campaign-news': HTMLCampaignNewsElement;
@@ -407,6 +419,7 @@ declare namespace LocalJSX {
   interface AccordionDropdown {
     'header'?: string;
   }
+  interface AuxComp {}
   interface CampaignAim {}
   interface CampaignAimContainer {
     'campaignname'?: string;
@@ -430,7 +443,9 @@ declare namespace LocalJSX {
   interface ChildComponent {
     'number'?: number;
   }
-  interface ElectionsCandidates {}
+  interface ElectionsCandidates {
+    'results'?: boolean;
+  }
   interface ElectionsFooter {}
   interface FlexContainer {
     'alignx'?: string;
@@ -491,6 +506,8 @@ declare namespace LocalJSX {
     'link'?: string;
     'name'?: string;
     'position'?: string;
+    'secondcta'?: string;
+    'secondlink'?: string;
   }
   interface PurpleButton {
     'link'?: string;
@@ -536,6 +553,7 @@ declare namespace LocalJSX {
     'academic-candidate-display': AcademicCandidateDisplay;
     'accordion-container': AccordionContainer;
     'accordion-dropdown': AccordionDropdown;
+    'aux-comp': AuxComp;
     'campaign-aim': CampaignAim;
     'campaign-aim-container': CampaignAimContainer;
     'campaign-news': CampaignNews;
@@ -581,6 +599,7 @@ declare module "@stencil/core" {
       'academic-candidate-display': LocalJSX.AcademicCandidateDisplay & JSXBase.HTMLAttributes<HTMLAcademicCandidateDisplayElement>;
       'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
+      'aux-comp': LocalJSX.AuxComp & JSXBase.HTMLAttributes<HTMLAuxCompElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
       'campaign-news': LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;

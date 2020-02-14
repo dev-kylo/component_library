@@ -21,8 +21,8 @@
 } */
 
 .image {
-    background-color: red;
     min-height: 250px;
+    background-color:#dedede;
     background-size: cover;
     background-position: center center
 }
@@ -45,6 +45,7 @@
     font-size: 18px; 
     font-weight: 600;
     margin-bottom: 15px;
+    text-transform: capitalize;
 
 } 
 
@@ -69,4 +70,43 @@
 
 span {
     display: block;
+}
+
+
+
+@media only screen and (max-width: 780px){
+    .profile-card {
+        width: 230px;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 780px){
+    .profile-card {
+        width: 215px;
+    }
+}
+
+@media only screen and (min-width: 430px) and (max-width: 530px){
+    .profile-card {
+        width: 300px;
+    }
+}
+
+
+@media only screen and (max-width: 430px){
+    .profile-card {
+        width: 250px;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    .profile-card {
+        width: 220px;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    .profile-card {
+        width: 180px;
+    }
 }

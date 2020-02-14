@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Prop } from '@stencil/core';
 
 @Component({
     tag: 'elections-candidates',
@@ -10,13 +10,14 @@ export class ElectionsCandidates {
 
     @State() data;
 
+    @Prop() results: boolean;
+
     componentDidLoad() {
-        let url = `https://elections-b726c.firebaseio.com/data.json`
+        let url = `https://elections-b726c.firebaseio.com/Sheet1.json`
         fetch(url)
             .then(res => res.json())
             .then(candidateData => {
                 this.data = candidateData;
-
             })
       }
 
@@ -24,19 +25,45 @@ export class ElectionsCandidates {
         if (this.data) return this.data.filter(candidate => candidate.Post === position)
     }
 
-    filterAcademicData(type){
-        console.log("Filtered data in elections candidates")
-        console.log(this.data.filter(candidate => candidate.Post.includes(type)));
+    filterAcademicData(type: string){
         return this.data.filter(candidate => candidate.Post.includes(type))
     }
+
+    filterAllOfficers(type: string){
+        if (this.data) return this.data.filter(candidate => candidate.Type === type)
+    }
+
+
     
     render() {
+
+        let officersTabH;
+        let officersTabC
+        let networksTabH;
+        let networksTabC;
+    
+        console.log(this.results)
+        if (this.results){
+            officersTabH = <inner-tab-header active name="iTab000" slot="tab-headers"> All</inner-tab-header>;
+            officersTabC =  <inner-tab-content active name="iTab000" slot="tab-content">     
+                                <candidate-display data={this.filterAllOfficers('Officer')}></candidate-display>
+                            </inner-tab-content>;
+
+
+            networksTabH = <inner-tab-header active name="iTab00001" slot="tab-headers"> All</inner-tab-header>;
+            networksTabC =  <inner-tab-content active name="iTab00001" slot="tab-content">     
+                                <candidate-display data={this.filterAllOfficers('Network')}></candidate-display>
+                             </inner-tab-content>;
+        }
+
         return (
             <tabs-container>
                 <tab-header name="Tab1" active slot="tab-headers"> Student Officers</tab-header>
                 <tab-content name="Tab1" active slot="tab-content">
-        
+                    
                     <inner-tabs-container>
+                        {officersTabH}
+                        {officersTabC}
                         <inner-tab-header name="iTab2" slot="tab-headers"> President</inner-tab-header>
                         <inner-tab-content name="iTab2" slot="tab-content">     
                             <candidate-display data={this.filterOfficerData('President (full-time, paid)')}></candidate-display>
@@ -73,6 +100,8 @@ export class ElectionsCandidates {
             <tab-header name="Tab2"  slot="tab-headers"> Network Officers</tab-header>
                 <tab-content name="Tab2" slot="tab-content">
                     <inner-tabs-container>
+                        {networksTabH}
+                        {networksTabC}
                         <inner-tab-header name="iTab8" slot="tab-headers"> Disabled Students' </inner-tab-header>
                         <inner-tab-content name="iTab8" slot="tab-content">
                             <candidate-display data={this.filterOfficerData("Disabled Students' Officer")}></candidate-display>  
@@ -119,7 +148,7 @@ export class ElectionsCandidates {
         
             <tab-header name="Tab3" slot="tab-headers"> NUS Delegates</tab-header>
             <tab-content name="Tab3" slot="tab-content">
-                <candidate-display data={this.filterOfficerData('NUS National Conference Delegate (8 places)')}></candidate-display> 
+                <candidate-display data={this.filterOfficerData('NUS National Conference Delegate')}></candidate-display> 
             </tab-content>
         
             <tab-header name="Tab4"  slot="tab-headers"> Academic</tab-header>
