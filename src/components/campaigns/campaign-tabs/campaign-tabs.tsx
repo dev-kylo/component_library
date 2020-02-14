@@ -29,7 +29,7 @@ export class CampaignTabs {
 
     return (
         <page-content>
-            <tabs-container>
+            <kclsu-tabs-container>
                 <h2>UPDATES</h2>
                 <div>
                     <section class="col-md-6">
@@ -63,7 +63,7 @@ export class CampaignTabs {
                 </div>
                 {!this.strategydoc ? null : <h2>STRATEGY</h2> }
                 {!this.strategydoc ?  null : <div><h3>You must be logged in as a student to access the document below:</h3><primary-button to={this.strategydoc}> Campaign Strategy Document </primary-button></div>}
-            </tabs-container>
+            </kclsu-tabs-container>
         </page-content>
     );
   }
