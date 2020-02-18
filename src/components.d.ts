@@ -41,6 +41,12 @@ export namespace Components {
   interface ChildComponent {
     'number': number;
   }
+  interface CreateVarsityData {
+    'allowcreate': boolean;
+    'allowupdate': boolean;
+    'msltag': string;
+    'year': string;
+  }
   interface ElectionsCandidates {
     'results': boolean;
   }
@@ -72,6 +78,7 @@ export namespace Components {
   interface InnerTabsContainer {
     'innertab': boolean;
   }
+  interface KclsuModal {}
   interface KclsuTabsContainer {}
   interface MyComponent {
     /**
@@ -216,6 +223,12 @@ declare global {
     new (): HTMLChildComponentElement;
   };
 
+  interface HTMLCreateVarsityDataElement extends Components.CreateVarsityData, HTMLStencilElement {}
+  const HTMLCreateVarsityDataElement: {
+    prototype: HTMLCreateVarsityDataElement;
+    new (): HTMLCreateVarsityDataElement;
+  };
+
   interface HTMLElectionsCandidatesElement extends Components.ElectionsCandidates, HTMLStencilElement {}
   const HTMLElectionsCandidatesElement: {
     prototype: HTMLElectionsCandidatesElement;
@@ -268,6 +281,12 @@ declare global {
   const HTMLInnerTabsContainerElement: {
     prototype: HTMLInnerTabsContainerElement;
     new (): HTMLInnerTabsContainerElement;
+  };
+
+  interface HTMLKclsuModalElement extends Components.KclsuModal, HTMLStencilElement {}
+  const HTMLKclsuModalElement: {
+    prototype: HTMLKclsuModalElement;
+    new (): HTMLKclsuModalElement;
   };
 
   interface HTMLKclsuTabsContainerElement extends Components.KclsuTabsContainer, HTMLStencilElement {}
@@ -389,6 +408,7 @@ declare global {
     'campaign-tabs': HTMLCampaignTabsElement;
     'candidate-display': HTMLCandidateDisplayElement;
     'child-component': HTMLChildComponentElement;
+    'create-varsity-data': HTMLCreateVarsityDataElement;
     'elections-candidates': HTMLElectionsCandidatesElement;
     'elections-footer': HTMLElectionsFooterElement;
     'flex-container': HTMLFlexContainerElement;
@@ -398,6 +418,7 @@ declare global {
     'inner-tab-content': HTMLInnerTabContentElement;
     'inner-tab-header': HTMLInnerTabHeaderElement;
     'inner-tabs-container': HTMLInnerTabsContainerElement;
+    'kclsu-modal': HTMLKclsuModalElement;
     'kclsu-tabs-container': HTMLKclsuTabsContainerElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
@@ -451,6 +472,12 @@ declare namespace LocalJSX {
   interface ChildComponent {
     'number'?: number;
   }
+  interface CreateVarsityData {
+    'allowcreate'?: boolean;
+    'allowupdate'?: boolean;
+    'msltag'?: string;
+    'year'?: string;
+  }
   interface ElectionsCandidates {
     'results'?: boolean;
   }
@@ -483,6 +510,7 @@ declare namespace LocalJSX {
   interface InnerTabsContainer {
     'innertab'?: boolean;
   }
+  interface KclsuModal {}
   interface KclsuTabsContainer {}
   interface MyComponent {
     /**
@@ -570,6 +598,7 @@ declare namespace LocalJSX {
     'campaign-tabs': CampaignTabs;
     'candidate-display': CandidateDisplay;
     'child-component': ChildComponent;
+    'create-varsity-data': CreateVarsityData;
     'elections-candidates': ElectionsCandidates;
     'elections-footer': ElectionsFooter;
     'flex-container': FlexContainer;
@@ -579,6 +608,7 @@ declare namespace LocalJSX {
     'inner-tab-content': InnerTabContent;
     'inner-tab-header': InnerTabHeader;
     'inner-tabs-container': InnerTabsContainer;
+    'kclsu-modal': KclsuModal;
     'kclsu-tabs-container': KclsuTabsContainer;
     'my-component': MyComponent;
     'news-card': NewsCard;
@@ -617,6 +647,7 @@ declare module "@stencil/core" {
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'candidate-display': LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
+      'create-varsity-data': LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
       'elections-candidates': LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
       'elections-footer': LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
@@ -626,6 +657,7 @@ declare module "@stencil/core" {
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
       'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
       'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
+      'kclsu-modal': LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
       'kclsu-tabs-container': LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
