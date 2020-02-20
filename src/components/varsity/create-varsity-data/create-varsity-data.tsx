@@ -41,7 +41,8 @@ export class CreateVarsityData {
         e.preventDefault();
         let alldata = [];
         for (let x = 0; x < this.mslEventData.length; x++){
-            this.mslEventData[x].score = ['3', '5'];
+            // this.mslEventData[x].score = ['3', '5'];
+            this.mslEventData[x].score = [];
             alldata.push(this.mslEventData[x]);
         }
         this.postToDatabase(alldata);
@@ -58,7 +59,7 @@ export class CreateVarsityData {
             let matchIndex = firebaseClone.findIndex(evt => evt.Id === currentMSL.Id)
             if (matchIndex){
                 let mslClone = {...currentMSL};
-                mslClone.score = [...firebaseClone[matchIndex].score];
+                mslClone.score = firebaseClone[matchIndex].score;
                 // mslClone.score = [2 , 30];
                 finalData.push(mslClone);    
             }

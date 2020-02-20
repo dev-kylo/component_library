@@ -1,0 +1,51 @@
+@import '../../../global/globalstyles.css';
+
+.card {
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    background: #fff;
+    position: relative;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    border: 1px solid #eaeaea;
+}
+
+.image {
+    justify-self: flex-start;
+    min-width: 200px;
+    height: auto;
+}
+
+.title {
+    font-size: 17px;
+    margin: 5px 0 0 0;
+    line-height: 22px;
+    font-family: bree_serifbold;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #502669;
+    padding: 0 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+a {
+    display: table;
+    padding: 0 15px;
+    margin: 15px 20px 10px;
+    color: white;
+    background: #14847e;
+    border-radius: 30px;
+    font-size: 14px;
+}

@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 
 
 @Component({
@@ -8,6 +8,15 @@ import { Component, h, Prop } from '@stencil/core';
 export class KclsuModal {
 
     @Prop() show:boolean = false;
+
+    // @Listen('exitModal') closeModal(e){
+    //     console.log(e)
+    //     this.show = false;
+    // }
+
+    @Watch('show') watchHandler(newVal){
+        console.log("The modal is now showing:" + newVal)
+    }
     
     render() {
 
@@ -16,12 +25,11 @@ export class KclsuModal {
             'opacity': this.show? '1' : '0'
         };
 
-        return (
-            <div 
-                class="Modal"
-                style={styles}>
+        return ([
+        <modal-backdrop showbg={this.show}></modal-backdrop>,
+        <div class="Modal" style={styles}>
             <slot></slot>
         </div>
-        );
+        ]);
     }
 }

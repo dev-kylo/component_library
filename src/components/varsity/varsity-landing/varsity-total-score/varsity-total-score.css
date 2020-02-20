@@ -1,0 +1,38 @@
+@import '../../../../global/globalstyles.css';
+
+div {
+    height: 100%;
+    width: 100%;
+    position:relative;
+    background: linear-gradient(to right, #6c3f99 0%,#6c3f99 51%,#6c3f99 51%,#e2231a 52%,#e2231a 100%)
+}
+
+span {
+    padding: 0em;
+    margin: 0em;
+    font-size: 25px;
+    text-align: center;
+}
+
+.ucl, .kings {
+    padding: 1em;
+    margin: 0.5em;
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform:translate(-50%, -50%);
+    width: 8em;
+    height: auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

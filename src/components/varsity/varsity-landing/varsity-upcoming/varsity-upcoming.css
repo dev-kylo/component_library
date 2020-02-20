@@ -1,0 +1,56 @@
+@import '../../../../global/globalstyles.css';
+
+ul {
+    margin: 0;
+    margin-top: 3.5em;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0em;
+    color: black;
+    cursor: pointer;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    font-size: 16px;
+    margin:1em;
+    padding: 0.6em;
+    position: relative;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    padding: 1em;
+    border: 1px solid #14847e;
+    background: #14847e;
+    padding: 7px 40px 7px 20px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    width: fit-content;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    margin: 15px auto;
+    display: table;
+    font-size: 14px;
+    -webkit-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    transition-duration: 1s;
+}
+
+.date {
+    position: absolute;
+    font-size: 12px;
+    bottom: 0;
+    right: 0;
+    color: #6c3e99;
+}

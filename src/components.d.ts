@@ -17,6 +17,9 @@ export namespace Components {
   interface AccordionDropdown {
     'header': string;
   }
+  interface AddVarsityScores {
+    'year': string;
+  }
   interface AuxComp {}
   interface CampaignAim {}
   interface CampaignAimContainer {
@@ -78,8 +81,21 @@ export namespace Components {
   interface InnerTabsContainer {
     'innertab': boolean;
   }
-  interface KclsuModal {}
+  interface KclsuModal {
+    'show': boolean;
+  }
   interface KclsuTabsContainer {}
+  interface LabelCard {
+    'buttonLink': string;
+    'buttonTitle': string;
+    'cardtitle': string;
+    'image': string;
+    'reverse': boolean;
+    'text': string;
+  }
+  interface ModalBackdrop {
+    'showbg': boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -149,6 +165,16 @@ export namespace Components {
   interface TabsContainer {
     'innertab': boolean;
   }
+  interface VarsityLanding {
+    'currentDate': { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
+    'year': string;
+  }
+  interface VarsityTotalScore {
+    'scores': any;
+  }
+  interface VarsityUpcoming {
+    'data': any;
+  }
   interface VideoBanner {
     'url': string;
   }
@@ -173,6 +199,12 @@ declare global {
   const HTMLAccordionDropdownElement: {
     prototype: HTMLAccordionDropdownElement;
     new (): HTMLAccordionDropdownElement;
+  };
+
+  interface HTMLAddVarsityScoresElement extends Components.AddVarsityScores, HTMLStencilElement {}
+  const HTMLAddVarsityScoresElement: {
+    prototype: HTMLAddVarsityScoresElement;
+    new (): HTMLAddVarsityScoresElement;
   };
 
   interface HTMLAuxCompElement extends Components.AuxComp, HTMLStencilElement {}
@@ -295,6 +327,18 @@ declare global {
     new (): HTMLKclsuTabsContainerElement;
   };
 
+  interface HTMLLabelCardElement extends Components.LabelCard, HTMLStencilElement {}
+  const HTMLLabelCardElement: {
+    prototype: HTMLLabelCardElement;
+    new (): HTMLLabelCardElement;
+  };
+
+  interface HTMLModalBackdropElement extends Components.ModalBackdrop, HTMLStencilElement {}
+  const HTMLModalBackdropElement: {
+    prototype: HTMLModalBackdropElement;
+    new (): HTMLModalBackdropElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   const HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -391,6 +435,24 @@ declare global {
     new (): HTMLTabsContainerElement;
   };
 
+  interface HTMLVarsityLandingElement extends Components.VarsityLanding, HTMLStencilElement {}
+  const HTMLVarsityLandingElement: {
+    prototype: HTMLVarsityLandingElement;
+    new (): HTMLVarsityLandingElement;
+  };
+
+  interface HTMLVarsityTotalScoreElement extends Components.VarsityTotalScore, HTMLStencilElement {}
+  const HTMLVarsityTotalScoreElement: {
+    prototype: HTMLVarsityTotalScoreElement;
+    new (): HTMLVarsityTotalScoreElement;
+  };
+
+  interface HTMLVarsityUpcomingElement extends Components.VarsityUpcoming, HTMLStencilElement {}
+  const HTMLVarsityUpcomingElement: {
+    prototype: HTMLVarsityUpcomingElement;
+    new (): HTMLVarsityUpcomingElement;
+  };
+
   interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {}
   const HTMLVideoBannerElement: {
     prototype: HTMLVideoBannerElement;
@@ -400,6 +462,7 @@ declare global {
     'academic-candidate-display': HTMLAcademicCandidateDisplayElement;
     'accordion-container': HTMLAccordionContainerElement;
     'accordion-dropdown': HTMLAccordionDropdownElement;
+    'add-varsity-scores': HTMLAddVarsityScoresElement;
     'aux-comp': HTMLAuxCompElement;
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-aim-container': HTMLCampaignAimContainerElement;
@@ -420,6 +483,8 @@ declare global {
     'inner-tabs-container': HTMLInnerTabsContainerElement;
     'kclsu-modal': HTMLKclsuModalElement;
     'kclsu-tabs-container': HTMLKclsuTabsContainerElement;
+    'label-card': HTMLLabelCardElement;
+    'modal-backdrop': HTMLModalBackdropElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
@@ -436,6 +501,9 @@ declare global {
     'tab-content': HTMLTabContentElement;
     'tab-header': HTMLTabHeaderElement;
     'tabs-container': HTMLTabsContainerElement;
+    'varsity-landing': HTMLVarsityLandingElement;
+    'varsity-total-score': HTMLVarsityTotalScoreElement;
+    'varsity-upcoming': HTMLVarsityUpcomingElement;
     'video-banner': HTMLVideoBannerElement;
   }
 }
@@ -447,6 +515,9 @@ declare namespace LocalJSX {
   interface AccordionContainer {}
   interface AccordionDropdown {
     'header'?: string;
+  }
+  interface AddVarsityScores {
+    'year'?: string;
   }
   interface AuxComp {}
   interface CampaignAim {}
@@ -510,8 +581,22 @@ declare namespace LocalJSX {
   interface InnerTabsContainer {
     'innertab'?: boolean;
   }
-  interface KclsuModal {}
+  interface KclsuModal {
+    'show'?: boolean;
+  }
   interface KclsuTabsContainer {}
+  interface LabelCard {
+    'buttonLink'?: string;
+    'buttonTitle'?: string;
+    'cardtitle'?: string;
+    'image'?: string;
+    'reverse'?: boolean;
+    'text'?: string;
+  }
+  interface ModalBackdrop {
+    'onExitModal'?: (event: CustomEvent<any>) => void;
+    'showbg'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -582,6 +667,16 @@ declare namespace LocalJSX {
   interface TabsContainer {
     'innertab'?: boolean;
   }
+  interface VarsityLanding {
+    'currentDate'?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
+    'year'?: string;
+  }
+  interface VarsityTotalScore {
+    'scores'?: any;
+  }
+  interface VarsityUpcoming {
+    'data'?: any;
+  }
   interface VideoBanner {
     'url'?: string;
   }
@@ -590,6 +685,7 @@ declare namespace LocalJSX {
     'academic-candidate-display': AcademicCandidateDisplay;
     'accordion-container': AccordionContainer;
     'accordion-dropdown': AccordionDropdown;
+    'add-varsity-scores': AddVarsityScores;
     'aux-comp': AuxComp;
     'campaign-aim': CampaignAim;
     'campaign-aim-container': CampaignAimContainer;
@@ -610,6 +706,8 @@ declare namespace LocalJSX {
     'inner-tabs-container': InnerTabsContainer;
     'kclsu-modal': KclsuModal;
     'kclsu-tabs-container': KclsuTabsContainer;
+    'label-card': LabelCard;
+    'modal-backdrop': ModalBackdrop;
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
@@ -626,6 +724,9 @@ declare namespace LocalJSX {
     'tab-content': TabContent;
     'tab-header': TabHeader;
     'tabs-container': TabsContainer;
+    'varsity-landing': VarsityLanding;
+    'varsity-total-score': VarsityTotalScore;
+    'varsity-upcoming': VarsityUpcoming;
     'video-banner': VideoBanner;
   }
 }
@@ -639,6 +740,7 @@ declare module "@stencil/core" {
       'academic-candidate-display': LocalJSX.AcademicCandidateDisplay & JSXBase.HTMLAttributes<HTMLAcademicCandidateDisplayElement>;
       'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
+      'add-varsity-scores': LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
       'aux-comp': LocalJSX.AuxComp & JSXBase.HTMLAttributes<HTMLAuxCompElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
@@ -659,6 +761,8 @@ declare module "@stencil/core" {
       'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
       'kclsu-modal': LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
       'kclsu-tabs-container': LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
+      'label-card': LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
+      'modal-backdrop': LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
@@ -675,6 +779,9 @@ declare module "@stencil/core" {
       'tab-content': LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
       'tab-header': LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
+      'varsity-landing': LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
+      'varsity-total-score': LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
+      'varsity-upcoming': LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
   }
