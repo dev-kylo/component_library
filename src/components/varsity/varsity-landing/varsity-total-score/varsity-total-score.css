@@ -36,3 +36,20 @@ img {
     width: 100%;
     height: auto;
 }
+
+@media only screen and (max-width: 780px){
+    .ucl, .kings {
+        font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .ucl, .kings {
+        padding: 0.5em;
+        line-height: 40px;
+    }
+
+    .logo {
+        width: 7em;
+    }
+}

@@ -70,6 +70,11 @@ export namespace Components {
   interface GetInvolved {
     'typeform': string;
   }
+  interface ImageFitContainer {
+    'alt': string;
+    'classes': string[];
+    'src': string;
+  }
   interface ImageSliderAuto {
     'classes': string;
     'images': string[];
@@ -316,6 +321,12 @@ declare global {
     new (): HTMLGetInvolvedElement;
   };
 
+  interface HTMLImageFitContainerElement extends Components.ImageFitContainer, HTMLStencilElement {}
+  const HTMLImageFitContainerElement: {
+    prototype: HTMLImageFitContainerElement;
+    new (): HTMLImageFitContainerElement;
+  };
+
   interface HTMLImageSliderAutoElement extends Components.ImageSliderAuto, HTMLStencilElement {}
   const HTMLImageSliderAutoElement: {
     prototype: HTMLImageSliderAutoElement;
@@ -527,6 +538,7 @@ declare global {
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
+    'image-fit-container': HTMLImageFitContainerElement;
     'image-slider-auto': HTMLImageSliderAutoElement;
     'inner-tab-content': HTMLInnerTabContentElement;
     'inner-tab-header': HTMLInnerTabHeaderElement;
@@ -622,6 +634,11 @@ declare namespace LocalJSX {
   }
   interface GetInvolved {
     'typeform'?: string;
+  }
+  interface ImageFitContainer {
+    'alt'?: string;
+    'classes'?: string[];
+    'src'?: string;
   }
   interface ImageSliderAuto {
     'classes'?: string;
@@ -774,6 +791,7 @@ declare namespace LocalJSX {
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
+    'image-fit-container': ImageFitContainer;
     'image-slider-auto': ImageSliderAuto;
     'inner-tab-content': InnerTabContent;
     'inner-tab-header': InnerTabHeader;
@@ -834,6 +852,7 @@ declare module "@stencil/core" {
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
+      'image-fit-container': LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
       'image-slider-auto': LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
       'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;

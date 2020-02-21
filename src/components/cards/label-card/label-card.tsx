@@ -16,7 +16,7 @@ export class LabelCard {
     @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,h_90,q_93,w_90/v1573644938/website_uploads/KCLSU%20Brand/db75df131542437eb3da2415c7f91fc6_hhoknp.jpg';
     
     render() {
-        let content = !this.buttonLink? this.text : <a href={this.buttonLink}>{this.buttonTitle}</a>
+        let content = !this.buttonLink? <p><em>{this.text}</em></p> : <a href={this.buttonLink}>{this.buttonTitle}</a>
         let style = {
             'background-image': `url(${this.image})`,
             'background-position': 'center center',

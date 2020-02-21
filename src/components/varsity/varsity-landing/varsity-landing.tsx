@@ -1,6 +1,6 @@
 import { Component, h, Prop, State, Listen } from '@stencil/core';
 import { returnDate, removeParams, getNextEvents } from '../../../utils/utils';
-import {slider1, slider2, slider3 } from './assets/imageStrings';
+import {slider1, slider2, slider3, sliderBig } from './assets/imageStrings';
 
 
 @Component({
@@ -73,7 +73,7 @@ export class VarsityLanding {
             <div class="grid">
                 <div class="verywide item">
                     <h2>London Varsity</h2>
-                    <p>From March 8th, King's College London Students' Union (KCLSU Sports) and University College London Union (Team UCL) come together to go head-to-head in the hope of becoming this years' London Varsity Series champion. </p>
+                    <p>From March 6th, King's College London Students' Union (KCLSU Sports) and University College London Union (Team UCL) come together to go head-to-head in the hope of becoming this years' London Varsity Series champion. </p>
                 </div>                
                 
                 <div class="wide item">
@@ -92,8 +92,8 @@ export class VarsityLanding {
                     <varsity-weather></varsity-weather>
                 </div>
                 <div class="item wide tall">
-                    <span class="tilelabel">@KCLSU</span>
-
+                    <span class="tilelabel"><a href='/'>Follow @kclsu</a></span>
+                    <image-slider-auto images={sliderBig} interval={10000}></image-slider-auto>
                 </div>
                 <div class="item wide vtall">
                     <span class="tilelabel">Upcoming</span>
@@ -103,12 +103,12 @@ export class VarsityLanding {
                     <image-slider-auto images={slider1} interval={5000}></image-slider-auto>
                 </div>
                 <div class="item image">
-                <image-slider-auto images={slider2} interval={7000}></image-slider-auto>
+                    <image-slider-auto images={slider2} interval={7000}></image-slider-auto>
                 </div>
                 <div class="item image">
                     <span class="tilelabel">All Scores</span>
                     <flex-container alignx="center" aligny="center" fillContainer>
-                        <a class="button"onClick={(e) => this.launchScores(e)}>Click me</a>
+                        <a class="button"onClick={(e) => this.launchScores(e)}>2020's scores</a>
                     </flex-container>
                     <kclsu-modal show={this.scoreModalOpen}>
                             {this.scoreModalOpen? this.renderScoreCardList() : ''}
@@ -122,7 +122,7 @@ export class VarsityLanding {
                     <image-slider-auto images={slider3} interval={3000}></image-slider-auto>
                 </div>
                 <div class="item verywide image">
-                    Image
+                    <image-fit-container alt="kclsu american football at a London varsity match" src="https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,g_south,h_350,q_94,w_900/v1572949438/website_uploads/Student%20Groups/IMG_9723_kuyxon.jpg"></image-fit-container>
                 </div>
             </div>
         );

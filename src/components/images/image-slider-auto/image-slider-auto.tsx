@@ -22,11 +22,8 @@ export class ImageSliderAuto {
     slideI = 0;
 
     componentDidLoad(){
-        // this.timer = setInterval(() => this.changeImage(this.images), 5000);
         this.oldWay();
         this.timer = setInterval(() => this.oldWay(), this.interval);
-        // console.log(this.host.querySelectorAll('.slide'))
-          // Change image every 2 seconds
     }
 
     oldWay(){

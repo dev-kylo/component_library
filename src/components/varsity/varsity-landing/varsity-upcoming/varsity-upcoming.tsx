@@ -36,7 +36,7 @@ export class VarsityUpcoming {
             </kclsu-modal>,
             <ul>
                 {this.mapToLi(this.data)}
-                <a onClick={(e) => this.clickHandler(e)}class="button">SEE ALL UPCOMING</a>
+                <a onClick={(e) => this.clickHandler(e)} class="button">See All Upcoming </a>
             </ul>
         ]);
     }
