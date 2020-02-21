@@ -10,6 +10,7 @@
     -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
     box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
     border: 1px solid #eaeaea;
+    min-height: 90px;
 }
 
 .image {
@@ -38,6 +39,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
 }
 
 a {

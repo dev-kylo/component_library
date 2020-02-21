@@ -57,6 +57,11 @@ p {
     box-shadow: rgba(0, 0, 0, 0.15) 4px 5px 4px 1px;
 }
 
+.score-container {
+    margin: 1em 0;
+    min-height: 100px;
+}
+
 /* .narrow {
     grid-column: span 1;
 } */

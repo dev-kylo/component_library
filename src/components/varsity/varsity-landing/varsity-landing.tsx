@@ -1,5 +1,5 @@
-import { Component, h, Prop, State } from '@stencil/core';
-import { returnDate, removeParams } from '../../../utils/utils';
+import { Component, h, Prop, State, Listen } from '@stencil/core';
+import { returnDate, removeParams, getNextEvents } from '../../../utils/utils';
 
 
 @Component({
@@ -13,6 +13,8 @@ export class VarsityLanding {
     @Prop() currentDate = returnDate(); 
 
     @State() eventsData;
+    @State() scoreModalOpen = false;
+    @State() upcomingModalOpen;
 
     componentDidLoad(){
         let url = `https://varsity-db.firebaseio.com/${this.year}.json`;
@@ -23,14 +25,16 @@ export class VarsityLanding {
             })              
     }
 
-    getNextMatches(length){
-        let d = new Date();
-        let ISOdate = d.toISOString();
-        let index = this.eventsData.findIndex(evt => {
-            return evt.StartDate > ISOdate;
-        })
+    @Listen('exitModal') closeModal(){
+        this.scoreModalOpen = false;
+        this.upcomingModalOpen = false;
+    }
 
-        return this.eventsData.slice(index, length)
+    launchScores(e){
+        e.preventDefault();
+        console.log("Launched!");
+        this.scoreModalOpen = true;
+        console.log(this.scoreModalOpen);
     }
 
     renderLastScoreCard(){
@@ -38,8 +42,25 @@ export class VarsityLanding {
         return <label-card reverse cardtitle={evt.Title} image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card>
     }
 
+    renderScoreCardList(){
+        let played = this.eventsData.filter(evt => evt.score);
+    
+        return played.map(evt => {
+            return ([
+                <div class="score-container">
+                    <label-card cardtitle={evt.Title} reverse image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card> 
+                </div>
+            ])
+        })
+    }
+
+    // renderMatchList(){
+    //     let data = this.getNextMatches();
+    //     return <
+    // }
+
     renderNextMatch(){
-        let evt = this.getNextMatches(1)[0];
+        let evt = getNextEvents(this.eventsData, 1)[0];
         return <label-card reverse buttonLink={evt.Url} buttonTitle="Find out more" cardtitle={evt.Title} image={removeParams(evt.ImageUrl)}></label-card>
     }
     
@@ -59,7 +80,7 @@ export class VarsityLanding {
                     {this.renderNextMatch()}
                 </div>  
                 <div class="item wide">
-                    <span class="tilelabel">Previous Score</span>
+                    <span class="tilelabel">Latest Score</span>
                     {this.renderLastScoreCard()}
                 </div>
                 <div class="item verywide">
@@ -67,15 +88,15 @@ export class VarsityLanding {
                 </div>
                 <div class="item wide">
                     <span class="tilelabel">Today's Weather</span>
-                    
+                    <varsity-weather></varsity-weather>
                 </div>
                 <div class="item wide tall">
                     <span class="tilelabel">@KCLSU</span>
-                    
+
                 </div>
                 <div class="item wide vtall">
                     <span class="tilelabel">Upcoming</span>
-                    <varsity-upcoming data={this.getNextMatches(8)}></varsity-upcoming>
+                    <varsity-upcoming data={data}></varsity-upcoming>
                 </div>
                 <div class="item image">
                     Image
@@ -84,13 +105,17 @@ export class VarsityLanding {
                    Image
                 </div>
                 <div class="item image">
-                    <span class="tilelabel">Varsity Scores</span>
-                    <flex-container alignx="center" aligny="center">
-                        <purple-button link="/"></purple-button>
+                    <span class="tilelabel">All Scores</span>
+                    <flex-container alignx="center" aligny="center" fillContainer>
+                        <a class="button"onClick={(e) => this.launchScores(e)}>Click me</a>
                     </flex-container>
+                    <kclsu-modal show={this.scoreModalOpen}>
+                            {this.scoreModalOpen? this.renderScoreCardList() : ''}
+                    </kclsu-modal>
                 </div>
                 <div class="item image">
-                    Image
+                    <span class="tilelabel">Last Year's Scores</span>
+                    <last-year-scores></last-year-scores>
                 </div>
                 <div class="item image">
                     Image

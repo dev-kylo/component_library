@@ -1,29 +1,43 @@
-import { Component, h, Prop} from '@stencil/core';
-import { returnDate } from '../../../../utils/utils';
+import { Component, h, Prop, Listen} from '@stencil/core';
+import { returnDate, getNextEvents } from '../../../../utils/utils';
 
 
 @Component({
     tag: 'varsity-upcoming',
-    styleUrl: 'varsity-upcoming.css'
+    styleUrl: 'varsity-upcoming.css',
+    shadow: true
 })
 export class VarsityUpcoming {
 
     @Prop() data;
+    @Prop() showall:boolean = false;
 
     mapToLi(data){
-        console.log(data)
-        return data.map(node => {
+        let sliced = getNextEvents(data, 8)
+        return sliced.map(node => {
             let date = returnDate(node.StartDate)
             return <a href={node.Url}><li data-id={node.Id} >{node.Title}<span class="date">{date.weekday} {date.day}th</span></li></a>
         })
     }
+
+    @Listen('exitModal') closeModal(){
+        this.showall= false;
+    }
+
+    clickHandler(e){
+        e.preventDefault();
+        this.showall = true;
+    }
     
     render() {
-        return (
+        return ([
+            <kclsu-modal show={this.showall}>
+               {!this.showall? '' :  <varsity-next-matches data={getNextEvents(this.data)}> </varsity-next-matches>}
+            </kclsu-modal>,
             <ul>
                 {this.mapToLi(this.data)}
-                <a class="button">SEE ALL UPCOMING</a>
+                <a onClick={(e) => this.clickHandler(e)}class="button">SEE ALL UPCOMING</a>
             </ul>
-        );
+        ]);
     }
 }

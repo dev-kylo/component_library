@@ -1,15 +1,21 @@
 .Modal {
     position: fixed;
+    left: 50%;
+    top: 50%;
+    /* transform: translate(-50%, -50%); */
     z-index: 500;
     background-color: white;
-    width: 70%;
+    width: auto;
+    min-width: 40%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
-    padding: 16px;
-    left: 15%;
-    top: 20%;
+    padding: 30px;
+    /* left: 15%;
+    top: 20%; */
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    max-height: 85%;
+    overflow-y: scroll;
 }
 
 .Backdrop {
@@ -22,7 +28,7 @@
     background-color: rgba(0, 0, 0, 0.5)
 }
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     .Modal {
         width: 500px;
         left: calc(50% - 250px);

@@ -58,6 +58,7 @@ export namespace Components {
     'alignx': string;
     'aligny': string;
     'direction': string;
+    'fillContainer': boolean;
     'mobcolumn': boolean;
     'wrap': boolean;
   }
@@ -81,6 +82,13 @@ export namespace Components {
   interface InnerTabsContainer {
     'innertab': boolean;
   }
+  interface KclsuButton {
+    'clickHandler': Function;
+    'green': boolean;
+    'link': string;
+    'rounded': boolean;
+    'small': boolean;
+  }
   interface KclsuModal {
     'show': boolean;
   }
@@ -93,6 +101,7 @@ export namespace Components {
     'reverse': boolean;
     'text': string;
   }
+  interface LastYearScores {}
   interface ModalBackdrop {
     'showbg': boolean;
   }
@@ -169,12 +178,17 @@ export namespace Components {
     'currentDate': { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
     'year': string;
   }
+  interface VarsityNextMatches {
+    'data': any;
+  }
   interface VarsityTotalScore {
     'scores': any;
   }
   interface VarsityUpcoming {
     'data': any;
+    'showall': boolean;
   }
+  interface VarsityWeather {}
   interface VideoBanner {
     'url': string;
   }
@@ -315,6 +329,12 @@ declare global {
     new (): HTMLInnerTabsContainerElement;
   };
 
+  interface HTMLKclsuButtonElement extends Components.KclsuButton, HTMLStencilElement {}
+  const HTMLKclsuButtonElement: {
+    prototype: HTMLKclsuButtonElement;
+    new (): HTMLKclsuButtonElement;
+  };
+
   interface HTMLKclsuModalElement extends Components.KclsuModal, HTMLStencilElement {}
   const HTMLKclsuModalElement: {
     prototype: HTMLKclsuModalElement;
@@ -331,6 +351,12 @@ declare global {
   const HTMLLabelCardElement: {
     prototype: HTMLLabelCardElement;
     new (): HTMLLabelCardElement;
+  };
+
+  interface HTMLLastYearScoresElement extends Components.LastYearScores, HTMLStencilElement {}
+  const HTMLLastYearScoresElement: {
+    prototype: HTMLLastYearScoresElement;
+    new (): HTMLLastYearScoresElement;
   };
 
   interface HTMLModalBackdropElement extends Components.ModalBackdrop, HTMLStencilElement {}
@@ -441,6 +467,12 @@ declare global {
     new (): HTMLVarsityLandingElement;
   };
 
+  interface HTMLVarsityNextMatchesElement extends Components.VarsityNextMatches, HTMLStencilElement {}
+  const HTMLVarsityNextMatchesElement: {
+    prototype: HTMLVarsityNextMatchesElement;
+    new (): HTMLVarsityNextMatchesElement;
+  };
+
   interface HTMLVarsityTotalScoreElement extends Components.VarsityTotalScore, HTMLStencilElement {}
   const HTMLVarsityTotalScoreElement: {
     prototype: HTMLVarsityTotalScoreElement;
@@ -451,6 +483,12 @@ declare global {
   const HTMLVarsityUpcomingElement: {
     prototype: HTMLVarsityUpcomingElement;
     new (): HTMLVarsityUpcomingElement;
+  };
+
+  interface HTMLVarsityWeatherElement extends Components.VarsityWeather, HTMLStencilElement {}
+  const HTMLVarsityWeatherElement: {
+    prototype: HTMLVarsityWeatherElement;
+    new (): HTMLVarsityWeatherElement;
   };
 
   interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {}
@@ -481,9 +519,11 @@ declare global {
     'inner-tab-content': HTMLInnerTabContentElement;
     'inner-tab-header': HTMLInnerTabHeaderElement;
     'inner-tabs-container': HTMLInnerTabsContainerElement;
+    'kclsu-button': HTMLKclsuButtonElement;
     'kclsu-modal': HTMLKclsuModalElement;
     'kclsu-tabs-container': HTMLKclsuTabsContainerElement;
     'label-card': HTMLLabelCardElement;
+    'last-year-scores': HTMLLastYearScoresElement;
     'modal-backdrop': HTMLModalBackdropElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
@@ -502,8 +542,10 @@ declare global {
     'tab-header': HTMLTabHeaderElement;
     'tabs-container': HTMLTabsContainerElement;
     'varsity-landing': HTMLVarsityLandingElement;
+    'varsity-next-matches': HTMLVarsityNextMatchesElement;
     'varsity-total-score': HTMLVarsityTotalScoreElement;
     'varsity-upcoming': HTMLVarsityUpcomingElement;
+    'varsity-weather': HTMLVarsityWeatherElement;
     'video-banner': HTMLVideoBannerElement;
   }
 }
@@ -557,6 +599,7 @@ declare namespace LocalJSX {
     'alignx'?: string;
     'aligny'?: string;
     'direction'?: string;
+    'fillContainer'?: boolean;
     'mobcolumn'?: boolean;
     'wrap'?: boolean;
   }
@@ -581,6 +624,13 @@ declare namespace LocalJSX {
   interface InnerTabsContainer {
     'innertab'?: boolean;
   }
+  interface KclsuButton {
+    'clickHandler'?: Function;
+    'green'?: boolean;
+    'link'?: string;
+    'rounded'?: boolean;
+    'small'?: boolean;
+  }
   interface KclsuModal {
     'show'?: boolean;
   }
@@ -593,6 +643,7 @@ declare namespace LocalJSX {
     'reverse'?: boolean;
     'text'?: string;
   }
+  interface LastYearScores {}
   interface ModalBackdrop {
     'onExitModal'?: (event: CustomEvent<any>) => void;
     'showbg'?: boolean;
@@ -671,12 +722,17 @@ declare namespace LocalJSX {
     'currentDate'?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
     'year'?: string;
   }
+  interface VarsityNextMatches {
+    'data'?: any;
+  }
   interface VarsityTotalScore {
     'scores'?: any;
   }
   interface VarsityUpcoming {
     'data'?: any;
+    'showall'?: boolean;
   }
+  interface VarsityWeather {}
   interface VideoBanner {
     'url'?: string;
   }
@@ -704,9 +760,11 @@ declare namespace LocalJSX {
     'inner-tab-content': InnerTabContent;
     'inner-tab-header': InnerTabHeader;
     'inner-tabs-container': InnerTabsContainer;
+    'kclsu-button': KclsuButton;
     'kclsu-modal': KclsuModal;
     'kclsu-tabs-container': KclsuTabsContainer;
     'label-card': LabelCard;
+    'last-year-scores': LastYearScores;
     'modal-backdrop': ModalBackdrop;
     'my-component': MyComponent;
     'news-card': NewsCard;
@@ -725,8 +783,10 @@ declare namespace LocalJSX {
     'tab-header': TabHeader;
     'tabs-container': TabsContainer;
     'varsity-landing': VarsityLanding;
+    'varsity-next-matches': VarsityNextMatches;
     'varsity-total-score': VarsityTotalScore;
     'varsity-upcoming': VarsityUpcoming;
+    'varsity-weather': VarsityWeather;
     'video-banner': VideoBanner;
   }
 }
@@ -759,9 +819,11 @@ declare module "@stencil/core" {
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
       'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
       'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
+      'kclsu-button': LocalJSX.KclsuButton & JSXBase.HTMLAttributes<HTMLKclsuButtonElement>;
       'kclsu-modal': LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
       'kclsu-tabs-container': LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
       'label-card': LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
+      'last-year-scores': LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
       'modal-backdrop': LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
@@ -780,8 +842,10 @@ declare module "@stencil/core" {
       'tab-header': LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'varsity-landing': LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
+      'varsity-next-matches': LocalJSX.VarsityNextMatches & JSXBase.HTMLAttributes<HTMLVarsityNextMatchesElement>;
       'varsity-total-score': LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
       'varsity-upcoming': LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
+      'varsity-weather': LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
       'video-banner': LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
     }
   }

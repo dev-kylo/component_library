@@ -47,3 +47,16 @@ export function removeParams(src){
 
   return newSrc.join('');
 };
+
+
+
+export function getNextEvents(data, length = 0){
+  let d = new Date();
+  let ISOdate = d.toISOString();
+  let index = data.findIndex(evt => {
+      return evt.StartDate > ISOdate;
+  })
+
+  if (length) return data.slice(index, length)
+  else return data.slice(index)
+}
