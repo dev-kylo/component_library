@@ -16,7 +16,6 @@ export class VarsityWeather {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 this.weather = {
                     description: data.weather[0].description,
                     main: data.weather[0].main,
@@ -24,24 +23,29 @@ export class VarsityWeather {
                     temperature: data.main.temp
                 };
                 this.icon= `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-            })              
+            }) 
+            .catch(er => {
+                console.log("Weather not fetched");
+                console.log(er)
+            })             
     }
     
     render() {
-        console.log(this.weather)
-        console.log(this.weather)
-        return (
-            <flex-container aligny="center" alignx="space-between" fillContainer>
-                <div class="info">
-                    <span><em>What to expect:</em> {this.weather.description}</span>
-                    <span><em>Temp:</em> {this.weather.temperature}</span>
-                    <span><em>Cloud %:</em> {this.weather.clouds}</span>
-                </div>
-                <div class="icon">
-                    <img src={this.icon} alt={this.weather.main}></img>
-                </div>
-            </flex-container>
-
-        );
+        if(this.weather){
+            return (
+                <flex-container aligny="center" alignx="space-between" fillContainer>
+                    <div class="info">
+                        <span><em>What to expect:</em> {this.weather.description}</span>
+                        <span><em>Temp:</em> {this.weather.temperature}</span>
+                        <span><em>Cloud %:</em> {this.weather.clouds}</span>
+                    </div>
+                    <div class="icon">
+                        <img src={this.icon} alt={this.weather.main}></img>
+                    </div>
+                </flex-container>
+    
+            );
+        }
+        else return <h3>Weather being fetched...</h3>
     }
 }
