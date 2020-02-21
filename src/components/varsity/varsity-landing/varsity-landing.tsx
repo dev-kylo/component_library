@@ -1,5 +1,6 @@
 import { Component, h, Prop, State, Listen } from '@stencil/core';
 import { returnDate, removeParams, getNextEvents } from '../../../utils/utils';
+import {slider1, slider2, slider3 } from './assets/imageStrings';
 
 
 @Component({
@@ -99,10 +100,10 @@ export class VarsityLanding {
                     <varsity-upcoming data={data}></varsity-upcoming>
                 </div>
                 <div class="item image">
-                    Image
+                    <image-slider-auto images={slider1} interval={5000}></image-slider-auto>
                 </div>
                 <div class="item image">
-                   Image
+                <image-slider-auto images={slider2} interval={7000}></image-slider-auto>
                 </div>
                 <div class="item image">
                     <span class="tilelabel">All Scores</span>
@@ -118,7 +119,7 @@ export class VarsityLanding {
                     <last-year-scores></last-year-scores>
                 </div>
                 <div class="item image">
-                    Image
+                    <image-slider-auto images={slider3} interval={3000}></image-slider-auto>
                 </div>
                 <div class="item verywide image">
                     Image
