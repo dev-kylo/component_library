@@ -4,7 +4,7 @@ import { Component, Prop, h } from '@stencil/core';
   tag: 'primary-button',
   shadow: false
 })
-
+  
 export class PrimaryButton {
 
   @Prop() to: string;
