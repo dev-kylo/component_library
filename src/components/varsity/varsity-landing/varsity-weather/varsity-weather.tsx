@@ -46,6 +46,16 @@ export class VarsityWeather {
     
             );
         }
-        else return <h3>Weather being fetched...</h3>
+        else return (
+            <flex-container aligny="center" alignx="space-between" fillContainer>
+                <div class="info"><span>
+                    <em>What to expect:</em> broken clouds</span><span><em>Temp:</em> 283.26</span>
+                    <span><em>Cloud %:</em> 75</span>
+                </div>
+                <div class="icon">
+                    <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="Clouds"></img>
+                </div>
+            </flex-container>
+        )
     }
 }
