@@ -26,8 +26,10 @@ span:hover{
 @media only screen and (max-width: 780px){
     span {
         border: none;
-        margin: 10px 0;
+        font-size: 14px;
+        margin: 5px 0;
         padding: 0;
+        line-height: normal;
     }
 
     .submenu {
