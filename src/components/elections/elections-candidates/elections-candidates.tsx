@@ -2,7 +2,8 @@ import { Component, h, State, Prop } from '@stencil/core';
 
 @Component({
     tag: 'elections-candidates',
-    styleUrl: 'elections-candidates.css'
+    styleUrl: 'elections-candidates.css',
+    shadow: true
 })
 
 

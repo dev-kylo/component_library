@@ -57,6 +57,7 @@
     font-weight: bold;
     padding: 5px 0;
     margin-bottom: 30px;
+    line-height: normal;
     
 }
 
@@ -66,6 +67,7 @@
     font-size: 14px;
     color: #1aa29c;
     border-bottom: 1px dashed #1aa29cb0;
+    font-weight: bold;
 }
 
 span {
