@@ -4,6 +4,7 @@ span {
     padding: 0 10px;
     /* border-left: 1px solid #502669; */
     border-right: 1px solid #502669;
+    font-size: 16px;
 }
 
 span:hover{
