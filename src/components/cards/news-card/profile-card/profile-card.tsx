@@ -26,8 +26,8 @@ export class ProfileCard{
       'background-image': `url(${this.image})`
     }};
     
-    let firstlink = !this.link ? '' :  <a class="link" href={this.link? this.link : ''}>{this.cta? this.cta : 'Find out more'}</a>
-    let secondlink = !this.secondlink? '' : <a class="link" href={this.secondlink}>{this.secondcta}</a>
+    let firstlink = !this.link ? '' :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta? this.cta : 'Find out more'}</a>
+    let secondlink = !this.secondlink? '' : <a class="link" target="_blank" href={this.secondlink}>{this.secondcta}</a>
 
     return (
       <div class="profile-card">
