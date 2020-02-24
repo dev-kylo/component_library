@@ -1,15 +1,20 @@
-import { Component, h, State, Prop} from '@stencil/core';
+import { Component, h, State, Prop, Listen} from '@stencil/core';
 
 
 @Component({
-    tag: 'create-varsity-data'
+    tag: 'create-varsity-data',
+    styleUrl: 'create-varsity-data.css',
+    shadow: true
 })
 export class CreateVarsityData {
  
     @State() mslEventData;
     @State() firebaseData;
-    @State() updateMessage;
+    @State() uploadMessage;
     @State() createMessage;
+    @State() modalOpen;
+    
+    
 
     @Prop() year: string;
     @Prop() allowcreate: boolean;
@@ -37,8 +42,17 @@ export class CreateVarsityData {
         }
     }
 
+
+    @Listen('exitModal') closeModal(e){
+        console.log(e)
+        this.uploadMessage = '';
+        this.modalOpen = false;
+    }
+
+
     createNewDatabase(e){
         e.preventDefault();
+        this.modalOpen = true;
         let alldata = [];
         for (let x = 0; x < this.mslEventData.length; x++){
             // this.mslEventData[x].score = ['3', '5'];
@@ -50,6 +64,7 @@ export class CreateVarsityData {
 
     updateDatabase(e){
         e.preventDefault();
+        this.modalOpen = true;
 
         let firebaseClone = [...this.firebaseData];
         let finalData = [];
@@ -57,10 +72,13 @@ export class CreateVarsityData {
         for (let x = 0; x < this.mslEventData.length; x++){
             let currentMSL =  this.mslEventData[x];
             let matchIndex = firebaseClone.findIndex(evt => evt.Id === currentMSL.Id)
-            if (matchIndex){
+
+            if (matchIndex && matchIndex >= 0){
                 let mslClone = {...currentMSL};
-                mslClone.score = firebaseClone[matchIndex].score;
-                // mslClone.score = [2 , 30];
+                if(firebaseClone[matchIndex].score){
+                    mslClone.score = firebaseClone[matchIndex].score;
+                }
+
                 finalData.push(mslClone);    
             }
             else finalData.push(currentMSL);
@@ -85,19 +103,41 @@ export class CreateVarsityData {
         };
 
         fetch(url, payload)
-            .then(res => console.log(res.status)) 
+            .then(res => {
+                if (res.ok) this.uploadMessage = `Successful upload!`;
+                else this.uploadMessage = `Possible error. Contact the digital coordinator.`
+            }) 
+            .catch(er => {
+                this.uploadMessage = `Upload Failure.......... Error Response from server: ${er}........ Contact the digital coordinator.`
+            }) 
     }
 
     
     render() {
-        let createButton = !this.mslEventData? '' : <a onClick={e => this.createNewDatabase(e)}>Fetch Data</a>
-        let updateButton = !this.firebaseData? '' : <a onClick={e => this.updateDatabase(e)}>Update Data</a>
+
+        let createButton = !this.mslEventData? '' : <a onClick={e => this.createNewDatabase(e)} class="button">FETCH DATA</a>
+        let updateButton = !this.firebaseData? '' : <a onClick={e => this.updateDatabase(e)} class="button">UPDATE DATA</a>
         
         return (
-            <flex-container alignx="space-around">
-                {createButton}
-                {updateButton}
-            </flex-container>
+            <div class="admin">
+                <flex-container alignx="space-around">
+                    <div class='container'>
+                        <h3>FETCH Data From MSL Events Feed</h3>
+                        <p> This button will download a NEW set of data from MSL's Events data, and replace what is there before.</p>
+                        <p>BEWARE: Any existing data (such as varsity scores) will be replaced for the year specified in the component attribute.</p>
+                    {createButton} 
+                    </div>
+                    <div class='container'>
+                        <h3>UPDATE Data with MSL Events Feed</h3>
+                        <p>This button will update the database. It will keep all existing scores. Any new events that have been added, or changes made to the events details in the MSL Events Admin, will be added to the database.</p>
+                        {updateButton}
+                    </div>
+                </flex-container>,
+                <kclsu-modal show={this.modalOpen}>
+                    <h3>Varsity database currently being updated....</h3>
+                        {this.uploadMessage}
+                </kclsu-modal>
+            </div>
         );
     }
 }

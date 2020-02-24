@@ -31,11 +31,19 @@ export class AddVarsityScores {
 
     mapToLi(data){
         return data.map(node => {
-            let style = !node.score? {} : {
-                'background-color': '#502669',
-                'color' : 'white'
+            let style;
+            let scoreText = '';
+            if (node.score){
+                if (node.score[1] >= 0){
+                    style = {
+                        'background-color': '#502669',
+                        'color' : 'white'
+                    }
+                    scoreText = `Kings: ${node.score[0]} - UCL: ${node.score[1]}`;
+                }
             }
-            return <li data-id={node.Id} style={style}onClick={(e => this.clickListener(e))}>{node.Title}<br></br>{!node.score? '': `Kings: ${node.score[0]} - UCL: ${node.score[1]}`}</li>
+            
+            return <li data-id={node.Id} style={style}onClick={(e => this.clickListener(e))}>{node.Title}<br></br>{scoreText}</li>
         })
     }
 
@@ -69,12 +77,12 @@ export class AddVarsityScores {
     
     submitScore(e){
         e.preventDefault();
-        console.log("ready to submit")
         let element = e.target;
         let uclScore = element[0].value;
         let kingsScore = element[1].value;
-        let scores = [kingsScore, uclScore];
-        console.log(scores)
+
+        let scores = !uclScore || !kingsScore ? [-1, -1] : [kingsScore, uclScore];
+
 
         //CAN I USE FIND HERE? 
         let duplicate = [...this.eventsData];
@@ -125,6 +133,7 @@ export class AddVarsityScores {
         let scoreCard = !this.modalOpen? '' : this.createScoreCard(this.activeID);
 
         return (
+            [<h2 style={{"text-align": "center"}}> Add Scores to Database</h2>,
             <flex-container alignx="center">
                 <kclsu-modal show={this.modalOpen}>
                     {scoreCard}
@@ -132,8 +141,7 @@ export class AddVarsityScores {
                 <ul>
                 {!this.eventsData? '' : this.mapToLi(this.eventsData)}
                 </ul>
-    
             </flex-container>
-        );
+            ]);
     }
 }

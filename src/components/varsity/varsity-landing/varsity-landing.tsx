@@ -85,7 +85,7 @@ export class VarsityLanding {
                     {this.renderLastScoreCard()}
                 </div>
                 <div class="item verywide">
-                    <varsity-total-score scores={!data? '' : data.filter(evt => evt.score)}></varsity-total-score>
+                    <varsity-total-score scores={!data? '' : data.filter(evt => evt.score && evt.score[0] >= 0)}></varsity-total-score>
                 </div>
                 <div class="item wide">
                     <span class="tilelabel">Today's Weather</span>

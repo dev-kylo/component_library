@@ -103,10 +103,10 @@ export class ElectionsCandidates {
                     <inner-tabs-container>
                         {networksTabH}
                         {networksTabC}
-                        <inner-tab-header name="iTab8" slot="tab-headers"> Disabled Students' </inner-tab-header>
+                        {/* <inner-tab-header name="iTab8" slot="tab-headers"> Disabled Students' </inner-tab-header>
                         <inner-tab-content name="iTab8" slot="tab-content">
                             <candidate-display data={this.filterOfficerData("Disabled Students' Officer")}></candidate-display>  
-                        </inner-tab-content> 
+                        </inner-tab-content>  */}
 
                         <inner-tab-header name="iTab9" slot="tab-headers"> First Generation</inner-tab-header>
                         <inner-tab-content name="iTab9" slot="tab-content">
@@ -118,7 +118,7 @@ export class ElectionsCandidates {
                             <candidate-display data={this.filterOfficerData('International Officer')}></candidate-display>  
                         </inner-tab-content> 
 
-                        <inner-tab-header name="iTab100" slot="tab-headers"> LGBT+ (open place)</inner-tab-header>
+                        {/* <inner-tab-header name="iTab100" slot="tab-headers"> LGBT+ (open place)</inner-tab-header>
                         <inner-tab-content name="iTab100" slot="tab-content">
                             <candidate-display data={this.filterOfficerData('LGBT+ Officer (open place)')}></candidate-display>  
                         </inner-tab-content> 
@@ -126,12 +126,12 @@ export class ElectionsCandidates {
                         <inner-tab-header name="iTab10" slot="tab-headers"> LGBT+ (trans place)</inner-tab-header>
                         <inner-tab-content name="iTab10" slot="tab-content">
                             <candidate-display data={this.filterOfficerData('LGBT+ Officer (trans place)')}></candidate-display>  
-                        </inner-tab-content> 
+                        </inner-tab-content>  */}
 
-                        <inner-tab-header name="iTab11" slot="tab-headers"> Mature Students'</inner-tab-header>
+                        {/* <inner-tab-header name="iTab11" slot="tab-headers"> Mature Students'</inner-tab-header>
                         <inner-tab-content name="iTab11" slot="tab-content">
                             <candidate-display data={this.filterOfficerData("Mature Students' Officer")}></candidate-display>  
-                        </inner-tab-content> 
+                        </inner-tab-content>  */}
 
                         <inner-tab-header name="iTab12" slot="tab-headers"> People of Colour</inner-tab-header>
                         <inner-tab-content name="iTab12" slot="tab-content">
@@ -161,30 +161,30 @@ export class ElectionsCandidates {
                         <academic-candidate-display data={this.filterAcademicData('Bioscience')}></academic-candidate-display>  
                     </inner-tab-content> 
 
-                    <inner-tab-header name="iTab15" slot="tab-headers"> Denmark Hill PGR Association</inner-tab-header>
+                    {/* <inner-tab-header name="iTab15" slot="tab-headers"> Denmark Hill PGR Association</inner-tab-header>
                     <inner-tab-content name="iTab15" slot="tab-content">
                         <academic-candidate-display data={this.filterAcademicData('Denmark Hill PGR')}></academic-candidate-display>  
-                    </inner-tab-content> 
+                    </inner-tab-content>  */}
 
                      <inner-tab-header name="iTab16" slot="tab-headers"> Dental Student Council</inner-tab-header>
                     <inner-tab-content name="iTab16" slot="tab-content">
                         <academic-candidate-display data={this.filterAcademicData('Dental Student Council')}></academic-candidate-display>  
                     </inner-tab-content> 
 
-                    <inner-tab-header name="iTab17" slot="tab-headers"> IoPPN Student Forum </inner-tab-header>
+                    {/* <inner-tab-header name="iTab17" slot="tab-headers"> IoPPN Student Forum </inner-tab-header>
                     <inner-tab-content name="iTab17" slot="tab-content">
                         <candidate-display data={this.filterOfficerData('IoPPN Student Forum')}></candidate-display>  
-                    </inner-tab-content> 
+                    </inner-tab-content>  */}
 
                     <inner-tab-header name="iTab18" slot="tab-headers"> Law Council</inner-tab-header>
                     <inner-tab-content name="iTab18" slot="tab-content">
                         <academic-candidate-display data={this.filterAcademicData('Law Council')}></academic-candidate-display>  
                     </inner-tab-content> 
 
-                    <inner-tab-header name="iTab19" slot="tab-headers"> Law Forum</inner-tab-header>
+                    {/* <inner-tab-header name="iTab19" slot="tab-headers"> Law Forum</inner-tab-header>
                     <inner-tab-content name="iTab19" slot="tab-content">
                         <candidate-display data={this.filterOfficerData('Law Forum')}></candidate-display>  
-                    </inner-tab-content> 
+                    </inner-tab-content>  */}
 
                     <inner-tab-header name="iTab20" slot="tab-headers"> MSA</inner-tab-header>
                     <inner-tab-content name="iTab20" slot="tab-content">
