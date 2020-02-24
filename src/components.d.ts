@@ -191,6 +191,10 @@ export namespace Components {
   interface VarsityNextMatches {
     'data': any;
   }
+  interface VarsityRace {
+    'data': any;
+    'target': number;
+  }
   interface VarsityTotalScore {
     'scores': any;
   }
@@ -495,6 +499,12 @@ declare global {
     new (): HTMLVarsityNextMatchesElement;
   };
 
+  interface HTMLVarsityRaceElement extends Components.VarsityRace, HTMLStencilElement {}
+  const HTMLVarsityRaceElement: {
+    prototype: HTMLVarsityRaceElement;
+    new (): HTMLVarsityRaceElement;
+  };
+
   interface HTMLVarsityTotalScoreElement extends Components.VarsityTotalScore, HTMLStencilElement {}
   const HTMLVarsityTotalScoreElement: {
     prototype: HTMLVarsityTotalScoreElement;
@@ -567,6 +577,7 @@ declare global {
     'tabs-container': HTMLTabsContainerElement;
     'varsity-landing': HTMLVarsityLandingElement;
     'varsity-next-matches': HTMLVarsityNextMatchesElement;
+    'varsity-race': HTMLVarsityRaceElement;
     'varsity-total-score': HTMLVarsityTotalScoreElement;
     'varsity-upcoming': HTMLVarsityUpcomingElement;
     'varsity-weather': HTMLVarsityWeatherElement;
@@ -759,6 +770,10 @@ declare namespace LocalJSX {
   interface VarsityNextMatches {
     'data'?: any;
   }
+  interface VarsityRace {
+    'data'?: any;
+    'target'?: number;
+  }
   interface VarsityTotalScore {
     'scores'?: any;
   }
@@ -820,6 +835,7 @@ declare namespace LocalJSX {
     'tabs-container': TabsContainer;
     'varsity-landing': VarsityLanding;
     'varsity-next-matches': VarsityNextMatches;
+    'varsity-race': VarsityRace;
     'varsity-total-score': VarsityTotalScore;
     'varsity-upcoming': VarsityUpcoming;
     'varsity-weather': VarsityWeather;
@@ -881,6 +897,7 @@ declare module "@stencil/core" {
       'tabs-container': LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
       'varsity-landing': LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
       'varsity-next-matches': LocalJSX.VarsityNextMatches & JSXBase.HTMLAttributes<HTMLVarsityNextMatchesElement>;
+      'varsity-race': LocalJSX.VarsityRace & JSXBase.HTMLAttributes<HTMLVarsityRaceElement>;
       'varsity-total-score': LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
       'varsity-upcoming': LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
       'varsity-weather': LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
