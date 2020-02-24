@@ -23,6 +23,8 @@ export class VarsityLanding {
             .then(res => res.json())
             .then(data => {
                 this.eventsData = data;
+                console.log("GAME LENGTH")
+                console.log(data.length)
             })              
     }
 
@@ -33,32 +35,40 @@ export class VarsityLanding {
 
     launchScores(e){
         e.preventDefault();
-        console.log("Launched!");
         this.scoreModalOpen = true;
-        console.log(this.scoreModalOpen);
     }
 
     renderLastScoreCard(){
-        let evt = this.eventsData.filter(evt => evt.score).pop();
-        return <label-card reverse cardtitle={evt.Title} image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card>
+        let evt = this.eventsData.filter(evt => evt.score && evt.score[0] >= 0);
+        console.log(evt)
+        if (evt.length >= 1){
+            evt = evt.pop();
+            return <label-card reverse cardtitle={evt.Title} image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card>
+        }
+
+        else if (!this.eventsData) return '';
+
+        else {
+            let random = this.eventsData[1];
+            return <label-card reverse cardtitle={random.Title} image={removeParams(random.ImageUrl)} text={`Still to be decided...`}></label-card>
+        }    
     }
 
     renderScoreCardList(){
-        let played = this.eventsData.filter(evt => evt.score);
-    
-        return played.map(evt => {
-            return ([
-                <div class="score-container">
-                    <label-card cardtitle={evt.Title} reverse image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card> 
-                </div>
-            ])
-        })
+        let played = this.eventsData.filter(evt => evt.score && evt.score[0] >= 0);
+        
+        if (played.length > 0){
+            return played.map(evt => {
+                return ([
+                    <div class="score-container">
+                        <label-card cardtitle={evt.Title} reverse image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card> 
+                    </div>
+                ])
+            })
+        }
+        else return <label-card cardtitle="No Scores Yet"  text="The battle is still come"reverse></label-card> 
     }
 
-    // renderMatchList(){
-    //     let data = this.getNextMatches();
-    //     return <
-    // }
 
     renderNextMatch(){
         let evt = getNextEvents(this.eventsData, 1)[0];
@@ -88,8 +98,9 @@ export class VarsityLanding {
                     <varsity-total-score scores={!data? '' : data.filter(evt => evt.score && evt.score[0] >= 0)}></varsity-total-score>
                 </div>
                 <div class="item wide">
-                    <span class="tilelabel">Today's Weather</span>
-                    <varsity-weather></varsity-weather>
+                    <span class="tilelabel">Race to Victory</span>
+                    {/* <varsity-weather></varsity-weather> */}
+                    <varsity-race target={19} data={!data? '' : data.filter(evt => evt.score && evt.score[0] >= 0)}></varsity-race>
                 </div>
                 <div class="item wide tall">
                     <span class="tilelabel"><a href='/'>Follow @kclsu</a></span>

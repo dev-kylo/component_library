@@ -30,8 +30,16 @@ export class LastYearScores {
 
     mapToLi(){
         let data = this.eventsData;
-        return Object.keys(data)
-                     .map(key => <li>{data[key].name} <br></br><span class="score">UCL {data[key].ucl} : Kings {data[key].kings}</span></li>)
+            return Object.keys(data)
+            .map(key => <li>{data[key].name} <br></br><span class="score">UCL {data[key].ucl} : Kings {data[key].kings}</span></li>)
+        // if (data.length > 0){
+        //     return Object.keys(data)
+        //     .map(key => <li>{data[key].name} <br></br><span class="score">UCL {data[key].ucl} : Kings {data[key].kings}</span></li>)
+        // }
+
+        // else if (data.length = 0) return <li> No scores ready... <br></br><span class="score">UCL  : Kings </span></li>;
+
+        // else return ''
     }
     
     @Listen('exitModal') closeModal(){
@@ -44,6 +52,7 @@ export class LastYearScores {
                 <a class="button" onClick={(e) => this.clickHandler(e)}>2019's Scores</a>
             </flex-container>,
             <kclsu-modal show={this.modalOpen}>
+                    <h3>Last year's scores</h3>
                     <ul>
                         {this.modalOpen? this.mapToLi() : ''}
                     </ul>
