@@ -31,11 +31,20 @@ export class AddVarsityScores {
 
     mapToLi(data){
         return data.map(node => {
-            let style = !node.score? {} : {
-                'background-color': '#502669',
-                'color' : 'white'
+            console.log(node.score)
+            let style;
+            let scoreText = '';
+            if (node.score){
+                if (node.score[1] >= 0){
+                    style = {
+                        'background-color': '#502669',
+                        'color' : 'white'
+                    }
+                    scoreText = `Kings: ${node.score[0]} - UCL: ${node.score[1]}`;
+                }
             }
-            return <li data-id={node.Id} style={style}onClick={(e => this.clickListener(e))}>{node.Title}<br></br>{!node.score? '': `Kings: ${node.score[0]} - UCL: ${node.score[1]}`}</li>
+            
+            return <li data-id={node.Id} style={style}onClick={(e => this.clickListener(e))}>{node.Title}<br></br>{scoreText}</li>
         })
     }
 
@@ -73,7 +82,11 @@ export class AddVarsityScores {
         let element = e.target;
         let uclScore = element[0].value;
         let kingsScore = element[1].value;
-        let scores = [kingsScore, uclScore];
+
+        console.log('Kings Score is' + kingsScore)
+        console.log(kingsScore === true)
+
+        let scores = !uclScore || !kingsScore ? [-1, -1] : [kingsScore, uclScore];
         console.log(scores)
 
         //CAN I USE FIND HERE? 

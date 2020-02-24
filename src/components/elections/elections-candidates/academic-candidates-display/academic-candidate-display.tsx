@@ -41,6 +41,7 @@ export class AcademicCandidateDisplay {
            collection[x].setAttribute('style', 'font-weight:  ')
         }
          e.target.style.fontWeight = 'bold';
+         e.target.style.margin = '5px 5px;'
    
     }
 
