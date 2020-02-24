@@ -4,10 +4,15 @@ li {
     list-style: none;
     padding: 1em;
     margin: 1em;
+    /* min-width: 80%; */
     cursor: pointer;
     -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
     -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
     box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+}
+
+ul {
+    min-width: 70%;
 }
 
 form {

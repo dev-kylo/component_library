@@ -15,8 +15,6 @@ export class VarsityTotalScore {
 
 
     calculateScores(){
-        console.log("ALL SCORES")
-        console.log(this.scores)
         this.scores.forEach(ob => {
             if(ob.score[0] > ob.score[1]) this.kings++;
             else if(ob.score[1] > ob.score[0]) this.ucl++;

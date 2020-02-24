@@ -31,7 +31,6 @@ export class AddVarsityScores {
 
     mapToLi(data){
         return data.map(node => {
-            console.log(node.score)
             let style;
             let scoreText = '';
             if (node.score){
@@ -78,16 +77,12 @@ export class AddVarsityScores {
     
     submitScore(e){
         e.preventDefault();
-        console.log("ready to submit")
         let element = e.target;
         let uclScore = element[0].value;
         let kingsScore = element[1].value;
 
-        console.log('Kings Score is' + kingsScore)
-        console.log(kingsScore === true)
-
         let scores = !uclScore || !kingsScore ? [-1, -1] : [kingsScore, uclScore];
-        console.log(scores)
+
 
         //CAN I USE FIND HERE? 
         let duplicate = [...this.eventsData];
@@ -138,6 +133,7 @@ export class AddVarsityScores {
         let scoreCard = !this.modalOpen? '' : this.createScoreCard(this.activeID);
 
         return (
+            [<h2 style={{"text-align": "center"}}> Add Scores to Database</h2>,
             <flex-container alignx="center">
                 <kclsu-modal show={this.modalOpen}>
                     {scoreCard}
@@ -145,8 +141,7 @@ export class AddVarsityScores {
                 <ul>
                 {!this.eventsData? '' : this.mapToLi(this.eventsData)}
                 </ul>
-    
             </flex-container>
-        );
+            ]);
     }
 }
