@@ -3,7 +3,8 @@ import { Component, h, Prop, State, Listen } from '@stencil/core';
 
 @Component({
     tag: 'add-varsity-scores',
-    styleUrl: 'add-varsity-scores.css'
+    styleUrl: 'add-varsity-scores.css',
+    shadow: true
 })
 export class AddVarsityScores {
 
