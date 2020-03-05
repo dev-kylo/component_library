@@ -24,7 +24,7 @@ export class CreateVarsityData {
 
     componentDidLoad(){
         if(this.allowcreate){
-            let url = `https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types="${this.msltag}"&from=${this.year}-2-1`;
+            let url = `https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types="varsity"&from=${this.year}-2-1`;
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
