@@ -24,7 +24,7 @@ export class CreateVarsityData {
 
     componentDidLoad(){
         if(this.allowcreate){
-            let url = `https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types="varsity"&from=${this.year}-2-1`;
+            let url = `https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types=varsity&from=${this.year}-2-1`;
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -55,7 +55,6 @@ export class CreateVarsityData {
         this.modalOpen = true;
         let alldata = [];
         for (let x = 0; x < this.mslEventData.length; x++){
-            // this.mslEventData[x].score = ['3', '5'];
             this.mslEventData[x].score = [];
             alldata.push(this.mslEventData[x]);
         }
