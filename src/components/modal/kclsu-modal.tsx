@@ -17,7 +17,7 @@ export class KclsuModal {
     render() {
 
         let styles = {
-            'transform': this.show? 'translate(-50%, -50%)' : 'translateY(-100vh)',
+            'transform': this.show? 'translate(-50%, -50%)' : 'translateY(-200vh)',
             'opacity': this.show? '1' : '0'
         };
 

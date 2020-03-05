@@ -44,6 +44,7 @@ export namespace Components {
   interface ChildComponent {
     'number': number;
   }
+  interface CloudinaryApp {}
   interface CreateVarsityData {
     'allowcreate': boolean;
     'allowupdate': boolean;
@@ -69,6 +70,12 @@ export namespace Components {
   }
   interface GetInvolved {
     'typeform': string;
+  }
+  interface GridLanding {}
+  interface GridLandingItem {
+    'height': string;
+    'label': string;
+    'width': string;
   }
   interface ImageFitContainer {
     'alt': string;
@@ -283,6 +290,12 @@ declare global {
     new (): HTMLChildComponentElement;
   };
 
+  interface HTMLCloudinaryAppElement extends Components.CloudinaryApp, HTMLStencilElement {}
+  const HTMLCloudinaryAppElement: {
+    prototype: HTMLCloudinaryAppElement;
+    new (): HTMLCloudinaryAppElement;
+  };
+
   interface HTMLCreateVarsityDataElement extends Components.CreateVarsityData, HTMLStencilElement {}
   const HTMLCreateVarsityDataElement: {
     prototype: HTMLCreateVarsityDataElement;
@@ -323,6 +336,18 @@ declare global {
   const HTMLGetInvolvedElement: {
     prototype: HTMLGetInvolvedElement;
     new (): HTMLGetInvolvedElement;
+  };
+
+  interface HTMLGridLandingElement extends Components.GridLanding, HTMLStencilElement {}
+  const HTMLGridLandingElement: {
+    prototype: HTMLGridLandingElement;
+    new (): HTMLGridLandingElement;
+  };
+
+  interface HTMLGridLandingItemElement extends Components.GridLandingItem, HTMLStencilElement {}
+  const HTMLGridLandingItemElement: {
+    prototype: HTMLGridLandingItemElement;
+    new (): HTMLGridLandingItemElement;
   };
 
   interface HTMLImageFitContainerElement extends Components.ImageFitContainer, HTMLStencilElement {}
@@ -541,6 +566,7 @@ declare global {
     'campaign-tabs': HTMLCampaignTabsElement;
     'candidate-display': HTMLCandidateDisplayElement;
     'child-component': HTMLChildComponentElement;
+    'cloudinary-app': HTMLCloudinaryAppElement;
     'create-varsity-data': HTMLCreateVarsityDataElement;
     'elections-candidates': HTMLElectionsCandidatesElement;
     'elections-footer': HTMLElectionsFooterElement;
@@ -548,6 +574,8 @@ declare global {
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
+    'grid-landing': HTMLGridLandingElement;
+    'grid-landing-item': HTMLGridLandingItemElement;
     'image-fit-container': HTMLImageFitContainerElement;
     'image-slider-auto': HTMLImageSliderAutoElement;
     'inner-tab-content': HTMLInnerTabContentElement;
@@ -620,6 +648,7 @@ declare namespace LocalJSX {
   interface ChildComponent {
     'number'?: number;
   }
+  interface CloudinaryApp {}
   interface CreateVarsityData {
     'allowcreate'?: boolean;
     'allowupdate'?: boolean;
@@ -645,6 +674,12 @@ declare namespace LocalJSX {
   }
   interface GetInvolved {
     'typeform'?: string;
+  }
+  interface GridLanding {}
+  interface GridLandingItem {
+    'height'?: string;
+    'label'?: string;
+    'width'?: string;
   }
   interface ImageFitContainer {
     'alt'?: string;
@@ -799,6 +834,7 @@ declare namespace LocalJSX {
     'campaign-tabs': CampaignTabs;
     'candidate-display': CandidateDisplay;
     'child-component': ChildComponent;
+    'cloudinary-app': CloudinaryApp;
     'create-varsity-data': CreateVarsityData;
     'elections-candidates': ElectionsCandidates;
     'elections-footer': ElectionsFooter;
@@ -806,6 +842,8 @@ declare namespace LocalJSX {
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
+    'grid-landing': GridLanding;
+    'grid-landing-item': GridLandingItem;
     'image-fit-container': ImageFitContainer;
     'image-slider-auto': ImageSliderAuto;
     'inner-tab-content': InnerTabContent;
@@ -861,6 +899,7 @@ declare module "@stencil/core" {
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'candidate-display': LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
       'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
+      'cloudinary-app': LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
       'create-varsity-data': LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
       'elections-candidates': LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
       'elections-footer': LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
@@ -868,6 +907,8 @@ declare module "@stencil/core" {
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
+      'grid-landing': LocalJSX.GridLanding & JSXBase.HTMLAttributes<HTMLGridLandingElement>;
+      'grid-landing-item': LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
       'image-fit-container': LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
       'image-slider-auto': LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
