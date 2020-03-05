@@ -32,6 +32,6 @@
     .Modal {
         width: 85%;
         left: 50%;
-        height: 70%;
+        max-height: 70%;
     }
 }
