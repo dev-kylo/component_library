@@ -32,7 +32,7 @@ export class VarsityUpcoming {
     render() {
         return ([
             <kclsu-modal show={this.showall}>
-               {!this.showall? '' :  <varsity-next-matches data={getNextEvents(this.data, this.data.length)}> </varsity-next-matches>}
+               {!this.showall? '' :  <varsity-next-matches data={getNextEvents(this.data)}> </varsity-next-matches>}
             </kclsu-modal>,
             <ul>
                 {this.mapToLi(this.data)}
