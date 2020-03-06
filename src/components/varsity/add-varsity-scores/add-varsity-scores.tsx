@@ -15,7 +15,7 @@ export class AddVarsityScores {
     @Prop() year: string;
 
     componentDidLoad(){
-        let url = `https://varsity-db.firebaseio.com/2020.json`;
+        let url = `https://varsity-db.firebaseio.com/${this.year}.json`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -99,7 +99,7 @@ export class AddVarsityScores {
     }
 
     postToDatabase(data){
-        let url = `https://varsity-db.firebaseio.com/2020.json`
+        let url = `https://varsity-db.firebaseio.com/${this.year}.json`
         let payload: any = {
                 method: 'PUT', // *GET, POST, PUT, DELETE, etc.
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
