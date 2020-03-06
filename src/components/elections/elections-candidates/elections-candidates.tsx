@@ -14,7 +14,8 @@ export class ElectionsCandidates {
     @Prop() results: boolean;
 
     componentDidLoad() {
-        let url = `https://elections-b726c.firebaseio.com/Sheet1.json`
+        let url = !this.results? 'https://elections-b726c.firebaseio.com/Sheet1.json' : 'https://elections-results-757f2.firebaseio.com/Sheet1.json';
+
         fetch(url)
             .then(res => res.json())
             .then(candidateData => {

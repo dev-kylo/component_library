@@ -1,0 +1,23 @@
+@import '../../global/globalstyles.css';
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: gainsboro;
+}
+
+.image {
+    width: 60%;
+    height: auto;
+    margin: auto;
+    /* border: 5px solid teal; */
+    overflow-y: scroll;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
