@@ -51,6 +51,7 @@ export namespace Components {
     'allowcreate': boolean;
     'allowupdate': boolean;
     'msltag': string;
+    'test': boolean;
     'year': string;
   }
   interface ElectionsCandidates {
@@ -658,6 +659,7 @@ declare namespace LocalJSX {
     'allowcreate'?: boolean;
     'allowupdate'?: boolean;
     'msltag'?: string;
+    'test'?: boolean;
     'year'?: string;
   }
   interface ElectionsCandidates {

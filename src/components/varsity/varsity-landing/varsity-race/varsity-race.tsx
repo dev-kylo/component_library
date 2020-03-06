@@ -17,8 +17,8 @@ export class VarsityRace {
     countWins(){
         for (let x = 0; x < this.data.length; x++){
             let evt = this.data[x];
-            if(evt.score[1] > evt.score[0]) this.uclwins++;
-            if(evt.score[0] > evt.score[1]) this.kingswins++;
+            if(+evt.score[1] > +evt.score[0]) this.uclwins++;
+            if(+evt.score[0] > +evt.score[1]) this.kingswins++;
         }
     }
 
@@ -27,7 +27,8 @@ export class VarsityRace {
     }
 
     render(){
-
+        this.uclwins = 0;
+        this.kingswins = 0;
         this.countWins();
 
         if(this.data.length <= 0){
@@ -37,8 +38,8 @@ export class VarsityRace {
         if(this.uclwins == 0) this.uclwins = 0.5;
         if(this.kingswins == 0) this.kingswins = 0.5;
 
-       this.uclwins = 0.5;
-        this.kingswins = 0.5;
+    //    this.uclwins = 0.5;
+    //     this.kingswins = 0.5;
 
         return (
             <div class="race-container">

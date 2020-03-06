@@ -20,6 +20,7 @@ export class CreateVarsityData {
     @Prop() allowcreate: boolean;
     @Prop() msltag: string;
     @Prop() allowupdate: boolean;
+    @Prop() test: boolean;
 
 
     componentDidLoad(){
@@ -33,7 +34,9 @@ export class CreateVarsityData {
         }
 
         if(this.allowupdate){
-            let url = `https://varsity-db.firebaseio.com/${this.year}.json`;
+            let url;
+            if (this.test) url = `https://varsity-db.firebaseio.com/test.json`;
+            else url = `https://varsity-db.firebaseio.com/${this.year}.json`;
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -88,8 +91,10 @@ export class CreateVarsityData {
 
 
     postToDatabase(data){
-   
-        let url = `https://varsity-db.firebaseio.com/${this.year}.json`
+        let url;
+        if (this.test) url = `https://varsity-db.firebaseio.com/test.json`;
+        else url = `https://varsity-db.firebaseio.com/${this.year}.json`;
+
         let payload: any = {
                 method: 'PUT', // *GET, POST, PUT, DELETE, etc.
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
