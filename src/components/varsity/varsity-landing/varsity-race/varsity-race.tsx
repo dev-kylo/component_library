@@ -37,6 +37,9 @@ export class VarsityRace {
         if(this.uclwins == 0) this.uclwins = 0.5;
         if(this.kingswins == 0) this.kingswins = 0.5;
 
+       this.uclwins = 0.5;
+        this.kingswins = 0.5;
+
         return (
             <div class="race-container">
                 <div class="progressbar">
