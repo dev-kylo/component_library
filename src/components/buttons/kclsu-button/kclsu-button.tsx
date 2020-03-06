@@ -12,6 +12,7 @@ export class KclsuButton {
     @Prop() green: boolean;
     @Prop() rounded: boolean;
     @Prop() small: boolean;
+    @Prop() download: boolean;
     @Prop() clickHandler: Function;
     
     render() {
@@ -21,8 +22,13 @@ export class KclsuButton {
         this.rounded? classes.push('rounded') : null;
         this.small? classes.push('small') : classes.push('big')
 
-        return (
-            <a href={!this.link? '' : this.link } onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}><slot></slot></a>
-        );
+        if (this.download){
+            return (
+                <a href={!this.link? '' : this.link } download onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}><slot></slot></a>
+            );
+        }
+
+        else return <a href={!this.link? '' : this.link } onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}><slot></slot></a>
+
     }
 }

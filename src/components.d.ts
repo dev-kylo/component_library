@@ -44,7 +44,9 @@ export namespace Components {
   interface ChildComponent {
     'number': number;
   }
-  interface CloudinaryApp {}
+  interface CloudinaryApp {
+    'public_id': string;
+  }
   interface CreateVarsityData {
     'allowcreate': boolean;
     'allowupdate': boolean;
@@ -101,6 +103,7 @@ export namespace Components {
   }
   interface KclsuButton {
     'clickHandler': Function;
+    'download': boolean;
     'green': boolean;
     'link': string;
     'rounded': boolean;
@@ -648,7 +651,9 @@ declare namespace LocalJSX {
   interface ChildComponent {
     'number'?: number;
   }
-  interface CloudinaryApp {}
+  interface CloudinaryApp {
+    'public_id'?: string;
+  }
   interface CreateVarsityData {
     'allowcreate'?: boolean;
     'allowupdate'?: boolean;
@@ -706,6 +711,7 @@ declare namespace LocalJSX {
   }
   interface KclsuButton {
     'clickHandler'?: Function;
+    'download'?: boolean;
     'green'?: boolean;
     'link'?: string;
     'rounded'?: boolean;

@@ -1,34 +1,45 @@
-import { Component, h, State, Element } from '@stencil/core';
+import { Component, h, State, Prop } from '@stencil/core';
 
 
 @Component({
     tag: 'cloudinary-app',
-    styleUrl: 'cloudinary-app.css'
+    styleUrl: 'cloudinary-app.css',
+    shadow: true
 })
 
 export class CloudinaryApp {
 
-    @State() image;
-    @Element() host: HTMLElement;
+    @Prop() public_id: string;
 
-    submitImage(e){
-        e.preventDefault();
-        let selectedFile = e.target.querySelector('#file').files[0];
-        console.log(selectedFile);
-        let data = {'preset': 'Page_Banner', imageRef: selectedFile.name};
+    @State() image;
+
+    componentDidLoad(){
+        if (this.public_id) this.submitImage();
+    }
+
+    submitImage(){
+        let data = {'preset': 'Page_Banner'};
         let payload: any = {
             method: 'POST', 
             credentials: 'same-origin', 
             headers: {
                 'Content-Type': 'application/json'
               },
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
+            body: JSON.stringify(data)
     };
-        fetch('http://localhost:3000/upload_image', payload)
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                this.image = res.image;
+
+    // if (data){
+    //     // payload.method = 'POST';
+    //     payload.body = JSON.stringify(data)
+    // }
+
+    let url = `http://localhost:3000/transform/${this.public_id}`;
+    console.log(url)
+
+        fetch(url, payload)
+            .then(res => res.text())
+            .then(img => {
+                this.image = img;
                 })
             .catch(er => console.log(er))
     }
@@ -36,15 +47,20 @@ export class CloudinaryApp {
     render() {
         let img = !this.image? '' : <img src={this.image}></img>
         return (
-            <div class="filesubmit">
-                <form onSubmit={(e) => this.submitImage(e)}> 
-                    <input type="file" id="file" />
-                    <button>Submit</button>
-                </form>
+            <div class="app">
+                <div class="presets">
+                    <label-card cardtitle='Home Page Banner' text='Select this for Home Page Banners' buttonLink='/' buttonTitle='Select'></label-card>
+                    <label-card cardtitle='Page Banner' text='Select this for Page Banners' buttonLink='/' buttonTitle='Select'></label-card>
+                    <label-card cardtitle='Event Cards' text='Select this for Event Cards'  buttonLink='/' buttonTitle='Select'></label-card>
+                </div>
                 <div class='image'>
                     {img}
+                    <flex-container alignx='justify-content' fillContainer>
+                        <kclsu-button green small link={this.image}>View full image</kclsu-button>
+                        <kclsu-button green small link={this.image}>View original image</kclsu-button>
+                        <kclsu-button download green small link={this.image}>Download</kclsu-button>
+                    </flex-container>
                 </div>
-
             </div>
         );
     }
