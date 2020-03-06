@@ -31,11 +31,13 @@ export class VarsityTotalScore {
         return (
             <div>
                 <flex-container alignx="center" aligny="center">
-                    <span class="ucl">UCL  {this.ucl}</span>
+                    {/* <span class="ucl">UCL  {this.ucl}</span> */}
+                    <span class="ucl">UCL </span>
                     <div class="logo">
                         <img  src="https://kcl-dev.ukmsl.net/pageassets/varsity/VarsityV.png" />
                     </div>
-                    <span class="kings">Kings {this.kings}</span> 
+                    {/* <span class="kings">Kings {this.kings}</span>  */}
+                    <span class="kings">Kings </span> 
                 </flex-container>
             </div>
         );

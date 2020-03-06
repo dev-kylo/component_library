@@ -54,7 +54,7 @@ export class VarsityLanding {
         }    
     }
 
-    renderScoreCardList(){
+    renderScoreCardList(){  
         let played = this.eventsData.filter(evt => evt.score && evt.score[0] >= 0);
         
         if (played.length > 0){
@@ -77,7 +77,7 @@ export class VarsityLanding {
     
     render() {
 
-        let data = this.eventsData;
+        let data = [...this.eventsData];
 
         return (
             <div class="grid">
