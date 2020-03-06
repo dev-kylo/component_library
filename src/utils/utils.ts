@@ -50,13 +50,14 @@ export function removeParams(src){
 
 
 
-export function getNextEvents(data, length = 0){
+export function getNextEvents(dataList, length = 1){
+  let data = [...dataList]
   let d = new Date();
   let ISOdate = d.toISOString();
-  let index = data.findIndex(evt => {
+  let dateIndex = data.findIndex(evt => {
       return evt.StartDate > ISOdate;
   })
 
-  if (length) return data.slice(index, length)
-  else return data.slice(index)
+  if (length) return data.slice(dateIndex,dateIndex + length)
+  else return data.slice(dateIndex)
 }
