@@ -61,7 +61,7 @@ a {
 @media only screen and (max-width: 500px){
     .image {
         justify-self: flex-start;
-        min-width: 150px;
+        min-width: 30%;
         height: auto;
     }
 
@@ -71,6 +71,10 @@ a {
         line-height: 32px;
         max-width: 95%;
         text-align: center;
+    }
+
+    a {
+        margin: 1em 0;
     }
 }
 
