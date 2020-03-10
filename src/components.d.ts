@@ -148,6 +148,11 @@ export namespace Components {
   interface ParentComponent {
     'number': number;
   }
+  interface PresetCard {
+    'dimensions': string;
+    'presetid': string;
+    'presetname': string;
+  }
   interface PrimaryButton {
     'to': string;
   }
@@ -444,6 +449,12 @@ declare global {
     new (): HTMLParentComponentElement;
   };
 
+  interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {}
+  const HTMLPresetCardElement: {
+    prototype: HTMLPresetCardElement;
+    new (): HTMLPresetCardElement;
+  };
+
   interface HTMLPrimaryButtonElement extends Components.PrimaryButton, HTMLStencilElement {}
   const HTMLPrimaryButtonElement: {
     prototype: HTMLPrimaryButtonElement;
@@ -595,6 +606,7 @@ declare global {
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
+    'preset-card': HTMLPresetCardElement;
     'primary-button': HTMLPrimaryButtonElement;
     'profile-card': HTMLProfileCardElement;
     'purple-button': HTMLPurpleButtonElement;
@@ -758,6 +770,12 @@ declare namespace LocalJSX {
   interface ParentComponent {
     'number'?: number;
   }
+  interface PresetCard {
+    'dimensions'?: string;
+    'onSelectPreset'?: (event: CustomEvent<any>) => void;
+    'presetid'?: string;
+    'presetname'?: string;
+  }
   interface PrimaryButton {
     'to'?: string;
   }
@@ -867,6 +885,7 @@ declare namespace LocalJSX {
     'news-card': NewsCard;
     'page-content': PageContent;
     'parent-component': ParentComponent;
+    'preset-card': PresetCard;
     'primary-button': PrimaryButton;
     'profile-card': ProfileCard;
     'purple-button': PurpleButton;
@@ -932,6 +951,7 @@ declare module "@stencil/core" {
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
+      'preset-card': LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
       'profile-card': LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;

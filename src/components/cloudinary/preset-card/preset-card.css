@@ -1,0 +1,32 @@
+@import '../../../global/globalstyles.css';
+
+.container {
+    width: 150px;
+    height: auto;
+    display: inline-block;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.dimensions {
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.dimensions span {
+    font-size: 25px;
+    color: black;
+    transform: rotate(-45deg)
+}
+
+.title {
+    margin-top: 0.5em;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}

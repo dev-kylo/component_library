@@ -1,4 +1,5 @@
-import { Component, h, State, Prop } from '@stencil/core';
+import { Component, h, State, Prop, Listen } from '@stencil/core';
+import { presets } from './assets/presets';
 
 
 @Component({
@@ -12,13 +13,18 @@ export class CloudinaryApp {
     @Prop() public_id: string;
 
     @State() image;
+    @State() selectedPreset: string;
 
     componentDidLoad(){
         if (this.public_id) this.submitImage();
     }
 
+    componentDidUpdate(){
+        this.submitImage(); 
+    }
+
     submitImage(){
-        let data = {'preset': 'Page_Banner'};
+        let data = !this.selectedPreset? {} : {'preset': this.selectedPreset};
         let payload: any = {
             method: 'POST', 
             credentials: 'same-origin', 
@@ -28,10 +34,6 @@ export class CloudinaryApp {
             body: JSON.stringify(data)
     };
 
-    // if (data){
-    //     // payload.method = 'POST';
-    //     payload.body = JSON.stringify(data)
-    // }
 
     let url = `http://localhost:3000/transform/${this.public_id}`;
     console.log(url)
@@ -43,15 +45,30 @@ export class CloudinaryApp {
                 })
             .catch(er => console.log(er))
     }
+
+
+    mapPresets(){
+        return presets.map(node => {
+            return <preset-card dimensions={node.dimensions} presetid={node.id} presetname={node.name}></preset-card>
+        })
+    }
+
+    @Listen('selectPreset')
+    onSelectedPreset(event: CustomEvent) {
+        console.log(event.detail)
+        this.selectedPreset = event.detail;
+    }
     
     render() {
-        let img = !this.image? '' : <img src={this.image}></img>
+        let img = !this.image? <div class='empty'></div> : <img src={this.image}></img>
         return (
             <div class="app">
                 <div class="presets">
-                    <label-card cardtitle='Home Page Banner' text='Select this for Home Page Banners' buttonLink='/' buttonTitle='Select'></label-card>
-                    <label-card cardtitle='Page Banner' text='Select this for Page Banners' buttonLink='/' buttonTitle='Select'></label-card>
-                    <label-card cardtitle='Event Cards' text='Select this for Event Cards'  buttonLink='/' buttonTitle='Select'></label-card>
+                    <div class="instructions">
+                        <p>Upload your image, select your preset and 'Right Click Save As' to download.</p>
+                    </div>
+                    <div class="upload"><slot></slot></div>
+                    {!this.image? '' : this.mapPresets()}
                 </div>
                 <div class='image'>
                     {img}
