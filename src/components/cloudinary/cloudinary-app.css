@@ -6,42 +6,99 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-color: gainsboro;
+    background-color: #1d1d1d;
 }
 
 .presets {
     align-self: flex-start;
-    min-width: 25%;
+    width: 40%;
     height: 100%;
     margin: 1em;
-    /* display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap; */
 }
 
 .instructions {
     padding: 2em;
+    color: white;
 }
 
 .image {
     width: 70%;
-    height: auto;
-    margin: auto;
+    margin: 1em;
     /* border: 5px solid teal; */
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 1em;
 }
 
+
+
 .empty {
     min-width: 250px;
     min-height: 500px;
-    background-color: lightsteelblue;
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas{
+    width: 100%;
+    height: auto;
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+loading-spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .image img {
     width: 100%;
     height: auto;
     display: block;
+    transition: opacity 0.2s ease-in;
+}
+
+.imagecontrols {
+    display: flex
+}
+
+@media only screen and (max-width: 1100px){
+    .image {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .image {
+        width: 100%;
+    }
+
+.app {
+    flex-wrap: wrap
+}
+
+.presets {
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+}
+
+@media only screen and (max-width: 480px){
+    /* .app{
+        flex-direction: column-reverse;
+    } */
+    .image {
+        width: 70%;
+        margin: 0;
+    }
 }
