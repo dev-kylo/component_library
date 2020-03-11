@@ -1,0 +1,73 @@
+@import '../../../global/globalstyles.css';
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
+form span {
+    font-size: 16px;
+    line-height: 25px;
+}
+
+label, input, select {
+    display: inline-block;
+}
+
+label {
+    font-size: 16px;
+    margin: 0 1em;
+}
+
+input, select {
+    display: inline;
+    min-width: 80px;
+    border: 1px solid #502669;
+    font-size: 18px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.flex {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1em 0;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+    width: 100%;
+}
+.title {
+    color: #502669;
+    font-weight: bold;
+    text-align: center;
+    margin: 1em;
+}
+button {
+    margin: 15px 20px 10px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+    display: table;
+    font-size: 14px;
+    -webkit-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    transition-duration: 1s;
+    color: white;
+    background: #14847e;
+    font-size: 14px;
+    padding:  0 15px;
+    border: none;
+}

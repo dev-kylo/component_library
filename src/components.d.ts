@@ -103,8 +103,9 @@ export namespace Components {
     'innertab': boolean;
   }
   interface KclsuButton {
-    'clickHandler': Function;
+    'clicked': Function;
     'download': boolean;
+    'emitid': string;
     'green': boolean;
     'link': string;
     'rounded': boolean;
@@ -123,6 +124,9 @@ export namespace Components {
     'text': string;
   }
   interface LastYearScores {}
+  interface LoadingSpinner {
+    'show': boolean;
+  }
   interface ModalBackdrop {
     'showbg': boolean;
   }
@@ -153,6 +157,7 @@ export namespace Components {
     'presetid': string;
     'presetname': string;
   }
+  interface PresetControls {}
   interface PrimaryButton {
     'to': string;
   }
@@ -419,6 +424,12 @@ declare global {
     new (): HTMLLastYearScoresElement;
   };
 
+  interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {}
+  const HTMLLoadingSpinnerElement: {
+    prototype: HTMLLoadingSpinnerElement;
+    new (): HTMLLoadingSpinnerElement;
+  };
+
   interface HTMLModalBackdropElement extends Components.ModalBackdrop, HTMLStencilElement {}
   const HTMLModalBackdropElement: {
     prototype: HTMLModalBackdropElement;
@@ -453,6 +464,12 @@ declare global {
   const HTMLPresetCardElement: {
     prototype: HTMLPresetCardElement;
     new (): HTMLPresetCardElement;
+  };
+
+  interface HTMLPresetControlsElement extends Components.PresetControls, HTMLStencilElement {}
+  const HTMLPresetControlsElement: {
+    prototype: HTMLPresetControlsElement;
+    new (): HTMLPresetControlsElement;
   };
 
   interface HTMLPrimaryButtonElement extends Components.PrimaryButton, HTMLStencilElement {}
@@ -601,12 +618,14 @@ declare global {
     'kclsu-tabs-container': HTMLKclsuTabsContainerElement;
     'label-card': HTMLLabelCardElement;
     'last-year-scores': HTMLLastYearScoresElement;
+    'loading-spinner': HTMLLoadingSpinnerElement;
     'modal-backdrop': HTMLModalBackdropElement;
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
     'parent-component': HTMLParentComponentElement;
     'preset-card': HTMLPresetCardElement;
+    'preset-controls': HTMLPresetControlsElement;
     'primary-button': HTMLPrimaryButtonElement;
     'profile-card': HTMLProfileCardElement;
     'purple-button': HTMLPurpleButtonElement;
@@ -724,10 +743,12 @@ declare namespace LocalJSX {
     'innertab'?: boolean;
   }
   interface KclsuButton {
-    'clickHandler'?: Function;
+    'clicked'?: Function;
     'download'?: boolean;
+    'emitid'?: string;
     'green'?: boolean;
     'link'?: string;
+    'onEmitClick'?: (event: CustomEvent<any>) => void;
     'rounded'?: boolean;
     'small'?: boolean;
   }
@@ -744,6 +765,9 @@ declare namespace LocalJSX {
     'text'?: string;
   }
   interface LastYearScores {}
+  interface LoadingSpinner {
+    'show'?: boolean;
+  }
   interface ModalBackdrop {
     'onExitModal'?: (event: CustomEvent<any>) => void;
     'showbg'?: boolean;
@@ -775,6 +799,9 @@ declare namespace LocalJSX {
     'onSelectPreset'?: (event: CustomEvent<any>) => void;
     'presetid'?: string;
     'presetname'?: string;
+  }
+  interface PresetControls {
+    'onSubmitEdits'?: (event: CustomEvent<any>) => void;
   }
   interface PrimaryButton {
     'to'?: string;
@@ -880,12 +907,14 @@ declare namespace LocalJSX {
     'kclsu-tabs-container': KclsuTabsContainer;
     'label-card': LabelCard;
     'last-year-scores': LastYearScores;
+    'loading-spinner': LoadingSpinner;
     'modal-backdrop': ModalBackdrop;
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
     'parent-component': ParentComponent;
     'preset-card': PresetCard;
+    'preset-controls': PresetControls;
     'primary-button': PrimaryButton;
     'profile-card': ProfileCard;
     'purple-button': PurpleButton;
@@ -946,12 +975,14 @@ declare module "@stencil/core" {
       'kclsu-tabs-container': LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
       'label-card': LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
       'last-year-scores': LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
+      'loading-spinner': LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
       'modal-backdrop': LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
       'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'preset-card': LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
+      'preset-controls': LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
       'profile-card': LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
