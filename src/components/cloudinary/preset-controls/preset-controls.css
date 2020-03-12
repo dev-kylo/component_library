@@ -1,17 +1,16 @@
 @import '../../../global/globalstyles.css';
 
-
-form {
+.controlForm {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: space-around;
 }
 
-form span {
+/* form span {
     font-size: 16px;
     line-height: 25px;
-}
+} */
 
 label, input, select {
     display: inline-block;
@@ -38,7 +37,7 @@ input, select {
     margin: 1em 0;
 }
 
-form {
+controlForm {
     display: flex;
     justify-content: center;
     margin: 1em 0;
