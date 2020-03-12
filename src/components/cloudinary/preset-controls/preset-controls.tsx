@@ -74,7 +74,7 @@ export class PresetControls {
                         <input type="text" value=""/>
                     </div>
                     <flex-container alignx='center'>
-                        <a class="form_button">Make Adjustment</a>
+                        <button id="form_button">Make Adjustment</button>
                         <kclsu-button emitid='closeAdjustments' green small >Cancel</kclsu-button>
                     </flex-container>
                 </form>
