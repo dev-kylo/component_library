@@ -25,7 +25,6 @@ export class CloudinaryApp {
     }
 
     submitImage(adjustments = {}){
-        console.log()
         let data:any = !this.selectedPreset? {} : {'preset': this.selectedPreset};
         if (Object.keys(adjustments).length > 0) data.edit = adjustments;
         let payload: any = {
@@ -39,7 +38,6 @@ export class CloudinaryApp {
 
 
     let url = `https://kclsu-heroku.herokuapp.com/transform/${this.public_id}`;
-    console.log(url)
 
         fetch(url, payload)
             .then(res => res.text())
@@ -65,7 +63,6 @@ export class CloudinaryApp {
 
     setTimer(){
         let img:any= this.host.querySelector('img');
-        console.log(img)
         let spinner = this.host.querySelector('loading-spinner');
         img.style.opacity= 0;
         spinner.show = true;
@@ -97,6 +94,10 @@ export class CloudinaryApp {
 
     @Watch('public_id') imageUploaded(){
         this.submitImage();
+    }
+
+    disconnectedCallback(){
+        clearTimeout(this.timer);
     }
 
 
