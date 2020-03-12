@@ -13,7 +13,9 @@
 h2 {
     color: white;
 }
-
+em {
+    background-color: #502767;
+}
 .presets {
     align-self: flex-start;
     width: 40%;

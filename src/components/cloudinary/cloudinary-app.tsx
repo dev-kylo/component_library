@@ -103,27 +103,28 @@ export class CloudinaryApp {
     
     render() {
         let img = !this.image? <div class='empty'> <div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
+        let controls = ([
+                        <flex-container alignx='justify-content' wrap fillContainer>
+                            <kclsu-button emitid='showOriginal' green small >Original</kclsu-button>
+                            <kclsu-button download green small link={this.image}>Download</kclsu-button>
+                            <preset-controls></preset-controls>
+                        </flex-container>]);
+
         return (
             <div class="app">
                 <div class="presets">
                     <div class="instructions">
                         <h2>KCLSU Cloudinary App</h2>
-                        <p>Upload your image, select your preset and 'Right Click Save As' to download.</p>
+                        <p>Upload your image, select your preset and <em>'Right Click Save As'</em> to download.</p>
                     </div>
-                   
                     {!this.image? '' : this.mapPresets()}
                 </div>
                 <div class='image'>
-                        <div class='canvas'>
-                            <loading-spinner show={false}></loading-spinner>
-                            {img}
-                        </div>
-                        
-                    <flex-container alignx='justify-content' wrap fillContainer>
-                        <kclsu-button emitid='showOriginal' green small >Original</kclsu-button>
-                        <kclsu-button download green small link={this.image}>Download</kclsu-button>
-                        <preset-controls></preset-controls>
-                    </flex-container>
+                    <div class='canvas'>
+                        <loading-spinner show={false}></loading-spinner>
+                        {img}
+                    </div>
+                    {!this.image? '' : controls}
                 </div>
             </div>
         );
