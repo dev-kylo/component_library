@@ -25,8 +25,20 @@ export class CloudinaryApp {
     }
 
     submitImage(adjustments = {}){
-        let data:any = !this.selectedPreset? {} : {'preset': this.selectedPreset};
-        if (Object.keys(adjustments).length > 0) data.edit = adjustments;
+        let original = {
+            transformations: {
+                preset: '', 
+                },
+            publicId: this.public_id
+            };
+
+        let data:any = !this.selectedPreset? original : {transformations: {
+                                                            preset: this.selectedPreset, 
+                                                            },
+                                                        publicId: this.public_id};
+        
+        if (Object.keys(adjustments).length > 0) data.transformations.edit = adjustments;
+
         let payload: any = {
             method: 'POST', 
             credentials: 'same-origin', 
@@ -37,7 +49,7 @@ export class CloudinaryApp {
         };
 
 
-    let url = `https://kclsu-heroku.herokuapp.com/transform/${this.public_id}`;
+    let url = `https://kclsu-heroku.herokuapp.com/transform`;
 
         fetch(url, payload)
             .then(res => res.text())
