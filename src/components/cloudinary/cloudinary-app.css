@@ -5,8 +5,9 @@
 
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background-color: #1d1d1d;
+    padding-top: 2em;
 }
 
 
@@ -90,7 +91,8 @@ loading-spinner{
     }
 
 .app {
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    padding-top: 0;
 }
 
 .presets {
