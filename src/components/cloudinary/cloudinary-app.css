@@ -11,10 +11,10 @@
 
 
 h2 {
-    color: white;
+    color: white!important;
 }
 em {
-    background-color: #502767;
+    background-color: #502767!important;
 }
 .presets {
     align-self: flex-start;
