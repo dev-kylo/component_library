@@ -38,7 +38,7 @@ export class CloudinaryApp {
         };
 
 
-    let url = `http://localhost:3000/transform/${this.public_id}`;
+    let url = `https://kclsu-heroku.herokuapp.com/transform/${this.public_id}`;
     console.log(url)
 
         fetch(url, payload)
@@ -72,7 +72,7 @@ export class CloudinaryApp {
         this.timer = setTimeout(()=>{
             img.style.opacity = 1;
             spinner.show = false;
-        }, 1000);
+        }, 2500);
     }
 
     @Listen('selectPreset')
@@ -102,7 +102,7 @@ export class CloudinaryApp {
 
     
     render() {
-        let img = !this.image? <div class='empty'> <div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
+        let img = !this.image? <div class='empty'> <span class="drag">Drag and Drop your image here... </span><div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
         let controls = ([
                         <flex-container alignx='justify-content' wrap fillContainer>
                             <kclsu-button emitid='showOriginal' green small >Original</kclsu-button>

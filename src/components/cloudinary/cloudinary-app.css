@@ -13,6 +13,7 @@
 
 h2 {
     color: white!important;
+    margin-top: 0!important;    
 }
 em {
     background-color: #502767!important;
@@ -41,12 +42,22 @@ em {
 
 
 .empty {
-    min-width: 250px;
+    width:100%;
     min-height: 500px;
     background-color: gainsboro;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.drag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    font-size: 16px;
+    color: #502767;
 }
 
 .canvas{

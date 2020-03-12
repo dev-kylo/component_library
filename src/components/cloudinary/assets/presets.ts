@@ -36,7 +36,7 @@ export const presets = [
     },
     {
         name: 'Home Advert',
-        id: 'Home_Ad',
-        dimensions: '400 x 400'
+        id: 'Home_Advert',
+        dimensions: '1200 x 400'
     },
 ];
