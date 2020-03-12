@@ -49,7 +49,7 @@ controlForm {
     text-align: center;
     margin: 1em;
 }
-button {
+.form_button {
     margin: 15px 20px 10px;
     border-radius: 30px;
     font-weight: 700;
