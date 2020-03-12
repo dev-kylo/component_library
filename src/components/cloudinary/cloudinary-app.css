@@ -9,6 +9,11 @@
     background-color: #1d1d1d;
 }
 
+
+h2 {
+    color: white;
+}
+
 .presets {
     align-self: flex-start;
     width: 40%;
@@ -78,6 +83,8 @@ loading-spinner{
 @media only screen and (max-width: 850px){
     .image {
         width: 100%;
+        padding: 0;
+        margin-top: 0;
     }
 
 .app {
@@ -91,14 +98,19 @@ loading-spinner{
     flex-wrap: wrap;
     justify-content: center;
 }
+.empty {
+    width: 100%;
+    min-height: 500px;
+    background-color: gainsboro;
+}
+.instructions {
+padding: 1em;
+}
 }
 
 @media only screen and (max-width: 480px){
     /* .app{
         flex-direction: column-reverse;
     } */
-    .image {
-        width: 70%;
-        margin: 0;
-    }
+
 }
