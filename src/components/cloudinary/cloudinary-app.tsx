@@ -25,7 +25,6 @@ export class CloudinaryApp {
     }
 
     submitImage(adjustments = {}){
-        console.log()
         let data:any = !this.selectedPreset? {} : {'preset': this.selectedPreset};
         if (Object.keys(adjustments).length > 0) data.edit = adjustments;
         let payload: any = {
@@ -38,8 +37,7 @@ export class CloudinaryApp {
         };
 
 
-    let url = `http://localhost:3000/transform/${this.public_id}`;
-    console.log(url)
+    let url = `https://kclsu-heroku.herokuapp.com/transform/${this.public_id}`;
 
         fetch(url, payload)
             .then(res => res.text())
@@ -65,14 +63,13 @@ export class CloudinaryApp {
 
     setTimer(){
         let img:any= this.host.querySelector('img');
-        console.log(img)
         let spinner = this.host.querySelector('loading-spinner');
         img.style.opacity= 0;
         spinner.show = true;
         this.timer = setTimeout(()=>{
             img.style.opacity = 1;
             spinner.show = false;
-        }, 1000);
+        }, 2500);
     }
 
     @Listen('selectPreset')
@@ -99,10 +96,14 @@ export class CloudinaryApp {
         this.submitImage();
     }
 
+    disconnectedCallback(){
+        clearTimeout(this.timer);
+    }
+
 
     
     render() {
-        let img = !this.image? <div class='empty'> <div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
+        let img = !this.image? <div class='empty'> <span class="drag">Drag and Drop your image here... </span><div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
         let controls = ([
                         <flex-container alignx='justify-content' wrap fillContainer>
                             <kclsu-button emitid='showOriginal' green small >Original</kclsu-button>
