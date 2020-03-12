@@ -49,9 +49,9 @@ controlForm {
     text-align: center;
     margin: 1em;
 }
-.form_button {
+#form_button {
     margin: 15px 20px 10px;
-    border-radius: 30px;
+    border-radius: 30px!important;
     font-weight: 700;
     text-transform: uppercase;
     border: 1px solid #fff;
@@ -66,7 +66,7 @@ controlForm {
     transition-duration: 1s;
     color: white;
     background: #14847e;
-    font-size: 14px;
-    padding:  0 15px;
+    font-size: 14px!important;
+    padding:  0 15px!important;
     border: none;
 }
