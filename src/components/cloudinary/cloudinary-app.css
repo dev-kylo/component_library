@@ -5,16 +5,17 @@
 
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background-color: #1d1d1d;
+    padding-top: 2em;
 }
 
 
 h2 {
-    color: white;
+    color: white!important;
 }
 em {
-    background-color: #502767;
+    background-color: #502767!important;
 }
 .presets {
     align-self: flex-start;
@@ -90,7 +91,8 @@ loading-spinner{
     }
 
 .app {
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    padding-top: 0;
 }
 
 .presets {

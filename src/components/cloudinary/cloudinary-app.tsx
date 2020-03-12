@@ -115,7 +115,7 @@ export class CloudinaryApp {
                 <div class="presets">
                     <div class="instructions">
                         <h2>KCLSU Cloudinary App</h2>
-                        <p>Upload your image, select your preset and <em>'Right Click Save As'</em> to download.</p>
+                        <p>Upload your image<br></br> Select your preset<br></br><em>'Right Click Save As'</em> to download.</p>
                     </div>
                     {!this.image? '' : this.mapPresets()}
                 </div>
