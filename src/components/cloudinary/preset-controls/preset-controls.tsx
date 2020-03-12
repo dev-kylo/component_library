@@ -3,7 +3,7 @@ import { Component, h, State, Event, EventEmitter, Element, Listen } from '@sten
 
 @Component({
     tag: 'preset-controls',
-    styleUrl: 'preset-controls.css'
+    styleUrl: 'preset-controls.css',
 })
 export class PresetControls {
 
@@ -52,7 +52,7 @@ export class PresetControls {
         return ([
             <kclsu-modal show={this.modalOpen}>
             <div class="controls">
-                <form onSubmit={(e) => this.submit(e)}>
+                <form class="controlForm" onSubmit={(e) => this.submit(e)}>
                 <span class="title">Adjust the crop focus and dimensions of your image.</span>
                     <div class="flex">
                         <label>Crop Focus</label>

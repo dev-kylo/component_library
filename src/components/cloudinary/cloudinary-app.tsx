@@ -60,9 +60,7 @@ export class CloudinaryApp {
     }
 
     resetToOriginal(){
-        console.log('resetToOriginal')
         this.selectedPreset = '';
-        // this.submitImage();
     }
 
     setTimer(){
@@ -84,8 +82,6 @@ export class CloudinaryApp {
 
     @Listen('submitEdits')
     onSubmittedEdits(event:CustomEvent){
-        console.log("listen triggered")
-        console.log(event.detail)
         this.submitImage(event.detail)
     }
 
@@ -96,13 +92,16 @@ export class CloudinaryApp {
 
 
     @Watch('selectedPreset') ResubmitImage(){
-        console.log(this.selectedPreset);
         this.submitImage();
     }
 
+    @Watch('public_id') imageUploaded(){
+        this.submitImage();
+    }
+
+
     
     render() {
-        console.log(this.selectedPreset)
         let img = !this.image? <div class='empty'></div> : <img src={this.image}></img>;
         return (
             <div class="app">

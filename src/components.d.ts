@@ -20,7 +20,6 @@ export namespace Components {
   interface AddVarsityScores {
     'year': string;
   }
-  interface AuxComp {}
   interface CampaignAim {}
   interface CampaignAimContainer {
     'campaignname': string;
@@ -180,9 +179,6 @@ export namespace Components {
   interface QuickLinks {
     'name': string;
   }
-  interface SecondComponent {
-    'animal': string;
-  }
   interface ShowSupport {}
   interface SupportOption {
     'heading': string;
@@ -254,12 +250,6 @@ declare global {
   const HTMLAddVarsityScoresElement: {
     prototype: HTMLAddVarsityScoresElement;
     new (): HTMLAddVarsityScoresElement;
-  };
-
-  interface HTMLAuxCompElement extends Components.AuxComp, HTMLStencilElement {}
-  const HTMLAuxCompElement: {
-    prototype: HTMLAuxCompElement;
-    new (): HTMLAuxCompElement;
   };
 
   interface HTMLCampaignAimElement extends Components.CampaignAim, HTMLStencilElement {}
@@ -502,12 +492,6 @@ declare global {
     new (): HTMLQuickLinksElement;
   };
 
-  interface HTMLSecondComponentElement extends Components.SecondComponent, HTMLStencilElement {}
-  const HTMLSecondComponentElement: {
-    prototype: HTMLSecondComponentElement;
-    new (): HTMLSecondComponentElement;
-  };
-
   interface HTMLShowSupportElement extends Components.ShowSupport, HTMLStencilElement {}
   const HTMLShowSupportElement: {
     prototype: HTMLShowSupportElement;
@@ -590,7 +574,6 @@ declare global {
     'accordion-container': HTMLAccordionContainerElement;
     'accordion-dropdown': HTMLAccordionDropdownElement;
     'add-varsity-scores': HTMLAddVarsityScoresElement;
-    'aux-comp': HTMLAuxCompElement;
     'campaign-aim': HTMLCampaignAimElement;
     'campaign-aim-container': HTMLCampaignAimContainerElement;
     'campaign-news': HTMLCampaignNewsElement;
@@ -631,7 +614,6 @@ declare global {
     'purple-button': HTMLPurpleButtonElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
-    'second-component': HTMLSecondComponentElement;
     'show-support': HTMLShowSupportElement;
     'support-option': HTMLSupportOptionElement;
     'support-progress': HTMLSupportProgressElement;
@@ -659,7 +641,6 @@ declare namespace LocalJSX {
   interface AddVarsityScores {
     'year'?: string;
   }
-  interface AuxComp {}
   interface CampaignAim {}
   interface CampaignAimContainer {
     'campaignname'?: string;
@@ -825,9 +806,6 @@ declare namespace LocalJSX {
   interface QuickLinks {
     'name'?: string;
   }
-  interface SecondComponent {
-    'animal'?: string;
-  }
   interface ShowSupport {}
   interface SupportOption {
     'heading'?: string;
@@ -879,7 +857,6 @@ declare namespace LocalJSX {
     'accordion-container': AccordionContainer;
     'accordion-dropdown': AccordionDropdown;
     'add-varsity-scores': AddVarsityScores;
-    'aux-comp': AuxComp;
     'campaign-aim': CampaignAim;
     'campaign-aim-container': CampaignAimContainer;
     'campaign-news': CampaignNews;
@@ -920,7 +897,6 @@ declare namespace LocalJSX {
     'purple-button': PurpleButton;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
-    'second-component': SecondComponent;
     'show-support': ShowSupport;
     'support-option': SupportOption;
     'support-progress': SupportProgress;
@@ -947,7 +923,6 @@ declare module "@stencil/core" {
       'accordion-container': LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
       'accordion-dropdown': LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
       'add-varsity-scores': LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
-      'aux-comp': LocalJSX.AuxComp & JSXBase.HTMLAttributes<HTMLAuxCompElement>;
       'campaign-aim': LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
       'campaign-aim-container': LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
       'campaign-news': LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
@@ -988,7 +963,6 @@ declare module "@stencil/core" {
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
-      'second-component': LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
       'show-support': LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
       'support-option': LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
       'support-progress': LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
