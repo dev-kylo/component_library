@@ -102,14 +102,15 @@ export class CloudinaryApp {
 
     
     render() {
-        let img = !this.image? <div class='empty'></div> : <img src={this.image}></img>;
+        let img = !this.image? <div class='empty'> <div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
         return (
             <div class="app">
                 <div class="presets">
                     <div class="instructions">
+                        <h2>KCLSU Cloudinary App</h2>
                         <p>Upload your image, select your preset and 'Right Click Save As' to download.</p>
                     </div>
-                    <div class="upload"><slot></slot></div>
+                   
                     {!this.image? '' : this.mapPresets()}
                 </div>
                 <div class='image'>
