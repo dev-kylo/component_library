@@ -14,7 +14,9 @@ export class VarsityUpcoming {
 
     mapToLi(data){
         let sliced = getNextEvents(data, 8)
-        return sliced.map(node => {
+        if(!sliced) return <a href='/events'><li>0 Varsity Events Remaining</li></a>;
+
+        else return sliced.map(node => {
             let date = returnDate(node.StartDate)
             return <a href={node.Url}><li data-id={node.Id} >{node.Title}<span class="date">{date.weekday} {date.day}th</span></li></a>
         })
