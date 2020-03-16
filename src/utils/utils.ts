@@ -56,8 +56,16 @@ export function getNextEvents(dataList, length = -1){
   let ISOdate = d.toISOString();
   let dateIndex = data.findIndex(evt => {
       return evt.StartDate > ISOdate;
-  })
-
-  if (length > 0) return data.slice(dateIndex,dateIndex + length)
+  });
+  let noEvents:any = [{
+    Title: "No Events Remaining",
+    Description: "No Events Remaining",
+    StartDate: " ",
+    Url: '/',
+  }];
+  console.log(noEvents)
+  dateIndex = -1;
+  if (dateIndex < 0) return false;
+  else if (length > 0) return data.slice(dateIndex,dateIndex + length)
   else return data.slice(dateIndex)
 }
