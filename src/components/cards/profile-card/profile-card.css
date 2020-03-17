@@ -1,4 +1,4 @@
-@import '../../../../global/globalstyles.css';
+@import '../../../global/globalstyles.css';
 
 .profile-card {
     width: 100%;
@@ -44,7 +44,7 @@
     /* line-height: 32px; */
     font-size: 18px; 
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     text-transform: capitalize;
 
 } 
@@ -56,18 +56,19 @@
     margin-bottom: 0;
     font-weight: bold;
     padding: 5px 0;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     line-height: normal;
     
 }
 
 .link{
-    margin: 0 15px 20px 0px;
+    margin: 0 15px 5px 0px;
     display: inline-block;
     font-size: 14px;
     color: #1aa29c;
     border-bottom: 1px dashed #1aa29cb0;
     font-weight: bold;
+    cursor: pointer;
 }
 
 span {
