@@ -25,10 +25,9 @@ export class CandidatesDisplay {
         })
 
         return (
-            <div class="card-layout">
+            <profile-card-layout>
                 {cards}
-            </div>
-
+            </profile-card-layout>
         );
     }
 

@@ -167,6 +167,7 @@ export namespace Components {
     'secondcta': string;
     'secondlink': string;
   }
+  interface ProfileCardLayout {}
   interface ProfileTabs {
     'activeid': string;
     'database': string;
@@ -471,6 +472,12 @@ declare global {
     new (): HTMLProfileCardElement;
   };
 
+  interface HTMLProfileCardLayoutElement extends Components.ProfileCardLayout, HTMLStencilElement {}
+  const HTMLProfileCardLayoutElement: {
+    prototype: HTMLProfileCardLayoutElement;
+    new (): HTMLProfileCardLayoutElement;
+  };
+
   interface HTMLProfileTabsElement extends Components.ProfileTabs, HTMLStencilElement {}
   const HTMLProfileTabsElement: {
     prototype: HTMLProfileTabsElement;
@@ -613,6 +620,7 @@ declare global {
     'preset-controls': HTMLPresetControlsElement;
     'primary-button': HTMLPrimaryButtonElement;
     'profile-card': HTMLProfileCardElement;
+    'profile-card-layout': HTMLProfileCardLayoutElement;
     'profile-tabs': HTMLProfileTabsElement;
     'purple-button': HTMLPurpleButtonElement;
     'quick-link': HTMLQuickLinkElement;
@@ -798,6 +806,7 @@ declare namespace LocalJSX {
     'secondcta'?: string;
     'secondlink'?: string;
   }
+  interface ProfileCardLayout {}
   interface ProfileTabs {
     'activeid'?: string;
     'database'?: string;
@@ -900,6 +909,7 @@ declare namespace LocalJSX {
     'preset-controls': PresetControls;
     'primary-button': PrimaryButton;
     'profile-card': ProfileCard;
+    'profile-card-layout': ProfileCardLayout;
     'profile-tabs': ProfileTabs;
     'purple-button': PurpleButton;
     'quick-link': QuickLink;
@@ -966,6 +976,7 @@ declare module "@stencil/core" {
       'preset-controls': LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
       'profile-card': LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
+      'profile-card-layout': LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
       'profile-tabs': LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
