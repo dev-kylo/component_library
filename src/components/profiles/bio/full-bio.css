@@ -1,0 +1,13 @@
+@import '../../../global/globalstyles.css';
+
+div {
+    padding: 1em;
+}
+
+h3 {
+    color: #502669
+}
+
+.twitter, .facebook, .instagram {
+    color: #15847F;
+}

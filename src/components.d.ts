@@ -40,9 +40,6 @@ export namespace Components {
   interface CandidateDisplay {
     'data': any;
   }
-  interface ChildComponent {
-    'number': number;
-  }
   interface CloudinaryApp {
     'public_id': string;
   }
@@ -64,6 +61,9 @@ export namespace Components {
     'fillContainer': boolean;
     'mobcolumn': boolean;
     'wrap': boolean;
+  }
+  interface FullBio {
+    'data': any;
   }
   interface FullwidthBeigeStrip {}
   interface FullwidthStrip {
@@ -148,9 +148,6 @@ export namespace Components {
     'newstitle': string;
   }
   interface PageContent {}
-  interface ParentComponent {
-    'number': number;
-  }
   interface PresetCard {
     'dimensions': string;
     'presetid': string;
@@ -162,12 +159,19 @@ export namespace Components {
   }
   interface ProfileCard {
     'cta': string;
+    'emitid': string;
     'image': string;
     'link': string;
     'name': string;
     'position': string;
     'secondcta': string;
     'secondlink': string;
+  }
+  interface ProfileCardLayout {}
+  interface ProfileTabs {
+    'activeid': string;
+    'database': string;
+    'headings': any;
   }
   interface PurpleButton {
     'link': string;
@@ -288,12 +292,6 @@ declare global {
     new (): HTMLCandidateDisplayElement;
   };
 
-  interface HTMLChildComponentElement extends Components.ChildComponent, HTMLStencilElement {}
-  const HTMLChildComponentElement: {
-    prototype: HTMLChildComponentElement;
-    new (): HTMLChildComponentElement;
-  };
-
   interface HTMLCloudinaryAppElement extends Components.CloudinaryApp, HTMLStencilElement {}
   const HTMLCloudinaryAppElement: {
     prototype: HTMLCloudinaryAppElement;
@@ -322,6 +320,12 @@ declare global {
   const HTMLFlexContainerElement: {
     prototype: HTMLFlexContainerElement;
     new (): HTMLFlexContainerElement;
+  };
+
+  interface HTMLFullBioElement extends Components.FullBio, HTMLStencilElement {}
+  const HTMLFullBioElement: {
+    prototype: HTMLFullBioElement;
+    new (): HTMLFullBioElement;
   };
 
   interface HTMLFullwidthBeigeStripElement extends Components.FullwidthBeigeStrip, HTMLStencilElement {}
@@ -444,12 +448,6 @@ declare global {
     new (): HTMLPageContentElement;
   };
 
-  interface HTMLParentComponentElement extends Components.ParentComponent, HTMLStencilElement {}
-  const HTMLParentComponentElement: {
-    prototype: HTMLParentComponentElement;
-    new (): HTMLParentComponentElement;
-  };
-
   interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {}
   const HTMLPresetCardElement: {
     prototype: HTMLPresetCardElement;
@@ -472,6 +470,18 @@ declare global {
   const HTMLProfileCardElement: {
     prototype: HTMLProfileCardElement;
     new (): HTMLProfileCardElement;
+  };
+
+  interface HTMLProfileCardLayoutElement extends Components.ProfileCardLayout, HTMLStencilElement {}
+  const HTMLProfileCardLayoutElement: {
+    prototype: HTMLProfileCardLayoutElement;
+    new (): HTMLProfileCardLayoutElement;
+  };
+
+  interface HTMLProfileTabsElement extends Components.ProfileTabs, HTMLStencilElement {}
+  const HTMLProfileTabsElement: {
+    prototype: HTMLProfileTabsElement;
+    new (): HTMLProfileTabsElement;
   };
 
   interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {}
@@ -580,12 +590,12 @@ declare global {
     'campaign-page': HTMLCampaignPageElement;
     'campaign-tabs': HTMLCampaignTabsElement;
     'candidate-display': HTMLCandidateDisplayElement;
-    'child-component': HTMLChildComponentElement;
     'cloudinary-app': HTMLCloudinaryAppElement;
     'create-varsity-data': HTMLCreateVarsityDataElement;
     'elections-candidates': HTMLElectionsCandidatesElement;
     'elections-footer': HTMLElectionsFooterElement;
     'flex-container': HTMLFlexContainerElement;
+    'full-bio': HTMLFullBioElement;
     'fullwidth-beige-strip': HTMLFullwidthBeigeStripElement;
     'fullwidth-strip': HTMLFullwidthStripElement;
     'get-involved': HTMLGetInvolvedElement;
@@ -606,11 +616,12 @@ declare global {
     'my-component': HTMLMyComponentElement;
     'news-card': HTMLNewsCardElement;
     'page-content': HTMLPageContentElement;
-    'parent-component': HTMLParentComponentElement;
     'preset-card': HTMLPresetCardElement;
     'preset-controls': HTMLPresetControlsElement;
     'primary-button': HTMLPrimaryButtonElement;
     'profile-card': HTMLProfileCardElement;
+    'profile-card-layout': HTMLProfileCardLayoutElement;
+    'profile-tabs': HTMLProfileTabsElement;
     'purple-button': HTMLPurpleButtonElement;
     'quick-link': HTMLQuickLinkElement;
     'quick-links': HTMLQuickLinksElement;
@@ -661,9 +672,6 @@ declare namespace LocalJSX {
   interface CandidateDisplay {
     'data'?: any;
   }
-  interface ChildComponent {
-    'number'?: number;
-  }
   interface CloudinaryApp {
     'public_id'?: string;
   }
@@ -685,6 +693,9 @@ declare namespace LocalJSX {
     'fillContainer'?: boolean;
     'mobcolumn'?: boolean;
     'wrap'?: boolean;
+  }
+  interface FullBio {
+    'data'?: any;
   }
   interface FullwidthBeigeStrip {}
   interface FullwidthStrip {
@@ -772,9 +783,6 @@ declare namespace LocalJSX {
     'newstitle'?: string;
   }
   interface PageContent {}
-  interface ParentComponent {
-    'number'?: number;
-  }
   interface PresetCard {
     'dimensions'?: string;
     'onSelectPreset'?: (event: CustomEvent<any>) => void;
@@ -789,12 +797,20 @@ declare namespace LocalJSX {
   }
   interface ProfileCard {
     'cta'?: string;
+    'emitid'?: string;
     'image'?: string;
     'link'?: string;
     'name'?: string;
+    'onEmitClick'?: (event: CustomEvent<any>) => void;
     'position'?: string;
     'secondcta'?: string;
     'secondlink'?: string;
+  }
+  interface ProfileCardLayout {}
+  interface ProfileTabs {
+    'activeid'?: string;
+    'database'?: string;
+    'headings'?: any;
   }
   interface PurpleButton {
     'link'?: string;
@@ -863,12 +879,12 @@ declare namespace LocalJSX {
     'campaign-page': CampaignPage;
     'campaign-tabs': CampaignTabs;
     'candidate-display': CandidateDisplay;
-    'child-component': ChildComponent;
     'cloudinary-app': CloudinaryApp;
     'create-varsity-data': CreateVarsityData;
     'elections-candidates': ElectionsCandidates;
     'elections-footer': ElectionsFooter;
     'flex-container': FlexContainer;
+    'full-bio': FullBio;
     'fullwidth-beige-strip': FullwidthBeigeStrip;
     'fullwidth-strip': FullwidthStrip;
     'get-involved': GetInvolved;
@@ -889,11 +905,12 @@ declare namespace LocalJSX {
     'my-component': MyComponent;
     'news-card': NewsCard;
     'page-content': PageContent;
-    'parent-component': ParentComponent;
     'preset-card': PresetCard;
     'preset-controls': PresetControls;
     'primary-button': PrimaryButton;
     'profile-card': ProfileCard;
+    'profile-card-layout': ProfileCardLayout;
+    'profile-tabs': ProfileTabs;
     'purple-button': PurpleButton;
     'quick-link': QuickLink;
     'quick-links': QuickLinks;
@@ -929,12 +946,12 @@ declare module "@stencil/core" {
       'campaign-page': LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
       'campaign-tabs': LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
       'candidate-display': LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
-      'child-component': LocalJSX.ChildComponent & JSXBase.HTMLAttributes<HTMLChildComponentElement>;
       'cloudinary-app': LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
       'create-varsity-data': LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
       'elections-candidates': LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
       'elections-footer': LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
       'flex-container': LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
+      'full-bio': LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
       'fullwidth-beige-strip': LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
       'fullwidth-strip': LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
       'get-involved': LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
@@ -955,11 +972,12 @@ declare module "@stencil/core" {
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'news-card': LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
       'page-content': LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
-      'parent-component': LocalJSX.ParentComponent & JSXBase.HTMLAttributes<HTMLParentComponentElement>;
       'preset-card': LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
       'preset-controls': LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
       'primary-button': LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
       'profile-card': LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
+      'profile-card-layout': LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
+      'profile-tabs': LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
       'purple-button': LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
       'quick-link': LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
       'quick-links': LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;

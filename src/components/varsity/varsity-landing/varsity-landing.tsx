@@ -40,7 +40,6 @@ export class VarsityLanding {
 
     renderLastScoreCard(){
         let evt = this.eventsData.filter(evt => evt.score && evt.score[0] >= 0);
-        console.log(evt)
         if (evt.length >= 1){
             evt = evt.pop();
             return <label-card reverse cardtitle={evt.Title} image={removeParams(evt.ImageUrl)} text={`Kings ${evt.score[0]} : UCL ${evt.score[1]}`}></label-card>
