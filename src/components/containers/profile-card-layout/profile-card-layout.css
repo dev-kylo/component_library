@@ -30,23 +30,32 @@
 }
 }
 
-@media only screen and (max-width: 465px){
+/* @media only screen and (max-width: 501px){
     .card-layout {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-}
+} */
 
-@media only screen and (max-width: 435px){
+
+@media only screen and (max-width: 499px){
     .card-layout {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 }
 
-@media only screen and (max-width: 370px){
+@media only screen and (min-width: 436px) and (max-width: 499px){
+    .card-layout {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+}
+
+
+@media only screen and (max-width: 435px){
     .card-layout {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 }
+
 
 
 

@@ -38,8 +38,8 @@ export class ProfileCard{
   render() {
 
     
-    let nameLink = !this.link ? <a class="link" onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> :  <a class="link" target="_blank" href={this.link? this.link : ''}><span class="name">{this.name}</span></a>
-    let firstlink = !this.link ? <a class="link" onClick={e => this.clickHandler(e)}>{this.cta}</a> :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta}</a>
+    let nameLink = !this.link ? <a onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> :  <a target="_blank" href={this.link? this.link : ''}><span class="name">{this.name}</span></a>
+    let firstlink = !this.link ? <a class="link"  onClick={e => this.clickHandler(e)}>{this.cta}</a> :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta}</a>
     let secondlink = !this.secondlink? '' : <a class="link" target="_blank" href={this.secondlink}>{this.secondcta}</a>
 
     return (
@@ -51,7 +51,7 @@ export class ProfileCard{
         <div class="label">
           {nameLink}
           <span class="position">{this.position}</span>
-          <flex-container alignx='space-between'>
+          <flex-container alignx='space-between' wrap>
             {firstlink}
             {secondlink}
           </flex-container>

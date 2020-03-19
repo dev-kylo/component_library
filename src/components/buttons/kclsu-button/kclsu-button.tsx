@@ -8,13 +8,16 @@ import { Component, h, Prop, Event, EventEmitter} from '@stencil/core';
 })
 export class KclsuButton {
 
+    @Prop() text: string;
     @Prop() link: string;
-    @Prop() clicked: Function;
     @Prop() emitid: string;
+    @Prop() purple: boolean;
     @Prop() green: boolean;
     @Prop() rounded: boolean;
     @Prop() small: boolean;
     @Prop() download: boolean;
+    @Prop() center: boolean;
+    
 
     @Event()emitClick:EventEmitter;
 
@@ -27,17 +30,24 @@ export class KclsuButton {
     render() {
 
         let classes =  [];
-        this.green? classes.push('green') : classes.push('purple');
+        !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
-        this.small? classes.push('small') : classes.push('big')
+        this.small? classes.push('small') : classes.push('big');
+        let link;
 
         if (this.link){
-            return (
-                <a href={this.link } download class={classes.join(' ')}><slot></slot></a>
-            );
+            link = <a href={this.link} download class={classes.join(' ')}>{this.text}<slot></slot></a>
+    
         }
 
-        else return <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}><slot></slot></a>
+    else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
+
+        return (
+        <flex-container alignx={this.center? 'center' : 'flex-start'} fillContainer>
+            {link}
+        </flex-container>)
+            
+        
 
     }
 }
