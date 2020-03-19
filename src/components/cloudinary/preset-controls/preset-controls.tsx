@@ -3,7 +3,7 @@ import { Component, h, State, Event, EventEmitter, Element, Listen } from '@sten
 
 @Component({
     tag: 'preset-controls',
-    styleUrl: 'preset-controls.css',
+    styleUrl: 'preset-controls.css'
 })
 export class PresetControls {
 
@@ -75,12 +75,14 @@ export class PresetControls {
                     </div>
                     <flex-container alignx='center'>
                         <button id="form_button">Make Adjustment</button>
-                        <kclsu-button emitid='closeAdjustments' green small >Cancel</kclsu-button>
+                        <kclsu-button emitid='closeAdjustments' green rounded >Cancel</kclsu-button>
                     </flex-container>
                 </form>
             </div>
             </kclsu-modal>,
-            <kclsu-button emitid='openAdjustments' green small >Adjustments</kclsu-button>
+            <flex-container aligny="center">
+                <kclsu-button emitid='openAdjustments' green small >Adjustments</kclsu-button>
+            </flex-container>
         ]);
     }
 }

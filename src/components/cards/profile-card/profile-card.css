@@ -21,6 +21,7 @@
 .image {
     width:100%;
     position: relative;
+    height: 250px;
 }
 
 .fit {
@@ -49,13 +50,14 @@
     font-weight: 600;
     margin-bottom: 0px;
     text-transform: capitalize;
-
+    cursor: pointer;
 } 
+
 
 .position {
     font-family: 'open sans';
     color: #515151;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 0;
     font-weight: bold;
     padding: 5px 0;
@@ -65,13 +67,14 @@
 }
 
 .link{
-    margin: 0 15px 5px 0px;
+    margin: 5px;
     display: inline-block;
     font-size: 14px;
     color: #1aa29c;
     border-bottom: 1px dashed #1aa29cb0;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none
 }
 
 span {
@@ -85,8 +88,19 @@ span {
         width: 215px;
     }
 
-    .fit {
+    .fit, .image {
         height: 180px;
+    }
+
+.label {
+    margin: 0;
+    padding: 0.5em;
+}
+}
+
+@media only screen and (max-width: 780px){
+    .position {
+        font-size: 12px;
     }
 }
 
@@ -100,31 +114,77 @@ span {
     .profile-card {
         width: 215px;
     }
+
+    .name {
+        line-height: 25px;
+    }
 }
 
-    @media only screen and (min-width: 430px) and (max-width: 530px){
+    @media only screen and (min-width: 466px) and (max-width: 530px){
         .profile-card {
             width: 180px;
         }
 
-        .fit {
+        .fit, .image {
             height: 180px;
         }
     }
 
+    @media only screen and (min-width: 430px) and (max-width: 465px){
+        .profile-card {
+            width: 160px;
+        }
 
-@media only screen and (max-width: 430px){
-    .profile-card {
-        width: 160px;
+        .fit, .image {
+            height: 180px;
+        }
     }
-    .fit {
+/* 
+@media only screen and (max-width: 480px){
+    .profile-card {
+        width: 130px;
+    }
+    .fit, .image {
         height: 200px;
     }
-}
 
-@media only screen and (max-width: 370px){
+    .position {
+        display: none;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .label {
+        margin: 0;
+        padding: 0.3em;
+    }
+} */
+
+@media only screen and (max-width: 436px){
     .profile-card {
         width: 230px;
+    }
+    .fit, .image {
+        height: 200px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .label {
+        margin: 0;
+        padding: 0.3em;
     }
 }
 

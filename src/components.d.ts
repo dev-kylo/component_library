@@ -102,13 +102,15 @@ export namespace Components {
     'innertab': boolean;
   }
   interface KclsuButton {
-    'clicked': Function;
+    'center': boolean;
     'download': boolean;
     'emitid': string;
     'green': boolean;
     'link': string;
+    'purple': boolean;
     'rounded': boolean;
     'small': boolean;
+    'text': string;
   }
   interface KclsuModal {
     'show': boolean;
@@ -735,14 +737,16 @@ declare namespace LocalJSX {
     'innertab'?: boolean;
   }
   interface KclsuButton {
-    'clicked'?: Function;
+    'center'?: boolean;
     'download'?: boolean;
     'emitid'?: string;
     'green'?: boolean;
     'link'?: string;
     'onEmitClick'?: (event: CustomEvent<any>) => void;
+    'purple'?: boolean;
     'rounded'?: boolean;
     'small'?: boolean;
+    'text'?: string;
   }
   interface KclsuModal {
     'show'?: boolean;
