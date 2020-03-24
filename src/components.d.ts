@@ -108,14 +108,38 @@ export namespace Components {
         "innertab": boolean;
     }
     interface KclsuButton {
+        /**
+          * Centers the button in the page
+         */
         "center": boolean;
+        /**
+          * Makes the link download
+         */
         "download": boolean;
+        /**
+          * Event Listener name
+         */
         "emitid": string;
         "green": boolean;
+        /**
+          * Adds specified icon to the page
+         */
         "icon": string;
+        /**
+          * The URL to link to
+         */
         "link": string;
+        /**
+          * Make the button a secondary purple button
+         */
         "purple": boolean;
+        /**
+          * Give the button rounded corners
+         */
         "rounded": boolean;
+        /**
+          * Make the button small
+         */
         "small": boolean;
         /**
           * The text for the button
@@ -774,15 +798,39 @@ declare namespace LocalJSX {
         "innertab"?: boolean;
     }
     interface KclsuButton {
+        /**
+          * Centers the button in the page
+         */
         "center"?: boolean;
+        /**
+          * Makes the link download
+         */
         "download"?: boolean;
+        /**
+          * Event Listener name
+         */
         "emitid"?: string;
         "green"?: boolean;
+        /**
+          * Adds specified icon to the page
+         */
         "icon"?: string;
+        /**
+          * The URL to link to
+         */
         "link"?: string;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Make the button a secondary purple button
+         */
         "purple"?: boolean;
+        /**
+          * Give the button rounded corners
+         */
         "rounded"?: boolean;
+        /**
+          * Make the button small
+         */
         "small"?: boolean;
         /**
           * The text for the button

@@ -12,22 +12,22 @@ export class KclsuButton {
      *  The text for the button 
     */
     @Prop() text: string;
-    /* The URL to link to */
+    /** The URL to link to */
     @Prop() link: string;
-    /* Event Listener name */
+    /** Event Listener name */
     @Prop() emitid: string;
-    /* Make the button a secondary purple button */
+    /** Make the button a secondary purple button */
     @Prop() purple: boolean;
     @Prop() green: boolean;
-    /* Give the button rounded corners */
+    /** Give the button rounded corners */
     @Prop() rounded: boolean;
-    /* Make the button small */
+    /** Make the button small */
     @Prop() small: boolean;
-    /* Makes the link download */
+    /** Makes the link download */
     @Prop() download: boolean;
-    /* Centers the button in the page */
+    /** Centers the button in the page */
     @Prop() center: boolean;
-    /* Adds specified icon to the page */
+    /** Adds specified icon to the page */
     @Prop() icon: string;
     
 
