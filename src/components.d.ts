@@ -89,13 +89,18 @@ export namespace Components {
     'images': string[];
     'interval': number;
   }
+  interface ImageText {
+    'heading': string;
+    'image': string;
+    'switch': boolean;
+    'text': string;
+  }
   interface InnerTabContent {
     'active': boolean;
     'name': string;
   }
   interface InnerTabHeader {
     'active': boolean;
-    'id': string;
     'name': string;
   }
   interface InnerTabsContainer {
@@ -106,6 +111,7 @@ export namespace Components {
     'download': boolean;
     'emitid': string;
     'green': boolean;
+    'icon': string;
     'link': string;
     'purple': boolean;
     'rounded': boolean;
@@ -201,7 +207,6 @@ export namespace Components {
   }
   interface TabHeader {
     'active': boolean;
-    'id': string;
     'name': string;
   }
   interface TabsContainer {
@@ -370,6 +375,12 @@ declare global {
   const HTMLImageSliderAutoElement: {
     prototype: HTMLImageSliderAutoElement;
     new (): HTMLImageSliderAutoElement;
+  };
+
+  interface HTMLImageTextElement extends Components.ImageText, HTMLStencilElement {}
+  const HTMLImageTextElement: {
+    prototype: HTMLImageTextElement;
+    new (): HTMLImageTextElement;
   };
 
   interface HTMLInnerTabContentElement extends Components.InnerTabContent, HTMLStencilElement {}
@@ -605,6 +616,7 @@ declare global {
     'grid-landing-item': HTMLGridLandingItemElement;
     'image-fit-container': HTMLImageFitContainerElement;
     'image-slider-auto': HTMLImageSliderAutoElement;
+    'image-text': HTMLImageTextElement;
     'inner-tab-content': HTMLInnerTabContentElement;
     'inner-tab-header': HTMLInnerTabHeaderElement;
     'inner-tabs-container': HTMLInnerTabsContainerElement;
@@ -723,13 +735,18 @@ declare namespace LocalJSX {
     'images'?: string[];
     'interval'?: number;
   }
+  interface ImageText {
+    'heading'?: string;
+    'image'?: string;
+    'switch'?: boolean;
+    'text'?: string;
+  }
   interface InnerTabContent {
     'active'?: boolean;
     'name'?: string;
   }
   interface InnerTabHeader {
     'active'?: boolean;
-    'id'?: string;
     'name'?: string;
     'onSelectInnerTab'?: (event: CustomEvent<any>) => void;
   }
@@ -741,6 +758,7 @@ declare namespace LocalJSX {
     'download'?: boolean;
     'emitid'?: string;
     'green'?: boolean;
+    'icon'?: string;
     'link'?: string;
     'onEmitClick'?: (event: CustomEvent<any>) => void;
     'purple'?: boolean;
@@ -842,7 +860,6 @@ declare namespace LocalJSX {
   }
   interface TabHeader {
     'active'?: boolean;
-    'id'?: string;
     'name'?: string;
     'onSelectTab'?: (event: CustomEvent<any>) => void;
   }
@@ -896,6 +913,7 @@ declare namespace LocalJSX {
     'grid-landing-item': GridLandingItem;
     'image-fit-container': ImageFitContainer;
     'image-slider-auto': ImageSliderAuto;
+    'image-text': ImageText;
     'inner-tab-content': InnerTabContent;
     'inner-tab-header': InnerTabHeader;
     'inner-tabs-container': InnerTabsContainer;
@@ -963,6 +981,7 @@ declare module "@stencil/core" {
       'grid-landing-item': LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
       'image-fit-container': LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
       'image-slider-auto': LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
+      'image-text': LocalJSX.ImageText & JSXBase.HTMLAttributes<HTMLImageTextElement>;
       'inner-tab-content': LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
       'inner-tab-header': LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
       'inner-tabs-container': LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;

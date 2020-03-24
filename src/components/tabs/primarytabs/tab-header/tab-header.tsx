@@ -1,5 +1,4 @@
 import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/core';
-import { createId } from '../../../../utils/utils';
 
 
 @Component({
@@ -14,14 +13,12 @@ export class TabHeader {
 
     @Prop() active: boolean = false;
     @Prop() name: string;
-    @Prop() id: string;
 
 
     @Event()
     selectTab: EventEmitter;
 
     componentDidLoad(){
-        this.id = createId();
         if (this.active) this.isSelected = true;
     }
     

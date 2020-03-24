@@ -22,7 +22,7 @@ export class PresetCard {
     
     render() {
         return (
-            <div data-pres={this.presetid} class='container' onClick={e => this.clickListener(e)}>
+            <div data-pres={this.presetid} class='preset-container' onClick={e => this.clickListener(e)}>
                 <div class="dimensions"><span>{this.dimensions}</span></div>
                 <div class="title">{this.presetname}</div>
             </div>

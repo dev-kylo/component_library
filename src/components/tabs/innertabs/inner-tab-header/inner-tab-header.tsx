@@ -1,6 +1,5 @@
 import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/core';
-// import { ITabHeaderData } from '../interfaces/interfaces';
-import { createId } from '../../../../utils/utils';
+
 
 
 @Component({
@@ -16,15 +15,11 @@ export class InnerTabHeader {
 
     @Prop() active: boolean = false;
     @Prop() name: string;
-    @Prop() id: string;
 
 
     @Event()
     selectInnerTab: EventEmitter;
 
-    componentDidLoad(){
-        this.id = createId();
-    }
     
     render() {
         const classes = {

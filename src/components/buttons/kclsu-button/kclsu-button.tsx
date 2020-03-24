@@ -17,6 +17,7 @@ export class KclsuButton {
     @Prop() small: boolean;
     @Prop() download: boolean;
     @Prop() center: boolean;
+    @Prop() icon: string;
     
 
     @Event()emitClick:EventEmitter;
