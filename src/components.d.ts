@@ -116,6 +116,9 @@ export namespace Components {
     'purple': boolean;
     'rounded': boolean;
     'small': boolean;
+    /**
+    * The text for the button
+    */
     'text': string;
   }
   interface KclsuModal {
@@ -764,6 +767,9 @@ declare namespace LocalJSX {
     'purple'?: boolean;
     'rounded'?: boolean;
     'small'?: boolean;
+    /**
+    * The text for the button
+    */
     'text'?: string;
   }
   interface KclsuModal {

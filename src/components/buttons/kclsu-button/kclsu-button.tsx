@@ -8,7 +8,9 @@ import { Component, h, Prop, Event, EventEmitter} from '@stencil/core';
 })
 export class KclsuButton {
 
-    /* The text for the button */
+    /**
+     *  The text for the button 
+    */
     @Prop() text: string;
     /* The URL to link to */
     @Prop() link: string;
