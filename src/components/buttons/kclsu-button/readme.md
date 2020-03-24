@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `center`   | `center`   |             | `boolean` | `undefined` |
-| `download` | `download` |             | `boolean` | `undefined` |
-| `emitid`   | `emitid`   |             | `string`  | `undefined` |
-| `green`    | `green`    |             | `boolean` | `undefined` |
-| `icon`     | `icon`     |             | `string`  | `undefined` |
-| `link`     | `link`     |             | `string`  | `undefined` |
-| `purple`   | `purple`   |             | `boolean` | `undefined` |
-| `rounded`  | `rounded`  |             | `boolean` | `undefined` |
-| `small`    | `small`    |             | `boolean` | `undefined` |
-| `text`     | `text`     |             | `string`  | `undefined` |
+| Property   | Attribute  | Description             | Type      | Default     |
+| ---------- | ---------- | ----------------------- | --------- | ----------- |
+| `center`   | `center`   |                         | `boolean` | `undefined` |
+| `download` | `download` |                         | `boolean` | `undefined` |
+| `emitid`   | `emitid`   |                         | `string`  | `undefined` |
+| `green`    | `green`    |                         | `boolean` | `undefined` |
+| `icon`     | `icon`     |                         | `string`  | `undefined` |
+| `link`     | `link`     |                         | `string`  | `undefined` |
+| `purple`   | `purple`   |                         | `boolean` | `undefined` |
+| `rounded`  | `rounded`  |                         | `boolean` | `undefined` |
+| `small`    | `small`    |                         | `boolean` | `undefined` |
+| `text`     | `text`     | The text for the button | `string`  | `undefined` |
 
 
 ## Events

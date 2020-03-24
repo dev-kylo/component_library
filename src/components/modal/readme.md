@@ -23,7 +23,7 @@
 
 ### Used by
 
- - [kclsu-modal]()
+ - [kclsu-modal](.)
 
 ### Graph
 ```mermaid
