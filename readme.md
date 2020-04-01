@@ -16,4 +16,3 @@ Stencil is a compiler for building fast web apps using Web Components.
 Stencil components are just Web Components, so they work in any major framework or with no framework at all.
 
 Want to find out more about Stencil JS? Check out the docs [here](https://stenciljs.com/docs/).
-
