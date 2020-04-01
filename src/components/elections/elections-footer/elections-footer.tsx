@@ -22,6 +22,7 @@ export class ElectionsFooter {
 				<h3>Contact Us</h3>
 				<p>Please provide your K number, full name and KCL email address.</p>
 				<purple-button whitetext link="mailto:elections@kclsu.org"> elections@kclsu.org </purple-button>
+				
 			</div>
 	
 			<div class="col col-xs-12 col-md-4">

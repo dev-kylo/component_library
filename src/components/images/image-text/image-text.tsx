@@ -8,9 +8,13 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class ImageText {
 
+    /** The title at the top of the text */
     @Prop() heading: string;
+    /** The image link (get from Cloudinary) */
     @Prop() text: string;
+    /** The paragraph text */
     @Prop() image: string;
+    /** 	Switch the side the image is on*/
     @Prop() switch: boolean;
     
     render() {

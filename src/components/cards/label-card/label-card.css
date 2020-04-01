@@ -15,7 +15,7 @@
 
 .image {
     justify-self: flex-start;
-    min-width: 200px;
+    min-width: 40%;
     height: auto;
 }
 
@@ -33,7 +33,7 @@
     font-family: bree-serif, serif;
     /* font-family: bree_serifsemibold; */
     /* line-height: 32px; */
-    font-size: 18px; 
+    /* font-size: 20px;  */
     font-weight: 600;
     margin-bottom: 15px;
 }
@@ -46,6 +46,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+    padding: 0 0.5em;
 }
 
 a {
@@ -56,6 +57,11 @@ a {
     background: #14847e;
     border-radius: 30px;
     font-size: 14px;
+}
+
+.content p {
+    font-size: 16px;
+    line-height: 25px;
 }
 
 @media only screen and (max-width: 500px){

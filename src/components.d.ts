@@ -53,6 +53,8 @@ export namespace Components {
     }
     interface ElectionsFooter {
     }
+    interface EventsCardsModal {
+    }
     interface FlexContainer {
         "alignx": string;
         "aligny": string;
@@ -69,6 +71,13 @@ export namespace Components {
     interface FullwidthStrip {
         "color": string;
         "height": string;
+    }
+    interface GalleryThumbnail {
+        "active": boolean;
+        "cardheight": string;
+        "emitid": string;
+        "image": string;
+        "videotitle": string;
     }
     interface GetInvolved {
         "typeform": string;
@@ -91,9 +100,21 @@ export namespace Components {
         "interval": number;
     }
     interface ImageText {
+        /**
+          * The title at the top of the text
+         */
         "heading": string;
+        /**
+          * The paragraph text
+         */
         "image": string;
+        /**
+          * Switch the side the image is on
+         */
         "switch": boolean;
+        /**
+          * The image link (get from Cloudinary)
+         */
         "text": string;
     }
     interface InnerTabContent {
@@ -145,6 +166,7 @@ export namespace Components {
           * The text for the button
          */
         "text": string;
+        "verysmall": boolean;
     }
     interface KclsuModal {
         "show": boolean;
@@ -154,9 +176,12 @@ export namespace Components {
     interface LabelCard {
         "buttonLink": string;
         "buttonTitle": string;
+        "cardheight": string;
         "cardtitle": string;
+        "highlightText": boolean;
         "image": string;
         "reverse": boolean;
+        "smallheading": boolean;
         "text": string;
     }
     interface LastYearScores {
@@ -210,8 +235,17 @@ export namespace Components {
     interface ProfileCardLayout {
     }
     interface ProfileTabs {
+        /**
+          * Specify Tab ID you want to keep open by default
+         */
         "activeid": string;
+        /**
+          * The URL of the database to fetch profiles from (firebase)
+         */
         "database": string;
+        /**
+          * Array with child arrays containing Tab Heading, Tab ID, and Text(optional)
+         */
         "headings": any;
     }
     interface PurpleButton {
@@ -275,6 +309,15 @@ export namespace Components {
     }
     interface VideoBanner {
         "url": string;
+    }
+    interface VideoEmbed {
+        "embedid": string;
+    }
+    interface VideoGallery {
+        /**
+          * The Youtube URL for any given playlist
+         */
+        "playlist": any;
     }
 }
 declare global {
@@ -362,6 +405,12 @@ declare global {
         prototype: HTMLElectionsFooterElement;
         new (): HTMLElectionsFooterElement;
     };
+    interface HTMLEventsCardsModalElement extends Components.EventsCardsModal, HTMLStencilElement {
+    }
+    var HTMLEventsCardsModalElement: {
+        prototype: HTMLEventsCardsModalElement;
+        new (): HTMLEventsCardsModalElement;
+    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -385,6 +434,12 @@ declare global {
     var HTMLFullwidthStripElement: {
         prototype: HTMLFullwidthStripElement;
         new (): HTMLFullwidthStripElement;
+    };
+    interface HTMLGalleryThumbnailElement extends Components.GalleryThumbnail, HTMLStencilElement {
+    }
+    var HTMLGalleryThumbnailElement: {
+        prototype: HTMLGalleryThumbnailElement;
+        new (): HTMLGalleryThumbnailElement;
     };
     interface HTMLGetInvolvedElement extends Components.GetInvolved, HTMLStencilElement {
     }
@@ -632,6 +687,18 @@ declare global {
         prototype: HTMLVideoBannerElement;
         new (): HTMLVideoBannerElement;
     };
+    interface HTMLVideoEmbedElement extends Components.VideoEmbed, HTMLStencilElement {
+    }
+    var HTMLVideoEmbedElement: {
+        prototype: HTMLVideoEmbedElement;
+        new (): HTMLVideoEmbedElement;
+    };
+    interface HTMLVideoGalleryElement extends Components.VideoGallery, HTMLStencilElement {
+    }
+    var HTMLVideoGalleryElement: {
+        prototype: HTMLVideoGalleryElement;
+        new (): HTMLVideoGalleryElement;
+    };
     interface HTMLElementTagNameMap {
         "academic-candidate-display": HTMLAcademicCandidateDisplayElement;
         "accordion-container": HTMLAccordionContainerElement;
@@ -647,10 +714,12 @@ declare global {
         "create-varsity-data": HTMLCreateVarsityDataElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
+        "events-cards-modal": HTMLEventsCardsModalElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
         "fullwidth-strip": HTMLFullwidthStripElement;
+        "gallery-thumbnail": HTMLGalleryThumbnailElement;
         "get-involved": HTMLGetInvolvedElement;
         "grid-landing": HTMLGridLandingElement;
         "grid-landing-item": HTMLGridLandingItemElement;
@@ -692,6 +761,8 @@ declare global {
         "varsity-upcoming": HTMLVarsityUpcomingElement;
         "varsity-weather": HTMLVarsityWeatherElement;
         "video-banner": HTMLVideoBannerElement;
+        "video-embed": HTMLVideoEmbedElement;
+        "video-gallery": HTMLVideoGalleryElement;
     }
 }
 declare namespace LocalJSX {
@@ -742,6 +813,8 @@ declare namespace LocalJSX {
     }
     interface ElectionsFooter {
     }
+    interface EventsCardsModal {
+    }
     interface FlexContainer {
         "alignx"?: string;
         "aligny"?: string;
@@ -758,6 +831,14 @@ declare namespace LocalJSX {
     interface FullwidthStrip {
         "color"?: string;
         "height"?: string;
+    }
+    interface GalleryThumbnail {
+        "active"?: boolean;
+        "cardheight"?: string;
+        "emitid"?: string;
+        "image"?: string;
+        "onEmitClick"?: (event: CustomEvent<any>) => void;
+        "videotitle"?: string;
     }
     interface GetInvolved {
         "typeform"?: string;
@@ -780,9 +861,21 @@ declare namespace LocalJSX {
         "interval"?: number;
     }
     interface ImageText {
+        /**
+          * The title at the top of the text
+         */
         "heading"?: string;
+        /**
+          * The paragraph text
+         */
         "image"?: string;
+        /**
+          * Switch the side the image is on
+         */
         "switch"?: boolean;
+        /**
+          * The image link (get from Cloudinary)
+         */
         "text"?: string;
     }
     interface InnerTabContent {
@@ -836,6 +929,7 @@ declare namespace LocalJSX {
           * The text for the button
          */
         "text"?: string;
+        "verysmall"?: boolean;
     }
     interface KclsuModal {
         "show"?: boolean;
@@ -845,9 +939,12 @@ declare namespace LocalJSX {
     interface LabelCard {
         "buttonLink"?: string;
         "buttonTitle"?: string;
+        "cardheight"?: string;
         "cardtitle"?: string;
+        "highlightText"?: boolean;
         "image"?: string;
         "reverse"?: boolean;
+        "smallheading"?: boolean;
         "text"?: string;
     }
     interface LastYearScores {
@@ -905,8 +1002,17 @@ declare namespace LocalJSX {
     interface ProfileCardLayout {
     }
     interface ProfileTabs {
+        /**
+          * Specify Tab ID you want to keep open by default
+         */
         "activeid"?: string;
+        /**
+          * The URL of the database to fetch profiles from (firebase)
+         */
         "database"?: string;
+        /**
+          * Array with child arrays containing Tab Heading, Tab ID, and Text(optional)
+         */
         "headings"?: any;
     }
     interface PurpleButton {
@@ -972,6 +1078,15 @@ declare namespace LocalJSX {
     interface VideoBanner {
         "url"?: string;
     }
+    interface VideoEmbed {
+        "embedid": string;
+    }
+    interface VideoGallery {
+        /**
+          * The Youtube URL for any given playlist
+         */
+        "playlist": any;
+    }
     interface IntrinsicElements {
         "academic-candidate-display": AcademicCandidateDisplay;
         "accordion-container": AccordionContainer;
@@ -987,10 +1102,12 @@ declare namespace LocalJSX {
         "create-varsity-data": CreateVarsityData;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
+        "events-cards-modal": EventsCardsModal;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
         "fullwidth-strip": FullwidthStrip;
+        "gallery-thumbnail": GalleryThumbnail;
         "get-involved": GetInvolved;
         "grid-landing": GridLanding;
         "grid-landing-item": GridLandingItem;
@@ -1032,6 +1149,8 @@ declare namespace LocalJSX {
         "varsity-upcoming": VarsityUpcoming;
         "varsity-weather": VarsityWeather;
         "video-banner": VideoBanner;
+        "video-embed": VideoEmbed;
+        "video-gallery": VideoGallery;
     }
 }
 export { LocalJSX as JSX };
@@ -1052,10 +1171,12 @@ declare module "@stencil/core" {
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
+            "events-cards-modal": LocalJSX.EventsCardsModal & JSXBase.HTMLAttributes<HTMLEventsCardsModalElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
             "fullwidth-strip": LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
+            "gallery-thumbnail": LocalJSX.GalleryThumbnail & JSXBase.HTMLAttributes<HTMLGalleryThumbnailElement>;
             "get-involved": LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
             "grid-landing": LocalJSX.GridLanding & JSXBase.HTMLAttributes<HTMLGridLandingElement>;
             "grid-landing-item": LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
@@ -1097,6 +1218,8 @@ declare module "@stencil/core" {
             "varsity-upcoming": LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
             "varsity-weather": LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
             "video-banner": LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
+            "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
+            "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
         }
     }
 }

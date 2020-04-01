@@ -70,6 +70,12 @@ a {
     padding:  5px 18px;
 }
 
+.verysmall {
+    font-size: 12px;
+    padding:  0px 10px;
+    margin: 0px!important;
+}
+
 /* .big {
     font-size: 14px;
     margin: 15px auto;

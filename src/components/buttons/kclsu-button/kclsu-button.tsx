@@ -23,6 +23,7 @@ export class KclsuButton {
     @Prop() rounded: boolean;
     /** Make the button small */
     @Prop() small: boolean;
+    @Prop() verysmall: boolean;
     /** Makes the link download */
     @Prop() download: boolean;
     /** Centers the button in the page */
@@ -44,7 +45,10 @@ export class KclsuButton {
         let classes =  [];
         !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
-        this.small? classes.push('small') : classes.push('big');
+        // this.small? classes.push('small') : classes.push('big');
+        if (this.small) classes.push('small')
+        else if (this.verysmall) classes.push('verysmall') 
+        else classes.push('big');
         let link;
 
         if (this.link){

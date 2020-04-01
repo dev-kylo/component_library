@@ -12,11 +12,17 @@ export class LabelCard {
     @Prop() buttonTitle: string = 'Find out more';
     @Prop() buttonLink: string
     @Prop() text: string = '';
+    @Prop() highlightText: boolean;
     @Prop() reverse: boolean;
+    @Prop() smallheading: boolean;
+    @Prop() cardheight: string;
     @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,h_90,q_93,w_90/v1573644938/website_uploads/KCLSU%20Brand/db75df131542437eb3da2415c7f91fc6_hhoknp.jpg';
     
     render() {
-        let content = !this.buttonLink? <p><em>{this.text}</em></p> : <a href={this.buttonLink}>{this.buttonTitle}</a>
+        let text = this.highlightText? <p><em>{this.text}</em></p> : <p>{this.text}</p>
+        let content = !this.buttonLink? text : <a href={this.buttonLink}>{this.buttonTitle}</a>
+        // let content = !this.buttonLink? text : <kclsu-button verysmall rounded link={this.buttonLink}>{this.buttonTitle}</kclsu-button>
+
         let style = {
             'background-image': `url(${this.image})`,
             'background-position': 'center center',
@@ -24,12 +30,19 @@ export class LabelCard {
             'background-repeat': 'no-repeat'
         }
 
-        let reverse =  !this.reverse? {} : {'flex-direction': 'row-reverse'};
+        // let reverse =  !this.reverse? {} : {'flex-direction': 'row-reverse'};
+        let cardStyle = {
+            'flex-direction': `${!this.reverse? 'row' : 'row-reverse'}`,
+            'height':  `${this.cardheight? this.cardheight : '100%'}`
+        }
+
+        let headingStyle = this.smallheading? {'font-size': '16px', 'margin': '0!important'} : {'font-size': '20px'};
+
         return (
-            <div class="card" style={reverse}>
+            <div class="card" style={cardStyle}>
                 <div class="image" style={style}></div>
                 <div class="content">
-                    <span class="title">{this.cardtitle}</span>
+                    <span class="title" style={headingStyle}>{this.cardtitle}</span>
                     {content}
                 </div>
             </div>
