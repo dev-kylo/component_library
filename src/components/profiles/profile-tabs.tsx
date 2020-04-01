@@ -12,7 +12,7 @@ export class ProfileTabs {
     @Prop() headings:any = [['First Tab', 'Tab1', 'A maximum of two lines of text can go here. This is meant only as a brief introduction'], ['Second Tab', 'Tab2']];
     /**Specify Tab ID you want to keep open by default */
     @Prop() activeid:string = 'Tab1';
-    /**The URL of the database to fetch profiles from (firebase) */
+    /** The URL of the database to fetch profiles from (firebase) */
     @Prop() database:string;
 
     @State() profiles:any;
