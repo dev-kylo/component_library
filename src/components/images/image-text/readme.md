@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type      | Default     |
-| --------- | --------- | ----------- | --------- | ----------- |
-| `heading` | `heading` |             | `string`  | `undefined` |
-| `image`   | `image`   |             | `string`  | `undefined` |
-| `switch`  | `switch`  |             | `boolean` | `undefined` |
-| `text`    | `text`    |             | `string`  | `undefined` |
+| Property  | Attribute | Description                          | Type      | Default     |
+| --------- | --------- | ------------------------------------ | --------- | ----------- |
+| `heading` | `heading` | The title at the top of the text     | `string`  | `undefined` |
+| `image`   | `image`   | The paragraph text                   | `string`  | `undefined` |
+| `switch`  | `switch`  | Switch the side the image is on      | `boolean` | `undefined` |
+| `text`    | `text`    | The image link (get from Cloudinary) | `string`  | `undefined` |
 
 
 ## Dependencies

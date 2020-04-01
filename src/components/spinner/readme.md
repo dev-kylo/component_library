@@ -18,12 +18,14 @@
 
  - [cloudinary-app](../cloudinary)
  - [profile-card](../cards/profile-card)
+ - [video-gallery](../videos/video-gallery)
 
 ### Graph
 ```mermaid
 graph TD;
   cloudinary-app --> loading-spinner
   profile-card --> loading-spinner
+  video-gallery --> loading-spinner
   style loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

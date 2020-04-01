@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default                                                                                                                                     |
-| ---------- | ---------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeid` | `activeid` |             | `string` | `'Tab1'`                                                                                                                                    |
-| `database` | `database` |             | `string` | `undefined`                                                                                                                                 |
-| `headings` | `headings` |             | `any`    | `[['First Tab', 'Tab1', 'A maximum of two lines of text can go here. This is meant only as a brief introduction'], ['Second Tab', 'Tab2']]` |
+| Property   | Attribute  | Description                                                                | Type     | Default                                                                                                                                     |
+| ---------- | ---------- | -------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeid` | `activeid` | Specify Tab ID you want to keep open by default                            | `string` | `'Tab1'`                                                                                                                                    |
+| `database` | `database` | The URL of the database to fetch profiles from (firebase)                  | `string` | `undefined`                                                                                                                                 |
+| `headings` | `headings` | Array with child arrays containing Tab Heading, Tab ID, and Text(optional) | `any`    | `[['First Tab', 'Tab1', 'A maximum of two lines of text can go here. This is meant only as a brief introduction'], ['Second Tab', 'Tab2']]` |
 
 
 ## Dependencies
