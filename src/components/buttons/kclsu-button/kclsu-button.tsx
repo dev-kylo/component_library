@@ -52,11 +52,10 @@ export class KclsuButton {
         let link;
 
         if (this.link){
-            link = <a href={this.link} download class={classes.join(' ')}>{this.text}<slot></slot></a>
-    
+            link = <a href={this.link} class={classes.join(' ')}>{this.text}<slot></slot></a>
         }
 
-    else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
+        else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
 
         return (
         <flex-container alignx={this.center? 'center' : 'flex-start'} fillContainer>

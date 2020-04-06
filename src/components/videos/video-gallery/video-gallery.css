@@ -1,3 +1,5 @@
+@import '../../../global/globalstyles.css';
+
 .gallery-container {
     width: 80%;
     margin: auto;
@@ -101,5 +103,14 @@
 @media only screen and (max-width: 520px){
     .video-container {
         min-height: auto;
+    }
+
+    .gallery-container {
+        padding: 0;
+    }
+
+    .gallery-flex::after {
+        height: 180px;
+        right: 1em;
     }
 }

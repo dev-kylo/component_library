@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 
 @Component({
@@ -8,12 +8,27 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class VideoEmbed {
 
-    @Prop() embedid!: string;
+    /** The URL of the Youtube video you want to display - Currently Not Working */
+    @Prop() url: string;
+     /** The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID} */
+    @Prop() embedid: any;
+
+    @State()videoId: string;
+
+    componentDidLoad(){
+        if (!this.embedid && this.url){
+            const urlParams = new URLSearchParams(this.url);
+            let vid = urlParams.get('v');
+            this.videoId = vid;  
+        }
+    }
     
     render() {
+        let video;
+        if (this.url) video = !this.videoId ? <loading-spinner show></loading-spinner> : <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.videoId}`}></iframe>
         return (
             <div class="dc-video-container">
-                <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.embedid}`}></iframe>
+                {this.embedid ? <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.embedid}`}></iframe> : video}
             </div>
         );
     }
