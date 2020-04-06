@@ -69,7 +69,6 @@ export class VideoGalleryStacked {
                         <loading-spinner show={this.loading}></loading-spinner>
                     </div>
                     <div class="thumbnails">
-                        <div class="mobile-edge-blur"></div>
                         {this.createThumbnails()}
                     </div>
                 </div>
