@@ -181,8 +181,8 @@ export namespace Components {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
-        "buttonLink": string;
-        "buttonTitle": string;
+        "buttonlink": string;
+        "buttontitle": string;
         "cardheight": string;
         "cardtitle": string;
         "highlightText": boolean;
@@ -979,8 +979,8 @@ declare namespace LocalJSX {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
-        "buttonLink"?: string;
-        "buttonTitle"?: string;
+        "buttonlink"?: string;
+        "buttontitle"?: string;
         "cardheight"?: string;
         "cardtitle"?: string;
         "highlightText"?: boolean;

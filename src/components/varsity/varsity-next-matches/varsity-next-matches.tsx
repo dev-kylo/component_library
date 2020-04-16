@@ -18,7 +18,7 @@ export class VarsityNextMatches {
             }
             return ([
                 <div style={style} class="score-container">
-                    <label-card cardtitle={evt.Title} reverse image={removeParams(evt.ImageUrl)} buttonLink={evt.Url} buttonTitle="Find out more" ></label-card> 
+                    <label-card cardtitle={evt.Title} reverse image={removeParams(evt.ImageUrl)} buttonlink={evt.Url} buttontitle="Find out more" ></label-card> 
                 </div>
             ])
         })   

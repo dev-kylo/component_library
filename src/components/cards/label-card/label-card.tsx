@@ -9,8 +9,8 @@ import { Component, h, Prop } from '@stencil/core';
 export class LabelCard {
 
     @Prop() cardtitle: string;
-    @Prop() buttonTitle: string = 'Find out more';
-    @Prop() buttonLink: string
+    @Prop() buttontitle: string = 'Find out more';
+    @Prop() buttonlink: string
     @Prop() text: string = '';
     @Prop() highlightText: boolean;
     @Prop() reverse: boolean;
@@ -20,8 +20,7 @@ export class LabelCard {
     
     render() {
         let text = this.highlightText? <p><em>{this.text}</em></p> : <p>{this.text}</p>
-        let content = !this.buttonLink? text : <a href={this.buttonLink}>{this.buttonTitle}</a>
-        // let content = !this.buttonLink? text : <kclsu-button verysmall rounded link={this.buttonLink}>{this.buttonTitle}</kclsu-button>
+        let content = !this.buttonlink? text : <kclsu-button verysmall rounded link={this.buttonlink}>{this.buttontitle}</kclsu-button>
 
         let style = {
             'background-image': `url(${this.image})`,
