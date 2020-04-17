@@ -71,8 +71,8 @@ export class VarsityLanding {
 
     renderNextMatch(){
         let evt = getNextEvents(this.eventsData, 1)[0];
-        if (evt) return <label-card reverse buttonLink={evt.Url} buttonTitle="Find out more" cardtitle={evt.Title} image={removeParams(evt.ImageUrl)}></label-card>
-        else return <label-card reverse buttonLink='/events' buttonTitle="See Other  KCLSU Events" cardtitle="0 Varsity games remaining" image="https://scontent.fcpt7-1.fna.fbcdn.net/v/t1.0-9/88068693_10157130396092399_993138396094267392_o.jpg?_nc_cat=105&_nc_sid=da1649&_nc_ohc=2Ni8SDyp6t0AX93FXT4&_nc_ht=scontent.fcpt7-1.fna&oh=0a410e1833f7c4cf870df8139bb33d92&oe=5E94DD7F"></label-card>
+        if (evt) return <label-card reverse buttonlink={evt.Url} buttontitle="Find out more" cardtitle={evt.Title} image={removeParams(evt.ImageUrl)}></label-card>
+        else return <label-card reverse buttonlink='/events' buttontitle="See Other  KCLSU Events" cardtitle="0 Varsity games remaining" image="https://scontent.fcpt7-1.fna.fbcdn.net/v/t1.0-9/88068693_10157130396092399_993138396094267392_o.jpg?_nc_cat=105&_nc_sid=da1649&_nc_ohc=2Ni8SDyp6t0AX93FXT4&_nc_ht=scontent.fcpt7-1.fna&oh=0a410e1833f7c4cf870df8139bb33d92&oe=5E94DD7F"></label-card>
     }
     
     render() {

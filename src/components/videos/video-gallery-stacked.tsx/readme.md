@@ -1,4 +1,4 @@
-# video-gallery
+# video-gallery-stacked
 
 
 
@@ -16,18 +16,18 @@
 
 ### Depends on
 
-- [gallery-thumbnail](gallery-thumbnail)
+- [gallery-thumbnail-stacked](gallery-thumbnail-stacked)
 - [video-embed](../video-embed)
 - [loading-spinner](../../spinner)
 
 ### Graph
 ```mermaid
 graph TD;
-  video-gallery --> gallery-thumbnail
-  video-gallery --> video-embed
-  video-gallery --> loading-spinner
+  video-gallery-stacked --> gallery-thumbnail-stacked
+  video-gallery-stacked --> video-embed
+  video-gallery-stacked --> loading-spinner
   video-embed --> loading-spinner
-  style video-gallery fill:#f9f,stroke:#333,stroke-width:4px
+  style video-gallery-stacked fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

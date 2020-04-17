@@ -23,13 +23,16 @@ export class KclsuButton {
     @Prop() rounded: boolean;
     /** Make the button small */
     @Prop() small: boolean;
+    /** Makes the button very small */
     @Prop() verysmall: boolean;
     /** Makes the link download */
     @Prop() download: boolean;
     /** Centers the button in the page */
     @Prop() center: boolean;
-    /** Adds specified icon to the page */
+    /** Adds icon to the page */
     @Prop() icon: string;
+    /** Opens the link in a new tab*/
+    @Prop() newtab: string;
     
 
     @Event()emitClick:EventEmitter;
@@ -45,18 +48,16 @@ export class KclsuButton {
         let classes =  [];
         !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
-        // this.small? classes.push('small') : classes.push('big');
         if (this.small) classes.push('small')
         else if (this.verysmall) classes.push('verysmall') 
         else classes.push('big');
         let link;
 
         if (this.link){
-            link = <a href={this.link} download class={classes.join(' ')}>{this.text}<slot></slot></a>
-    
+            link = <a href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')}>{this.text}<slot></slot></a>
         }
 
-    else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
+        else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
 
         return (
         <flex-container alignx={this.center? 'center' : 'flex-start'} fillContainer>

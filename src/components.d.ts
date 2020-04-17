@@ -79,6 +79,13 @@ export namespace Components {
         "image": string;
         "videotitle": string;
     }
+    interface GalleryThumbnailStacked {
+        "active": boolean;
+        "cardheight": string;
+        "emitid": string;
+        "image": string;
+        "videotitle": string;
+    }
     interface GetInvolved {
         "typeform": string;
     }
@@ -143,13 +150,17 @@ export namespace Components {
         "emitid": string;
         "green": boolean;
         /**
-          * Adds specified icon to the page
+          * Adds icon to the page
          */
         "icon": string;
         /**
           * The URL to link to
          */
         "link": string;
+        /**
+          * Opens the link in a new tab
+         */
+        "newtab": string;
         /**
           * Make the button a secondary purple button
          */
@@ -166,6 +177,9 @@ export namespace Components {
           * The text for the button
          */
         "text": string;
+        /**
+          * Makes the button very small
+         */
         "verysmall": boolean;
     }
     interface KclsuModal {
@@ -174,8 +188,8 @@ export namespace Components {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
-        "buttonLink": string;
-        "buttonTitle": string;
+        "buttonlink": string;
+        "buttontitle": string;
         "cardheight": string;
         "cardtitle": string;
         "highlightText": boolean;
@@ -311,9 +325,22 @@ export namespace Components {
         "url": string;
     }
     interface VideoEmbed {
-        "embedid": string;
+        /**
+          * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
+         */
+        "embedid": any;
+        /**
+          * The URL of the Youtube video you want to display - Currently Not Working
+         */
+        "url": string;
     }
     interface VideoGallery {
+        /**
+          * The Youtube URL for any given playlist
+         */
+        "playlist": any;
+    }
+    interface VideoGalleryStacked {
         /**
           * The Youtube URL for any given playlist
          */
@@ -440,6 +467,12 @@ declare global {
     var HTMLGalleryThumbnailElement: {
         prototype: HTMLGalleryThumbnailElement;
         new (): HTMLGalleryThumbnailElement;
+    };
+    interface HTMLGalleryThumbnailStackedElement extends Components.GalleryThumbnailStacked, HTMLStencilElement {
+    }
+    var HTMLGalleryThumbnailStackedElement: {
+        prototype: HTMLGalleryThumbnailStackedElement;
+        new (): HTMLGalleryThumbnailStackedElement;
     };
     interface HTMLGetInvolvedElement extends Components.GetInvolved, HTMLStencilElement {
     }
@@ -699,6 +732,12 @@ declare global {
         prototype: HTMLVideoGalleryElement;
         new (): HTMLVideoGalleryElement;
     };
+    interface HTMLVideoGalleryStackedElement extends Components.VideoGalleryStacked, HTMLStencilElement {
+    }
+    var HTMLVideoGalleryStackedElement: {
+        prototype: HTMLVideoGalleryStackedElement;
+        new (): HTMLVideoGalleryStackedElement;
+    };
     interface HTMLElementTagNameMap {
         "academic-candidate-display": HTMLAcademicCandidateDisplayElement;
         "accordion-container": HTMLAccordionContainerElement;
@@ -720,6 +759,7 @@ declare global {
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
         "fullwidth-strip": HTMLFullwidthStripElement;
         "gallery-thumbnail": HTMLGalleryThumbnailElement;
+        "gallery-thumbnail-stacked": HTMLGalleryThumbnailStackedElement;
         "get-involved": HTMLGetInvolvedElement;
         "grid-landing": HTMLGridLandingElement;
         "grid-landing-item": HTMLGridLandingItemElement;
@@ -763,6 +803,7 @@ declare global {
         "video-banner": HTMLVideoBannerElement;
         "video-embed": HTMLVideoEmbedElement;
         "video-gallery": HTMLVideoGalleryElement;
+        "video-gallery-stacked": HTMLVideoGalleryStackedElement;
     }
 }
 declare namespace LocalJSX {
@@ -840,6 +881,14 @@ declare namespace LocalJSX {
         "onEmitClick"?: (event: CustomEvent<any>) => void;
         "videotitle"?: string;
     }
+    interface GalleryThumbnailStacked {
+        "active"?: boolean;
+        "cardheight"?: string;
+        "emitid"?: string;
+        "image"?: string;
+        "onEmitClick"?: (event: CustomEvent<any>) => void;
+        "videotitle"?: string;
+    }
     interface GetInvolved {
         "typeform"?: string;
     }
@@ -905,13 +954,17 @@ declare namespace LocalJSX {
         "emitid"?: string;
         "green"?: boolean;
         /**
-          * Adds specified icon to the page
+          * Adds icon to the page
          */
         "icon"?: string;
         /**
           * The URL to link to
          */
         "link"?: string;
+        /**
+          * Opens the link in a new tab
+         */
+        "newtab"?: string;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
         /**
           * Make the button a secondary purple button
@@ -929,6 +982,9 @@ declare namespace LocalJSX {
           * The text for the button
          */
         "text"?: string;
+        /**
+          * Makes the button very small
+         */
         "verysmall"?: boolean;
     }
     interface KclsuModal {
@@ -937,8 +993,8 @@ declare namespace LocalJSX {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
-        "buttonLink"?: string;
-        "buttonTitle"?: string;
+        "buttonlink"?: string;
+        "buttontitle"?: string;
         "cardheight"?: string;
         "cardtitle"?: string;
         "highlightText"?: boolean;
@@ -1079,9 +1135,22 @@ declare namespace LocalJSX {
         "url"?: string;
     }
     interface VideoEmbed {
-        "embedid": string;
+        /**
+          * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
+         */
+        "embedid"?: any;
+        /**
+          * The URL of the Youtube video you want to display - Currently Not Working
+         */
+        "url"?: string;
     }
     interface VideoGallery {
+        /**
+          * The Youtube URL for any given playlist
+         */
+        "playlist": any;
+    }
+    interface VideoGalleryStacked {
         /**
           * The Youtube URL for any given playlist
          */
@@ -1108,6 +1177,7 @@ declare namespace LocalJSX {
         "fullwidth-beige-strip": FullwidthBeigeStrip;
         "fullwidth-strip": FullwidthStrip;
         "gallery-thumbnail": GalleryThumbnail;
+        "gallery-thumbnail-stacked": GalleryThumbnailStacked;
         "get-involved": GetInvolved;
         "grid-landing": GridLanding;
         "grid-landing-item": GridLandingItem;
@@ -1151,6 +1221,7 @@ declare namespace LocalJSX {
         "video-banner": VideoBanner;
         "video-embed": VideoEmbed;
         "video-gallery": VideoGallery;
+        "video-gallery-stacked": VideoGalleryStacked;
     }
 }
 export { LocalJSX as JSX };
@@ -1177,6 +1248,7 @@ declare module "@stencil/core" {
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
             "fullwidth-strip": LocalJSX.FullwidthStrip & JSXBase.HTMLAttributes<HTMLFullwidthStripElement>;
             "gallery-thumbnail": LocalJSX.GalleryThumbnail & JSXBase.HTMLAttributes<HTMLGalleryThumbnailElement>;
+            "gallery-thumbnail-stacked": LocalJSX.GalleryThumbnailStacked & JSXBase.HTMLAttributes<HTMLGalleryThumbnailStackedElement>;
             "get-involved": LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
             "grid-landing": LocalJSX.GridLanding & JSXBase.HTMLAttributes<HTMLGridLandingElement>;
             "grid-landing-item": LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
@@ -1220,6 +1292,7 @@ declare module "@stencil/core" {
             "video-banner": LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
             "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
             "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
+            "video-gallery-stacked": LocalJSX.VideoGalleryStacked & JSXBase.HTMLAttributes<HTMLVideoGalleryStackedElement>;
         }
     }
 }

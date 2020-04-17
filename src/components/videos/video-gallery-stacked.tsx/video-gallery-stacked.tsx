@@ -2,11 +2,11 @@ import { Component, h, Prop, State, Listen } from '@stencil/core';
 
 
 @Component({
-    tag: 'video-gallery',
-    styleUrl: 'video-gallery.css',
+    tag: 'video-gallery-stacked',
+    styleUrl: 'video-gallery-stacked.css',
     shadow: true
 })
-export class VideoGallery {
+export class VideoGalleryStacked {
 
     /** The Youtube URL for any given playlist */
     @Prop() playlist!: any;
@@ -46,12 +46,12 @@ export class VideoGallery {
                let active=false
                 if (video.snippet.resourceId.videoId === this.active) active=true
                 return (
-                    <gallery-thumbnail
+                    <gallery-thumbnail-stacked
                         videotitle={video.snippet.title}
                         image={video.snippet.thumbnails.medium.url}
                         active={active}
                         emitid={video.snippet.resourceId.videoId}
-                    ></gallery-thumbnail>)
+                    ></gallery-thumbnail-stacked>)
             })
         }
     }
@@ -69,7 +69,6 @@ export class VideoGallery {
                         <loading-spinner show={this.loading}></loading-spinner>
                     </div>
                     <div class="thumbnails">
-                        <div class="mobile-edge-blur"></div>
                         {this.createThumbnails()}
                     </div>
                 </div>
