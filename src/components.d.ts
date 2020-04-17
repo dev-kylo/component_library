@@ -150,13 +150,17 @@ export namespace Components {
         "emitid": string;
         "green": boolean;
         /**
-          * Adds specified icon to the page
+          * Adds icon to the page
          */
         "icon": string;
         /**
           * The URL to link to
          */
         "link": string;
+        /**
+          * Opens the link in a new tab
+         */
+        "newtab": string;
         /**
           * Make the button a secondary purple button
          */
@@ -173,6 +177,9 @@ export namespace Components {
           * The text for the button
          */
         "text": string;
+        /**
+          * Makes the button very small
+         */
         "verysmall": boolean;
     }
     interface KclsuModal {
@@ -947,13 +954,17 @@ declare namespace LocalJSX {
         "emitid"?: string;
         "green"?: boolean;
         /**
-          * Adds specified icon to the page
+          * Adds icon to the page
          */
         "icon"?: string;
         /**
           * The URL to link to
          */
         "link"?: string;
+        /**
+          * Opens the link in a new tab
+         */
+        "newtab"?: string;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
         /**
           * Make the button a secondary purple button
@@ -971,6 +982,9 @@ declare namespace LocalJSX {
           * The text for the button
          */
         "text"?: string;
+        /**
+          * Makes the button very small
+         */
         "verysmall"?: boolean;
     }
     interface KclsuModal {

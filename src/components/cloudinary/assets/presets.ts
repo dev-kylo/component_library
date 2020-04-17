@@ -21,7 +21,7 @@ export const presets = [
     },
     {
         name: 'Standard',
-        id: 'Medium_Image',
+        id: 'Image_Medium',
         dimensions: '800 x auto'
     },
     {
