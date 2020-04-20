@@ -32,7 +32,7 @@ export class KclsuButton {
     /** Adds icon to the page */
     @Prop() icon: string;
     /** Opens the link in a new tab*/
-    @Prop() newtab: string;
+    @Prop() newtab: boolean;
     
 
     @Event()emitClick:EventEmitter;

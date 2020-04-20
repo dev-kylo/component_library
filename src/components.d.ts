@@ -160,7 +160,7 @@ export namespace Components {
         /**
           * Opens the link in a new tab
          */
-        "newtab": string;
+        "newtab": boolean;
         /**
           * Make the button a secondary purple button
          */
@@ -964,7 +964,7 @@ declare namespace LocalJSX {
         /**
           * Opens the link in a new tab
          */
-        "newtab"?: string;
+        "newtab"?: boolean;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
         /**
           * Make the button a secondary purple button
