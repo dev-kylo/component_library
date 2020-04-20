@@ -21,7 +21,6 @@ export class ImageText {
         let info = this.text? <p>{this.text}</p> : '';
         let style = !this.switch? {} : {"flex-direction": "row-reverse"}
         return (
-            <page-content>
                 <div class="image-text" style={style}>
                     <div class="info">
                         <h4>{this.heading}</h4>
@@ -32,7 +31,6 @@ export class ImageText {
                         <img src={this.image}></img>
                     </div>
                 </div>
-            </page-content>
         );
     }
 }
