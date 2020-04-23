@@ -237,13 +237,37 @@ export namespace Components {
         "to": string;
     }
     interface ProfileCard {
+        /**
+          * The text for the primary text link bottom left
+         */
         "cta": string;
+        /**
+          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+         */
         "emitid": string;
+        /**
+          * The image URL
+         */
         "image": string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
         "link": string;
+        /**
+          * The title for the card - usually a full name
+         */
         "name": string;
+        /**
+          * A sub heading - usually a position or field title
+         */
         "position": string;
+        /**
+          * The text for the secondary text link bottom right
+         */
         "secondcta": string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
         "secondlink": string;
     }
     interface ProfileCardLayout {
@@ -1045,14 +1069,38 @@ declare namespace LocalJSX {
         "to"?: string;
     }
     interface ProfileCard {
+        /**
+          * The text for the primary text link bottom left
+         */
         "cta"?: string;
+        /**
+          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+         */
         "emitid"?: string;
+        /**
+          * The image URL
+         */
         "image"?: string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
         "link"?: string;
+        /**
+          * The title for the card - usually a full name
+         */
         "name"?: string;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * A sub heading - usually a position or field title
+         */
         "position"?: string;
+        /**
+          * The text for the secondary text link bottom right
+         */
         "secondcta"?: string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
         "secondlink"?: string;
     }
     interface ProfileCardLayout {

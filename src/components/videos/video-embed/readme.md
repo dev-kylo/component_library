@@ -10,7 +10,7 @@
 | Property  | Attribute | Description                                                                      | Type     | Default     |
 | --------- | --------- | -------------------------------------------------------------------------------- | -------- | ----------- |
 | `embedid` | `embedid` | The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID} | `any`    | `undefined` |
-| `url`     | `url`     | The URL of the Youtube video you want to display - Currently Not Working         | `string` | `undefined` |
+| `url`     | `url`     | The URL of the Youtube video you want to display - CURRENTLY NOT WORKING         | `string` | `undefined` |
 
 
 ## Dependencies

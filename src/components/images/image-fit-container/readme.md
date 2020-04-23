@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type       | Default     |
-| --------- | --------- | ----------- | ---------- | ----------- |
-| `alt`     | `alt`     |             | `string`   | `undefined` |
-| `classes` | --        |             | `string[]` | `undefined` |
-| `src`     | `src`     |             | `string`   | `undefined` |
+| Property  | Attribute | Description | Type     | Default     |
+| --------- | --------- | ----------- | -------- | ----------- |
+| `alt`     | `alt`     |             | `string` | `undefined` |
+| `classes` | `classes` |             | `string` | `undefined` |
+| `src`     | `src`     |             | `string` | `undefined` |
 
 
 ## Dependencies
