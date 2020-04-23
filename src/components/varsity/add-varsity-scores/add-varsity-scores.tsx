@@ -103,7 +103,7 @@ export class AddVarsityScores {
     }
 
     postToDatabase(data){
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('kclsu_token');
         let url = `https://varsity-db.firebaseio.com/${this.year}.json?auth=${token}`
         let payload: any = {
                 method: 'PUT', // *GET, POST, PUT, DELETE, etc.

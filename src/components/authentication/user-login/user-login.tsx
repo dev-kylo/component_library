@@ -7,7 +7,7 @@ import { Component, h, Prop, State } from '@stencil/core';
 })
 export class UserLogin {
 
-    /** The name of the database area. For example: ProjectX */
+    /** The name of the database area. For example: projectx */
     @Prop() database: string;
     
     @State() modalOpen: boolean = true;
@@ -20,7 +20,7 @@ export class UserLogin {
 
 
     checkAuthentication(){
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('kclsu_token');
         if (token){
             const expirationDate = new Date(localStorage.getItem('tokenExpireDate'));
             if (new Date() < expirationDate){
@@ -28,7 +28,7 @@ export class UserLogin {
                 this.modalOpen = false;
             }
             else {
-                localStorage.removeItem('token');
+                localStorage.removeItem('kclsu_token');
                 localStorage.removeItem('tokenExpireDate')
             }
         }
@@ -61,7 +61,7 @@ export class UserLogin {
         else {
 
             const expirationDate:any = new Date(new Date().getTime() + data.expiresIn * 1000);
-            localStorage.setItem('token', data.idToken);
+            localStorage.setItem('kclsu_token', data.idToken);
             localStorage.setItem('tokenExpireDate', expirationDate); 
 
             this.error = '';
