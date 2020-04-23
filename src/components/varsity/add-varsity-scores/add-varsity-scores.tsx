@@ -24,7 +24,6 @@ export class AddVarsityScores {
             .then(res => res.json())
             .then(data => {
                 this.eventsData = data;
-                this.checkAuthentication();
             })              
     }
 
@@ -104,7 +103,8 @@ export class AddVarsityScores {
     }
 
     postToDatabase(data){
-        let url = `https://varsity-db.firebaseio.com/${this.year}.json?auth=${this.token}`
+        const token = localStorage.getItem('token');
+        let url = `https://varsity-db.firebaseio.com/${this.year}.json?auth=${token}`
         let payload: any = {
                 method: 'PUT', // *GET, POST, PUT, DELETE, etc.
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -131,60 +131,6 @@ export class AddVarsityScores {
         this.activeID = e.target.dataset.id;
         this.modalOpen = true;
     }
-
-    checkAuthentication(){
-        console.log("authenticating")
-        const token = localStorage.getItem('token');
-        if (token){
-            const expirationDate = new Date(localStorage.getItem('tokenExpireDate'));
-            if (new Date() < expirationDate){
-                this.token = token;
-                this.logInModalOpen = false;
-            }
-            else {
-                localStorage.removeItem('token');
-                localStorage.removeItem('tokenExpireDate')
-            }
-        }
-    }
-
-    logIn(e){
-        e.preventDefault();
-        let element = e.target;
-        let email = element[0].value;
-        let password = element[1].value;
-
-        let url = 'https://kclsu-heroku.herokuapp.com/authenticate';
-        let data = {
-            email: email,
-            password: password,
-            returnSecureToken: true
-        }
-        let payload: any = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data)
-    };
-    fetch(url, payload)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        if (!data.idToken) this.error = data.error.message;
-        else {
-
-            const expirationDate:any = new Date(new Date().getTime() + data.expiresIn * 1000);
-            localStorage.setItem('token', data.idToken);
-            localStorage.setItem('tokenExpireDate', expirationDate); 
-
-            this.error = '';
-            this.token = data.idToken;
-            this.logInModalOpen = false;
-        }
-    })
-    .catch(er => this.error = er) 
-    }
     
     
     render() {
@@ -192,21 +138,7 @@ export class AddVarsityScores {
         let scoreCard = !this.modalOpen? '' : this.createScoreCard(this.activeID);
         return (
             [<h2 style={{"text-align": "center"}}> Add Scores to Database</h2>,
-            <kclsu-modal show={this.logInModalOpen}>
-                <form onSubmit={(e) => this.logIn(e)}>
-                    <span class="title">Log In To Update Scores</span>
-                    <div class="flex">
-                        <label> Email</label>
-                        <input type="email" value='' id="email" />
-                    </div>
-                    <div class="flex">
-                        <label> Password</label>
-                        <input type="password" value='' id="password" />
-                    </div>
-                    <button>Login</button>                 
-                </form>
-                {this.error? this.error: ''}
-            </kclsu-modal>,
+            <user-login database="varsity"></user-login>,
             <flex-container alignx="center">
                 <kclsu-modal show={this.modalOpen}>
                     {scoreCard}
