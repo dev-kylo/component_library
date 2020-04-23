@@ -318,6 +318,12 @@ export namespace Components {
     interface TabsContainer {
         "innertab": boolean;
     }
+    interface UserLogin {
+        /**
+          * The name of the database area. For example: ProjectX
+         */
+        "database": string;
+    }
     interface VarsityLanding {
         "currentDate": {
             weekday: string;
@@ -702,6 +708,12 @@ declare global {
         prototype: HTMLTabsContainerElement;
         new (): HTMLTabsContainerElement;
     };
+    interface HTMLUserLoginElement extends Components.UserLogin, HTMLStencilElement {
+    }
+    var HTMLUserLoginElement: {
+        prototype: HTMLUserLoginElement;
+        new (): HTMLUserLoginElement;
+    };
     interface HTMLVarsityLandingElement extends Components.VarsityLanding, HTMLStencilElement {
     }
     var HTMLVarsityLandingElement: {
@@ -818,6 +830,7 @@ declare global {
         "tab-content": HTMLTabContentElement;
         "tab-header": HTMLTabHeaderElement;
         "tabs-container": HTMLTabsContainerElement;
+        "user-login": HTMLUserLoginElement;
         "varsity-landing": HTMLVarsityLandingElement;
         "varsity-next-matches": HTMLVarsityNextMatchesElement;
         "varsity-race": HTMLVarsityRaceElement;
@@ -1152,6 +1165,12 @@ declare namespace LocalJSX {
     interface TabsContainer {
         "innertab"?: boolean;
     }
+    interface UserLogin {
+        /**
+          * The name of the database area. For example: ProjectX
+         */
+        "database"?: string;
+    }
     interface VarsityLanding {
         "currentDate"?: {
             weekday: string;
@@ -1260,6 +1279,7 @@ declare namespace LocalJSX {
         "tab-content": TabContent;
         "tab-header": TabHeader;
         "tabs-container": TabsContainer;
+        "user-login": UserLogin;
         "varsity-landing": VarsityLanding;
         "varsity-next-matches": VarsityNextMatches;
         "varsity-race": VarsityRace;
@@ -1331,6 +1351,7 @@ declare module "@stencil/core" {
             "tab-content": LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
             "tab-header": LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
             "tabs-container": LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
+            "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;
             "varsity-landing": LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
             "varsity-next-matches": LocalJSX.VarsityNextMatches & JSXBase.HTMLAttributes<HTMLVarsityNextMatchesElement>;
             "varsity-race": LocalJSX.VarsityRace & JSXBase.HTMLAttributes<HTMLVarsityRaceElement>;
