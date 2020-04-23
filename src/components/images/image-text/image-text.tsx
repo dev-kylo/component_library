@@ -10,9 +10,9 @@ export class ImageText {
 
     /** The title at the top of the text */
     @Prop() heading: string;
-    /** The image link (get from Cloudinary) */
-    @Prop() text: string;
     /** The paragraph text */
+    @Prop() text: string;
+    /** The image link (get from Cloudinary) */
     @Prop() image: string;
     /** 	Switch the side the image is on*/
     @Prop() switch: boolean;
