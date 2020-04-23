@@ -6,14 +6,16 @@ import { Component, h, Prop } from '@stencil/core';
     styleUrl: 'image-fit-container.css'
 })
 export class ImageFitContainer {
-
+    /* The URL of the image */
     @Prop() src: string;
+    /* The alt tag of the image for accessibility */
     @Prop() alt: string;
-    @Prop() classes:string[];
+    /* Any classes to be added to the image */
+    @Prop() classes:string;
     
     render() {
         return (
-            <img src={this.src} alt={this.alt}></img>
+            <img src={this.src} alt={this.alt} class={this.classes? this.classes : ''}></img>
         );
     }
 }

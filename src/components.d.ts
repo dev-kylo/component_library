@@ -98,7 +98,7 @@ export namespace Components {
     }
     interface ImageFitContainer {
         "alt": string;
-        "classes": string[];
+        "classes": string;
         "src": string;
     }
     interface ImageSliderAuto {
@@ -112,7 +112,7 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * The paragraph text
+          * The image link (get from Cloudinary)
          */
         "image": string;
         /**
@@ -120,7 +120,7 @@ export namespace Components {
          */
         "switch": boolean;
         /**
-          * The image link (get from Cloudinary)
+          * The paragraph text
          */
         "text": string;
     }
@@ -330,7 +330,7 @@ export namespace Components {
          */
         "embedid": any;
         /**
-          * The URL of the Youtube video you want to display - Currently Not Working
+          * The URL of the Youtube video you want to display - CURRENTLY NOT WORKING
          */
         "url": string;
     }
@@ -901,7 +901,7 @@ declare namespace LocalJSX {
     }
     interface ImageFitContainer {
         "alt"?: string;
-        "classes"?: string[];
+        "classes"?: string;
         "src"?: string;
     }
     interface ImageSliderAuto {
@@ -915,7 +915,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * The paragraph text
+          * The image link (get from Cloudinary)
          */
         "image"?: string;
         /**
@@ -923,7 +923,7 @@ declare namespace LocalJSX {
          */
         "switch"?: boolean;
         /**
-          * The image link (get from Cloudinary)
+          * The paragraph text
          */
         "text"?: string;
     }
@@ -1140,7 +1140,7 @@ declare namespace LocalJSX {
          */
         "embedid"?: any;
         /**
-          * The URL of the Youtube video you want to display - Currently Not Working
+          * The URL of the Youtube video you want to display - CURRENTLY NOT WORKING
          */
         "url"?: string;
     }
