@@ -13,13 +13,14 @@
 | `download`  | `download`  | Makes the link download                   | `boolean` | `undefined` |
 | `emitid`    | `emitid`    | Event Listener name                       | `string`  | `undefined` |
 | `green`     | `green`     |                                           | `boolean` | `undefined` |
-| `icon`      | `icon`      | Adds specified icon to the page           | `string`  | `undefined` |
+| `icon`      | `icon`      | Adds icon to the page                     | `string`  | `undefined` |
 | `link`      | `link`      | The URL to link to                        | `string`  | `undefined` |
+| `newtab`    | `newtab`    | Opens the link in a new tab               | `boolean` | `undefined` |
 | `purple`    | `purple`    | Make the button a secondary purple button | `boolean` | `undefined` |
 | `rounded`   | `rounded`   | Give the button rounded corners           | `boolean` | `undefined` |
 | `small`     | `small`     | Make the button small                     | `boolean` | `undefined` |
 | `text`      | `text`      | The text for the button                   | `string`  | `undefined` |
-| `verysmall` | `verysmall` |                                           | `boolean` | `undefined` |
+| `verysmall` | `verysmall` | Makes the button very small               | `boolean` | `undefined` |
 
 
 ## Events
@@ -35,6 +36,7 @@
 
  - [cloudinary-app](../../cloudinary)
  - [full-bio](../../profiles/bio)
+ - [label-card](../../cards/label-card)
  - [preset-controls](../../cloudinary/preset-controls)
 
 ### Depends on
@@ -47,6 +49,7 @@ graph TD;
   kclsu-button --> flex-container
   cloudinary-app --> kclsu-button
   full-bio --> kclsu-button
+  label-card --> kclsu-button
   preset-controls --> kclsu-button
   style kclsu-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

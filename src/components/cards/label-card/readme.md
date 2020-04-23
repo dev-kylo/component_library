@@ -9,8 +9,8 @@
 
 | Property        | Attribute        | Description | Type      | Default                                                                                                                                                                                  |
 | --------------- | ---------------- | ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `buttonLink`    | `button-link`    |             | `string`  | `undefined`                                                                                                                                                                              |
-| `buttonTitle`   | `button-title`   |             | `string`  | `'Find out more'`                                                                                                                                                                        |
+| `buttonlink`    | `buttonlink`     |             | `string`  | `undefined`                                                                                                                                                                              |
+| `buttontitle`   | `buttontitle`    |             | `string`  | `'Find out more'`                                                                                                                                                                        |
 | `cardheight`    | `cardheight`     |             | `string`  | `undefined`                                                                                                                                                                              |
 | `cardtitle`     | `cardtitle`      |             | `string`  | `undefined`                                                                                                                                                                              |
 | `highlightText` | `highlight-text` |             | `boolean` | `undefined`                                                                                                                                                                              |
@@ -27,9 +27,15 @@
  - [varsity-landing](../../varsity/varsity-landing)
  - [varsity-next-matches](../../varsity/varsity-next-matches)
 
+### Depends on
+
+- [kclsu-button](../../buttons/kclsu-button)
+
 ### Graph
 ```mermaid
 graph TD;
+  label-card --> kclsu-button
+  kclsu-button --> flex-container
   varsity-landing --> label-card
   varsity-next-matches --> label-card
   style label-card fill:#f9f,stroke:#333,stroke-width:4px
