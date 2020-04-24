@@ -81,7 +81,7 @@ export class UserLogin {
         return (
             <kclsu-modal show={this.modalOpen}>
                 <form onSubmit={(e) => this.logIn(e)}>
-                    <span class="title">Log In To Update Scores</span>
+                    <span class="title">Log in using details provided</span>
                     <div class="flex">
                         <label> Email</label>
                         <input type="email" value='' id="email" />
