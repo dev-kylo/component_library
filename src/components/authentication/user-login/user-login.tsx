@@ -42,10 +42,14 @@ export class UserLogin {
         let password = element[1].value;
 
         let url = 'https://kclsu-heroku.herokuapp.com/authenticate';
+
         let data = {
-            email: email,
-            password: password,
-            returnSecureToken: true
+            package: {
+                email: email,
+                password: password,
+                returnSecureToken: true
+            },
+            area: this.database
         }
         let payload: any = {
             method: 'POST',
