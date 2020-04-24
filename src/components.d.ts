@@ -320,7 +320,7 @@ export namespace Components {
     }
     interface UserLogin {
         /**
-          * The name of the database area. For example: ProjectX
+          * The name of the database area. For example: projectx
          */
         "database": string;
     }
@@ -1167,7 +1167,7 @@ declare namespace LocalJSX {
     }
     interface UserLogin {
         /**
-          * The name of the database area. For example: ProjectX
+          * The name of the database area. For example: projectx
          */
         "database"?: string;
     }
