@@ -8,7 +8,6 @@ a{
 
 
 .card {
-    max-width: 20em;
     height: auto;
     padding: 5px;
     background: #fff;
@@ -33,6 +32,12 @@ a{
     top: 0;
     width: 4px;
     height: 100%;
+}
+
+@media only screen and (min-width: 1000px){
+    .card{
+        max-width: 800px;
+    }
 }
 
 
@@ -67,19 +72,8 @@ a{
     margin: 0;
 }
 
-@media only screen and (max-width: 500px){
-    .content p {
-        font-family: "Open Sans", Arial, sans-serif;
-        font-size: 16px;
-        line-height: 32px;
-        max-width: 95%;
-        text-align: center;
-    }
-
-}
 
 @media only screen and (max-width: 350px){
-
     .title{
         font-size: 16px;
     }
