@@ -318,6 +318,20 @@ export namespace Components {
     interface TabsContainer {
         "innertab": boolean;
     }
+    interface TextCard {
+        /**
+          * The purple heading in the card
+         */
+        "cardtitle": string;
+        /**
+          * The Url link you want to link to
+         */
+        "link": string;
+        /**
+          * Any extra text. If you want it to be empty, add empty string value:  ""
+         */
+        "subtext": string;
+    }
     interface UserLogin {
         /**
           * The name of the database area. For example: projectx
@@ -708,6 +722,12 @@ declare global {
         prototype: HTMLTabsContainerElement;
         new (): HTMLTabsContainerElement;
     };
+    interface HTMLTextCardElement extends Components.TextCard, HTMLStencilElement {
+    }
+    var HTMLTextCardElement: {
+        prototype: HTMLTextCardElement;
+        new (): HTMLTextCardElement;
+    };
     interface HTMLUserLoginElement extends Components.UserLogin, HTMLStencilElement {
     }
     var HTMLUserLoginElement: {
@@ -830,6 +850,7 @@ declare global {
         "tab-content": HTMLTabContentElement;
         "tab-header": HTMLTabHeaderElement;
         "tabs-container": HTMLTabsContainerElement;
+        "text-card": HTMLTextCardElement;
         "user-login": HTMLUserLoginElement;
         "varsity-landing": HTMLVarsityLandingElement;
         "varsity-next-matches": HTMLVarsityNextMatchesElement;
@@ -1165,6 +1186,20 @@ declare namespace LocalJSX {
     interface TabsContainer {
         "innertab"?: boolean;
     }
+    interface TextCard {
+        /**
+          * The purple heading in the card
+         */
+        "cardtitle": string;
+        /**
+          * The Url link you want to link to
+         */
+        "link"?: string;
+        /**
+          * Any extra text. If you want it to be empty, add empty string value:  ""
+         */
+        "subtext"?: string;
+    }
     interface UserLogin {
         /**
           * The name of the database area. For example: projectx
@@ -1279,6 +1314,7 @@ declare namespace LocalJSX {
         "tab-content": TabContent;
         "tab-header": TabHeader;
         "tabs-container": TabsContainer;
+        "text-card": TextCard;
         "user-login": UserLogin;
         "varsity-landing": VarsityLanding;
         "varsity-next-matches": VarsityNextMatches;
@@ -1351,6 +1387,7 @@ declare module "@stencil/core" {
             "tab-content": LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
             "tab-header": LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
             "tabs-container": LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
+            "text-card": LocalJSX.TextCard & JSXBase.HTMLAttributes<HTMLTextCardElement>;
             "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;
             "varsity-landing": LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
             "varsity-next-matches": LocalJSX.VarsityNextMatches & JSXBase.HTMLAttributes<HTMLVarsityNextMatchesElement>;
