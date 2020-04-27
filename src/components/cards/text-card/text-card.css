@@ -1,0 +1,86 @@
+@import '../../../global/globalstyles.css';
+
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.card {
+    max-width: 20em;
+    height: auto;
+    padding: 5px;
+    background: #fff;
+    position: relative;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    border: 1px solid #eaeaea;
+    transition: box-shadow 0.5s;
+    margin-top: 10px;
+}
+
+.card:hover{
+    box-shadow:8px 5px 5px 0px rgba(0,0,0,0.15);
+}
+
+.card::before {
+    content: "";
+    background: #5EBDB0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+}
+
+
+.title {
+
+    font-size: 17px;
+    line-height: 22px;
+    color: #502669;
+    display: inline-block;
+    font-weight: bold;
+    font-family: bree_serifbold, bree-serif, serif;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding: 0 20px;
+    vertical-align: middle;
+    text-align: left;
+
+}
+
+
+.content{
+    height: 100%;
+    width: 100%;
+    padding: 0 0.5em;
+}
+
+.content p {
+    font-size: 16px;
+    color: black;
+    font-size: 14px;
+    padding: 0 20px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 500px){
+    .content p {
+        font-family: "Open Sans", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 32px;
+        max-width: 95%;
+        text-align: center;
+    }
+
+}
+
+@media only screen and (max-width: 350px){
+
+    .title{
+        font-size: 16px;
+    }
+}
