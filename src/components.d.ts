@@ -200,6 +200,9 @@ export namespace Components {
     }
     interface LastYearScores {
     }
+    interface LazyImage {
+        "image": string;
+    }
     interface LoadingSpinner {
         "show": boolean;
     }
@@ -271,6 +274,24 @@ export namespace Components {
         "secondlink": string;
     }
     interface ProfileCardLayout {
+    }
+    interface ProfileLogoCard {
+        /**
+          * The text title of the card
+         */
+        "cardtitle": string;
+        /**
+          * The background image URL
+         */
+        "image": string;
+        /**
+          * The URL link for the the card
+         */
+        "link": string;
+        /**
+          * The logo image URL 150x150px
+         */
+        "logo": string;
     }
     interface ProfileTabs {
         /**
@@ -602,6 +623,12 @@ declare global {
         prototype: HTMLLastYearScoresElement;
         new (): HTMLLastYearScoresElement;
     };
+    interface HTMLLazyImageElement extends Components.LazyImage, HTMLStencilElement {
+    }
+    var HTMLLazyImageElement: {
+        prototype: HTMLLazyImageElement;
+        new (): HTMLLazyImageElement;
+    };
     interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {
     }
     var HTMLLoadingSpinnerElement: {
@@ -661,6 +688,12 @@ declare global {
     var HTMLProfileCardLayoutElement: {
         prototype: HTMLProfileCardLayoutElement;
         new (): HTMLProfileCardLayoutElement;
+    };
+    interface HTMLProfileLogoCardElement extends Components.ProfileLogoCard, HTMLStencilElement {
+    }
+    var HTMLProfileLogoCardElement: {
+        prototype: HTMLProfileLogoCardElement;
+        new (): HTMLProfileLogoCardElement;
     };
     interface HTMLProfileTabsElement extends Components.ProfileTabs, HTMLStencilElement {
     }
@@ -830,6 +863,7 @@ declare global {
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
         "label-card": HTMLLabelCardElement;
         "last-year-scores": HTMLLastYearScoresElement;
+        "lazy-image": HTMLLazyImageElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
@@ -840,6 +874,7 @@ declare global {
         "primary-button": HTMLPrimaryButtonElement;
         "profile-card": HTMLProfileCardElement;
         "profile-card-layout": HTMLProfileCardLayoutElement;
+        "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
@@ -1063,6 +1098,9 @@ declare namespace LocalJSX {
     }
     interface LastYearScores {
     }
+    interface LazyImage {
+        "image"?: string;
+    }
     interface LoadingSpinner {
         "show"?: boolean;
     }
@@ -1138,6 +1176,24 @@ declare namespace LocalJSX {
         "secondlink"?: string;
     }
     interface ProfileCardLayout {
+    }
+    interface ProfileLogoCard {
+        /**
+          * The text title of the card
+         */
+        "cardtitle": string;
+        /**
+          * The background image URL
+         */
+        "image"?: string;
+        /**
+          * The URL link for the the card
+         */
+        "link"?: string;
+        /**
+          * The logo image URL 150x150px
+         */
+        "logo"?: string;
     }
     interface ProfileTabs {
         /**
@@ -1294,6 +1350,7 @@ declare namespace LocalJSX {
         "kclsu-tabs-container": KclsuTabsContainer;
         "label-card": LabelCard;
         "last-year-scores": LastYearScores;
+        "lazy-image": LazyImage;
         "loading-spinner": LoadingSpinner;
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
@@ -1304,6 +1361,7 @@ declare namespace LocalJSX {
         "primary-button": PrimaryButton;
         "profile-card": ProfileCard;
         "profile-card-layout": ProfileCardLayout;
+        "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "purple-button": PurpleButton;
         "quick-link": QuickLink;
@@ -1367,6 +1425,7 @@ declare module "@stencil/core" {
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
             "label-card": LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
+            "lazy-image": LocalJSX.LazyImage & JSXBase.HTMLAttributes<HTMLLazyImageElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
@@ -1377,6 +1436,7 @@ declare module "@stencil/core" {
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
             "profile-card": LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
+            "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
