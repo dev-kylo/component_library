@@ -292,6 +292,10 @@ export namespace Components {
           * The logo image URL 150x150px
          */
         "logo": string;
+        /**
+          * OPTIONAL - if you are using a transparent text icon and need to set a background colour
+         */
+        "logocolour": string;
     }
     interface ProfileTabs {
         /**
@@ -1194,6 +1198,10 @@ declare namespace LocalJSX {
           * The logo image URL 150x150px
          */
         "logo"?: string;
+        /**
+          * OPTIONAL - if you are using a transparent text icon and need to set a background colour
+         */
+        "logocolour"?: string;
     }
     interface ProfileTabs {
         /**
