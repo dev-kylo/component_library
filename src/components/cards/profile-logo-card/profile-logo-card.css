@@ -54,16 +54,16 @@
 
 .name {
     color: #502865;
-    font-family: bree-serif, serif;
-    /* font-family: bree_serifsemibold; */
-    /* line-height: 32px; */
-    font-size: 18px; 
+    font-weight: bold;
+    font-family: bree_serifbold, bree-serif, serif;
     font-weight: 600;
+    font-size: 18px; 
     margin-top: 60px;
     margin-bottom: 0px;
     text-transform: capitalize;
     cursor: pointer;
 } 
+
 
 
 .link{
