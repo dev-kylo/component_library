@@ -17,12 +17,15 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
-    "test": "echo \"No test specified\"",
+    "test": "stencil test --spec",
     "generate": "stencil generate",
     "build.netlify": "npm run build cp src/_redirects www/_redirects"
   },
   "devDependencies": {
-    "@stencil/core": "^1.11.2"
+    "@stencil/core": "^1.11.2",
+    "@types/jest": "24.0.20",
+    "jest": "24.9.0",
+    "jest-cli": "24.9.0"
   },
   "license": "MIT",
   "dependencies": {
