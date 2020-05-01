@@ -16,7 +16,42 @@
 <body>
 </br>
 
+<kclsu-search selector='.tag' containerselector='.cont'>
+    <h1>Hello this is a page</h1>
+  <flex-container alignx="center" direction="column" wrap>
+    <div class="cont">
+      <div>
+        <p class="tag"> I'm a tag</p>
+      </div>
+    </div>
+    <div class="cont">
+    <div>
+      <p class="tag"> I'm a second tag</p>
+    </div>
+    </div>
+    <div class="cont">
+    <div>
+      <p class="tag"> I'm a third tag</p>
+    </div>
+    </div>
+    <div class="cont">
+    <div>
+      <p class="tag"> And finally, I'm a fourth tag</p>
+    </div>
+  </div>
+  </flex-container>
+</kclsu-search>
+
+<kclsu-search attr='cardtitle' containerselector='text-card' >
+  <text-card cardtitle="Train your dog" link="/"> </text-card>
+  <text-card cardtitle="Find the love of your life" link="/"> </text-card>
+  <text-card cardtitle="How to make a million dollars & Nominations Open" link="/"> </text-card>
+</kclsu-search>
+</br>
+</br>
+
 <div style="width: 70%; margin: auto">
+<kclsu-search attr='cardtitle' containerselector='profile-logo-card'>
 <profile-card-layout>
   <profile-logo-card
   cardtitle="The Vault"
@@ -55,6 +90,7 @@
   image="https://res.cloudinary.com/kclsu-media/image/upload/t_Page_Banner/v1574958862/website_uploads/group-of-people-reading-book-sitting-on-chair-711009_u8iljh.jpg"
 ></profile-logo-card>
 </profile-card-layout>
+</kclsu-search>
 </div>
 </br>
   <text-card cardtitle="How to make a million dollars & Nominations Open" link="/"> </text-card>

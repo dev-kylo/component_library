@@ -185,6 +185,24 @@ export namespace Components {
     interface KclsuModal {
         "show": boolean;
     }
+    interface KclsuSearch {
+        /**
+          * If searching an custom web component, provide the name of the atrribute to query
+         */
+        "attr": string;
+        /**
+          * The container of the search result / search field, used to hide the element from results. Can be a tag, class or id
+         */
+        "containerselector": string;
+        /**
+          * The text inside the search input, which disappears once a user starts typing
+         */
+        "placeholdertext": string;
+        /**
+          * If searching an HTML element, provide the element's selector - tag, class or id
+         */
+        "selector": string;
+    }
     interface KclsuTabsContainer {
     }
     interface LabelCard {
@@ -609,6 +627,12 @@ declare global {
         prototype: HTMLKclsuModalElement;
         new (): HTMLKclsuModalElement;
     };
+    interface HTMLKclsuSearchElement extends Components.KclsuSearch, HTMLStencilElement {
+    }
+    var HTMLKclsuSearchElement: {
+        prototype: HTMLKclsuSearchElement;
+        new (): HTMLKclsuSearchElement;
+    };
     interface HTMLKclsuTabsContainerElement extends Components.KclsuTabsContainer, HTMLStencilElement {
     }
     var HTMLKclsuTabsContainerElement: {
@@ -864,6 +888,7 @@ declare global {
         "inner-tabs-container": HTMLInnerTabsContainerElement;
         "kclsu-button": HTMLKclsuButtonElement;
         "kclsu-modal": HTMLKclsuModalElement;
+        "kclsu-search": HTMLKclsuSearchElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
         "label-card": HTMLLabelCardElement;
         "last-year-scores": HTMLLastYearScoresElement;
@@ -1086,6 +1111,24 @@ declare namespace LocalJSX {
     }
     interface KclsuModal {
         "show"?: boolean;
+    }
+    interface KclsuSearch {
+        /**
+          * If searching an custom web component, provide the name of the atrribute to query
+         */
+        "attr"?: string;
+        /**
+          * The container of the search result / search field, used to hide the element from results. Can be a tag, class or id
+         */
+        "containerselector": string;
+        /**
+          * The text inside the search input, which disappears once a user starts typing
+         */
+        "placeholdertext"?: string;
+        /**
+          * If searching an HTML element, provide the element's selector - tag, class or id
+         */
+        "selector"?: string;
     }
     interface KclsuTabsContainer {
     }
@@ -1355,6 +1398,7 @@ declare namespace LocalJSX {
         "inner-tabs-container": InnerTabsContainer;
         "kclsu-button": KclsuButton;
         "kclsu-modal": KclsuModal;
+        "kclsu-search": KclsuSearch;
         "kclsu-tabs-container": KclsuTabsContainer;
         "label-card": LabelCard;
         "last-year-scores": LastYearScores;
@@ -1430,6 +1474,7 @@ declare module "@stencil/core" {
             "inner-tabs-container": LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
             "kclsu-button": LocalJSX.KclsuButton & JSXBase.HTMLAttributes<HTMLKclsuButtonElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
+            "kclsu-search": LocalJSX.KclsuSearch & JSXBase.HTMLAttributes<HTMLKclsuSearchElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
             "label-card": LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;

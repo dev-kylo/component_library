@@ -1,0 +1,66 @@
+@import '../../../global/globalstyles.css';
+
+input {
+    font-size: 25px!important;
+    border: 2px solid teal;
+    color:teal;
+    margin: 1em;
+    padding:0.3em;   
+    max-width: 800px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(97, 190, 177);
+    border-image: initial;
+    padding: 0.6em;
+    width: 350px!important;
+}
+
+input:focus{
+    border-color: rgb(97, 190, 177);
+    outline: rgb(97, 190, 177) auto 5px;
+}
+
+.hide {
+    display: none;
+}
+
+.transition {
+    transition: top 3s;
+    transition-delay: 2s;
+}
+
+.noresults {
+    text-align: center!important;
+    color:#502865!important;
+    font-weight: bold;
+    margin: 1em!important;
+    font-size: 18px!important;
+    display: block!important;
+    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
