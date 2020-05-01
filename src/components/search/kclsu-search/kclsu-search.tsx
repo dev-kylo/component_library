@@ -81,7 +81,7 @@ export class KclsuSearch {
         let noresults = this.noResults?  (<span class="noresults">Nope, can't seem to find what you're looking for...</span>) : '';
         return ([
             <flex-container alignx="center" aligny="center" fillContainer>
-                <input placeholder={this.placeholdertext} type="text" onInput={e => this.inputHandler(e)}></input>
+                <input class="kclsu_search" placeholder={this.placeholdertext} type="text" onInput={e => this.inputHandler(e)}></input>
             </flex-container>,
             noresults,
             <slot></slot>
