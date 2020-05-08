@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Listen, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, Listen, Watch, Element, Method } from '@stencil/core';
 import { presets } from './assets/presets';
 
 
@@ -12,6 +12,7 @@ export class CloudinaryApp {
 
     timer;
 
+    /** The Cloudinary image id - provided using the browser-side upload script, or using the the node server function */
     @Prop() public_id: string;
 
     @State() image;
@@ -76,12 +77,14 @@ export class CloudinaryApp {
     setTimer(){
         let img:any= this.host.querySelector('img');
         let spinner = this.host.querySelector('loading-spinner');
-        img.style.opacity= 0;
-        spinner.show = true;
-        this.timer = setTimeout(()=>{
-            img.style.opacity = 1;
-            spinner.show = false;
-        }, 2500);
+        if(img){
+            img.style.opacity= 0;
+            spinner.show = true;
+            this.timer = setTimeout(()=>{
+                img.style.opacity = 1;
+                spinner.show = false;
+            }, 2500);
+        }
     }
 
     @Listen('selectPreset')
@@ -113,7 +116,6 @@ export class CloudinaryApp {
     }
 
 
-    
     render() {
         let img = !this.image? <div class='empty'> <span class="drag">Drag and Drop your image here... </span><div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
         let controls = ([
