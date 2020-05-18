@@ -39,6 +39,9 @@ export namespace Components {
         "data": any;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id": string;
     }
     interface CreateVarsityData {
@@ -937,6 +940,9 @@ declare namespace LocalJSX {
         "data"?: any;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id"?: string;
     }
     interface CreateVarsityData {
