@@ -38,6 +38,24 @@ export namespace Components {
     interface CandidateDisplay {
         "data": any;
     }
+    interface CandidateUpload {
+        /**
+          * Elections season - Spring or Autumn
+         */
+        "season": string;
+        /**
+          * The JSON generated from the browser-side uploaded excel spreadsheet
+         */
+        "spreadsheetData": any;
+        /**
+          * Either 'candidates' or 'results'. Will set the firebase url and key map
+         */
+        "stage": string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year": string;
+    }
     interface CloudinaryApp {
         "public_id": string;
     }
@@ -49,7 +67,18 @@ export namespace Components {
         "year": string;
     }
     interface ElectionsCandidates {
+        /**
+          * Set to true to display results data. False to display All Candidates
+         */
         "results": boolean;
+        /**
+          * Elections season - Spring or Autumn
+         */
+        "season": string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year": string;
     }
     interface ElectionsFooter {
     }
@@ -495,6 +524,12 @@ declare global {
         prototype: HTMLCandidateDisplayElement;
         new (): HTMLCandidateDisplayElement;
     };
+    interface HTMLCandidateUploadElement extends Components.CandidateUpload, HTMLStencilElement {
+    }
+    var HTMLCandidateUploadElement: {
+        prototype: HTMLCandidateUploadElement;
+        new (): HTMLCandidateUploadElement;
+    };
     interface HTMLCloudinaryAppElement extends Components.CloudinaryApp, HTMLStencilElement {
     }
     var HTMLCloudinaryAppElement: {
@@ -866,6 +901,7 @@ declare global {
         "campaign-page": HTMLCampaignPageElement;
         "campaign-tabs": HTMLCampaignTabsElement;
         "candidate-display": HTMLCandidateDisplayElement;
+        "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
         "create-varsity-data": HTMLCreateVarsityDataElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
@@ -961,6 +997,24 @@ declare namespace LocalJSX {
     interface CandidateDisplay {
         "data"?: any;
     }
+    interface CandidateUpload {
+        /**
+          * Elections season - Spring or Autumn
+         */
+        "season"?: string;
+        /**
+          * The JSON generated from the browser-side uploaded excel spreadsheet
+         */
+        "spreadsheetData"?: any;
+        /**
+          * Either 'candidates' or 'results'. Will set the firebase url and key map
+         */
+        "stage"?: string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year"?: string;
+    }
     interface CloudinaryApp {
         "public_id"?: string;
     }
@@ -972,7 +1026,18 @@ declare namespace LocalJSX {
         "year"?: string;
     }
     interface ElectionsCandidates {
+        /**
+          * Set to true to display results data. False to display All Candidates
+         */
         "results"?: boolean;
+        /**
+          * Elections season - Spring or Autumn
+         */
+        "season"?: string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year"?: string;
     }
     interface ElectionsFooter {
     }
@@ -1376,6 +1441,7 @@ declare namespace LocalJSX {
         "campaign-page": CampaignPage;
         "campaign-tabs": CampaignTabs;
         "candidate-display": CandidateDisplay;
+        "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
         "create-varsity-data": CreateVarsityData;
         "elections-candidates": ElectionsCandidates;
@@ -1452,6 +1518,7 @@ declare module "@stencil/core" {
             "campaign-page": LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
+            "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;

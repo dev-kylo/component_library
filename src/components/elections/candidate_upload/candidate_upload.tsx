@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Listen } from '@stencil/core';
 
 
 
@@ -9,13 +9,13 @@ export class CandidateUpload {
 
     json: any = [{
         "Post": "President",
-        "Last name": "NKNKNKNK",
+        "Last name": "BROOOOOO",
         "First name": "CDSFDSFSADFAD",
         "ID / card number": "K4565466FGFD54",
         "Email address": "DSDWDW.FDFDA@.ac.uk",
         "Phone": 7821419435870,
         "Status": "Withdrawn",
-        "Display name": "SADDWQDWQ CSACSADD",
+        "Display name": "BROOOOOO CSACSADD",
         "Date nominated": "20/02/2016 11:51:33"
     }, {
         "Post": "President",
@@ -85,10 +85,27 @@ export class CandidateUpload {
     @Prop() spreadsheetData:any;
     /** Either 'candidates' or 'results'. Will set the firebase url and key map */
     @Prop() stage: string;
+    /**Year elections takes place eg 2020. Not Academic year! */
+    @Prop() year: string;
+    /**Elections season - Spring or Autumn */
+    @Prop() season: string;
 
     @State() successfulUpload = false;
     @State() error = '';
     @State() modalOpen = false;
+    @State() temp: any;
+
+    componentDidLoad(){
+        // let url = 'https://varsity-f9a3f.firebaseio.com/Sheet1.json';
+        // fetch(url)
+        // .then(res => {
+        //     return res.json();
+        // })
+        // .then(data => {
+        //     this.temp = data;
+        // })
+        // .catch(er => this.error = er); 
+    }
 
     candidatesKeysMap = {
         'Display name': 'Name',
@@ -105,28 +122,30 @@ export class CandidateUpload {
     }
 
     submitJson(){
-        let url;
-        if (this.stage === 'candidates') url='';
-        else if (this.stage === 'results') url = '';
-        else {console.log('No stage param specified')}
+        let baseUrl;
+        if (this.stage === 'candidates') baseUrl ='https://varsity-f9a3f.firebaseio.com';
+        else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
+        else {console.log('No stage param specified')};
 
-        const payload = this.json.map(ob => {
+        const data = this.json.map(ob => {
             return this.reBuildObject(this.candidatesKeysMap, ob)
         });
 
         const body: any = {
             method: 'PUT', 
-            body: JSON.stringify(payload) 
+            body: JSON.stringify(data), 
         };
 
-    fetch(url, body)
-        .then(res => {
-            if (res.status){
-                this.error = '';
-                this.successfulUpload = true;
-            }
-        })
-        .catch(er => this.error = er); 
+        const url = `${baseUrl}/${this.year}/${this.season}.json`
+        fetch(url, body)
+            .then(res => {
+                if (res.status){
+                    this.error = '';
+                    this.successfulUpload = true;
+                    console.log(res.status)
+                }
+            })
+            .catch(er => this.error = er); 
     }
 
 
@@ -158,21 +177,42 @@ export class CandidateUpload {
                    />
        })
     }
+
+    checkProps(){
+        let valid = false;
+        if (this.year === '2020' || '2021' || '2022') valid = true;
+        if (valid && this.season === 'Spring' || 'Autumn' || 'By') valid = true;
+
+        return valid;
+    }
+
+    @Listen('emitClick') uploadClick(e){
+        if (e.detail === 'upload' && this.checkProps()){
+            console.log("submitted whoop whoop")
+            this.submitJson();
+        }
+    }
+
+
     
     render() {
-        
         const data = this.json.map(ob => {
             return this.reBuildObject(this.candidatesKeysMap, ob)
         });
 
-        const cards = (
-            <profile-card-layout>
-                {this.createCards(data)}
-            </profile-card-layout>
+        const content = (
+            <div class="upload_container">
+                <kclsu-button emitid="upload">Upload Data</kclsu-button>
+                
+                <h3>Preview of data uploaded</h3>
+                    <profile-card-layout>
+                        {this.createCards(data)}
+                    </profile-card-layout>
+            </div>
         ) 
 
 
-        return cards 
+        return content;
         // return this.spreadsheetData && cards 
     }
 }

@@ -10,12 +10,16 @@ import { Component, h, State, Prop } from '@stencil/core';
 export class ElectionsCandidates {
 
     @State() data;
-
+    /**Set to true to display results data. False to display All Candidates */
     @Prop() results: boolean;
+    /**Year elections takes place eg 2020. Not Academic year! */
+    @Prop() year: string;
+    /**Elections season - Spring or Autumn */
+    @Prop() season: string;
 
     componentDidLoad() {
-        let url = !this.results? 'https://elections-b726c.firebaseio.com/Sheet1.json' : 'https://elections-results-757f2.firebaseio.com/Sheet1.json';
-
+        let url = !this.results? `https://elections-b726c.firebaseio.com/${this.year}/${this.season}.json` : `https://elections-results-757f2.firebaseio.com/${this.year}/${this.season}.json`;
+        // let url = `https://varsity-f9a3f.firebaseio.com/${this.year}/${this.season}.json`
         fetch(url)
             .then(res => res.json())
             .then(candidateData => {
