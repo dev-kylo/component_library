@@ -97,7 +97,7 @@ export class ElectionsCandidates {
         let inner;
         switch(field.id){
             case 'NUS':
-                inner = <candidate-display data={this.filterOfficerData(field.innertabs)}></candidate-display>
+                inner = <candidate-display data={this.filterOfficerData(field.innertabs, 'Post')}></candidate-display>
             break;
             case 'SO' || 'NO':
                 inner = this.createInnerTabs(field.innertabs, field.id)
@@ -133,11 +133,11 @@ export class ElectionsCandidates {
 
     
     render() {
-
+        console.log(this.data)
 
         return (
             <tabs-container>
-                
+
                 {this.data? this.createTabs() : ''}
         
             </tabs-container>
