@@ -11,7 +11,7 @@ export class ElectionsCandidates {
 
     @State() data;
     /**Set to true to display results data. False to display All Candidates */
-    @Prop() results: boolean;
+    @Prop() results: boolean = false;
     /**Year elections takes place eg 2020. Not Academic year! */
     @Prop() year: string;
     /**Elections season - Spring or Autumn */
@@ -23,19 +23,19 @@ export class ElectionsCandidates {
     @Prop() academicgroups:any;
 
 
-    @Prop() activeid: string = 'Student Officers';
+    @Prop() activeid: string = 'SO';
 
 
     dataMap = {
         officers: {
             id: 'SO',
             title: 'Student Officers',
-            innertabs: this.studentofficers.split(' ')
+            innertabs: this.studentofficers.split(',')
         },
         network: {
             id: 'NO',
             title: 'Network Officers',
-            innertabs: this.networkofficers.split(' ')
+            innertabs: this.networkofficers.split(',')
         },
         nus: {
             id: 'NUS',
@@ -45,7 +45,7 @@ export class ElectionsCandidates {
         academic: {
             id: 'ACADEMIC',
             title: 'Academic',
-            innertabs: this.academicgroups.split(' ')
+            innertabs: this.academicgroups.split(',')
         }
 
     }
@@ -61,6 +61,12 @@ export class ElectionsCandidates {
       }
 
     filterOfficerData(searchTerm: string, type){
+        console.log(searchTerm)
+
+        let bro = this.data.filter(candidate => {
+            return candidate[type] === searchTerm});
+            console.log(bro)
+
        return this.data.filter(candidate => candidate[type] === searchTerm)
     }
 
@@ -77,17 +83,17 @@ export class ElectionsCandidates {
 
         //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
         const newDataMapArray:any = [];
-        if (this.studentofficers) newDataMapArray.push({officers:{...this.dataMap.officers}})
-        if (this.networkofficers) newDataMapArray.push({network:{...this.dataMap.network}})
-        if (this.filterOfficerData('NUS National Conference Delegate', 'Post')) newDataMapArray.push({nus:{...this.dataMap.nus}})
-        if (this.academicgroups) newDataMapArray.push({academic:{...this.dataMap.academic}})
+        if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers, category: 'officers'})
+        if (this.networkofficers) newDataMapArray.push({...this.dataMap.network, category: 'network'})
+        if (this.filterOfficerData('NUS National Conference Delegate', 'Post')) newDataMapArray.push({...this.dataMap.nus, category: 'nus'})
+        if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic, category: 'academic'})
 
-        return newDataMapArray.map(field => {
+        return newDataMapArray.map((field, i) => {
             let activeTab = field.id === this.activeid? true : false;
             return ([
-                <tab-header name={field.id} active={activeTab} slot="tab-headers"> {field.title}</tab-header>,
-                <tab-content name={field.id} active={activeTab} slot="tab-content"> 
-                    {this.organiseInnerTabs(field)}
+                <tab-header name={field.id + i} active={activeTab} slot="tab-headers"> {field.title}</tab-header>,
+                <tab-content name={field.id + i} active={activeTab} slot="tab-content"> 
+                        {this.organiseInnerTabs(field)}
                 </tab-content>
             ])
         })
@@ -99,11 +105,20 @@ export class ElectionsCandidates {
             case 'NUS':
                 inner = <candidate-display data={this.filterOfficerData(field.innertabs, 'Post')}></candidate-display>
             break;
-            case 'SO' || 'NO':
-                inner = this.createInnerTabs(field.innertabs, field.id)
+            case 'SO':
+                inner = (<inner-tabs-container>
+                            {this.createInnerTabs(field.innertabs, field.id)}
+                        </inner-tabs-container>)
+            break;
+            case 'NO':
+                inner = (<inner-tabs-container>
+                            {this.createInnerTabs(field.innertabs, field.id)}
+                        </inner-tabs-container>)
             break;
             case 'ACADEMIC':
-                inner = this.createInnerTabs(field.innertabs, field.id)
+                inner = (<inner-tabs-container>
+                            {this.createInnerTabs(field.innertabs, field.id)}
+                        </inner-tabs-container>)
             break;
             default: inner = ""
         }
@@ -111,10 +126,17 @@ export class ElectionsCandidates {
     }
 
     createInnerTabs(array, typeId){
+
         const ar = array;
-        if(this.results && typeId === 'SO' || 'NO') ar.unshift('All')
-        return array.map((title, i) => {
+        if(this.results && typeId === 'SO'){
+            ar.push('All')
+        } 
+        else if( this.results && typeId === 'NO'){
+            ar.push('All')
+        } 
+        return ar.map((title, i) => {
             let searchField = title;
+            console.log(title)
             if (title === 'All' && typeId === 'SO') searchField = 'Officer'
             else if (title === 'All' && typeId === 'NO') searchField = 'Network'
             return ([
@@ -133,12 +155,11 @@ export class ElectionsCandidates {
 
     
     render() {
-        console.log(this.data)
 
         return (
             <tabs-container>
 
-                {this.data? this.createTabs() : ''}
+               { this.createTabs()}
         
             </tabs-container>
         );

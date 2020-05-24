@@ -40,6 +40,10 @@ export namespace Components {
     }
     interface CandidateUpload {
         /**
+          * Elections season - Spring or Autumn
+         */
+        "season": string;
+        /**
           * The JSON generated from the browser-side uploaded excel spreadsheet
          */
         "spreadsheetData": any;
@@ -47,6 +51,10 @@ export namespace Components {
           * Either 'candidates' or 'results'. Will set the firebase url and key map
          */
         "stage": string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year": string;
     }
     interface CloudinaryApp {
         "public_id": string;
@@ -998,6 +1006,10 @@ declare namespace LocalJSX {
     }
     interface CandidateUpload {
         /**
+          * Elections season - Spring or Autumn
+         */
+        "season"?: string;
+        /**
           * The JSON generated from the browser-side uploaded excel spreadsheet
          */
         "spreadsheetData"?: any;
@@ -1005,6 +1017,10 @@ declare namespace LocalJSX {
           * Either 'candidates' or 'results'. Will set the firebase url and key map
          */
         "stage"?: string;
+        /**
+          * Year elections takes place eg 2020. Not Academic year!
+         */
+        "year"?: string;
     }
     interface CloudinaryApp {
         "public_id"?: string;
