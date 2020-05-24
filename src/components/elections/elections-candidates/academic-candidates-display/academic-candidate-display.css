@@ -1,13 +1,15 @@
-span {
+.academic_sub {
     color: #502669;
     margin: 5px 10px;
     padding: 0 10px;
     /* border-left: 1px solid #502669; */
     border-right: 1px solid #502669;
     font-size: 16px;
+    box-sizing: border-box;
+    padding: 0.5em;
 }
 
-span:hover{
+.academic_sub:hover{
     cursor: pointer;
 }
 
@@ -24,7 +26,7 @@ span:hover{
 }
 
 @media only screen and (max-width: 780px){
-    span {
+    .academic_sub {
         border: none;
         font-size: 14px;
         margin: 5px 0;

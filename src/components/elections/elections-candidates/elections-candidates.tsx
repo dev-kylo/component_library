@@ -2,7 +2,6 @@ import { Component, h, State, Prop } from '@stencil/core';
 
 @Component({
     tag: 'elections-candidates',
-    styleUrl: 'elections-candidates.css',
     shadow: true
 })
 
@@ -30,12 +29,12 @@ export class ElectionsCandidates {
         officers: {
             id: 'SO',
             title: 'Student Officers',
-            innertabs: this.studentofficers.split(',')
+            innertabs: this.studentofficers.split('|')
         },
         network: {
             id: 'NO',
             title: 'Network Officers',
-            innertabs: this.networkofficers.split(',')
+            innertabs: this.networkofficers.split('|')
         },
         nus: {
             id: 'NUS',
@@ -45,7 +44,7 @@ export class ElectionsCandidates {
         academic: {
             id: 'ACADEMIC',
             title: 'Academic',
-            innertabs: this.academicgroups.split(',')
+            innertabs: this.academicgroups.split('|')
         }
 
     }
@@ -61,32 +60,55 @@ export class ElectionsCandidates {
       }
 
     filterOfficerData(searchTerm: string, type){
-        console.log(searchTerm)
-
-        let bro = this.data.filter(candidate => {
-            return candidate[type] === searchTerm});
-            console.log(bro)
-
-       return this.data.filter(candidate => candidate[type] === searchTerm)
+       return this.data.filter(candidate => candidate[type] === searchTerm.trim())
     }
 
     filterAcademicData(type: string){
-        return this.data.filter(candidate => candidate.Post.includes(type))
+        return this.data.filter(candidate => candidate.Post.includes(type.trim()))
     }
 
     // filterAllOfficers(type: string){
     //     if (this.data) return this.data.filter(candidate => candidate.Type === type)
     // }
 
+    shortenTitle(title, id:any){
+
+        console.log(id + ' ' + title)
+        
+        if (id === 'SO'){
+            if (title.includes('Welfare')) title = 'VP Welfare & Community';
+            else if (title.includes('Health')) title = 'VP Education (Health)';
+            else if (title.includes('Postgraduate')) title = 'VP Postgraduate';
+            else if (title.includes('Arts')) title = 'VP Education (Arts & Sciences)';
+            else if (title.includes('Activities')) title = 'VP Activities & Development';
+            else if (title.includes('President')) title = 'President';
+        }
+        
+        else if( id === 'NO') {
+            if (title.includes('Generation')) title = 'First Generation';
+            else if (title.includes('International')) title = 'International';
+            else if (title.includes('People of Colour')) title = 'People of Colour';
+            else if (title.includes('Women')) title = "Women's";
+            else if (title.includes('Family')) title = 'Family';
+            else if (title.includes('Disabled')) title = 'Disabled';
+            else if (title.includes('Mature')) title = 'Mature';
+            else if (title.includes('LGBT+')) title = 'LGBT+';
+        }
+
+        else {}
+
+        return title
+
+    }
 
     createTabs(){
 
         //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
         const newDataMapArray:any = [];
-        if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers, category: 'officers'})
-        if (this.networkofficers) newDataMapArray.push({...this.dataMap.network, category: 'network'})
-        if (this.filterOfficerData('NUS National Conference Delegate', 'Post')) newDataMapArray.push({...this.dataMap.nus, category: 'nus'})
-        if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic, category: 'academic'})
+        if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers})
+        if (this.networkofficers) newDataMapArray.push({...this.dataMap.network})
+        if (this.filterOfficerData('NUS National Conference Delegate', 'Post')) newDataMapArray.push({...this.dataMap.nus})
+        if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic})
 
         return newDataMapArray.map((field, i) => {
             let activeTab = field.id === this.activeid? true : false;
@@ -129,18 +151,17 @@ export class ElectionsCandidates {
 
         const ar = array;
         if(this.results && typeId === 'SO'){
-            ar.push('All')
+            ar.unshift('All')
         } 
         else if( this.results && typeId === 'NO'){
-            ar.push('All')
+            ar.unshift('All')
         } 
         return ar.map((title, i) => {
             let searchField = title;
-            console.log(title)
             if (title === 'All' && typeId === 'SO') searchField = 'Officer'
             else if (title === 'All' && typeId === 'NO') searchField = 'Network'
             return ([
-                <inner-tab-header active={title ==='All' || i===0} name={typeId + i} slot="tab-headers"> {title} </inner-tab-header>,
+                <inner-tab-header active={title ==='All' || i===0} name={typeId + i} slot="tab-headers"> {this.shortenTitle(title, typeId)} </inner-tab-header>,
                 <inner-tab-content active={title ==='All' || i===0} name={typeId + i} slot="tab-content">     
                     {typeId === 'ACADEMIC'?   
                         <academic-candidate-display data={this.filterAcademicData(searchField)}></academic-candidate-display>  
@@ -156,7 +177,9 @@ export class ElectionsCandidates {
     
     render() {
 
-        return (
+        if (!this.data) return <div style={{"height": "50vh", "position": "relative"}}><loading-spinner /></div>
+
+        else return (
             <tabs-container>
 
                { this.createTabs()}
