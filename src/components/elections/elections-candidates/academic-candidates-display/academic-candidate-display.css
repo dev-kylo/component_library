@@ -1,9 +1,9 @@
+@import '../../../../global/globalstyles.css';
+
 .academic_sub {
     color: #502669;
     margin: 5px 10px;
     padding: 0 10px;
-    /* border-left: 1px solid #502669; */
-    border-right: 1px solid #502669;
     font-size: 16px;
     box-sizing: border-box;
     padding: 0.5em;
@@ -12,6 +12,14 @@
 .academic_sub:hover{
     cursor: pointer;
 }
+
+.academic_sub::after{
+    content: '';
+    border-right: 1px solid #502669;
+    margin: 0.5em;
+    margin-left: 2.8em;
+}
+
 
 .positions {
     padding: 0;
@@ -25,16 +33,32 @@
     flex-flow: row wrap;
 }
 
-@media only screen and (max-width: 780px){
+
+@media only screen and (max-width: 1000px){
     .academic_sub {
         border: none;
-        font-size: 14px;
+        font-size: 16px;
         margin: 5px 0;
         padding: 0;
         line-height: normal;
     }
 
+    .academic_sub::after{
+        margin: 1em;
+    }
+    
+
     .submenu {
         justify-content: flex-start
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .academic_sub {
+        margin: 10px 0;
+        font-size: 15px;
+    }
+    .academic_sub::after{
+        border: none;
     }
 }

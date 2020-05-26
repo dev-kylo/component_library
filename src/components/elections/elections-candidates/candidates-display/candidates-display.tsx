@@ -3,7 +3,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'candidate-display',
-    styleUrl: 'candidates-display.css'
+    styleUrl: 'candidates-display.css',
+    shadow: true
 })
 
 export class CandidatesDisplay {
