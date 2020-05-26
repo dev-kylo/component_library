@@ -68,6 +68,12 @@ export namespace Components {
     }
     interface ElectionsCandidates {
         /**
+          * Either Faculties or Association Names. PLEASE NOTE: The name you provide must appear EXACLTY the same somwhere in every Post Title for that group.
+         */
+        "academicgroups": any;
+        "activeid": string;
+        "networkofficers": any;
+        /**
           * Set to true to display results data. False to display All Candidates
          */
         "results": boolean;
@@ -75,6 +81,7 @@ export namespace Components {
           * Elections season - Spring or Autumn
          */
         "season": string;
+        "studentofficers": any;
         /**
           * Year elections takes place eg 2020. Not Academic year!
          */
@@ -1027,6 +1034,12 @@ declare namespace LocalJSX {
     }
     interface ElectionsCandidates {
         /**
+          * Either Faculties or Association Names. PLEASE NOTE: The name you provide must appear EXACLTY the same somwhere in every Post Title for that group.
+         */
+        "academicgroups"?: any;
+        "activeid"?: string;
+        "networkofficers"?: any;
+        /**
           * Set to true to display results data. False to display All Candidates
          */
         "results"?: boolean;
@@ -1034,6 +1047,7 @@ declare namespace LocalJSX {
           * Elections season - Spring or Autumn
          */
         "season"?: string;
+        "studentofficers"?: any;
         /**
           * Year elections takes place eg 2020. Not Academic year!
          */

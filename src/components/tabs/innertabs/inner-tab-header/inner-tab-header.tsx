@@ -9,7 +9,7 @@ import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/c
 })
 export class InnerTabHeader {
 
-    // id: string = createId();
+
 
     @State() isSelected: boolean;
 
@@ -19,6 +19,11 @@ export class InnerTabHeader {
 
     @Event()
     selectInnerTab: EventEmitter;
+
+
+    componentDidLoad(){
+        if (this.active) this.isSelected = true;
+    }
 
     
     render() {

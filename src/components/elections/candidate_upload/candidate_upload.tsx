@@ -96,15 +96,15 @@ export class CandidateUpload {
     @State() temp: any;
 
     componentDidLoad(){
-        // let url = 'https://varsity-f9a3f.firebaseio.com/Sheet1.json';
-        // fetch(url)
-        // .then(res => {
-        //     return res.json();
-        // })
-        // .then(data => {
-        //     this.temp = data;
-        // })
-        // .catch(er => this.error = er); 
+        let url = 'https://elections-results-757f2.firebaseio.com/Sheet1.json';
+        fetch(url)
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            this.temp = data;
+        })
+        .catch(er => this.error = er); 
     }
 
     candidatesKeysMap = {
@@ -127,13 +127,13 @@ export class CandidateUpload {
         else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
         else {console.log('No stage param specified')};
 
-        const data = this.json.map(ob => {
-            return this.reBuildObject(this.candidatesKeysMap, ob)
-        });
+        // const data = this.json.map(ob => {
+        //     return this.reBuildObject(this.candidatesKeysMap, ob)
+        // });
 
         const body: any = {
             method: 'PUT', 
-            body: JSON.stringify(data), 
+            body: JSON.stringify(this.temp), 
         };
 
         const url = `${baseUrl}/${this.year}/${this.season}.json`
