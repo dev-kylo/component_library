@@ -31,6 +31,8 @@ export class CandidateUpload {
         if (this.spreadsheetData && this.stage === 'candidates'){
             //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
             this.spreadsheetData = this.spreadsheetData.filter(candidate => candidate.candidate_status === 'Approved');
+            console.log('SPREADSHEET DATA IN COMP DID LOAD')
+            console.log(this.spreadsheetData)
         }
     }
 
@@ -120,6 +122,8 @@ export class CandidateUpload {
         const data = this.spreadsheetData.map(ob => {
             return this.reBuildObject(keymap, ob )
         });
+        console.log('DATA PASSED TO CANDIDATE DISPLAY')
+        console.log(data)
         return <candidate-display data={data}></candidate-display>
        
     }
