@@ -7,7 +7,7 @@ import { Component, h, Prop, State, Listen, Watch } from '@stencil/core';
 export class CandidateUpload {
 
     /** The JSON generated from the browser-side uploaded excel spreadsheet */
-    @Prop() spreadsheetData:any;
+    @Prop() spreadsheetdata:any;
     /** Either 'candidates' or 'results'. Will set the firebase url and key map */
     @Prop() stage: string;
     /**Year elections takes place eg 2020. Not Academic year! */
@@ -28,11 +28,11 @@ export class CandidateUpload {
             this.validProps = false;
         }
 
-        if (this.spreadsheetData && this.stage === 'candidates'){
+        if (this.spreadsheetdata && this.stage === 'candidates'){
             //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-            this.spreadsheetData = this.spreadsheetData.filter(candidate => candidate.candidate_status === 'Approved');
+            this.spreadsheetdata = this.spreadsheetdata.filter(candidate => candidate.candidate_status === 'Approved');
             console.log('SPREADSHEET DATA IN COMP DID LOAD')
-            console.log(this.spreadsheetData)
+            console.log(this.spreadsheetdata)
         }
     }
 
@@ -60,8 +60,8 @@ export class CandidateUpload {
         else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
         else {console.log('No stage param specified')};
 
-        if(this.spreadsheetData){
-            let data = this.spreadsheetData.map(ob => {
+        if(this.spreadsheetdata){
+            let data = this.spreadsheetdata.map(ob => {
                 return this.reBuildObject(this.candidatesKeysMap, ob)
             });
 
@@ -119,7 +119,7 @@ export class CandidateUpload {
         //CREATES PROFILE CARDS FOR PREVIEW
 
         const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
-        const data = this.spreadsheetData.map(ob => {
+        const data = this.spreadsheetdata.map(ob => {
             return this.reBuildObject(keymap, ob )
         });
         console.log('DATA PASSED TO CANDIDATE DISPLAY')
@@ -167,11 +167,11 @@ export class CandidateUpload {
         this.modalOpen = false;
     }
 
-    @Watch('spreadsheetData') dataUploaded(){
+    @Watch('spreadsheetdata') dataUploaded(){
         //IF SPREADSHEETDATA PROP IS UPDATED
         // if (this.stage === 'candidates'){
         //     //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-        //     this.spreadsheetData = this.spreadsheetData.filter(candidate => candidate.Status === 'Approved');
+        //     this.spreadsheetdata = this.spreadsheetdata.filter(candidate => candidate.Status === 'Approved');
         // }
         this.error = null;
         this.successfulUpload = false;
@@ -179,8 +179,8 @@ export class CandidateUpload {
 
     render() {
         console.log("SPREADSHEET DATA BEFORE RENDER")
-        console.log(this.spreadsheetData)
-        let previewCards = this.spreadsheetData? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+        console.log(this.spreadsheetdata)
+        let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
