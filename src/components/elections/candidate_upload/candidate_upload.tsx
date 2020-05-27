@@ -1,85 +1,10 @@
-import { Component, h, Prop, State, Listen } from '@stencil/core';
-
-
+import { Component, h, Prop, State, Listen, Watch } from '@stencil/core';
 
 @Component({
     tag: 'candidate-upload',
 })
-export class CandidateUpload {
 
-    json: any = [{
-        "Post": "President",
-        "Last name": "BROOOOOO",
-        "First name": "CDSFDSFSADFAD",
-        "ID / card number": "K4565466FGFD54",
-        "Email address": "DSDWDW.FDFDA@.ac.uk",
-        "Phone": 7821419435870,
-        "Status": "Withdrawn",
-        "Display name": "BROOOOOO CSACSADD",
-        "Date nominated": "20/02/2016 11:51:33"
-    }, {
-        "Post": "President",
-        "Last name": "TGERTGERF",
-        "First name": "DFCDFE",
-        "ID / card number": "5445757567",
-        "Email address": "DFSEFEWFEFE@FDFEac.uk",
-        "Phone": 7965456454892,
-        "Status": "Approved",
-        "Display name": "SCSACSD SCSACSACSACS",
-        "Image": "View",
-        "Date nominated": "22/02/2016 15:56:56"
-    }, {
-        "Post": "President",
-        "Last name": "DFEWFEWF",
-        "First name": "DWDWQ",
-        "ID / card number": "DEWDWD45345435",
-        "Email address": "aDW.grWDDWn@AAc.uk",
-        "Phone": 7546767561492,
-        "Status": "Withdrawn",
-        "Display name": "WDQWDQ WDDWQDW",
-        "Date nominated": 42676.68457175926
-    }, {
-        "Post": "President",
-        "Last name": "CEWDFEWFDEW",
-        "First name": "GHGFHGJ",
-        "ID / card number": "H1433564576578",
-        "Email address": "DWDWDW@gmail.com",
-        "Phone": 7756565461,
-        "Status": "Withdrawn",
-        "Display name": "DWDWDW DWDWQDWQD",
-        "Date nominated": 42676.960023148145
-    }, {
-        "Post": "President",
-        "Last name": "HCEWFV",
-        "First name": "CSCWQCQW",
-        "Email address": "GHFGHGHGHH@kclsu.org",
-        "Phone": 774364564566564,
-        "Status": "Approved",
-        "Display name": "DWDWQDW WDWQDWQD",
-        "Image": "View",
-        "Date nominated": "16/02/2016 21:07:34"
-    }, {
-        "Post": "President",
-        "Last name": "CDCDWCDWC",
-        "First name": "CEFEFEAS",
-        "ID / card number": "K6576875855",
-        "Email address": "FRFEFEWEg@..uk",
-        "Phone": 4475656546468345543,
-        "Status": "Withdrawn",
-        "Display name": "WCSCWEDCW WDWWQD",
-        "Date nominated": "20/02/2016 16:01:45"
-    },{
-        "Post": "Vice President Activities and Development",
-        "Last name": "DSDCFDSCDSC",
-        "First name": "CDSCDSCDS",
-        "ID / card number": "K4543554654",
-        "Email address": "VSDFVDSFDFLLmail.com",
-        "Phone": 7477656456453335,
-        "Status": "Approved",
-        "Display name": "DWEDWQD DWDWQDW",
-        "Image": "View",
-        "Date nominated": "22/02/2016 15:15:56"
-    }];
+export class CandidateUpload {
 
     /** The JSON generated from the browser-side uploaded excel spreadsheet */
     @Prop() spreadsheetData:any;
@@ -90,66 +15,90 @@ export class CandidateUpload {
     /**Elections season - Spring or Autumn */
     @Prop() season: string;
 
-    @State() successfulUpload = false;
+    @State() successfulUpload: boolean = false;
     @State() error = '';
-    @State() modalOpen = false;
-    @State() temp: any;
+    @State() modalOpen: boolean = false;
+    @State() loading: boolean = false;
+    @State() validProps: boolean = false;
 
     componentDidLoad(){
-        let url = 'https://elections-results-757f2.firebaseio.com/Sheet1.json';
-        fetch(url)
-        .then(res => {
-            return res.json();
-        })
-        .then(data => {
-            this.temp = data;
-        })
-        .catch(er => this.error = er); 
+        //IF UNVALID PROPS, SET ERROR 
+        if (this.validateProps() === false) {
+            this.error = 'Check component attributes';
+            this.validProps = false;
+        }
+
+        if (this.spreadsheetData && this.stage === 'candidates'){
+            //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
+            this.spreadsheetData = this.spreadsheetData.filter(candidate => candidate.candidate_status === 'Approved');
+        }
     }
 
     candidatesKeysMap = {
-        'Display name': 'Name',
-        'Post': 'Post',
-        'Manifesto': 'ManifestoLink',
-        'Image': 'ImageLink'
+        'display_name': 'Name',
+        'post_name': 'Post',
+        'ManifestoLink': 'ManifestoLink',
+        'ImageLink': 'ImageLink',
+        'candidate_status': 'Status'
     }
 
     resultsKeysMap = {
-        'Elected Candidate': 'Name',
-        'Post title': 'Post',
-        'Manifesto': 'ManifestoLink',
-        'Image': 'ImageLink'
+        'Name': 'Name',
+        'Post': 'Post',
+        'ManifestoLink': 'ManifestoLink',
+        'ImageLink': 'ImageLink',
+        'Type' : 'Type',
+        'ResultsLink': 'ResultsLink'
     }
 
     submitJson(){
+        //MAKE A REQUEST TO FIREBASE TO UPLOAD DATA
         let baseUrl;
         if (this.stage === 'candidates') baseUrl ='https://varsity-f9a3f.firebaseio.com';
         else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
         else {console.log('No stage param specified')};
 
-        // const data = this.json.map(ob => {
-        //     return this.reBuildObject(this.candidatesKeysMap, ob)
-        // });
+        if(this.spreadsheetData){
+            let data = this.spreadsheetData.map(ob => {
+                return this.reBuildObject(this.candidatesKeysMap, ob)
+            });
 
-        const body: any = {
-            method: 'PUT', 
-            body: JSON.stringify(this.temp), 
-        };
+            if (this.stage === 'candidates'){
+                //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
+                data = data.filter(candidate => candidate.Status === 'Approved');
+            }
+    
+            const body: any = {
+                method: 'PUT', 
+                body: JSON.stringify(data), 
+            };
+    
+            const url = `${baseUrl}/${this.year}/${this.season}.json`
 
-        const url = `${baseUrl}/${this.year}/${this.season}.json`
-        fetch(url, body)
-            .then(res => {
-                if (res.status){
-                    this.error = '';
-                    this.successfulUpload = true;
-                    console.log(res.status)
-                }
-            })
-            .catch(er => this.error = er); 
+            fetch(url, body)
+                .then(res => {
+                    if (res.status){
+                        this.error = '';
+                        this.successfulUpload = true;
+                        this.modalOpen = true;
+                        this.loading = false;
+                    }
+        
+                })
+                .catch(er => {
+                    console.log(er)
+                    this.error = `${er}`;
+                    this.loading = false;
+                }); 
+        }
+        else this.error = "Failed to map over supplied spreadsheet data"
     }
 
 
     reBuildObject(keyMap, obj){
+        //THIS MAPS AN OBJECT AGAINST A SET OF PROPERTIES WE WANT THAT OBJECT TO HAVE
+        //THE PROPERTY NAMES IN SPREADHSEET DATA NEED TO BE THE SAME AS THOSE REQUIRED BY CANDIDATE DISPLAY COMPONENTS
+        //IT WILL FIND KEYS IN THE KEYMAP, AND RETURN A NEW OBJECT WITH THOSE KEYS 
         return Object.keys(obj).reduce((acc, key) => {
             if(!keyMap[key]){
                 return {...acc}
@@ -164,55 +113,101 @@ export class CandidateUpload {
         {})
     }
 
-    createCards(data){
-        return data.map(candidate =>{ 
-            return <profile-card 
-                       name={candidate.Name.toLowerCase()}
-                       position={candidate.Post}
-                       link={''}
-                       image={candidate.ImageLink? candidate.ImageLink : 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'} 
-                       cta='Manifesto'
-                       secondcta = 'Breakdown'
-                       secondlink = {candidate.ResultsLink}
-                   />
-       })
+    createCards(){
+        //CREATES PROFILE CARDS FOR PREVIEW
+
+        const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
+        const data = this.spreadsheetData.map(ob => {
+            return this.reBuildObject(keymap, ob )
+        });
+        return <candidate-display data={data}></candidate-display>
+       
     }
 
-    checkProps(){
-        let valid = false;
-        if (this.year === '2020' || '2021' || '2022') valid = true;
-        if (valid && this.season === 'Spring' || 'Autumn' || 'By') valid = true;
-
+    validateProps(){
+        //BE EXTRA CAREFUL OF PROPS SUPPLIED, SO DATA IS NOT UPLOADED TO A RANDOM LOCATION IN DATABASE
+        
+        let valid = true;
+        if (/202[0-9]/.test(this.year) === false)  valid = false;
+        else {
+            switch(this.season){
+                case 'Spring':
+                    valid = true;
+                    break;
+                case 'Autumn':
+                    valid = true;
+                case 'By' :
+                    valid= true;
+                    break;
+                default : valid = false;
+            }
+        }
         return valid;
     }
 
     @Listen('emitClick') uploadClick(e){
-        if (e.detail === 'upload' && this.checkProps()){
-            console.log("submitted whoop whoop")
+        //LISTEN FOR CLICK TO MAKE REQUEST TO FIREBASE
+        if (e.detail === 'upload'){
+            this.loading = true;
             this.submitJson();
+        }
+
+        //LISTEN FOR CLICK TO CLEAR AN ERROR
+        else if (e.detail === 'clear'){
+            this.error = null;
         }
     }
 
+    @Listen('exitModal') closeModal(){
+        //CLOSE MODAL
+        this.modalOpen = false;
+    }
 
-    
+    @Watch('spreadsheetData') dataUploaded(){
+        //IF SPREADSHEETDATA PROP IS UPDATED
+        // if (this.stage === 'candidates'){
+        //     //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
+        //     this.spreadsheetData = this.spreadsheetData.filter(candidate => candidate.Status === 'Approved');
+        // }
+        this.error = null;
+        this.successfulUpload = false;
+    }
+
     render() {
-        const data = this.json.map(ob => {
-            return this.reBuildObject(this.candidatesKeysMap, ob)
-        });
 
-        const content = (
-            <div class="upload_container">
+        let previewCards = this.spreadsheetData? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+
+        let successfulUploadNotice = ([
+            <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
+            <h3 style={{"color": "green"}}>Upload Completed</h3>,
+            <p><em>Your work is done!</em></p>,
+            <br></br>
+        ])
+        
+
+        let content =  (
+            <div style={{"padding": "1em 2em"}} class="upload_container">
+                <h3>Preview of data</h3>
+                <p>Below is an unsorted + unfiltered list of profile cards generated from the spreadsheet. <em>Use to do final checks,</em> eg double check links, images etc.</p>
+                <p>Once happy click the Upload button below to upload data to database</p>
+                <p>If you do not see a a list of profile cards below, there was an issue with the spreadsheet. Double check all fields are correct by referring to the Website Documentation. </p>
                 <kclsu-button emitid="upload">Upload Data</kclsu-button>
-                
-                <h3>Preview of data uploaded</h3>
-                    <profile-card-layout>
-                        {this.createCards(data)}
-                    </profile-card-layout>
-            </div>
-        ) 
+                <loading-spinner show={this.loading}></loading-spinner>
+                {this.successfulUpload && successfulUploadNotice }
+                {!this.successfulUpload? previewCards : '' }
 
+                
+            </div>); 
+        
+        if (this.error) {
+            content = (
+                <div style={{"padding": "1em 2em"}} class="upload_container">
+                    <h3 style={{"color": "red"}}>Error</h3>
+                    <p>{this.error}</p>
+                    {this.validProps? <kclsu-button emitid="clear" purple>Try again</kclsu-button> : ''} 
+                </div>)
+        }
 
         return content;
-        // return this.spreadsheetData && cards 
     }
 }

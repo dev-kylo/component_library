@@ -9,8 +9,6 @@ import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/c
 })
 export class InnerTabHeader {
 
-
-
     @State() isSelected: boolean;
 
     @Prop() active: boolean = false;
