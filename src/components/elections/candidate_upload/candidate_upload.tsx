@@ -119,7 +119,7 @@ export class CandidateUpload {
         //CREATES PROFILE CARDS FOR PREVIEW
 
         const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
-        const data = this.spreadsheetdata.map(ob => {
+        const data = JSON.parse(this.spreadsheetdata).map(ob => {
             return this.reBuildObject(keymap, ob )
         });
         console.log('DATA PASSED TO CANDIDATE DISPLAY')
@@ -168,6 +168,8 @@ export class CandidateUpload {
     }
 
     @Watch('spreadsheetdata') dataUploaded(){
+
+        console.log("WATCH EVENT FOR SPREADSHEET DATA")
         //IF SPREADSHEETDATA PROP IS UPDATED
         // if (this.stage === 'candidates'){
         //     //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
