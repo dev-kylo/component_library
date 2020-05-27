@@ -179,7 +179,7 @@ export class CandidateUpload {
 
     render() {
 
-        let previewCards = this.spreadsheetData? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+        let previewCards =  this.createCards();
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
