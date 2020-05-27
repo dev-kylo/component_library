@@ -24,7 +24,7 @@ export class AcademicCandidateDisplay {
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
                 if (!positions.find(p => p === current.Post)){
-                let link = <span data-candidates={current}  onClick={ e => this.clickHandler(e)}>{current.Post}</span>
+                let link = <span data-candidates={current} class="academic_sub"  onClick={ e => this.clickHandler(e)}>{current.Post}</span>
                     positions.push(current.Post);
                     nodes.push(link)
                 }
@@ -38,10 +38,9 @@ export class AcademicCandidateDisplay {
         this.current = e.target.textContent;
         let collection:HTMLCollection = e.target.parentNode.children;
         for(let x = 0; x < collection.length; x++){
-           collection[x].setAttribute('style', 'font-weight:  ')
+           collection[x].setAttribute('style', 'color:  #502669')
         }
-         e.target.style.fontWeight = 'bold';
-         e.target.style.margin = '5px 5px;'
+         e.target.style.color = '#e45b2c';
    
     }
 
