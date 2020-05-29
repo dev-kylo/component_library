@@ -21,7 +21,7 @@ export class VideoGallery {
         if(!this.active){
             const urlParams = new URLSearchParams(this.playlist);
             let playlistId = urlParams.get('list');
-            fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=AIzaSyAn8yWZA_9rYBtPZ8i1up_uF6Vo3Mulzsc`)
+            fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=AIzaSyAn8yWZA_9rYBtPZ8i1up_uF6Vo3Mulzsc&maxResults=15`)
                 .then(res => res.json())
                 .then(data => {
                     this.videos = data.items;
