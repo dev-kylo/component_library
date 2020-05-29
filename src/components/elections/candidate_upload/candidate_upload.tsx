@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Listen, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Listen } from '@stencil/core';
 
 @Component({
     tag: 'candidate-upload',
@@ -73,6 +73,7 @@ export class CandidateUpload {
 
             fetch(url, body)
                 .then(res => {
+                    console.log(res)
                     if (res.status){
                         this.error = '';
                         this.successfulUpload = true;
