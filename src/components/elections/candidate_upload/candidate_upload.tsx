@@ -74,7 +74,12 @@ export class CandidateUpload {
             fetch(url, body)
                 .then(res => {
                     console.log(res)
-                    if (res.status){
+                    if(!res.ok){
+                        this.loading = false;
+                        this.successfulUpload = false;
+                        this.error = res.statusText;
+                    }
+                    else {
                         this.error = '';
                         this.successfulUpload = true;
                         this.modalOpen = true;
@@ -83,7 +88,6 @@ export class CandidateUpload {
         
                 })
                 .catch(er => {
-                    console.log(er)
                     this.error = `${er}`;
                     this.loading = false;
                 }); 
