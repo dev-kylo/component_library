@@ -48,8 +48,8 @@ export class CandidateUpload {
     submitJson(){
         //MAKE A REQUEST TO FIREBASE TO UPLOAD DATA
         let baseUrl;
-        if (this.stage === 'candidates') baseUrl ='https://varsity-f9a3f.firebaseio.com';
-        else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
+        if (this.stage === 'candidates') baseUrl ='https://elections-b726c.firebaseio.com';
+        else if (this.stage === 'results') baseUrl = 'https://elections-results-757f2.firebaseio.com';
         else {console.log('No stage param specified')};
 
         const token = localStorage.getItem('kclsu_token');
@@ -163,7 +163,7 @@ export class CandidateUpload {
         console.log("SPREADSHEET DATA BEFORE RENDER")
 
         //SET THE DATABASE NAME AREA FOR AUTHENTICATION
-        let database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
+        const database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
 
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
