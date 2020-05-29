@@ -30,9 +30,8 @@ export class CandidateUpload {
 
         if (this.spreadsheetdata && this.stage === 'candidates'){
             //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-            this.spreadsheetdata = this.spreadsheetdata.filter(candidate => candidate.candidate_status === 'Approved');
+            this.spreadsheetdata = JSON.parse(this.spreadsheetdata).filter(candidate => candidate.candidate_status === 'Approved');
             console.log('SPREADSHEET DATA IN COMP DID LOAD')
-            console.log(this.spreadsheetdata)
         }
     }
 
@@ -59,6 +58,8 @@ export class CandidateUpload {
         if (this.stage === 'candidates') baseUrl ='https://varsity-f9a3f.firebaseio.com';
         else if (this.stage === 'results') baseUrl = 'https://varsity-f9a3f.firebaseio.com';
         else {console.log('No stage param specified')};
+
+        const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
             let data = this.spreadsheetdata.map(ob => {
@@ -122,8 +123,6 @@ export class CandidateUpload {
         const data = JSON.parse(this.spreadsheetdata).map(ob => {
             return this.reBuildObject(keymap, ob )
         });
-        console.log('DATA PASSED TO CANDIDATE DISPLAY')
-        console.log(data)
         return <candidate-display data={data}></candidate-display>
        
     }
@@ -167,21 +166,13 @@ export class CandidateUpload {
         this.modalOpen = false;
     }
 
-    @Watch('spreadsheetdata') dataUploaded(){
-
-        console.log("WATCH EVENT FOR SPREADSHEET DATA")
-        //IF SPREADSHEETDATA PROP IS UPDATED
-        // if (this.stage === 'candidates'){
-        //     //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-        //     this.spreadsheetdata = this.spreadsheetdata.filter(candidate => candidate.Status === 'Approved');
-        // }
-        this.error = null;
-        this.successfulUpload = false;
-    }
-
     render() {
         console.log("SPREADSHEET DATA BEFORE RENDER")
-        console.log(this.spreadsheetdata)
+
+        //SET THE DATABASE NAME AREA FOR AUTHENTICATION
+        let database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
+
+        //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
 
         let successfulUploadNotice = ([
@@ -193,7 +184,8 @@ export class CandidateUpload {
         
 
         let content =  (
-            <div style={{"padding": "1em 2em"}} class="upload_container">
+            <div class="upload_container">
+                <user-login database={database}></user-login>
                 <h3>Preview of data</h3>
                 <p>Below is an unsorted + unfiltered list of profile cards generated from the spreadsheet. <em>Use to do final checks,</em> eg double check links, images etc.</p>
                 <p>Once happy click the Upload button below to upload data to database</p>
@@ -208,7 +200,8 @@ export class CandidateUpload {
         
         if (this.error) {
             content = (
-                <div style={{"padding": "1em 2em"}} class="upload_container">
+                <div class="upload_container">
+                    <user-login database={database}></user-login>
                     <h3 style={{"color": "red"}}>Error</h3>
                     <p>{this.error}</p>
                     {this.validProps? <kclsu-button emitid="clear" purple>Try again</kclsu-button> : ''} 
