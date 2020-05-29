@@ -69,7 +69,7 @@ export class CandidateUpload {
                 body: JSON.stringify(data), 
             };
     
-            const url = `${baseUrl}/${this.electionid}.json`
+            const url = `${baseUrl}/${this.electionid}.json?auth=${token}`
 
             fetch(url, body)
                 .then(res => {
