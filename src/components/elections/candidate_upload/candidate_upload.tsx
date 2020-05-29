@@ -10,10 +10,8 @@ export class CandidateUpload {
     @Prop() spreadsheetdata:any;
     /** Either 'candidates' or 'results'. Will set the firebase url and key map */
     @Prop() stage: string;
-    /**Year elections takes place eg 2020. Not Academic year! */
-    @Prop() year: string;
-    /**Elections season - Spring or Autumn */
-    @Prop() season: string;
+    /**MSL ELections ID*/
+    @Prop() electionid: string;
 
     @State() successfulUpload: boolean = false;
     @State() error = '';
@@ -21,19 +19,14 @@ export class CandidateUpload {
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
 
-    componentDidLoad(){
-        //IF UNVALID PROPS, SET ERROR 
-        if (this.validateProps() === false) {
-            this.error = 'Check component attributes';
-            this.validProps = false;
-        }
+    // componentDidLoad(){
+    //     //IF UNVALID PROPS, SET ERROR 
+    //     if (this.validateProps() === false) {
+    //         this.error = 'Check component attributes';
+    //         this.validProps = false;
+    //     }
 
-        if (this.spreadsheetdata && this.stage === 'candidates'){
-            //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-            this.spreadsheetdata = JSON.parse(this.spreadsheetdata).filter(candidate => candidate.candidate_status === 'Approved');
-            console.log('SPREADSHEET DATA IN COMP DID LOAD')
-        }
-    }
+    // }
 
     candidatesKeysMap = {
         'display_name': 'Name',
@@ -62,7 +55,7 @@ export class CandidateUpload {
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
-            let data = this.spreadsheetdata.map(ob => {
+            let data = JSON.parse(this.spreadsheetdata).map(ob => {
                 return this.reBuildObject(this.candidatesKeysMap, ob)
             });
 
@@ -76,7 +69,7 @@ export class CandidateUpload {
                 body: JSON.stringify(data), 
             };
     
-            const url = `${baseUrl}/${this.year}/${this.season}.json`
+            const url = `${baseUrl}/${this.electionid}.json`
 
             fetch(url, body)
                 .then(res => {
@@ -127,26 +120,26 @@ export class CandidateUpload {
        
     }
 
-    validateProps(){
-        //BE EXTRA CAREFUL OF PROPS SUPPLIED, SO DATA IS NOT UPLOADED TO A RANDOM LOCATION IN DATABASE
+    // validateProps(){
+    //     //BE EXTRA CAREFUL OF PROPS SUPPLIED, SO DATA IS NOT UPLOADED TO A RANDOM LOCATION IN DATABASE
         
-        let valid = true;
-        if (/202[0-9]/.test(this.year) === false)  valid = false;
-        else {
-            switch(this.season){
-                case 'Spring':
-                    valid = true;
-                    break;
-                case 'Autumn':
-                    valid = true;
-                case 'By' :
-                    valid= true;
-                    break;
-                default : valid = false;
-            }
-        }
-        return valid;
-    }
+    //     let valid = true;
+    //     if (/202[0-9]/.test(this.year) === false)  valid = false;
+    //     else {
+    //         switch(this.season){
+    //             case 'Spring':
+    //                 valid = true;
+    //                 break;
+    //             case 'Autumn':
+    //                 valid = true;
+    //             case 'By' :
+    //                 valid= true;
+    //                 break;
+    //             default : valid = false;
+    //         }
+    //     }
+    //     return valid;
+    // }
 
     @Listen('emitClick') uploadClick(e){
         //LISTEN FOR CLICK TO MAKE REQUEST TO FIREBASE
