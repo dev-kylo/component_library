@@ -47,10 +47,14 @@ export class CandidateUpload {
 
     submitJson(){
         //MAKE A REQUEST TO FIREBASE TO UPLOAD DATA
-        let baseUrl;
-        if (this.stage === 'candidates') baseUrl ='https://elections-b726c.firebaseio.com';
-        else if (this.stage === 'results') baseUrl = 'https://elections-results-757f2.firebaseio.com';
-        else {console.log('No stage param specified')};
+        const baseUrl = 'https://elections-b726c.firebaseio.com';
+        let endpoint;
+        if (this.stage === 'candidates') endpoint = 'candidates'; 
+        else if (this.stage === 'results') endpoint = 'results';
+        else {
+            this.error = 'Incorrect component parameter supplied'
+            throw new Error();
+        };
 
         const token = localStorage.getItem('kclsu_token');
 
@@ -69,7 +73,7 @@ export class CandidateUpload {
                 body: JSON.stringify(data), 
             };
     
-            const url = `${baseUrl}/${this.electionid}.json?auth=${token}`
+            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
 
             fetch(url, body)
                 .then(res => {
