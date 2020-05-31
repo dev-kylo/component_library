@@ -38,11 +38,11 @@ export class InnerTabsContainer {
   
   render() {
     return (
-    <div class="kclsu-tabs">
-      <div class="kclsu-tab-headers">
+    <div role="presentation" class="kclsu-tabs">
+      <ul role="tablist" class="kclsu-tab-headers">
         <slot name="tab-headers"></slot>
-      </div>
-      <div class="kclsu-tab-content">
+      </ul>
+      <div role="presentation" class="kclsu-tab-content">
         <slot name="tab-content"></slot>
       </div>
     </div>

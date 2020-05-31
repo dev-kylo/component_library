@@ -46,7 +46,7 @@ export class CandidateUpload {
     }
 
     submitJson(){
-        //MAKE A REQUEST TO FIREBASE TO UPLOAD DATA
+     //MAKE A REQUEST TO FIREBASE TO UPLOAD DATA
         const baseUrl = 'https://elections-b726c.firebaseio.com';
         let endpoint;
         if (this.stage === 'candidates') endpoint = 'candidates'; 
@@ -56,6 +56,7 @@ export class CandidateUpload {
             throw new Error();
         };
 
+        //FETCH TOKEN FROM LOCAL STORAGE TO MAKE AUTHENTICATED REQUEST
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){

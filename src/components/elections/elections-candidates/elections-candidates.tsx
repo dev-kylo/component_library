@@ -8,21 +8,21 @@ import { Component, h, State, Prop } from '@stencil/core';
 
 export class ElectionsCandidates {
 
-    @State() data;
     /**Set to true to display results data. False to display All Candidates */
     @Prop() results: boolean = false;
-    /**Year elections takes place eg 2020. Not Academic year! */
-    @Prop() year: string;
-    /**Elections season - Spring or Autumn */
-    @Prop() season: string;
-    
+    /**The election ID from MSL! */
+    @Prop() electionid: string;
+    /**A string of exact role names for student officers, separated by the | sign */
     @Prop() studentofficers:any;
+    /**A string of exact role names for network officers, separated by the | sign */
     @Prop() networkofficers:any;
-    /** Either Faculties or Association Names. PLEASE NOTE: The name you provide must appear EXACLTY the same somwhere in every Post Title for that group. */
+    /** A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title*/
     @Prop() academicgroups:any;
-
-
+    /** The primary acrtive tab that will be open on page load */
     @Prop() activeid: string = 'SO';
+
+    
+    @State() data;
 
 
     dataMap = {
@@ -50,8 +50,10 @@ export class ElectionsCandidates {
     }
 
     componentDidLoad() {
-        // let url = !this.results? `https://elections-b726c.firebaseio.com/${this.year}/${this.season}.json` : `https://elections-results-757f2.firebaseio.com/${this.year}/${this.season}.json`;
-        let url = `https://varsity-f9a3f.firebaseio.com/${this.year}/${this.season}.json`
+        /** Fetch the data from the database */
+
+        const endpoint = this.results? 'results' : 'candidates'
+        let url = `https://elections-b726c.firebaseio.com/${this.electionid}/${endpoint}.json`
         fetch(url)
             .then(res => res.json())
             .then(candidateData => {
@@ -72,8 +74,7 @@ export class ElectionsCandidates {
     // }
 
     shortenTitle(title, id:any){
-
-        console.log(id + ' ' + title)
+     /** To be used for the Tab Headings, so a shorter title appears as the heading*/
         
         if (id === 'SO'){
             if (title.includes('Welfare')) title = 'VP Welfare & Community';
@@ -95,19 +96,24 @@ export class ElectionsCandidates {
             else if (title.includes('LGBT+')) title = 'LGBT+';
         }
 
-        else {}
+        else if (id === 'ACADEMIC') return title
+
+        else {
+            console.log('Unable to shorten title due to incorrect Data Map ID. Title used:' + ' ' + title)
+        }
+        
 
         return title
 
     }
 
     createTabs(){
+    //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
 
-        //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
         const newDataMapArray:any = [];
         if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers})
         if (this.networkofficers) newDataMapArray.push({...this.dataMap.network})
-        if (this.filterOfficerData('NUS National Conference Delegate', 'Post')) newDataMapArray.push({...this.dataMap.nus})
+        if (this.filterOfficerData('NUS National Conference Delegate', 'Post').length > 0) newDataMapArray.push({...this.dataMap.nus})
         if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic})
 
         return newDataMapArray.map((field, i) => {
@@ -122,10 +128,12 @@ export class ElectionsCandidates {
     }
 
     organiseInnerTabs(field){
+    /** DEPENDING ON FIELD TYPE, CREATE EITHER INNER TABBS CONTAINER OR A CANDIDATE DISPLAY */
+
         let inner;
         switch(field.id){
             case 'NUS':
-                inner = <candidate-display data={this.filterOfficerData(field.innertabs, 'Post')}></candidate-display>
+                 inner = <candidate-display data={this.filterOfficerData(field.innertabs, 'Post')}></candidate-display>
             break;
             case 'SO':
                 inner = (<inner-tabs-container>
@@ -148,14 +156,18 @@ export class ElectionsCandidates {
     }
 
     createInnerTabs(array, typeId){
+    /** THE INNER TABS FOR EACH FIELD WITH AN INNER TABS CONTAINER */
 
         const ar = array;
+        
+        /** IF DISPLAYING RESULTS, AN 'ALL' TAB IS ADDED TO KEEP ALL RELATED ROLES UNDER ONE INNER TAB */
         if(this.results && typeId === 'SO'){
             ar.unshift('All')
         } 
         else if( this.results && typeId === 'NO'){
             ar.unshift('All')
         } 
+        
         return ar.map((title, i) => {
             let searchField = title;
             if (title === 'All' && typeId === 'SO') searchField = 'Officer'
