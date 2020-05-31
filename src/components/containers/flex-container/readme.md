@@ -26,6 +26,7 @@
  - [create-varsity-data](../../varsity/create-varsity-data)
  - [full-bio](../../profiles/bio)
  - [kclsu-button](../../buttons/kclsu-button)
+ - [kclsu-search](../../search/kclsu-search)
  - [last-year-scores](../../varsity/varsity-landing/last-year-scores)
  - [preset-controls](../../cloudinary/preset-controls)
  - [profile-card](../../cards/profile-card)
@@ -41,6 +42,7 @@ graph TD;
   create-varsity-data --> flex-container
   full-bio --> flex-container
   kclsu-button --> flex-container
+  kclsu-search --> flex-container
   last-year-scores --> flex-container
   preset-controls --> flex-container
   profile-card --> flex-container
