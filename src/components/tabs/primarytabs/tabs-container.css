@@ -11,15 +11,19 @@
     flex-wrap: wrap;    
     margin: 0;
     background-color: #e8e8e2;  
+    box-sizing: border-box;
 }
 
 .kclsu-tab-headers {
-    padding: 10px
+    padding: 20px
 }
 
 
 @media only screen and (max-width: 780px){
     .kclsu-tabs {
         margin: 0.5em;
+    }
+    .kclsu-tab-headers {
+        padding: 10px
     }
 }

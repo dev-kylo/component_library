@@ -38,6 +38,20 @@ export namespace Components {
     interface CandidateDisplay {
         "data": any;
     }
+    interface CandidateUpload {
+        /**
+          * MSL ELections ID
+         */
+        "electionid": string;
+        /**
+          * The JSON generated from the browser-side uploaded excel spreadsheet
+         */
+        "spreadsheetdata": any;
+        /**
+          * Either 'candidates' or 'results'. Will set the firebase url and key map
+         */
+        "stage": string;
+    }
     interface CloudinaryApp {
         "public_id": string;
     }
@@ -49,7 +63,30 @@ export namespace Components {
         "year": string;
     }
     interface ElectionsCandidates {
+        /**
+          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
+         */
+        "academicgroups": any;
+        /**
+          * The primary acrtive tab that will be open on page load
+         */
+        "activeid": string;
+        /**
+          * The election ID from MSL!
+         */
+        "electionid": string;
+        /**
+          * A string of exact role names for network officers, separated by the | sign
+         */
+        "networkofficers": any;
+        /**
+          * Set to true to display results data. False to display All Candidates
+         */
         "results": boolean;
+        /**
+          * A string of exact role names for student officers, separated by the | sign
+         */
+        "studentofficers": any;
     }
     interface ElectionsFooter {
     }
@@ -356,6 +393,7 @@ export namespace Components {
     }
     interface TabHeader {
         "active": boolean;
+        "index": string;
         "name": string;
     }
     interface TabsContainer {
@@ -494,6 +532,12 @@ declare global {
     var HTMLCandidateDisplayElement: {
         prototype: HTMLCandidateDisplayElement;
         new (): HTMLCandidateDisplayElement;
+    };
+    interface HTMLCandidateUploadElement extends Components.CandidateUpload, HTMLStencilElement {
+    }
+    var HTMLCandidateUploadElement: {
+        prototype: HTMLCandidateUploadElement;
+        new (): HTMLCandidateUploadElement;
     };
     interface HTMLCloudinaryAppElement extends Components.CloudinaryApp, HTMLStencilElement {
     }
@@ -866,6 +910,7 @@ declare global {
         "campaign-page": HTMLCampaignPageElement;
         "campaign-tabs": HTMLCampaignTabsElement;
         "candidate-display": HTMLCandidateDisplayElement;
+        "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
         "create-varsity-data": HTMLCreateVarsityDataElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
@@ -961,6 +1006,20 @@ declare namespace LocalJSX {
     interface CandidateDisplay {
         "data"?: any;
     }
+    interface CandidateUpload {
+        /**
+          * MSL ELections ID
+         */
+        "electionid"?: string;
+        /**
+          * The JSON generated from the browser-side uploaded excel spreadsheet
+         */
+        "spreadsheetdata"?: any;
+        /**
+          * Either 'candidates' or 'results'. Will set the firebase url and key map
+         */
+        "stage"?: string;
+    }
     interface CloudinaryApp {
         "public_id"?: string;
     }
@@ -972,7 +1031,30 @@ declare namespace LocalJSX {
         "year"?: string;
     }
     interface ElectionsCandidates {
+        /**
+          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
+         */
+        "academicgroups"?: any;
+        /**
+          * The primary acrtive tab that will be open on page load
+         */
+        "activeid"?: string;
+        /**
+          * The election ID from MSL!
+         */
+        "electionid"?: string;
+        /**
+          * A string of exact role names for network officers, separated by the | sign
+         */
+        "networkofficers"?: any;
+        /**
+          * Set to true to display results data. False to display All Candidates
+         */
         "results"?: boolean;
+        /**
+          * A string of exact role names for student officers, separated by the | sign
+         */
+        "studentofficers"?: any;
     }
     interface ElectionsFooter {
     }
@@ -1287,8 +1369,10 @@ declare namespace LocalJSX {
     }
     interface TabHeader {
         "active"?: boolean;
+        "index"?: string;
         "name"?: string;
         "onSelectTab"?: (event: CustomEvent<any>) => void;
+        "onSelectTabByIndex"?: (event: CustomEvent<any>) => void;
     }
     interface TabsContainer {
         "innertab"?: boolean;
@@ -1376,6 +1460,7 @@ declare namespace LocalJSX {
         "campaign-page": CampaignPage;
         "campaign-tabs": CampaignTabs;
         "candidate-display": CandidateDisplay;
+        "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
         "create-varsity-data": CreateVarsityData;
         "elections-candidates": ElectionsCandidates;
@@ -1452,6 +1537,7 @@ declare module "@stencil/core" {
             "campaign-page": LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
+            "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
