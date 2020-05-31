@@ -20,11 +20,22 @@ export class TabContent {
             'tab-content-active' : this.isSelected
         }
 
-        return (
-            <div class={classes}>
-                <slot></slot>
-            </div>
-        );
+        if(this.isSelected){
+            return (
+                <section class={classes} role="tabpanel" aria-labelledby={this.name}>
+                    <slot></slot>
+                </section>
+            );
+        }
+
+        else {
+            return (
+                <section class={classes} tabindex="-1" hidden role="tabpanel" aria-labelledby={this.name}>
+                    <slot></slot>
+                </section>
+            );
+        }
+
     }
 
     @Watch('active') 

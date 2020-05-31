@@ -3,19 +3,30 @@
 .tab-header {
     min-height: 20px;
     /* min-width: 150px; */
-    cursor: pointer;
+    /* cursor: pointer; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     text-transform: uppercase;
-    padding: 15px;
+    padding: 12px;
     color: #502766;
     background: #e8e8e2;
     font-weight: 500;
+    list-style: none;
+    box-sizing: content-box;
+    border-bottom: 3px solid transparent;
     /* border-right: 1px solid #deded7; */
 }
 
+.tab-header a {
+    cursor: pointer;
+    font-family: bree-serif, serif;
+    margin: 0 0 0px;
+    font-weight: 700;
+    color: #502766;
+    background: #e8e8e2;
+}
 
 
 @media (max-width: 599px) {

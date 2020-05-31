@@ -24,7 +24,7 @@ export class AcademicCandidateDisplay {
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
                 if (!positions.find(p => p === current.Post)){
-                let link = <span data-candidates={current} class="academic_sub"  onClick={ e => this.clickHandler(e)}>{current.Post}</span>
+                let link = <li role="tab" id={current.Post} data-candidates={current} class="academic_sub" aria-selected="false" onClick={ e => this.clickHandler(e)}>{current.Post}</li>
                     positions.push(current.Post);
                     nodes.push(link)
                 }
@@ -38,9 +38,11 @@ export class AcademicCandidateDisplay {
         this.current = e.target.textContent;
         let collection:HTMLCollection = e.target.parentNode.children;
         for(let x = 0; x < collection.length; x++){
-           collection[x].setAttribute('style', 'color:  #502669')
+           collection[x].setAttribute('style', 'color:  #502669');
+           collection[x].setAttribute('aria-selected', 'false');
         }
          e.target.style.color = '#e45b2c';
+         e.target.setAttribute('aria-selected', 'true');
    
     }
 
@@ -48,13 +50,15 @@ export class AcademicCandidateDisplay {
     render() {
         let candidates = !this.current ? '' : <candidate-display data={this.data.filter(candidate => candidate.Post === this.current)}></candidate-display>;
         return (
-            <div>
-                <div class="positions">
-                    <div class="submenu">
+            <div role="presentation">
+                <div class="positions" role="presentation">
+                    <ul class="submenu" role="tablist">
                         {this.createSubLinks()}
-                    </div>
+                    </ul>
                 </div>
-                {candidates}
+                <section role="tabpanel" aria-labelledby={this.current}>
+                    {candidates}
+                </section>
             </div>
         );
     }

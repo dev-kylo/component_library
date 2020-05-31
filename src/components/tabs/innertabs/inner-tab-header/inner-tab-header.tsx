@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Watch} from '@stencil/core';
 
 
 
@@ -9,7 +9,7 @@ import { Component, h, State, Prop, Event, EventEmitter, Watch} from '@stencil/c
 })
 export class InnerTabHeader {
 
-    @State() isSelected: boolean;
+    // @State() isSelected: boolean;
 
     @Prop() active: boolean = false;
     @Prop() name: string;
@@ -19,27 +19,27 @@ export class InnerTabHeader {
     selectInnerTab: EventEmitter;
 
 
-    componentDidLoad(){
-        if (this.active) this.isSelected = true;
-    }
+    // componentDidLoad(){
+    //     if (this.active) this.isSelected = true;
+    // }
 
     
     render() {
         const classes = {
             'tab-header': true,
-            'tab-header-active': this.isSelected
+            'tab-header-active': this.active
         }
 
         return (
-            <div class={classes} onClick={() => this.onClick()}>
-                <h6><slot></slot></h6>
-            </div>
+            <li role="presentation" class={classes} onClick={() => this.onClick()}>
+                <h6 id={this.name} aria-selected={this.active} role="tab"><slot></slot></h6>
+            </li>
         );
     }
 
     @Watch('active') 
     onActiveChanged(newValue: boolean) {
-      this.isSelected = newValue;
+      this.active = newValue;
     }
 
     onClick() {
@@ -47,11 +47,11 @@ export class InnerTabHeader {
     }
 
     select(){
-        this.isSelected = true;
+        this.active = true;
     }
 
     unselect(){
-        this.isSelected = false;
+        this.active = false;
     }
 
 

@@ -64,24 +64,29 @@ export namespace Components {
     }
     interface ElectionsCandidates {
         /**
-          * Either Faculties or Association Names. PLEASE NOTE: The name you provide must appear EXACLTY the same somwhere in every Post Title for that group.
+          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
          */
         "academicgroups": any;
+        /**
+          * The primary acrtive tab that will be open on page load
+         */
         "activeid": string;
+        /**
+          * The election ID from MSL!
+         */
+        "electionid": string;
+        /**
+          * A string of exact role names for network officers, separated by the | sign
+         */
         "networkofficers": any;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results": boolean;
         /**
-          * Elections season - Spring or Autumn
+          * A string of exact role names for student officers, separated by the | sign
          */
-        "season": string;
         "studentofficers": any;
-        /**
-          * Year elections takes place eg 2020. Not Academic year!
-         */
-        "year": string;
     }
     interface ElectionsFooter {
     }
@@ -388,6 +393,7 @@ export namespace Components {
     }
     interface TabHeader {
         "active": boolean;
+        "index": string;
         "name": string;
     }
     interface TabsContainer {
@@ -1026,24 +1032,29 @@ declare namespace LocalJSX {
     }
     interface ElectionsCandidates {
         /**
-          * Either Faculties or Association Names. PLEASE NOTE: The name you provide must appear EXACLTY the same somwhere in every Post Title for that group.
+          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
          */
         "academicgroups"?: any;
+        /**
+          * The primary acrtive tab that will be open on page load
+         */
         "activeid"?: string;
+        /**
+          * The election ID from MSL!
+         */
+        "electionid"?: string;
+        /**
+          * A string of exact role names for network officers, separated by the | sign
+         */
         "networkofficers"?: any;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results"?: boolean;
         /**
-          * Elections season - Spring or Autumn
+          * A string of exact role names for student officers, separated by the | sign
          */
-        "season"?: string;
         "studentofficers"?: any;
-        /**
-          * Year elections takes place eg 2020. Not Academic year!
-         */
-        "year"?: string;
     }
     interface ElectionsFooter {
     }
@@ -1358,8 +1369,10 @@ declare namespace LocalJSX {
     }
     interface TabHeader {
         "active"?: boolean;
+        "index"?: string;
         "name"?: string;
         "onSelectTab"?: (event: CustomEvent<any>) => void;
+        "onSelectTabByIndex"?: (event: CustomEvent<any>) => void;
     }
     interface TabsContainer {
         "innertab"?: boolean;

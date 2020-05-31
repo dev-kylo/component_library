@@ -52,11 +52,11 @@ export class TabsContainer {
   
   render() {
     return (
-    <div class="kclsu-tabs">
-      <div class="kclsu-tab-headers">
+    <div role="presentation" class="kclsu-tabs">
+      <ul role="tablist" class="kclsu-tab-headers">
         <slot name="tab-headers"></slot>
-      </div>
-      <div class="kclsu-tab-content">
+      </ul>
+      <div role="presentation" class="kclsu-tab-content">
         <slot name="tab-content"></slot>
       </div>
     </div>
@@ -65,17 +65,30 @@ export class TabsContainer {
 
   @Listen('selectTab')
   onSelectedTab(event: CustomEvent) {
-    this.selectGroup(event.detail);
+    this.selectGroup(event.detail, null);
   }
 
-  selectGroup(name){
+  @Listen('selectTabByIndex')
+  onSelectedTabByIndex(event: CustomEvent) {
+    this.selectGroup(null, event.detail);
+  }
 
-    this.allTabsGroups.forEach(tabgroup => {
+
+  selectGroup(name, newIndex){
+
+    this.allTabsGroups.forEach((tabgroup, i) => {
+
+    tabgroup.header.index = i;
       
     if (tabgroup.header.name === name){
         tabgroup.header.active = true;
         tabgroup.content.active = true;
       }
+
+    else if ( i === newIndex){
+        tabgroup.header.active = true;
+        tabgroup.content.active = true;
+    }
 
       else {
         tabgroup.header.active = false;
