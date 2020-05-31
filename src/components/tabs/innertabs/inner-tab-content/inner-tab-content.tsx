@@ -23,9 +23,9 @@ export class InnerTabContent {
         }
 
         return (
-            <div class={classes}>
+            <section class={classes} hidden={this.isSelected} role="tabpanel" aria-labelledby={this.name}>
                 <slot></slot>
-            </div>
+            </section>
         );
     }
 
