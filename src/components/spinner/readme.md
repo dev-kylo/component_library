@@ -16,7 +16,10 @@
 
 ### Used by
 
+ - [candidate-upload](../elections/candidate_upload)
  - [cloudinary-app](../cloudinary)
+ - [elections-candidates](../elections/elections-candidates)
+ - [lazy-image](../images/lazy-image)
  - [profile-card](../cards/profile-card)
  - [video-embed](../videos/video-embed)
  - [video-gallery](../videos/video-gallery)
@@ -25,7 +28,10 @@
 ### Graph
 ```mermaid
 graph TD;
+  candidate-upload --> loading-spinner
   cloudinary-app --> loading-spinner
+  elections-candidates --> loading-spinner
+  lazy-image --> loading-spinner
   profile-card --> loading-spinner
   video-embed --> loading-spinner
   video-gallery --> loading-spinner

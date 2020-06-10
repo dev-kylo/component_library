@@ -34,6 +34,7 @@
 
 ### Used by
 
+ - [candidate-upload](../../elections/candidate_upload)
  - [cloudinary-app](../../cloudinary)
  - [full-bio](../../profiles/bio)
  - [label-card](../../cards/label-card)
@@ -47,6 +48,7 @@
 ```mermaid
 graph TD;
   kclsu-button --> flex-container
+  candidate-upload --> kclsu-button
   cloudinary-app --> kclsu-button
   full-bio --> kclsu-button
   label-card --> kclsu-button

@@ -1,6 +1,13 @@
-:root {
+:host {
     --app-primary-color: greenyellow;
+    --purple: #502669;
+    --light-teal:#51c2b1;
+    --dark-teal: #1ba39c;
+    --orange: #e6582b;
+    --grey: #444;
+    
   }
+
 
 /* span {
     font-size: 2em;

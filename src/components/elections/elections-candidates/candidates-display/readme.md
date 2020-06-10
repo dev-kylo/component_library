@@ -17,6 +17,7 @@
 ### Used by
 
  - [academic-candidate-display](../academic-candidates-display)
+ - [candidate-upload](../../candidate_upload)
  - [elections-candidates](..)
 
 ### Depends on
@@ -32,6 +33,7 @@ graph TD;
   profile-card --> loading-spinner
   profile-card --> flex-container
   academic-candidate-display --> candidate-display
+  candidate-upload --> candidate-display
   elections-candidates --> candidate-display
   style candidate-display fill:#f9f,stroke:#333,stroke-width:4px
 ```
