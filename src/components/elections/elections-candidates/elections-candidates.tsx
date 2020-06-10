@@ -93,6 +93,8 @@ export class ElectionsCandidates {
             else if (title.includes('Family')) title = 'Family';
             else if (title.includes('Disabled')) title = 'Disabled';
             else if (title.includes('Mature')) title = 'Mature';
+            else if (title.includes('LGBT+') && title.includes('open')) title = 'LGBT+ (open)';
+            else if (title.includes('LGBT+') && title.includes('trans')) title = 'LGBT+ (trans)';
             else if (title.includes('LGBT+')) title = 'LGBT+';
         }
 
@@ -188,7 +190,6 @@ export class ElectionsCandidates {
 
     
     render() {
-
         if (!this.data) return <div style={{"height": "50vh", "position": "relative"}}><loading-spinner /></div>
 
         else return (

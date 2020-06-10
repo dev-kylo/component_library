@@ -1,7 +1,7 @@
 @import '../../../../global/globalstyles.css';
 
 .academic_sub {
-    color: #502669;
+    color: var(--purple);
     /* margin: 5px 10px; */
     padding: 0 10px;
     font-size: 14px;
@@ -17,7 +17,7 @@
 
 .academic_sub::after{
     content: '';
-    border-right: 1px solid #502669;
+    border-right: 1px solid var(--purple);
     margin: 0.5em;
     margin-left: 1.5em;
 }
