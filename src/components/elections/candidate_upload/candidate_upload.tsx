@@ -64,6 +64,9 @@ export class CandidateUpload {
                 return this.reBuildObject(this.candidatesKeysMap, ob)
             });
 
+            console.log("parsed data")
+            console.log(data)
+
             if (this.stage === 'candidates'){
                 //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
                 data = data.filter(candidate => candidate.Status === 'Approved');

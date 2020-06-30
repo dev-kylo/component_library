@@ -5,7 +5,7 @@ div {
 }
 
 h3 {
-    color: #502669
+    color: var(--purple)
 }
 
 .twitter, .facebook, .instagram {

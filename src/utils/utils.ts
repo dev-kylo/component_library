@@ -62,3 +62,7 @@ export function getNextEvents(dataList, length = -1){
   else if (length > 0) return data.slice(dateIndex,dateIndex + length)
   else return data.slice(dateIndex)
 }
+
+export function sortFullNamesAlphabetically(){
+  console.log('yeah')
+}

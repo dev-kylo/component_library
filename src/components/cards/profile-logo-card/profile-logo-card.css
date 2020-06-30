@@ -3,8 +3,8 @@
 .profile-card {
     width: 250px;
     display: inline-block;
-    -webkit-box-shadow: -5px -2px 2px 4px rgb(25, 163, 156, 0.6);
-    box-shadow: -6px -5px 1px 0px rgb(25, 163, 156, 0.6);
+    -webkit-box-shadow: -5px -2px 2px 4px var(--light-teal);
+    box-shadow: -6px -5px 1px 0px var(--light-teal);
     position: relative;
     height: auto;
 }
@@ -70,8 +70,8 @@
     margin: 5px;
     display: inline-block;
     font-size: 14px;
-    color: #1aa29c;
-    border-bottom: 1px dashed #1aa29cb0;
+    color: var(--dark-teal);
+    border-bottom: 1px dashed var(--dark-teal);;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;

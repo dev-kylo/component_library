@@ -17,6 +17,8 @@ export class ProfileLogoCard {
     @Prop() logo: string;
     /** OPTIONAL - if you are using a transparent text icon and need to set a background colour */
     @Prop() logocolour: string;
+    /** Specify which part of the image you want to focus - top, bottom, right, left, center */
+    @Prop() imagefocus: string
 
     render() {
         const bg = {
@@ -24,11 +26,12 @@ export class ProfileLogoCard {
             "background-color": this.logocolour? this.logocolour : 'white'
         }
 
+
         return (
             <a target="_blank" href={this.link}>
                 <div class="profile-card">
                     <div class="background">
-                        <lazy-image image={this.image}></lazy-image>
+                        <lazy-image focusarea={this.imagefocus} image={this.image}></lazy-image>
                     </div>
                     <div class="logoContainer" style={bg}>
                         </div>

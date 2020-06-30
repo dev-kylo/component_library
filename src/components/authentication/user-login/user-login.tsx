@@ -13,6 +13,7 @@ export class UserLogin {
     @State() modalOpen: boolean = true;
     @State() token: string;
     @State() error: string;
+    @State() loading: boolean = false;
 
     componentDidLoad(){
         this.checkAuthentication();
@@ -36,6 +37,7 @@ export class UserLogin {
 
     logIn(e){
         e.preventDefault();
+        this.loading=true;
         let element = e.target;
         let email = element[0].value;
         let password = element[1].value;
@@ -60,7 +62,7 @@ export class UserLogin {
     fetch(url, payload)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+        this.loading=false;
         if (!data.idToken) this.error = data.error.message;
         else {
 
@@ -73,7 +75,9 @@ export class UserLogin {
             this.modalOpen = false;
         }
     })
-    .catch(er => this.error = er) 
+    .catch(er => {
+        this.loading= false;
+        this.error = er}) 
     }
     
     render() {
@@ -91,6 +95,7 @@ export class UserLogin {
                     </div>
                     <button>Login</button>                 
                 </form>
+                <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
                 <span class="error">{this.error? `${this.error} !`: ''}</span>
             </kclsu-modal>
         );
