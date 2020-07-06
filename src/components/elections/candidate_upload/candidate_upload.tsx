@@ -64,7 +64,7 @@ export class CandidateUpload {
                 .then(response => {
                     const candidateInfo = response.candidates.filter(candidate => candidate.Id === data.candidateId);
                     //SET IMAGE AND MANIFESTO LINKS
-                    data.ImageLink = candidateInfo.imageurl;
+                    data.ImageLink = candidateInfo.ImageUrl;
                     data.ManifestoLink = candidateInfo.ManifestoUrl;
 
                     console.log("final body data");
