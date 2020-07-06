@@ -14,8 +14,11 @@ export class CandidatesDisplay {
     render() {
         const cards = !this.data? null : this.data
                                                 .filter(candidate => {
-                                                    let name = candidate.DisplayName || candidate.Name;
-                                                    return !name.includes('R.O.N');
+                                                    if (candidate.DisplayName){
+                                                        let name = candidate.DisplayName;
+                                                        return !name.includes('R.O.N');
+                                                    }
+                                                    else return true;
                                                 })
                                                 .sort((a, b) => {
                                                     if (a.DisplayName){

@@ -21,6 +21,8 @@ export class AcademicCandidateDisplay {
         let positions = [];
         let nodes:HTMLSpanElement[] = []
         if (this.data){
+            console.log("data received in academic candidate display")
+            console.log(this.data)
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
                 if (!positions.find(p => p === current.Post)){
