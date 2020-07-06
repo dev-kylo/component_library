@@ -220,6 +220,13 @@ export namespace Components {
         "verysmall": boolean;
     }
     interface KclsuModal {
+        /**
+          * This will allow a user to click away and hide the modal when open
+         */
+        "autoexit": boolean;
+        /**
+          * Controls when the modal is open and visible or not
+         */
         "show": boolean;
     }
     interface KclsuSearch {
@@ -256,7 +263,23 @@ export namespace Components {
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein": boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth": string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
         "image": string;
+        /**
+          * A width for the image in pixels
+         */
+        "width": string;
     }
     interface LoadingSpinner {
         "show": boolean;
@@ -339,6 +362,10 @@ export namespace Components {
           * The background image URL
          */
         "image": string;
+        /**
+          * Specify which part of the image you want to focus - top, bottom, right, left, center
+         */
+        "imagefocus": string;
         /**
           * The URL link for the the card
          */
@@ -1192,6 +1219,13 @@ declare namespace LocalJSX {
         "verysmall"?: boolean;
     }
     interface KclsuModal {
+        /**
+          * This will allow a user to click away and hide the modal when open
+         */
+        "autoexit"?: boolean;
+        /**
+          * Controls when the modal is open and visible or not
+         */
         "show"?: boolean;
     }
     interface KclsuSearch {
@@ -1228,7 +1262,23 @@ declare namespace LocalJSX {
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein"?: boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth"?: string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
         "image"?: string;
+        /**
+          * A width for the image in pixels
+         */
+        "width"?: string;
     }
     interface LoadingSpinner {
         "show"?: boolean;
@@ -1315,6 +1365,10 @@ declare namespace LocalJSX {
           * The background image URL
          */
         "image"?: string;
+        /**
+          * Specify which part of the image you want to focus - top, bottom, right, left, center
+         */
+        "imagefocus"?: string;
         /**
           * The URL link for the the card
          */

@@ -62,3 +62,13 @@ export function getNextEvents(dataList, length = -1){
   else if (length > 0) return data.slice(dateIndex,dateIndex + length)
   else return data.slice(dateIndex)
 }
+
+export function sortFullNamesAlphabetically(){
+  console.log('yeah')
+}
+
+export function verifyCloudinaryApprovedUrl(url:string){
+    let verified = false ;
+    if (url.includes('https://www.kclsu.org/asset/News/6015/')) verified = true;
+    return verified;
+}

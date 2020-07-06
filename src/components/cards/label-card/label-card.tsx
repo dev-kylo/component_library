@@ -22,13 +22,6 @@ export class LabelCard {
         let text = this.highlightText? <p><em>{this.text}</em></p> : <p>{this.text}</p>
         let content = !this.buttonlink? text : <kclsu-button verysmall rounded link={this.buttonlink}>{this.buttontitle}</kclsu-button>
 
-        let style = {
-            'background-image': `url(${this.image})`,
-            'background-position': 'center center',
-            'background-size': 'cover',
-            'background-repeat': 'no-repeat'
-        }
-
         // let reverse =  !this.reverse? {} : {'flex-direction': 'row-reverse'};
         let cardStyle = {
             'flex-direction': `${!this.reverse? 'row' : 'row-reverse'}`,
@@ -39,7 +32,9 @@ export class LabelCard {
 
         return (
             <div class="card" style={cardStyle}>
-                <div class="image" style={style}></div>
+                <div class="image">
+                    <lazy-image animatein image={this.image}></lazy-image>
+                </div>
                 <div class="content">
                     <span class="title" style={headingStyle}>{this.cardtitle}</span>
                     {content}

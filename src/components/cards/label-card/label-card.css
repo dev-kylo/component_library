@@ -20,13 +20,12 @@
 }
 
 .title {
-    /* font-size: 17px; */
     margin: 15px 0 0 0;
     line-height: 22px;
     font-family: bree_serifbold;
     font-weight: 500;
     line-height: 1.1;
-    color: #502669;
+    color: var(--purple);
     padding: 0 20px;
     display: inline-block;
     font-weight: bold;
@@ -54,7 +53,7 @@ a {
     padding: 0 15px;
     margin: 15px 20px 10px;
     color: white;
-    background: #14847e;
+    background: var(--dark-teal);
     border-radius: 30px;
     font-size: 14px;
 }

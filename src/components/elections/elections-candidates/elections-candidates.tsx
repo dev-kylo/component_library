@@ -38,7 +38,7 @@ export class ElectionsCandidates {
         },
         nus: {
             id: 'NUS',
-            title: 'NUS Delegate',
+            title: 'NUS Delegates',
             innertabs: 'NUS National Conference Delegate',
         },
         academic: {
@@ -50,28 +50,46 @@ export class ElectionsCandidates {
     }
 
     componentDidLoad() {
-        /** Fetch the data from the database */
-
-        const endpoint = this.results? 'results' : 'candidates'
-        let url = `https://elections-b726c.firebaseio.com/${this.electionid}/${endpoint}.json`
+        /** IF FOR RESULTS, FETCH FROM FIREBASE. ELSE FETCH FROM MSL */
+        let url = !this.results? 
+                    `https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`
+                    :
+                    `https://elections-b726c.firebaseio.com/${this.electionid}/results.json`;
         fetch(url)
             .then(res => res.json())
-            .then(candidateData => {
-                this.data = candidateData;
+            .then(profileData => {
+                if (this.results) this.data = profileData;
+                else this.data = profileData.Candidates;
             })
       }
 
-    filterOfficerData(searchTerm: string, type){
-       return this.data.filter(candidate => candidate[type] === searchTerm.trim())
+    filterOfficerData(searchTerm: string){
+        return this.data.filter(candidate => {
+            let post = candidate.Post.Title || candidate.Post;
+            return post === searchTerm.trim();
+        })
     }
 
     filterAcademicData(type: string){
-        return this.data.filter(candidate => candidate.Post.includes(type.trim()))
+
+        //THIS WILL RETURN AN ARRAY OF CANDIDATES WHOSE POST TITLES INCLUDE THE ACADEMIC GROUP TYPE - EG BIOSCIENCE
+        return this.data.filter(candidate => {
+            let post = candidate.Post.Title || candidate.Post
+            post.includes(type.trim())
+        })
     }
 
-    // filterAllOfficers(type: string){
-    //     if (this.data) return this.data.filter(candidate => candidate.Type === type)
-    // }
+    filterCombinedPosts(type: string){
+        //FOR RESULTS DISPLAY ONLY. FILTERS STUDENT OFFICERS AND NETWORK OFFICERS INTO AN 'ALL' CATEGORY
+        let combinedPosts = type === 'SO' ? this.studentofficers.split('|') : this.networkofficers.split('|');
+        const candidatesArrays = [];
+        for (const post of combinedPosts){
+            candidatesArrays.push(this.data.filter(candidate => candidate.Post === post.trim()))
+        }
+        // const mergedArray = [].concat.apply([], candidatesArrays);
+        return candidatesArrays.reduce((acc, cur) => acc.concat(cur))
+
+    }
 
     shortenTitle(title, id:any){
      /** To be used for the Tab Headings, so a shorter title appears as the heading*/
@@ -90,7 +108,7 @@ export class ElectionsCandidates {
             else if (title.includes('International')) title = 'International';
             else if (title.includes('People of Colour')) title = 'People of Colour';
             else if (title.includes('Women')) title = "Women's";
-            else if (title.includes('Family')) title = 'Family';
+            else if (title.includes('Family') || title.includes('Parents')) title = 'Family';
             else if (title.includes('Disabled')) title = 'Disabled';
             else if (title.includes('Mature')) title = 'Mature';
             else if (title.includes('LGBT+') && title.includes('open')) title = 'LGBT+ (open)';
@@ -115,7 +133,7 @@ export class ElectionsCandidates {
         const newDataMapArray:any = [];
         if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers})
         if (this.networkofficers) newDataMapArray.push({...this.dataMap.network})
-        if (this.filterOfficerData('NUS National Conference Delegate', 'Post').length > 0) newDataMapArray.push({...this.dataMap.nus})
+        if (this.filterOfficerData('NUS National Conference Delegate').length > 0) newDataMapArray.push({...this.dataMap.nus})
         if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic})
 
         return newDataMapArray.map((field, i) => {
@@ -135,7 +153,7 @@ export class ElectionsCandidates {
         let inner;
         switch(field.id){
             case 'NUS':
-                 inner = <candidate-display data={this.filterOfficerData(field.innertabs, 'Post')}></candidate-display>
+                 inner = <candidate-display data={this.filterOfficerData(field.innertabs)}></candidate-display>
             break;
             case 'SO':
                 inner = (<inner-tabs-container>
@@ -172,15 +190,19 @@ export class ElectionsCandidates {
         
         return ar.map((title, i) => {
             let searchField = title;
-            if (title === 'All' && typeId === 'SO') searchField = 'Officer'
-            else if (title === 'All' && typeId === 'NO') searchField = 'Network'
+            let filterFunction = () => this.filterOfficerData(searchField);
+            
+            if (title === 'All') {
+                filterFunction = () => this.filterCombinedPosts(typeId);
+            }
+
             return ([
                 <inner-tab-header active={title ==='All' || i===0} name={typeId + i} slot="tab-headers"> {this.shortenTitle(title, typeId)} </inner-tab-header>,
                 <inner-tab-content active={title ==='All' || i===0} name={typeId + i} slot="tab-content">     
                     {typeId === 'ACADEMIC'?   
                         <academic-candidate-display data={this.filterAcademicData(searchField)}></academic-candidate-display>  
                         :
-                        <candidate-display data={this.filterOfficerData(searchField, title==='All'? 'Type' : 'Post')}></candidate-display>
+                        <candidate-display data={filterFunction()}></candidate-display>
                     }
                 </inner-tab-content>
             ])

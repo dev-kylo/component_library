@@ -1,11 +1,17 @@
 :host {
-    --app-primary-color: greenyellow;
+    --app-primary-color: #15847F;
     --purple: #502669;
-    --light-teal:#51c2b1;
-    --dark-teal: #1ba39c;
-    --orange: #e6582b;
+    --light-teal:#5EBDB0;
+    --mid-teal:#1BA39C;
+    --dark-teal: #15847F;
+    --orange: #e6582A;
     --grey: #444;
-    
+    --warm-grey: #C1C1C1;
+    --light-grey: #E8E8E2;
+    --secondary-navy: #0C2F46;
+    --secondary-pink: #EE7D79;
+    --secondary-periwinkle: #5F5BA3;
+    --secondary-mustard: #F49E25;
   }
 
 
@@ -45,12 +51,12 @@ body, p, li {
 
 a {
     font-family: "Open Sans", Arial, sans-serif;
-    color: #14847e;
+    color: #15847F;
     text-decoration: none;
 }
 
 p a {
-    color: #14847e;
+    color: #15847F;
     text-decoration-line: underline;
     text-decoration-style: dotted
 }

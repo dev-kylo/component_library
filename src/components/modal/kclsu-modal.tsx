@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Listen } from '@stencil/core';
 
 
 @Component({
@@ -8,12 +8,19 @@ import { Component, h, Prop, Watch } from '@stencil/core';
 })
 export class KclsuModal {
 
+    /** Controls when the modal is open and visible or not */
     @Prop() show:boolean = false;
+    /** This will allow a user to click away and hide the modal when open */
+    @Prop() autoexit:boolean = false;
 
     @Watch('show') watchHandler(newVal){
         console.log("The modal is now showing:" + newVal)
     }
-    
+
+    @Listen('exitModal') exitHandler(){
+        if (this.autoexit) this.show = false;
+    }
+
     render() {
 
         let styles = {
