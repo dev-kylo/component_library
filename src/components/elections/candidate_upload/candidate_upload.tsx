@@ -184,7 +184,7 @@ export class CandidateUpload {
         if (this.error) {
             content = (
                 <div class="upload_container">
-                    <user-login database={database}></user-login>
+                    <user-login database={'elections-candidates'}></user-login>
                     <h3 style={{"color": "red"}}>Error</h3>
                     <p>{this.error}</p>
                     {this.validProps? <kclsu-button emitid="clear" purple>Try again</kclsu-button> : ''} 
