@@ -51,7 +51,7 @@ export class AcademicCandidateDisplay {
 
     
     render() {
-        let candidates = !this.current ? '' : <candidate-display data={this.data.filter(candidate => candidate.Post === this.current)}></candidate-display>;
+        let candidates = !this.current ? '' : <candidate-display data={this.data.filter(candidate => candidate.Post.Title || candidate.Post === this.current)}></candidate-display>;
         return (
             <div role="presentation">
                 <div class="positions" role="presentation">
