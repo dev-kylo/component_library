@@ -13,13 +13,13 @@ export class CandidatesDisplay {
     
     render() {
         const cards = !this.data? null : this.data
-                                                .filter(candidate => {
-                                                    if (candidate.DisplayName){
-                                                        let name = candidate.DisplayName;
-                                                        return !name.includes('R.O.N');
-                                                    }
-                                                    else return true;
-                                                })
+                                                // .filter(candidate => {
+                                                //     if (candidate.DisplayName){
+                                                //         let name = candidate.DisplayName;
+                                                //         return !name.includes('R.O.N');
+                                                //     }
+                                                //     else return true;
+                                                // })
                                                 .sort((a, b) => {
                                                     if (a.DisplayName){
                                                         let nameA = a.DisplayName.split(' ');
