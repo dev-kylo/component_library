@@ -10,7 +10,7 @@ import { Component, h, Prop, State, Element } from '@stencil/core';
 
 export class LazyImage {
 
-    @Prop() image: string;
+    @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
     /** Use standard CSS values to set a focus area on the image. EG 'center left' */
     @Prop() focusarea: string = 'center';
     /** Image will scale into view */
@@ -27,7 +27,8 @@ export class LazyImage {
 
     private observer: IntersectionObserver;
 
-    componentDidLoad(){
+    componentDidRender(){
+        console.log('lazy reload did load')
         const img :HTMLElement = this.el.shadowRoot.querySelector('img');
         const options = { rootMargin: '10px 0px' }
         if (img) {
@@ -39,6 +40,7 @@ export class LazyImage {
     onIntersection(entries, animation){
         for (const entry of entries){
             if (entry.isIntersecting){
+                console.log('intersect detected')
                 if (this.observer) this.observer.disconnect();
                 if (entry.target.getAttribute('data-src')){
                     entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
@@ -49,12 +51,18 @@ export class LazyImage {
         }
     }
 
+    disconnectedCallback(){
+        console.log('disconnect')
+        this.observer.disconnect();
+    }
+
     // imageLoaded(){
     //     this.imageloading = false;
     //     this.imageclasses = ['fit', 'show', 'scale-in-center'];
     //   }
     
     render() {
+        console.log('Lazy Component re-renders')
         let imageWidth = this.width;
         if (this.desktopwidth) {
             if ( window.innerHeight > 500) imageWidth = this.desktopwidth;
@@ -66,13 +74,13 @@ export class LazyImage {
 
         let loadingImage, loadedImage;
 
-        if (this.image.includes('kclsu.org')) {
+        if (this.image && this.image.includes('kclsu.org')) {
             const imageRef = this.image;
             loadingImage = ` https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format.flatten,g_center,q_10,w_200/e_saturation:-10/${imageRef}`;
             loadedImage = ` https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w_${imageWidth}/${imageRef}`;
         }
 
-        else if(this.image.includes('res.cloudinary.com')){
+        else if (this.image && this.image.includes('res.cloudinary.com')){
             loadingImage = this.image;
             loadedImage = this.image;
         }
