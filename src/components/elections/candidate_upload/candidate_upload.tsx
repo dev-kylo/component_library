@@ -9,7 +9,7 @@ export class CandidateUpload {
     /** The JSON generated from the browser-side uploaded excel spreadsheet */
     @Prop() spreadsheetdata:any;
     /** Either 'candidates' or 'results'. Will set the firebase url and key map */
-    @Prop() stage: string;
+    @Prop() stage: string = 'results';
     /**MSL ELections ID*/
     @Prop() electionid: string;
 
@@ -18,15 +18,6 @@ export class CandidateUpload {
     @State() modalOpen: boolean = false;
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
-
-    // componentDidLoad(){
-    //     //IF UNVALID PROPS, SET ERROR 
-    //     if (this.validateProps() === false) {
-    //         this.error = 'Check component attributes';
-    //         this.validProps = false;
-    //     }
-
-    // }
 
     candidatesKeysMap = {
         'display_name': 'Name',
@@ -37,12 +28,11 @@ export class CandidateUpload {
     }
 
     resultsKeysMap = {
-        'Name': 'Name',
-        'Post': 'Post',
-        'ManifestoLink': 'ManifestoLink',
-        'ImageLink': 'ImageLink',
-        'Type' : 'Type',
-        'ResultsLink': 'ResultsLink'
+        'elected_candidate': 'Name',
+        'post_title': 'Post',
+        'type' : 'Type',
+        'candidate_id': 'candidateId',
+        'results': 'ResultsLink'
     }
 
     submitJson(){
@@ -60,6 +50,7 @@ export class CandidateUpload {
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
+
             let data = JSON.parse(this.spreadsheetdata).map(ob => {
                 return this.reBuildObject(this.candidatesKeysMap, ob)
             });
@@ -67,21 +58,27 @@ export class CandidateUpload {
             console.log("parsed data")
             console.log(data)
 
-            if (this.stage === 'candidates'){
-                //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-                data = data.filter(candidate => candidate.Status === 'Approved');
-            }
-    
-            const body: any = {
-                method: 'PUT', 
-                body: JSON.stringify(data), 
-            };
-    
-            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
+          //FETCH ALL DATA FROM MSL ELECTION API  
+          fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
+                .then(res => res.json())
+                .then(response => {
+                    const candidateInfo = response.candidates.filter(candidate => candidate.Id === data.candidateId);
+                    //SET IMAGE AND MANIFESTO LINKS
+                    data.ImageLink = candidateInfo.imageurl;
+                    data.ManifestoLink = candidateInfo.ManifestoUrl;
 
-            fetch(url, body)
+                    console.log("final body data");
+                    console.log(data);
+                    
+                    const body: any = {
+                        method: 'PUT', 
+                        body: JSON.stringify(data), 
+                    };
+            
+                    const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
+                    return  fetch(url, body)
+                })
                 .then(res => {
-                    console.log(res)
                     if(!res.ok){
                         this.loading = false;
                         this.successfulUpload = false;
@@ -93,7 +90,7 @@ export class CandidateUpload {
                         this.modalOpen = true;
                         this.loading = false;
                     }
-        
+
                 })
                 .catch(er => {
                     this.error = `${er}`;
@@ -133,26 +130,6 @@ export class CandidateUpload {
        
     }
 
-    // validateProps(){
-    //     //BE EXTRA CAREFUL OF PROPS SUPPLIED, SO DATA IS NOT UPLOADED TO A RANDOM LOCATION IN DATABASE
-        
-    //     let valid = true;
-    //     if (/202[0-9]/.test(this.year) === false)  valid = false;
-    //     else {
-    //         switch(this.season){
-    //             case 'Spring':
-    //                 valid = true;
-    //                 break;
-    //             case 'Autumn':
-    //                 valid = true;
-    //             case 'By' :
-    //                 valid= true;
-    //                 break;
-    //             default : valid = false;
-    //         }
-    //     }
-    //     return valid;
-    // }
 
     @Listen('emitClick') uploadClick(e){
         //LISTEN FOR CLICK TO MAKE REQUEST TO FIREBASE
