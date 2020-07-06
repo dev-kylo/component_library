@@ -72,7 +72,7 @@ export class LazyImage {
             loadedImage = ` https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w_${imageWidth}/${imageRef}`;
         }
 
-        else if(this.image.includes('res.cloudinary')){
+        else if(this.image.includes('res.cloudinary.com')){
             loadingImage = this.image;
             loadedImage = this.image;
         }
@@ -87,7 +87,7 @@ export class LazyImage {
         // IMAGES NOT HOSTED ON KCLSU.ORG WONT BE MANIPULATED BY CLOUDINARY. ALLOW FOR OTHER 'RAW' IMAGES
         else {
             //LOAD GREY BLOCK IMAGE
-            loadingImage = 'https://res.cloudinary.com/kclsu-media/image/upload/b_rgb:c1c1c1,c_scale,f_auto,fl_any_format,o_0,q_10,w_500/v1593700231/website_uploads/MISC/TEALBLOCK_qb3pmf.jpg'
+            loadingImage = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'
             loadedImage = this.image;
         }
     
