@@ -72,6 +72,11 @@ export class LazyImage {
             loadedImage = ` https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w_${imageWidth}/${imageRef}`;
         }
 
+        else if(this.image.includes('res.cloudinary')){
+            loadingImage = this.image;
+            loadedImage = this.image;
+        }
+
         //THIS WAS USED WITH CLOUDINARY'S AUTO UPLOAD FEATURE. WE NOW USE THE FETCH FEATURE INSTEAD
         // if (verifyCloudinaryApprovedUrl(this.image)) {
         //     const imageRef = this.image.split('/').pop();    
