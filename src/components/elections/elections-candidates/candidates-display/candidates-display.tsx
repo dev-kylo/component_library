@@ -36,7 +36,7 @@ export class CandidatesDisplay {
                                                 .map(candidate =>{ 
                                                     let name = candidate.Name || candidate.DisplayName;
                                                     let image = candidate.ImageLink || candidate.ImageUrl;
-
+                                                    if (name.includes('R.O.N')) name = 'Re-Open Nominations';
                                                     return <profile-card 
                                                                 name={name.toLowerCase()}
                                                                 position={candidate.Post.Title || candidate.Post}
