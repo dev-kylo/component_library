@@ -62,8 +62,10 @@ export class CandidateUpload {
           fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
                 .then(res => res.json())
                 .then(response => {
-                    const candidateInfo = response.candidates.filter(candidate => candidate.Id === data.candidateId);
+                    const candidateInfo = response.filter(candidate => candidate.Id === data.candidateId);
                     //SET IMAGE AND MANIFESTO LINKS
+                    console.log('fetched candidate')
+                    console.log(candidateInfo)
                     data.ImageLink = candidateInfo.ImageUrl;
                     data.ManifestoLink = candidateInfo.ManifestoUrl;
 
