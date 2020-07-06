@@ -21,11 +21,14 @@ export class AcademicCandidateDisplay {
         let positions = [];
         let nodes:HTMLSpanElement[] = []
         if (this.data){
+            console.log("data received in academic candidate display")
+            console.log(this.data)
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
-                if (!positions.find(p => p === current.Post)){
-                let link = <li role="tab" id={current.Post} data-candidates={current} class="academic_sub" aria-selected="false" onClick={ e => this.clickHandler(e)}>{current.Post}</li>
-                    positions.push(current.Post);
+                let post = current.Post.Title || current.Post;
+                if (!positions.find(p => p === post)){
+                let link = <li role="tab" id={post} data-candidates={current} class="academic_sub" aria-selected="false" onClick={ e => this.clickHandler(e)}>{post}</li>
+                    positions.push(post);
                     nodes.push(link)
                 }
             }
