@@ -69,7 +69,7 @@ export class CandidateUpload {
 
                     console.log("final body data");
                     console.log(data);
-                    
+
                     const body: any = {
                         method: 'PUT', 
                         body: JSON.stringify(data), 
@@ -153,7 +153,7 @@ export class CandidateUpload {
         console.log("SPREADSHEET DATA BEFORE RENDER")
 
         //SET THE DATABASE NAME AREA FOR AUTHENTICATION
-        const database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
+        // const database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
 
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
@@ -168,7 +168,7 @@ export class CandidateUpload {
 
         let content =  (
             <div class="upload_container">
-                <user-login database={database}></user-login>
+                <user-login database={'elections-candidates'}></user-login>
                 <h3>Preview of data</h3>
                 <p>Below is an unsorted + unfiltered list of profile cards generated from the spreadsheet. <em>Use to do final checks,</em> eg double check links, images etc.</p>
                 <p>Once happy click the Upload button below to upload data to database</p>
