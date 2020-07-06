@@ -66,3 +66,9 @@ export function getNextEvents(dataList, length = -1){
 export function sortFullNamesAlphabetically(){
   console.log('yeah')
 }
+
+export function verifyCloudinaryApprovedUrl(url:string){
+    let verified = false ;
+    if (url.includes('https://www.kclsu.org/asset/News/6015/')) verified = true;
+    return verified;
+}

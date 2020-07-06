@@ -52,7 +52,7 @@ export class ElectionsCandidates {
     componentDidLoad() {
         /** IF FOR RESULTS, FETCH FROM FIREBASE. ELSE FETCH FROM MSL */
         let url = !this.results? 
-                    `https://elections-results-757f2.firebaseio.com/.json`
+                    `https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`
                     :
                     `https://elections-b726c.firebaseio.com/${this.electionid}/results.json`;
         fetch(url)
@@ -60,7 +60,6 @@ export class ElectionsCandidates {
             .then(profileData => {
                 if (this.results) this.data = profileData;
                 else this.data = profileData.Candidates;
-                console.log(this.data)
             })
       }
 

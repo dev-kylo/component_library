@@ -263,8 +263,23 @@ export namespace Components {
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein": boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth": string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
         "focusarea": string;
         "image": string;
+        /**
+          * A width for the image in pixels
+         */
+        "width": string;
     }
     interface LoadingSpinner {
         "show": boolean;
@@ -1247,8 +1262,23 @@ declare namespace LocalJSX {
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein"?: boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth"?: string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * A width for the image in pixels
+         */
+        "width"?: string;
     }
     interface LoadingSpinner {
         "show"?: boolean;

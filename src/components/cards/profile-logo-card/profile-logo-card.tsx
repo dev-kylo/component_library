@@ -22,7 +22,7 @@ export class ProfileLogoCard {
 
     render() {
         const bg = {
-            "background-image": `url(${this.logo})`,
+            // "background-image": `url(${this.logo})`,
             "background-color": this.logocolour? this.logocolour : 'white'
         }
 
@@ -31,10 +31,11 @@ export class ProfileLogoCard {
             <a target="_blank" href={this.link}>
                 <div class="profile-card">
                     <div class="background">
-                        <lazy-image focusarea={this.imagefocus} image={this.image}></lazy-image>
+                        <lazy-image animatein focusarea={this.imagefocus} image={this.image}></lazy-image>
                     </div>
                     <div class="logoContainer" style={bg}>
-                        </div>
+                        {this.logo && <lazy-image animatein image={this.logo}></lazy-image>}
+                    </div>
                     <div class="label">
                         <span class="name">{this.cardtitle}</span>
                     </div>
