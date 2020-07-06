@@ -75,9 +75,7 @@ export class ElectionsCandidates {
         //THIS WILL RETURN AN ARRAY OF CANDIDATES WHOSE POST TITLES INCLUDE THE ACADEMIC GROUP TYPE - EG BIOSCIENCE
         return this.data.filter(candidate => {
             let post = candidate.Post.Title || candidate.Post;
-            console.log("filtered post name")
-            console.log(post)
-            post.includes(type.trim())
+            return post.includes(type.trim())
         })
     }
 
