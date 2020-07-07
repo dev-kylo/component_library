@@ -18,6 +18,7 @@ export class CandidateUpload {
     @State() modalOpen: boolean = false;
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
+    @State() msldata;
 
     candidatesKeysMap = {
         'display_name': 'Name',
@@ -33,6 +34,14 @@ export class CandidateUpload {
         'type' : 'Type',
         'candidate_id': 'candidateId',
         'results': 'ResultsLink'
+    }
+
+    componentDidLoad(){
+        fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
+        .then(res => res.json())
+        .then(response => {
+            this.msldata = response;
+        })     
     }
 
     submitJson(){
@@ -51,35 +60,16 @@ export class CandidateUpload {
 
         if(this.spreadsheetdata){
 
-            let data = JSON.parse(this.spreadsheetdata).map(ob => {
-                return this.reBuildObject(this.candidatesKeysMap, ob)
-            });
+            const data = this.prepareCandidateData()
 
-            console.log("parsed data")
-            console.log(data)
-
-          //FETCH ALL DATA FROM MSL ELECTION API  
-          fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
-                .then(res => res.json())
-                .then(response => {
-                    const candidateInfo = response.filter(candidate => candidate.Id === data.candidateId);
-                    //SET IMAGE AND MANIFESTO LINKS
-                    console.log('fetched candidate')
-                    console.log(candidateInfo)
-                    data.ImageLink = candidateInfo.ImageUrl;
-                    data.ManifestoLink = candidateInfo.ManifestoUrl;
-
-                    console.log("final body data");
-                    console.log(data);
-
-                    const body: any = {
-                        method: 'PUT', 
-                        body: JSON.stringify(data), 
-                    };
+            const body: any = {
+                method: 'PUT', 
+                body: JSON.stringify(data), 
+            };
             
-                    const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
-                    return  fetch(url, body)
-                })
+            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
+                
+            fetch(url, body)
                 .then(res => {
                     if(!res.ok){
                         this.loading = false;
@@ -100,6 +90,26 @@ export class CandidateUpload {
                 }); 
         }
         else this.error = "Failed to map over supplied spreadsheet data"
+    }
+
+    prepareCandidateData(){
+        const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
+        const data = JSON.parse(this.spreadsheetdata).map(ob => {
+            return this.reBuildObject(keymap, ob )
+        });
+
+        const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
+        //SET IMAGE AND MANIFESTO LINKS
+        console.log('fetched candidate')
+        console.log(candidateInfo)
+        if(candidateInfo.length > 0){
+            data.ImageLink = candidateInfo[0].ImageUrl?  candidateInfo[0].ImageUrl : '';
+            data.ManifestoLink = candidateInfo[0].ManifestoUrl? candidateInfo[0].ManifestoUrl : '';
+        }
+
+        console.log("final data");
+        console.log(data);
+        return data;
     }
 
 
@@ -123,13 +133,8 @@ export class CandidateUpload {
 
     createCards(){
         //CREATES PROFILE CARDS FOR PREVIEW
-
-        const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
-        const data = JSON.parse(this.spreadsheetdata).map(ob => {
-            return this.reBuildObject(keymap, ob )
-        });
+        const data = this.prepareCandidateData();
         return <candidate-display data={data}></candidate-display>
-       
     }
 
 
@@ -152,11 +157,6 @@ export class CandidateUpload {
     }
 
     render() {
-        console.log("SPREADSHEET DATA BEFORE RENDER")
-
-        //SET THE DATABASE NAME AREA FOR AUTHENTICATION
-        // const database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
-
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
 
@@ -178,9 +178,7 @@ export class CandidateUpload {
                 <kclsu-button emitid="upload">Upload Data</kclsu-button>
                 <loading-spinner show={this.loading}></loading-spinner>
                 {this.successfulUpload && successfulUploadNotice }
-                {!this.successfulUpload? previewCards : '' }
-
-                
+                {!this.successfulUpload? previewCards : '' }      
             </div>); 
         
         if (this.error) {
