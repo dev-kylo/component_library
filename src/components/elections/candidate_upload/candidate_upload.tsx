@@ -166,7 +166,7 @@ export class CandidateUpload {
 
     render() {
         //CREATE THE PROFILE CARDS IF THERE IS DATA
-        let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+        let previewCards = this.spreadsheetdata && this.msldata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
