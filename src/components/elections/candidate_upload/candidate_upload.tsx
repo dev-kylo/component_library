@@ -98,13 +98,15 @@ export class CandidateUpload {
             return this.reBuildObject(keymap, ob )
         });
 
-        const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
-        //SET IMAGE AND MANIFESTO LINKS
-        console.log('fetched candidate')
-        console.log(candidateInfo)
-        if(candidateInfo.length > 0){
-            data.ImageLink = candidateInfo[0].ImageUrl?  candidateInfo[0].ImageUrl : '';
-            data.ManifestoLink = candidateInfo[0].ManifestoUrl? candidateInfo[0].ManifestoUrl : '';
+        if (this.msldata){
+            const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
+            //SET IMAGE AND MANIFESTO LINKS
+            console.log('fetched candidate')
+            console.log(candidateInfo)
+            if(candidateInfo.length > 0){
+                data.ImageLink = candidateInfo[0].ImageUrl?  candidateInfo[0].ImageUrl : '';
+                data.ManifestoLink = candidateInfo[0].ManifestoUrl? candidateInfo[0].ManifestoUrl : '';
+            }
         }
 
         console.log("final data");
