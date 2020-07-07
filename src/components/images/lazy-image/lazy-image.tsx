@@ -28,7 +28,6 @@ export class LazyImage {
     private observer: IntersectionObserver;
 
     componentDidRender(){
-        console.log('lazy reload did load')
         const img :HTMLElement = this.el.shadowRoot.querySelector('img');
         const options = { rootMargin: '10px 0px' }
         if (img) {
@@ -52,7 +51,6 @@ export class LazyImage {
     }
 
     disconnectedCallback(){
-        console.log('disconnect')
         this.observer.disconnect();
     }
 
@@ -62,7 +60,6 @@ export class LazyImage {
     //   }
     
     render() {
-        console.log('Lazy Component re-renders')
         let imageWidth = this.width;
         if (this.desktopwidth) {
             if ( window.innerHeight > 500) imageWidth = this.desktopwidth;
