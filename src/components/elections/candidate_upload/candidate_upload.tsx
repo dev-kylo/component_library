@@ -40,6 +40,8 @@ export class CandidateUpload {
         fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
         .then(res => res.json())
         .then(response => {
+            console.log('fetched response');
+            console.log(response)
             this.msldata = response;
         })     
     }
@@ -59,8 +61,9 @@ export class CandidateUpload {
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
-
-            const data = this.prepareCandidateData()
+            console.log('before preparing data to submit, the msl data is:')
+            console.log(this.msldata)
+            const data = this.prepareCandidateData();
 
             const body: any = {
                 method: 'PUT', 
@@ -97,6 +100,8 @@ export class CandidateUpload {
         const data = JSON.parse(this.spreadsheetdata).map(ob => {
             return this.reBuildObject(keymap, ob )
         });
+        console.log('MSL data in prepare function')
+        console.log(this.msldata)
 
         if (this.msldata){
             const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
