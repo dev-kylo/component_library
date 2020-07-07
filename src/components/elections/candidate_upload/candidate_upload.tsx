@@ -36,15 +36,15 @@ export class CandidateUpload {
         'results': 'ResultsLink'
     }
 
-    componentDidLoad(){
+    componentWillLoad(){
         console.log('component Mounted')
-        fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
-        .then(res => res.json())
-        .then(response => {
-            console.log('fetched response');
-            console.log(response)
-            this.msldata = response.candidates;
-        })     
+        return fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
+                .then(res => res.json())
+                .then(response => {
+                    console.log('fetched response');
+                    console.log(response)
+                    this.msldata = response.candidates;
+                })     
     }
 
     submitJson(){
