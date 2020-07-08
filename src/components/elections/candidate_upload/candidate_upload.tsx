@@ -18,7 +18,7 @@ export class CandidateUpload {
     @State() modalOpen: boolean = false;
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
-    msldata;
+    @State() mslres;
 
     candidatesKeysMap = {
         'display_name': 'Name',
@@ -36,15 +36,17 @@ export class CandidateUpload {
         'results': 'ResultsLink'
     }
 
-    componentWillLoad(){
-        console.log('component Mounted')
-        return fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
-                .then(res => res.json())
-                .then(response => {
-                    console.log('fetched response');
-                    console.log(response)
-                    this.msldata = response.candidates;
-                })     
+    componentWillRender(){
+        console.log('component about to render')
+        if (!this.mslres){
+        fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
+            .then(res => res.json())
+            .then(response => {
+                console.log('fetched response');
+                console.log(response)
+                this.mslres = {...response.candidates};
+            })  
+        }   
     }
 
     submitJson(){
@@ -63,7 +65,7 @@ export class CandidateUpload {
 
         if(this.spreadsheetdata){
             console.log('before preparing data to submit, the msl data is:')
-            console.log(this.msldata)
+            console.log(this.mslres)
             const data = this.prepareCandidateData();
 
             const body: any = {
@@ -102,7 +104,7 @@ export class CandidateUpload {
             return this.reBuildObject(keymap, ob )
         });
         console.log('MSL data in prepare function')
-        console.log(this.msldata)
+        console.log(this.mslres)
 
         if (this.msldata){
             const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
@@ -167,10 +169,10 @@ export class CandidateUpload {
 
     render() {
         console.log('MSL DATA IN RENDER')
-        console.log(this.msldata)
+        console.log(this.mslres)
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = <loading-spinner show={true}></loading-spinner>;
-        if (this.spreadsheetdata && this.msldata) previewCards = this.createCards(); 
+        if (this.spreadsheetdata) previewCards = this.createCards(); 
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
