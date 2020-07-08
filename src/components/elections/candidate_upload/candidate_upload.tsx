@@ -44,7 +44,7 @@ export class CandidateUpload {
             .then(response => {
                 console.log('fetched response');
                 console.log(response)
-                this.mslres = {...response.candidates};
+                this.mslres = {...response.Candidates};
             })  
         }   
     }
