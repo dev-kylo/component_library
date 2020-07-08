@@ -106,8 +106,8 @@ export class CandidateUpload {
         console.log('MSL data in prepare function')
         console.log(this.mslres)
 
-        if (this.msldata){
-            const candidateInfo = this.msldata.filter(candidate => candidate.Id === data.candidateId);
+        if (this.mslres){
+            const candidateInfo = this.mslres.filter(candidate => candidate.Id === data.candidateId);
             //SET IMAGE AND MANIFESTO LINKS
             console.log('fetched candidate')
             console.log(candidateInfo)
