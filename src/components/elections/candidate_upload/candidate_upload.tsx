@@ -44,7 +44,7 @@ export class CandidateUpload {
             .then(response => {
                 console.log('fetched response');
                 console.log(response)
-                this.mslres = {...response.Candidates};
+                this.mslres = [...response.Candidates];
             })  
         }   
     }
@@ -106,7 +106,7 @@ export class CandidateUpload {
         console.log('MSL data in prepare function')
         console.log(this.mslres)
 
-        if (this.mslres){
+        if (this.mslres && this.mslres.length > 0){
             const candidateInfo = this.mslres.filter(candidate => candidate.Id === data.candidateId);
             //SET IMAGE AND MANIFESTO LINKS
             console.log('fetched candidate')
