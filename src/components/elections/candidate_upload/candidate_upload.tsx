@@ -141,6 +141,7 @@ export class CandidateUpload {
 
     createCards(){
         //CREATES PROFILE CARDS FOR PREVIEW
+        console.log('Creating cards')
         const data = this.prepareCandidateData();
         return <candidate-display data={data}></candidate-display>
     }
@@ -168,7 +169,8 @@ export class CandidateUpload {
         console.log('MSL DATA IN RENDER')
         console.log(this.msldata)
         //CREATE THE PROFILE CARDS IF THERE IS DATA
-        let previewCards = this.spreadsheetdata && this.msldata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+        let previewCards = <loading-spinner show={true}></loading-spinner>;
+        if (this.spreadsheetdata && this.msldata) previewCards = this.createCards(); 
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
