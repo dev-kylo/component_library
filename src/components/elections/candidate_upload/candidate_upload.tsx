@@ -107,14 +107,17 @@ export class CandidateUpload {
         console.log(this.mslres)
 
         if (this.mslres && this.mslres.length > 0){
-            const candidateInfo = this.mslres.filter(ob => +ob.Id === +data.candidateId);
-            //SET IMAGE AND MANIFESTO LINKS
-            console.log('fetched candidate')
-            console.log(candidateInfo)
-            if(candidateInfo.length > 0){
-                data.ImageLink = candidateInfo[0].ImageUrl?  candidateInfo[0].ImageUrl : '';
-                data.ManifestoLink = candidateInfo[0].ManifestoUrl? candidateInfo[0].ManifestoUrl : '';
-            }
+
+            data.forEach(person => {
+                const candidateInfo = this.mslres.find(ob => ob.Id === person.candidateId);
+                //SET IMAGE AND MANIFESTO LINKS
+                console.log('fetched candidate')
+                console.log(candidateInfo)
+                if(candidateInfo){
+                    person.ImageLink = candidateInfo.ImageUrl?  candidateInfo.ImageUrl : '';
+                    person.ManifestoLink = candidateInfo.ManifestoUrl? candidateInfo.ManifestoUrl : '';
+                }
+            })
         }
 
         console.log("final data");
