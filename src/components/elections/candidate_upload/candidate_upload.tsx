@@ -18,7 +18,7 @@ export class CandidateUpload {
     @State() modalOpen: boolean = false;
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
-    @State() msldata;
+    msldata;
 
     candidatesKeysMap = {
         'display_name': 'Name',
