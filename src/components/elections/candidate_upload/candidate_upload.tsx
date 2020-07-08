@@ -165,6 +165,8 @@ export class CandidateUpload {
     }
 
     render() {
+        console.log('MSL DATA IN RENDER')
+        console.log(this.msldata)
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = this.spreadsheetdata && this.msldata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
 
