@@ -80,7 +80,7 @@ export class KclsuSearch {
     render() {
         let noresults = this.noResults?  (<span class="noresults">Nope, can't seem to find what you're looking for...</span>) : '';
         return ([
-            <flex-container alignx="center" aligny="center" fillContainer>
+            <flex-container alignx="center" aligny="center" fillcontainer>
                 <input class="kclsu_search" placeholder={this.placeholdertext} type="text" onInput={e => this.inputHandler(e)}></input>
             </flex-container>,
             noresults,

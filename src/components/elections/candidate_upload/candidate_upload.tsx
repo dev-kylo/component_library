@@ -42,8 +42,6 @@ export class CandidateUpload {
         fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
             .then(res => res.json())
             .then(response => {
-                console.log('fetched response');
-                console.log(response)
                 this.mslres = [...response.Candidates];
             })  
         }   
@@ -64,8 +62,6 @@ export class CandidateUpload {
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
-            console.log('before preparing data to submit, the msl data is:')
-            console.log(this.mslres)
             const data = this.prepareCandidateData();
 
             const body: any = {
@@ -73,7 +69,7 @@ export class CandidateUpload {
                 body: JSON.stringify(data), 
             };
             
-            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
+            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`;
                 
             fetch(url, body)
                 .then(res => {
@@ -103,24 +99,19 @@ export class CandidateUpload {
         const data = JSON.parse(this.spreadsheetdata).map(ob => {
             return this.reBuildObject(keymap, ob )
         });
-        console.log('MSL data in prepare function')
-        console.log(this.mslres)
 
         if (this.mslres && this.mslres.length > 0){
 
             data.forEach(person => {
                 const candidateInfo = this.mslres.find(ob => ob.Id === person.candidateId);
                 //SET IMAGE AND MANIFESTO LINKS
-                console.log('fetched candidate')
-                console.log(candidateInfo)
-                if(candidateInfo){
+                if (candidateInfo) {
                     person.ImageLink = candidateInfo.ImageUrl?  candidateInfo.ImageUrl : '';
                     person.ManifestoLink = candidateInfo.ManifestoUrl? candidateInfo.ManifestoUrl : '';
                 }
             })
         }
-
-        console.log("final data");
+        console.log("final data to be uploaded");
         console.log(data);
         return data;
     }
@@ -146,7 +137,6 @@ export class CandidateUpload {
 
     createCards(){
         //CREATES PROFILE CARDS FOR PREVIEW
-        console.log('Creating cards')
         const data = this.prepareCandidateData();
         return <candidate-display data={data}></candidate-display>
     }
@@ -171,8 +161,6 @@ export class CandidateUpload {
     }
 
     render() {
-        console.log('MSL DATA IN RENDER')
-        console.log(this.mslres)
         //CREATE THE PROFILE CARDS IF THERE IS DATA
         let previewCards = <loading-spinner show={true}></loading-spinner>;
         if (this.spreadsheetdata) previewCards = this.createCards(); 

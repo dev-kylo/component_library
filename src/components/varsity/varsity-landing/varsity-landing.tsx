@@ -118,7 +118,7 @@ export class VarsityLanding {
                 </div>
                 <div class="item image">
                     <span class="tilelabel">All Scores</span>
-                    <flex-container alignx="center" aligny="center" fillContainer>
+                    <flex-container alignx="center" aligny="center" fillcontainer>
                         <a class="button"onClick={(e) => this.launchScores(e)}>2020's scores</a>
                     </flex-container>
                     <kclsu-modal show={this.scoreModalOpen}>

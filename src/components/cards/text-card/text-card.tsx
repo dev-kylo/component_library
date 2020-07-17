@@ -13,9 +13,10 @@ export class TextCard {
      /** The purple heading in the card */
     @Prop() cardtitle!: string;
     /** Any extra text. If you want it to be empty, add empty string value:  "" */
-    @Prop() subtext: string = 'Find out more';
+    @Prop() subtext: string;
     
     render() {
+
         return (
             <a href={this.link}>
                 <div class="card">

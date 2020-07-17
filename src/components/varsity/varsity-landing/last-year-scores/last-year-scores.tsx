@@ -48,7 +48,7 @@ export class LastYearScores {
 
     render() {
         return ([
-            <flex-container alignx="center" aligny="center" fillContainer>
+            <flex-container alignx="center" aligny="center" fillcontainer>
                 <a class="button" onClick={(e) => this.clickHandler(e)}>2019's Scores</a>
             </flex-container>,
             <kclsu-modal show={this.modalOpen}>
