@@ -62,6 +62,12 @@ export namespace Components {
         "test": boolean;
         "year": string;
     }
+    interface DesktopHide {
+        /**
+          * In addition to hiding all children content in screens desktop + bigger, this will hide content in screens tablet + bigger
+         */
+        "hidetablet": boolean;
+    }
     interface ElectionsCandidates {
         /**
           * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
@@ -93,11 +99,33 @@ export namespace Components {
     interface EventsCardsModal {
     }
     interface FlexContainer {
+        /**
+          * The same as the 'justify-content' flex property along the x axis
+         */
         "alignx": string;
+        /**
+          * The same as the 'align-items' flex property along the y axis
+         */
         "aligny": string;
+        /**
+          * Set the flex direction: column, reverse-column, row, reverse-row
+         */
         "direction": string;
-        "fillContainer": boolean;
+        /**
+          * Ensure the container stretches the full width and height of parent container
+         */
+        "fillcontainer": boolean;
+        /**
+          * In mobile display in column direction - NOT YET RELEASED
+         */
         "mobcolumn": boolean;
+        /**
+          * If the parent container element needs to be an <ul> list element
+         */
+        "renderlist": boolean;
+        /**
+          * Add flex-wrap to flex items
+         */
         "wrap": boolean;
     }
     interface FullBio {
@@ -140,6 +168,9 @@ export namespace Components {
     }
     interface ImageSliderAuto {
         "classes": string;
+        /**
+          * A string of images
+         */
         "images": string[];
         "interval": number;
     }
@@ -185,7 +216,10 @@ export namespace Components {
           * Event Listener name
          */
         "emitid": string;
-        "green": boolean;
+        /**
+          * Give the button a fixed width
+         */
+        "fixedwidth": string;
         /**
           * Adds icon to the page
          */
@@ -225,6 +259,10 @@ export namespace Components {
          */
         "autoexit": boolean;
         /**
+          * Set position to absolute or other. Defaults to fixed
+         */
+        "position": string;
+        /**
           * Controls when the modal is open and visible or not
          */
         "show": boolean;
@@ -250,14 +288,37 @@ export namespace Components {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
+        /**
+          * If a button included, the link for the button
+         */
         "buttonlink": string;
+        /**
+          * If a button included, the text for the button
+         */
         "buttontitle": string;
         "cardheight": string;
+        /**
+          * The main title of the card
+         */
         "cardtitle": string;
+        /**
+          * The main title of the card
+         */
         "highlightText": boolean;
         "image": string;
+        /**
+          * The link for the card - NOT for the button
+         */
+        "link": string;
+        /**
+          * If image to be displayed on right hand side
+         */
         "reverse": boolean;
+        "smallestheight": boolean;
         "smallheading": boolean;
+        /**
+          * The sub text beneath the title
+         */
         "text": string;
     }
     interface LastYearScores {
@@ -283,6 +344,12 @@ export namespace Components {
     }
     interface LoadingSpinner {
         "show": boolean;
+    }
+    interface MobileHide {
+        /**
+          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+         */
+        "hidetablet": boolean;
     }
     interface ModalBackdrop {
         "showbg": boolean;
@@ -578,6 +645,12 @@ declare global {
         prototype: HTMLCreateVarsityDataElement;
         new (): HTMLCreateVarsityDataElement;
     };
+    interface HTMLDesktopHideElement extends Components.DesktopHide, HTMLStencilElement {
+    }
+    var HTMLDesktopHideElement: {
+        prototype: HTMLDesktopHideElement;
+        new (): HTMLDesktopHideElement;
+    };
     interface HTMLElectionsCandidatesElement extends Components.ElectionsCandidates, HTMLStencilElement {
     }
     var HTMLElectionsCandidatesElement: {
@@ -733,6 +806,12 @@ declare global {
     var HTMLLoadingSpinnerElement: {
         prototype: HTMLLoadingSpinnerElement;
         new (): HTMLLoadingSpinnerElement;
+    };
+    interface HTMLMobileHideElement extends Components.MobileHide, HTMLStencilElement {
+    }
+    var HTMLMobileHideElement: {
+        prototype: HTMLMobileHideElement;
+        new (): HTMLMobileHideElement;
     };
     interface HTMLModalBackdropElement extends Components.ModalBackdrop, HTMLStencilElement {
     }
@@ -940,6 +1019,7 @@ declare global {
         "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
         "create-varsity-data": HTMLCreateVarsityDataElement;
+        "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "events-cards-modal": HTMLEventsCardsModalElement;
@@ -966,6 +1046,7 @@ declare global {
         "last-year-scores": HTMLLastYearScoresElement;
         "lazy-image": HTMLLazyImageElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
+        "mobile-hide": HTMLMobileHideElement;
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
@@ -1057,6 +1138,12 @@ declare namespace LocalJSX {
         "test"?: boolean;
         "year"?: string;
     }
+    interface DesktopHide {
+        /**
+          * In addition to hiding all children content in screens desktop + bigger, this will hide content in screens tablet + bigger
+         */
+        "hidetablet"?: boolean;
+    }
     interface ElectionsCandidates {
         /**
           * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
@@ -1088,11 +1175,33 @@ declare namespace LocalJSX {
     interface EventsCardsModal {
     }
     interface FlexContainer {
+        /**
+          * The same as the 'justify-content' flex property along the x axis
+         */
         "alignx"?: string;
+        /**
+          * The same as the 'align-items' flex property along the y axis
+         */
         "aligny"?: string;
+        /**
+          * Set the flex direction: column, reverse-column, row, reverse-row
+         */
         "direction"?: string;
-        "fillContainer"?: boolean;
+        /**
+          * Ensure the container stretches the full width and height of parent container
+         */
+        "fillcontainer"?: boolean;
+        /**
+          * In mobile display in column direction - NOT YET RELEASED
+         */
         "mobcolumn"?: boolean;
+        /**
+          * If the parent container element needs to be an <ul> list element
+         */
+        "renderlist"?: boolean;
+        /**
+          * Add flex-wrap to flex items
+         */
         "wrap"?: boolean;
     }
     interface FullBio {
@@ -1137,6 +1246,9 @@ declare namespace LocalJSX {
     }
     interface ImageSliderAuto {
         "classes"?: string;
+        /**
+          * A string of images
+         */
         "images"?: string[];
         "interval"?: number;
     }
@@ -1183,7 +1295,10 @@ declare namespace LocalJSX {
           * Event Listener name
          */
         "emitid"?: string;
-        "green"?: boolean;
+        /**
+          * Give the button a fixed width
+         */
+        "fixedwidth"?: string;
         /**
           * Adds icon to the page
          */
@@ -1224,6 +1339,10 @@ declare namespace LocalJSX {
          */
         "autoexit"?: boolean;
         /**
+          * Set position to absolute or other. Defaults to fixed
+         */
+        "position"?: string;
+        /**
           * Controls when the modal is open and visible or not
          */
         "show"?: boolean;
@@ -1249,14 +1368,37 @@ declare namespace LocalJSX {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
+        /**
+          * If a button included, the link for the button
+         */
         "buttonlink"?: string;
+        /**
+          * If a button included, the text for the button
+         */
         "buttontitle"?: string;
         "cardheight"?: string;
+        /**
+          * The main title of the card
+         */
         "cardtitle"?: string;
+        /**
+          * The main title of the card
+         */
         "highlightText"?: boolean;
         "image"?: string;
+        /**
+          * The link for the card - NOT for the button
+         */
+        "link"?: string;
+        /**
+          * If image to be displayed on right hand side
+         */
         "reverse"?: boolean;
+        "smallestheight"?: boolean;
         "smallheading"?: boolean;
+        /**
+          * The sub text beneath the title
+         */
         "text"?: string;
     }
     interface LastYearScores {
@@ -1282,6 +1424,12 @@ declare namespace LocalJSX {
     }
     interface LoadingSpinner {
         "show"?: boolean;
+    }
+    interface MobileHide {
+        /**
+          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+         */
+        "hidetablet"?: boolean;
     }
     interface ModalBackdrop {
         "onExitModal"?: (event: CustomEvent<any>) => void;
@@ -1517,6 +1665,7 @@ declare namespace LocalJSX {
         "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
         "create-varsity-data": CreateVarsityData;
+        "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "events-cards-modal": EventsCardsModal;
@@ -1543,6 +1692,7 @@ declare namespace LocalJSX {
         "last-year-scores": LastYearScores;
         "lazy-image": LazyImage;
         "loading-spinner": LoadingSpinner;
+        "mobile-hide": MobileHide;
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
         "news-card": NewsCard;
@@ -1594,6 +1744,7 @@ declare module "@stencil/core" {
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
+            "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "events-cards-modal": LocalJSX.EventsCardsModal & JSXBase.HTMLAttributes<HTMLEventsCardsModalElement>;
@@ -1620,6 +1771,7 @@ declare module "@stencil/core" {
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
             "lazy-image": LocalJSX.LazyImage & JSXBase.HTMLAttributes<HTMLLazyImageElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
+            "mobile-hide": LocalJSX.MobileHide & JSXBase.HTMLAttributes<HTMLMobileHideElement>;
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;

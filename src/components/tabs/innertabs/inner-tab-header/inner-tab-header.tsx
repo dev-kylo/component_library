@@ -30,9 +30,11 @@ export class InnerTabHeader {
             'tab-header-active': this.active
         }
 
+        const selected = this.active? 'true' : 'false';
+
         return (
             <li role="presentation" class={classes} onClick={() => this.onClick()}>
-                <h6 id={this.name} aria-selected={this.active} role="tab"><slot></slot></h6>
+                <h6 id={this.name} aria-selected={selected} role="tab"><slot></slot></h6>
             </li>
         );
     }

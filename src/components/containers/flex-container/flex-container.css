@@ -1,4 +1,14 @@
 /* FLEXBOX SYLES */
+
+.flexlist {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style:none;
+}
+
+
+
 .flex {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -3,6 +3,9 @@
     grid-gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     justify-items: center;
+    margin:0; 
+    padding:0;
+    list-style: none;
 }
 
 @media only screen and (max-width: 1080px){

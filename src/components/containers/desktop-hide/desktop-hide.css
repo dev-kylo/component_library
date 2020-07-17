@@ -1,0 +1,11 @@
+@media (min-width: 1200px){
+    .hidefromdesktop {
+        display: none;
+    }
+}
+
+@media (min-width: 780px){
+    .hidefromtablet {
+        display: none;
+    }
+}

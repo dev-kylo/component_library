@@ -51,37 +51,37 @@ export class PresetControls {
     render() {
         return ([
             <kclsu-modal show={this.modalOpen}>
-            <div class="controls">
-                <form class="controlForm" onSubmit={(e) => this.submit(e)}>
-                <span class="title">Adjust the crop focus and dimensions of your image.</span>
-                    <div class="flex">
-                        <label>Crop Focus</label>
-                        <select name="direction">
-                            <option value="faces:auto">Faces</option>
-                            <option value="center">Center</option>
-                            <option value="north">Top</option>
-                            <option value="east">Right</option>
-                            <option value="south">Bottom</option>
-                            <option value="west">Left</option>
-                        </select>
-                    </div>
-                    <div class="flex">
-                        <label> Width</label>
-                        <input type="text" value=""/>
-                    </div>
-                    <div class="flex">
-                        <label> Height</label>
-                        <input type="text" value=""/>
-                    </div>
-                    <flex-container alignx='center'>
-                        <button id="form_button">Make Adjustment</button>
-                        <kclsu-button emitid='closeAdjustments' green rounded >Cancel</kclsu-button>
-                    </flex-container>
-                </form>
-            </div>
+                <div class="controls">
+                    <form class="controlForm" onSubmit={(e) => this.submit(e)}>
+                    <span class="title">Adjust the crop focus and dimensions of your image.</span>
+                        <div class="flex">
+                            <label>Crop Focus</label>
+                            <select name="direction">
+                                <option value="faces:auto">Faces</option>
+                                <option value="center">Center</option>
+                                <option value="north">Top</option>
+                                <option value="east">Right</option>
+                                <option value="south">Bottom</option>
+                                <option value="west">Left</option>
+                            </select>
+                        </div>
+                        <div class="flex">
+                            <label> Width</label>
+                            <input type="text" value=""/>
+                        </div>
+                        <div class="flex">
+                            <label> Height</label>
+                            <input type="text" value=""/>
+                        </div>
+                        <flex-container alignx='center'>
+                            <button id="form_button">Make Adjustment</button>
+                            <kclsu-button emitid='closeAdjustments' rounded >Cancel</kclsu-button>
+                        </flex-container>
+                    </form>
+                </div>
             </kclsu-modal>,
             <flex-container aligny="center">
-                <kclsu-button emitid='openAdjustments' green small >Adjustments</kclsu-button>
+                <kclsu-button emitid='openAdjustments' small >Adjustments</kclsu-button>
             </flex-container>
         ]);
     }

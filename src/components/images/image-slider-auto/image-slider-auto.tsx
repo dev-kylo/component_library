@@ -8,6 +8,7 @@ import { Component, h, Prop, State, Element} from '@stencil/core';
 })
 export class ImageSliderAuto {
 
+    /** A string of images */
     @Prop() images: string[];
     @Prop() classes: string = 'slide-in-right';
     @Prop() interval: number;
@@ -35,12 +36,12 @@ export class ImageSliderAuto {
                 if(slides[i].classList.contains('show')){
                     slides[i].classList.remove('show')
                 } 
-              }
+            }
       
-              this.slideI++;
-              if (this.slideI > slides.length) {this.slideI = 1}
-              slides[this.slideI-1].classList.remove('hide')
-              slides[this.slideI-1].classList.add('show')
+            this.slideI++;
+            if (this.slideI > slides.length) {this.slideI = 1}
+            slides[this.slideI-1].classList.remove('hide');
+            slides[this.slideI-1].classList.add('show');
     }
 
 

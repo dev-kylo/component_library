@@ -117,9 +117,9 @@ export class CloudinaryApp {
     render() {
         let img = !this.image? <div class='empty'> <span class="drag">Drag and Drop your image here... </span><div class="upload"><slot></slot></div></div> : <img src={this.image}></img>;
         let controls = ([
-                        <flex-container alignx='justify-content' wrap fillContainer>
-                            <kclsu-button newtab emitid='showOriginal' green small >Original</kclsu-button>
-                            <kclsu-button newtab download green small link={this.image}>Download</kclsu-button>
+                        <flex-container alignx='justify-content' wrap fillcontainer>
+                            <kclsu-button newtab emitid='showOriginal' small >Original</kclsu-button>
+                            <kclsu-button newtab download small link={this.image}>Download</kclsu-button>
                             <preset-controls></preset-controls>
                         </flex-container>]);
 
