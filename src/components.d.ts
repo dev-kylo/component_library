@@ -229,6 +229,10 @@ export namespace Components {
          */
         "link": string;
         /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin": string;
+        /**
           * Opens the link in a new tab
          */
         "newtab": boolean;
@@ -1307,6 +1311,10 @@ declare namespace LocalJSX {
           * The URL to link to
          */
         "link"?: string;
+        /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin"?: string;
         /**
           * Opens the link in a new tab
          */

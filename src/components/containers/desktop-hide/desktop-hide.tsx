@@ -3,7 +3,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'desktop-hide',
-    styleUrl: 'desktop-hide.css'
+    styleUrl: 'desktop-hide.css',
+    shadow: true
 })
 export class DesktopHide {
 

@@ -32,6 +32,8 @@ export class KclsuButton {
     @Prop() newtab: boolean;
     /** Give the button a fixed width*/
     @Prop() fixedwidth: string;
+    /** specifiy a margin, otherwise uses default*/
+    @Prop() margin: string = '15px';
     
 
     @Event()emitClick:EventEmitter;
@@ -44,6 +46,11 @@ export class KclsuButton {
     
     render() {
 
+
+        const style = {
+            'margin': this.margin
+        }
+
         let classes =  [];
         !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
@@ -53,10 +60,10 @@ export class KclsuButton {
         let link;
 
         if (this.link){
-            link = <a href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')}>{this.text}<slot></slot></a>
+            link = <a href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
         }
 
-        else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')}>{this.text}<slot></slot></a>;
+        else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>;
 
         return (
         <flex-container alignx={this.center? 'center' : 'flex-start'} fillcontainer>
