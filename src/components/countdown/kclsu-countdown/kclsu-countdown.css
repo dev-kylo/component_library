@@ -5,11 +5,18 @@
     height: auto;
 }
 
+.flex {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .timeBlock {
-    width: 120px;
+    width: 10px;
+    flex-grow: 1;
     height: auto;
     padding: 0.5em;
-    margin: 0.5em;
+    margin: 0.3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,6 +27,7 @@
     -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
     box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
     border: 1px solid #eaeaea;
+    margin-top: 0;
 }
 
 .timeBlock span:nth-child(odd){
@@ -30,7 +38,7 @@
 }
 
 .timeBlock span:nth-child(even){
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     line-height: 20px;
     font-family: "Open Sans", Arial, sans-serif;
     line-height: 32px;
@@ -41,7 +49,7 @@
 .text {
     text-align: center;
     display: block;
-    font-size: 2vw;
+    font-size: 1.5em;
     margin: 0.5em 0;
     color: var(--purple);
     font-weight: bold;
@@ -59,4 +67,8 @@
     .timeBlock span:nth-child(even){
         font-size: 3vw;
     }
+    .text {
+        font-size: 1.2em;
+    }
+    
 }

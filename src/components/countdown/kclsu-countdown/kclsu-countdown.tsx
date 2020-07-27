@@ -72,7 +72,7 @@ export class KclsuCountdown {
 
         return (
             <div class="countdown">
-                <flex-container alignx="space-around" fillcontainer>
+                <div class="flex">
                     <div class="timeBlock">
                         <span style={fontsize}>{days ?? '-'}</span>
                         <span>DAYS</span>
@@ -89,7 +89,7 @@ export class KclsuCountdown {
                         <span style={fontsize}>{seconds ?? '-'}</span>
                         <span>SECONDS</span> 
                     </div>
-                </flex-container>
+                </div>
                 <span class="text"> <time>27 -30 September 2020</time></span>
             </div>
         );
