@@ -1,0 +1,62 @@
+@import '../../../global//globalstyles.css';
+
+.countdown {
+    width: 100%;
+    height: auto;
+}
+
+.timeBlock {
+    width: 120px;
+    height: auto;
+    padding: 0.5em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    position: relative;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    border: 1px solid #eaeaea;
+}
+
+.timeBlock span:nth-child(odd){
+    font-weight: bold;
+    font-family: bree_serifsemibold, bree-serif, serif;
+    font-weight: 600;
+    color: var(--purple);
+}
+
+.timeBlock span:nth-child(even){
+    font-size: 1.2vw;
+    line-height: 20px;
+    font-family: "Open Sans", Arial, sans-serif;
+    line-height: 32px;
+    color: var(--grey);
+    font-weight: 400;
+}
+
+.text {
+    text-align: center;
+    display: block;
+    font-size: 2vw;
+    margin: 0.5em 0;
+    color: var(--purple);
+    font-weight: bold;
+    font-family: bree_serifsemibold, bree-serif, serif;
+    font-weight: 600;
+}
+
+
+
+@media (max-width: 600px){
+
+    .timeBlock span:nth-child(odd){
+        font-size: 8vw;
+    }
+    .timeBlock span:nth-child(even){
+        font-size: 3vw;
+    }
+}

@@ -3,7 +3,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'mobile-hide',
-    styleUrl: 'mobile-hide.css'
+    styleUrl: 'mobile-hide.css',
+    shadow: true
 })
 export class MobileHide {
 

@@ -229,6 +229,10 @@ export namespace Components {
          */
         "link": string;
         /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin": string;
+        /**
           * Opens the link in a new tab
          */
         "newtab": boolean;
@@ -252,6 +256,16 @@ export namespace Components {
           * Makes the button very small
          */
         "verysmall": boolean;
+    }
+    interface KclsuCountdown {
+        /**
+          * The date to countdown to. Must match date string format
+         */
+        "date": string;
+        /**
+          * Optional: set a fixed font-size for tablet, desktop and wider.
+         */
+        "fontsize": any;
     }
     interface KclsuModal {
         /**
@@ -765,6 +779,12 @@ declare global {
         prototype: HTMLKclsuButtonElement;
         new (): HTMLKclsuButtonElement;
     };
+    interface HTMLKclsuCountdownElement extends Components.KclsuCountdown, HTMLStencilElement {
+    }
+    var HTMLKclsuCountdownElement: {
+        prototype: HTMLKclsuCountdownElement;
+        new (): HTMLKclsuCountdownElement;
+    };
     interface HTMLKclsuModalElement extends Components.KclsuModal, HTMLStencilElement {
     }
     var HTMLKclsuModalElement: {
@@ -1039,6 +1059,7 @@ declare global {
         "inner-tab-header": HTMLInnerTabHeaderElement;
         "inner-tabs-container": HTMLInnerTabsContainerElement;
         "kclsu-button": HTMLKclsuButtonElement;
+        "kclsu-countdown": HTMLKclsuCountdownElement;
         "kclsu-modal": HTMLKclsuModalElement;
         "kclsu-search": HTMLKclsuSearchElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
@@ -1308,6 +1329,10 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin"?: string;
+        /**
           * Opens the link in a new tab
          */
         "newtab"?: boolean;
@@ -1332,6 +1357,16 @@ declare namespace LocalJSX {
           * Makes the button very small
          */
         "verysmall"?: boolean;
+    }
+    interface KclsuCountdown {
+        /**
+          * The date to countdown to. Must match date string format
+         */
+        "date": string;
+        /**
+          * Optional: set a fixed font-size for tablet, desktop and wider.
+         */
+        "fontsize"?: any;
     }
     interface KclsuModal {
         /**
@@ -1685,6 +1720,7 @@ declare namespace LocalJSX {
         "inner-tab-header": InnerTabHeader;
         "inner-tabs-container": InnerTabsContainer;
         "kclsu-button": KclsuButton;
+        "kclsu-countdown": KclsuCountdown;
         "kclsu-modal": KclsuModal;
         "kclsu-search": KclsuSearch;
         "kclsu-tabs-container": KclsuTabsContainer;
@@ -1764,6 +1800,7 @@ declare module "@stencil/core" {
             "inner-tab-header": LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
             "inner-tabs-container": LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
             "kclsu-button": LocalJSX.KclsuButton & JSXBase.HTMLAttributes<HTMLKclsuButtonElement>;
+            "kclsu-countdown": LocalJSX.KclsuCountdown & JSXBase.HTMLAttributes<HTMLKclsuCountdownElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
             "kclsu-search": LocalJSX.KclsuSearch & JSXBase.HTMLAttributes<HTMLKclsuSearchElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
