@@ -266,6 +266,14 @@ export namespace Components {
           * Optional: set a fixed font-size for tablet, desktop and wider.
          */
         "fontsize": any;
+        /**
+          * The text beneath the countdown
+         */
+        "text": any;
+        /**
+          * Optional: set a colour for the text beneath the countdown.
+         */
+        "textcolour": any;
     }
     interface KclsuModal {
         /**
@@ -1367,6 +1375,14 @@ declare namespace LocalJSX {
           * Optional: set a fixed font-size for tablet, desktop and wider.
          */
         "fontsize"?: any;
+        /**
+          * The text beneath the countdown
+         */
+        "text"?: any;
+        /**
+          * Optional: set a colour for the text beneath the countdown.
+         */
+        "textcolour"?: any;
     }
     interface KclsuModal {
         /**
