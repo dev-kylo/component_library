@@ -12,6 +12,10 @@ export class KclsuCountdown {
     @Prop() date!: string;
     /** Optional: set a fixed font-size for tablet, desktop and wider. */
     @Prop() fontsize;
+    /** Optional: set a colour for the text beneath the countdown. */
+    @Prop() textcolour;
+    /** The text beneath the countdown */
+    @Prop() text;
 
     countDownDate : Date;
 
@@ -68,7 +72,8 @@ export class KclsuCountdown {
             fontsize = {
                 'font-size': this.fontsize? this.fontsize : '6vw'
             }
-        } 
+        }
+    
 
         return (
             <div class="countdown">
@@ -90,7 +95,9 @@ export class KclsuCountdown {
                         <span>SECONDS</span> 
                     </div>
                 </div>
-                <span class="text"> <time>27 -30 September 2020</time></span>
+                <span class="text" style={{'color': this.textcolour? this.textcolour : '#502669'}}> 
+                    <time>{this.text}</time>
+                </span>
             </div>
         );
     }
