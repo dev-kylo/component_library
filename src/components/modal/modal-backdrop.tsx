@@ -8,7 +8,9 @@ import { Component, h, Prop, EventEmitter, Event} from '@stencil/core';
 export class ModalBackdrop {
 
 
-    @Prop() showbg: boolean
+    @Prop() showbg: boolean;
+    /** Set the position - automatically set by parent kclsu-modal element*/
+    @Prop() position: string;
 
     @Event() exitModal: EventEmitter;
 
@@ -19,7 +21,7 @@ export class ModalBackdrop {
     
     render() {
         return (
-            this.showbg? <div class='Backdrop' onClick={(e) => this.clickHandler(e)}></div> : null
+            this.showbg? <div class='Backdrop' style={{'position': this.position}} onClick={(e) => this.clickHandler(e)}></div> : null
         );
     }
 }

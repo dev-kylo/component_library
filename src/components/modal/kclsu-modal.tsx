@@ -32,7 +32,7 @@ export class KclsuModal {
         };
 
         return ([
-            <modal-backdrop showbg={this.show}></modal-backdrop>,
+            <modal-backdrop position={this.position} showbg={this.show}></modal-backdrop>,
             <div class="Modal" style={styles}>
                 <slot></slot>
             </div>
