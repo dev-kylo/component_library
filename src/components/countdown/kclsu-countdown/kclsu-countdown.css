@@ -61,6 +61,11 @@
 
 @media (max-width: 600px){
 
+    .timeBlock {
+        padding: 0.25em;
+        height: 60px;
+    }
+
     .timeBlock span:nth-child(odd){
         font-size: 8vw;
     }
