@@ -1,5 +1,20 @@
 @import '../../../global/globalstyles.css';
 
+h3 {
+    margin: 0;
+    color: var(--purple);
+    display: inline-block;
+    font-weight: bold;
+    font-family: bree_serifsemibold, bree-serif, serif;
+    font-weight: 600;
+}
+
+@media (max-width: 480px){
+    h3 {
+        font-size: 22px;
+    }
+}
+
 .image-text {
     /* max-width: 700px; */
     display: flex;
@@ -21,6 +36,19 @@
     height: auto;
     object-fit: cover;
 }
+
+
+@media (max-width: 780px){
+    .smalltext {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .info {
+        padding: 15px;
+    }
+      
+}
+
 
 
 @media only screen and (max-width: 600px){

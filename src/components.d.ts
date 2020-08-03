@@ -184,6 +184,14 @@ export namespace Components {
          */
         "image": string;
         /**
+          * Set the margin for the card
+         */
+        "margin": string;
+        /**
+          * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
+         */
+        "smalltext": boolean;
+        /**
           * Switch the side the image is on
          */
         "switch": boolean;
@@ -191,6 +199,10 @@ export namespace Components {
           * The paragraph text
          */
         "text": string;
+        /**
+          * Choose the colour for the paragraph text
+         */
+        "textcolour": string;
     }
     interface InnerTabContent {
         "active": boolean;
@@ -1291,6 +1303,14 @@ declare namespace LocalJSX {
          */
         "image"?: string;
         /**
+          * Set the margin for the card
+         */
+        "margin"?: string;
+        /**
+          * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
+         */
+        "smalltext"?: boolean;
+        /**
           * Switch the side the image is on
          */
         "switch"?: boolean;
@@ -1298,6 +1318,10 @@ declare namespace LocalJSX {
           * The paragraph text
          */
         "text"?: string;
+        /**
+          * Choose the colour for the paragraph text
+         */
+        "textcolour"?: string;
     }
     interface InnerTabContent {
         "active"?: boolean;
