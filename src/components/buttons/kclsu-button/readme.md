@@ -7,20 +7,21 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                               | Type      | Default     |
-| ----------- | ----------- | ----------------------------------------- | --------- | ----------- |
-| `center`    | `center`    | Centers the button in the page            | `boolean` | `undefined` |
-| `download`  | `download`  | Makes the link download                   | `boolean` | `undefined` |
-| `emitid`    | `emitid`    | Event Listener name                       | `string`  | `undefined` |
-| `green`     | `green`     |                                           | `boolean` | `undefined` |
-| `icon`      | `icon`      | Adds icon to the page                     | `string`  | `undefined` |
-| `link`      | `link`      | The URL to link to                        | `string`  | `undefined` |
-| `newtab`    | `newtab`    | Opens the link in a new tab               | `boolean` | `undefined` |
-| `purple`    | `purple`    | Make the button a secondary purple button | `boolean` | `undefined` |
-| `rounded`   | `rounded`   | Give the button rounded corners           | `boolean` | `undefined` |
-| `small`     | `small`     | Make the button small                     | `boolean` | `undefined` |
-| `text`      | `text`      | The text for the button                   | `string`  | `undefined` |
-| `verysmall` | `verysmall` | Makes the button very small               | `boolean` | `undefined` |
+| Property     | Attribute    | Description                               | Type      | Default     |
+| ------------ | ------------ | ----------------------------------------- | --------- | ----------- |
+| `center`     | `center`     | Centers the button in the page            | `boolean` | `undefined` |
+| `download`   | `download`   | Makes the link download                   | `boolean` | `undefined` |
+| `emitid`     | `emitid`     | Event Listener name                       | `string`  | `undefined` |
+| `fixedwidth` | `fixedwidth` | Give the button a fixed width             | `string`  | `undefined` |
+| `icon`       | `icon`       | Adds icon to the page                     | `string`  | `undefined` |
+| `link`       | `link`       | The URL to link to                        | `string`  | `undefined` |
+| `margin`     | `margin`     | specifiy a margin, otherwise uses default | `string`  | `'15px'`    |
+| `newtab`     | `newtab`     | Opens the link in a new tab               | `boolean` | `undefined` |
+| `purple`     | `purple`     | Make the button a secondary purple button | `boolean` | `undefined` |
+| `rounded`    | `rounded`    | Give the button rounded corners           | `boolean` | `undefined` |
+| `small`      | `small`      | Make the button small                     | `boolean` | `undefined` |
+| `text`       | `text`       | The text for the button                   | `string`  | `undefined` |
+| `verysmall`  | `verysmall`  | Makes the button very small               | `boolean` | `undefined` |
 
 
 ## Events

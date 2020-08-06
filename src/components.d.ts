@@ -184,6 +184,10 @@ export namespace Components {
          */
         "image": string;
         /**
+          * Animate the image (scale in) on scroll
+         */
+        "imagezoom": boolean;
+        /**
           * Set the margin for the card
          */
         "margin": string;
@@ -1302,6 +1306,10 @@ declare namespace LocalJSX {
           * The image link (get from Cloudinary)
          */
         "image"?: string;
+        /**
+          * Animate the image (scale in) on scroll
+         */
+        "imagezoom"?: boolean;
         /**
           * Set the margin for the card
          */
