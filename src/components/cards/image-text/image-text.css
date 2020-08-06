@@ -42,6 +42,7 @@ h3 {
     .smalltext {
         font-size: 14px;
         line-height: 24px;
+        margin: 0;
     }
     .info {
         padding: 15px;

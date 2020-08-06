@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property        | Attribute        | Description | Type      | Default     |
-| --------------- | ---------------- | ----------- | --------- | ----------- |
-| `alignx`        | `alignx`         |             | `string`  | `undefined` |
-| `aligny`        | `aligny`         |             | `string`  | `undefined` |
-| `direction`     | `direction`      |             | `string`  | `undefined` |
-| `fillContainer` | `fill-container` |             | `boolean` | `undefined` |
-| `mobcolumn`     | `mobcolumn`      |             | `boolean` | `undefined` |
-| `wrap`          | `wrap`           |             | `boolean` | `undefined` |
+| Property        | Attribute       | Description                                                                  | Type      | Default     |
+| --------------- | --------------- | ---------------------------------------------------------------------------- | --------- | ----------- |
+| `alignx`        | `alignx`        | The same as the 'justify-content' flex property along the x axis             | `string`  | `undefined` |
+| `aligny`        | `aligny`        | The same as the 'align-items' flex property along the y axis                 | `string`  | `undefined` |
+| `direction`     | `direction`     | Set the flex direction: column, reverse-column, row, reverse-row             | `string`  | `undefined` |
+| `fillcontainer` | `fillcontainer` | Ensure the container stretches the full width and height of parent container | `boolean` | `undefined` |
+| `mobcolumn`     | `mobcolumn`     | In mobile display in column direction - NOT YET RELEASED                     | `boolean` | `undefined` |
+| `renderlist`    | `renderlist`    | If the parent container element needs to be an <ul> list element             | `boolean` | `false`     |
+| `wrap`          | `wrap`          | Add flex-wrap to flex items                                                  | `boolean` | `undefined` |
 
 
 ## Dependencies

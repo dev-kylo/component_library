@@ -36,7 +36,7 @@ graph TD;
   profile-tabs --> full-bio
   profile-tabs --> kclsu-modal
   profile-tabs --> tabs-container
-  profile-card --> loading-spinner
+  profile-card --> lazy-image
   profile-card --> flex-container
   full-bio --> kclsu-button
   full-bio --> flex-container

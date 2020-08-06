@@ -22,6 +22,8 @@ export class ImageText {
     @Prop() textcolour: string;
     /**  Set the margin for the card*/
     @Prop() margin: string = "0";
+    /**  Animate the image (scale in) on scroll*/
+    @Prop() imagezoom: boolean = false;
     
     render() {
         let info = this.text? 
@@ -34,15 +36,16 @@ export class ImageText {
             "margin": this.margin
         }
 
+
         return (
                 <div class="image-text" style={style}>
                     <div class="info">
-                        <h3>{this.heading}</h3>
+                        <h3 style={{"color": this.textcolour || '#502669'}}>{this.heading}</h3>
                         {info}
                         <slot></slot>
                     </div>
                     <div class="image">
-                        <lazy-image image={this.image} animatein></lazy-image>
+                        <lazy-image image={this.image} animatein={this.imagezoom}></lazy-image>
                     </div>
                     
                 </div>
