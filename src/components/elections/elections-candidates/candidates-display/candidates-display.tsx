@@ -12,18 +12,41 @@ export class CandidatesDisplay {
     @Prop() data;
     
     render() {
-
-        const cards = !this.data? null : this.data.map(candidate =>{ 
-             return <profile-card 
-                        name={candidate.Name.toLowerCase()}
-                        position={candidate.Post}
-                        link={candidate.ManifestoLink}
-                        image={candidate.ImageLink? candidate.ImageLink : 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'} 
-                        cta='Manifesto'
-                        secondcta = 'Breakdown'
-                        secondlink = {candidate.ResultsLink}
-                    />
-        })
+        const cards = !this.data? null : this.data
+                                                // .filter(candidate => {
+                                                //     if (candidate.DisplayName){
+                                                //         let name = candidate.DisplayName;
+                                                //         return !name.includes('R.O.N');
+                                                //     }
+                                                //     else return true;
+                                                // })
+                                                .sort((a, b) => {
+                                                    if (a.DisplayName){
+                                                        let nameA = a.DisplayName.split(' ');
+                                                        let nameB = b.DisplayName.split(' ');
+                                                        if (nameA[1] < nameB[1]) {
+                                                            return -1;
+                                                          }
+                                                        if (nameA[1]  > nameB[1] ) {
+                                                        return 1;
+                                                        }
+                                                    }
+                                                    
+                                                })
+                                                .map(candidate =>{ 
+                                                    let name = candidate.Name || candidate.DisplayName;
+                                                    let image = candidate.ImageLink || candidate.ImageUrl;
+                                                    if (name.includes('R.O.N')) name = 'Re-Open Nominations';
+                                                    return <profile-card 
+                                                                name={name.toLowerCase()}
+                                                                position={candidate.Post.Title || candidate.Post}
+                                                                link={candidate.ManifestoLink || candidate.ManifestoUrl}
+                                                                image={image} 
+                                                                cta='Manifesto'
+                                                                secondcta = 'Breakdown'
+                                                                secondlink = {candidate.ResultsLink}
+                                                            />
+                                                })
 
         return (
             <profile-card-layout>

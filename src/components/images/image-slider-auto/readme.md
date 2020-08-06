@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type       | Default            |
-| ---------- | ---------- | ----------- | ---------- | ------------------ |
-| `classes`  | `classes`  |             | `string`   | `'slide-in-right'` |
-| `images`   | --         |             | `string[]` | `undefined`        |
-| `interval` | `interval` |             | `number`   | `undefined`        |
+| Property   | Attribute  | Description        | Type       | Default            |
+| ---------- | ---------- | ------------------ | ---------- | ------------------ |
+| `classes`  | `classes`  |                    | `string`   | `'slide-in-right'` |
+| `images`   | --         | A string of images | `string[]` | `undefined`        |
+| `interval` | `interval` |                    | `number`   | `undefined`        |
 
 
 ## CSS Custom Properties

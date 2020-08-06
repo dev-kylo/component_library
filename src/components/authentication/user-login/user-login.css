@@ -22,7 +22,7 @@ label {
 input {
     display: inline;
     min-width: 80px;
-    border: 1px solid #502669;
+    border: 1px solid var(--purple);
     font-size: 18px;
     border-top: none;
     border-right: none;
@@ -35,7 +35,7 @@ input {
     margin: 1em 0;
 }
 .title {
-    color: #502669;
+    color: var(--purple);
     font-weight: bold;
     text-align: center;
     margin: 1em;

@@ -18,7 +18,7 @@
 ### Used by
 
  - [video-gallery](../video-gallery)
- - [video-gallery-stacked](../video-gallery-stacked.tsx)
+ - [video-gallery-stacked](../video-gallery-stacked)
 
 ### Depends on
 

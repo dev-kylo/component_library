@@ -27,6 +27,7 @@ graph TD;
   add-varsity-scores --> flex-container
   add-varsity-scores --> kclsu-modal
   user-login --> kclsu-modal
+  user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
   style add-varsity-scores fill:#f9f,stroke:#333,stroke-width:4px
 ```

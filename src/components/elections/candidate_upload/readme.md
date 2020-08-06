@@ -11,7 +11,7 @@
 | ----------------- | ----------------- | ----------------------------------------------------------------------- | -------- | ----------- |
 | `electionid`      | `electionid`      | MSL ELections ID                                                        | `string` | `undefined` |
 | `spreadsheetdata` | `spreadsheetdata` | The JSON generated from the browser-side uploaded excel spreadsheet     | `any`    | `undefined` |
-| `stage`           | `stage`           | Either 'candidates' or 'results'. Will set the firebase url and key map | `string` | `undefined` |
+| `stage`           | `stage`           | Either 'candidates' or 'results'. Will set the firebase url and key map | `string` | `'results'` |
 
 
 ## Dependencies
@@ -34,10 +34,11 @@ graph TD;
   candidate-upload --> kclsu-button
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
-  profile-card --> loading-spinner
+  profile-card --> lazy-image
   profile-card --> flex-container
   kclsu-modal --> modal-backdrop
   user-login --> kclsu-modal
+  user-login --> loading-spinner
   kclsu-button --> flex-container
   style candidate-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```

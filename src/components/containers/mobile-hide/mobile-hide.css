@@ -1,0 +1,12 @@
+@media (max-width: 780px){
+    .hidefromtablet {
+        display: none;
+    }
+}
+
+
+@media (max-width: 500px){
+    .hidefrommobile {
+        display: none;
+    }
+}

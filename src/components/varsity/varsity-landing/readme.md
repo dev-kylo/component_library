@@ -40,6 +40,7 @@ graph TD;
   varsity-landing --> last-year-scores
   varsity-landing --> image-fit-container
   label-card --> kclsu-button
+  label-card --> lazy-image
   kclsu-button --> flex-container
   varsity-total-score --> flex-container
   varsity-upcoming --> kclsu-modal

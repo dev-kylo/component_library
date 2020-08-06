@@ -2,13 +2,13 @@
 
 .kclsu_search {
     font-size: 25px!important;
-    border: 2px solid teal!important;
-    color:teal;
+    border: 2px solid var(--light-teal)!important;
+    color:var(--dark-teal);
     margin: 1.5em 0!important;  
     max-width: 800px;
     border-width: 2px!important;
     border-style: solid;
-    border-color: rgb(97, 190, 177)!important;
+    border-color: var(--light-teal)!important;
     border-image: initial;
     padding: 0.6em!important;
     width: 360px!important;
@@ -16,18 +16,14 @@
 
 @media only screen and (max-width: 480px){
 .kclsu_search {
-        font-size: 25px!important;
-        border: 2px solid teal!important;
-        color:teal;
-        margin: 1.5em 0!important;  
         padding: 0.3em!important;
         width: 280px!important;
     } 
 }
 
 .kclsu_search:focus{
-    border-color: rgb(97, 190, 177)!important;
-    outline: rgb(97, 190, 177) auto 5px!important;
+    border-color: var(--mid-teal)!important;
+    outline: var(--mid-teal) auto 5px!important;
 }
 
 .hide {
@@ -41,7 +37,7 @@
 
 .noresults {
     text-align: center!important;
-    color:#502865!important;
+    color: var(--purple)!important;
     font-weight: bold;
     margin: 1em!important;
     font-size: 18px!important;

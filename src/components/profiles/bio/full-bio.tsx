@@ -14,10 +14,10 @@ export class FullBio {
     
     render() {
 
-    let facebook = !this.data.facebook? '' : <kclsu-button small green link={this.data.facebook}>Facebook</kclsu-button>;
+    let facebook = !this.data.facebook? '' : <kclsu-button small link={this.data.facebook}>Facebook</kclsu-button>;
     let instagram = !this.data.instagram? '' : <kclsu-button small link={this.data.instagram}>Instagram</kclsu-button>;
-    let twitter = !this.data.twitter? '' : <kclsu-button small green link={this.data.twitter}>Facebook</kclsu-button>;
-    let website = !this.data.website? '' : <kclsu-button small green link={this.data.website}>Website</kclsu-button>;
+    let twitter = !this.data.twitter? '' : <kclsu-button small link={this.data.twitter}>Facebook</kclsu-button>;
+    let website = !this.data.website? '' : <kclsu-button small link={this.data.website}>Website</kclsu-button>;
 
         return (
             <div>

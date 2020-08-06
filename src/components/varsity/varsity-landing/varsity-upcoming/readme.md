@@ -32,6 +32,7 @@ graph TD;
   kclsu-modal --> modal-backdrop
   varsity-next-matches --> label-card
   label-card --> kclsu-button
+  label-card --> lazy-image
   kclsu-button --> flex-container
   varsity-landing --> varsity-upcoming
   style varsity-upcoming fill:#f9f,stroke:#333,stroke-width:4px

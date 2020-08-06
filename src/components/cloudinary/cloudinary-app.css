@@ -1,12 +1,10 @@
 @import '../../global/globalstyles.css';
 
 .app {
-    /* width: 100vw; */
-
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
-    background-color: #1d1d1d;
+    background-color: var(--secondary-navy);
     padding-top: 2em;
 }
 
@@ -16,7 +14,7 @@ h2 {
     margin-top: 0!important;    
 }
 em {
-    background-color: #502767!important;
+    background-color: var(--secondary-pink)!important;
 }
 .presets {
     align-self: flex-start;
@@ -44,7 +42,7 @@ em {
 .empty {
     width:100%;
     min-height: 500px;
-    background-color: gainsboro;
+    background-color: var(--light-grey);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,13 +55,13 @@ em {
     left: 0;
     margin: 1em;
     font-size: 16px;
-    color: #502767;
+    color: var(--purple);
 }
 
 .canvas{
     width: 100%;
     height: auto;
-    background-color: gainsboro;
+    background-color: var(--light-grey);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,7 +114,7 @@ loading-spinner{
 .empty {
     width: 100%;
     min-height: 500px;
-    background-color: gainsboro;
+    background-color: var(--light-grey);
 }
 .instructions {
 padding: 1em;

@@ -33,7 +33,7 @@ export class VarsityWeather {
     render() {
         if(this.weather){
             return (
-                <flex-container aligny="center" alignx="space-between" fillContainer>
+                <flex-container aligny="center" alignx="space-between" fillcontainer>
                     <div class="info">
                         <span><em>What to expect:</em> {this.weather.description}</span>
                         <span><em>Temp:</em> {this.weather.temperature}</span>
@@ -47,7 +47,7 @@ export class VarsityWeather {
             );
         }
         else return (
-            <flex-container aligny="center" alignx="space-between" fillContainer>
+            <flex-container aligny="center" alignx="space-between" fillcontainer>
                 <div class="info"><span>
                     <em>What to expect:</em> broken clouds</span><span><em>Temp:</em> 283.26</span>
                     <span><em>Cloud %:</em> 75</span>

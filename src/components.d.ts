@@ -62,6 +62,12 @@ export namespace Components {
         "test": boolean;
         "year": string;
     }
+    interface DesktopHide {
+        /**
+          * In addition to hiding all children content in screens desktop + bigger, this will hide content in screens tablet + bigger
+         */
+        "hidetablet": boolean;
+    }
     interface ElectionsCandidates {
         /**
           * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
@@ -93,11 +99,33 @@ export namespace Components {
     interface EventsCardsModal {
     }
     interface FlexContainer {
+        /**
+          * The same as the 'justify-content' flex property along the x axis
+         */
         "alignx": string;
+        /**
+          * The same as the 'align-items' flex property along the y axis
+         */
         "aligny": string;
+        /**
+          * Set the flex direction: column, reverse-column, row, reverse-row
+         */
         "direction": string;
-        "fillContainer": boolean;
+        /**
+          * Ensure the container stretches the full width and height of parent container
+         */
+        "fillcontainer": boolean;
+        /**
+          * In mobile display in column direction - NOT YET RELEASED
+         */
         "mobcolumn": boolean;
+        /**
+          * If the parent container element needs to be an <ul> list element
+         */
+        "renderlist": boolean;
+        /**
+          * Add flex-wrap to flex items
+         */
         "wrap": boolean;
     }
     interface FullBio {
@@ -140,6 +168,9 @@ export namespace Components {
     }
     interface ImageSliderAuto {
         "classes": string;
+        /**
+          * A string of images
+         */
         "images": string[];
         "interval": number;
     }
@@ -153,6 +184,18 @@ export namespace Components {
          */
         "image": string;
         /**
+          * Animate the image (scale in) on scroll
+         */
+        "imagezoom": boolean;
+        /**
+          * Set the margin for the card
+         */
+        "margin": string;
+        /**
+          * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
+         */
+        "smalltext": boolean;
+        /**
           * Switch the side the image is on
          */
         "switch": boolean;
@@ -160,6 +203,10 @@ export namespace Components {
           * The paragraph text
          */
         "text": string;
+        /**
+          * Choose the colour for the paragraph text
+         */
+        "textcolour": string;
     }
     interface InnerTabContent {
         "active": boolean;
@@ -185,7 +232,10 @@ export namespace Components {
           * Event Listener name
          */
         "emitid": string;
-        "green": boolean;
+        /**
+          * Give the button a fixed width
+         */
+        "fixedwidth": string;
         /**
           * Adds icon to the page
          */
@@ -194,6 +244,10 @@ export namespace Components {
           * The URL to link to
          */
         "link": string;
+        /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin": string;
         /**
           * Opens the link in a new tab
          */
@@ -219,7 +273,36 @@ export namespace Components {
          */
         "verysmall": boolean;
     }
+    interface KclsuCountdown {
+        /**
+          * The date to countdown to. Must match date string format
+         */
+        "date": string;
+        /**
+          * Optional: set a fixed font-size for tablet, desktop and wider.
+         */
+        "fontsize": any;
+        /**
+          * The text beneath the countdown
+         */
+        "text": any;
+        /**
+          * Optional: set a colour for the text beneath the countdown.
+         */
+        "textcolour": any;
+    }
     interface KclsuModal {
+        /**
+          * This will allow a user to click away and hide the modal when open
+         */
+        "autoexit": boolean;
+        /**
+          * Set position to absolute or other. Defaults to fixed
+         */
+        "position": string;
+        /**
+          * Controls when the modal is open and visible or not
+         */
         "show": boolean;
     }
     interface KclsuSearch {
@@ -243,23 +326,68 @@ export namespace Components {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
+        /**
+          * If a button included, the link for the button
+         */
         "buttonlink": string;
+        /**
+          * If a button included, the text for the button
+         */
         "buttontitle": string;
         "cardheight": string;
+        /**
+          * The main title of the card
+         */
         "cardtitle": string;
+        /**
+          * The main title of the card
+         */
         "highlightText": boolean;
         "image": string;
+        /**
+          * The link for the card - NOT for the button
+         */
+        "link": string;
+        /**
+          * If image to be displayed on right hand side
+         */
         "reverse": boolean;
+        "smallestheight": boolean;
         "smallheading": boolean;
+        /**
+          * The sub text beneath the title
+         */
         "text": string;
     }
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein": boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth": string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
         "image": string;
+        /**
+          * A width for the image in pixels
+         */
+        "width": string;
     }
     interface LoadingSpinner {
         "show": boolean;
+    }
+    interface MobileHide {
+        /**
+          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+         */
+        "hidetablet": boolean;
     }
     interface ModalBackdrop {
         "showbg": boolean;
@@ -339,6 +467,10 @@ export namespace Components {
           * The background image URL
          */
         "image": string;
+        /**
+          * Specify which part of the image you want to focus - top, bottom, right, left, center
+         */
+        "imagefocus": string;
         /**
           * The URL link for the the card
          */
@@ -551,6 +683,12 @@ declare global {
         prototype: HTMLCreateVarsityDataElement;
         new (): HTMLCreateVarsityDataElement;
     };
+    interface HTMLDesktopHideElement extends Components.DesktopHide, HTMLStencilElement {
+    }
+    var HTMLDesktopHideElement: {
+        prototype: HTMLDesktopHideElement;
+        new (): HTMLDesktopHideElement;
+    };
     interface HTMLElectionsCandidatesElement extends Components.ElectionsCandidates, HTMLStencilElement {
     }
     var HTMLElectionsCandidatesElement: {
@@ -665,6 +803,12 @@ declare global {
         prototype: HTMLKclsuButtonElement;
         new (): HTMLKclsuButtonElement;
     };
+    interface HTMLKclsuCountdownElement extends Components.KclsuCountdown, HTMLStencilElement {
+    }
+    var HTMLKclsuCountdownElement: {
+        prototype: HTMLKclsuCountdownElement;
+        new (): HTMLKclsuCountdownElement;
+    };
     interface HTMLKclsuModalElement extends Components.KclsuModal, HTMLStencilElement {
     }
     var HTMLKclsuModalElement: {
@@ -706,6 +850,12 @@ declare global {
     var HTMLLoadingSpinnerElement: {
         prototype: HTMLLoadingSpinnerElement;
         new (): HTMLLoadingSpinnerElement;
+    };
+    interface HTMLMobileHideElement extends Components.MobileHide, HTMLStencilElement {
+    }
+    var HTMLMobileHideElement: {
+        prototype: HTMLMobileHideElement;
+        new (): HTMLMobileHideElement;
     };
     interface HTMLModalBackdropElement extends Components.ModalBackdrop, HTMLStencilElement {
     }
@@ -913,6 +1063,7 @@ declare global {
         "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
         "create-varsity-data": HTMLCreateVarsityDataElement;
+        "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "events-cards-modal": HTMLEventsCardsModalElement;
@@ -932,6 +1083,7 @@ declare global {
         "inner-tab-header": HTMLInnerTabHeaderElement;
         "inner-tabs-container": HTMLInnerTabsContainerElement;
         "kclsu-button": HTMLKclsuButtonElement;
+        "kclsu-countdown": HTMLKclsuCountdownElement;
         "kclsu-modal": HTMLKclsuModalElement;
         "kclsu-search": HTMLKclsuSearchElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
@@ -939,6 +1091,7 @@ declare global {
         "last-year-scores": HTMLLastYearScoresElement;
         "lazy-image": HTMLLazyImageElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
+        "mobile-hide": HTMLMobileHideElement;
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
@@ -1030,6 +1183,12 @@ declare namespace LocalJSX {
         "test"?: boolean;
         "year"?: string;
     }
+    interface DesktopHide {
+        /**
+          * In addition to hiding all children content in screens desktop + bigger, this will hide content in screens tablet + bigger
+         */
+        "hidetablet"?: boolean;
+    }
     interface ElectionsCandidates {
         /**
           * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
@@ -1061,11 +1220,33 @@ declare namespace LocalJSX {
     interface EventsCardsModal {
     }
     interface FlexContainer {
+        /**
+          * The same as the 'justify-content' flex property along the x axis
+         */
         "alignx"?: string;
+        /**
+          * The same as the 'align-items' flex property along the y axis
+         */
         "aligny"?: string;
+        /**
+          * Set the flex direction: column, reverse-column, row, reverse-row
+         */
         "direction"?: string;
-        "fillContainer"?: boolean;
+        /**
+          * Ensure the container stretches the full width and height of parent container
+         */
+        "fillcontainer"?: boolean;
+        /**
+          * In mobile display in column direction - NOT YET RELEASED
+         */
         "mobcolumn"?: boolean;
+        /**
+          * If the parent container element needs to be an <ul> list element
+         */
+        "renderlist"?: boolean;
+        /**
+          * Add flex-wrap to flex items
+         */
         "wrap"?: boolean;
     }
     interface FullBio {
@@ -1110,6 +1291,9 @@ declare namespace LocalJSX {
     }
     interface ImageSliderAuto {
         "classes"?: string;
+        /**
+          * A string of images
+         */
         "images"?: string[];
         "interval"?: number;
     }
@@ -1123,6 +1307,18 @@ declare namespace LocalJSX {
          */
         "image"?: string;
         /**
+          * Animate the image (scale in) on scroll
+         */
+        "imagezoom"?: boolean;
+        /**
+          * Set the margin for the card
+         */
+        "margin"?: string;
+        /**
+          * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
+         */
+        "smalltext"?: boolean;
+        /**
           * Switch the side the image is on
          */
         "switch"?: boolean;
@@ -1130,6 +1326,10 @@ declare namespace LocalJSX {
           * The paragraph text
          */
         "text"?: string;
+        /**
+          * Choose the colour for the paragraph text
+         */
+        "textcolour"?: string;
     }
     interface InnerTabContent {
         "active"?: boolean;
@@ -1156,7 +1356,10 @@ declare namespace LocalJSX {
           * Event Listener name
          */
         "emitid"?: string;
-        "green"?: boolean;
+        /**
+          * Give the button a fixed width
+         */
+        "fixedwidth"?: string;
         /**
           * Adds icon to the page
          */
@@ -1165,6 +1368,10 @@ declare namespace LocalJSX {
           * The URL to link to
          */
         "link"?: string;
+        /**
+          * specifiy a margin, otherwise uses default
+         */
+        "margin"?: string;
         /**
           * Opens the link in a new tab
          */
@@ -1191,7 +1398,36 @@ declare namespace LocalJSX {
          */
         "verysmall"?: boolean;
     }
+    interface KclsuCountdown {
+        /**
+          * The date to countdown to. Must match date string format
+         */
+        "date": string;
+        /**
+          * Optional: set a fixed font-size for tablet, desktop and wider.
+         */
+        "fontsize"?: any;
+        /**
+          * The text beneath the countdown
+         */
+        "text"?: any;
+        /**
+          * Optional: set a colour for the text beneath the countdown.
+         */
+        "textcolour"?: any;
+    }
     interface KclsuModal {
+        /**
+          * This will allow a user to click away and hide the modal when open
+         */
+        "autoexit"?: boolean;
+        /**
+          * Set position to absolute or other. Defaults to fixed
+         */
+        "position"?: string;
+        /**
+          * Controls when the modal is open and visible or not
+         */
         "show"?: boolean;
     }
     interface KclsuSearch {
@@ -1215,23 +1451,68 @@ declare namespace LocalJSX {
     interface KclsuTabsContainer {
     }
     interface LabelCard {
+        /**
+          * If a button included, the link for the button
+         */
         "buttonlink"?: string;
+        /**
+          * If a button included, the text for the button
+         */
         "buttontitle"?: string;
         "cardheight"?: string;
+        /**
+          * The main title of the card
+         */
         "cardtitle"?: string;
+        /**
+          * The main title of the card
+         */
         "highlightText"?: boolean;
         "image"?: string;
+        /**
+          * The link for the card - NOT for the button
+         */
+        "link"?: string;
+        /**
+          * If image to be displayed on right hand side
+         */
         "reverse"?: boolean;
+        "smallestheight"?: boolean;
         "smallheading"?: boolean;
+        /**
+          * The sub text beneath the title
+         */
         "text"?: string;
     }
     interface LastYearScores {
     }
     interface LazyImage {
+        /**
+          * Image will scale into view
+         */
+        "animatein"?: boolean;
+        /**
+          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+         */
+        "desktopwidth"?: string;
+        /**
+          * Use standard CSS values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
         "image"?: string;
+        /**
+          * A width for the image in pixels
+         */
+        "width"?: string;
     }
     interface LoadingSpinner {
         "show"?: boolean;
+    }
+    interface MobileHide {
+        /**
+          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+         */
+        "hidetablet"?: boolean;
     }
     interface ModalBackdrop {
         "onExitModal"?: (event: CustomEvent<any>) => void;
@@ -1315,6 +1596,10 @@ declare namespace LocalJSX {
           * The background image URL
          */
         "image"?: string;
+        /**
+          * Specify which part of the image you want to focus - top, bottom, right, left, center
+         */
+        "imagefocus"?: string;
         /**
           * The URL link for the the card
          */
@@ -1463,6 +1748,7 @@ declare namespace LocalJSX {
         "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
         "create-varsity-data": CreateVarsityData;
+        "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "events-cards-modal": EventsCardsModal;
@@ -1482,6 +1768,7 @@ declare namespace LocalJSX {
         "inner-tab-header": InnerTabHeader;
         "inner-tabs-container": InnerTabsContainer;
         "kclsu-button": KclsuButton;
+        "kclsu-countdown": KclsuCountdown;
         "kclsu-modal": KclsuModal;
         "kclsu-search": KclsuSearch;
         "kclsu-tabs-container": KclsuTabsContainer;
@@ -1489,6 +1776,7 @@ declare namespace LocalJSX {
         "last-year-scores": LastYearScores;
         "lazy-image": LazyImage;
         "loading-spinner": LoadingSpinner;
+        "mobile-hide": MobileHide;
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
         "news-card": NewsCard;
@@ -1540,6 +1828,7 @@ declare module "@stencil/core" {
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
+            "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "events-cards-modal": LocalJSX.EventsCardsModal & JSXBase.HTMLAttributes<HTMLEventsCardsModalElement>;
@@ -1559,6 +1848,7 @@ declare module "@stencil/core" {
             "inner-tab-header": LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
             "inner-tabs-container": LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
             "kclsu-button": LocalJSX.KclsuButton & JSXBase.HTMLAttributes<HTMLKclsuButtonElement>;
+            "kclsu-countdown": LocalJSX.KclsuCountdown & JSXBase.HTMLAttributes<HTMLKclsuCountdownElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
             "kclsu-search": LocalJSX.KclsuSearch & JSXBase.HTMLAttributes<HTMLKclsuSearchElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
@@ -1566,6 +1856,7 @@ declare module "@stencil/core" {
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
             "lazy-image": LocalJSX.LazyImage & JSXBase.HTMLAttributes<HTMLLazyImageElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
+            "mobile-hide": LocalJSX.MobileHide & JSXBase.HTMLAttributes<HTMLMobileHideElement>;
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;

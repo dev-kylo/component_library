@@ -9,7 +9,7 @@ export class CandidateUpload {
     /** The JSON generated from the browser-side uploaded excel spreadsheet */
     @Prop() spreadsheetdata:any;
     /** Either 'candidates' or 'results'. Will set the firebase url and key map */
-    @Prop() stage: string;
+    @Prop() stage: string = 'results';
     /**MSL ELections ID*/
     @Prop() electionid: string;
 
@@ -18,15 +18,7 @@ export class CandidateUpload {
     @State() modalOpen: boolean = false;
     @State() loading: boolean = false;
     @State() validProps: boolean = false;
-
-    // componentDidLoad(){
-    //     //IF UNVALID PROPS, SET ERROR 
-    //     if (this.validateProps() === false) {
-    //         this.error = 'Check component attributes';
-    //         this.validProps = false;
-    //     }
-
-    // }
+    @State() mslres;
 
     candidatesKeysMap = {
         'display_name': 'Name',
@@ -37,12 +29,22 @@ export class CandidateUpload {
     }
 
     resultsKeysMap = {
-        'Name': 'Name',
-        'Post': 'Post',
-        'ManifestoLink': 'ManifestoLink',
-        'ImageLink': 'ImageLink',
-        'Type' : 'Type',
-        'ResultsLink': 'ResultsLink'
+        'elected_candidate': 'Name',
+        'post_title': 'Post',
+        'type' : 'Type',
+        'candidate_id': 'candidateId',
+        'results': 'ResultsLink'
+    }
+
+    componentWillRender(){
+        console.log('component about to render')
+        if (!this.mslres){
+        fetch(`https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`)
+            .then(res => res.json())
+            .then(response => {
+                this.mslres = [...response.Candidates];
+            })  
+        }   
     }
 
     submitJson(){
@@ -60,25 +62,17 @@ export class CandidateUpload {
         const token = localStorage.getItem('kclsu_token');
 
         if(this.spreadsheetdata){
-            let data = JSON.parse(this.spreadsheetdata).map(ob => {
-                return this.reBuildObject(this.candidatesKeysMap, ob)
-            });
+            const data = this.prepareCandidateData();
 
-            if (this.stage === 'candidates'){
-                //MAKE SURE ONLY APPROVED CANDIDATES ARE IN THE DATA
-                data = data.filter(candidate => candidate.Status === 'Approved');
-            }
-    
             const body: any = {
                 method: 'PUT', 
                 body: JSON.stringify(data), 
             };
-    
-            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`
-
+            
+            const url = `${baseUrl}/${this.electionid}/${endpoint}.json?auth=${token}`;
+                
             fetch(url, body)
                 .then(res => {
-                    console.log(res)
                     if(!res.ok){
                         this.loading = false;
                         this.successfulUpload = false;
@@ -90,7 +84,7 @@ export class CandidateUpload {
                         this.modalOpen = true;
                         this.loading = false;
                     }
-        
+
                 })
                 .catch(er => {
                     this.error = `${er}`;
@@ -98,6 +92,28 @@ export class CandidateUpload {
                 }); 
         }
         else this.error = "Failed to map over supplied spreadsheet data"
+    }
+
+    prepareCandidateData(){
+        const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
+        const data = JSON.parse(this.spreadsheetdata).map(ob => {
+            return this.reBuildObject(keymap, ob )
+        });
+
+        if (this.mslres && this.mslres.length > 0){
+
+            data.forEach(person => {
+                const candidateInfo = this.mslres.find(ob => ob.Id === person.candidateId);
+                //SET IMAGE AND MANIFESTO LINKS
+                if (candidateInfo) {
+                    person.ImageLink = candidateInfo.ImageUrl?  candidateInfo.ImageUrl : '';
+                    person.ManifestoLink = candidateInfo.ManifestoUrl? candidateInfo.ManifestoUrl : '';
+                }
+            })
+        }
+        console.log("final data to be uploaded");
+        console.log(data);
+        return data;
     }
 
 
@@ -121,35 +137,10 @@ export class CandidateUpload {
 
     createCards(){
         //CREATES PROFILE CARDS FOR PREVIEW
-
-        const keymap = this.stage === 'candidates'? this.candidatesKeysMap : this.resultsKeysMap;
-        const data = JSON.parse(this.spreadsheetdata).map(ob => {
-            return this.reBuildObject(keymap, ob )
-        });
+        const data = this.prepareCandidateData();
         return <candidate-display data={data}></candidate-display>
-       
     }
 
-    // validateProps(){
-    //     //BE EXTRA CAREFUL OF PROPS SUPPLIED, SO DATA IS NOT UPLOADED TO A RANDOM LOCATION IN DATABASE
-        
-    //     let valid = true;
-    //     if (/202[0-9]/.test(this.year) === false)  valid = false;
-    //     else {
-    //         switch(this.season){
-    //             case 'Spring':
-    //                 valid = true;
-    //                 break;
-    //             case 'Autumn':
-    //                 valid = true;
-    //             case 'By' :
-    //                 valid= true;
-    //                 break;
-    //             default : valid = false;
-    //         }
-    //     }
-    //     return valid;
-    // }
 
     @Listen('emitClick') uploadClick(e){
         //LISTEN FOR CLICK TO MAKE REQUEST TO FIREBASE
@@ -170,13 +161,9 @@ export class CandidateUpload {
     }
 
     render() {
-        console.log("SPREADSHEET DATA BEFORE RENDER")
-
-        //SET THE DATABASE NAME AREA FOR AUTHENTICATION
-        const database = this.stage === 'candidates'? 'elections-candidates' : 'elections-results';
-
         //CREATE THE PROFILE CARDS IF THERE IS DATA
-        let previewCards = this.spreadsheetdata? this.createCards() : <loading-spinner show={true}></loading-spinner>;
+        let previewCards = <loading-spinner show={true}></loading-spinner>;
+        if (this.spreadsheetdata) previewCards = this.createCards(); 
 
         let successfulUploadNotice = ([
             <kclsu-modal show={this.modalOpen}><h4>Success! Candidate data uploaded in the cloud</h4></kclsu-modal>,
@@ -188,7 +175,7 @@ export class CandidateUpload {
 
         let content =  (
             <div class="upload_container">
-                <user-login database={database}></user-login>
+                <user-login database={'elections-candidates'}></user-login>
                 <h3>Preview of data</h3>
                 <p>Below is an unsorted + unfiltered list of profile cards generated from the spreadsheet. <em>Use to do final checks,</em> eg double check links, images etc.</p>
                 <p>Once happy click the Upload button below to upload data to database</p>
@@ -196,15 +183,13 @@ export class CandidateUpload {
                 <kclsu-button emitid="upload">Upload Data</kclsu-button>
                 <loading-spinner show={this.loading}></loading-spinner>
                 {this.successfulUpload && successfulUploadNotice }
-                {!this.successfulUpload? previewCards : '' }
-
-                
+                {!this.successfulUpload? previewCards : '' }      
             </div>); 
         
         if (this.error) {
             content = (
                 <div class="upload_container">
-                    <user-login database={database}></user-login>
+                    <user-login database={'elections-candidates'}></user-login>
                     <h3 style={{"color": "red"}}>Error</h3>
                     <p>{this.error}</p>
                     {this.validProps? <kclsu-button emitid="clear" purple>Try again</kclsu-button> : ''} 

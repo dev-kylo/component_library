@@ -30,7 +30,7 @@
 graph TD;
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
-  profile-card --> loading-spinner
+  profile-card --> lazy-image
   profile-card --> flex-container
   academic-candidate-display --> candidate-display
   candidate-upload --> candidate-display

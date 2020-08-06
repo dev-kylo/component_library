@@ -17,7 +17,7 @@ a{
     box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
     border: 1px solid #eaeaea;
     transition: box-shadow 0.5s;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .card:hover{
@@ -26,7 +26,7 @@ a{
 
 .card::before {
     content: "";
-    background: #5EBDB0;
+    background: var(--light-teal);
     position: absolute;
     left: 0;
     top: 0;
@@ -45,7 +45,7 @@ a{
 
     font-size: 17px;
     line-height: 22px;
-    color: #502669;
+    color: var(--purple);
     display: inline-block;
     font-weight: bold;
     font-family: bree_serifbold, bree-serif, serif;

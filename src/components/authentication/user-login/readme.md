@@ -22,11 +22,13 @@
 ### Depends on
 
 - [kclsu-modal](../../modal)
+- [loading-spinner](../../spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   user-login --> kclsu-modal
+  user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
   add-varsity-scores --> user-login
   candidate-upload --> user-login

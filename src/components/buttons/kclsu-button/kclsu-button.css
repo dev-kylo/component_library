@@ -1,12 +1,12 @@
 @import '../../../global/globalstyles.css';
 
-:host {
+/* :host {
     margin: 1em;
-}
+} */
 
 a {
     box-sizing: border-box;
-    border: 1px solid #14847e;
+    border: 1px solid var(--dark-teal);
     font-family: "Open Sans", Arial, sans-serif;
     line-height: 32px;
     font-weight: 700;
@@ -20,33 +20,32 @@ a {
     box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
     transition-duration: 1s;
     font-size: 14px;
-    margin: 15px;
     padding: 10px 30px;
 }
 
 
 .purple {
-    border: 1px solid #502865;
+    border: 1px solid var(--purple);
     background-color: white;
-    color: #502865;
+    color: var(--purple);
 }
 
 .purple:hover {
-    border: 1px solid #502865;
-    background-color: #502865;
+    border: 1px solid var(--purple);
+    background-color: var(--purple);
     color: white;
 }
 
 .green {
     color: white;
-    background: #14847e;
-    border: 1px solid #14847e;
+    background: var(--dark-teal);
+    border: 1px solid var(--dark-teal);
 }
 
 .green:hover {
-    color: #14847e;
+    color: var(--dark-teal);
     background: white;
-    border: 1px solid #14847e;
+    border: 1px solid var(--dark-teal);
 }
 
 

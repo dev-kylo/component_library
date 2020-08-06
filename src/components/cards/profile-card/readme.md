@@ -35,13 +35,13 @@
 
 ### Depends on
 
-- [loading-spinner](../../spinner)
+- [lazy-image](../../images/lazy-image)
 - [flex-container](../../containers/flex-container)
 
 ### Graph
 ```mermaid
 graph TD;
-  profile-card --> loading-spinner
+  profile-card --> lazy-image
   profile-card --> flex-container
   candidate-display --> profile-card
   profile-tabs --> profile-card

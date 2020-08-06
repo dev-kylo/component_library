@@ -45,7 +45,7 @@ graph TD;
   elections-candidates --> tabs-container
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
-  profile-card --> loading-spinner
+  profile-card --> lazy-image
   profile-card --> flex-container
   academic-candidate-display --> candidate-display
   style elections-candidates fill:#f9f,stroke:#333,stroke-width:4px

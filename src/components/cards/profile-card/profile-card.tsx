@@ -35,16 +35,9 @@ export class ProfileCard{
       e.preventDefault();
       this.emitClick.emit(this.emitid)
   }
-
-  imageLoaded(){
-    this.imageloading = false;
-    this.imageclasses = ['fit', 'show', 'scale-in-center'];
-  }
-
   
   render() {
-
-    
+        
     let nameLink = !this.link ? <a onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> :  <a target="_blank" href={this.link? this.link : ''}><span class="name">{this.name}</span></a>
     let firstlink = !this.link ? <a class="link"  onClick={e => this.clickHandler(e)}>{this.cta}</a> :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta}</a>
     let secondlink = !this.secondlink? '' : <a class="link" target="_blank" href={this.secondlink}>{this.secondcta}</a>
@@ -52,8 +45,7 @@ export class ProfileCard{
     return (
       <div class="profile-card">
         <div class="image">
-          <loading-spinner show={this.imageloading}></loading-spinner>
-          <img onLoad={() => this.imageLoaded()} class={this.imageclasses.join(' ')} src={this.image}></img>
+          <lazy-image animatein image={this.image}></lazy-image>
         </div>
         <div class="label">
           {nameLink}

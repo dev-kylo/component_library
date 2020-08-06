@@ -40,7 +40,7 @@ export class TabHeader {
         if (this.active){
             return (
                 <li role="presentation" class={classes} >
-                    <a href="#" onClick={(e) => this.onClick(e)} id={this.name} aria-selected={this.active} role="tab" ><slot></slot></a>
+                    <a href="#" onClick={(e) => this.onClick(e)} id={this.name} aria-selected="true" role="tab" ><slot></slot></a>
                 </li>
             );
         }

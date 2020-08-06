@@ -8,8 +8,7 @@ import { Component, h, Prop, EventEmitter, Event} from '@stencil/core';
 export class ModalBackdrop {
 
 
-    @Prop() showbg: boolean
-
+    @Prop() showbg: boolean;
     @Event() exitModal: EventEmitter;
 
     clickHandler(e){

@@ -40,7 +40,7 @@ h3, a, h2, p{
 #strip .buttonCTA { margin: 30px 0 0; }
 
 .yellow{
-    background-color: #ec6236;
+    background-color: var(--orange);
 }
 
 .white{
