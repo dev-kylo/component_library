@@ -53,6 +53,9 @@ export namespace Components {
         "stage": string;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id": string;
     }
     interface CreateVarsityData {
@@ -1174,6 +1177,9 @@ declare namespace LocalJSX {
         "stage"?: string;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id"?: string;
     }
     interface CreateVarsityData {
