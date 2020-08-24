@@ -63,12 +63,67 @@ export function getNextEvents(dataList, length = -1){
   else return data.slice(dateIndex)
 }
 
-export function sortFullNamesAlphabetically(){
-  console.log('yeah')
-}
-
 export function verifyCloudinaryApprovedUrl(url:string){
     let verified = false ;
     if (url.includes('https://www.kclsu.org/asset/News/6015/')) verified = true;
     return verified;
 }
+
+export function makeRequest< T extends {}>(url: string, type:any, data?:any) : Promise<T>{
+  const payload: any = {
+    method: type,
+    headers: {
+        'Content-Type': 'application/json'
+      },
+    body: JSON.stringify(data)
+  };
+
+  return fetch(url, payload)
+    .then(res => {
+      if (!res.ok) throw new Error(res.statusText);
+      return res.json();
+    })
+}
+
+
+//ACCEPTS AN ARRAY OF VALIDATABLE OBJECTS
+
+// class Validatable {
+//   constructor(
+//     public name:string, 
+//     public type: 'Email' | 'Required' | 'Number' | 'Date' | 'Regex',
+//     public value: string | number | Date,
+//     public regex?: RegExp
+//     ){}
+// }
+
+
+
+// export function validate(){
+//   const emailRegex = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+//   const em = document.getElementById('EmailAddress');
+//   const requiredFields = document.querySelectorAll('.required');
+
+//   let valid = true;
+//   let error = '';
+//   for(let x = 0; x < requiredFields.length; x++){
+//     let field = requiredFields[x];
+//     field.classList.remove('inputError');
+//     if(!field.value){
+//       field.classList.add('inputError');
+//       valid = false;
+//       error = 'Please fill in the red outlined boxes above.'
+//     }
+//   }
+
+//   let emailValid = emailRegex.test(em.value);
+//   if(!emailValid){
+//     error = error + '\n Supply a valid email address';
+//     valid = false;
+//   }
+//   if (!valid){
+//     errorMessage.id= "errorMessage"
+//     errorMessage.innerHTML = error;
+//   }
+//   return valid;
+// }

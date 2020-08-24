@@ -1,5 +1,5 @@
-import { newSpecPage } from '@stencil/core/testing';
-import {UserLogin} from './user-login';
+// import { newSpecPage } from '@stencil/core/testing';
+// import {UserLogin} from './user-login';
 
 describe('<user-login>', () => {
 

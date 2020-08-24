@@ -18,6 +18,7 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec",
+    "test:coverage": "stencil test --spec --coverage",
     "generate": "stencil generate",
     "build.netlify": "npm run build cp src/_redirects www/_redirects"
   },

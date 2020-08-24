@@ -21,19 +21,16 @@ describe('Kclsu Button', () => {
             components: [KclsuButton],
             html: `<kclsu-button small link="/page">My Button</kclsu-button>`
         });
-        expect(page.root).toEqualHtml(`
-            <kclsu-button link="/page" small="">
-                <mock:shadow-root>
-                    <flex-container alignx="flex-start" fillcontainer="">
-                        <a class="green small" href="/page" target="_self">
-                            <slot></slot>
-                        </a>
-                     </flex-container>
-                </mock:shadow-root>
-                My Button
-            </kclsu-button>
+
+        expect(page.root.shadowRoot).toEqualHtml(`
+            <flex-container alignx="flex-start" fillcontainer="">
+                <a class="green small" href="/page" target="_self" style="margin: 15px;">
+                    <slot></slot>
+                </a>
+            </flex-container>
         `)
     })
+
 
     it('when given newtab and purple props it should render "a" tag with purple class, and new tab target', async () => {
         const page = await newSpecPage({
@@ -44,7 +41,7 @@ describe('Kclsu Button', () => {
             <kclsu-button link="/page" purple="" newtab="">
                 <mock:shadow-root>
                     <flex-container alignx="flex-start" fillcontainer="">
-                        <a class="purple big" href="/page" target="_blank">
+                        <a class="purple big" href="/page" target="_blank" style="margin: 15px;">
                             <slot></slot>
                         </a>
                      </flex-container>
