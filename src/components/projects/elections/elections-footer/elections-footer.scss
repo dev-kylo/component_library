@@ -1,0 +1,68 @@
+@import '../../../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@import '../../../../global/globalstyles.css';
+
+.yellow{
+    background-color: #ec6236;
+}
+
+#logo {
+    text-align: center; 
+    overflow: hidden;
+    padding: 0; 
+    background-color: white;
+}
+
+#strip {
+    position: relative;
+    padding: 100px 0% 70px;
+    color: white;
+    margin-top: 100px;
+}
+
+#strip #logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    position: absolute;
+    top: -70px;
+    line-height: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background-color: #50266a;
+}
+
+img { width: 100%;}
+ 
+h3, a, h2, p, li{
+    color: white;
+} 
+
+h3 {
+    font-weight: 600;
+}
+
+#strip .buttonCTA { margin: 30px 0 0; }
+
+
+.white{
+    background-color: white;
+}
+
+.green {
+    background-color: #b1cf46;
+}
+
+
+@media only screen and (max-width: 600px){
+    #strip {
+        position: relative;
+        padding: 100px 5% 70px;
+        color: white;
+    }
+}

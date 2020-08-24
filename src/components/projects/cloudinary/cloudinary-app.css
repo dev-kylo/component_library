@@ -1,0 +1,129 @@
+@import '../../../global/globalstyles.css';
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--secondary-navy);
+    padding-top: 2em;
+}
+
+
+h2 {
+    color: white!important;
+    margin-top: 0!important;    
+}
+em {
+    background-color: var(--secondary-pink)!important;
+}
+.presets {
+    align-self: flex-start;
+    width: 40%;
+    height: 100%;
+    margin: 1em;
+}
+
+.instructions {
+    padding: 2em;
+    color: white;
+}
+
+.image {
+    width: 70%;
+    margin: 1em;
+    /* border: 5px solid teal; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 1em;
+}
+
+
+
+.empty {
+    width:100%;
+    min-height: 500px;
+    background-color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.drag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    font-size: 16px;
+    color: var(--purple);
+}
+
+.canvas{
+    width: 100%;
+    height: auto;
+    background-color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+loading-spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s ease-in;
+}
+
+.imagecontrols {
+    display: flex
+}
+
+@media only screen and (max-width: 1100px){
+    .image {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .image {
+        width: 100%;
+        padding: 0;
+        margin-top: 0;
+    }
+
+.app {
+    flex-wrap: wrap;
+    padding-top: 0;
+}
+
+.presets {
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.empty {
+    width: 100%;
+    min-height: 500px;
+    background-color: var(--light-grey);
+}
+.instructions {
+padding: 1em;
+}
+}
+
+@media only screen and (max-width: 480px){
+    /* .app{
+        flex-direction: column-reverse;
+    } */
+
+}

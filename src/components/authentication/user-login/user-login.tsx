@@ -1,29 +1,34 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Element, Listen } from '@stencil/core';
+import { LoginPackage, firebaseResponse } from './models';
+import { makeRequest } from '../../../utils/utils';
 
 @Component({
     tag: 'user-login',
     styleUrl: 'user-login.css',
     shadow: true
 })
+
 export class UserLogin {
 
     /** The name of the database area. For example: projectx */
     @Prop() database: string;
-    
+
+    //Modal visibility
     @State() modalOpen: boolean = true;
+    //The firebase token, which will be retrieved from server
     @State() token: string;
     @State() error: string;
     @State() loading: boolean = false;
+    @Element() host: HTMLElement;
 
     componentDidLoad(){
         this.checkAuthentication();
     }
 
-
-    checkAuthentication(){
+    private checkAuthentication(){
         const token = localStorage.getItem('kclsu_token');
         if (token){
-            const expirationDate = new Date(localStorage.getItem('tokenExpireDate'));
+            const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
             if (new Date() < expirationDate){
                 this.token = token;
                 this.modalOpen = false;
@@ -35,55 +40,48 @@ export class UserLogin {
         }
     }
 
-    logIn(e){
-        e.preventDefault();
+    private logIn(){
         this.loading=true;
-        let element = e.target;
-        let email = element[0].value;
-        let password = element[1].value;
 
-        let url = 'https://kclsu-heroku.herokuapp.com/authenticate';
+        const email = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
+        const username = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
 
-        let data = {
-            package: {
-                email: email,
-                password: password,
-                returnSecureToken: true
-            },
-            area: this.database
-        }
-        let payload: any = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data)
-    };
-    fetch(url, payload)
-    .then(res => res.json())
-    .then(data => {
-        this.loading=false;
-        if (!data.idToken) this.error = data.error.message;
-        else {
+        console.log(email + ' ' + username)
+        const url = 'https://kclsu-heroku.herokuapp.com/authenticate';
+        const data:LoginPackage = new LoginPackage(email, username, this.database);
 
-            const expirationDate:any = new Date(new Date().getTime() + data.expiresIn * 1000);
-            localStorage.setItem('kclsu_token', data.idToken);
-            localStorage.setItem('tokenExpireDate', expirationDate); 
 
-            this.error = '';
-            this.token = data.idToken;
-            this.modalOpen = false;
-        }
-    })
-    .catch(er => {
-        this.loading= false;
-        this.error = er}) 
+        makeRequest<firebaseResponse>(url, 'POST', data)
+        .then(data => {
+            this.loading=false;
+
+            if (!data.idToken) this.error = data.error.message;
+            else {
+
+                const expirationDate:any = new Date(new Date().getTime() + +data.expiresIn * 1000);
+                localStorage.setItem('kclsu_token', data.idToken);
+                localStorage.setItem('tokenExpireDate', expirationDate); 
+
+                this.error = '';
+                this.token = data.idToken;
+                this.modalOpen = false;
+            }
+        })
+        .catch(er => {
+            this.loading= false;
+            this.error = er;
+        }) 
+    }
+
+    @Listen('emitClick') buttonClick(e:Event){
+        e.preventDefault();
+        this.logIn();
     }
     
     render() {
         return (
             <kclsu-modal show={this.modalOpen}>
-                <form onSubmit={(e) => this.logIn(e)}>
+                <form>
                     <span class="title">Log in using details provided</span>
                     <div class="flex">
                         <label> Email</label>
@@ -93,7 +91,7 @@ export class UserLogin {
                         <label> Password</label>
                         <input type="password" value='' id="password" />
                     </div>
-                    <button>Login</button>                 
+                    <kclsu-button center emitid="userlogin">Login</kclsu-button>             
                 </form>
                 <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
                 <span class="error">{this.error? `${this.error} !`: ''}</span>
