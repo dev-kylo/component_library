@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import {isEmail} from '../../../decorators/validation/config';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, h, Prop } from '@stencil/core';
 export class ImageText {
 
     /** The title at the top of the text */
-    @Prop() heading: string;
+    @Prop() @isEmail heading: string;
     /** The paragraph text */
     @Prop() text: string;
     /** The image link (get from Cloudinary) */
@@ -35,7 +36,7 @@ export class ImageText {
             "flex-direction": this.switch? "row-reverse" : "",
             "margin": this.margin
         }
-
+        console.log(this)
 
         return (
                 <div class="image-text" style={style}>

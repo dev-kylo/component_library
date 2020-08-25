@@ -1,6 +1,7 @@
 import { Component, h, Prop, State, Element, Listen } from '@stencil/core';
 import { LoginPackage, firebaseResponse } from './models';
 import { makeRequest } from '../../../utils/utils';
+import { isEmail, isRequired, validate } from '../../../decorators/validation/config';
 
 @Component({
     tag: 'user-login',
@@ -10,9 +11,13 @@ import { makeRequest } from '../../../utils/utils';
 
 export class UserLogin {
 
-    /** The name of the database area. For example: projectx */
-    @Prop() database: string;
+    @isEmail @isRequired 
+    protected email: string;
+    @isRequired
+    protected password: string ='';
 
+    /** The name of the database area. For example: projectx */
+    @Prop() @isRequired database: string;
     //Modal visibility
     @State() modalOpen: boolean = true;
     //The firebase token, which will be retrieved from server
@@ -23,6 +28,7 @@ export class UserLogin {
 
     componentDidLoad(){
         this.checkAuthentication();
+        this.email = 'brother';
     }
 
     private checkAuthentication(){
@@ -42,11 +48,9 @@ export class UserLogin {
 
     private logIn(){
         this.loading=true;
-
         const email = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
         const username = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
 
-        console.log(email + ' ' + username)
         const url = 'https://kclsu-heroku.herokuapp.com/authenticate';
         const data:LoginPackage = new LoginPackage(email, username, this.database);
 
@@ -79,6 +83,9 @@ export class UserLogin {
     }
     
     render() {
+
+        const validation = validate(this);
+        console.log(validation.hasErrors);
         return (
             <kclsu-modal show={this.modalOpen}>
                 <form>
