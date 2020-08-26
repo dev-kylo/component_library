@@ -99,8 +99,6 @@ export namespace Components {
     }
     interface ElectionsFooter {
     }
-    interface EventsCardsModal {
-    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -704,12 +702,6 @@ declare global {
         prototype: HTMLElectionsFooterElement;
         new (): HTMLElectionsFooterElement;
     };
-    interface HTMLEventsCardsModalElement extends Components.EventsCardsModal, HTMLStencilElement {
-    }
-    var HTMLEventsCardsModalElement: {
-        prototype: HTMLEventsCardsModalElement;
-        new (): HTMLEventsCardsModalElement;
-    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -1069,7 +1061,6 @@ declare global {
         "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
-        "events-cards-modal": HTMLEventsCardsModalElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1222,8 +1213,6 @@ declare namespace LocalJSX {
         "studentofficers"?: any;
     }
     interface ElectionsFooter {
-    }
-    interface EventsCardsModal {
     }
     interface FlexContainer {
         /**
@@ -1686,7 +1675,7 @@ declare namespace LocalJSX {
         /**
           * The name of the database area. For example: projectx
          */
-        "database"?: string;
+        "database": string;
     }
     interface VarsityLanding {
         "currentDate"?: {
@@ -1757,7 +1746,6 @@ declare namespace LocalJSX {
         "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
-        "events-cards-modal": EventsCardsModal;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -1837,7 +1825,6 @@ declare module "@stencil/core" {
             "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
-            "events-cards-modal": LocalJSX.EventsCardsModal & JSXBase.HTMLAttributes<HTMLEventsCardsModalElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;

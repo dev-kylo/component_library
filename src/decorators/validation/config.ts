@@ -1,5 +1,5 @@
 import { validateByType } from './validators';
-import {validationConfig, validationTypes, validationPackage, errorLogInt} from './models';
+import { validationConfig, validationTypes, validationPackage, errorLogInt } from './models';
 
 //Create central config object
 const config: validationConfig = {}

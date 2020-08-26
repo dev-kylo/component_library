@@ -15,7 +15,9 @@ export class validationResult {
 
 export interface errorLogInt {
     hasErrors: boolean;
-    errors: {[propName: string] : string[]}
+    errors: {
+        [propName: string] : string[]
+    }
 }
 
 //This is the final class that the validate() function returns
@@ -36,13 +38,25 @@ export class validationPackage {
         updatedLog.hasErrors = true;
         //Check if property is already in error log
         if (propName in updatedLog.errors){
-            const errs = updatedLog.errors.propName;
-            updatedLog.errors.propName = [...errs, ...newErrors]
+            const errs = updatedLog.errors[propName];
+            updatedLog.errors[propName] = [...errs, ...newErrors]
         }
         else {
             updatedLog.errors[propName] = [...newErrors]
         }
-        //re-assign property to new log object.
+        //re-assign updated log object to log property
+        this.errorLog = updatedLog;
+    }
+
+    public removeErrors(className){
+        const updatedLog = {...this.errorLog}
+        updatedLog.errors = {...this.errorLog.errors}
+        updatedLog.hasErrors = false;
+
+        //remove all errors in array
+        updatedLog.errors[className] = [];
+
+        //re-assign updated log object to log property
         this.errorLog = updatedLog;
     }
 

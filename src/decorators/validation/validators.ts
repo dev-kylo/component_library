@@ -14,7 +14,7 @@ function validateEmail(val) : validationResult {
         return new validationResult(false, [])
     }
     else {
-        return new validationResult(true, ['The email supplied is in an incorrect format. Please supply another.'])
+        return new validationResult(true, ['Incorrect email format.'])
     }
 }
 
@@ -24,7 +24,7 @@ function validateNumber(val) : validationResult {
         return new validationResult(false, [])
     }
     else {
-        return new validationResult(true, ['You have supplied a value that is not a number.'])
+        return new validationResult(true, ['Value is not a number.'])
     }
 }
 
@@ -33,6 +33,6 @@ function validateRequired(val) : validationResult {
         return new validationResult(false, [])
     }
     else {
-        return new validationResult(true, ['You have missed a required field'])
+        return new validationResult(true, ['Missing required field.'])
     }   
 }
