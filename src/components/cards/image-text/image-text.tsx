@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import {isEmail} from '../../../decorators/validation/config';
 
 
 @Component({
@@ -10,7 +9,7 @@ import {isEmail} from '../../../decorators/validation/config';
 export class ImageText {
 
     /** The title at the top of the text */
-    @Prop() @isEmail heading: string;
+    @Prop() heading: string;
     /** The paragraph text */
     @Prop() text: string;
     /** The image link (get from Cloudinary) */
