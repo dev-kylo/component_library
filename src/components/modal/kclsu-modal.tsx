@@ -15,9 +15,9 @@ export class KclsuModal {
     /** Set position to absolute or other. Defaults to fixed */
     @Prop() position:string = 'fixed';
 
-    @Watch('show') watchHandler(newVal){
-        console.log("The modal is now showing:" + newVal)
-    }
+    // @Watch('show') watchHandler(newVal){
+    //     console.log("The modal is now showing:" + newVal)
+    // }
 
     @Listen('exitModal') exitHandler(){
         if (this.autoexit) this.show = false;

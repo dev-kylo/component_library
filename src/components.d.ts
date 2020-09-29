@@ -99,6 +99,14 @@ export namespace Components {
     }
     interface ElectionsFooter {
     }
+    interface ElectionsTab {
+        "active": boolean;
+        "combineResults": boolean;
+        "posts": string;
+        "shortentitles": boolean;
+        "tabtitle": string;
+        "type": "single" | "multiple" | "groupings";
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -413,6 +421,12 @@ export namespace Components {
     }
     interface PageContent {
     }
+    interface PostGrouping {
+        "regex": string;
+        "replace": string;
+        "searchterms": string;
+        "tabtitle": string;
+    }
     interface PresetCard {
         "dimensions": string;
         "presetid": string;
@@ -477,7 +491,7 @@ export namespace Components {
          */
         "link": string;
         /**
-          * The logo image URL 150x150px
+          * The logo image URL - at least 150x150px, must be a square image.
          */
         "logo": string;
         /**
@@ -702,6 +716,12 @@ declare global {
         prototype: HTMLElectionsFooterElement;
         new (): HTMLElectionsFooterElement;
     };
+    interface HTMLElectionsTabElement extends Components.ElectionsTab, HTMLStencilElement {
+    }
+    var HTMLElectionsTabElement: {
+        prototype: HTMLElectionsTabElement;
+        new (): HTMLElectionsTabElement;
+    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -875,6 +895,12 @@ declare global {
     var HTMLPageContentElement: {
         prototype: HTMLPageContentElement;
         new (): HTMLPageContentElement;
+    };
+    interface HTMLPostGroupingElement extends Components.PostGrouping, HTMLStencilElement {
+    }
+    var HTMLPostGroupingElement: {
+        prototype: HTMLPostGroupingElement;
+        new (): HTMLPostGroupingElement;
     };
     interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {
     }
@@ -1061,6 +1087,7 @@ declare global {
         "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
+        "elections-tab": HTMLElectionsTabElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1090,6 +1117,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
         "page-content": HTMLPageContentElement;
+        "post-grouping": HTMLPostGroupingElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
         "primary-button": HTMLPrimaryButtonElement;
@@ -1213,6 +1241,14 @@ declare namespace LocalJSX {
         "studentofficers"?: any;
     }
     interface ElectionsFooter {
+    }
+    interface ElectionsTab {
+        "active"?: boolean;
+        "combineResults"?: boolean;
+        "posts"?: string;
+        "shortentitles"?: boolean;
+        "tabtitle"?: string;
+        "type"?: "single" | "multiple" | "groupings";
     }
     interface FlexContainer {
         /**
@@ -1533,6 +1569,12 @@ declare namespace LocalJSX {
     }
     interface PageContent {
     }
+    interface PostGrouping {
+        "regex"?: string;
+        "replace"?: string;
+        "searchterms"?: string;
+        "tabtitle"?: string;
+    }
     interface PresetCard {
         "dimensions"?: string;
         "onSelectPreset"?: (event: CustomEvent<any>) => void;
@@ -1600,7 +1642,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
-          * The logo image URL 150x150px
+          * The logo image URL - at least 150x150px, must be a square image.
          */
         "logo"?: string;
         /**
@@ -1746,6 +1788,7 @@ declare namespace LocalJSX {
         "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
+        "elections-tab": ElectionsTab;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -1775,6 +1818,7 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "news-card": NewsCard;
         "page-content": PageContent;
+        "post-grouping": PostGrouping;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
         "primary-button": PrimaryButton;
@@ -1825,6 +1869,7 @@ declare module "@stencil/core" {
             "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
+            "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
@@ -1854,6 +1899,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
+            "post-grouping": LocalJSX.PostGrouping & JSXBase.HTMLAttributes<HTMLPostGroupingElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;

@@ -21,12 +21,10 @@ export class AcademicCandidateDisplay {
         let positions = [];
         let nodes:HTMLSpanElement[] = []
         if (this.data){
-            console.log("data received in academic candidate display")
-            console.log(this.data)
             for (let x = 0; x < this.data.length; x++){
                 let current = this.data[x];
                 let post = current.Post.Title || current.Post;
-                if (!positions.find(p => p === post)){
+                if (!positions.find(p => p.trim() === post.trim())){
                 let link = <li role="tab" id={post} data-candidates={current} class="academic_sub" aria-selected="false" onClick={ e => this.clickHandler(e)}>{post}</li>
                     positions.push(post);
                     nodes.push(link)
@@ -55,11 +53,9 @@ export class AcademicCandidateDisplay {
         let candidates = !this.current ? '' : <candidate-display 
                                                     data={this.data.filter(candidate => {
                                                         let title = candidate.Post.Title || candidate.Post;
-                                                        return title === this.current
+                                                        return title.trim() === this.current.trim()
                                                     })}
                                               ></candidate-display>;
-
-        console.log('Academic Component re-renders')
         return (
             <div role="presentation">
                 <div class="positions" role="presentation">

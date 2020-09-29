@@ -12,7 +12,6 @@ export class ModalBackdrop {
     @Event() exitModal: EventEmitter;
 
     clickHandler(e){
-        console.log('modal clicked')
         this.exitModal.emit(e)
     }
     

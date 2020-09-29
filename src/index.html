@@ -15,7 +15,73 @@
 </head>
 <body>
 
-  <user-login database=""></user-login>
+  <!-- AUTUMN  ELECTIONS -->
+  <elections-candidates>
+    <elections-tab typeid="SO" tabtitle="Student Trustees" uid="SO" posts="Student Trustee" type="single" active></elections-tab>
+    <elections-tab typeid="NUS" tabtitle="Network Officers" uid="NUS" posts="LGBT+ Officer (open place)" type="multiple" ></elections-tab>
+    <elections-tab 
+      typeid="NUS" 
+      tabtitle="Union Development" 
+      uid="UD" posts="Activities Union Development Committee Member | Sustainability Union Development Committee Member" 
+      type="multiple" 
+      regex="Union Development Committee"
+      replace="UDC"
+    ></elections-tab>
+  
+    <elections-tab typeid="DP" tabtitle="Academic" uid="" type="grouping" >
+      <post-grouping 
+        active
+        tabtitle="Academic Board" 
+        searchterms="Academic Board"
+        regex="Academic Board -"
+        replace=" "
+      ></post-grouping>
+      <post-grouping 
+        tabtitle="Law Council" 
+        searchterms="Law Council">
+      </post-grouping>
+      <post-grouping 
+        tabtitle="IoPPN" 
+        searchterms="IoPPN">
+      </post-grouping>
+      <post-grouping 
+        tabtitle="NMS" 
+        searchterms="Informatics | Engineering | Mathematics">
+      </post-grouping>
+      <post-grouping 
+        tabtitle="Nursing & Midwifery" 
+        exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative | "
+        searchterms="Nursing | Midwifery"
+        regex="Midwifery| Nursing"
+        replace="Climate Change | Batman"
+      ></post-grouping>
+    </elections-tab>
+  </elections-candidates>
+
+  <!-- <elections-candidates>
+    <elections-tab typeid="SO" tabtitle="Student Officers" uid="SO" posts="Vice President Postgraduate (full-time, paid) | President" type="multiple" active></elections-tab>
+    <elections-tab typeid="NUS" tabtitle="NUS Delegates" uid="NUS" posts="NUS Delegate" type="single" ></elections-tab>
+    <elections-tab typeid="DP" tabtitle="Academic" uid="" type="grouping" >
+      <post-grouping tabtitle="Bioscience" searchterms="Bioscience"></post-grouping>
+      <post-grouping exclude="Law Council - Anglo-German Law 2nd Year Rep " tabtitle="Law Council" searchterms="Law Council"></post-grouping>
+    </elections-tab>
+  </elections-candidates> -->
+
+  <!-- <elections-candidates>
+    <elections-tab typeid="SO" tabtitle="Student Officers" uid="SO" posts="President" type="multiple" active></elections-tab>
+    <elections-tab typeid="D" tabtitle="Network Officers" uid="NO" posts="NetPost 1, NetPost 2" type="multiple" ></elections-tab>
+    <elections-tab typeid="DD" tabtitle="NUS Delegates" uid="NUS" posts="Something" type="single" ></elections-tab>
+    <elections-tab typeid="DD" tabtitle="Academic" uid="" type="grouping" >
+      <post-grouping tabtitle="PPI" searchterms="this and that"></post-grouping>
+      <post-grouping searchterms="Koala1, Koala2" regex="OneRegeex" replace="THEES" tabtitle="Bioscience"></post-grouping>
+      <post-grouping regex="TWOREGEX1, tworegex2" searchterms="Bro1, Bro2" replace="rep1, rep2" tabtitle="Law Forum"></post-grouping>
+    </elections-tab>
+    <elections-tab typeid="DP" tabtitle="Misc" uid="" type="grouping" >
+      <post-grouping exclude="Random Role, Senior Biz" tabtitle="Random" searchterms="Search1, Search3"></post-grouping>
+    </elections-tab>
+  </elections-candidates> -->
+
+  <!-- <user-login database=""></user-login> -->
 </br>
 <div style="width: 60%; margin: auto">
   <image-text 

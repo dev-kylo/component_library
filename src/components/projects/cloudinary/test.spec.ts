@@ -25,45 +25,45 @@ describe('Cloudinary App', ( ) => {
        expect(app.root.querySelector('preset-controls')).toBeTruthy();
    })
 
-    it('should make a fetch call each time the public_id is updated', async () => {
-      // Arrange
-        const fetchMock = jest.fn().mockImplementation( _ => {
-            return Promise.resolve({
-                ok: true,
-                json: jest.fn().mockImplementation(() => Promise.resolve({}))
-            });
-        });
+//     it('should make a fetch call each time the public_id is updated', async () => {
+//       // Arrange
+//         const fetchMock = jest.fn().mockImplementation( _ => {
+//             return Promise.resolve({
+//                 ok: true,
+//                 json: jest.fn().mockImplementation(() => Promise.resolve({}))
+//             });
+//         });
 
-        Object.defineProperty(global, 'fetch', {
-            value: fetchMock,
-            writable: true
-        });
+//         Object.defineProperty(global, 'fetch', {
+//             value: fetchMock,
+//             writable: true
+//         });
         
 
-        const page = await newSpecPage({
-        components: [CloudinaryApp],
-        html: `<cloudinary-app public_id="inititalcloudinaryid"></cloudinary-app>`
-        });
+//         const page = await newSpecPage({
+//         components: [CloudinaryApp],
+//         html: `<cloudinary-app public_id="inititalcloudinaryid"></cloudinary-app>`
+//         });
 
-        expect(fetchMock).toHaveBeenCalledWith('https://kclsu-heroku.herokuapp.com/transform', {
-            "body": "{\"transformations\":{\"preset\":\"\"},\"publicId\":\"inititalcloudinaryid\"}",
-            "credentials": "same-origin",
-            "headers": {
-                "Content-Type": "application/json",
-            },
-            "method": "POST",
-        });
+//         expect(fetchMock).toHaveBeenCalledWith('https://kclsu-heroku.herokuapp.com/transform', {
+//             "body": "{\"transformations\":{\"preset\":\"\"},\"publicId\":\"inititalcloudinaryid\"}",
+//             "credentials": "same-origin",
+//             "headers": {
+//                 "Content-Type": "application/json",
+//             },
+//             "method": "POST",
+//         });
 
-        page.rootInstance.public_id = 'updated_id' ;
-        await page.waitForChanges();
+//         page.rootInstance.public_id = 'updated_id' ;
+//         await page.waitForChanges();
     
-        expect(fetchMock).toHaveBeenCalledWith('https://kclsu-heroku.herokuapp.com/transform', {
-            "body": "{\"transformations\":{\"preset\":\"\"},\"publicId\":\"updated_id\"}",
-            "credentials": "same-origin",
-            "headers": {
-                "Content-Type": "application/json",
-            },
-            "method": "POST",
-        });
-   })
+//         expect(fetchMock).toHaveBeenCalledWith('https://kclsu-heroku.herokuapp.com/transform', {
+//             "body": "{\"transformations\":{\"preset\":\"\"},\"publicId\":\"updated_id\"}",
+//             "credentials": "same-origin",
+//             "headers": {
+//                 "Content-Type": "application/json",
+//             },
+//             "method": "POST",
+//         });
+//    })
 })
