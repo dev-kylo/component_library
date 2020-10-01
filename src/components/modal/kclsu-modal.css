@@ -27,7 +27,7 @@
     background-color: rgba(0, 0, 0, 0.5)
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .Modal {
         width: 85%;
         left: 50%;

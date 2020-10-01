@@ -1,4 +1,8 @@
-import { Component, h, State, Prop } from '@stencil/core';
+import { Component, h, State, Prop, Element } from '@stencil/core';
+import { dataMapI, mappedGroupingI, mappedTabI, mslCandidateI } from './types';
+// import { autumnDummyData } from './dummyData/autumn_dummy';
+import * as helpers from './helperFunctions/helperFunctions';
+
 
 @Component({
     tag: 'elections-candidates',
@@ -12,44 +16,23 @@ export class ElectionsCandidates {
     @Prop() results: boolean = false;
     /**The election ID from MSL! */
     @Prop() electionid: string;
-    /**A string of exact role names for student officers, separated by the | sign */
-    @Prop() studentofficers:any;
-    /**A string of exact role names for network officers, separated by the | sign */
-    @Prop() networkofficers:any;
-    /** A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title*/
-    @Prop() academicgroups:any;
-    /** The primary acrtive tab that will be open on page load */
-    @Prop() activeid: string = 'SO';
+    /** Filter out RON profiles in the candidate listing */
+    @Prop() removeron: boolean = false;
 
-    
+    @Element() host: HTMLElement;
+  
     @State() data;
-
-
-    dataMap = {
-        officers: {
-            id: 'SO',
-            title: 'Student Officers',
-            innertabs: this.studentofficers.split('|')
-        },
-        network: {
-            id: 'NO',
-            title: 'Network Officers',
-            innertabs: this.networkofficers.split('|')
-        },
-        nus: {
-            id: 'NUS',
-            title: 'NUS Delegates',
-            innertabs: 'NUS National Conference Delegate',
-        },
-        academic: {
-            id: 'ACADEMIC',
-            title: 'Academic',
-            innertabs: this.academicgroups.split('|')
-        }
-
-    }
+    @State() dataMap: dataMapI;
 
     componentDidLoad() {
+
+        /** Create Tabs Map */
+        this.dataMap = helpers.mapData(this.host);
+
+        //FOR TESTING PURPOSES ONLY
+        // const dummyData = autumnDummyData.Candidates;
+        // this.data = !this.removeron ? dummyData : helpers.filterRON(dummyData);
+
         /** IF FOR RESULTS, FETCH FROM FIREBASE. ELSE FETCH FROM MSL */
         let url = !this.results? 
                     `https://www.kclsu.org/svc/voting/elections/${this.electionid}/candidates`
@@ -58,155 +41,92 @@ export class ElectionsCandidates {
         fetch(url)
             .then(res => res.json())
             .then(profileData => {
+                const candidates = profileData.Candidates;
                 if (this.results) this.data = profileData;
-                else this.data = profileData.Candidates;
+                else { 
+                    this.data = !this.removeron ? 
+                    candidates 
+                    : 
+                    candidates.filter((cand: mslCandidateI) => { cand.DisplayName !== 'Re-open Nominations (R.O.N.)'});
+                }
             })
       }
 
-    filterOfficerData(searchTerm: string){
-        return this.data.filter(candidate => {
-            let post = candidate.Post.Title || candidate.Post;
-            return post === searchTerm.trim();
-        })
-    }
-
-    filterAcademicData(type: string){
-
-        //THIS WILL RETURN AN ARRAY OF CANDIDATES WHOSE POST TITLES INCLUDE THE ACADEMIC GROUP TYPE - EG BIOSCIENCE
-        return this.data.filter(candidate => {
-            let post = candidate.Post.Title || candidate.Post;
-            return post.includes(type.trim())
-        })
-    }
-
-    filterCombinedPosts(type: string){
-        //FOR RESULTS DISPLAY ONLY. FILTERS STUDENT OFFICERS AND NETWORK OFFICERS INTO AN 'ALL' CATEGORY
-        let combinedPosts = type === 'SO' ? this.studentofficers.split('|') : this.networkofficers.split('|');
-        const candidatesArrays = [];
-        for (const post of combinedPosts){
-            candidatesArrays.push(this.data.filter(candidate => candidate.Post === post.trim()))
-        }
-        // const mergedArray = [].concat.apply([], candidatesArrays);
-        return candidatesArrays.reduce((acc, cur) => acc.concat(cur))
-
-    }
-
-    shortenTitle(title, id:any){
-     /** To be used for the Tab Headings, so a shorter title appears as the heading*/
-        
-        if (id === 'SO'){
-            if (title.includes('Welfare')) title = 'VP Welfare & Community';
-            else if (title.includes('Health')) title = 'VP Education (Health)';
-            else if (title.includes('Postgraduate')) title = 'VP Postgraduate';
-            else if (title.includes('Arts')) title = 'VP Education (Arts & Sciences)';
-            else if (title.includes('Activities')) title = 'VP Activities & Development';
-            else if (title.includes('President')) title = 'President';
-        }
-        
-        else if( id === 'NO') {
-            if (title.includes('Generation')) title = 'First Generation';
-            else if (title.includes('International')) title = 'International';
-            else if (title.includes('People of Colour')) title = 'People of Colour';
-            else if (title.includes('Women')) title = "Women's";
-            else if (title.includes('Family') || title.includes('Parents')) title = 'Family';
-            else if (title.includes('Disabled')) title = 'Disabled';
-            else if (title.includes('Mature')) title = 'Mature';
-            else if (title.includes('LGBT+') && title.includes('open')) title = 'LGBT+ (open)';
-            else if (title.includes('LGBT+') && title.includes('trans')) title = 'LGBT+ (trans)';
-            else if (title.includes('LGBT+')) title = 'LGBT+';
-        }
-
-        else if (id === 'ACADEMIC') return title
-
-        else {
-            console.log('Unable to shorten title due to incorrect Data Map ID. Title used:' + ' ' + title)
-        }
-        
-
-        return title
-
-    }
 
     createTabs(){
     //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
+        return this.dataMap.map((field:mappedTabI, i) => {
+            let active = field.active;
+            if (!field.active && i ===0) active = true;
 
-        const newDataMapArray:any = [];
-        if (this.studentofficers) newDataMapArray.push({...this.dataMap.officers})
-        if (this.networkofficers) newDataMapArray.push({...this.dataMap.network})
-        if (this.filterOfficerData('NUS National Conference Delegate').length > 0) newDataMapArray.push({...this.dataMap.nus})
-        if (this.academicgroups) newDataMapArray.push({...this.dataMap.academic})
+            const uid =field.tabtitle;
 
-        return newDataMapArray.map((field, i) => {
-            let activeTab = field.id === this.activeid? true : false;
             return ([
-                <tab-header name={field.id + i} active={activeTab} slot="tab-headers"> {field.title}</tab-header>,
-                <tab-content name={field.id + i} active={activeTab} slot="tab-content"> 
+                <tab-header name={uid} active={active} slot="tab-headers"> {field.tabtitle}</tab-header>,
+                <tab-content name={uid} active={active} slot="tab-content"> 
                         {this.organiseInnerTabs(field)}
                 </tab-content>
             ])
         })
     }
 
-    organiseInnerTabs(field){
+    organiseInnerTabs(field: mappedTabI){
     /** DEPENDING ON FIELD TYPE, CREATE EITHER INNER TABBS CONTAINER OR A CANDIDATE DISPLAY */
-
         let inner;
-        switch(field.id){
-            case 'NUS':
-                 inner = <candidate-display data={this.filterOfficerData(field.innertabs)}></candidate-display>
-            break;
-            case 'SO':
-                inner = (<inner-tabs-container>
-                            {this.createInnerTabs(field.innertabs, field.id)}
-                        </inner-tabs-container>)
-            break;
-            case 'NO':
-                inner = (<inner-tabs-container>
-                            {this.createInnerTabs(field.innertabs, field.id)}
-                        </inner-tabs-container>)
-            break;
-            case 'ACADEMIC':
-                inner = (<inner-tabs-container>
-                            {this.createInnerTabs(field.innertabs, field.id)}
-                        </inner-tabs-container>)
-            break;
-            default: inner = ""
+        if (field.type === 'single'){
+            inner = (<candidate-display data={helpers.filterSinglePosts(field.posts[0], this.data)}></candidate-display>)
         }
+        else {
+            inner = <inner-tabs-container> {this.createInnerTabs(field)}</inner-tabs-container>
+        }    
+
         return inner;
     }
 
-    createInnerTabs(array, typeId){
+    createInnerTabs(item: mappedTabI){
     /** THE INNER TABS FOR EACH FIELD WITH AN INNER TABS CONTAINER */
 
-        const ar = array;
-        
+    if (item.type === 'multiple'){
         /** IF DISPLAYING RESULTS, AN 'ALL' TAB IS ADDED TO KEEP ALL RELATED ROLES UNDER ONE INNER TAB */
-        if(this.results && typeId === 'SO'){
-            ar.unshift('All')
+    
+        if (this.results && item.combineresults){
+            item.posts.unshift('All');
         } 
-        else if( this.results && typeId === 'NO'){
-            ar.unshift('All')
-        } 
-        
-        return ar.map((title, i) => {
-            let searchField = title;
-            let filterFunction = () => this.filterOfficerData(searchField);
+
+
+        return item.posts.map((title, i) => {
+
+            let tabtitle = title;
+            let filterFunction = () => helpers.filterSinglePosts(title, this.data);
             
             if (title === 'All') {
-                filterFunction = () => this.filterCombinedPosts(typeId);
+                filterFunction = () => helpers.filterMutliplePosts(item.posts, this.data);
+            }
+
+            else if (item.regex && item.replace){
+                tabtitle = helpers.regReplace(title, {regex: item.regex, replace: item.replace})
             }
 
             return ([
-                <inner-tab-header active={title ==='All' || i===0} name={typeId + i} slot="tab-headers"> {this.shortenTitle(title, typeId)} </inner-tab-header>,
-                <inner-tab-content active={title ==='All' || i===0} name={typeId + i} slot="tab-content">     
-                    {typeId === 'ACADEMIC'?   
-                        <academic-candidate-display data={this.filterAcademicData(searchField)}></academic-candidate-display>  
-                        :
+                <inner-tab-header active={title ==='All' || i===0} name={title} slot="tab-headers"> {tabtitle} </inner-tab-header>,
+                <inner-tab-content active={title ==='All' || i===0} name={title} slot="tab-content">     
                         <candidate-display data={filterFunction()}></candidate-display>
-                    }
                 </inner-tab-content>
             ])
         })
+    }
+
+    else {
+        return item.groupings.map((group: mappedGroupingI, i) => {
+            return ([
+            <inner-tab-header active={group.active} name={ group.tabtitle + i} slot="tab-headers"> {group.tabtitle} </inner-tab-header>,
+                <inner-tab-content active={group.active} name={group.tabtitle+ i} slot="tab-content">     
+                        <grouped-candidate-display data={helpers.filterPostGroupings(group, this.data, this.results)}></grouped-candidate-display>  
+                </inner-tab-content>
+            ])
+        })
+
+    }
 
     }
 

@@ -86,6 +86,22 @@ export function makeRequest< T extends {}>(url: string, type:any, data?:any) : P
 }
 
 
+export function fetchElementAttributes(parent, element){
+  const els = Array.from(parent.querySelectorAll(element)) as any;
+  const result = els.map(el => {
+      return Array.prototype.slice.call(el.attributes).reduce((acc, cur) => {
+          if (cur.name === 'class') return {...acc}
+          return {...acc, [cur.name]: cur.value}
+       }, {});
+  });
+  return result;
+}
+
+export function createArrayFromString(str, separator){
+   return str.split(separator).map(item => item.trim());
+}
+
+
 //ACCEPTS AN ARRAY OF VALIDATABLE OBJECTS
 
 // class Validatable {

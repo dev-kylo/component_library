@@ -35,7 +35,7 @@ export class ImageText {
             "flex-direction": this.switch? "row-reverse" : "",
             "margin": this.margin
         }
-
+        console.log(this)
 
         return (
                 <div class="image-text" style={style}>
