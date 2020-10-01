@@ -2,19 +2,18 @@ import { Component, h, Prop } from '@stencil/core';
 
 
 @Component({
-    tag: 'post-grouping',
+    tag: 'group-tab',
     shadow: true
 })
-export class PostGrouping {
+export class GroupTab {
 
     @Prop() tabtitle: string;
     @Prop() searchterms: string;
     @Prop() regex: string;
     @Prop() replace: string;
+    @Prop() active: boolean;
     
     render() {
-        return (
-            <p>My name is Stencil</p>
-        );
+        return null
     }
 }

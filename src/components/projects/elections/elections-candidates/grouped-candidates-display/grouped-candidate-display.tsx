@@ -2,12 +2,12 @@ import { Component, h, Prop, State, Element} from '@stencil/core';
 
 
 @Component({
-    tag: 'academic-candidate-display',
-    styleUrl: 'academic-candidate-display.css',
+    tag: 'grouped-candidate-display',
+    styleUrl: 'grouped-candidate-display.css',
     shadow: true
 })
 
-export class AcademicCandidateDisplay {
+export class GroupedCandidates {
 
     @Prop() data;
 

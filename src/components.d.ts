@@ -6,9 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AcademicCandidateDisplay {
-        "data": any;
-    }
     interface AccordionContainer {
     }
     interface AccordionDropdown {
@@ -73,37 +70,24 @@ export namespace Components {
     }
     interface ElectionsCandidates {
         /**
-          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
-         */
-        "academicgroups": any;
-        /**
-          * The primary acrtive tab that will be open on page load
-         */
-        "activeid": string;
-        /**
           * The election ID from MSL!
          */
         "electionid": string;
         /**
-          * A string of exact role names for network officers, separated by the | sign
+          * Filter out RON profiles in the candidate listing
          */
-        "networkofficers": any;
+        "removeron": boolean;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results": boolean;
-        /**
-          * A string of exact role names for student officers, separated by the | sign
-         */
-        "studentofficers": any;
     }
     interface ElectionsFooter {
     }
     interface ElectionsTab {
         "active": boolean;
-        "combineResults": boolean;
+        "combineresults": boolean;
         "posts": string;
-        "shortentitles": boolean;
         "tabtitle": string;
         "type": "single" | "multiple" | "groupings";
     }
@@ -169,6 +153,16 @@ export namespace Components {
         "height": string;
         "label": string;
         "width": string;
+    }
+    interface GroupTab {
+        "active": boolean;
+        "regex": string;
+        "replace": string;
+        "searchterms": string;
+        "tabtitle": string;
+    }
+    interface GroupedCandidateDisplay {
+        "data": any;
     }
     interface ImageFitContainer {
         "alt": string;
@@ -421,12 +415,6 @@ export namespace Components {
     }
     interface PageContent {
     }
-    interface PostGrouping {
-        "regex": string;
-        "replace": string;
-        "searchterms": string;
-        "tabtitle": string;
-    }
     interface PresetCard {
         "dimensions": string;
         "presetid": string;
@@ -620,12 +608,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAcademicCandidateDisplayElement extends Components.AcademicCandidateDisplay, HTMLStencilElement {
-    }
-    var HTMLAcademicCandidateDisplayElement: {
-        prototype: HTMLAcademicCandidateDisplayElement;
-        new (): HTMLAcademicCandidateDisplayElement;
-    };
     interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {
     }
     var HTMLAccordionContainerElement: {
@@ -776,6 +758,18 @@ declare global {
         prototype: HTMLGridLandingItemElement;
         new (): HTMLGridLandingItemElement;
     };
+    interface HTMLGroupTabElement extends Components.GroupTab, HTMLStencilElement {
+    }
+    var HTMLGroupTabElement: {
+        prototype: HTMLGroupTabElement;
+        new (): HTMLGroupTabElement;
+    };
+    interface HTMLGroupedCandidateDisplayElement extends Components.GroupedCandidateDisplay, HTMLStencilElement {
+    }
+    var HTMLGroupedCandidateDisplayElement: {
+        prototype: HTMLGroupedCandidateDisplayElement;
+        new (): HTMLGroupedCandidateDisplayElement;
+    };
     interface HTMLImageFitContainerElement extends Components.ImageFitContainer, HTMLStencilElement {
     }
     var HTMLImageFitContainerElement: {
@@ -895,12 +889,6 @@ declare global {
     var HTMLPageContentElement: {
         prototype: HTMLPageContentElement;
         new (): HTMLPageContentElement;
-    };
-    interface HTMLPostGroupingElement extends Components.PostGrouping, HTMLStencilElement {
-    }
-    var HTMLPostGroupingElement: {
-        prototype: HTMLPostGroupingElement;
-        new (): HTMLPostGroupingElement;
     };
     interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {
     }
@@ -1071,7 +1059,6 @@ declare global {
         new (): HTMLVideoGalleryStackedElement;
     };
     interface HTMLElementTagNameMap {
-        "academic-candidate-display": HTMLAcademicCandidateDisplayElement;
         "accordion-container": HTMLAccordionContainerElement;
         "accordion-dropdown": HTMLAccordionDropdownElement;
         "add-varsity-scores": HTMLAddVarsityScoresElement;
@@ -1097,6 +1084,8 @@ declare global {
         "get-involved": HTMLGetInvolvedElement;
         "grid-landing": HTMLGridLandingElement;
         "grid-landing-item": HTMLGridLandingItemElement;
+        "group-tab": HTMLGroupTabElement;
+        "grouped-candidate-display": HTMLGroupedCandidateDisplayElement;
         "image-fit-container": HTMLImageFitContainerElement;
         "image-slider-auto": HTMLImageSliderAutoElement;
         "image-text": HTMLImageTextElement;
@@ -1117,7 +1106,6 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
         "page-content": HTMLPageContentElement;
-        "post-grouping": HTMLPostGroupingElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
         "primary-button": HTMLPrimaryButtonElement;
@@ -1149,9 +1137,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface AcademicCandidateDisplay {
-        "data"?: any;
-    }
     interface AccordionContainer {
     }
     interface AccordionDropdown {
@@ -1216,37 +1201,24 @@ declare namespace LocalJSX {
     }
     interface ElectionsCandidates {
         /**
-          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
-         */
-        "academicgroups"?: any;
-        /**
-          * The primary acrtive tab that will be open on page load
-         */
-        "activeid"?: string;
-        /**
           * The election ID from MSL!
          */
         "electionid"?: string;
         /**
-          * A string of exact role names for network officers, separated by the | sign
+          * Filter out RON profiles in the candidate listing
          */
-        "networkofficers"?: any;
+        "removeron"?: boolean;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results"?: boolean;
-        /**
-          * A string of exact role names for student officers, separated by the | sign
-         */
-        "studentofficers"?: any;
     }
     interface ElectionsFooter {
     }
     interface ElectionsTab {
         "active"?: boolean;
-        "combineResults"?: boolean;
+        "combineresults"?: boolean;
         "posts"?: string;
-        "shortentitles"?: boolean;
         "tabtitle"?: string;
         "type"?: "single" | "multiple" | "groupings";
     }
@@ -1314,6 +1286,16 @@ declare namespace LocalJSX {
         "height"?: string;
         "label"?: string;
         "width"?: string;
+    }
+    interface GroupTab {
+        "active"?: boolean;
+        "regex"?: string;
+        "replace"?: string;
+        "searchterms"?: string;
+        "tabtitle"?: string;
+    }
+    interface GroupedCandidateDisplay {
+        "data"?: any;
     }
     interface ImageFitContainer {
         "alt"?: string;
@@ -1569,12 +1551,6 @@ declare namespace LocalJSX {
     }
     interface PageContent {
     }
-    interface PostGrouping {
-        "regex"?: string;
-        "replace"?: string;
-        "searchterms"?: string;
-        "tabtitle"?: string;
-    }
     interface PresetCard {
         "dimensions"?: string;
         "onSelectPreset"?: (event: CustomEvent<any>) => void;
@@ -1772,7 +1748,6 @@ declare namespace LocalJSX {
         "playlist": any;
     }
     interface IntrinsicElements {
-        "academic-candidate-display": AcademicCandidateDisplay;
         "accordion-container": AccordionContainer;
         "accordion-dropdown": AccordionDropdown;
         "add-varsity-scores": AddVarsityScores;
@@ -1798,6 +1773,8 @@ declare namespace LocalJSX {
         "get-involved": GetInvolved;
         "grid-landing": GridLanding;
         "grid-landing-item": GridLandingItem;
+        "group-tab": GroupTab;
+        "grouped-candidate-display": GroupedCandidateDisplay;
         "image-fit-container": ImageFitContainer;
         "image-slider-auto": ImageSliderAuto;
         "image-text": ImageText;
@@ -1818,7 +1795,6 @@ declare namespace LocalJSX {
         "my-component": MyComponent;
         "news-card": NewsCard;
         "page-content": PageContent;
-        "post-grouping": PostGrouping;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
         "primary-button": PrimaryButton;
@@ -1853,7 +1829,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "academic-candidate-display": LocalJSX.AcademicCandidateDisplay & JSXBase.HTMLAttributes<HTMLAcademicCandidateDisplayElement>;
             "accordion-container": LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
             "accordion-dropdown": LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
@@ -1879,6 +1854,8 @@ declare module "@stencil/core" {
             "get-involved": LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
             "grid-landing": LocalJSX.GridLanding & JSXBase.HTMLAttributes<HTMLGridLandingElement>;
             "grid-landing-item": LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
+            "group-tab": LocalJSX.GroupTab & JSXBase.HTMLAttributes<HTMLGroupTabElement>;
+            "grouped-candidate-display": LocalJSX.GroupedCandidateDisplay & JSXBase.HTMLAttributes<HTMLGroupedCandidateDisplayElement>;
             "image-fit-container": LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
             "image-slider-auto": LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
             "image-text": LocalJSX.ImageText & JSXBase.HTMLAttributes<HTMLImageTextElement>;
@@ -1899,7 +1876,6 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
-            "post-grouping": LocalJSX.PostGrouping & JSXBase.HTMLAttributes<HTMLPostGroupingElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;

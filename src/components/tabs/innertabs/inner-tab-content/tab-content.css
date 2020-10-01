@@ -4,14 +4,36 @@
     display: none;
     background: #f1f1ee;
     padding: 40px 30px;
+    transform: scaleY(0);
+    transform-origin: top;
 }
 
 .tab-content-active {
     display: block;
+    opacity: 0;
+    animation: slowextend 0.7s ease-out forwards, fadein 0.5s forwards ease-out;
 }
 
 @media screen and (max-width: 780px){
     .tab-content {
         padding: 20px 15px;
+    }
+}
+
+@keyframes slowextend {
+    from {transform: scaleY(0.9);}
+    to {transform: scaleY(1);}
+  }
+
+
+
+@keyframes fadein{
+    from {
+        transform: scaleY(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
     }
 }
