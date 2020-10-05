@@ -156,6 +156,7 @@ export namespace Components {
     }
     interface GroupTab {
         "active": boolean;
+        "exclude": string;
         "regex": string;
         "replace": string;
         "searchterms": string;
@@ -1289,6 +1290,7 @@ declare namespace LocalJSX {
     }
     interface GroupTab {
         "active"?: boolean;
+        "exclude"?: string;
         "regex"?: string;
         "replace"?: string;
         "searchterms"?: string;
