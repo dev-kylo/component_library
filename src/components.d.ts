@@ -501,6 +501,8 @@ export namespace Components {
          */
         "headings": any;
     }
+    interface ProjectPage {
+    }
     interface PurpleButton {
         "link": string;
         "whitetext": boolean;
@@ -932,6 +934,12 @@ declare global {
         prototype: HTMLProfileTabsElement;
         new (): HTMLProfileTabsElement;
     };
+    interface HTMLProjectPageElement extends Components.ProjectPage, HTMLStencilElement {
+    }
+    var HTMLProjectPageElement: {
+        prototype: HTMLProjectPageElement;
+        new (): HTMLProjectPageElement;
+    };
     interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
     }
     var HTMLPurpleButtonElement: {
@@ -1113,6 +1121,7 @@ declare global {
         "profile-card-layout": HTMLProfileCardLayoutElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
+        "project-page": HTMLProjectPageElement;
         "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
@@ -1640,6 +1649,8 @@ declare namespace LocalJSX {
          */
         "headings"?: any;
     }
+    interface ProjectPage {
+    }
     interface PurpleButton {
         "link"?: string;
         "whitetext"?: boolean;
@@ -1802,6 +1813,7 @@ declare namespace LocalJSX {
         "profile-card-layout": ProfileCardLayout;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
+        "project-page": ProjectPage;
         "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
@@ -1883,6 +1895,7 @@ declare module "@stencil/core" {
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
+            "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
             "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
