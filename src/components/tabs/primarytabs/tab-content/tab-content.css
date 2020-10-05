@@ -2,11 +2,15 @@
     display: none;
     background: #f1f1ee;
     padding: 40px 30px;
+    transform: scaleY(0);
+    transform-origin: top;
 }
 
 .tab-content-active {
     display: block;
+    animation: slowextend 0.7s ease-out forwards;
 }
+
 
 @media screen and (max-width: 780px){
     .tab-content {
@@ -20,4 +24,14 @@
         padding: 1em;
     }
 } */
+
+@keyframes slowextend {
+    from {
+        transform: scaleY(0.9);
+    }
+    to {
+        transform: scaleY(1);
+    }
+  }
+
 

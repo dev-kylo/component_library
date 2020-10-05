@@ -6,9 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AcademicCandidateDisplay {
-        "data": any;
-    }
     interface AccordionContainer {
     }
     interface AccordionDropdown {
@@ -53,6 +50,9 @@ export namespace Components {
         "stage": string;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id": string;
     }
     interface CreateVarsityData {
@@ -70,33 +70,26 @@ export namespace Components {
     }
     interface ElectionsCandidates {
         /**
-          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
-         */
-        "academicgroups": any;
-        /**
-          * The primary acrtive tab that will be open on page load
-         */
-        "activeid": string;
-        /**
           * The election ID from MSL!
          */
         "electionid": string;
         /**
-          * A string of exact role names for network officers, separated by the | sign
+          * Filter out RON profiles in the candidate listing
          */
-        "networkofficers": any;
+        "removeron": boolean;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results": boolean;
-        /**
-          * A string of exact role names for student officers, separated by the | sign
-         */
-        "studentofficers": any;
     }
     interface ElectionsFooter {
     }
-    interface EventsCardsModal {
+    interface ElectionsTab {
+        "active": boolean;
+        "combineresults": boolean;
+        "posts": string;
+        "tabtitle": string;
+        "type": 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -160,6 +153,17 @@ export namespace Components {
         "height": string;
         "label": string;
         "width": string;
+    }
+    interface GroupTab {
+        "active": boolean;
+        "exclude": string;
+        "regex": string;
+        "replace": string;
+        "searchterms": string;
+        "tabtitle": string;
+    }
+    interface GroupedCandidateDisplay {
+        "data": any;
     }
     interface ImageFitContainer {
         "alt": string;
@@ -476,7 +480,7 @@ export namespace Components {
          */
         "link": string;
         /**
-          * The logo image URL 150x150px
+          * The logo image URL - at least 150x150px, must be a square image.
          */
         "logo": string;
         /**
@@ -552,14 +556,7 @@ export namespace Components {
         "database": string;
     }
     interface VarsityLanding {
-        "currentDate": {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year": string;
     }
     interface VarsityNextMatches {
@@ -605,12 +602,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAcademicCandidateDisplayElement extends Components.AcademicCandidateDisplay, HTMLStencilElement {
-    }
-    var HTMLAcademicCandidateDisplayElement: {
-        prototype: HTMLAcademicCandidateDisplayElement;
-        new (): HTMLAcademicCandidateDisplayElement;
-    };
     interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {
     }
     var HTMLAccordionContainerElement: {
@@ -701,11 +692,11 @@ declare global {
         prototype: HTMLElectionsFooterElement;
         new (): HTMLElectionsFooterElement;
     };
-    interface HTMLEventsCardsModalElement extends Components.EventsCardsModal, HTMLStencilElement {
+    interface HTMLElectionsTabElement extends Components.ElectionsTab, HTMLStencilElement {
     }
-    var HTMLEventsCardsModalElement: {
-        prototype: HTMLEventsCardsModalElement;
-        new (): HTMLEventsCardsModalElement;
+    var HTMLElectionsTabElement: {
+        prototype: HTMLElectionsTabElement;
+        new (): HTMLElectionsTabElement;
     };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
@@ -760,6 +751,18 @@ declare global {
     var HTMLGridLandingItemElement: {
         prototype: HTMLGridLandingItemElement;
         new (): HTMLGridLandingItemElement;
+    };
+    interface HTMLGroupTabElement extends Components.GroupTab, HTMLStencilElement {
+    }
+    var HTMLGroupTabElement: {
+        prototype: HTMLGroupTabElement;
+        new (): HTMLGroupTabElement;
+    };
+    interface HTMLGroupedCandidateDisplayElement extends Components.GroupedCandidateDisplay, HTMLStencilElement {
+    }
+    var HTMLGroupedCandidateDisplayElement: {
+        prototype: HTMLGroupedCandidateDisplayElement;
+        new (): HTMLGroupedCandidateDisplayElement;
     };
     interface HTMLImageFitContainerElement extends Components.ImageFitContainer, HTMLStencilElement {
     }
@@ -1050,7 +1053,6 @@ declare global {
         new (): HTMLVideoGalleryStackedElement;
     };
     interface HTMLElementTagNameMap {
-        "academic-candidate-display": HTMLAcademicCandidateDisplayElement;
         "accordion-container": HTMLAccordionContainerElement;
         "accordion-dropdown": HTMLAccordionDropdownElement;
         "add-varsity-scores": HTMLAddVarsityScoresElement;
@@ -1066,7 +1068,7 @@ declare global {
         "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
-        "events-cards-modal": HTMLEventsCardsModalElement;
+        "elections-tab": HTMLElectionsTabElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1076,6 +1078,8 @@ declare global {
         "get-involved": HTMLGetInvolvedElement;
         "grid-landing": HTMLGridLandingElement;
         "grid-landing-item": HTMLGridLandingItemElement;
+        "group-tab": HTMLGroupTabElement;
+        "grouped-candidate-display": HTMLGroupedCandidateDisplayElement;
         "image-fit-container": HTMLImageFitContainerElement;
         "image-slider-auto": HTMLImageSliderAutoElement;
         "image-text": HTMLImageTextElement;
@@ -1127,9 +1131,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface AcademicCandidateDisplay {
-        "data"?: any;
-    }
     interface AccordionContainer {
     }
     interface AccordionDropdown {
@@ -1174,6 +1175,9 @@ declare namespace LocalJSX {
         "stage"?: string;
     }
     interface CloudinaryApp {
+        /**
+          * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
+         */
         "public_id"?: string;
     }
     interface CreateVarsityData {
@@ -1191,33 +1195,26 @@ declare namespace LocalJSX {
     }
     interface ElectionsCandidates {
         /**
-          * A string lof either Faculties or Association search terms, separated by the | sign. PLEASE NOTE: The name will be used to filter all roles, as well as be used for the Tab Header title
-         */
-        "academicgroups"?: any;
-        /**
-          * The primary acrtive tab that will be open on page load
-         */
-        "activeid"?: string;
-        /**
           * The election ID from MSL!
          */
         "electionid"?: string;
         /**
-          * A string of exact role names for network officers, separated by the | sign
+          * Filter out RON profiles in the candidate listing
          */
-        "networkofficers"?: any;
+        "removeron"?: boolean;
         /**
           * Set to true to display results data. False to display All Candidates
          */
         "results"?: boolean;
-        /**
-          * A string of exact role names for student officers, separated by the | sign
-         */
-        "studentofficers"?: any;
     }
     interface ElectionsFooter {
     }
-    interface EventsCardsModal {
+    interface ElectionsTab {
+        "active"?: boolean;
+        "combineresults"?: boolean;
+        "posts"?: string;
+        "tabtitle"?: string;
+        "type"?: 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -1283,6 +1280,17 @@ declare namespace LocalJSX {
         "height"?: string;
         "label"?: string;
         "width"?: string;
+    }
+    interface GroupTab {
+        "active"?: boolean;
+        "exclude"?: string;
+        "regex"?: string;
+        "replace"?: string;
+        "searchterms"?: string;
+        "tabtitle"?: string;
+    }
+    interface GroupedCandidateDisplay {
+        "data"?: any;
     }
     interface ImageFitContainer {
         "alt"?: string;
@@ -1605,7 +1613,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
-          * The logo image URL 150x150px
+          * The logo image URL - at least 150x150px, must be a square image.
          */
         "logo"?: string;
         /**
@@ -1680,17 +1688,10 @@ declare namespace LocalJSX {
         /**
           * The name of the database area. For example: projectx
          */
-        "database"?: string;
+        "database": string;
     }
     interface VarsityLanding {
-        "currentDate"?: {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year"?: string;
     }
     interface VarsityNextMatches {
@@ -1735,7 +1736,6 @@ declare namespace LocalJSX {
         "playlist": any;
     }
     interface IntrinsicElements {
-        "academic-candidate-display": AcademicCandidateDisplay;
         "accordion-container": AccordionContainer;
         "accordion-dropdown": AccordionDropdown;
         "add-varsity-scores": AddVarsityScores;
@@ -1751,7 +1751,7 @@ declare namespace LocalJSX {
         "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
-        "events-cards-modal": EventsCardsModal;
+        "elections-tab": ElectionsTab;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -1761,6 +1761,8 @@ declare namespace LocalJSX {
         "get-involved": GetInvolved;
         "grid-landing": GridLanding;
         "grid-landing-item": GridLandingItem;
+        "group-tab": GroupTab;
+        "grouped-candidate-display": GroupedCandidateDisplay;
         "image-fit-container": ImageFitContainer;
         "image-slider-auto": ImageSliderAuto;
         "image-text": ImageText;
@@ -1815,7 +1817,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "academic-candidate-display": LocalJSX.AcademicCandidateDisplay & JSXBase.HTMLAttributes<HTMLAcademicCandidateDisplayElement>;
             "accordion-container": LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
             "accordion-dropdown": LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
@@ -1831,7 +1832,7 @@ declare module "@stencil/core" {
             "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
-            "events-cards-modal": LocalJSX.EventsCardsModal & JSXBase.HTMLAttributes<HTMLEventsCardsModalElement>;
+            "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
@@ -1841,6 +1842,8 @@ declare module "@stencil/core" {
             "get-involved": LocalJSX.GetInvolved & JSXBase.HTMLAttributes<HTMLGetInvolvedElement>;
             "grid-landing": LocalJSX.GridLanding & JSXBase.HTMLAttributes<HTMLGridLandingElement>;
             "grid-landing-item": LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
+            "group-tab": LocalJSX.GroupTab & JSXBase.HTMLAttributes<HTMLGroupTabElement>;
+            "grouped-candidate-display": LocalJSX.GroupedCandidateDisplay & JSXBase.HTMLAttributes<HTMLGroupedCandidateDisplayElement>;
             "image-fit-container": LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
             "image-slider-auto": LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
             "image-text": LocalJSX.ImageText & JSXBase.HTMLAttributes<HTMLImageTextElement>;

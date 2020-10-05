@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [campaign-tabs](../../campaigns/campaign-tabs)
+ - [campaign-tabs](../../projects/campaigns/campaign-tabs)
 
 ### Graph
 ```mermaid

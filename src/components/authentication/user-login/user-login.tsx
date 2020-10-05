@@ -1,29 +1,40 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Element, Listen } from '@stencil/core';
+import { LoginPackage, firebaseResponse } from './models';
+import { makeRequest } from '../../../utils/utils';
+import { isEmail, isRequired, validate } from '../../../decorators/validation/config';
 
 @Component({
     tag: 'user-login',
     styleUrl: 'user-login.css',
     shadow: true
 })
+
 export class UserLogin {
 
+    @isEmail 
+    protected email: string;
+    @isRequired
+    protected password: string;
+
     /** The name of the database area. For example: projectx */
-    @Prop() database: string;
-    
+    @Prop() database!: string;
+    //Modal visibility
     @State() modalOpen: boolean = true;
+    //The firebase token, which will be retrieved from server
     @State() token: string;
     @State() error: string;
+    @State() inputerrors: any = {};
     @State() loading: boolean = false;
+    @Element() host: HTMLElement;
 
     componentDidLoad(){
-        this.checkAuthentication();
+        this.checkAuthentication();//See if a user token is stored in local storage
     }
 
-
-    checkAuthentication(){
+    private checkAuthentication(){
         const token = localStorage.getItem('kclsu_token');
         if (token){
-            const expirationDate = new Date(localStorage.getItem('tokenExpireDate'));
+            const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
             if (new Date() < expirationDate){
                 this.token = token;
                 this.modalOpen = false;
@@ -34,69 +45,78 @@ export class UserLogin {
             }
         }
     }
-
-    logIn(e){
+    
+    @Listen('emitClick') buttonClick(e:Event){
         e.preventDefault();
-        this.loading=true;
-        let element = e.target;
-        let email = element[0].value;
-        let password = element[1].value;
+        this.clearErrors();
+        this.email = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
+        this.password = (this.host.shadowRoot.getElementById('password') as HTMLInputElement).value;
+        if(!this.validateInputs()) return; // check all inputs are valid before making request
+        else this.logIn();
+    }
 
-        let url = 'https://kclsu-heroku.herokuapp.com/authenticate';
+    private logIn(){
 
-        let data = {
-            package: {
-                email: email,
-                password: password,
-                returnSecureToken: true
-            },
-            area: this.database
-        }
-        let payload: any = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data)
-    };
-    fetch(url, payload)
-    .then(res => res.json())
-    .then(data => {
-        this.loading=false;
-        if (!data.idToken) this.error = data.error.message;
-        else {
+        this.loading=true; //show loading spinner
+        const data:LoginPackage = new LoginPackage(this.email, this.password, this.database);
 
-            const expirationDate:any = new Date(new Date().getTime() + data.expiresIn * 1000);
-            localStorage.setItem('kclsu_token', data.idToken);
-            localStorage.setItem('tokenExpireDate', expirationDate); 
+        makeRequest<firebaseResponse>('https://kclsu-heroku.herokuapp.com/authenticate', 'POST', data)
+        .then(data => {
+            this.loading=false;
 
-            this.error = '';
-            this.token = data.idToken;
-            this.modalOpen = false;
-        }
-    })
-    .catch(er => {
-        this.loading= false;
-        this.error = er}) 
+            if (!data.idToken) throw new Error(data.error.message)
+            else {
+                const expirationDate:any = new Date(new Date().getTime() + +data.expiresIn * 1000);
+                localStorage.setItem('kclsu_token', data.idToken);
+                localStorage.setItem('tokenExpireDate', expirationDate); 
+                this.token = data.idToken;
+                this.modalOpen = false;
+            }
+        })
+        .catch(er => {
+            this.loading= false;
+            this.error = er;
+        }) 
+    }
+
+    validateInputs(){
+        const validation = validate(this);
+        if(validation.hasErrors) {
+            this.inputerrors = validation.errors;
+            this.loading= false;
+            return false;
+        } else return true;
+    }
+
+    clearErrors(){
+        this.inputerrors = {};
+        this.error = '';
     }
     
     render() {
+        let emailError = null, passwordError = null;
+        //If error object contains these fields, render a span element to show error.
+        if (this.inputerrors.hasOwnProperty('email')) emailError = <span class="error">{this.inputerrors.email.join(' ')}</span> 
+        if (this.inputerrors.hasOwnProperty('password')) passwordError = <span class="error">{this.inputerrors.password.join(' ')}</span> 
+        
         return (
             <kclsu-modal show={this.modalOpen}>
-                <form onSubmit={(e) => this.logIn(e)}>
-                    <span class="title">Log in using details provided</span>
-                    <div class="flex">
+                <form>
+                    <span class="title">Login with details provided</span>
+                    <div class="inputfield">
                         <label> Email</label>
                         <input type="email" value='' id="email" />
+                        {emailError}
                     </div>
-                    <div class="flex">
+                    <div class="inputfield">
                         <label> Password</label>
                         <input type="password" value='' id="password" />
+                        {passwordError}
                     </div>
-                    <button>Login</button>                 
+                    <kclsu-button center emitid="userlogin">Login</kclsu-button>  
+                    <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
+                    <span class="error">{this.error? `${this.error} !`: ''}</span>           
                 </form>
-                <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
-                <span class="error">{this.error? `${this.error} !`: ''}</span>
             </kclsu-modal>
         );
     }

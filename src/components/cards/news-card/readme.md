@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [campaign-news](../../campaigns/campaign-news)
+ - [campaign-news](../../projects/campaigns/campaign-news)
 
 ### Graph
 ```mermaid

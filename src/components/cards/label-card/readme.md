@@ -26,8 +26,8 @@
 
 ### Used by
 
- - [varsity-landing](../../varsity/varsity-landing)
- - [varsity-next-matches](../../varsity/varsity-next-matches)
+ - [varsity-landing](../../projects/varsity/varsity-landing)
+ - [varsity-next-matches](../../projects/varsity/varsity-next-matches)
 
 ### Depends on
 

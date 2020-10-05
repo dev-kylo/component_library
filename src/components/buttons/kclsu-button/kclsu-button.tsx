@@ -1,11 +1,15 @@
 import { Component, h, Prop, Event, EventEmitter} from '@stencil/core';
 
 
+type btnClass = 'green' | 'rounded' | 'purple' | 'verysmall' | 'big' | 'small';
+type btnStyle = { margin:string }
+
 @Component({
     tag: 'kclsu-button',
     styleUrl: 'kclsu-button.css',
     shadow: true
 })
+
 export class KclsuButton {
 
     /** The text for the button */
@@ -38,7 +42,7 @@ export class KclsuButton {
 
     @Event()emitClick:EventEmitter;
 
-    clickHandler(e){
+    clickHandler( e:Event ){
         e.preventDefault();
         this.emitClick.emit(this.emitid)
     }
@@ -46,18 +50,21 @@ export class KclsuButton {
     
     render() {
 
-
-        const style = {
+        //SET BTN MARGIN
+        const style:btnStyle = {
             'margin': this.margin
-        }
+        };
 
-        let classes =  [];
+        //SET BUTTON CLASSES
+        let classes:btnClass[] =  [];
         !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
         if (this.small) classes.push('small')
         else if (this.verysmall) classes.push('verysmall') 
         else classes.push('big');
-        let link;
+
+        //BTN CLICK WILL EITHER NAVIGATE AWAY OR EMIT EVENT
+        let link : null | HTMLLinkElement;
 
         if (this.link){
             link = <a href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
@@ -66,11 +73,9 @@ export class KclsuButton {
         else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>;
 
         return (
-        <flex-container alignx={this.center? 'center' : 'flex-start'} fillcontainer>
-            {link}
-        </flex-container>)
-            
-        
-
+            <flex-container alignx={this.center? 'center' : 'flex-start'} fillcontainer>
+                {link}
+            </flex-container>
+        )
     }
 }
