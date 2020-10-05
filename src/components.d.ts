@@ -89,7 +89,7 @@ export namespace Components {
         "combineresults": boolean;
         "posts": string;
         "tabtitle": string;
-        "type": "single" | "multiple" | "groupings";
+        "type": 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -556,14 +556,7 @@ export namespace Components {
         "database": string;
     }
     interface VarsityLanding {
-        "currentDate": {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year": string;
     }
     interface VarsityNextMatches {
@@ -1221,7 +1214,7 @@ declare namespace LocalJSX {
         "combineresults"?: boolean;
         "posts"?: string;
         "tabtitle"?: string;
-        "type"?: "single" | "multiple" | "groupings";
+        "type"?: 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -1698,14 +1691,7 @@ declare namespace LocalJSX {
         "database": string;
     }
     interface VarsityLanding {
-        "currentDate"?: {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year"?: string;
     }
     interface VarsityNextMatches {

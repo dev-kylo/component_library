@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `public_id` | `public_id` |             | `string` | `undefined` |
+| Property    | Attribute   | Description                                                                                                    | Type     | Default     |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `public_id` | `public_id` | The Cloudinary image id - provided using the browser-side upload script, or using the the node server function | `string` | `undefined` |
 
 
 ## Dependencies
@@ -17,10 +17,10 @@
 ### Depends on
 
 - [preset-card](preset-card)
-- [flex-container](../containers/flex-container)
-- [kclsu-button](../buttons/kclsu-button)
+- [flex-container](../../containers/flex-container)
+- [kclsu-button](../../buttons/kclsu-button)
 - [preset-controls](preset-controls)
-- [loading-spinner](../spinner)
+- [loading-spinner](../../spinner)
 
 ### Graph
 ```mermaid

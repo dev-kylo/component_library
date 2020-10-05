@@ -19,10 +19,10 @@
 ### Depends on
 
 - [candidate-display](../elections-candidates/candidates-display)
-- [loading-spinner](../../spinner)
-- [kclsu-modal](../../modal)
-- [user-login](../../authentication/user-login)
-- [kclsu-button](../../buttons/kclsu-button)
+- [loading-spinner](../../../spinner)
+- [kclsu-modal](../../../modal)
+- [user-login](../../../authentication/user-login)
+- [kclsu-button](../../../buttons/kclsu-button)
 
 ### Graph
 ```mermaid
@@ -38,6 +38,7 @@ graph TD;
   profile-card --> flex-container
   kclsu-modal --> modal-backdrop
   user-login --> kclsu-modal
+  user-login --> kclsu-button
   user-login --> loading-spinner
   kclsu-button --> flex-container
   style candidate-upload fill:#f9f,stroke:#333,stroke-width:4px

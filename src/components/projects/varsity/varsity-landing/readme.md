@@ -17,15 +17,15 @@
 
 ### Depends on
 
-- [label-card](../../cards/label-card)
+- [label-card](../../../cards/label-card)
 - [varsity-total-score](varsity-total-score)
 - [varsity-race](varsity-race)
-- [image-slider-auto](../../images/image-slider-auto)
+- [image-slider-auto](../../../images/image-slider-auto)
 - [varsity-upcoming](varsity-upcoming)
-- [flex-container](../../containers/flex-container)
-- [kclsu-modal](../../modal)
+- [flex-container](../../../containers/flex-container)
+- [kclsu-modal](../../../modal)
 - [last-year-scores](last-year-scores)
-- [image-fit-container](../../images/image-fit-container)
+- [image-fit-container](../../../images/image-fit-container)
 
 ### Graph
 ```mermaid

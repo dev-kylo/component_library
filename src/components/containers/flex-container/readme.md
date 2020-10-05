@@ -22,18 +22,18 @@
 
 ### Used by
 
- - [add-varsity-scores](../../varsity/add-varsity-scores)
- - [cloudinary-app](../../cloudinary)
- - [create-varsity-data](../../varsity/create-varsity-data)
+ - [add-varsity-scores](../../projects/varsity/add-varsity-scores)
+ - [cloudinary-app](../../projects/cloudinary)
+ - [create-varsity-data](../../projects/varsity/create-varsity-data)
  - [full-bio](../../profiles/bio)
  - [kclsu-button](../../buttons/kclsu-button)
  - [kclsu-search](../../search/kclsu-search)
- - [last-year-scores](../../varsity/varsity-landing/last-year-scores)
- - [preset-controls](../../cloudinary/preset-controls)
+ - [last-year-scores](../../projects/varsity/varsity-landing/last-year-scores)
+ - [preset-controls](../../projects/cloudinary/preset-controls)
  - [profile-card](../../cards/profile-card)
- - [varsity-landing](../../varsity/varsity-landing)
- - [varsity-total-score](../../varsity/varsity-landing/varsity-total-score)
- - [varsity-weather](../../varsity/varsity-landing/varsity-weather)
+ - [varsity-landing](../../projects/varsity/varsity-landing)
+ - [varsity-total-score](../../projects/varsity/varsity-landing/varsity-total-score)
+ - [varsity-weather](../../projects/varsity/varsity-landing/varsity-weather)
 
 ### Graph
 ```mermaid

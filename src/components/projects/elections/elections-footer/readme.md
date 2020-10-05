@@ -9,7 +9,7 @@
 
 ### Depends on
 
-- [purple-button](../../buttons/primary-button/purple-button)
+- [purple-button](../../../buttons/primary-button/purple-button)
 
 ### Graph
 ```mermaid
