@@ -50,6 +50,11 @@ export class ElectionsCandidates {
                     candidates.filter((cand: mslCandidateI) => { cand.DisplayName !== 'Re-open Nominations (R.O.N.)'});
                 }
             })
+            .catch(er => {
+                console.log('MSL Data Fetch error: ')
+                console.log(er);
+                this.data = [];
+            })
       }
 
 
