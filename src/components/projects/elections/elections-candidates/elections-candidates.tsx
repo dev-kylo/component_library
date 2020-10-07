@@ -57,7 +57,6 @@ export class ElectionsCandidates {
             })
       }
 
-
     createTabs(){
     //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS
         return this.dataMap.map((field:mappedTabI, i) => {
