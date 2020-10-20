@@ -9,7 +9,7 @@
 
 ### Used by
 
- - [get-involved](../../campaigns/get-involved)
+ - [get-involved](../../projects/campaigns/get-involved)
 
 ### Depends on
 

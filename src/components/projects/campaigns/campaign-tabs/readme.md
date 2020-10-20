@@ -23,10 +23,10 @@
 
 ### Depends on
 
-- [page-content](../../containers/page-content)
-- [kclsu-tabs-container](../../tabs/kclsu-tabs)
+- [page-content](../../../containers/page-content)
+- [kclsu-tabs-container](../../../tabs/kclsu-tabs)
 - [campaign-news](../campaign-news)
-- [primary-button](../../buttons/primary-button)
+- [primary-button](../../../buttons/primary-button)
 
 ### Graph
 ```mermaid

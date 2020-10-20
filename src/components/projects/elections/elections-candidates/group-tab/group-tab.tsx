@@ -12,6 +12,7 @@ export class GroupTab {
     @Prop() regex: string;
     @Prop() replace: string;
     @Prop() active: boolean;
+    @Prop() exclude: string;
     
     render() {
         return null

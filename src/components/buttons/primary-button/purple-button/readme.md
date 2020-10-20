@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [elections-footer](../../../elections/elections-footer)
+ - [elections-footer](../../../projects/elections/elections-footer)
 
 ### Graph
 ```mermaid

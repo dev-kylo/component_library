@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [flex-container](../../../containers/flex-container)
+- [flex-container](../../../../containers/flex-container)
 
 ### Graph
 ```mermaid

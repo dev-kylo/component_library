@@ -9,7 +9,7 @@
 
 ### Depends on
 
-- [page-content](../../containers/page-content)
+- [page-content](../../../containers/page-content)
 
 ### Graph
 ```mermaid

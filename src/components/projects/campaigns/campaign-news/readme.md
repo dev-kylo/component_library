@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [news-card](../../cards/news-card)
+- [news-card](../../../cards/news-card)
 
 ### Graph
 ```mermaid

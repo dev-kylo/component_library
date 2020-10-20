@@ -15,8 +15,44 @@
 </head>
 <body>
 
+
+  <project-page>
+    <project-section pagetitle="New Year, New Start!!" text="Here we go again" heading="18 December"></project-section>
+    <project-section heading="Mindfule Events" text="We are so excited for a full week of mindful events from lorem ipsum to ipsum lorem there is something to suit everybody. Come and attend an event. Brooooooooosdfosdoosky Lewlllwwwesn dsfsrf s srferfgewrfwerfewr  efwefwefwefwe wefwewegerrt 46777 rg erdgvsdvsdcsdfdsdddddc vf bgrt hrtyhrthrthrth  efefefwefssdvsd   dfesfewfewfewfwefwef   fwefwefwefewfwef cadscad ewfwefwefwefwefwefwe efewfwef fefef ewdfwefcacsacfewfwe ">
+      <p>from lorem ipsum to ipsum lorem there is something to suit everybody. Come and att</p>
+      <kclsu-button center>Join Now</kclsu-button>
+    </project-section>
+    <project-section heading="Exam Support" ></project-section>
+ 
+
+    <project-card 
+      transparent 
+      removepadding
+      heading="The Union Shop"
+      image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+      text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories.." 
+    >
+        <div>
+          <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+        </div>
+    </project-card>
+    <project-card heading="Rules of the Road" text="I am a line of text. I am always the middleman bro, but click my bio beneath. ">  <kclsu-button>Click me</kclsu-button></project-card>
+    <project-card>
+      <!-- <div style="max-width: 100%"> -->
+        <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked>
+      <!-- </div> -->
+    </project-card>
+
+
+    <project-image link="https://www.kclsu.org/asset/Event/8770/GB-Sports-Night-FB-Cover.png"></project-image>
+    <project-image link="https://www.kclsu.org/asset/Event/7205/FF152947-942A-4B9C-9553-C23BE44A991F.png"></project-image>
+    <project-image link="https://www.kclsu.org/asset/Event/16984/TV-SportsNight-Event-icon.png"></project-image>
+
+  </project-page>
+
+
   <!-- AUTUMN  ELECTIONS -->
-  <elections-candidates results removeron >
+  <!-- <elections-candidates results removeron >
     <elections-tab typeid="SO" tabtitle="Student Trustees" uid="SO" posts="Student Trustee" type="single" active></elections-tab>
     <elections-tab typeid="NUS" tabtitle="Network Officers" uid="NUS" posts="LGBT+ Officer (open place)" type="multiple" ></elections-tab>
     <elections-tab 
@@ -60,14 +96,15 @@
         replace="Climate Change | Batman"
       ></group-tab>
     </elections-tab>
-  </elections-candidates>
+  </elections-candidates> -->
 
 </br>
-<div style="width: 60%; margin: auto">
-  <image-text 
+<div style="width: 100%; margin: auto">
+  <image-text
+  card 
   heading="The Union Shop" 
   image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
-  text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+  text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
   >
 <div>
   <kclsu-button small center link="/shop">Visit shop</kclsu-button>
@@ -76,10 +113,13 @@
 
   <div class="imagetextcontainer">
     <image-text 
+    card
+    switch
     heading="Totum Card" 
     image="https://www.kclsu.org/pageassets/studentdeals/Totum-WebpageBanner-1200x678-02.png"
     text = "TOTUM gives you access to massive student discounts and deals on eating out (including our venues!), fashion and tech which will make student life so much easier!"
     textcolour="red"
+    imagezoom
     smalltext
     >
 <div>
@@ -90,13 +130,13 @@
 </div>
 
 </br>
-<div style="width: 300px; margin: auto; overflow: hidden">
+<div style="width: 800px; margin: auto; overflow: hidden">
   <kclsu-countdown textcolour="" date="September 23, 2020, 10:00:00" text="27 - 30 September 2020" fontsize="2.5vw"></kclsu-countdown>
 </div>
 
 
 
-  <div style="margin:auto; width: 20%; ">
+  <div style="margin:auto; width: 40%; ">
     <label-card
     cardtitle="This is a test card title"
     text="A line of subtext, because why not"
@@ -137,7 +177,9 @@
   reverse
   ></label-card>
 </br>
-<text-card cardtitle="This is another test heading" buttonlink="/"></text-card>
+<scroll-observer>
+  <text-card cardtitle="This is another test heading" buttonlink="/"></text-card>
+</scroll-observer>
   </div>
 
   <!-- <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked> -->

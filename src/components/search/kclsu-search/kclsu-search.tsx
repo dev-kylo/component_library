@@ -4,7 +4,7 @@ import { Component, h, Prop, Element, State } from '@stencil/core';
 @Component({
     tag: 'kclsu-search',
     styleUrl: 'kclsu-search.css',
-    shadow: false
+    shadow: true
 })
 export class KclsuSearch {
 

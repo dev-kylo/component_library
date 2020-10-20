@@ -16,9 +16,9 @@
 
 ### Used by
 
- - [candidate-upload](../elections/candidate_upload)
- - [cloudinary-app](../cloudinary)
- - [elections-candidates](../elections/elections-candidates)
+ - [candidate-upload](../projects/elections/candidate_upload)
+ - [cloudinary-app](../projects/cloudinary)
+ - [elections-candidates](../projects/elections/elections-candidates)
  - [user-login](../authentication/user-login)
  - [video-embed](../videos/video-embed)
  - [video-gallery](../videos/video-gallery)

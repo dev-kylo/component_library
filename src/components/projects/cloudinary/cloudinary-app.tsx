@@ -5,7 +5,7 @@ import { presets } from './assets/presets';
 @Component({
     tag: 'cloudinary-app',
     styleUrl: 'cloudinary-app.css',
-    // shadow: true
+    shadow: true
 })
 
 export class CloudinaryApp {

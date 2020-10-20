@@ -25,13 +25,13 @@
 ### Graph
 ```mermaid
 graph TD;
-  academic-candidate-display --> candidate-display
+  grouped-candidate-display --> candidate-display
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
   profile-card --> lazy-image
   profile-card --> flex-container
-  elections-candidates --> academic-candidate-display
-  style academic-candidate-display fill:#f9f,stroke:#333,stroke-width:4px
+  elections-candidates --> grouped-candidate-display
+  style grouped-candidate-display fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
