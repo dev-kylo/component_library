@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [label-card](../../cards/label-card)
+- [label-card](../../../cards/label-card)
 
 ### Graph
 ```mermaid

@@ -73,7 +73,7 @@ export class KclsuButton {
         else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>;
 
         return (
-            <flex-container alignx={this.center? 'center' : 'flex-start'} fillcontainer>
+            <flex-container alignx={this.center? 'center' : 'flex-start'} >
                 {link}
             </flex-container>
         )

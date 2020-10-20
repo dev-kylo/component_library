@@ -7,29 +7,32 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                          | Type     | Default     |
-| ---------- | ---------- | ---------------------------------------------------- | -------- | ----------- |
-| `database` | `database` | The name of the database area. For example: projectx | `string` | `undefined` |
+| Property                | Attribute  | Description                                          | Type     | Default     |
+| ----------------------- | ---------- | ---------------------------------------------------- | -------- | ----------- |
+| `database` _(required)_ | `database` | The name of the database area. For example: projectx | `string` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [add-varsity-scores](../../varsity/add-varsity-scores)
- - [candidate-upload](../../elections/candidate_upload)
+ - [add-varsity-scores](../../projects/varsity/add-varsity-scores)
+ - [candidate-upload](../../projects/elections/candidate_upload)
 
 ### Depends on
 
 - [kclsu-modal](../../modal)
+- [kclsu-button](../../buttons/kclsu-button)
 - [loading-spinner](../../spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   user-login --> kclsu-modal
+  user-login --> kclsu-button
   user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
+  kclsu-button --> flex-container
   add-varsity-scores --> user-login
   candidate-upload --> user-login
   style user-login fill:#f9f,stroke:#333,stroke-width:4px

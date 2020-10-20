@@ -9,7 +9,7 @@
 
 ### Used by
 
- - [candidate-display](../../elections/elections-candidates/candidates-display)
+ - [candidate-display](../../projects/elections/elections-candidates/candidates-display)
  - [profile-tabs](../../profiles)
 
 ### Graph

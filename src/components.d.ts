@@ -89,7 +89,7 @@ export namespace Components {
         "combineresults": boolean;
         "posts": string;
         "tabtitle": string;
-        "type": "single" | "multiple" | "groupings";
+        "type": 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -156,6 +156,7 @@ export namespace Components {
     }
     interface GroupTab {
         "active": boolean;
+        "exclude": string;
         "regex": string;
         "replace": string;
         "searchterms": string;
@@ -179,6 +180,10 @@ export namespace Components {
     }
     interface ImageText {
         /**
+          * This turns the component into a card, rather than just an image/text layout
+         */
+        "card": boolean;
+        /**
           * The title at the top of the text
          */
         "heading": string;
@@ -186,6 +191,10 @@ export namespace Components {
           * The image link (get from Cloudinary)
          */
         "image": string;
+        /**
+          * Provide a set % width for the image. Takes a  number without the % sign
+         */
+        "imagewidth": string;
         /**
           * Animate the image (scale in) on scroll
          */
@@ -199,7 +208,7 @@ export namespace Components {
          */
         "smalltext": boolean;
         /**
-          * Switch the side the image is on
+          * Switch the side the image is on.
          */
         "switch": boolean;
         /**
@@ -396,18 +405,6 @@ export namespace Components {
         "showbg": boolean;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface NewsCard {
         "newslink": string;
@@ -501,7 +498,29 @@ export namespace Components {
          */
         "headings": any;
     }
+    interface ProjectCard {
+        /**
+          * Position the content of the card along the X axis
+         */
+        "alignx": string;
+        /**
+          * Position the content of the card along the Y axis
+         */
+        "aligny": string;
+        "heading": string;
+        "image": string;
+        "text": string;
+        "transparent": boolean;
+    }
+    interface ProjectImage {
+        "link": any;
+    }
     interface ProjectPage {
+    }
+    interface ProjectSection {
+        "heading": string;
+        "pagetitle": string;
+        "text": string;
     }
     interface PurpleButton {
         "link": string;
@@ -512,6 +531,10 @@ export namespace Components {
     }
     interface QuickLinks {
         "name": string;
+    }
+    interface ScrollObserver {
+        "animation": string;
+        "lazyimage": boolean;
     }
     interface ShowSupport {
     }
@@ -557,14 +580,7 @@ export namespace Components {
         "database": string;
     }
     interface VarsityLanding {
-        "currentDate": {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year": string;
     }
     interface VarsityNextMatches {
@@ -934,11 +950,29 @@ declare global {
         prototype: HTMLProfileTabsElement;
         new (): HTMLProfileTabsElement;
     };
+    interface HTMLProjectCardElement extends Components.ProjectCard, HTMLStencilElement {
+    }
+    var HTMLProjectCardElement: {
+        prototype: HTMLProjectCardElement;
+        new (): HTMLProjectCardElement;
+    };
+    interface HTMLProjectImageElement extends Components.ProjectImage, HTMLStencilElement {
+    }
+    var HTMLProjectImageElement: {
+        prototype: HTMLProjectImageElement;
+        new (): HTMLProjectImageElement;
+    };
     interface HTMLProjectPageElement extends Components.ProjectPage, HTMLStencilElement {
     }
     var HTMLProjectPageElement: {
         prototype: HTMLProjectPageElement;
         new (): HTMLProjectPageElement;
+    };
+    interface HTMLProjectSectionElement extends Components.ProjectSection, HTMLStencilElement {
+    }
+    var HTMLProjectSectionElement: {
+        prototype: HTMLProjectSectionElement;
+        new (): HTMLProjectSectionElement;
     };
     interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
     }
@@ -957,6 +991,12 @@ declare global {
     var HTMLQuickLinksElement: {
         prototype: HTMLQuickLinksElement;
         new (): HTMLQuickLinksElement;
+    };
+    interface HTMLScrollObserverElement extends Components.ScrollObserver, HTMLStencilElement {
+    }
+    var HTMLScrollObserverElement: {
+        prototype: HTMLScrollObserverElement;
+        new (): HTMLScrollObserverElement;
     };
     interface HTMLShowSupportElement extends Components.ShowSupport, HTMLStencilElement {
     }
@@ -1121,10 +1161,14 @@ declare global {
         "profile-card-layout": HTMLProfileCardLayoutElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
+        "project-card": HTMLProjectCardElement;
+        "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
+        "project-section": HTMLProjectSectionElement;
         "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
+        "scroll-observer": HTMLScrollObserverElement;
         "show-support": HTMLShowSupportElement;
         "support-option": HTMLSupportOptionElement;
         "support-progress": HTMLSupportProgressElement;
@@ -1229,7 +1273,7 @@ declare namespace LocalJSX {
         "combineresults"?: boolean;
         "posts"?: string;
         "tabtitle"?: string;
-        "type"?: "single" | "multiple" | "groupings";
+        "type"?: 'single' | 'multiple' | 'groupings';
     }
     interface FlexContainer {
         /**
@@ -1298,6 +1342,7 @@ declare namespace LocalJSX {
     }
     interface GroupTab {
         "active"?: boolean;
+        "exclude"?: string;
         "regex"?: string;
         "replace"?: string;
         "searchterms"?: string;
@@ -1321,6 +1366,10 @@ declare namespace LocalJSX {
     }
     interface ImageText {
         /**
+          * This turns the component into a card, rather than just an image/text layout
+         */
+        "card"?: boolean;
+        /**
           * The title at the top of the text
          */
         "heading"?: string;
@@ -1328,6 +1377,10 @@ declare namespace LocalJSX {
           * The image link (get from Cloudinary)
          */
         "image"?: string;
+        /**
+          * Provide a set % width for the image. Takes a  number without the % sign
+         */
+        "imagewidth"?: string;
         /**
           * Animate the image (scale in) on scroll
          */
@@ -1341,7 +1394,7 @@ declare namespace LocalJSX {
          */
         "smalltext"?: boolean;
         /**
-          * Switch the side the image is on
+          * Switch the side the image is on.
          */
         "switch"?: boolean;
         /**
@@ -1541,18 +1594,6 @@ declare namespace LocalJSX {
         "showbg"?: boolean;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface NewsCard {
         "newslink"?: string;
@@ -1649,7 +1690,29 @@ declare namespace LocalJSX {
          */
         "headings"?: any;
     }
+    interface ProjectCard {
+        /**
+          * Position the content of the card along the X axis
+         */
+        "alignx"?: string;
+        /**
+          * Position the content of the card along the Y axis
+         */
+        "aligny"?: string;
+        "heading"?: string;
+        "image"?: string;
+        "text"?: string;
+        "transparent"?: boolean;
+    }
+    interface ProjectImage {
+        "link"?: any;
+    }
     interface ProjectPage {
+    }
+    interface ProjectSection {
+        "heading"?: string;
+        "pagetitle"?: string;
+        "text"?: string;
     }
     interface PurpleButton {
         "link"?: string;
@@ -1660,6 +1723,10 @@ declare namespace LocalJSX {
     }
     interface QuickLinks {
         "name"?: string;
+    }
+    interface ScrollObserver {
+        "animation"?: string;
+        "lazyimage"?: boolean;
     }
     interface ShowSupport {
     }
@@ -1707,14 +1774,7 @@ declare namespace LocalJSX {
         "database": string;
     }
     interface VarsityLanding {
-        "currentDate"?: {
-            weekday: string;
-            day: any;
-            month: string;
-            year: any;
-            hours: any;
-            minutes: any;
-        };
+        "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
         "year"?: string;
     }
     interface VarsityNextMatches {
@@ -1813,10 +1873,14 @@ declare namespace LocalJSX {
         "profile-card-layout": ProfileCardLayout;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
+        "project-card": ProjectCard;
+        "project-image": ProjectImage;
         "project-page": ProjectPage;
+        "project-section": ProjectSection;
         "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
+        "scroll-observer": ScrollObserver;
         "show-support": ShowSupport;
         "support-option": SupportOption;
         "support-progress": SupportProgress;
@@ -1895,10 +1959,14 @@ declare module "@stencil/core" {
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
+            "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
+            "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
+            "project-section": LocalJSX.ProjectSection & JSXBase.HTMLAttributes<HTMLProjectSectionElement>;
             "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
+            "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;
             "show-support": LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
             "support-option": LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
             "support-progress": LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;

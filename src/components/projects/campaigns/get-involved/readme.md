@@ -16,7 +16,7 @@
 
 ### Depends on
 
-- [fullwidth-beige-strip](../../containers/fullwidth-beige-strip)
+- [fullwidth-beige-strip](../../../containers/fullwidth-beige-strip)
 
 ### Graph
 ```mermaid

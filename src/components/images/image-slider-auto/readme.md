@@ -25,7 +25,7 @@
 
 ### Used by
 
- - [varsity-landing](../../varsity/varsity-landing)
+ - [varsity-landing](../../projects/varsity/varsity-landing)
 
 ### Graph
 ```mermaid

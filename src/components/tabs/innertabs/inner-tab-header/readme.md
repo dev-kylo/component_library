@@ -24,7 +24,7 @@
 
 ### Used by
 
- - [elections-candidates](../../../elections/elections-candidates)
+ - [elections-candidates](../../../projects/elections/elections-candidates)
 
 ### Graph
 ```mermaid

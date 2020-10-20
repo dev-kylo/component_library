@@ -1,32 +1,20 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, h, Element } from '@stencil/core';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css',
-  shadow: true
+  styleUrl: 'my-component.css'
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  @Element() host: HTMLElement;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
-
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+  componentDidLoad(){
+    const pCards = this.host.firstElementChild as HTMLElement;
+    console.log(pCards)
+    pCards.style.color ='yellow';
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <slot></slot>;
   }
 }

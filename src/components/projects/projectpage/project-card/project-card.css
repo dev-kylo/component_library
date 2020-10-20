@@ -1,0 +1,32 @@
+@import '../../../../global/globalstyles.css';
+
+.card {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+h3 {
+    color: var(--purple);
+    margin-bottom: 0;
+}
+
+.textcontainer {
+    width: auto;
+    min-height: calc(100% - 4em);
+}
+
+.transparent_bg {
+    background-color: transparent;
+}
+
+.white_bg {
+    background-color: white;
+}
+
+.shadow {
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+}

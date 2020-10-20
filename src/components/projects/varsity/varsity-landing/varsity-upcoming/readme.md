@@ -21,7 +21,7 @@
 
 ### Depends on
 
-- [kclsu-modal](../../../modal)
+- [kclsu-modal](../../../../modal)
 - [varsity-next-matches](../../varsity-next-matches)
 
 ### Graph

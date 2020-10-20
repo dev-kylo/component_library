@@ -9,10 +9,10 @@
 
 ### Used by
 
- - [campaign-aim](../../campaigns/campaign-aim)
- - [campaign-tabs](../../campaigns/campaign-tabs)
+ - [campaign-aim](../../projects/campaigns/campaign-aim)
+ - [campaign-tabs](../../projects/campaigns/campaign-tabs)
  - [fullwidth-beige-strip](../fullwidth-beige-strip)
- - [show-support](../../campaigns/show-support)
+ - [show-support](../../projects/campaigns/show-support)
 
 ### Graph
 ```mermaid

@@ -16,9 +16,9 @@
 
 ### Depends on
 
-- [user-login](../../authentication/user-login)
-- [flex-container](../../containers/flex-container)
-- [kclsu-modal](../../modal)
+- [user-login](../../../authentication/user-login)
+- [flex-container](../../../containers/flex-container)
+- [kclsu-modal](../../../modal)
 
 ### Graph
 ```mermaid
@@ -27,8 +27,10 @@ graph TD;
   add-varsity-scores --> flex-container
   add-varsity-scores --> kclsu-modal
   user-login --> kclsu-modal
+  user-login --> kclsu-button
   user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
+  kclsu-button --> flex-container
   style add-varsity-scores fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

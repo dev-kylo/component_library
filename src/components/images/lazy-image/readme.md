@@ -24,6 +24,7 @@
  - [label-card](../../cards/label-card)
  - [profile-card](../../cards/profile-card)
  - [profile-logo-card](../../cards/profile-logo-card)
+ - [project-image](../../projects/projectpage/project-image)
 
 ### Graph
 ```mermaid
@@ -32,6 +33,7 @@ graph TD;
   label-card --> lazy-image
   profile-card --> lazy-image
   profile-logo-card --> lazy-image
+  project-image --> lazy-image
   style lazy-image fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

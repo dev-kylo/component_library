@@ -20,9 +20,9 @@
 
 ### Depends on
 
-- [kclsu-modal](../../modal)
-- [flex-container](../../containers/flex-container)
-- [kclsu-button](../../buttons/kclsu-button)
+- [kclsu-modal](../../../modal)
+- [flex-container](../../../containers/flex-container)
+- [kclsu-button](../../../buttons/kclsu-button)
 
 ### Graph
 ```mermaid

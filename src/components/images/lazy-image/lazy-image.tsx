@@ -24,40 +24,6 @@ export class LazyImage {
 
     @State() imageloading: boolean = true;
     @State() imageclasses:any = ['fit', 'show'];
-
-    private observer: IntersectionObserver;
-
-    componentDidRender(){
-        const img :HTMLElement = this.el.shadowRoot.querySelector('img');
-        const options = { rootMargin: '10px 0px' }
-        if (img) {
-            this.observer = new IntersectionObserver(entries => this.onIntersection(entries, this.animatein), options);
-            this.observer.observe(img)
-        }
-    }
-
-    onIntersection(entries, animation){
-        for (const entry of entries){
-            if (entry.isIntersecting){
-                console.log('intersect detected')
-                if (this.observer) this.observer.disconnect();
-                if (entry.target.getAttribute('data-src')){
-                    entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
-                    entry.target.removeAttribute('data-src');
-                    if (animation) entry.target.classList.add('scaleIn');
-                }
-            }
-        }
-    }
-
-    disconnectedCallback(){
-        this.observer.disconnect();
-    }
-
-    // imageLoaded(){
-    //     this.imageloading = false;
-    //     this.imageclasses = ['fit', 'show', 'scale-in-center'];
-    //   }
     
     render() {
         let imageWidth = this.width;
@@ -101,14 +67,16 @@ export class LazyImage {
         return (
             <div class="loadingimage">
                 {/* <loading-spinner show={this.imageloading}></loading-spinner> */}
-                <img 
-                    style={objectPosition} 
-                    // onLoad={() => this.imageLoaded()} 
-                    class={this.imageclasses.join(' ')} 
-                    alt=""
-                    data-src={loadedImage}
-                    src={loadingImage}
-                ></img>
+                <scroll-observer lazy-image animation={!this.animatein? '' : 'scaleIn'}>
+                    <img 
+                        style={objectPosition} 
+                        // onLoad={() => this.imageLoaded()} 
+                        class={this.imageclasses.join(' ')} 
+                        alt=""
+                        data-src={loadedImage}
+                        src={loadingImage}
+                    ></img>
+                </scroll-observer>
             </div>
         );
     }

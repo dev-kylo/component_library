@@ -35,11 +35,12 @@
 
 ### Used by
 
- - [candidate-upload](../../elections/candidate_upload)
- - [cloudinary-app](../../cloudinary)
+ - [candidate-upload](../../projects/elections/candidate_upload)
+ - [cloudinary-app](../../projects/cloudinary)
  - [full-bio](../../profiles/bio)
  - [label-card](../../cards/label-card)
- - [preset-controls](../../cloudinary/preset-controls)
+ - [preset-controls](../../projects/cloudinary/preset-controls)
+ - [user-login](../../authentication/user-login)
 
 ### Depends on
 
@@ -54,6 +55,7 @@ graph TD;
   full-bio --> kclsu-button
   label-card --> kclsu-button
   preset-controls --> kclsu-button
+  user-login --> kclsu-button
   style kclsu-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
