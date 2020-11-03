@@ -586,7 +586,6 @@ export namespace Components {
           * The hashtag used in social media. Do not include the hash symbol
          */
         "hashtag": string;
-        "pagetitlecolours": string;
         "slotr": string;
     }
     interface PurpleButton {
@@ -1859,7 +1858,6 @@ declare namespace LocalJSX {
           * The hashtag used in social media. Do not include the hash symbol
          */
         "hashtag"?: string;
-        "pagetitlecolours"?: string;
         "slotr"?: string;
     }
     interface PurpleButton {

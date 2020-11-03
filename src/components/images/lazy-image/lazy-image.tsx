@@ -39,8 +39,8 @@ export class LazyImage {
             else if (this.contentimage) this.width='800';
             else if ( window.innerWidth > 500 && window.innerWidth < 800) this.width = '1000';
             else if ( window.innerWidth > 500 && this.desktopwidth) this.width = this.desktopwidth;
-            else if (window.innerWidth <= 500 ) this.width = '800';
-            else if (window.innerWidth > 1400 ) this.width = '1500';
+            else if (window.innerWidth <= 500 ) this.width = '900';
+            else if (window.innerWidth > 1400 ) this.width = '1800';
             else this.width = 'auto';
         }
     }
@@ -95,7 +95,6 @@ export class LazyImage {
                         class={!this.plainimg? this.imageclasses.join(' ') : ''} 
                         alt={this.alt}
                         data-src={loadedImage}
-                        sizes="500px"
                         src={loadingImage}
                     ></img>
                 </scroll-observer>

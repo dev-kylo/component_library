@@ -10,6 +10,8 @@
 h3 {
     color: var(--purple);
     margin-bottom: 0;
+    font-family: bree_serifbold, bree-serif, serif;
+    font-weight: 900;
 }
 
 .textcontainer {
