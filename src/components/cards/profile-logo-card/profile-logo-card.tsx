@@ -31,10 +31,10 @@ export class ProfileLogoCard {
             <a target="_blank" href={this.link}>
                 <div class="profile-card">
                     <div class="background">
-                        <lazy-image animatein focusarea={this.imagefocus} image={this.image}></lazy-image>
+                        <lazy-image thumbnail animatein focusarea={this.imagefocus} image={this.image}></lazy-image>
                     </div>
                     <div class="logoContainer" style={bg}>
-                        {this.logo && <lazy-image animatein image={this.logo}></lazy-image>}
+                        {this.logo && <lazy-image thumbnail animatein image={this.logo}></lazy-image>}
                     </div>
                     <div class="label">
                         <span class="name">{this.cardtitle}</span>

@@ -11,10 +11,15 @@ import { createArrayFromString } from '../../../../utils/utils'
 
 export class ProjectHeading {
 
+    /** The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles. */
     @Prop() pagetitle: string;
+    /** The <h2> heading for the section */
     @Prop() heading: string;
+    /** The paragraph text. If you need text links or separate paragraphs, rather insert HTML. */
     @Prop() text: string;
+    /** The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour" */
     @Prop() colourscheme: string = "white, #502669";
+    /** The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour" */
     @Prop() pagetitlecolours: string = "white, #1BA39C";
     
     render() {
@@ -22,11 +27,11 @@ export class ProjectHeading {
         const titlescheme: string[] = createArrayFromString(this.pagetitlecolours, ',');
 
         const bgcolour = {
-            "background-color": bgscheme[1] || "#502669",
-        }
+            "background-color": bgscheme[1] || "#502669"
+        };
         const textcolour = {
-            "color": bgscheme[0] || "white",
-        }
+            "color": bgscheme[0] || "white"
+        };
 
         const  pagetitlecolours = {
             "background": titlescheme[1] || "#1BA39C",
