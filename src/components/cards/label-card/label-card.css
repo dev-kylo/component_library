@@ -2,17 +2,20 @@
 
 .link {
     margin: 0;
+    background: transparent;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    border: none;
+    border-radius: 0;
     cursor: pointer;
     display: block;
-    transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
 }
 
-.link:hover{
+.card:hover{
     box-shadow: 3px 5px 5px 0px rgba(0,0,0,0.15);
-    transform: translate(2px, 2px)
+    transform: translate(2px, 2px);
+    background: transparent;
 }
 
 .card {
@@ -26,6 +29,7 @@
     border: 1px solid #eaeaea;
     min-height: 40px; 
     list-style: none;
+    transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
 }
 
 .card::before {

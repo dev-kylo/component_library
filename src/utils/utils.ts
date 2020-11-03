@@ -50,7 +50,7 @@ export function removeParams(src){
 
 
 
-export function getNextEvents(dataList, length = -1){
+export function getNextEvents(dataList, length: number = -1){
   let data = [...dataList]
   let d = new Date();
   let ISOdate = d.toISOString();

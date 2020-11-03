@@ -10,12 +10,18 @@ export class ProjectCard {
 
     @Prop() transparent: boolean = false;
     @Prop() image: string;
+    /** Applies to mobile displays only. Will hide the image and display content only */
+    @Prop() hideimage: boolean = false;
     @Prop() heading: string;
+    /** The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left' */
+    @Prop() focusarea: string = 'center';
     @Prop() text: string;
     /** Position the content of the card along the X axis */
     @Prop() alignx: string = 'flex-start';
     /** Position the content of the card along the Y axis */
     @Prop() aligny: string = 'center';
+    /** Display an event listing */
+    @Prop() eventtag:string;
     
     render() {
         const containerPadding = {
@@ -41,6 +47,9 @@ export class ProjectCard {
         if (this.image) card = (
             <image-text
                 card
+                focusarea={this.focusarea}
+                reversestack
+                hideimage={this.hideimage}
                 image={this.image}
                 imagewidth= "40"
                 text={this.text}
@@ -49,6 +58,10 @@ export class ProjectCard {
                 <slot></slot>
             </image-text>
         );
+        
+        if (this.eventtag) card = (
+            <project-card-events tag={this.eventtag}><slot></slot></project-card-events>
+        )
 
 
         return (

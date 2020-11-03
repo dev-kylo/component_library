@@ -15,17 +15,35 @@
 </head>
 <body>
 
+  <kclsu-button link="">Hello</kclsu-button>
+  <scroll-observer>
+    <label-card
+    cardtitle="Sometimes our titles are unnecessarily long"
+    text="Just make sure you're awesome"
+    image="https://www.kclsu.org/asset/News/6015/KCSLU-Welcome-Fair-LD-Nacho-51.jpg"
+    buttonlink="/"
+    buttontitle="Get your ticket"
+  ></label-card>
+  </scroll-observer>
+  </div>
 
-  <project-page>
-    <project-section pagetitle="New Year, New Start!!" text="Here we go again" heading="18 December"></project-section>
-    <project-section heading="Mindfule Events" text="We are so excited for a full week of mindful events from lorem ipsum to ipsum lorem there is something to suit everybody. Come and attend an event. Brooooooooosdfosdoosky Lewlllwwwesn dsfsrf s srferfgewrfwerfewr  efwefwefwefwe wefwewegerrt 46777 rg erdgvsdvsdcsdfdsdddddc vf bgrt hrtyhrthrthrth  efefefwefssdvsd   dfesfewfewfewfwefwef   fwefwefwefewfwef cadscad ewfwefwefwefwefwefwe efewfwef fefef ewdfwefcacsacfewfwe ">
+  <project-page colourscheme="white, black" pagetitlecolours="black, white">
+    <project-heading pagetitle="New Year, New Start!!" text="A national week of action involving over 60 HE institutions featuring events and volunteering taster activities from a range of societies and charity partners." heading="18 December">
+      <p>Broooddfd</p>
+      <kclsu-button center>I am a button </kclsu-button>
+    </project-heading>
+    <project-heading heading="Events" >
+      <h3>Yeah bru</h3>
+    </project-heading>
+    <project-heading heading="Mindfule Events" text="We are so excited for a full week of mindful events from lorem ipsum to ipsum lorem there is something to suit everybody. Come and attend an event. Brooooooooosdfosdoosky Lewlllwwwesn dsfsrf s srferfgewrfwerfewr  efwefwefwefwe wefwewegerrt 46777 rg erdgvsdvsdcsdfdsdddddc vf bgrt hrtyhrthrthrth  efefefwefssdvsd   dfesfewfewfewfwefwef   fwefwefwefewfwef cadscad ewfwefwefwefwefwefwe efewfwef fefef ewdfwefcacsacfewfwe ">
       <p>from lorem ipsum to ipsum lorem there is something to suit everybody. Come and att</p>
       <kclsu-button center>Join Now</kclsu-button>
-    </project-section>
-    <project-section heading="Exam Support" ></project-section>
+    </project-heading>
+    <project-heading heading="Exam Support" ></project-heading>
  
 
     <project-card 
+      focusarea="top"
       transparent 
       removepadding
       heading="The Union Shop"
@@ -36,69 +54,48 @@
           <kclsu-button small center link="/shop">Visit shop</kclsu-button>
         </div>
     </project-card>
+    <project-card eventtag="bhm">
+    </project-card>
     <project-card heading="Rules of the Road" text="I am a line of text. I am always the middleman bro, but click my bio beneath. ">  <kclsu-button>Click me</kclsu-button></project-card>
     <project-card>
-      <!-- <div style="max-width: 100%"> -->
         <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked>
-      <!-- </div> -->
     </project-card>
 
 
-    <project-image link="https://www.kclsu.org/asset/Event/8770/GB-Sports-Night-FB-Cover.png"></project-image>
-    <project-image link="https://www.kclsu.org/asset/Event/7205/FF152947-942A-4B9C-9553-C23BE44A991F.png"></project-image>
+    <project-image focusarea="center" link="https://res.cloudinary.com/kclsu-media/image/upload/v1587382816/website_uploads/Events/2R5A8265_vrj9iv.jpg"></project-image>
+    <project-image focusarea="center" alt="People at signup" link="https://res.cloudinary.com/kclsu-media/image/upload/t_Page_Banner/v1572606228/website_uploads/Events/KCLSU_WMD_25_of_28_g4mxyr.jpg"></project-image>
     <project-image link="https://www.kclsu.org/asset/Event/16984/TV-SportsNight-Event-icon.png"></project-image>
-
+    <project-image focusarea="top" link=" https://res.cloudinary.com/kclsu-media/image/upload/v1603902967/temporary/IMG_5090_cnvv61.jpg"></project-image>
+   
+    
+    <project-socials ></project-socials>
   </project-page>
 
+  <image-text
+    card 
+    heading="The Union Shop" 
+    image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+    text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+    >
+  <div>
+    <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+  </div>
+  </image-text>
 
-  <!-- AUTUMN  ELECTIONS -->
-  <!-- <elections-candidates results removeron >
-    <elections-tab typeid="SO" tabtitle="Student Trustees" uid="SO" posts="Student Trustee" type="single" active></elections-tab>
-    <elections-tab typeid="NUS" tabtitle="Network Officers" uid="NUS" posts="LGBT+ Officer (open place)" type="multiple" ></elections-tab>
-    <elections-tab 
-      typeid="NUS" 
-      tabtitle="Union Development" 
-      uid="UD" posts="Activities Union Development Committee Member | Sustainability Union Development Committee Member" 
-      type="multiple" 
-      combineresults="true"
-      regex="Union Development"
-      replace=" "
-    ></elections-tab>
-  
-    <elections-tab typeid="DP" tabtitle="Academic" uid="" type="grouping" >
-      <group-tab 
-        active
-        tabtitle="Academic Board" 
-        searchterms="Academic Board"
-        regex="Academic Board - | Postgraduate | Representative"
-        replace=" | PG | Rep"
-      ></group-tab>
-      <group-tab 
-        tabtitle="Law Council" 
-        searchterms="Law Council">
-      </group-tab>
-      <group-tab 
-        tabtitle="IoPPN" 
-        searchterms="IoPPN">
-      </group-tab>
-      <group-tab 
-        tabtitle="NMS" 
-        searchterms="Informatics | Engineering | Mathematics"
-        regex="Representative | Postgraduate"
-        replace="Rep | PG"
-        >
-      </group-tab>
-      <group-tab 
-        tabtitle="Nursing & Midwifery" 
-        exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative | "
-        searchterms="Nursing | Midwifery"
-        regex="Midwifery| Nursing"
-        replace="Climate Change | Batman"
-      ></group-tab>
-    </elections-tab>
-  </elections-candidates> -->
+  <image-text
+    card
+    reversestack
+    switch
+    heading="The Union Shop" 
+    image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+    text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+  >
+    <div>
+      <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+    </div>
+</image-text>
 
-</br>
+<!-- </br>
 <div style="width: 100%; margin: auto">
   <image-text
   card 
@@ -112,15 +109,15 @@
   </image-text>
 
   <div class="imagetextcontainer">
-    <image-text 
-    card
-    switch
-    heading="Totum Card" 
-    image="https://www.kclsu.org/pageassets/studentdeals/Totum-WebpageBanner-1200x678-02.png"
-    text = "TOTUM gives you access to massive student discounts and deals on eating out (including our venues!), fashion and tech which will make student life so much easier!"
-    textcolour="red"
-    imagezoom
-    smalltext
+      <image-text 
+      card
+      switch
+      heading="Totum Card" 
+      image="https://www.kclsu.org/pageassets/studentdeals/Totum-WebpageBanner-1200x678-02.png"
+      text = "TOTUM gives you access to massive student discounts and deals on eating out (including our venues!), fashion and tech which will make student life so much easier!"
+      textcolour="red"
+      imagezoom
+      smalltext
     >
 <div>
     <kclsu-button small center link="/shop">Get your Totum</kclsu-button>
@@ -132,10 +129,10 @@
 </br>
 <div style="width: 800px; margin: auto; overflow: hidden">
   <kclsu-countdown textcolour="" date="September 23, 2020, 10:00:00" text="27 - 30 September 2020" fontsize="2.5vw"></kclsu-countdown>
-</div>
+</div> -->
 
 
-
+<!-- 
   <div style="margin:auto; width: 40%; ">
     <label-card
     cardtitle="This is a test card title"
@@ -176,11 +173,11 @@
   smallheading
   reverse
   ></label-card>
-</br>
-<scroll-observer>
+</br> -->
+<!-- <scroll-observer>
   <text-card cardtitle="This is another test heading" buttonlink="/"></text-card>
 </scroll-observer>
-  </div>
+  </div> -->
 
   <!-- <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked> -->
 
