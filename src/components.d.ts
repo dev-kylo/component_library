@@ -184,9 +184,17 @@ export namespace Components {
          */
         "card": boolean;
         /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
+        /**
           * The title at the top of the text
          */
         "heading": string;
+        /**
+          * Applies to mobilescreen displays only. Will hide the image and display content only
+         */
+        "hideimage": boolean;
         /**
           * The image link (get from Cloudinary)
          */
@@ -203,6 +211,10 @@ export namespace Components {
           * Set the margin for the card
          */
         "margin": string;
+        /**
+          * When the image and content stack, reverse the order so the image is on top
+         */
+        "reversestack": boolean;
         /**
           * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
          */
@@ -351,6 +363,7 @@ export namespace Components {
           * The main title of the card
          */
         "cardtitle": string;
+        "cardwidth": string;
         /**
           * The main title of the card
          */
@@ -360,6 +373,7 @@ export namespace Components {
           * The link for the card - NOT for the button
          */
         "link": string;
+        "margin": string;
         /**
           * If image to be displayed on right hand side
          */
@@ -375,18 +389,34 @@ export namespace Components {
     }
     interface LazyImage {
         /**
+          * The alt tag of the image
+         */
+        "alt": string;
+        /**
           * Image will scale into view
          */
         "animatein": boolean;
+        /**
+          * If the image is being used only as thumbnail, such as project-cards and image-text components
+         */
+        "contentimage": boolean;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth": string;
         /**
-          * Use standard CSS values to set a focus area on the image. EG 'center left'
+          * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea": string;
         "image": string;
+        /**
+          * If you want to render an img element in a responsive container without object positioning
+         */
+        "plainimg": boolean;
+        /**
+          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+         */
+        "thumbnail": boolean;
         /**
           * A width for the image in pixels
          */
@@ -507,20 +537,57 @@ export namespace Components {
           * Position the content of the card along the Y axis
          */
         "aligny": string;
+        /**
+          * Display an event listing
+         */
+        "eventtag": string;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
         "heading": string;
+        /**
+          * Applies to mobile displays only. Will hide the image and display content only
+         */
+        "hideimage": boolean;
         "image": string;
         "text": string;
         "transparent": boolean;
     }
-    interface ProjectImage {
-        "link": any;
+    interface ProjectCardEvents {
+        "heading": string;
+        "tag": string;
     }
-    interface ProjectPage {
-    }
-    interface ProjectSection {
+    interface ProjectHeading {
+        "colourscheme": string;
         "heading": string;
         "pagetitle": string;
+        "pagetitlecolours": string;
         "text": string;
+    }
+    interface ProjectImage {
+        "alt": string;
+        "focusarea": string;
+        "link": string;
+    }
+    interface ProjectPage {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+    }
+    interface ProjectSocials {
+        "colourscheme": string;
+        /**
+          * The hashtag used in social media. Do not include the hash symbol
+         */
+        "hashtag": string;
+        "pagetitlecolours": string;
+        "slotr": string;
     }
     interface PurpleButton {
         "link": string;
@@ -956,6 +1023,18 @@ declare global {
         prototype: HTMLProjectCardElement;
         new (): HTMLProjectCardElement;
     };
+    interface HTMLProjectCardEventsElement extends Components.ProjectCardEvents, HTMLStencilElement {
+    }
+    var HTMLProjectCardEventsElement: {
+        prototype: HTMLProjectCardEventsElement;
+        new (): HTMLProjectCardEventsElement;
+    };
+    interface HTMLProjectHeadingElement extends Components.ProjectHeading, HTMLStencilElement {
+    }
+    var HTMLProjectHeadingElement: {
+        prototype: HTMLProjectHeadingElement;
+        new (): HTMLProjectHeadingElement;
+    };
     interface HTMLProjectImageElement extends Components.ProjectImage, HTMLStencilElement {
     }
     var HTMLProjectImageElement: {
@@ -968,11 +1047,11 @@ declare global {
         prototype: HTMLProjectPageElement;
         new (): HTMLProjectPageElement;
     };
-    interface HTMLProjectSectionElement extends Components.ProjectSection, HTMLStencilElement {
+    interface HTMLProjectSocialsElement extends Components.ProjectSocials, HTMLStencilElement {
     }
-    var HTMLProjectSectionElement: {
-        prototype: HTMLProjectSectionElement;
-        new (): HTMLProjectSectionElement;
+    var HTMLProjectSocialsElement: {
+        prototype: HTMLProjectSocialsElement;
+        new (): HTMLProjectSocialsElement;
     };
     interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
     }
@@ -1162,9 +1241,11 @@ declare global {
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "project-card": HTMLProjectCardElement;
+        "project-card-events": HTMLProjectCardEventsElement;
+        "project-heading": HTMLProjectHeadingElement;
         "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
-        "project-section": HTMLProjectSectionElement;
+        "project-socials": HTMLProjectSocialsElement;
         "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
@@ -1370,9 +1451,17 @@ declare namespace LocalJSX {
          */
         "card"?: boolean;
         /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
+        /**
           * The title at the top of the text
          */
         "heading"?: string;
+        /**
+          * Applies to mobilescreen displays only. Will hide the image and display content only
+         */
+        "hideimage"?: boolean;
         /**
           * The image link (get from Cloudinary)
          */
@@ -1389,6 +1478,10 @@ declare namespace LocalJSX {
           * Set the margin for the card
          */
         "margin"?: string;
+        /**
+          * When the image and content stack, reverse the order so the image is on top
+         */
+        "reversestack"?: boolean;
         /**
           * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
          */
@@ -1539,6 +1632,7 @@ declare namespace LocalJSX {
           * The main title of the card
          */
         "cardtitle"?: string;
+        "cardwidth"?: string;
         /**
           * The main title of the card
          */
@@ -1548,6 +1642,7 @@ declare namespace LocalJSX {
           * The link for the card - NOT for the button
          */
         "link"?: string;
+        "margin"?: string;
         /**
           * If image to be displayed on right hand side
          */
@@ -1563,18 +1658,34 @@ declare namespace LocalJSX {
     }
     interface LazyImage {
         /**
+          * The alt tag of the image
+         */
+        "alt"?: string;
+        /**
           * Image will scale into view
          */
         "animatein"?: boolean;
+        /**
+          * If the image is being used only as thumbnail, such as project-cards and image-text components
+         */
+        "contentimage"?: boolean;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth"?: string;
         /**
-          * Use standard CSS values to set a focus area on the image. EG 'center left'
+          * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * If you want to render an img element in a responsive container without object positioning
+         */
+        "plainimg"?: boolean;
+        /**
+          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+         */
+        "thumbnail"?: boolean;
         /**
           * A width for the image in pixels
          */
@@ -1699,20 +1810,57 @@ declare namespace LocalJSX {
           * Position the content of the card along the Y axis
          */
         "aligny"?: string;
+        /**
+          * Display an event listing
+         */
+        "eventtag"?: string;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
         "heading"?: string;
+        /**
+          * Applies to mobile displays only. Will hide the image and display content only
+         */
+        "hideimage"?: boolean;
         "image"?: string;
         "text"?: string;
         "transparent"?: boolean;
     }
-    interface ProjectImage {
-        "link"?: any;
+    interface ProjectCardEvents {
+        "heading"?: string;
+        "tag"?: string;
     }
-    interface ProjectPage {
-    }
-    interface ProjectSection {
+    interface ProjectHeading {
+        "colourscheme"?: string;
         "heading"?: string;
         "pagetitle"?: string;
+        "pagetitlecolours"?: string;
         "text"?: string;
+    }
+    interface ProjectImage {
+        "alt"?: string;
+        "focusarea"?: string;
+        "link"?: string;
+    }
+    interface ProjectPage {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+    }
+    interface ProjectSocials {
+        "colourscheme"?: string;
+        /**
+          * The hashtag used in social media. Do not include the hash symbol
+         */
+        "hashtag"?: string;
+        "pagetitlecolours"?: string;
+        "slotr"?: string;
     }
     interface PurpleButton {
         "link"?: string;
@@ -1874,9 +2022,11 @@ declare namespace LocalJSX {
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "project-card": ProjectCard;
+        "project-card-events": ProjectCardEvents;
+        "project-heading": ProjectHeading;
         "project-image": ProjectImage;
         "project-page": ProjectPage;
-        "project-section": ProjectSection;
+        "project-socials": ProjectSocials;
         "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
@@ -1960,9 +2110,11 @@ declare module "@stencil/core" {
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
+            "project-card-events": LocalJSX.ProjectCardEvents & JSXBase.HTMLAttributes<HTMLProjectCardEventsElement>;
+            "project-heading": LocalJSX.ProjectHeading & JSXBase.HTMLAttributes<HTMLProjectHeadingElement>;
             "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
-            "project-section": LocalJSX.ProjectSection & JSXBase.HTMLAttributes<HTMLProjectSectionElement>;
+            "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
             "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;

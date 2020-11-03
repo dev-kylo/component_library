@@ -1,0 +1,63 @@
+@import '../../../../global/globalstyles.css';
+
+* {
+    box-sizing: border-box;
+}
+
+section {
+    margin-top: 15px;
+    margin-bottom: 120px;
+    max-width: 90%;
+};
+
+@media (min-width: 600px){
+    section {
+        max-width: 80%
+    }  
+}
+
+@media (min-width: 1200px){
+    section {
+        max-width: 60%
+    }  
+}
+
+@media (min-width: 1400px){
+    section {
+        max-width: 45%
+    }  
+}
+
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, .slotted h2, .slotted h3 {
+    font-family: bree_serifbold, bree-serif, serif;
+}
+
+.heading {  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+section, h2, p {
+    text-align: center;
+}
+
+.slotted:slotted p {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: #444;
+    font-weight: 400;
+}

@@ -43,6 +43,12 @@ min-height: 350px;
     }
 }
 
+@media (max-width: 1300px){
+  .grid {
+    grid-template-columns: 10% 80% 10%;
+  }  
+}
+
 @media (max-width: 800px){
     .grid {
         grid-template-columns: 5% 90% 5%;

@@ -1,0 +1,38 @@
+@import '../../../../global/globalstyles.css';
+
+
+p {
+  color: white;
+}
+ em {
+   color: var(--purple);
+   padding: 0.2em 0.5em;
+ }
+
+.grid {
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+	grid-template-rows:
+    minmax(300px, auto) ;
+}
+
+.section {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+    background-color: var(--purple);
+    min-height: 350px;
+    padding-top: 4em;
+}
+
+
+@media (max-width: 1300px){
+  .grid {
+    grid-template-columns: 10% 80% 10%;
+  }  
+}
+
+@media (max-width: 800px){
+    .grid {
+        grid-template-columns: 5% 90% 5%;
+    }  
+}

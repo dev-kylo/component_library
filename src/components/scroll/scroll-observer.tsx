@@ -18,8 +18,15 @@ export class ScrollObserver {
       const child = this.host.firstElementChild as HTMLElement;
       const options = { rootMargin: '10px 0px' }
       if (child) {
-          this.observer = new IntersectionObserver(entries => this.onIntersection(entries), options);
-          this.observer.observe(child);
+          //CHECK FOR OBSERVER IN BROWSER
+            if(!!window.IntersectionObserver){
+                this.observer = new IntersectionObserver(entries => this.onIntersection(entries), options);
+                this.observer.observe(child);
+            }
+            else if (child.hasAttribute('data-src')) {
+                //IF NO OBSERVER, SET THE SRC IF CHILD IS AN IMAGE
+                child.setAttribute('src', child.getAttribute('data-src'));
+            }
       }
     }
 
@@ -28,6 +35,7 @@ export class ScrollObserver {
             if (entry.isIntersecting){
                 if (this.observer) this.observer.disconnect();
                 if (entry.target.getAttribute('data-src')){
+                    //APPLIES TO LAZY IMAGES ONLY
                     entry.target.setAttribute('src', entry.target.getAttribute('data-src'));
                     entry.target.removeAttribute('data-src');
                 }

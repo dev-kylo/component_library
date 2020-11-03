@@ -4,6 +4,15 @@
     overflow: hidden;
 }
 
+.plainimg {
+  width: 100%;
+  height: auto; 
+  overflow: hidden;
+}
+.plainimg img {
+  width: 100%;
+  height: auto; 
+}
 
 .hide {
     opacity: 0;
