@@ -12,14 +12,12 @@ export class ProjectSocials {
     /** The hashtag used in social media. Do not include the hash symbol */
     @Prop() hashtag:string;
     @Prop() colourscheme: string;
-    @Prop() pagetitlecolours: string
     @Element() host: HTMLElement;
 
     componentWillLoad(){
         this.host.slot = "socials";
         const parent = this.host.parentElement as any;
         this.colourscheme = parent.colourscheme? parent.colourscheme : '';
-        this.pagetitlecolours = parent.pagetitlecolours? parent.pagetitlecolours : '';
     }
     
     render() {
@@ -32,7 +30,7 @@ export class ProjectSocials {
         return (
             <div class="grid">
                 <div class="section" style={bgcolour}>
-                    <project-heading colourscheme={this.colourscheme} pagetitlecolours={this.pagetitlecolours}  heading="Follow what's happening">
+                    <project-heading colourscheme={this.colourscheme} heading="Follow what's happening">
                         {followMsg}
                         <div style={{"margin": "2em 0"}}>
                             <flex-container wrap alignx="center" aligny="center">

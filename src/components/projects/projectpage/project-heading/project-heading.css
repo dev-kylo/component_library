@@ -10,6 +10,7 @@ section {
     max-width: 90%;
 };
 
+
 @media (min-width: 600px){
     section {
         max-width: 80%
@@ -34,7 +35,7 @@ h1 {
     margin: 0;
 }
 
-h1, h2, h3, .slotted h2, .slotted h3 {
+h1, h2, h3 {
     font-family: bree_serifbold, bree-serif, serif;
 }
 
@@ -43,7 +44,8 @@ h1, h2, h3, .slotted h2, .slotted h3 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
+    padding-top: 5px;   
     width: fit-content;
     margin-top: 50px;
     margin-right: auto;
@@ -54,7 +56,7 @@ section, h2, p {
     text-align: center;
 }
 
-.slotted:slotted p {
+.slotted {
     font-family: "Open Sans", Arial, sans-serif;
     font-size: 18px;
     line-height: 32px;
