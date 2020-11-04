@@ -30,6 +30,7 @@ graph TD;
   candidate-display --> profile-card-layout
   profile-card --> lazy-image
   profile-card --> flex-container
+  lazy-image --> scroll-observer
   elections-candidates --> grouped-candidate-display
   style grouped-candidate-display fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -43,6 +43,7 @@
 graph TD;
   profile-card --> lazy-image
   profile-card --> flex-container
+  lazy-image --> scroll-observer
   candidate-display --> profile-card
   profile-tabs --> profile-card
   style profile-card fill:#f9f,stroke:#333,stroke-width:4px

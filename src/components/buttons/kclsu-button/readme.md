@@ -40,6 +40,8 @@
  - [full-bio](../../profiles/bio)
  - [label-card](../../cards/label-card)
  - [preset-controls](../../projects/cloudinary/preset-controls)
+ - [project-card-events](../../projects/projectpage/project-card/project-card-events)
+ - [project-socials](../../projects/projectpage/project-socials)
  - [user-login](../../authentication/user-login)
 
 ### Depends on
@@ -55,6 +57,8 @@ graph TD;
   full-bio --> kclsu-button
   label-card --> kclsu-button
   preset-controls --> kclsu-button
+  project-card-events --> kclsu-button
+  project-socials --> kclsu-button
   user-login --> kclsu-button
   style kclsu-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -15,59 +15,93 @@
 </head>
 <body>
 
-  <!-- AUTUMN  ELECTIONS -->
-  <elections-candidates results removeron >
-    <elections-tab typeid="SO" tabtitle="Student Trustees" uid="SO" posts="Student Trustee" type="single" active></elections-tab>
-    <elections-tab typeid="NUS" tabtitle="Network Officers" uid="NUS" posts="LGBT+ Officer (open place)" type="multiple" ></elections-tab>
-    <elections-tab 
-      typeid="NUS" 
-      tabtitle="Union Development" 
-      uid="UD" posts="Activities Union Development Committee Member | Sustainability Union Development Committee Member" 
-      type="multiple" 
-      combineresults="true"
-      regex="Union Development"
-      replace=" "
-    ></elections-tab>
-  
-    <elections-tab typeid="DP" tabtitle="Academic" uid="" type="grouping" >
-      <group-tab 
-        active
-        tabtitle="Academic Board" 
-        searchterms="Academic Board"
-        regex="Academic Board - | Postgraduate | Representative"
-        replace=" | PG | Rep"
-      ></group-tab>
-      <group-tab 
-        tabtitle="Law Council" 
-        searchterms="Law Council">
-      </group-tab>
-      <group-tab 
-        tabtitle="IoPPN" 
-        searchterms="IoPPN">
-      </group-tab>
-      <group-tab 
-        tabtitle="NMS" 
-        searchterms="Informatics | Engineering | Mathematics"
-        regex="Representative | Postgraduate"
-        replace="Rep | PG"
-        >
-      </group-tab>
-      <group-tab 
-        tabtitle="Nursing & Midwifery" 
-        exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative | "
-        searchterms="Nursing | Midwifery"
-        regex="Midwifery| Nursing"
-        replace="Climate Change | Batman"
-      ></group-tab>
-    </elections-tab>
-  </elections-candidates>
+  <kclsu-button link="">Hello</kclsu-button>
+  <scroll-observer>
+    <label-card
+    cardtitle="Sometimes our titles are unnecessarily long"
+    text="Just make sure you're awesome"
+    image="https://www.kclsu.org/asset/News/6015/KCSLU-Welcome-Fair-LD-Nacho-51.jpg"
+    buttonlink="/"
+    buttontitle="Get your ticket"
+  ></label-card>
+  </scroll-observer>
+  </div>
 
-</br>
-<div style="width: 60%; margin: auto">
-  <image-text 
+  <project-page pagetitlecolours="black, white">
+    <project-heading pagetitle="New Year, New Start!!" text="A national week of action involving over 60 HE institutions featuring events and volunteering taster activities from a range of societies and charity partners." heading="18 December">
+      <p>Broooddfd</p>
+      <kclsu-button center>I am a button </kclsu-button>
+    </project-heading>
+    <project-heading heading="Events" >
+      <h3>Yeah bru</h3>
+    </project-heading>
+    <project-heading heading="Mindfule Events" text="We are so excited for a full week of mindful events from lorem ipsum to ipsum lorem there is something to suit everybody. Come and attend an event. Brooooooooosdfosdoosky Lewlllwwwesn dsfsrf s srferfgewrfwerfewr  efwefwefwefwe wefwewegerrt 46777 rg erdgvsdvsdcsdfdsdddddc vf bgrt hrtyhrthrthrth  efefefwefssdvsd   dfesfewfewfewfwefwef   fwefwefwefewfwef cadscad ewfwefwefwefwefwefwe efewfwef fefef ewdfwefcacsacfewfwe ">
+      <p>from lorem ipsum to ipsum lorem there is something to suit everybody. Come and att</p>
+      <kclsu-button center>Join Now</kclsu-button>
+    </project-heading>
+    <project-heading heading="Exam Support" ></project-heading>
+ 
+
+    <project-card 
+      focusarea="top"
+      transparent 
+      removepadding
+      heading="The Union Shop"
+      image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+      text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories.." 
+    >
+        <div>
+          <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+        </div>
+    </project-card>
+    <project-card eventtag="StudentRun">
+    </project-card>
+    <project-card heading="Rules of the Road" text="I am a line of text. I am always the middleman bro, but click my bio beneath. ">  <kclsu-button>Click me</kclsu-button></project-card>
+    <project-card>
+        <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked>
+    </project-card>
+
+
+    <project-image focusarea="center" link="https://res.cloudinary.com/kclsu-media/image/upload/v1587382816/website_uploads/Events/2R5A8265_vrj9iv.jpg"></project-image>
+    <project-image focusarea="center" alt="People at signup" link="https://res.cloudinary.com/kclsu-media/image/upload/t_Page_Banner/v1572606228/website_uploads/Events/KCLSU_WMD_25_of_28_g4mxyr.jpg"></project-image>
+    <project-image link="https://www.kclsu.org/asset/Event/16984/TV-SportsNight-Event-icon.png"></project-image>
+    <project-image focusarea="top" link=" https://res.cloudinary.com/kclsu-media/image/upload/v1603902967/temporary/IMG_5090_cnvv61.jpg"></project-image>
+   
+    
+    <project-socials ></project-socials>
+  </project-page>
+
+  <image-text
+    card 
+    heading="The Union Shop" 
+    image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+    text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+    >
+  <div>
+    <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+  </div>
+  </image-text>
+
+  <image-text
+    card
+    reversestack
+    switch
+    heading="The Union Shop" 
+    image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+    text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+  >
+    <div>
+      <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+    </div>
+</image-text>
+
+<!-- </br>
+<div style="width: 100%; margin: auto">
+  <image-text
+  card 
   heading="The Union Shop" 
   image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
-  text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
+  text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
   >
 <div>
   <kclsu-button small center link="/shop">Visit shop</kclsu-button>
@@ -75,12 +109,15 @@
   </image-text>
 
   <div class="imagetextcontainer">
-    <image-text 
-    heading="Totum Card" 
-    image="https://www.kclsu.org/pageassets/studentdeals/Totum-WebpageBanner-1200x678-02.png"
-    text = "TOTUM gives you access to massive student discounts and deals on eating out (including our venues!), fashion and tech which will make student life so much easier!"
-    textcolour="red"
-    smalltext
+      <image-text 
+      card
+      switch
+      heading="Totum Card" 
+      image="https://www.kclsu.org/pageassets/studentdeals/Totum-WebpageBanner-1200x678-02.png"
+      text = "TOTUM gives you access to massive student discounts and deals on eating out (including our venues!), fashion and tech which will make student life so much easier!"
+      textcolour="red"
+      imagezoom
+      smalltext
     >
 <div>
     <kclsu-button small center link="/shop">Get your Totum</kclsu-button>
@@ -90,13 +127,13 @@
 </div>
 
 </br>
-<div style="width: 300px; margin: auto; overflow: hidden">
+<div style="width: 800px; margin: auto; overflow: hidden">
   <kclsu-countdown textcolour="" date="September 23, 2020, 10:00:00" text="27 - 30 September 2020" fontsize="2.5vw"></kclsu-countdown>
-</div>
+</div> -->
 
 
-
-  <div style="margin:auto; width: 20%; ">
+<!-- 
+  <div style="margin:auto; width: 40%; ">
     <label-card
     cardtitle="This is a test card title"
     text="A line of subtext, because why not"
@@ -136,9 +173,11 @@
   smallheading
   reverse
   ></label-card>
-</br>
-<text-card cardtitle="This is another test heading" buttonlink="/"></text-card>
-  </div>
+</br> -->
+<!-- <scroll-observer>
+  <text-card cardtitle="This is another test heading" buttonlink="/"></text-card>
+</scroll-observer>
+  </div> -->
 
   <!-- <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked> -->
 
@@ -152,7 +191,79 @@
 
   
 
+  <elections-candidates electionid="163" results >
 
+    <elections-tab 
+        tabtitle="Student Trustees"
+        posts="Student Trustee"  
+        type="single" 
+        active
+    ></elections-tab>
+    <elections-tab 
+        tabtitle="Union Development" 
+        posts="Union Development Activities Committee | Union Development Sports Committee  | Union Development Sustainability Committee"   
+        type="multiple"
+        regex="Union Development"
+        replace=" "
+    ></elections-tab>
+    <elections-tab
+        combineresults="true"
+        tabtitle="Networks" 
+        posts="Disabled Students' Officer | LGBT+ Officer (trans place)" 
+        type="multiple" 
+    ></elections-tab>
+
+    <elections-tab tabtitle="Academic" type="grouping" >
+        <group-tab 
+            tabtitle="Academic Board" 
+            searchterms="Academic Board"
+            regex="Academic Board - | Representative | Undergraduate | Postgraduate | Representataive"
+            replace=" | Rep | UG | PG | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Bioscience" 
+            searchterms="Bioscience"
+            regex="Bioscience - | Representative"
+            replace=" | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="IoPPN" 
+            searchterms="IoPPN"
+            regex="IoPPN"
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="King's Business School Students' Association" 
+            searchterms="King's Business School"
+            regex="King's Business School Students' Association"
+            replace="KBSSA"
+            exclude="Academic Board - Kings Business School Undergraduate Representataive"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Law Council" 
+            searchterms="Law Council"
+            regex="Law Council - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="MSA" 
+            searchterms="MSA"
+            regex="MSA - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="NMS" 
+            searchterms="Informatics | Engineering | Chemistry | Mathematics | Physics | NMS"
+            regex="Representative"
+            replace="Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Nursing & Midwifery" 
+            searchterms="Nursing | Midwifery"
+            exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative"
+        ></group-tab>
+    </elections-tab>
+</elections-candidates>
 
 
 </body>

@@ -50,8 +50,12 @@ export class ElectionsCandidates {
                     candidates.filter((cand: mslCandidateI) => { cand.DisplayName !== 'Re-open Nominations (R.O.N.)'});
                 }
             })
+            .catch(er => {
+                console.log('MSL Data Fetch error: ')
+                console.log(er);
+                this.data = [];
+            })
       }
-
 
     createTabs(){
     //CREATE ARRAY OF FIELDS TO MAP OVER INTO TAB HEADINGS

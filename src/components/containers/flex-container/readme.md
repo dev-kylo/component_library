@@ -31,6 +31,10 @@
  - [last-year-scores](../../projects/varsity/varsity-landing/last-year-scores)
  - [preset-controls](../../projects/cloudinary/preset-controls)
  - [profile-card](../../cards/profile-card)
+ - [project-card](../../projects/projectpage/project-card)
+ - [project-card-events](../../projects/projectpage/project-card/project-card-events)
+ - [project-heading](../../projects/projectpage/project-heading)
+ - [project-socials](../../projects/projectpage/project-socials)
  - [varsity-landing](../../projects/varsity/varsity-landing)
  - [varsity-total-score](../../projects/varsity/varsity-landing/varsity-total-score)
  - [varsity-weather](../../projects/varsity/varsity-landing/varsity-weather)
@@ -47,6 +51,10 @@ graph TD;
   last-year-scores --> flex-container
   preset-controls --> flex-container
   profile-card --> flex-container
+  project-card --> flex-container
+  project-card-events --> flex-container
+  project-heading --> flex-container
+  project-socials --> flex-container
   varsity-landing --> flex-container
   varsity-total-score --> flex-container
   varsity-weather --> flex-container

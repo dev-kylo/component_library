@@ -5,7 +5,7 @@ h3 {
     color: var(--purple);
     display: inline-block;
     font-weight: bold;
-    font-family: bree_serifsemibold, bree-serif, serif;
+    font-family: bree_serifbold, bree-serif, serif;
     font-weight: 600;
 }
 
@@ -18,17 +18,16 @@ h3 {
 .image-text {
     /* max-width: 700px; */
     display: flex;
-    justify-content: center;
 }
 
 
 .info {
     padding: 30px;
-    width: 50%;
+    background-color: white;
 }
 
 .image {
-    width: 50%;
+    height: auto
 }
 
 .image img {
@@ -39,6 +38,10 @@ h3 {
 
 
 @media (max-width: 780px){
+
+    /* .image {
+        height: 350px;
+    } */
     .smalltext {
         font-size: 14px;
         line-height: 24px;
@@ -52,11 +55,7 @@ h3 {
 
 
 
-@media only screen and (max-width: 600px){
-    .image-text {
-        flex-direction: column!important;
-        width: 100%
-    }
+@media only screen and (max-width: 800px){
 
     .info {
         width: auto;
@@ -65,7 +64,7 @@ h3 {
     .image {
         justify-content: center;
         width: 80%;
-        margin: auto
+        margin: 0;
     }
 
 

@@ -23,18 +23,14 @@ export class GalleryThumbnailStacked {
     
     render() {
 
-        let style = {
-            'background-image': `url(${this.image})`,
-            'background-position': 'center center',
-            'background-size': 'cover',
-            'background-repeat': 'no-repeat'
-        }
 
         let activeStyle= !this.active? {} : {"background-color": "teal", "color": "white"};
 
         return (
             <div class="card" onClick={e => this.clickHandler(e)} style={activeStyle}>
-                <div class="image" style={style}></div>
+                <div class="image">
+                    <lazy-image thumbnail image={this.image} alt=""></lazy-image>
+                </div>
                 <div class="content">
                     <span class="title" style={activeStyle}>{this.videotitle}</span>
                 </div>

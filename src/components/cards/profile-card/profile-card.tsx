@@ -45,7 +45,7 @@ export class ProfileCard{
     return (
       <div class="profile-card">
         <div class="image">
-          <lazy-image animatein image={this.image}></lazy-image>
+          <lazy-image thumbnail animatein image={this.image}></lazy-image>
         </div>
         <div class="label">
           {nameLink}

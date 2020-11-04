@@ -30,7 +30,7 @@ export function mapData(parent:any){
             tab.posts = createArrayFromString(tab.posts, "|");
         }
     } 
-    console.log(tabMap)
+    // console.log(tabMap)
     return tabMap;
 }
 

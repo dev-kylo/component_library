@@ -160,6 +160,9 @@ export namespace Components {
         "regex": string;
         "replace": string;
         "searchterms": string;
+        /**
+          * The title for the tab for this group
+         */
         "tabtitle": string;
     }
     interface GroupedCandidateDisplay {
@@ -180,13 +183,29 @@ export namespace Components {
     }
     interface ImageText {
         /**
+          * This turns the component into a card, rather than just an image/text layout
+         */
+        "card": boolean;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
+        /**
           * The title at the top of the text
          */
         "heading": string;
         /**
+          * Applies to mobilescreen displays only. Will hide the image and display content only
+         */
+        "hideimage": boolean;
+        /**
           * The image link (get from Cloudinary)
          */
         "image": string;
+        /**
+          * Provide a set % width for the image. Takes a  number without the % sign
+         */
+        "imagewidth": string;
         /**
           * Animate the image (scale in) on scroll
          */
@@ -196,11 +215,15 @@ export namespace Components {
          */
         "margin": string;
         /**
+          * When the image and content stack, reverse the order so the image is on top
+         */
+        "reversestack": boolean;
+        /**
           * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
          */
         "smalltext": boolean;
         /**
-          * Switch the side the image is on
+          * Switch the side the image is on.
          */
         "switch": boolean;
         /**
@@ -338,25 +361,45 @@ export namespace Components {
           * If a button included, the text for the button
          */
         "buttontitle": string;
+        /**
+          * Specify a fixed cardheight
+         */
         "cardheight": string;
         /**
           * The main title of the card
          */
         "cardtitle": string;
         /**
+          * Specify a fixed card with
+         */
+        "cardwidth": string;
+        /**
           * The main title of the card
          */
         "highlightText": boolean;
+        /**
+          * The image URL for the card. Defaults to the kclsu logo
+         */
         "image": string;
         /**
           * The link for the card - NOT for the button
          */
         "link": string;
         /**
+          * Give the card a custom margin
+         */
+        "margin": string;
+        /**
           * If image to be displayed on right hand side
          */
         "reverse": boolean;
+        /**
+          * Make the card the smallest height possible
+         */
         "smallestheight": boolean;
+        /**
+          * This will reduce the size of the heading in the card
+         */
         "smallheading": boolean;
         /**
           * The sub text beneath the title
@@ -367,18 +410,34 @@ export namespace Components {
     }
     interface LazyImage {
         /**
+          * The alt tag of the image
+         */
+        "alt": string;
+        /**
           * Image will scale into view
          */
         "animatein": boolean;
+        /**
+          * If the image is being used only as thumbnail, such as project-cards and image-text components
+         */
+        "contentimage": boolean;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth": string;
         /**
-          * Use standard CSS values to set a focus area on the image. EG 'center left'
+          * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea": string;
         "image": string;
+        /**
+          * If you want to render an img element in a responsive container without object positioning
+         */
+        "plainimg": boolean;
+        /**
+          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+         */
+        "thumbnail": boolean;
         /**
           * A width for the image in pixels
          */
@@ -397,18 +456,6 @@ export namespace Components {
         "showbg": boolean;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
     interface NewsCard {
         "newslink": string;
@@ -502,6 +549,106 @@ export namespace Components {
          */
         "headings": any;
     }
+    interface ProjectCard {
+        /**
+          * Position the content of the card along the X axis
+         */
+        "alignx": string;
+        /**
+          * Position the content of the card along the Y axis
+         */
+        "aligny": string;
+        /**
+          * Display an event listing
+         */
+        "eventtag": string;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea": string;
+        "heading": string;
+        /**
+          * Applies to mobile displays only. Will hide the image and display content only
+         */
+        "hideimage": boolean;
+        "image": string;
+        "text": string;
+        "transparent": boolean;
+    }
+    interface ProjectCardEvents {
+        /**
+          * Optional. Supply a URL which the All Events button will link to if there are events. Otherwise this is dynamically set.
+         */
+        "alleventsurl": string;
+        /**
+          * The main heading
+         */
+        "heading": string;
+        /**
+          * The MSL Event tag
+         */
+        "tag": string;
+    }
+    interface ProjectHeading {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading": string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text": string;
+    }
+    interface ProjectImage {
+        /**
+          * The alt tage for the image
+         */
+        "alt": string;
+        /**
+          * Choose an area of the image to focus: top, left, right, bottom
+         */
+        "focusarea": string;
+        /**
+          * The image URL link
+         */
+        "link": string;
+    }
+    interface ProjectPage {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+    }
+    interface ProjectSocials {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The hashtag used in social media. Do not include the hash symbol
+         */
+        "hashtag": string;
+        /**
+          * For developers only. The name of the slot for this component to be inserted
+         */
+        "slotr": string;
+    }
     interface PurpleButton {
         "link": string;
         "whitetext": boolean;
@@ -511,6 +658,16 @@ export namespace Components {
     }
     interface QuickLinks {
         "name": string;
+    }
+    interface ScrollObserver {
+        /**
+          * Select the animation name for the child component on intersection. Choose from list of supplied animations
+         */
+        "animation": string;
+        /**
+          * If true, the component will render a child lazy-image
+         */
+        "lazyimage": boolean;
     }
     interface ShowSupport {
     }
@@ -926,6 +1083,42 @@ declare global {
         prototype: HTMLProfileTabsElement;
         new (): HTMLProfileTabsElement;
     };
+    interface HTMLProjectCardElement extends Components.ProjectCard, HTMLStencilElement {
+    }
+    var HTMLProjectCardElement: {
+        prototype: HTMLProjectCardElement;
+        new (): HTMLProjectCardElement;
+    };
+    interface HTMLProjectCardEventsElement extends Components.ProjectCardEvents, HTMLStencilElement {
+    }
+    var HTMLProjectCardEventsElement: {
+        prototype: HTMLProjectCardEventsElement;
+        new (): HTMLProjectCardEventsElement;
+    };
+    interface HTMLProjectHeadingElement extends Components.ProjectHeading, HTMLStencilElement {
+    }
+    var HTMLProjectHeadingElement: {
+        prototype: HTMLProjectHeadingElement;
+        new (): HTMLProjectHeadingElement;
+    };
+    interface HTMLProjectImageElement extends Components.ProjectImage, HTMLStencilElement {
+    }
+    var HTMLProjectImageElement: {
+        prototype: HTMLProjectImageElement;
+        new (): HTMLProjectImageElement;
+    };
+    interface HTMLProjectPageElement extends Components.ProjectPage, HTMLStencilElement {
+    }
+    var HTMLProjectPageElement: {
+        prototype: HTMLProjectPageElement;
+        new (): HTMLProjectPageElement;
+    };
+    interface HTMLProjectSocialsElement extends Components.ProjectSocials, HTMLStencilElement {
+    }
+    var HTMLProjectSocialsElement: {
+        prototype: HTMLProjectSocialsElement;
+        new (): HTMLProjectSocialsElement;
+    };
     interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
     }
     var HTMLPurpleButtonElement: {
@@ -943,6 +1136,12 @@ declare global {
     var HTMLQuickLinksElement: {
         prototype: HTMLQuickLinksElement;
         new (): HTMLQuickLinksElement;
+    };
+    interface HTMLScrollObserverElement extends Components.ScrollObserver, HTMLStencilElement {
+    }
+    var HTMLScrollObserverElement: {
+        prototype: HTMLScrollObserverElement;
+        new (): HTMLScrollObserverElement;
     };
     interface HTMLShowSupportElement extends Components.ShowSupport, HTMLStencilElement {
     }
@@ -1107,9 +1306,16 @@ declare global {
         "profile-card-layout": HTMLProfileCardLayoutElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
+        "project-card": HTMLProjectCardElement;
+        "project-card-events": HTMLProjectCardEventsElement;
+        "project-heading": HTMLProjectHeadingElement;
+        "project-image": HTMLProjectImageElement;
+        "project-page": HTMLProjectPageElement;
+        "project-socials": HTMLProjectSocialsElement;
         "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
+        "scroll-observer": HTMLScrollObserverElement;
         "show-support": HTMLShowSupportElement;
         "support-option": HTMLSupportOptionElement;
         "support-progress": HTMLSupportProgressElement;
@@ -1287,6 +1493,9 @@ declare namespace LocalJSX {
         "regex"?: string;
         "replace"?: string;
         "searchterms"?: string;
+        /**
+          * The title for the tab for this group
+         */
         "tabtitle"?: string;
     }
     interface GroupedCandidateDisplay {
@@ -1307,13 +1516,29 @@ declare namespace LocalJSX {
     }
     interface ImageText {
         /**
+          * This turns the component into a card, rather than just an image/text layout
+         */
+        "card"?: boolean;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
+        /**
           * The title at the top of the text
          */
         "heading"?: string;
         /**
+          * Applies to mobilescreen displays only. Will hide the image and display content only
+         */
+        "hideimage"?: boolean;
+        /**
           * The image link (get from Cloudinary)
          */
         "image"?: string;
+        /**
+          * Provide a set % width for the image. Takes a  number without the % sign
+         */
+        "imagewidth"?: string;
         /**
           * Animate the image (scale in) on scroll
          */
@@ -1323,11 +1548,15 @@ declare namespace LocalJSX {
          */
         "margin"?: string;
         /**
+          * When the image and content stack, reverse the order so the image is on top
+         */
+        "reversestack"?: boolean;
+        /**
           * Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes reduced
          */
         "smalltext"?: boolean;
         /**
-          * Switch the side the image is on
+          * Switch the side the image is on.
          */
         "switch"?: boolean;
         /**
@@ -1467,25 +1696,45 @@ declare namespace LocalJSX {
           * If a button included, the text for the button
          */
         "buttontitle"?: string;
+        /**
+          * Specify a fixed cardheight
+         */
         "cardheight"?: string;
         /**
           * The main title of the card
          */
         "cardtitle"?: string;
         /**
+          * Specify a fixed card with
+         */
+        "cardwidth"?: string;
+        /**
           * The main title of the card
          */
         "highlightText"?: boolean;
+        /**
+          * The image URL for the card. Defaults to the kclsu logo
+         */
         "image"?: string;
         /**
           * The link for the card - NOT for the button
          */
         "link"?: string;
         /**
+          * Give the card a custom margin
+         */
+        "margin"?: string;
+        /**
           * If image to be displayed on right hand side
          */
         "reverse"?: boolean;
+        /**
+          * Make the card the smallest height possible
+         */
         "smallestheight"?: boolean;
+        /**
+          * This will reduce the size of the heading in the card
+         */
         "smallheading"?: boolean;
         /**
           * The sub text beneath the title
@@ -1496,18 +1745,34 @@ declare namespace LocalJSX {
     }
     interface LazyImage {
         /**
+          * The alt tag of the image
+         */
+        "alt"?: string;
+        /**
           * Image will scale into view
          */
         "animatein"?: boolean;
+        /**
+          * If the image is being used only as thumbnail, such as project-cards and image-text components
+         */
+        "contentimage"?: boolean;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth"?: string;
         /**
-          * Use standard CSS values to set a focus area on the image. EG 'center left'
+          * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * If you want to render an img element in a responsive container without object positioning
+         */
+        "plainimg"?: boolean;
+        /**
+          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+         */
+        "thumbnail"?: boolean;
         /**
           * A width for the image in pixels
          */
@@ -1527,18 +1792,6 @@ declare namespace LocalJSX {
         "showbg"?: boolean;
     }
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface NewsCard {
         "newslink"?: string;
@@ -1635,6 +1888,106 @@ declare namespace LocalJSX {
          */
         "headings"?: any;
     }
+    interface ProjectCard {
+        /**
+          * Position the content of the card along the X axis
+         */
+        "alignx"?: string;
+        /**
+          * Position the content of the card along the Y axis
+         */
+        "aligny"?: string;
+        /**
+          * Display an event listing
+         */
+        "eventtag"?: string;
+        /**
+          * The primary image focus area. standard CSS object-position values to set a focus area on the image. EG 'center left'
+         */
+        "focusarea"?: string;
+        "heading"?: string;
+        /**
+          * Applies to mobile displays only. Will hide the image and display content only
+         */
+        "hideimage"?: boolean;
+        "image"?: string;
+        "text"?: string;
+        "transparent"?: boolean;
+    }
+    interface ProjectCardEvents {
+        /**
+          * Optional. Supply a URL which the All Events button will link to if there are events. Otherwise this is dynamically set.
+         */
+        "alleventsurl"?: string;
+        /**
+          * The main heading
+         */
+        "heading"?: string;
+        /**
+          * The MSL Event tag
+         */
+        "tag"?: string;
+    }
+    interface ProjectHeading {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading"?: string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text"?: string;
+    }
+    interface ProjectImage {
+        /**
+          * The alt tage for the image
+         */
+        "alt"?: string;
+        /**
+          * Choose an area of the image to focus: top, left, right, bottom
+         */
+        "focusarea"?: string;
+        /**
+          * The image URL link
+         */
+        "link"?: string;
+    }
+    interface ProjectPage {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+    }
+    interface ProjectSocials {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The hashtag used in social media. Do not include the hash symbol
+         */
+        "hashtag"?: string;
+        /**
+          * For developers only. The name of the slot for this component to be inserted
+         */
+        "slotr"?: string;
+    }
     interface PurpleButton {
         "link"?: string;
         "whitetext"?: boolean;
@@ -1644,6 +1997,16 @@ declare namespace LocalJSX {
     }
     interface QuickLinks {
         "name"?: string;
+    }
+    interface ScrollObserver {
+        /**
+          * Select the animation name for the child component on intersection. Choose from list of supplied animations
+         */
+        "animation"?: string;
+        /**
+          * If true, the component will render a child lazy-image
+         */
+        "lazyimage"?: boolean;
     }
     interface ShowSupport {
     }
@@ -1790,9 +2153,16 @@ declare namespace LocalJSX {
         "profile-card-layout": ProfileCardLayout;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
+        "project-card": ProjectCard;
+        "project-card-events": ProjectCardEvents;
+        "project-heading": ProjectHeading;
+        "project-image": ProjectImage;
+        "project-page": ProjectPage;
+        "project-socials": ProjectSocials;
         "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
+        "scroll-observer": ScrollObserver;
         "show-support": ShowSupport;
         "support-option": SupportOption;
         "support-progress": SupportProgress;
@@ -1871,9 +2241,16 @@ declare module "@stencil/core" {
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
+            "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
+            "project-card-events": LocalJSX.ProjectCardEvents & JSXBase.HTMLAttributes<HTMLProjectCardEventsElement>;
+            "project-heading": LocalJSX.ProjectHeading & JSXBase.HTMLAttributes<HTMLProjectHeadingElement>;
+            "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
+            "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
+            "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
             "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
+            "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;
             "show-support": LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
             "support-option": LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
             "support-progress": LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
