@@ -7,28 +7,39 @@
 
 ## Properties
 
-| Property       | Attribute      | Description                                                                                          | Type      | Default                                                                                                                                                           |
-| -------------- | -------------- | ---------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `animatein`    | `animatein`    | Image will scale into view                                                                           | `boolean` | `false`                                                                                                                                                           |
-| `desktopwidth` | `desktopwidth` | If setting width for mobile and desktop, use width property for mobile and this property for desktop | `string`  | `undefined`                                                                                                                                                       |
-| `focusarea`    | `focusarea`    | Use standard CSS values to set a focus area on the image. EG 'center left'                           | `string`  | `'center'`                                                                                                                                                        |
-| `image`        | `image`        |                                                                                                      | `string`  | `'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'` |
-| `width`        | `width`        | A width for the image in pixels                                                                      | `string`  | `'500'`                                                                                                                                                           |
+| Property       | Attribute      | Description                                                                                          | Type      | Default                                                                                                                       |
+| -------------- | -------------- | ---------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `alt`          | `alt`          | The alt tag of the image                                                                             | `string`  | `''`                                                                                                                          |
+| `animatein`    | `animatein`    | Image will scale into view                                                                           | `boolean` | `false`                                                                                                                       |
+| `contentimage` | `contentimage` | If the image is being used only as thumbnail, such as project-cards and image-text components        | `boolean` | `false`                                                                                                                       |
+| `desktopwidth` | `desktopwidth` | If setting width for mobile and desktop, use width property for mobile and this property for desktop | `string`  | `undefined`                                                                                                                   |
+| `focusarea`    | `focusarea`    | Use standard CSS object-position values to set a focus area on the image. EG 'center left'           | `string`  | `'center'`                                                                                                                    |
+| `image`        | `image`        |                                                                                                      | `string`  | `'https://res.cloudinary.com/kclsu-media/image/upload/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'` |
+| `plainimg`     | `plainimg`     | If you want to render an img element in a responsive container without object positioning            | `boolean` | `false`                                                                                                                       |
+| `thumbnail`    | `thumbnail`    | If the image is being used only as thumbnail, such as in event cards, label cards and profile cards  | `boolean` | `false`                                                                                                                       |
+| `width`        | `width`        | A width for the image in pixels                                                                      | `string`  | `undefined`                                                                                                                   |
 
 
 ## Dependencies
 
 ### Used by
 
+ - [gallery-thumbnail-stacked](../../videos/video-gallery-stacked/gallery-thumbnail-stacked)
  - [image-text](../../cards/image-text)
  - [label-card](../../cards/label-card)
  - [profile-card](../../cards/profile-card)
  - [profile-logo-card](../../cards/profile-logo-card)
  - [project-image](../../projects/projectpage/project-image)
 
+### Depends on
+
+- [scroll-observer](../../scroll)
+
 ### Graph
 ```mermaid
 graph TD;
+  lazy-image --> scroll-observer
+  gallery-thumbnail-stacked --> lazy-image
   image-text --> lazy-image
   label-card --> lazy-image
   profile-card --> lazy-image

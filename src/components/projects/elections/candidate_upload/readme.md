@@ -36,6 +36,7 @@ graph TD;
   candidate-display --> profile-card-layout
   profile-card --> lazy-image
   profile-card --> flex-container
+  lazy-image --> scroll-observer
   kclsu-modal --> modal-backdrop
   user-login --> kclsu-modal
   user-login --> kclsu-button

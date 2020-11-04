@@ -11,7 +11,7 @@ describe('Cloudinary App', ( ) => {
         })
         app.rootInstance.public_id = "temporary/Screenshot_2020-05-06_at_17.09.28_ypsftq";
         await app.waitForChanges();
-        expect(app.root.querySelector('img')).toBeTruthy();
+        expect(app.root.shadowRoot.querySelector('img')).toBeTruthy();
     })
 
     it('if public_id is provided, the presets should show', async () => {
@@ -22,7 +22,7 @@ describe('Cloudinary App', ( ) => {
        expect(app.root.querySelector('preset-controls')).toBeFalsy();
        app.rootInstance.public_id = "temporary/Screenshot_2020-05-06_at_17.09.28_ypsftq";
        await app.waitForChanges();
-       expect(app.root.querySelector('preset-controls')).toBeTruthy();
+       expect(app.root.shadowRoot.querySelector('preset-controls')).toBeTruthy();
    })
 
 //     it('should make a fetch call each time the public_id is updated', async () => {

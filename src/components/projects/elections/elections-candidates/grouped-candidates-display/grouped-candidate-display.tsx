@@ -10,7 +10,7 @@ import { Component, h, Prop, State, Element} from '@stencil/core';
 export class GroupedCandidates {
 
     @Prop() data;
-
+    
     @State() activePosition;
     @State() current;
 

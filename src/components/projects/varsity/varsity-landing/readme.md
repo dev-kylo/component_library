@@ -42,6 +42,7 @@ graph TD;
   label-card --> kclsu-button
   label-card --> lazy-image
   kclsu-button --> flex-container
+  lazy-image --> scroll-observer
   varsity-total-score --> flex-container
   varsity-upcoming --> kclsu-modal
   varsity-upcoming --> varsity-next-matches

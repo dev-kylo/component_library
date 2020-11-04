@@ -34,6 +34,7 @@ graph TD;
   label-card --> kclsu-button
   label-card --> lazy-image
   kclsu-button --> flex-container
+  lazy-image --> scroll-observer
   varsity-landing --> varsity-upcoming
   style varsity-upcoming fill:#f9f,stroke:#333,stroke-width:4px
 ```
