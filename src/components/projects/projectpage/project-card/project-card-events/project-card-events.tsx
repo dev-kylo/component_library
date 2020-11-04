@@ -84,7 +84,7 @@ export class ProjectCardEvents {
         return (
             <div>
                 <h3 style={{"padding" : "1em", "text-align": "center"}}>{this.heading}</h3>
-                <slot></slot>
+                <slot></slot>   
                 <flex-container alignx="space-around" aligny="center" wrap>
                     {cards.length > 0 ? cards : noevents}
                     {this.data && this.data.length === 0 ? noevents : ''}
