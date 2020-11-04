@@ -559,15 +559,39 @@ export namespace Components {
         "tag": string;
     }
     interface ProjectHeading {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
         "colourscheme": string;
+        /**
+          * The <h2> heading for the section
+         */
         "heading": string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
         "pagetitle": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
         "pagetitlecolours": string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
         "text": string;
     }
     interface ProjectImage {
+        /**
+          * The alt tage for the image
+         */
         "alt": string;
+        /**
+          * Choose an area of the image to focus: top, left, right, bottom
+         */
         "focusarea": string;
+        /**
+          * The image URL link
+         */
         "link": string;
     }
     interface ProjectPage {
@@ -581,11 +605,17 @@ export namespace Components {
         "pagetitlecolours": string;
     }
     interface ProjectSocials {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
         "colourscheme": string;
         /**
           * The hashtag used in social media. Do not include the hash symbol
          */
         "hashtag": string;
+        /**
+          * For developers only. The name of the slot for this component to be inserted
+         */
         "slotr": string;
     }
     interface PurpleButton {
@@ -599,7 +629,13 @@ export namespace Components {
         "name": string;
     }
     interface ScrollObserver {
+        /**
+          * Select the animation name for the child component on intersection. Choose from list of supplied animations
+         */
         "animation": string;
+        /**
+          * If true, the component will render a child lazy-image
+         */
         "lazyimage": boolean;
     }
     interface ShowSupport {
@@ -1831,15 +1867,39 @@ declare namespace LocalJSX {
         "tag"?: string;
     }
     interface ProjectHeading {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
         "colourscheme"?: string;
+        /**
+          * The <h2> heading for the section
+         */
         "heading"?: string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
         "pagetitle"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
         "pagetitlecolours"?: string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
         "text"?: string;
     }
     interface ProjectImage {
+        /**
+          * The alt tage for the image
+         */
         "alt"?: string;
+        /**
+          * Choose an area of the image to focus: top, left, right, bottom
+         */
         "focusarea"?: string;
+        /**
+          * The image URL link
+         */
         "link"?: string;
     }
     interface ProjectPage {
@@ -1853,11 +1913,17 @@ declare namespace LocalJSX {
         "pagetitlecolours"?: string;
     }
     interface ProjectSocials {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
         "colourscheme"?: string;
         /**
           * The hashtag used in social media. Do not include the hash symbol
          */
         "hashtag"?: string;
+        /**
+          * For developers only. The name of the slot for this component to be inserted
+         */
         "slotr"?: string;
     }
     interface PurpleButton {
@@ -1871,7 +1937,13 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface ScrollObserver {
+        /**
+          * Select the animation name for the child component on intersection. Choose from list of supplied animations
+         */
         "animation"?: string;
+        /**
+          * If true, the component will render a child lazy-image
+         */
         "lazyimage"?: boolean;
     }
     interface ShowSupport {

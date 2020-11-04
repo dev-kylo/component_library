@@ -30,7 +30,7 @@ export class ProjectCardEvents {
 
 
     componentDidLoad(){
-        fetch(`https://www.kclsu.org/svc/feeds/events/6013?subtree=true`)
+        fetch(`https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types="welcomeFeatured"`)
         .then(res => {
           if (!res.ok) throw new Error(res.statusText);
           return res.json();
@@ -57,8 +57,7 @@ export class ProjectCardEvents {
         let cards: any = [];
         const mobile = this.mobilescreen;
         const tablet = this.tabletscreen;
-        console.log({mobile, tablet})
-        const noevents = <p>There are no current or upcoming events.</p>
+        const noevents = <p style={{"padding": "0 2em"}}>There are no current or upcoming events. </p>
         const buttonmsg = this.data && this.data.length > 1 ? `See all ${this.data.length} events` : `See all events` ;
 
 
@@ -87,7 +86,7 @@ export class ProjectCardEvents {
                 <h3 style={{"padding" : "1em", "text-align": "center"}}>{this.heading}</h3>
                 <slot></slot>
                 <flex-container alignx="space-around" aligny="center" wrap>
-                    {cards ? cards : noevents}
+                    {cards.length > 0 ? cards : noevents}
                     {this.data && this.data.length === 0 ? noevents : ''}
                 </flex-container>
                 <kclsu-button center link="" margin="2em 1em" newtab> {buttonmsg} </kclsu-button>

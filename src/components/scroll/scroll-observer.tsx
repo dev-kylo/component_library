@@ -7,7 +7,9 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class ScrollObserver {
 
+    /** Select the animation name for the child component on intersection. Choose from list of supplied animations */
     @Prop() animation: string = 'scaleIn';
+    /** If true, the component will render a child lazy-image  */
     @Prop() lazyimage: boolean;
 
     @Element() host: HTMLElement;

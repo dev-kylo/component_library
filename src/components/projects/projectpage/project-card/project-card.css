@@ -7,6 +7,10 @@
     opacity: 0;
 }
 
+/* .card p, .card h3, .card span {
+    padding: 0 2em;
+} */
+
 h3 {
     color: var(--purple);
     margin-bottom: 0;

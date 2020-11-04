@@ -8,10 +8,13 @@ import { createArrayFromString } from '../../../../utils/utils';
     shadow: true
 })
 export class ProjectSocials {
+    /** For developers only. The name of the slot for this component to be inserted */
     @Prop() slotr:string ="socials";
     /** The hashtag used in social media. Do not include the hash symbol */
     @Prop() hashtag:string;
+     /** The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour" */
     @Prop() colourscheme: string;
+    
     @Element() host: HTMLElement;
 
     componentWillLoad(){
@@ -23,9 +26,9 @@ export class ProjectSocials {
     render() {
         const bgscheme: string[] = createArrayFromString(this.colourscheme, ',');
         const bgcolour = {
-            "background-color": bgscheme[1] || "white",
+            "background-color": bgscheme[1] || "#502669",
         }
-        const followMsg = this.hashtag? (<p style={{"color": bgscheme[0] || "#502669"}}>Keep track of the news and events! Use hashtag <em>#{this.hashtag}</em> and share your experiences.</p>) : (<p style={{"color": bgscheme[0] || "#502669"}}>Keep track of the news and events!</p>);
+        const followMsg = this.hashtag? (<p style={{"color": bgscheme[0] || "white"}}>Keep track of the news and events! Use hashtag <em>#{this.hashtag}</em> and share your experiences.</p>) : (<p style={{"color": bgscheme[0] || "white"}}>Keep track of the news and events!</p>);
         
         return (
             <div class="grid">
