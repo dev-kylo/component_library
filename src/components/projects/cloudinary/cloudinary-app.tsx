@@ -121,7 +121,7 @@ export class CloudinaryApp {
         let controls = ([
                         <flex-container alignx='justify-content' wrap fillcontainer>
                             <kclsu-button newtab emitid='showOriginal' small >Original</kclsu-button>
-                            <kclsu-button newtab download small link={this.image}>Download</kclsu-button>
+                            <kclsu-button newtab download small link={this.image}>Open</kclsu-button>
                             <preset-controls></preset-controls>
                         </flex-container>]);
 
@@ -130,7 +130,7 @@ export class CloudinaryApp {
                 <div class="presets">
                     <div class="instructions">
                         <h2>KCLSU Cloudinary App</h2>
-                        <p>Upload your image<br></br> Select your preset<br></br><em>'Right Click Save As'</em> to download.</p>
+                        <p>Upload your image<br></br> Select your preset<br></br><em>'Right Click Save As'</em> on the image to download.</p>
                     </div>
                     {!this.image? '' : this.mapPresets()}
                 </div>
