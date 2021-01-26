@@ -310,13 +310,25 @@ export namespace Components {
          */
         "fontsize": any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin": string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg": boolean;
+        /**
           * The text beneath the countdown
          */
-        "text": any;
+        "text": string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour": any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width": string;
     }
     interface KclsuModal {
         /**
@@ -1645,13 +1657,25 @@ declare namespace LocalJSX {
          */
         "fontsize"?: any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin"?: string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg"?: boolean;
+        /**
           * The text beneath the countdown
          */
-        "text"?: any;
+        "text"?: string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour"?: any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width"?: string;
     }
     interface KclsuModal {
         /**

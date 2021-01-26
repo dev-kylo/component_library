@@ -15,7 +15,14 @@ export class KclsuCountdown {
     /** Optional: set a colour for the text beneath the countdown. */
     @Prop() textcolour;
     /** The text beneath the countdown */
-    @Prop() text;
+    @Prop() text: string;
+    /** The width of the countdown clock - in Pixels ONLY */
+    @Prop() width: string;
+    /** The margin of the countdown clock */
+    @Prop() margin: string;
+    /** Give the message text a white block background */
+    @Prop() msgbg: boolean;
+
 
     countDownDate : Date;
 
@@ -42,9 +49,6 @@ export class KclsuCountdown {
 
     }
 
-    // componentShouldUpdate(newVal, oldVal, name){
-    //     if (name === )
-    // }
 
     calculateTimeRemaining(){
             const timeNow : Date = new Date();
@@ -67,35 +71,51 @@ export class KclsuCountdown {
            var {days, hours, minutes, seconds} = this.timeObject;
         }
 
-        let fontsize;
-        if(screen.width > 600) {
-            fontsize = {
-                'font-size': this.fontsize? this.fontsize : '6vw'
-            }
-        }
-    
+        const clockStyle = {} as any;
+        const timeTextStyle = {} as any;
+        const timeNumberStyle = {} as any;
+        const textStyle = {} as any;
 
+        const width = this.width;
+        if (this.width) {
+            const newWidth = width.replace('px', '');
+            clockStyle.maxWidth = this.width;
+            clockStyle.minWidth = '300px'
+            if (+newWidth < 600){
+                timeTextStyle.fontSize = '0.6em';
+                timeTextStyle.padding = '0.25em;';
+                timeNumberStyle.fontSize = '2em';
+                timeNumberStyle.padding = '0.25em;';
+            }
+        };
+        if (this.margin) clockStyle.margin = this.margin;
+        if (this.msgbg){
+            textStyle.backgroundColor = 'white';
+            textStyle.margin = '0.2em';
+            textStyle.padding = '0.2em';
+        } 
+        if (this.textcolour) textStyle.color = this.textcolour;
         return (
-            <div class="countdown">
+            <div class="countdown" style={clockStyle}>
                 <div class="flex">
                     <div class="timeBlock">
-                        <span style={fontsize}>{days ?? '-'}</span>
-                        <span>DAYS</span>
+                        <span style={timeNumberStyle}>{days ?? '-'}</span>
+                        <span style={timeTextStyle}>DAYS</span>
                     </div>
                     <div class="timeBlock">
-                        <span style={fontsize}>{hours ?? '-'}</span>
-                        <span>HOURS</span>  
+                        <span style={timeNumberStyle}>{hours ?? '-'}</span>
+                        <span style={timeTextStyle}>HOURS</span>  
                     </div>
                     <div class="timeBlock">
-                        <span style={fontsize}>{minutes ?? '-'}</span>
-                        <span>MINUTES</span>
+                        <span style={timeNumberStyle}>{minutes ?? '-'}</span>
+                        <span style={timeTextStyle}>MINUTES</span>
                     </div>
                     <div class="timeBlock">
-                        <span style={fontsize}>{seconds ?? '-'}</span>
-                        <span>SECONDS</span> 
+                        <span style={timeNumberStyle}>{seconds ?? '-'}</span>
+                        <span style={timeTextStyle}>SECONDS</span> 
                     </div>
                 </div>
-                <span class="text" style={{'color': this.textcolour? this.textcolour : '#502669'}}> 
+                <span class="text" style={textStyle}> 
                     <time>{this.text}</time>
                 </span>
             </div>

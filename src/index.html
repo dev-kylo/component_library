@@ -14,62 +14,45 @@
 
 </head>
 <body>
-
-  <kclsu-button link="">Hello</kclsu-button>
-  <scroll-observer>
-    <label-card
-    cardtitle="Sometimes our titles are unnecessarily long"
-    text="Just make sure you're awesome"
-    image="https://www.kclsu.org/asset/News/6015/KCSLU-Welcome-Fair-LD-Nacho-51.jpg"
-    buttonlink="/"
-    buttontitle="Get your ticket"
-  ></label-card>
-  </scroll-observer>
+  
+  <div style="height: 800px; width: 100%; background-color: red; position: relative">
+    <kclsu-countdown msgbg width="400px" margin="2em" text="Until Nominations Open Again and Again and Again just for giggles" date="January 28, 2021, 14:10:00"></kclsu-countdown>
   </div>
 
-  <project-page pagetitlecolours="black, white">
-    <project-heading pagetitle="New Year, New Start!!" text="A national week of action involving over 60 HE institutions featuring events and volunteering taster activities from a range of societies and charity partners." heading="18 December">
-      <p>Broooddfd</p>
-      <kclsu-button center>I am a button </kclsu-button>
+  <!-- SECTION 1-->
+  <project-page>
+    <project-heading pagetitle="Disability History Month" text="A national week of action involving over 60 HE institutions featuring events and volunteering taster activities from a range of societies and charity partners." heading="December 2020">
     </project-heading>
-    <project-heading heading="Events" >
-      <h3>Yeah bru</h3>
-    </project-heading>
-    <project-heading heading="Mindfule Events" text="We are so excited for a full week of mindful events from lorem ipsum to ipsum lorem there is something to suit everybody. Come and attend an event. Brooooooooosdfosdoosky Lewlllwwwesn dsfsrf s srferfgewrfwerfewr  efwefwefwefwe wefwewegerrt 46777 rg erdgvsdvsdcsdfdsdddddc vf bgrt hrtyhrthrthrth  efefefwefssdvsd   dfesfewfewfewfwefwef   fwefwefwefewfwef cadscad ewfwefwefwefwefwefwe efewfwef fefef ewdfwefcacsacfewfwe ">
-      <p>from lorem ipsum to ipsum lorem there is something to suit everybody. Come and att</p>
-      <kclsu-button center>Join Now</kclsu-button>
-    </project-heading>
-    <project-heading heading="Exam Support" ></project-heading>
- 
-
     <project-card 
-      focusarea="top"
-      transparent 
-      removepadding
-      heading="The Union Shop"
-      image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
-      text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories.." 
+      heading="The Disabled Students Network"
+      image="https://www.kclsu.org/asset/Organisation/14728/Naiyira-Headshot.jpeg"
+      text = "This Network refers to all students who self-define as disabled, including (if they wish) but not limited to, students with a physical or mental impairment, a long-term medical or mental health condition or Specific Learning Difficulties (SpLDs). Identify as Disabled? Check our page for more specific updates. You can also contact disabled@kclsu.org about taking part, or email representation@kclsu.org for more information about networks." 
     >
         <div>
-          <kclsu-button small center link="/shop">Visit shop</kclsu-button>
+          <kclsu-button center link="/groups/networks/14728/"> Visit the Disabled Students Network </kclsu-button>
         </div>
-    </project-card>
-    <project-card eventtag="StudentRun">
-    </project-card>
-    <project-card heading="Rules of the Road" text="I am a line of text. I am always the middleman bro, but click my bio beneath. ">  <kclsu-button>Click me</kclsu-button></project-card>
-    <project-card>
-        <video-gallery-stacked playlist="https://www.youtube.com/watch?v=9gUK3QXgCY0&amp;list=PLYSmFQx35plhilQ7O1DtKFXS8CIr7wB0H&amp;index=6"></video-gallery-stacked>
-    </project-card>
+  </project-card>
+  <project-image focusarea="center" link="  https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_jpg,fl_any_format,g_faces:center,h_800,q_85,w_2205/v1571310866/website_uploads/KCLSU_high_res-28_xrqied.jpg"></project-image>
 
 
-    <project-image focusarea="center" link="https://res.cloudinary.com/kclsu-media/image/upload/v1587382816/website_uploads/Events/2R5A8265_vrj9iv.jpg"></project-image>
+  <!-- SECTION 2-->
+    <project-heading heading="Events" text="Join us on Wednesday for the DHM event"></project-heading>
+    <project-card eventtag="DHM"></project-card>
     <project-image focusarea="center" alt="People at signup" link="https://res.cloudinary.com/kclsu-media/image/upload/t_Page_Banner/v1572606228/website_uploads/Events/KCLSU_WMD_25_of_28_g4mxyr.jpg"></project-image>
-    <project-image link="https://www.kclsu.org/asset/Event/16984/TV-SportsNight-Event-icon.png"></project-image>
-    <project-image focusarea="top" link=" https://res.cloudinary.com/kclsu-media/image/upload/v1603902967/temporary/IMG_5090_cnvv61.jpg"></project-image>
-   
     
-    <project-socials ></project-socials>
-  </project-page>
+   
+  <!-- SECTION 3 -->
+    <project-heading heading="Volunteering Opportunities" text="There are a number of volunteering opportunities to get involved in, here are some of the featured ones.">
+      <kclsu-button center>See all volunteering opportunities</kclsu-button>
+    </project-heading>
+    <project-card heading="Opportunities">
+      <div id="volunlist">
+        The list goes here
+      </div>
+    </project-card>
+    <project-image focusarea="top" link=" https://res.cloudinary.com/kclsu-media/image/upload/v1603902967/temporary/IMG_5090_cnvv61.jpg"></project-image>
+      <project-socials ></project-socials>
+    </project-page>
 
   <image-text
     card 
@@ -83,17 +66,32 @@
   </image-text>
 
   <image-text
-    card
     reversestack
     switch
     heading="The Union Shop" 
-    image="https://www.kclsu.org/pageassets/shop/shop3.jpg"
+    image="https://www.kclsu.org/pageassets/groups/activities/running/training/CAT.jpg"
     text = "Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary. Take a look at our other goodies in The Union Shop, including sweatshirts, accessories and stationary."
   >
     <div>
       <kclsu-button small center link="/shop">Visit shop</kclsu-button>
     </div>
 </image-text>
+
+<image-text 
+reversestack
+switch
+heading="Michael - Sports and Wellbeing Manager" text="df" image="https://www.kclsu.org/pageassets/groups/activities/running/training/Michael.jpg">
+  <ul>
+    <li>AB de Villiers</li>
+    <li>Barack Obama</li>
+    <li>Queen Elizabeth II</li>
+  </ul>
+  <a href="mailto:michael.pym@kclsu.org" class="arrowBefore">Get in touch with Michael</a>
+</image-text>
+
+
+<!-- https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w_800/https://kclsu.org/pageassets/groups/activities/running/training/CAT.jpg
+https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w_800/https://www.kclsu.org/pageassets/groups/activities/running/training/CAT.jpg -->
 
 <!-- </br>
 <div style="width: 100%; margin: auto">
