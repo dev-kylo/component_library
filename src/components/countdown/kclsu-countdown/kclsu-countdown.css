@@ -35,10 +35,11 @@
     font-family: bree_serifsemibold, bree-serif, serif;
     font-weight: 600;
     color: var(--purple);
+    font-size: 4em;
 }
 
 .timeBlock span:nth-child(even){
-    font-size: 1.1vw;
+    font-size: 1em;
     line-height: 20px;
     font-family: "Open Sans", Arial, sans-serif;
     line-height: 32px;
@@ -58,6 +59,25 @@
 }
 
 
+@media (max-width: 1200px){
+
+    .timeBlock {
+        padding: 0.25em;
+        min-height: 60px;
+    }
+
+    .timeBlock span:nth-child(odd){
+        font-size: 3em;
+    }
+    .timeBlock span:nth-child(even){
+        font-size: 0.8em;
+    }
+    .text {
+        font-size: 1.2em;
+    }
+    
+}
+
 
 @media (max-width: 600px){
 
@@ -67,13 +87,10 @@
     }
 
     .timeBlock span:nth-child(odd){
-        font-size: 8vw;
+        font-size: 2em;
     }
     .timeBlock span:nth-child(even){
-        font-size: 3vw;
+        font-size: 0.6em;
     }
-    .text {
-        font-size: 1.2em;
-    }
-    
+   
 }

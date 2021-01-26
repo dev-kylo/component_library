@@ -22,11 +22,17 @@ export class LabelCard {
     @Prop() highlightText: boolean;
     /** If image to be displayed on right hand side */
     @Prop() reverse: boolean;
+    /** This will reduce the size of the heading in the card */
     @Prop() smallheading: boolean;
+    /** Specify a fixed cardheight */
     @Prop() cardheight: string;
+    /** Specify a fixed card with*/
     @Prop() cardwidth: string;
+    /** Give the card a custom margin */
     @Prop() margin: string;
+    /** Make the card the smallest height possible */
     @Prop() smallestheight: boolean;
+    /** The image URL for the card. Defaults to the kclsu logo */
     @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/v1573644938/website_uploads/KCLSU%20Brand/db75df131542437eb3da2415c7f91fc6_hhoknp.jpg';
     
     render() {

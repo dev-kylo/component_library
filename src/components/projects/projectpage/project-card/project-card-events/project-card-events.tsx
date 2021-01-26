@@ -8,8 +8,12 @@ import {getNextEvents} from '../../../../../utils/utils';
 
 export class ProjectCardEvents {
 
+    /** The MSL Event tag */
     @Prop() tag: string;
+    /** The main heading */
     @Prop() heading: string = "Upcoming Events";
+    /** Optional. Supply a URL which the All Events button will link to if there are events. Otherwise this is dynamically set. */
+    @Prop() alleventsurl: string ;
     @State() data;
     @State() mobilescreen: boolean = false;
     @State() tabletscreen: boolean = false;
@@ -30,7 +34,7 @@ export class ProjectCardEvents {
 
 
     componentDidLoad(){
-        fetch(`https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types="welcomeFeatured"`)
+        fetch(`https://www.kclsu.org/svc/feeds/events/6013?subtree=true&types=${this.tag}`)
         .then(res => {
           if (!res.ok) throw new Error(res.statusText);
           return res.json();
@@ -60,10 +64,16 @@ export class ProjectCardEvents {
         const noevents = <p style={{"padding": "0 2em"}}>There are no current or upcoming events. </p>
         const buttonmsg = this.data && this.data.length > 1 ? `See all ${this.data.length} events` : `See all events` ;
 
+        let buttonUrl = '/events';
 
         if (this.data){
             const data = [...this.data];
-            if (this.data){
+            if (data.length > 0 ){
+
+                //SET THE BUTTON LINK TO AN EVENTS FILTER URL
+                buttonUrl = this.alleventsurl? this.alleventsurl : `https://www.kclsu.org/events/?types=${this.tag}`;
+
+                //CREATE LABEL CARDS IF THERE ARE ANY EVENTS
                 const length = data.length;
                 data.length = mobile && length >=4 ? 4
                                 : tablet && length >= 6 ? 6 
@@ -79,17 +89,17 @@ export class ProjectCardEvents {
                                             cardheight="110px"  image={evt.ImageUrl} 
                                             cardtitle={evt.Title}>
                                         </label-card>)
-            } 
+            }
         }
         return (
             <div>
                 <h3 style={{"padding" : "1em", "text-align": "center"}}>{this.heading}</h3>
-                <slot></slot>
+                <slot></slot>   
                 <flex-container alignx="space-around" aligny="center" wrap>
                     {cards.length > 0 ? cards : noevents}
                     {this.data && this.data.length === 0 ? noevents : ''}
                 </flex-container>
-                <kclsu-button center link="" margin="2em 1em" newtab> {buttonmsg} </kclsu-button>
+                <kclsu-button center link={buttonUrl} margin="2em 1em" newtab> {buttonmsg} </kclsu-button>
             </div>
         );
     }

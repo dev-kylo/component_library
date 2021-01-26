@@ -160,6 +160,9 @@ export namespace Components {
         "regex": string;
         "replace": string;
         "searchterms": string;
+        /**
+          * The title for the tab for this group
+         */
         "tabtitle": string;
     }
     interface GroupedCandidateDisplay {
@@ -307,13 +310,25 @@ export namespace Components {
          */
         "fontsize": any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin": string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg": boolean;
+        /**
           * The text beneath the countdown
          */
-        "text": any;
+        "text": string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour": any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width": string;
     }
     interface KclsuModal {
         /**
@@ -358,27 +373,45 @@ export namespace Components {
           * If a button included, the text for the button
          */
         "buttontitle": string;
+        /**
+          * Specify a fixed cardheight
+         */
         "cardheight": string;
         /**
           * The main title of the card
          */
         "cardtitle": string;
+        /**
+          * Specify a fixed card with
+         */
         "cardwidth": string;
         /**
           * The main title of the card
          */
         "highlightText": boolean;
+        /**
+          * The image URL for the card. Defaults to the kclsu logo
+         */
         "image": string;
         /**
           * The link for the card - NOT for the button
          */
         "link": string;
+        /**
+          * Give the card a custom margin
+         */
         "margin": string;
         /**
           * If image to be displayed on right hand side
          */
         "reverse": boolean;
+        /**
+          * Make the card the smallest height possible
+         */
         "smallestheight": boolean;
+        /**
+          * This will reduce the size of the heading in the card
+         */
         "smallheading": boolean;
         /**
           * The sub text beneath the title
@@ -555,7 +588,17 @@ export namespace Components {
         "transparent": boolean;
     }
     interface ProjectCardEvents {
+        /**
+          * Optional. Supply a URL which the All Events button will link to if there are events. Otherwise this is dynamically set.
+         */
+        "alleventsurl": string;
+        /**
+          * The main heading
+         */
         "heading": string;
+        /**
+          * The MSL Event tag
+         */
         "tag": string;
     }
     interface ProjectHeading {
@@ -1462,6 +1505,9 @@ declare namespace LocalJSX {
         "regex"?: string;
         "replace"?: string;
         "searchterms"?: string;
+        /**
+          * The title for the tab for this group
+         */
         "tabtitle"?: string;
     }
     interface GroupedCandidateDisplay {
@@ -1611,13 +1657,25 @@ declare namespace LocalJSX {
          */
         "fontsize"?: any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin"?: string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg"?: boolean;
+        /**
           * The text beneath the countdown
          */
-        "text"?: any;
+        "text"?: string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour"?: any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width"?: string;
     }
     interface KclsuModal {
         /**
@@ -1662,27 +1720,45 @@ declare namespace LocalJSX {
           * If a button included, the text for the button
          */
         "buttontitle"?: string;
+        /**
+          * Specify a fixed cardheight
+         */
         "cardheight"?: string;
         /**
           * The main title of the card
          */
         "cardtitle"?: string;
+        /**
+          * Specify a fixed card with
+         */
         "cardwidth"?: string;
         /**
           * The main title of the card
          */
         "highlightText"?: boolean;
+        /**
+          * The image URL for the card. Defaults to the kclsu logo
+         */
         "image"?: string;
         /**
           * The link for the card - NOT for the button
          */
         "link"?: string;
+        /**
+          * Give the card a custom margin
+         */
         "margin"?: string;
         /**
           * If image to be displayed on right hand side
          */
         "reverse"?: boolean;
+        /**
+          * Make the card the smallest height possible
+         */
         "smallestheight"?: boolean;
+        /**
+          * This will reduce the size of the heading in the card
+         */
         "smallheading"?: boolean;
         /**
           * The sub text beneath the title
@@ -1863,7 +1939,17 @@ declare namespace LocalJSX {
         "transparent"?: boolean;
     }
     interface ProjectCardEvents {
+        /**
+          * Optional. Supply a URL which the All Events button will link to if there are events. Otherwise this is dynamically set.
+         */
+        "alleventsurl"?: string;
+        /**
+          * The main heading
+         */
         "heading"?: string;
+        /**
+          * The MSL Event tag
+         */
         "tag"?: string;
     }
     interface ProjectHeading {

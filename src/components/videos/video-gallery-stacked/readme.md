@@ -26,6 +26,8 @@ graph TD;
   video-gallery-stacked --> gallery-thumbnail-stacked
   video-gallery-stacked --> video-embed
   video-gallery-stacked --> loading-spinner
+  gallery-thumbnail-stacked --> lazy-image
+  lazy-image --> scroll-observer
   video-embed --> loading-spinner
   style video-gallery-stacked fill:#f9f,stroke:#333,stroke-width:4px
 ```
