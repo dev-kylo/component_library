@@ -252,6 +252,10 @@ export namespace Components {
          */
         "center": boolean;
         /**
+          * Provide a custom click function handler. Use emitid rather if a parent component is listening for event.
+         */
+        "clickfn": () => void;
+        /**
           * Makes the link download
          */
         "download": boolean;
@@ -310,13 +314,25 @@ export namespace Components {
          */
         "fontsize": any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin": string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg": boolean;
+        /**
           * The text beneath the countdown
          */
-        "text": any;
+        "text": string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour": any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width": string;
     }
     interface KclsuModal {
         /**
@@ -342,11 +358,15 @@ export namespace Components {
          */
         "containerselector": string;
         /**
+          * Remove the error message if there are no search results
+         */
+        "noerror": boolean;
+        /**
           * The text inside the search input, which disappears once a user starts typing
          */
         "placeholdertext": string;
         /**
-          * If searching an HTML element, provide the element's selector - tag, class or id
+          * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector": string;
     }
@@ -444,6 +464,13 @@ export namespace Components {
         "width": string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin": string;
+        /**
+          * Display the spinner
+         */
         "show": boolean;
     }
     interface MobileHide {
@@ -1586,6 +1613,10 @@ declare namespace LocalJSX {
          */
         "center"?: boolean;
         /**
+          * Provide a custom click function handler. Use emitid rather if a parent component is listening for event.
+         */
+        "clickfn"?: () => void;
+        /**
           * Makes the link download
          */
         "download"?: boolean;
@@ -1645,13 +1676,25 @@ declare namespace LocalJSX {
          */
         "fontsize"?: any;
         /**
+          * The margin of the countdown clock
+         */
+        "margin"?: string;
+        /**
+          * Give the message text a white block background
+         */
+        "msgbg"?: boolean;
+        /**
           * The text beneath the countdown
          */
-        "text"?: any;
+        "text"?: string;
         /**
           * Optional: set a colour for the text beneath the countdown.
          */
         "textcolour"?: any;
+        /**
+          * The width of the countdown clock - in Pixels ONLY
+         */
+        "width"?: string;
     }
     interface KclsuModal {
         /**
@@ -1677,11 +1720,15 @@ declare namespace LocalJSX {
          */
         "containerselector": string;
         /**
+          * Remove the error message if there are no search results
+         */
+        "noerror"?: boolean;
+        /**
           * The text inside the search input, which disappears once a user starts typing
          */
         "placeholdertext"?: string;
         /**
-          * If searching an HTML element, provide the element's selector - tag, class or id
+          * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector"?: string;
     }
@@ -1779,6 +1826,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin"?: string;
+        /**
+          * Display the spinner
+         */
         "show"?: boolean;
     }
     interface MobileHide {

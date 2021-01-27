@@ -44,6 +44,7 @@ export class LazyImage {
             else this.width = 'auto';
         }
     }
+
     
     render() {
         let imageWidth = this.width;
@@ -57,7 +58,7 @@ export class LazyImage {
         }
 
         else if (this.image && this.image.includes('res.cloudinary.com')){
-            //not available in safari: regex = /(?<=upload\/)[\w,]*\//;
+
             const existingTransforms = /upload\/[\w,]*\//;
             if (existingTransforms.test(this.image)){
                 loadingImage = this.image.replace(existingTransforms, `upload/${loadingTransforms}/`);
@@ -71,7 +72,7 @@ export class LazyImage {
 
         // IMAGES NOT HOSTED ON KCLSU.ORG WONT BE MANIPULATED BY CLOUDINARY. ALLOW FOR OTHER 'RAW' IMAGES
         else {
-            //LOAD GREY BLOCK IMAGE
+            //LOAD KCLSU LOGO
             loadingImage = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'
             loadedImage = this.image;
         }

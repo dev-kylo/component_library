@@ -24,7 +24,7 @@ describe('Kclsu Button', () => {
 
         expect(page.root.shadowRoot).toEqualHtml(`
             <flex-container alignx="flex-start">
-                <a class="green small" href="/page" target="_self" style="margin: 15px;">
+                <a role="button" class="green small" href="/page" target="_self" style="margin: 15px;">
                     <slot></slot>
                 </a>
             </flex-container>
@@ -41,7 +41,7 @@ describe('Kclsu Button', () => {
             <kclsu-button link="/page" purple="" newtab="">
                 <mock:shadow-root>
                     <flex-container alignx="flex-start">
-                        <a class="purple big" href="/page" target="_blank" style="margin: 15px;">
+                        <a role="button" class="purple big" href="/page" target="_blank" style="margin: 15px;">
                             <slot></slot>
                         </a>
                      </flex-container>
