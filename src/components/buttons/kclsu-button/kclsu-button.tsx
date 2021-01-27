@@ -38,13 +38,20 @@ export class KclsuButton {
     @Prop() fixedwidth: string;
     /** specifiy a margin, otherwise uses default*/
     @Prop() margin: string = '15px';
+    /** Provide a custom click function handler. Use emitid rather if a parent component is listening for event.*/
+    @Prop() clickfn: () => void;
     
 
     @Event()emitClick:EventEmitter;
 
     clickHandler( e:Event ){
         e.preventDefault();
-        this.emitClick.emit(this.emitid)
+        this.clickfn();
+    }
+
+    emitHandler( e:Event ){
+        e.preventDefault();
+        this.emitClick.emit(this.emitid) ; 
     }
 
     
@@ -59,22 +66,28 @@ export class KclsuButton {
         let classes:btnClass[] =  [];
         !this.purple? classes.push('green') : classes.push('purple');
         this.rounded? classes.push('rounded') : null;
-        if (this.small) classes.push('small')
-        else if (this.verysmall) classes.push('verysmall') 
+        if (this.small) classes.push('small');
+        else if (this.verysmall) classes.push('verysmall'); 
         else classes.push('big');
 
         //BTN CLICK WILL EITHER NAVIGATE AWAY OR EMIT EVENT
-        let link : null | HTMLLinkElement;
+        let btn : null | HTMLLinkElement | HTMLButtonElement;
 
-        if (this.link){
-            link = <a href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
-        }
+        if (this.link)
+            btn = <a role="button" href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
+        
 
-        else link = <a onClick={(e) => this.clickHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>;
+        else if (this.emitid) 
+            btn = <button onClick={(e) => this.emitHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></button>;
+
+        else if (this.clickfn) 
+            btn = <button onClick={(e) => this.clickHandler(e)} class={classes.join(' ')} style={style}>{this.text}<slot></slot></button>;
+        
+        else btn = <button class={classes.join(' ')} style={style}>{this.text}<slot></slot></button>;
 
         return (
             <flex-container alignx={this.center? 'center' : 'flex-start'} >
-                {link}
+                {btn}
             </flex-container>
         )
     }

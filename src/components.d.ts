@@ -252,6 +252,10 @@ export namespace Components {
          */
         "center": boolean;
         /**
+          * Provide a custom click function handler. Use emitid rather if a parent component is listening for event.
+         */
+        "clickfn": () => void;
+        /**
           * Makes the link download
          */
         "download": boolean;
@@ -353,6 +357,10 @@ export namespace Components {
           * The container of the search result / search field, used to hide the element from results. Can be a tag, class or id
          */
         "containerselector": string;
+        /**
+          * Remove the error message if there are no search results
+         */
+        "noerror": boolean;
         /**
           * The text inside the search input, which disappears once a user starts typing
          */
@@ -456,6 +464,13 @@ export namespace Components {
         "width": string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin": string;
+        /**
+          * Display the spinner
+         */
         "show": boolean;
     }
     interface MobileHide {
@@ -1598,6 +1613,10 @@ declare namespace LocalJSX {
          */
         "center"?: boolean;
         /**
+          * Provide a custom click function handler. Use emitid rather if a parent component is listening for event.
+         */
+        "clickfn"?: () => void;
+        /**
           * Makes the link download
          */
         "download"?: boolean;
@@ -1701,6 +1720,10 @@ declare namespace LocalJSX {
          */
         "containerselector": string;
         /**
+          * Remove the error message if there are no search results
+         */
+        "noerror"?: boolean;
+        /**
           * The text inside the search input, which disappears once a user starts typing
          */
         "placeholdertext"?: string;
@@ -1803,6 +1826,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin"?: string;
+        /**
+          * Display the spinner
+         */
         "show"?: boolean;
     }
     interface MobileHide {

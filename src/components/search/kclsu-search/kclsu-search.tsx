@@ -16,6 +16,8 @@ export class KclsuSearch {
     @Prop() containerselector!: string;
     /** The text inside the search input, which disappears once a user starts typing */
     @Prop() placeholdertext: string = "search...";
+    /** Remove the error message if there are no search results */
+    @Prop() noerror: boolean = false; 
 
     //Will display a No Results message when toggled.
     @State() noResults: boolean = false;
@@ -65,7 +67,7 @@ export class KclsuSearch {
 
     
     render() {
-        let noresults = this.noResults?  (<span class="noresults">Nope, can't seem to find what you're looking for...</span>) : '';
+        let noresults = this.noResults && !this.noerror?  (<span class="noresults">Nope, can't seem to find what you're looking for...</span>) : '';
         return ([
             <flex-container alignx="center" aligny="center">
                 <input class="kclsu_search" placeholder={this.placeholdertext} type="text" onInput={e => this.inputHandler(e)}></input>

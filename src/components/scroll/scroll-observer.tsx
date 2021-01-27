@@ -21,14 +21,21 @@ export class ScrollObserver {
       const options = { rootMargin: '10px 0px' }
       if (child) {
           //CHECK FOR OBSERVER IN BROWSER
-            if(!!window.IntersectionObserver){
-                this.observer = new IntersectionObserver(entries => this.onIntersection(entries), options);
-                this.observer.observe(child);
-            }
-            else if (child.hasAttribute('data-src')) {
-                //IF NO OBSERVER, SET THE SRC IF CHILD IS AN IMAGE
-                child.setAttribute('src', child.getAttribute('data-src'));
-            }
+          let observerInBrowser: boolean = true;
+        if (!('IntersectionObserver' in window) ||
+            !('IntersectionObserverEntry' in window) ||
+            !('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+            observerInBrowser = false;
+        }
+        if(observerInBrowser){
+            console.log('Observer Present')
+            this.observer = new IntersectionObserver(entries => this.onIntersection(entries), options);
+            this.observer.observe(child);
+        }
+        else if (child.hasAttribute('data-src')) {
+            //IF NO OBSERVER IN BROWSER, SET THE SRC IF CHILD IS AN IMAGE
+            child.setAttribute('src', child.getAttribute('data-src'));
+        }
       }
     }
 

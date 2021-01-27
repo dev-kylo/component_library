@@ -23,9 +23,8 @@
     align-items: center;
     background: #fff;
     position: relative;
-    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
-    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
-    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    /* box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15); */
+    box-shadow: rgb(0 0 0 / 58%) 5px 5px 3px 0px;
     border: 1px solid #eaeaea;
     margin-top: 0;
 }
@@ -36,6 +35,7 @@
     font-weight: 600;
     color: var(--purple);
     font-size: 2.5em;
+    line-height: 40px;
 }
 
 .timeBlock span:nth-child(even){
@@ -56,6 +56,12 @@
     font-weight: bold;
     font-family: bree_serifsemibold, bree-serif, serif;
     font-weight: 600;
+}
+
+.shadow {
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: rgb(0 0 0 / 24%) 7px 6px 3px 0px;
 }
 
 

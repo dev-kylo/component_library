@@ -41,10 +41,9 @@ export class ProjectCardEvents {
         })
         .then(data => {
             this.data = getNextEvents(data);
-            // this.data = data;
         })
         .catch(er => {
-            throw new Error(er)
+            throw new Error(er);
         })
     }
 
