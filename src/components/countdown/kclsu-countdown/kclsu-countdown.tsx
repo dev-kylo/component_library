@@ -98,25 +98,25 @@ export class KclsuCountdown {
         return (
             <div class="countdown" style={clockStyle}>
                 <div class="flex">
-                    <div class="timeBlock">
+                    <div class="timeBlock shadow">
                         <span style={timeNumberStyle}>{days ?? '-'}</span>
                         <span style={timeTextStyle}>DAYS</span>
                     </div>
-                    <div class="timeBlock">
+                    <div class="timeBlock shadow">
                         <span style={timeNumberStyle}>{hours ?? '-'}</span>
                         <span style={timeTextStyle}>HOURS</span>  
                     </div>
-                    <div class="timeBlock">
+                    <div class="timeBlock shadow">
                         <span style={timeNumberStyle}>{minutes ?? '-'}</span>
                         <span style={timeTextStyle}>MINUTES</span>
                     </div>
-                    <div class="timeBlock">
+                    <div class="timeBlock shadow">
                         <span style={timeNumberStyle}>{seconds ?? '-'}</span>
                         <span style={timeTextStyle}>SECONDS</span> 
                     </div>
                 </div>
-                <span class="text" style={textStyle}> 
-                    <time>{this.text}</time>
+                <span class={!this.msgbg? 'text' : 'text shadow'} style={textStyle}> 
+                    <span>{this.text}</span>
                 </span>
             </div>
         );

@@ -14,6 +14,8 @@
 
 </head>
 <body>
+
+  <div id="parent"></div>
   
   <div style="height: 800px; width: 100%; background-color: red; position: relative">
     <kclsu-countdown msgbg width="800px" margin="2em" text="Until Nominations Open Again and Again and Again just for giggles" date="January 28, 2021, 14:10:00"></kclsu-countdown>
@@ -263,6 +265,20 @@ https://res.cloudinary.com/kclsu-media/image/fetch/c_fill,f_auto,fl_any_format,w
     </elections-tab>
 </elections-candidates>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const parent = document.getElementById('parent');
+    function customfn(name) {
+      console.log('I am a bro and my name is: ' + name);
+    }
+    const button = document.createElement('kclsu-button');
+    button.text = 'I possess a function';
+    button.clicker = () => customfn('Brian');
+    parent.appendChild(button)
+
+  })
+</script>
 
 </body>
 </html>

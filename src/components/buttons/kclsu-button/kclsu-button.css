@@ -4,7 +4,7 @@
     margin: 1em;
 } */
 
-a {
+button, a {
     box-sizing: border-box;
     border: 1px solid var(--dark-teal);
     font-family: "Open Sans", Arial, sans-serif;
@@ -86,7 +86,7 @@ a {
         margin: 0.5em;
         margin-bottom: 0;
     }
-    a{
+    button, a {
         width: 100%;
     }
 }
