@@ -464,6 +464,13 @@ export namespace Components {
         "width": string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin": string;
+        /**
+          * Display the spinner
+         */
         "show": boolean;
     }
     interface MobileHide {
@@ -1819,6 +1826,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface LoadingSpinner {
+        /**
+          * Set margin of spinner
+         */
+        "margin"?: string;
+        /**
+          * Display the spinner
+         */
         "show"?: boolean;
     }
     interface MobileHide {

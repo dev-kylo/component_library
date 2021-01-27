@@ -43,7 +43,7 @@ export class ProjectCardEvents {
             this.data = getNextEvents(data);
         })
         .catch(er => {
-            throw new Error(er)
+            throw new Error(er);
         })
     }
 
