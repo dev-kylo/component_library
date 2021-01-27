@@ -358,7 +358,7 @@ export namespace Components {
          */
         "placeholdertext": string;
         /**
-          * If searching an HTML element, provide the element's selector - tag, class or id
+          * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector": string;
     }
@@ -1705,7 +1705,7 @@ declare namespace LocalJSX {
          */
         "placeholdertext"?: string;
         /**
-          * If searching an HTML element, provide the element's selector - tag, class or id
+          * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector"?: string;
     }
