@@ -18,6 +18,10 @@ export class UserLogin {
 
     /** The name of the database area. For example: projectx */
     @Prop() database!: string;
+    /** Provide a custom callback.*/
+    @Prop() callbackFn: () => void;
+    
+    
     //Modal visibility
     @State() modalOpen: boolean = true;
     //The firebase token, which will be retrieved from server
@@ -71,11 +75,14 @@ export class UserLogin {
                 localStorage.setItem('tokenExpireDate', expirationDate); 
                 this.token = data.idToken;
                 this.modalOpen = false;
+                //If a callback arg was supplied, invoke the callback
+                if (this.callbackFn) this.callbackFn();
             }
         })
         .catch(er => {
             this.loading= false;
             this.error = er;
+            if (this.callbackFn) this.callbackFn();
         }) 
     }
 
