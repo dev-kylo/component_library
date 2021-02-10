@@ -735,6 +735,10 @@ export namespace Components {
     }
     interface UserLogin {
         /**
+          * Provide a custom callback.
+         */
+        "callbackFn": (token: string) => void;
+        /**
           * The name of the database area. For example: projectx
          */
         "database": string;
@@ -2102,6 +2106,10 @@ declare namespace LocalJSX {
         "subtext"?: string;
     }
     interface UserLogin {
+        /**
+          * Provide a custom callback.
+         */
+        "callbackFn"?: (token: string) => void;
         /**
           * The name of the database area. For example: projectx
          */

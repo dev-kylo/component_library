@@ -28,7 +28,6 @@ export class ScrollObserver {
             observerInBrowser = false;
         }
         if(observerInBrowser){
-            console.log('Observer Present')
             this.observer = new IntersectionObserver(entries => this.onIntersection(entries), options);
             this.observer.observe(child);
         }
