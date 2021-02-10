@@ -586,6 +586,10 @@ export namespace Components {
          */
         "aligny": string;
         /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl": string;
+        /**
           * Display an event listing
          */
         "eventtag": string;
@@ -1955,6 +1959,10 @@ declare namespace LocalJSX {
           * Position the content of the card along the Y axis
          */
         "aligny"?: string;
+        /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl"?: string;
         /**
           * Display an event listing
          */
