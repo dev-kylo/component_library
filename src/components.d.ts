@@ -340,6 +340,14 @@ export namespace Components {
          */
         "autoexit": boolean;
         /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn": () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn": () => void;
+        /**
           * Set position to absolute or other. Defaults to fixed
          */
         "position": string;
@@ -1709,6 +1717,14 @@ declare namespace LocalJSX {
           * This will allow a user to click away and hide the modal when open
          */
         "autoexit"?: boolean;
+        /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn"?: () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn"?: () => void;
         /**
           * Set position to absolute or other. Defaults to fixed
          */

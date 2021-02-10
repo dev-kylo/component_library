@@ -17,7 +17,7 @@
 
 
 
-    
+  <div id="modal"></div>
 
 
 
@@ -29,10 +29,27 @@
 
 
 
-
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', () =>{
+    const modal = document.createElement('kclsu-modal');
+    modal.exitfn = () => console.log('lujia')
+    modal.show = true;
+    modal.autoexit = true;
+    modal.enterfn = () => console.log('ya bru')
+    const p = document.createElement('p');
+    p.innerText = 'Hellloooooo';
+      modal.appendChild(p)
+    console.log(modal)
+    const p2 = document.createElement('p');
+    p2.innerText ='dfd'
+    document.getElementById('modal').appendChild(modal);
+    modal.appendChild(p2)
+  })
+  </script>  
 </body>
 </html>
+
+
 
 
 <!-- https://www.kclsu.org/asset/News/6015/SVW-2021-_-_Instagram3.png -->
