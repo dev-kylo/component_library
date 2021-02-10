@@ -737,7 +737,7 @@ export namespace Components {
         /**
           * Provide a custom callback.
          */
-        "callbackFn": () => void;
+        "callbackFn": (token: string) => void;
         /**
           * The name of the database area. For example: projectx
          */
@@ -2109,7 +2109,7 @@ declare namespace LocalJSX {
         /**
           * Provide a custom callback.
          */
-        "callbackFn"?: () => void;
+        "callbackFn"?: (token: string) => void;
         /**
           * The name of the database area. For example: projectx
          */

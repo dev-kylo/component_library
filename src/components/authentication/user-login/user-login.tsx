@@ -19,7 +19,7 @@ export class UserLogin {
     /** The name of the database area. For example: projectx */
     @Prop() database!: string;
     /** Provide a custom callback.*/
-    @Prop() callbackFn: () => void;
+    @Prop() callbackFn: (token: string) => void;
     
     
     //Modal visibility
@@ -76,13 +76,12 @@ export class UserLogin {
                 this.token = data.idToken;
                 this.modalOpen = false;
                 //If a callback arg was supplied, invoke the callback
-                if (this.callbackFn) this.callbackFn();
+                if (this.callbackFn) this.callbackFn(data.idToken);
             }
         })
         .catch(er => {
             this.loading= false;
             this.error = er;
-            if (this.callbackFn) this.callbackFn();
         }) 
     }
 
