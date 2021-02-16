@@ -18,6 +18,8 @@ export class EventsListing {
     @Prop() col: boolean;
     /** The max number of events to display */
     @Prop() limit: string;
+    /** The Call To Action text in the link on profile cards*/
+    @Prop() cta: string;
 
     @State() events: mslEventI[];
 
@@ -41,7 +43,7 @@ export class EventsListing {
                 cardtitle = {evt.Title}
                 image = {evt.ImageUrl}
                 link = {evt.Url}
-                text= {returnDate(evt.StartDate).weekday}
+                text= {this.createDateString(evt.StartDate)}
                 margin = '15px'
                 cardheight= "180px"
             ></label-card>
@@ -52,7 +54,8 @@ export class EventsListing {
         return this.events.map((evt: mslEventI) => 
             <text-card
                 cardtitle = {evt.Title}
-                subtext = {evt.Location}
+                subtext = {this.createDateString(evt.StartDate)}
+                link = {evt.Url}
             ></text-card>
         );
     }
@@ -62,9 +65,16 @@ export class EventsListing {
             <profile-card
                 name = {evt.Title}
                 image = {evt.ImageUrl}
-                position = {returnDate(evt.StartDate).weekday}
+                link = {evt.Url}
+                cta = {this.cta || 'Find out more'}
+                position = {this.createDateString(evt.StartDate)}
             ></profile-card>
         );
+    }
+
+    private createDateString(str: string){
+        const date = returnDate(str);
+        return `${date.weekday} ${date.day} ${date.month}`
     }
     
     render() {

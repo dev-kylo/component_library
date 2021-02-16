@@ -101,6 +101,10 @@ export namespace Components {
          */
         "col": boolean;
         /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta": string;
+        /**
           * The MSL event tag to filter events
          */
         "eventtag": string;
@@ -1528,6 +1532,10 @@ declare namespace LocalJSX {
           * Show event cards in a column
          */
         "col"?: boolean;
+        /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta"?: string;
         /**
           * The MSL event tag to filter events
          */
