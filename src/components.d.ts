@@ -91,6 +91,24 @@ export namespace Components {
         "tabtitle": string;
         "type": 'single' | 'multiple' | 'groupings';
     }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype": 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col": boolean;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit": string;
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -898,6 +916,12 @@ declare global {
         prototype: HTMLElectionsTabElement;
         new (): HTMLElectionsTabElement;
     };
+    interface HTMLEventsListingElement extends Components.EventsListing, HTMLStencilElement {
+    }
+    var HTMLEventsListingElement: {
+        prototype: HTMLEventsListingElement;
+        new (): HTMLEventsListingElement;
+    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -1311,6 +1335,7 @@ declare global {
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "elections-tab": HTMLElectionsTabElement;
+        "events-listing": HTMLEventsListingElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1464,6 +1489,24 @@ declare namespace LocalJSX {
         "posts"?: string;
         "tabtitle"?: string;
         "type"?: 'single' | 'multiple' | 'groupings';
+    }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype"?: 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col"?: boolean;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit"?: string;
     }
     interface FlexContainer {
         /**
@@ -2201,6 +2244,7 @@ declare namespace LocalJSX {
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "elections-tab": ElectionsTab;
+        "events-listing": EventsListing;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -2289,6 +2333,7 @@ declare module "@stencil/core" {
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
+            "events-listing": LocalJSX.EventsListing & JSXBase.HTMLAttributes<HTMLEventsListingElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;

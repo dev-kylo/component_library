@@ -24,7 +24,7 @@ export class KclsuModal {
         if (this.enterfn) this.enterfn();
     }
 
-    @Watch('show') watchHandler(newVal){
+    @Watch('show') watchHandler(newVal){    
         if (this.enterfn && newVal === true) this.enterfn();
     }
 
