@@ -1,4 +1,6 @@
 
+import { mslEventI } from '../types/mslEvents';
+
 export function format(first: string, middle: string, last: string): string {
   return (
     (first || '') +
@@ -50,7 +52,7 @@ export function removeParams(src){
 
 
 
-export function getNextEvents(dataList, length: number = -1){
+export function getNextEvents(dataList, length: number = -1): mslEventI[] {
   let data = [...dataList]
   let d = new Date();
   let ISOdate = d.toISOString();
@@ -58,7 +60,7 @@ export function getNextEvents(dataList, length: number = -1){
       return evt.StartDate > ISOdate;
   });
 
-  if (dateIndex < 0) return false;
+  if (dateIndex < 0) return [];
   else if (length > 0) return data.slice(dateIndex,dateIndex + length)
   else return data.slice(dateIndex)
 }

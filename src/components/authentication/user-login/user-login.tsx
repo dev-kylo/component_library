@@ -41,6 +41,7 @@ export class UserLogin {
             const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
             if (new Date() < expirationDate){
                 this.token = token;
+                if (this.callbackFn) this.callbackFn(token);
                 this.modalOpen = false;
             }
             else {

@@ -91,6 +91,28 @@ export namespace Components {
         "tabtitle": string;
         "type": 'single' | 'multiple' | 'groupings';
     }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype": 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col": boolean;
+        /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta": string;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit": string;
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -340,6 +362,14 @@ export namespace Components {
          */
         "autoexit": boolean;
         /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn": () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn": () => void;
+        /**
           * Set position to absolute or other. Defaults to fixed
          */
         "position": string;
@@ -488,6 +518,28 @@ export namespace Components {
         "newslink": string;
         "newstitle": string;
     }
+    interface PageBanner {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading": string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text": string;
+    }
     interface PageContent {
     }
     interface PresetCard {
@@ -585,6 +637,10 @@ export namespace Components {
           * Position the content of the card along the Y axis
          */
         "aligny": string;
+        /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl": string;
         /**
           * Display an event listing
          */
@@ -886,6 +942,12 @@ declare global {
         prototype: HTMLElectionsTabElement;
         new (): HTMLElectionsTabElement;
     };
+    interface HTMLEventsListingElement extends Components.EventsListing, HTMLStencilElement {
+    }
+    var HTMLEventsListingElement: {
+        prototype: HTMLEventsListingElement;
+        new (): HTMLEventsListingElement;
+    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -1065,6 +1127,12 @@ declare global {
     var HTMLNewsCardElement: {
         prototype: HTMLNewsCardElement;
         new (): HTMLNewsCardElement;
+    };
+    interface HTMLPageBannerElement extends Components.PageBanner, HTMLStencilElement {
+    }
+    var HTMLPageBannerElement: {
+        prototype: HTMLPageBannerElement;
+        new (): HTMLPageBannerElement;
     };
     interface HTMLPageContentElement extends Components.PageContent, HTMLStencilElement {
     }
@@ -1299,6 +1367,7 @@ declare global {
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "elections-tab": HTMLElectionsTabElement;
+        "events-listing": HTMLEventsListingElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1329,6 +1398,7 @@ declare global {
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
+        "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
@@ -1452,6 +1522,28 @@ declare namespace LocalJSX {
         "posts"?: string;
         "tabtitle"?: string;
         "type"?: 'single' | 'multiple' | 'groupings';
+    }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype"?: 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col"?: boolean;
+        /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta"?: string;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit"?: string;
     }
     interface FlexContainer {
         /**
@@ -1706,6 +1798,14 @@ declare namespace LocalJSX {
          */
         "autoexit"?: boolean;
         /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn"?: () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn"?: () => void;
+        /**
           * Set position to absolute or other. Defaults to fixed
          */
         "position"?: string;
@@ -1855,6 +1955,28 @@ declare namespace LocalJSX {
         "newslink"?: string;
         "newstitle"?: string;
     }
+    interface PageBanner {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading"?: string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text"?: string;
+    }
     interface PageContent {
     }
     interface PresetCard {
@@ -1955,6 +2077,10 @@ declare namespace LocalJSX {
           * Position the content of the card along the Y axis
          */
         "aligny"?: string;
+        /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl"?: string;
         /**
           * Display an event listing
          */
@@ -2177,6 +2303,7 @@ declare namespace LocalJSX {
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "elections-tab": ElectionsTab;
+        "events-listing": EventsListing;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -2207,6 +2334,7 @@ declare namespace LocalJSX {
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
         "news-card": NewsCard;
+        "page-banner": PageBanner;
         "page-content": PageContent;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
@@ -2265,6 +2393,7 @@ declare module "@stencil/core" {
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
+            "events-listing": LocalJSX.EventsListing & JSXBase.HTMLAttributes<HTMLEventsListingElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
@@ -2295,6 +2424,7 @@ declare module "@stencil/core" {
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
+            "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;

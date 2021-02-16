@@ -1,5 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core';
-import {getNextEvents} from '../../../../../utils/utils';
+import { getNextEvents } from '../../../../../utils/utils';
 
 
 @Component({
