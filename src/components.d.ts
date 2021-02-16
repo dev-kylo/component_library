@@ -514,6 +514,28 @@ export namespace Components {
         "newslink": string;
         "newstitle": string;
     }
+    interface PageBanner {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading": string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text": string;
+    }
     interface PageContent {
     }
     interface PresetCard {
@@ -1102,6 +1124,12 @@ declare global {
         prototype: HTMLNewsCardElement;
         new (): HTMLNewsCardElement;
     };
+    interface HTMLPageBannerElement extends Components.PageBanner, HTMLStencilElement {
+    }
+    var HTMLPageBannerElement: {
+        prototype: HTMLPageBannerElement;
+        new (): HTMLPageBannerElement;
+    };
     interface HTMLPageContentElement extends Components.PageContent, HTMLStencilElement {
     }
     var HTMLPageContentElement: {
@@ -1366,6 +1394,7 @@ declare global {
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
+        "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
@@ -1918,6 +1947,28 @@ declare namespace LocalJSX {
         "newslink"?: string;
         "newstitle"?: string;
     }
+    interface PageBanner {
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading"?: string;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text"?: string;
+    }
     interface PageContent {
     }
     interface PresetCard {
@@ -2275,6 +2326,7 @@ declare namespace LocalJSX {
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
         "news-card": NewsCard;
+        "page-banner": PageBanner;
         "page-content": PageContent;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
@@ -2364,6 +2416,7 @@ declare module "@stencil/core" {
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
+            "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;

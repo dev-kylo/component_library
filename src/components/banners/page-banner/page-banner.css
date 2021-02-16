@@ -1,0 +1,108 @@
+@import '../../../global/globalstyles.css';
+
+* {
+    box-sizing: border-box;
+}
+
+
+.grid {
+	display: grid;
+	grid-template-columns: 20% 60% 20%;
+    grid-gap: 10px;
+    margin-bottom:4em;
+	grid-template-rows:
+    minmax(300px, auto) 
+	/* 90px  */
+		/* minmax(250px, auto)  */
+}
+
+
+
+.section {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+background-color: var(--purple);
+min-height: 350px;
+}
+
+.random {
+    height: 200px;
+    background-color: var(--purple);
+}
+
+@media (max-width: 1300px){
+  .grid {
+    grid-template-columns: 10% 80% 10%;
+  }  
+}
+
+@media (max-width: 800px){
+    .grid {
+        grid-template-columns: 5% 90% 5%;
+    }  
+}
+
+
+
+
+/* */
+
+section {
+    margin-top: 15px;
+    margin-bottom: 120px;
+    max-width: 90%;
+};
+
+
+@media (min-width: 600px){
+    section {
+        max-width: 80%
+    }  
+}
+
+@media (min-width: 1200px){
+    section {
+        max-width: 60%
+    }  
+}
+
+@media (min-width: 1400px){
+    section {
+        max-width: 45%
+    }  
+}
+
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: bree_serifbold, bree-serif, serif;
+}
+
+.heading {  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* padding-bottom: 10px; */
+    padding-top: 5px;   
+    width: fit-content;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+section, h2, p {
+    text-align: center;
+}
+
+.slotted {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: #444;
+    font-weight: 400;
+}
