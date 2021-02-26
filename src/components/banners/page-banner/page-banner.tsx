@@ -20,7 +20,10 @@ export class PageBanner{
     @Prop() colourscheme: string = "white, #502669";
     /** The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour" */
     @Prop() pagetitlecolours: string = "white, #1BA39C";
-    
+    /** Supply a background image for the banner */
+    @Prop() bgimage: string;
+
+
     render() {
         const bgscheme: string[] = createArrayFromString(this.colourscheme, ',');
         const titlescheme: string[] = createArrayFromString(this.pagetitlecolours, ',');
@@ -28,6 +31,7 @@ export class PageBanner{
         const bgcolour = {
             "background-color": bgscheme[1] || "#502669"
         };
+        
         const textcolour = {
             "color": bgscheme[0] || "white"
         };

@@ -87,12 +87,12 @@ export class EventsListing {
                 : this.createProfileCards();
 
         return (
-            <profile-card-layout>
-            {cards}
-            </profile-card-layout>
-        //    <flex-container alignx="space-around" wrap>
-        //         {cards}
-        //     </flex-container>
+            // <profile-card-layout>
+            // {cards}
+            // </profile-card-layout>
+           <flex-container alignx="space-around" wrap>
+                {cards}
+            </flex-container>
         );
     }
 }

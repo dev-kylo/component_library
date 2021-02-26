@@ -27,6 +27,8 @@ export class LazyImage {
     @Prop() thumbnail: boolean = false;
     /** If the image is being used only as thumbnail, such as project-cards and image-text components */
     @Prop() contentimage: boolean = false;
+    /** Remove lazy-loading functionality. Retains Object Fit positioing */
+    @Prop() nolazy: boolean = false;
 
     @Element() el: HTMLElement;
 
@@ -87,8 +89,20 @@ export class LazyImage {
             "plainimg": this.plainimg
         }
 
+        // if (this.nolazy) return (
+        //     <div class={cs}>
+        //         <img 
+        //             style={objectPosition} 
+        //             class={!this.plainimg? this.imageclasses.join(' ') : ''} 
+        //             alt={this.alt}
+        //             data-src={loadedImage}
+        //             src={loadedImage}
+        //         ></img>
+        //     </div>
+        // )
 
-        return (
+
+       return (
             <div class={cs}>
                 <scroll-observer lazy-image animation={!this.animatein? '' : 'scaleIn'}>
                     <img 
@@ -96,7 +110,7 @@ export class LazyImage {
                         class={!this.plainimg? this.imageclasses.join(' ') : ''} 
                         alt={this.alt}
                         data-src={loadedImage}
-                        src={loadingImage}
+                        src={ !this.nolazy ? loadingImage : loadedImage }
                     ></img>
                 </scroll-observer>
             </div>
