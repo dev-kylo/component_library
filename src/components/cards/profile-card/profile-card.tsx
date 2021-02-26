@@ -23,6 +23,8 @@ export class ProfileCard{
   @Prop() secondcta: string;
   /** The image URL */
   @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
+  /** Applies to lazy loading of images. Remove lazy loading */
+  @Prop() nolazy: boolean = false;
 
   @State() imageloading: boolean = true;
   @State() imageclasses:any = ['fit', 'hide']
@@ -45,7 +47,7 @@ export class ProfileCard{
     return (
       <div class="profile-card">
         <div class="image">
-          <lazy-image thumbnail animatein image={this.image}></lazy-image>
+          <lazy-image thumbnail nolazy={this.nolazy} animatein image={this.image}></lazy-image>
         </div>
         <div class="label">
           {nameLink}

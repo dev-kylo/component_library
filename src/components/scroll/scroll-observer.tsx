@@ -36,6 +36,7 @@ export class ScrollObserver {
             child.setAttribute('src', child.getAttribute('data-src'));
         }
       }
+      
     }
 
     onIntersection(entries){

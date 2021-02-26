@@ -34,6 +34,10 @@ export namespace Components {
     }
     interface CandidateDisplay {
         "data": any;
+        /**
+          * Lazy option in profile cards
+         */
+        "nolazy": boolean;
     }
     interface CandidateUpload {
         /**
@@ -481,6 +485,10 @@ export namespace Components {
         "focusarea": string;
         "image": string;
         /**
+          * Remove lazy-loading functionality. Retains Object Fit positioing
+         */
+        "nolazy": boolean;
+        /**
           * If you want to render an img element in a responsive container without object positioning
          */
         "plainimg": boolean;
@@ -519,6 +527,10 @@ export namespace Components {
         "newstitle": string;
     }
     interface PageBanner {
+        /**
+          * Supply a background image for the banner
+         */
+        "bgimage": string;
         /**
           * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
          */
@@ -573,6 +585,10 @@ export namespace Components {
           * The title for the card - usually a full name
          */
         "name": string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy": boolean;
         /**
           * A sub heading - usually a position or field title
          */
@@ -1466,6 +1482,10 @@ declare namespace LocalJSX {
     }
     interface CandidateDisplay {
         "data"?: any;
+        /**
+          * Lazy option in profile cards
+         */
+        "nolazy"?: boolean;
     }
     interface CandidateUpload {
         /**
@@ -1917,6 +1937,10 @@ declare namespace LocalJSX {
         "focusarea"?: string;
         "image"?: string;
         /**
+          * Remove lazy-loading functionality. Retains Object Fit positioing
+         */
+        "nolazy"?: boolean;
+        /**
           * If you want to render an img element in a responsive container without object positioning
          */
         "plainimg"?: boolean;
@@ -1956,6 +1980,10 @@ declare namespace LocalJSX {
         "newstitle"?: string;
     }
     interface PageBanner {
+        /**
+          * Supply a background image for the banner
+         */
+        "bgimage"?: string;
         /**
           * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
          */
@@ -2012,6 +2040,10 @@ declare namespace LocalJSX {
           * The title for the card - usually a full name
          */
         "name"?: string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy"?: boolean;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
         /**
           * A sub heading - usually a position or field title

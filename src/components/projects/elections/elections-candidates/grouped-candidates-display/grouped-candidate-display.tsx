@@ -50,7 +50,8 @@ export class GroupedCandidates {
 
     
     render() {
-        let candidates = !this.current ? '' : <candidate-display 
+        let candidates = !this.current ? '' : <candidate-display
+                                                    nolazy 
                                                     data={this.data.filter(candidate => {
                                                         let title = candidate.Post.Title || candidate.Post;
                                                         return title.trim() === this.current.trim()
