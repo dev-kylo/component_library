@@ -10,7 +10,7 @@ import { Component, h, Prop, State, Element } from '@stencil/core';
 
 export class LazyImage {
 
-    @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
+    @Prop() image: string;
     /** Use standard CSS object-position values to set a focus area on the image. EG 'center left' */
     @Prop() focusarea: string = 'center';
     /** Image will scale into view */
@@ -76,7 +76,7 @@ export class LazyImage {
         else {
             //LOAD KCLSU LOGO
             loadingImage = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'
-            loadedImage = this.image;
+            loadedImage = 'https://res.cloudinary.com/kclsu-media/image/upload/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
         }
     
 
