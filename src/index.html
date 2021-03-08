@@ -16,61 +16,96 @@
 </head>
 
 <body>
+  <!-- image="https://www.kclsu.org/pageassets/allevents/projectx/porojx_rmtull.jpg" -->
+  <elections-candidates electionid="163" results >
 
-  <elections-candidates results electionid="149" >
     <elections-tab 
-        tabtitle="Student Officers"
-        combineresults="true" 
-        posts="Vice President Education (Health) (full time, paid) | Vice President Activities & Development (full-time, paid) | Vice President Education (Arts & Sciences) (full time, paid) | Vice President Welfare & Community (full-time, paid) | President (full-time, paid) | Vice President Postgraduate (full-time, paid)"  
-        type="multiple" 
+        tabtitle="Student Trustees"
+        posts="Student Trustee"  
+        type="single" 
         active
-        regex="\(full-time, paid\) | \(full time, paid\) | Vice-President | Vice President"
-        replace=" |  | VP | VP"
-        ></elections-tab>
-    <elections-tab 
-        tabtitle="Network Officers" 
-        posts="International Officer | First Generation Officer | People of Colour Officer | Women's Officer"  
-        combineresults="true" 
-        type="multiple" >
-    </elections-tab>
-    <elections-tab 
-      tabtitle="NUS Delegates" 
-      posts="NUS National Conference Delegate" 
-      type="single" 
     ></elections-tab>
-    
-    <elections-tab tabtitle="Academic" type="grouping" >
-      <group-tab 
-        active
-        tabtitle="MSA" 
-        searchterms="MSA"
-        regex="MSA - "
+    <elections-tab 
+        tabtitle="Union Development" 
+        posts="Union Development Activities Committee | Union Development Sports Committee  | Union Development Sustainability Committee"   
+        type="multiple"
+        regex="Union Development"
         replace=" "
-      ></group-tab>
-      <group-tab 
-        tabtitle="Bioscience Students' Association" 
-        searchterms="Bioscience"
-        regex="Bioscience Students' Association - "
-        replace=" "
-        >
-      </group-tab>
-      <group-tab 
-        tabtitle="Law Council" 
-        searchterms="Law Council"
-        regex="Law Council - "
-        replace=" "
-        >
-      </group-tab>
-      <group-tab 
-        tabtitle="Dental Student Council" 
-        searchterms="Dental"
-        regex="Dental"
-        replace=" "
-        >
-      </group-tab>
-    </elections-tab>
-    </elections-candidates>
+    ></elections-tab>
+    <elections-tab
+        combineresults="true"
+        tabtitle="Networks" 
+        posts="Disabled Students' Officer | LGBT+ Officer (trans place)" 
+        type="multiple" 
+    ></elections-tab>
 
+    <elections-tab tabtitle="Academic" type="grouping" >
+        <group-tab 
+            tabtitle="Academic Board" 
+            searchterms="Academic Board"
+            regex="Academic Board - | Representative | Undergraduate | Postgraduate | Representataive"
+            replace=" | Rep | UG | PG | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Bioscience" 
+            searchterms="Bioscience"
+            regex="Bioscience - | Representative"
+            replace=" | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="IoPPN" 
+            searchterms="IoPPN"
+            regex="IoPPN"
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="King's Business School Students' Association" 
+            searchterms="King's Business School"
+            regex="King's Business School Students' Association"
+            replace="KBSSA"
+            exclude="Academic Board - Kings Business School Undergraduate Representataive"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Law Council" 
+            searchterms="Law Council"
+            regex="Law Council - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="MSA" 
+            searchterms="MSA"
+            regex="MSA - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="NMS" 
+            searchterms="Informatics | Engineering | Chemistry | Mathematics | Physics | NMS"
+            regex="Representative"
+            replace="Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Nursing & Midwifery" 
+            searchterms="Nursing | Midwifery"
+            exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative"
+        ></group-tab>
+    </elections-tab>
+</elections-candidates>
+  <!-- <kclsu-button>Click Me</kclsu-button>
+  <page-banner
+    landing
+    pagetitle="Spring Elections 2021 - A day of rememberance"
+   heading="Between our student officers"
+    text="This includes any difficulties you face with your studies, or if you want help with KCL regulations and procedures. Our advice is free, confidential and impartial."
+   > -->
+  <!-- <div style="color: white" slot="bc">KCLSUHelp & AdviceCoronavirus (COVID-19)</div> -->
+</page-banner>
+
+
+  <!-- <page-banner
+  pagetitle="Sustainability Month"
+  heading="Workshops for meaningful personal development."
+  text="Training sessions open to all KCL students aimed at equipping you with the tools you need to lead your communities"
+></page-banner> -->
 
 
   

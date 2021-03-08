@@ -6,10 +6,11 @@ import { Component, h, Prop } from '@stencil/core';
 })
 
 export class CampaignTabs {
-
+/** The MSL organisation ID where the news is kept */
 @Prop() newsid: string;
-@Prop() socials: string;
+/**The URL of the facebook page or group */
 @Prop() facebook: string;
+/**The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation. */
 @Prop() strategydoc: string;
 
   render() {
@@ -38,7 +39,7 @@ export class CampaignTabs {
                                 <h3>Campaign News</h3>
                                 <campaign-news newsid={this.newsid}></campaign-news>
                             </div>
-                            <div class="buttonCTA purpleBorder arrow"><a href="/latest-news/">View all News</a></div>
+                            <kclsu-button purple link="/latest-news/">View all News</kclsu-button>
                         </div>
                     </section>
 
@@ -62,7 +63,11 @@ export class CampaignTabs {
                     <p>To find out more about this campaign and how to get involved, be sure to&nbsp;join up!</p>
                 </div>
                 {!this.strategydoc ? null : <h2>STRATEGY</h2> }
-                {!this.strategydoc ?  null : <div><h3>You must be logged in as a student to access the document below:</h3><primary-button to={this.strategydoc}> Campaign Strategy Document </primary-button></div>}
+                {!this.strategydoc ?  null : 
+                <div>
+                    <h3>You must be logged in as a student to access the document below:</h3>
+                    <kclsu-button link={this.strategydoc}>Campaign Strategy Document</kclsu-button>
+                </div>}
             </kclsu-tabs-container>
         </page-content>
     );

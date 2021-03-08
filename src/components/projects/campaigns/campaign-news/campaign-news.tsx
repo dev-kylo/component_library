@@ -7,6 +7,7 @@ import { Component, Prop, h, State} from '@stencil/core';
 
 export class CampaignNews {
 
+  /** The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent */
   @Prop()newsid: string;
   @State() data;
 
