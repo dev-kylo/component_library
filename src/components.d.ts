@@ -12,16 +12,23 @@ export namespace Components {
     interface CampaignAim {
     }
     interface CampaignNews {
+        /**
+          * The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent
+         */
         "newsid": string;
-    }
-    interface CampaignPage {
-        "campaignId": number;
-        "name": string;
     }
     interface CampaignTabs {
+        /**
+          * The URL of the facebook page or group
+         */
         "facebook": string;
+        /**
+          * The MSL organisation ID where the news is kept
+         */
         "newsid": string;
-        "socials": string;
+        /**
+          * The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation.
+         */
         "strategydoc": string;
     }
     interface CandidateDisplay {
@@ -163,6 +170,9 @@ export namespace Components {
         "videotitle": string;
     }
     interface GetInvolved {
+        /**
+          * The typeform URL
+         */
         "typeform": string;
     }
     interface GridLanding {
@@ -839,9 +849,6 @@ export namespace Components {
     }
     interface VarsityWeather {
     }
-    interface VideoBanner {
-        "url": string;
-    }
     interface VideoEmbed {
         /**
           * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
@@ -883,12 +890,6 @@ declare global {
     var HTMLCampaignNewsElement: {
         prototype: HTMLCampaignNewsElement;
         new (): HTMLCampaignNewsElement;
-    };
-    interface HTMLCampaignPageElement extends Components.CampaignPage, HTMLStencilElement {
-    }
-    var HTMLCampaignPageElement: {
-        prototype: HTMLCampaignPageElement;
-        new (): HTMLCampaignPageElement;
     };
     interface HTMLCampaignTabsElement extends Components.CampaignTabs, HTMLStencilElement {
     }
@@ -1328,12 +1329,6 @@ declare global {
         prototype: HTMLVarsityWeatherElement;
         new (): HTMLVarsityWeatherElement;
     };
-    interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {
-    }
-    var HTMLVideoBannerElement: {
-        prototype: HTMLVideoBannerElement;
-        new (): HTMLVideoBannerElement;
-    };
     interface HTMLVideoEmbedElement extends Components.VideoEmbed, HTMLStencilElement {
     }
     var HTMLVideoEmbedElement: {
@@ -1356,7 +1351,6 @@ declare global {
         "add-varsity-scores": HTMLAddVarsityScoresElement;
         "campaign-aim": HTMLCampaignAimElement;
         "campaign-news": HTMLCampaignNewsElement;
-        "campaign-page": HTMLCampaignPageElement;
         "campaign-tabs": HTMLCampaignTabsElement;
         "candidate-display": HTMLCandidateDisplayElement;
         "candidate-upload": HTMLCandidateUploadElement;
@@ -1430,7 +1424,6 @@ declare global {
         "varsity-total-score": HTMLVarsityTotalScoreElement;
         "varsity-upcoming": HTMLVarsityUpcomingElement;
         "varsity-weather": HTMLVarsityWeatherElement;
-        "video-banner": HTMLVideoBannerElement;
         "video-embed": HTMLVideoEmbedElement;
         "video-gallery": HTMLVideoGalleryElement;
         "video-gallery-stacked": HTMLVideoGalleryStackedElement;
@@ -1443,16 +1436,23 @@ declare namespace LocalJSX {
     interface CampaignAim {
     }
     interface CampaignNews {
+        /**
+          * The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent
+         */
         "newsid"?: string;
-    }
-    interface CampaignPage {
-        "campaignId"?: number;
-        "name"?: string;
     }
     interface CampaignTabs {
+        /**
+          * The URL of the facebook page or group
+         */
         "facebook"?: string;
+        /**
+          * The MSL organisation ID where the news is kept
+         */
         "newsid"?: string;
-        "socials"?: string;
+        /**
+          * The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation.
+         */
         "strategydoc"?: string;
     }
     interface CandidateDisplay {
@@ -1596,6 +1596,9 @@ declare namespace LocalJSX {
         "videotitle"?: string;
     }
     interface GetInvolved {
+        /**
+          * The typeform URL
+         */
         "typeform"?: string;
     }
     interface GridLanding {
@@ -2280,9 +2283,6 @@ declare namespace LocalJSX {
     }
     interface VarsityWeather {
     }
-    interface VideoBanner {
-        "url"?: string;
-    }
     interface VideoEmbed {
         /**
           * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
@@ -2309,7 +2309,6 @@ declare namespace LocalJSX {
         "add-varsity-scores": AddVarsityScores;
         "campaign-aim": CampaignAim;
         "campaign-news": CampaignNews;
-        "campaign-page": CampaignPage;
         "campaign-tabs": CampaignTabs;
         "candidate-display": CandidateDisplay;
         "candidate-upload": CandidateUpload;
@@ -2383,7 +2382,6 @@ declare namespace LocalJSX {
         "varsity-total-score": VarsityTotalScore;
         "varsity-upcoming": VarsityUpcoming;
         "varsity-weather": VarsityWeather;
-        "video-banner": VideoBanner;
         "video-embed": VideoEmbed;
         "video-gallery": VideoGallery;
         "video-gallery-stacked": VideoGalleryStacked;
@@ -2396,7 +2394,6 @@ declare module "@stencil/core" {
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
-            "campaign-page": LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
@@ -2470,7 +2467,6 @@ declare module "@stencil/core" {
             "varsity-total-score": LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
             "varsity-upcoming": LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
             "varsity-weather": LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
-            "video-banner": LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
             "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
             "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
             "video-gallery-stacked": LocalJSX.VideoGalleryStacked & JSXBase.HTMLAttributes<HTMLVideoGalleryStackedElement>;

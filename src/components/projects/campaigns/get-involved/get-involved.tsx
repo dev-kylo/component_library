@@ -7,6 +7,7 @@ import { Component, Prop, h } from '@stencil/core';
 
 export class GetInvolved {
 
+  /** The typeform URL */
   @Prop()typeform: string;
 
   render() {
@@ -15,7 +16,7 @@ export class GetInvolved {
           <div id="getInvolved">
             <h2>Get involved!</h2>
             <p>Join to get updates about the campaign and more on how to get involved.</p>
-            <div class="buttonCTA green"><a href={this.typeform}>Sign up</a></div>
+            <kclsu-button link={this.typeform}>Sign up</kclsu-button>
             <slot></slot>
           </div>
         </fullwidth-beige-strip>
