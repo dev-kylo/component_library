@@ -36,9 +36,11 @@
 
 ### Used by
 
+ - [campaign-tabs](../../projects/campaigns/campaign-tabs)
  - [candidate-upload](../../projects/elections/candidate_upload)
  - [cloudinary-app](../../projects/cloudinary)
  - [full-bio](../../profiles/bio)
+ - [get-involved](../../projects/campaigns/get-involved)
  - [label-card](../../cards/label-card)
  - [preset-controls](../../projects/cloudinary/preset-controls)
  - [project-card-events](../../projects/projectpage/project-card/project-card-events)
@@ -53,9 +55,11 @@
 ```mermaid
 graph TD;
   kclsu-button --> flex-container
+  campaign-tabs --> kclsu-button
   candidate-upload --> kclsu-button
   cloudinary-app --> kclsu-button
   full-bio --> kclsu-button
+  get-involved --> kclsu-button
   label-card --> kclsu-button
   preset-controls --> kclsu-button
   project-card-events --> kclsu-button

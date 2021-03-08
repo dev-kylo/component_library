@@ -14,6 +14,19 @@
 | `subtext`                | `subtext`   | Any extra text. If you want it to be empty, add empty string value:  "" | `string` | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [events-listing](../../containers/events-listing)
+
+### Graph
+```mermaid
+graph TD;
+  events-listing --> text-card
+  style text-card fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

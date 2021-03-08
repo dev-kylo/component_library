@@ -11,6 +11,9 @@ export namespace Components {
     }
     interface CampaignAim {
     }
+    interface CampaignAimContainer {
+        "campaignname": string;
+    }
     interface CampaignNews {
         /**
           * The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent
@@ -885,6 +888,12 @@ declare global {
         prototype: HTMLCampaignAimElement;
         new (): HTMLCampaignAimElement;
     };
+    interface HTMLCampaignAimContainerElement extends Components.CampaignAimContainer, HTMLStencilElement {
+    }
+    var HTMLCampaignAimContainerElement: {
+        prototype: HTMLCampaignAimContainerElement;
+        new (): HTMLCampaignAimContainerElement;
+    };
     interface HTMLCampaignNewsElement extends Components.CampaignNews, HTMLStencilElement {
     }
     var HTMLCampaignNewsElement: {
@@ -1350,6 +1359,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "add-varsity-scores": HTMLAddVarsityScoresElement;
         "campaign-aim": HTMLCampaignAimElement;
+        "campaign-aim-container": HTMLCampaignAimContainerElement;
         "campaign-news": HTMLCampaignNewsElement;
         "campaign-tabs": HTMLCampaignTabsElement;
         "candidate-display": HTMLCandidateDisplayElement;
@@ -1434,6 +1444,9 @@ declare namespace LocalJSX {
         "year"?: string;
     }
     interface CampaignAim {
+    }
+    interface CampaignAimContainer {
+        "campaignname"?: string;
     }
     interface CampaignNews {
         /**
@@ -2308,6 +2321,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "add-varsity-scores": AddVarsityScores;
         "campaign-aim": CampaignAim;
+        "campaign-aim-container": CampaignAimContainer;
         "campaign-news": CampaignNews;
         "campaign-tabs": CampaignTabs;
         "candidate-display": CandidateDisplay;
@@ -2393,6 +2407,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
+            "campaign-aim-container": LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
