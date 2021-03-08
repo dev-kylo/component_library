@@ -556,6 +556,10 @@ export namespace Components {
           * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
          */
         "text": string;
+        /**
+          * Supply a video URL
+         */
+        "video": string;
     }
     interface PageContent {
     }
@@ -2007,6 +2011,10 @@ declare namespace LocalJSX {
           * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
          */
         "text"?: string;
+        /**
+          * Supply a video URL
+         */
+        "video"?: string;
     }
     interface PageContent {
     }

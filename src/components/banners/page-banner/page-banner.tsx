@@ -24,6 +24,8 @@ export class PageBanner{
     @Prop() bgimage: string;
     /** Supply an image for  */
     @Prop() image:string;
+    /** Supply a video URL  */
+    @Prop() video:string;
     /** If a landing page  */
     @Prop() landing:boolean = false;
 
@@ -46,18 +48,26 @@ export class PageBanner{
             "color":  titlescheme[0] || "white",
         }
 
+        let image = null;
+        let text= this.text && this.landing? <p class="subtext" style={textcolour}>{this.text}</p>: null;
+        let heading = this.heading && this.landing? <h2 class="subtitle" style={textcolour}>{this.heading}</h2> : null;
+        let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" thumbnail></lazy-image></div> : null;
+        const headingClass = this.landing? 'landing-heading' : 'heading-container';
+        const rowClass = this.landing? 'landing-rows' 
+                        : this.image? 'media-rows'
+                        : this.video ? 'media-rows'
+                        : 'headingonly-rows'
+        
+
         const pagetitle  = (
-            <div class="heading-container">
+            <div class={headingClass}>
                 <div style={pagetitlecolours} class="heading">
                     {this.pagetitle? <h1>{this.pagetitle}</h1> : <slot name="pagetitle"></slot>}
                 </div>
             </div>
         );
+                        
         
-        let image = null;
-        let text= this.text? <p style={textcolour}>{this.text}</p>: null;
-        let heading = this.heading? <h2 style={textcolour}>{this.heading}</h2> : null;
-        let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" thumbnail></lazy-image></div> : null;
         // let video;
         if (this.image){
             image = (
@@ -69,7 +79,7 @@ export class PageBanner{
         }
 
         return ([
-            <div id="banner-grid">
+            <div id="banner-grid" class={rowClass}>
                 <div style={bgcolour} class="section"></div>
                 <div class="breadcrumbs"><slot name="bc"></slot></div>
                 <div class="banner-content">

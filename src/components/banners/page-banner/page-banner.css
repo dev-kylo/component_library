@@ -16,12 +16,30 @@ h1, h2, h3 {
 
 #banner-grid {
 	display: grid;
-    min-height: 400px;
+    /* min-height: 400px; */
+    overflow: hidden;
 	grid-template-columns: 7.5% 5% 75% 5% 7.5%;
-    margin-bottom:4em;
+    margin-bottom:2em;
+}
+
+.landing-rows {
 	grid-template-rows:
+    minmax(200px, 85%)
+    80px
+    auto
+}
+
+.media-rows{
+    grid-template-rows:
     minmax(200px, 75%)/** Set to 300 to allow for 3 row h1 headings */
-    60px
+    150px
+    auto  
+}
+
+.headingonly-rows {
+	grid-template-rows:
+    minmax(200px, 75%)
+    150px
     auto
 }
 
@@ -61,10 +79,19 @@ h1, h2, h3 {
     padding: 0 15px;
 }
 
+
+
 .heading-container {
     max-width: 55%;
     min-width: 550px;
     margin-left: 4em;
+    margin-top: 2em;
+}
+
+.landing-heading {
+    width: 90%;
+    margin: auto;
+    text-align: center;
     margin-top: 2em;
 }
 
@@ -79,6 +106,19 @@ h1, h2, h3 {
 
 .heading h1 {
     display: inline;
+    margin-bottom: 35px;
+}
+
+.subtitle {
+    line-height: 42px;
+    width: 60%;
+    margin: 2em auto;
+}
+
+.subtext {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -122,9 +162,6 @@ section {
 }
 
 @media (max-width: 800px){
-    .grid {
-        grid-template-columns: 5% 90% 5%;
-    }
     #banner-grid {
         grid-template-columns: 5% 90% 5%;
     } 
@@ -146,23 +183,37 @@ section {
 
     .heading-container{
         max-width: 80%;
-        margin-left:  2em;
+        margin-left: 3em;
         min-width: 500px;
-    } 
+    }
+    
 
     #floating_shape {
         transform: rotate(0deg);
         width: 120px;
     }
 
+    .subtitle {
+        line-height: 38px;
+        width: 90%;
+        margin: 2em auto;
+    }
+    .subtext {
+        width: 90%;
+
+    }
+
 }
 
 
 @media (max-width: 600px){
-    .heading-container{
-        max-width: 100%;
-        margin-left: 0;    
+    .headingonly-rows{
+        grid-template-rows:
+        minmax(200px, 75%)/** Set to 300 to allow for 3 row h1 headings */
+        80px
+        auto
     } 
+
     .heading {
         padding-top: 22px;
         padding-bottom: 11px;
