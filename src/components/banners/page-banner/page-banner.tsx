@@ -48,7 +48,6 @@ export class PageBanner{
             "color":  titlescheme[0] || "white",
         }
 
-        let image = null;
         let text= this.text && this.landing? <p class="subtext" style={textcolour}>{this.text}</p>: null;
         let heading = this.heading && this.landing? <h2 class="subtitle" style={textcolour}>{this.heading}</h2> : null;
         let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" thumbnail></lazy-image></div> : null;
@@ -68,7 +67,9 @@ export class PageBanner{
         );
                         
         
-        // let video;
+        // Set the image banner
+        // If no image, create a slot area to optionally be used for a content overlap;
+        let image = <div id="overlap"><slot name="overlap"></slot></div>;
         if (this.image){
             image = (
                 <div id="pagebanner">

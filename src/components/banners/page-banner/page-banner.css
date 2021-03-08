@@ -79,6 +79,12 @@ h1, h2, h3 {
     padding: 0 15px;
 }
 
+#overlap {
+    width: 100%;
+    height: auto;
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 2;
+}
 
 
 .heading-container {

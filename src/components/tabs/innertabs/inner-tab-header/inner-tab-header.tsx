@@ -29,12 +29,14 @@ export class InnerTabHeader {
             'tab-header': true,
             'tab-header-active': this.active
         }
+        let name = this.name.replace(/\s+/g, '');
+        const id = `innertab_${name}`;
 
         const selected = this.active? 'true' : 'false';
 
         return (
             <li role="presentation" class={classes} onClick={() => this.onClick()}>
-                <h6 id={this.name} aria-selected={selected} role="tab"><slot></slot></h6>
+                <h6 id={id} aria-controls={name} aria-selected={selected} role="tab"><slot></slot></h6>
             </li>
         );
     }

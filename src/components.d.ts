@@ -6,11 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AccordionContainer {
-    }
-    interface AccordionDropdown {
-        "header": string;
-    }
     interface AddVarsityScores {
         "year": string;
     }
@@ -871,18 +866,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {
-    }
-    var HTMLAccordionContainerElement: {
-        prototype: HTMLAccordionContainerElement;
-        new (): HTMLAccordionContainerElement;
-    };
-    interface HTMLAccordionDropdownElement extends Components.AccordionDropdown, HTMLStencilElement {
-    }
-    var HTMLAccordionDropdownElement: {
-        prototype: HTMLAccordionDropdownElement;
-        new (): HTMLAccordionDropdownElement;
-    };
     interface HTMLAddVarsityScoresElement extends Components.AddVarsityScores, HTMLStencilElement {
     }
     var HTMLAddVarsityScoresElement: {
@@ -1370,8 +1353,6 @@ declare global {
         new (): HTMLVideoGalleryStackedElement;
     };
     interface HTMLElementTagNameMap {
-        "accordion-container": HTMLAccordionContainerElement;
-        "accordion-dropdown": HTMLAccordionDropdownElement;
         "add-varsity-scores": HTMLAddVarsityScoresElement;
         "campaign-aim": HTMLCampaignAimElement;
         "campaign-news": HTMLCampaignNewsElement;
@@ -1456,11 +1437,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface AccordionContainer {
-    }
-    interface AccordionDropdown {
-        "header"?: string;
-    }
     interface AddVarsityScores {
         "year"?: string;
     }
@@ -2330,8 +2306,6 @@ declare namespace LocalJSX {
         "playlist": any;
     }
     interface IntrinsicElements {
-        "accordion-container": AccordionContainer;
-        "accordion-dropdown": AccordionDropdown;
         "add-varsity-scores": AddVarsityScores;
         "campaign-aim": CampaignAim;
         "campaign-news": CampaignNews;
@@ -2419,8 +2393,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "accordion-container": LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
-            "accordion-dropdown": LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;

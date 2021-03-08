@@ -16,15 +16,88 @@
 </head>
 
 <body>
+  <!-- image="https://www.kclsu.org/pageassets/allevents/projectx/porojx_rmtull.jpg" -->
+  <elections-candidates electionid="163" results >
 
+    <elections-tab 
+        tabtitle="Student Trustees"
+        posts="Student Trustee"  
+        type="single" 
+        active
+    ></elections-tab>
+    <elections-tab 
+        tabtitle="Union Development" 
+        posts="Union Development Activities Committee | Union Development Sports Committee  | Union Development Sustainability Committee"   
+        type="multiple"
+        regex="Union Development"
+        replace=" "
+    ></elections-tab>
+    <elections-tab
+        combineresults="true"
+        tabtitle="Networks" 
+        posts="Disabled Students' Officer | LGBT+ Officer (trans place)" 
+        type="multiple" 
+    ></elections-tab>
+
+    <elections-tab tabtitle="Academic" type="grouping" >
+        <group-tab 
+            tabtitle="Academic Board" 
+            searchterms="Academic Board"
+            regex="Academic Board - | Representative | Undergraduate | Postgraduate | Representataive"
+            replace=" | Rep | UG | PG | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Bioscience" 
+            searchterms="Bioscience"
+            regex="Bioscience - | Representative"
+            replace=" | Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="IoPPN" 
+            searchterms="IoPPN"
+            regex="IoPPN"
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="King's Business School Students' Association" 
+            searchterms="King's Business School"
+            regex="King's Business School Students' Association"
+            replace="KBSSA"
+            exclude="Academic Board - Kings Business School Undergraduate Representataive"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Law Council" 
+            searchterms="Law Council"
+            regex="Law Council - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="MSA" 
+            searchterms="MSA"
+            regex="MSA - "
+            replace=" "
+        ></group-tab>
+        <group-tab 
+            tabtitle="NMS" 
+            searchterms="Informatics | Engineering | Chemistry | Mathematics | Physics | NMS"
+            regex="Representative"
+            replace="Rep"
+        ></group-tab>
+        <group-tab 
+            tabtitle="Nursing & Midwifery" 
+            searchterms="Nursing | Midwifery"
+            exclude="Academic Board - Nursing, Midwifery & Palliative Care Postgraduate Taught Representative"
+        ></group-tab>
+    </elections-tab>
+</elections-candidates>
+  <!-- <kclsu-button>Click Me</kclsu-button>
   <page-banner
     landing
     pagetitle="Spring Elections 2021 - A day of rememberance"
-    image="https://www.kclsu.org/pageassets/allevents/projectx/porojx_rmtull.jpg"
    heading="Between our student officers"
     text="This includes any difficulties you face with your studies, or if you want help with KCL regulations and procedures. Our advice is free, confidential and impartial."
-   >
-  <div style="color: white" slot="bc">KCLSUHelp & AdviceCoronavirus (COVID-19)</div>
+   > -->
+  <!-- <div style="color: white" slot="bc">KCLSUHelp & AdviceCoronavirus (COVID-19)</div> -->
 </page-banner>
 
 
