@@ -22,6 +22,10 @@ export class PageBanner{
     @Prop() pagetitlecolours: string = "white, #1BA39C";
     /** Supply a background image for the banner */
     @Prop() bgimage: string;
+    /** Supply an image for  */
+    @Prop() image:string;
+    /** If a landing page  */
+    @Prop() landing:boolean = false;
 
 
     render() {
@@ -38,31 +42,51 @@ export class PageBanner{
 
         const  pagetitlecolours = {
             "background": titlescheme[1] || "#1BA39C",
-            "box-shadow": `10px 0 0 ${ titlescheme[1] || "#1BA39C"}, -10px 0 0 ${ titlescheme[1] || "#1BA39C"}`,
+            "box-shadow": `10px 0 0 ${ titlescheme[1] || "#1BA39C"}, -11px 0 0 ${ titlescheme[1] || "#1BA39C"}`,
             "color":  titlescheme[0] || "white",
         }
 
         const pagetitle  = (
-            <div style={pagetitlecolours} class="heading">
-                <h1>{this.pagetitle}</h1>
+            <div class="heading-container">
+                <div style={pagetitlecolours} class="heading">
+                    {this.pagetitle? <h1>{this.pagetitle}</h1> : <slot name="pagetitle"></slot>}
+                </div>
             </div>
-        ); 
+        );
+        
+        let image = null;
+        let text= this.text? <p style={textcolour}>{this.text}</p>: null;
+        let heading = this.heading? <h2 style={textcolour}>{this.heading}</h2> : null;
+        let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" thumbnail></lazy-image></div> : null;
+        // let video;
+        if (this.image){
+            image = (
+                <div id="pagebanner">
+                    <lazy-image image={this.image}></lazy-image>
+                    {shape}
+                </div>
+            )
+        }
 
-        return (
-            <div class="grid">
-                <div style={bgcolour} class="section">
-                    <flex-container alignx="center" aligny="center" fillcontainer>
-                            <section style={bgcolour}>
-                                {this.pagetitle && pagetitle}
-                                <h2 style={textcolour}>{this.heading}</h2>
-                                <p style={textcolour}>{this.text}</p>
+        return ([
+            <div id="banner-grid">
+                <div style={bgcolour} class="section"></div>
+                <div class="breadcrumbs"><slot name="bc"></slot></div>
+                <div class="banner-content">
+                        <flex-container alignx={this.landing? "center" : "flex-start"} aligny="center" fillcontainer>
+                            <div>
+                                {pagetitle}
+                                {heading}
+                                {text}
                                 <div style={textcolour} class="slotted">
                                     <slot></slot>
                                 </div>
-                            </section>
+                            </div>
                         </flex-container>
-                </div>
-             </div>
-            );
+                    </div>
+                {image}
+             </div>,
+            
+        ]);
     }
 }

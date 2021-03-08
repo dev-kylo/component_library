@@ -13,7 +13,7 @@ export class GetInvolved {
     return (
         <fullwidth-beige-strip>
           <div id="getInvolved">
-            <h2>Get invoved!</h2>
+            <h2>Get involved!</h2>
             <p>Join to get updates about the campaign and more on how to get involved.</p>
             <div class="buttonCTA green"><a href={this.typeform}>Sign up</a></div>
             <slot></slot>

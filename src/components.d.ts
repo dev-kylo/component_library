@@ -16,9 +16,6 @@ export namespace Components {
     }
     interface CampaignAim {
     }
-    interface CampaignAimContainer {
-        "campaignname": string;
-    }
     interface CampaignNews {
         "newsid": string;
     }
@@ -540,6 +537,14 @@ export namespace Components {
          */
         "heading": string;
         /**
+          * Supply an image for
+         */
+        "image": string;
+        /**
+          * If a landing page
+         */
+        "landing": boolean;
+        /**
           * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
          */
         "pagetitle": string;
@@ -885,12 +890,6 @@ declare global {
     var HTMLCampaignAimElement: {
         prototype: HTMLCampaignAimElement;
         new (): HTMLCampaignAimElement;
-    };
-    interface HTMLCampaignAimContainerElement extends Components.CampaignAimContainer, HTMLStencilElement {
-    }
-    var HTMLCampaignAimContainerElement: {
-        prototype: HTMLCampaignAimContainerElement;
-        new (): HTMLCampaignAimContainerElement;
     };
     interface HTMLCampaignNewsElement extends Components.CampaignNews, HTMLStencilElement {
     }
@@ -1371,7 +1370,6 @@ declare global {
         "accordion-dropdown": HTMLAccordionDropdownElement;
         "add-varsity-scores": HTMLAddVarsityScoresElement;
         "campaign-aim": HTMLCampaignAimElement;
-        "campaign-aim-container": HTMLCampaignAimContainerElement;
         "campaign-news": HTMLCampaignNewsElement;
         "campaign-page": HTMLCampaignPageElement;
         "campaign-tabs": HTMLCampaignTabsElement;
@@ -1463,9 +1461,6 @@ declare namespace LocalJSX {
         "year"?: string;
     }
     interface CampaignAim {
-    }
-    interface CampaignAimContainer {
-        "campaignname"?: string;
     }
     interface CampaignNews {
         "newsid"?: string;
@@ -1993,6 +1988,14 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * Supply an image for
+         */
+        "image"?: string;
+        /**
+          * If a landing page
+         */
+        "landing"?: boolean;
+        /**
           * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
          */
         "pagetitle"?: string;
@@ -2323,7 +2326,6 @@ declare namespace LocalJSX {
         "accordion-dropdown": AccordionDropdown;
         "add-varsity-scores": AddVarsityScores;
         "campaign-aim": CampaignAim;
-        "campaign-aim-container": CampaignAimContainer;
         "campaign-news": CampaignNews;
         "campaign-page": CampaignPage;
         "campaign-tabs": CampaignTabs;
@@ -2413,7 +2415,6 @@ declare module "@stencil/core" {
             "accordion-dropdown": LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
-            "campaign-aim-container": LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
             "campaign-page": LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
