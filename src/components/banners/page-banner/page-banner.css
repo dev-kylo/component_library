@@ -77,12 +77,13 @@ h1, h2, h3 {
     max-width: 1032px;
     height: auto;
     padding: 0 15px;
+    margin: auto;
 }
 
 #overlap {
     width: 100%;
     height: auto;
-    grid-column: 2 / span 2;
+    grid-column: 2 / span 3;
     grid-row: 2 / span 2;
 }
 
@@ -186,6 +187,11 @@ section {
     #pagebanner {
         grid-column: 2 / span 1;
     } 
+
+
+    #overlap {
+        grid-column: 2 / span 1;
+    }
 
     .heading-container{
         max-width: 80%;
