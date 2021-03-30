@@ -556,9 +556,17 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Supply an image for
+          * Supply an image for the banner
          */
         "image": string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight": string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth": string;
         /**
           * If a landing page
          */
@@ -1999,9 +2007,17 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Supply an image for
+          * Supply an image for the banner
          */
         "image"?: string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight"?: string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth"?: string;
         /**
           * If a landing page
          */

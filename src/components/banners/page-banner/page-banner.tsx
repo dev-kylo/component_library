@@ -2,6 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { createArrayFromString } from '../../../utils/utils';
 
 
+
 @Component({
     tag: 'page-banner',
     styleUrl: 'page-banner.css',
@@ -22,8 +23,12 @@ export class PageBanner{
     @Prop() pagetitlecolours: string = "white, #1BA39C";
     /** Supply a background image for the banner */
     @Prop() bgimage: string;
-    /** Supply an image for  */
+    /** Supply an image for the banner  */
     @Prop() image:string;
+    /** Supply an custom width for the banner image  */
+    @Prop() imagewidth:string = '1280';
+    /** Supply a custom height for the banner image  */
+    @Prop() imageheight:string = '678';
     /** Supply a video URL  */
     @Prop() video:string;
     /** If a landing page  */
@@ -73,7 +78,10 @@ export class PageBanner{
         if (this.image){
             image = (
                 <div id="pagebanner">
-                    <lazy-image image={this.image}></lazy-image>
+                    <lazy-image 
+                        customtransform={`c_fill,f_auto,fl_any_format,w_${this.imagewidth},h_${this.imageheight}`}
+                        image={this.image}>
+                    </lazy-image>
                     {shape}
                 </div>
             )
