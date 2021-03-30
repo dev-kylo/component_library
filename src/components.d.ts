@@ -484,6 +484,10 @@ export namespace Components {
          */
         "contentimage": boolean;
         /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform": string;
+        /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth": string;
@@ -1921,6 +1925,10 @@ declare namespace LocalJSX {
           * If the image is being used only as thumbnail, such as project-cards and image-text components
          */
         "contentimage"?: boolean;
+        /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform"?: string;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */

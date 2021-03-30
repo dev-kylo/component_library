@@ -1,5 +1,6 @@
 import { Component, h, State, Prop, Listen, Watch, Element} from '@stencil/core';
-import { presets } from './assets/presets';
+import { presets } from '../../../utils/cloudinary_presets';
+import { Preset } from '../../../utils/cloudinary_presets';
 
 
 @Component({
@@ -65,7 +66,7 @@ export class CloudinaryApp {
 
 
     mapPresets(){
-        return presets.map(node => {
+        return presets.map((node:Preset) => {
             return <preset-card dimensions={node.dimensions} presetid={node.id} presetname={node.name}></preset-card>
         })
     }

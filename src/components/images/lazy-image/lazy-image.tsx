@@ -31,6 +31,8 @@ export class LazyImage {
     @Prop() nolazy: boolean = false;
     /** If set to false, it will keep any existing cloudinary transforms */
     @Prop() keeptransforms: boolean = false;
+    /** Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format  */
+    @Prop() customtransform: string;
 
     @Element() el: HTMLElement;
 
@@ -54,7 +56,9 @@ export class LazyImage {
         let imageWidth = this.width;
         let loadingImage, loadedImage;
         const loadingTransforms = 'c_fill,f_auto,fl_any_format.flatten,g_center,q_10,w_20/e_saturation:-10';
-        const loadedTransforms = `c_fill,f_auto,fl_any_format,w_${imageWidth}`;
+        let loadedTransforms = `c_fill,f_auto,fl_any_format,w_${imageWidth}`;
+
+        if (this.customtransform) loadedTransforms = this.customtransform;
 
         if (this.image && this.image.includes('kclsu.org')) {
             loadingImage = `https://res.cloudinary.com/kclsu-media/image/fetch/${loadingTransforms}/${this.image}`;
