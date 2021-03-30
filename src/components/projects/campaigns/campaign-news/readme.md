@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `newsid` | `newsid`  |             | `string` | `undefined` |
+| Property | Attribute | Description                                                                                      | Type     | Default     |
+| -------- | --------- | ------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| `newsid` | `newsid`  | The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent | `string` | `undefined` |
 
 
 ## Dependencies

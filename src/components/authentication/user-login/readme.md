@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property                | Attribute  | Description                                          | Type     | Default     |
-| ----------------------- | ---------- | ---------------------------------------------------- | -------- | ----------- |
-| `database` _(required)_ | `database` | The name of the database area. For example: projectx | `string` | `undefined` |
+| Property                | Attribute  | Description                                          | Type                      | Default     |
+| ----------------------- | ---------- | ---------------------------------------------------- | ------------------------- | ----------- |
+| `callbackFn`            | --         | Provide a custom callback.                           | `(token: string) => void` | `undefined` |
+| `database` _(required)_ | `database` | The name of the database area. For example: projectx | `string`                  | `undefined` |
 
 
 ## Dependencies

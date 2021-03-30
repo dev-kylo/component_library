@@ -183,7 +183,13 @@ export namespace Components {
         "width": string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active": boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude": string;
         "regex": string;
         "replace": string;
@@ -478,6 +484,10 @@ export namespace Components {
          */
         "contentimage": boolean;
         /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform": string;
+        /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth": string;
@@ -486,6 +496,10 @@ export namespace Components {
          */
         "focusarea": string;
         "image": string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms": boolean;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -542,9 +556,17 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Supply an image for
+          * Supply an image for the banner
          */
         "image": string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight": string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth": string;
         /**
           * If a landing page
          */
@@ -1609,7 +1631,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active"?: boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude"?: string;
         "regex"?: string;
         "replace"?: string;
@@ -1906,6 +1934,10 @@ declare namespace LocalJSX {
          */
         "contentimage"?: boolean;
         /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform"?: string;
+        /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth"?: string;
@@ -1914,6 +1946,10 @@ declare namespace LocalJSX {
          */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms"?: boolean;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -1971,9 +2007,17 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Supply an image for
+          * Supply an image for the banner
          */
         "image"?: string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight"?: string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth"?: string;
         /**
           * If a landing page
          */

@@ -12,7 +12,9 @@ export class GroupTab {
     @Prop() searchterms: string;
     @Prop() regex: string;
     @Prop() replace: string;
+    /** Set this Group Tab as the active tab */
     @Prop() active: boolean;
+    /** The exact post names as appeared in MSL, separated by a pipe character | */
     @Prop() exclude: string;
     
     render() {
