@@ -29,6 +29,8 @@ export class LazyImage {
     @Prop() contentimage: boolean = false;
     /** Remove lazy-loading functionality. Retains Object Fit positioing */
     @Prop() nolazy: boolean = false;
+    /** If set to false, it will keep any existing cloudinary transforms */
+    @Prop() keeptransforms: boolean = false;
 
     @Element() el: HTMLElement;
 
@@ -62,9 +64,15 @@ export class LazyImage {
         else if (this.image && this.image.includes('res.cloudinary.com')){
 
             const existingTransforms = /upload\/[\w,]*\//;
-            if (existingTransforms.test(this.image)){
+            if (existingTransforms.test(this.image) && !this.keeptransforms){
+                //IF THERE ARE CLOUDINARY TRANSFORMS PRESENT ALREADY AND WE WANT REMOVED
                 loadingImage = this.image.replace(existingTransforms, `upload/${loadingTransforms}/`);
                 loadedImage = this.image.replace(existingTransforms, `upload/${loadedTransforms}/`);
+            }
+            else if (existingTransforms.test(this.image)){
+                //IF THERE ARE CLOUDINARY TRANSFORMS PRESENT ALREADY AND WE WANT TO KEEP
+                loadingImage = this.image.replace(existingTransforms, `upload/${loadingTransforms}/`);
+                loadedImage = this.image;
             }
             else {
                 loadingImage = this.image.replace('upload/', `upload/${loadingTransforms}/`);

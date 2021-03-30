@@ -183,7 +183,13 @@ export namespace Components {
         "width": string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active": boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude": string;
         "regex": string;
         "replace": string;
@@ -486,6 +492,10 @@ export namespace Components {
          */
         "focusarea": string;
         "image": string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms": boolean;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -1609,7 +1619,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active"?: boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude"?: string;
         "regex"?: string;
         "replace"?: string;
@@ -1914,6 +1930,10 @@ declare namespace LocalJSX {
          */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms"?: boolean;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
