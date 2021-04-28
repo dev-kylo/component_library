@@ -606,7 +606,7 @@ export namespace Components {
          */
         "cta": string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid": string;
         /**
@@ -629,6 +629,14 @@ export namespace Components {
           * A sub heading - usually a position or field title
          */
         "position": string;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn": () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn": () => void;
         /**
           * The text for the secondary text link bottom right
          */
@@ -2059,7 +2067,7 @@ declare namespace LocalJSX {
          */
         "cta"?: string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid"?: string;
         /**
@@ -2083,6 +2091,14 @@ declare namespace LocalJSX {
           * A sub heading - usually a position or field title
          */
         "position"?: string;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn"?: () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn"?: () => void;
         /**
           * The text for the secondary text link bottom right
          */

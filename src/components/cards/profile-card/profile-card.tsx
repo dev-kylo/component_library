@@ -47,7 +47,7 @@ export class ProfileCard{
     if (this.link) 
       return <a target="_blank" href={this.link}><span class="name">{this.name}</span></a>
     
-    else return <a role="button" tabindex="0" onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> 
+    else return <a role="button" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a> 
   }
 
   createTextButton(type: 'primary' | 'secondary'){
