@@ -648,6 +648,36 @@ export namespace Components {
     }
     interface ProfileCardLayout {
     }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta": string;
+        /**
+          * The image URL
+         */
+        "image": string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link": string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name": string;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position": string;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta": string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink": string;
+    }
     interface ProfileLogoCard {
         /**
           * The text title of the card
@@ -1203,6 +1233,12 @@ declare global {
         prototype: HTMLProfileCardLayoutElement;
         new (): HTMLProfileCardLayoutElement;
     };
+    interface HTMLProfileCardModalElement extends Components.ProfileCardModal, HTMLStencilElement {
+    }
+    var HTMLProfileCardModalElement: {
+        prototype: HTMLProfileCardModalElement;
+        new (): HTMLProfileCardModalElement;
+    };
     interface HTMLProfileLogoCardElement extends Components.ProfileLogoCard, HTMLStencilElement {
     }
     var HTMLProfileLogoCardElement: {
@@ -1428,6 +1464,7 @@ declare global {
         "primary-button": HTMLPrimaryButtonElement;
         "profile-card": HTMLProfileCardElement;
         "profile-card-layout": HTMLProfileCardLayoutElement;
+        "profile-card-modal": HTMLProfileCardModalElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "project-card": HTMLProjectCardElement;
@@ -2110,6 +2147,36 @@ declare namespace LocalJSX {
     }
     interface ProfileCardLayout {
     }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta"?: string;
+        /**
+          * The image URL
+         */
+        "image"?: string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link"?: string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name"?: string;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position"?: string;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta"?: string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink"?: string;
+    }
     interface ProfileLogoCard {
         /**
           * The text title of the card
@@ -2416,6 +2483,7 @@ declare namespace LocalJSX {
         "primary-button": PrimaryButton;
         "profile-card": ProfileCard;
         "profile-card-layout": ProfileCardLayout;
+        "profile-card-modal": ProfileCardModal;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "project-card": ProjectCard;
@@ -2501,6 +2569,7 @@ declare module "@stencil/core" {
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
             "profile-card": LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
+            "profile-card-modal": LocalJSX.ProfileCardModal & JSXBase.HTMLAttributes<HTMLProfileCardModalElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
