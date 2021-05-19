@@ -32,10 +32,10 @@ export class UserLogin {
     @Element() host: HTMLElement;
 
     componentDidLoad(){
-        this.checkAuthentication();//See if a user token is stored in local storage
+        this.fetchToken();//See if a user token is stored in local storage
     }
 
-    private checkAuthentication(){
+    private fetchToken(){
         const token = localStorage.getItem('kclsu_token');
         if (token){
             const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
@@ -51,7 +51,7 @@ export class UserLogin {
         }
     }
     
-    @Listen('emitClick') buttonClick(e:Event){
+    @Listen('emitClick') clickHandler(e:Event){
         e.preventDefault();
         this.clearErrors();
         this.email = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
@@ -82,7 +82,7 @@ export class UserLogin {
         })
         .catch(er => {
             this.loading= false;
-            this.error = er;
+            this.error = er.toString();
         }) 
     }
 
@@ -99,30 +99,37 @@ export class UserLogin {
         this.inputerrors = {};
         this.error = '';
     }
-    
+
     render() {
         let emailError = null, passwordError = null;
-        //If error object contains these fields, render a span element to show error.
-        if (this.inputerrors.hasOwnProperty('email')) emailError = <span class="error">{this.inputerrors.email.join(' ')}</span> 
+        const fetchError = this.error? <span class="error">{this.error}</span> : null;
+        if (this.inputerrors.hasOwnProperty('email')) emailError = <span class="error">{this.inputerrors.email.join(' ')}</span> //If error object contains these fields, render a span element to show error.
         if (this.inputerrors.hasOwnProperty('password')) passwordError = <span class="error">{this.inputerrors.password.join(' ')}</span> 
         
         return (
             <kclsu-modal show={this.modalOpen}>
                 <form>
-                    <span class="title">Login with details provided</span>
+
+                    <span class="title">Login to KCLSU Media Manager</span>
+                    
                     <div class="inputfield">
                         <label> Email</label>
                         <input type="email" value='' id="email" />
-                        {emailError}
+                        { emailError }
                     </div>
+
                     <div class="inputfield">
                         <label> Password</label>
                         <input type="password" value='' id="password" />
-                        {passwordError}
+                        { passwordError }
                     </div>
+
                     <kclsu-button center emitid="userlogin">Login</kclsu-button>  
-                    <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
-                    <span class="error">{this.error? `${this.error} !`: ''}</span>           
+                    
+                    <loading-spinner show={this.loading}></loading-spinner>
+                    
+                    { fetchError }  
+                            
                 </form>
             </kclsu-modal>
         );

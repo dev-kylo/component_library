@@ -590,6 +590,14 @@ export namespace Components {
     }
     interface PageContent {
     }
+    interface PageFooter {
+        "bgcolor": string;
+        "colone": string;
+        "colthree": string;
+        "coltwo": string;
+        "logo": string;
+        "textcolor": string;
+    }
     interface PresetCard {
         "dimensions": string;
         "presetid": string;
@@ -821,10 +829,6 @@ export namespace Components {
           * For developers only. The name of the slot for this component to be inserted
          */
         "slotr": string;
-    }
-    interface PurpleButton {
-        "link": string;
-        "whitetext": boolean;
     }
     interface QuickLink {
         "to": string;
@@ -1203,6 +1207,12 @@ declare global {
         prototype: HTMLPageContentElement;
         new (): HTMLPageContentElement;
     };
+    interface HTMLPageFooterElement extends Components.PageFooter, HTMLStencilElement {
+    }
+    var HTMLPageFooterElement: {
+        prototype: HTMLPageFooterElement;
+        new (): HTMLPageFooterElement;
+    };
     interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {
     }
     var HTMLPresetCardElement: {
@@ -1286,12 +1296,6 @@ declare global {
     var HTMLProjectSocialsElement: {
         prototype: HTMLProjectSocialsElement;
         new (): HTMLProjectSocialsElement;
-    };
-    interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
-    }
-    var HTMLPurpleButtonElement: {
-        prototype: HTMLPurpleButtonElement;
-        new (): HTMLPurpleButtonElement;
     };
     interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {
     }
@@ -1459,6 +1463,7 @@ declare global {
         "news-card": HTMLNewsCardElement;
         "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
+        "page-footer": HTMLPageFooterElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
         "primary-button": HTMLPrimaryButtonElement;
@@ -1473,7 +1478,6 @@ declare global {
         "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
         "project-socials": HTMLProjectSocialsElement;
-        "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
         "scroll-observer": HTMLScrollObserverElement;
@@ -2086,6 +2090,14 @@ declare namespace LocalJSX {
     }
     interface PageContent {
     }
+    interface PageFooter {
+        "bgcolor"?: string;
+        "colone"?: string;
+        "colthree"?: string;
+        "coltwo"?: string;
+        "logo"?: string;
+        "textcolor"?: string;
+    }
     interface PresetCard {
         "dimensions"?: string;
         "onSelectPreset"?: (event: CustomEvent<any>) => void;
@@ -2321,10 +2333,6 @@ declare namespace LocalJSX {
          */
         "slotr"?: string;
     }
-    interface PurpleButton {
-        "link"?: string;
-        "whitetext"?: boolean;
-    }
     interface QuickLink {
         "to"?: string;
     }
@@ -2478,6 +2486,7 @@ declare namespace LocalJSX {
         "news-card": NewsCard;
         "page-banner": PageBanner;
         "page-content": PageContent;
+        "page-footer": PageFooter;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
         "primary-button": PrimaryButton;
@@ -2492,7 +2501,6 @@ declare namespace LocalJSX {
         "project-image": ProjectImage;
         "project-page": ProjectPage;
         "project-socials": ProjectSocials;
-        "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
         "scroll-observer": ScrollObserver;
@@ -2564,6 +2572,7 @@ declare module "@stencil/core" {
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
             "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
+            "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
@@ -2578,7 +2587,6 @@ declare module "@stencil/core" {
             "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
             "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
-            "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
             "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;

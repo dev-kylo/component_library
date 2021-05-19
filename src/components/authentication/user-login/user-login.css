@@ -72,6 +72,12 @@ input {
     text-align: center;
 }
 
+.spinner {
+    height: 100%;
+    width: 100%;
+    position: relative
+}
+
 @media (max-width: 480px){
 
 input {
