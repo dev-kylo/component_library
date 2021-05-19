@@ -32,23 +32,30 @@ export class UserLogin {
     @Element() host: HTMLElement;
 
     componentDidLoad(){
-        this.fetchToken();//See if a user token is stored in local storage
+        //Check for an existing valid token, and if none display the modal
+        this.modalOpen = !this.checkForValidExistingToken();//See if a user token is stored in local storage
     }
 
-    private fetchToken(){
+    private checkForValidExistingToken(){
         const token = localStorage.getItem('kclsu_token');
-        if (token){
-            const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
-            if (new Date() < expirationDate){
-                this.token = token;
-                if (this.callbackFn) this.callbackFn(token);
-                this.modalOpen = false;
-            }
-            else {
-                localStorage.removeItem('kclsu_token');
-                localStorage.removeItem('tokenExpireDate')
-            }
+        const tokenExpiry = localStorage.getItem('tokenExpireDate');
+        if (!token) return false; //This will show the modal
+
+        if (this.validateTokenExpiry(tokenExpiry)){
+            if (this.callbackFn) this.callbackFn(token);
+            return true; //This will hide the modal
         }
+        this.clearToken();
+        return false;
+    }
+
+    validateTokenExpiry(expiryTime){
+        return expiryTime > Date.now();
+    }
+
+    clearToken(){
+        localStorage.removeItem('kclsu_token');
+        localStorage.removeItem('tokenExpireDate')
     }
     
     @Listen('emitClick') clickHandler(e:Event){
@@ -73,7 +80,7 @@ export class UserLogin {
             else {
                 const expirationDate:any = new Date(new Date().getTime() + +data.expiresIn * 1000);
                 localStorage.setItem('kclsu_token', data.idToken);
-                localStorage.setItem('tokenExpireDate', expirationDate); 
+                localStorage.setItem('tokenExpireDate', expirationDate.getTime()); 
                 this.token = data.idToken;
                 this.modalOpen = false;
                 //If a callback arg was supplied, invoke the callback
