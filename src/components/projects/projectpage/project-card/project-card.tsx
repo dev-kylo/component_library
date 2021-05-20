@@ -22,6 +22,8 @@ export class ProjectCard {
     @Prop() aligny: string = 'center';
     /** Display an event listing */
     @Prop() eventtag:string;
+    /** If displaying events, set a custom URL for 'all events' in place of dynamically created URL */
+    @Prop() alleventsurl: string ;
     
     render() {
         const containerPadding = {
@@ -60,7 +62,7 @@ export class ProjectCard {
         );
         
         if (this.eventtag) card = (
-            <project-card-events tag={this.eventtag}><slot></slot></project-card-events>
+            <project-card-events alleventsurl={this.alleventsurl} tag={this.eventtag}><slot></slot></project-card-events>
         )
 
 

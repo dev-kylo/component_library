@@ -28,6 +28,7 @@
 
 ### Used by
 
+ - [events-listing](../../containers/events-listing)
  - [project-card-events](../../projects/projectpage/project-card/project-card-events)
  - [varsity-landing](../../projects/varsity/varsity-landing)
  - [varsity-next-matches](../../projects/varsity/varsity-next-matches)
@@ -44,6 +45,7 @@ graph TD;
   label-card --> lazy-image
   kclsu-button --> flex-container
   lazy-image --> scroll-observer
+  events-listing --> label-card
   project-card-events --> label-card
   varsity-landing --> label-card
   varsity-next-matches --> label-card

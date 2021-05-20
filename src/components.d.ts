@@ -6,34 +6,37 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AccordionContainer {
-    }
-    interface AccordionDropdown {
-        "header": string;
-    }
     interface AddVarsityScores {
         "year": string;
     }
     interface CampaignAim {
     }
-    interface CampaignAimContainer {
-        "campaignname": string;
-    }
     interface CampaignNews {
+        /**
+          * The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent
+         */
         "newsid": string;
-    }
-    interface CampaignPage {
-        "campaignId": number;
-        "name": string;
     }
     interface CampaignTabs {
+        /**
+          * The URL of the facebook page or group
+         */
         "facebook": string;
+        /**
+          * The MSL organisation ID where the news is kept
+         */
         "newsid": string;
-        "socials": string;
+        /**
+          * The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation.
+         */
         "strategydoc": string;
     }
     interface CandidateDisplay {
         "data": any;
+        /**
+          * Lazy option in profile cards
+         */
+        "nolazy": boolean;
     }
     interface CandidateUpload {
         /**
@@ -91,6 +94,28 @@ export namespace Components {
         "tabtitle": string;
         "type": 'single' | 'multiple' | 'groupings';
     }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype": 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col": boolean;
+        /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta": string;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit": string;
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -145,6 +170,9 @@ export namespace Components {
         "videotitle": string;
     }
     interface GetInvolved {
+        /**
+          * The typeform URL
+         */
         "typeform": string;
     }
     interface GridLanding {
@@ -155,7 +183,13 @@ export namespace Components {
         "width": string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active": boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude": string;
         "regex": string;
         "replace": string;
@@ -340,6 +374,14 @@ export namespace Components {
          */
         "autoexit": boolean;
         /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn": () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn": () => void;
+        /**
           * Set position to absolute or other. Defaults to fixed
          */
         "position": string;
@@ -442,6 +484,10 @@ export namespace Components {
          */
         "contentimage": boolean;
         /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform": string;
+        /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth": string;
@@ -450,6 +496,14 @@ export namespace Components {
          */
         "focusarea": string;
         "image": string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms": boolean;
+        /**
+          * Remove lazy-loading functionality. Retains Object Fit positioing
+         */
+        "nolazy": boolean;
         /**
           * If you want to render an img element in a responsive container without object positioning
          */
@@ -488,7 +542,61 @@ export namespace Components {
         "newslink": string;
         "newstitle": string;
     }
+    interface PageBanner {
+        /**
+          * Supply a background image for the banner
+         */
+        "bgimage": string;
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme": string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading": string;
+        /**
+          * Supply an image for the banner
+         */
+        "image": string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight": string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth": string;
+        /**
+          * If a landing page
+         */
+        "landing": boolean;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle": string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours": string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text": string;
+        /**
+          * Supply a video URL
+         */
+        "video": string;
+    }
     interface PageContent {
+    }
+    interface PageFooter {
+        "bgcolor": string;
+        "colone": string;
+        "colthree": string;
+        "coltwo": string;
+        "logo": string;
+        "textcolor": string;
     }
     interface PresetCard {
         "dimensions": string;
@@ -506,9 +614,53 @@ export namespace Components {
          */
         "cta": string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid": string;
+        /**
+          * The image URL
+         */
+        "image": string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link": string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name": string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy": boolean;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position": string;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn": () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn": () => void;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta": string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink": string;
+    }
+    interface ProfileCardLayout {
+    }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta": string;
         /**
           * The image URL
          */
@@ -533,8 +685,6 @@ export namespace Components {
           * A second URL link for the bottom right of the card
          */
         "secondlink": string;
-    }
-    interface ProfileCardLayout {
     }
     interface ProfileLogoCard {
         /**
@@ -585,6 +735,10 @@ export namespace Components {
           * Position the content of the card along the Y axis
          */
         "aligny": string;
+        /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl": string;
         /**
           * Display an event listing
          */
@@ -676,10 +830,6 @@ export namespace Components {
          */
         "slotr": string;
     }
-    interface PurpleButton {
-        "link": string;
-        "whitetext": boolean;
-    }
     interface QuickLink {
         "to": string;
     }
@@ -735,9 +885,14 @@ export namespace Components {
     }
     interface UserLogin {
         /**
+          * Provide a custom callback.
+         */
+        "callbackFn": (token: string) => void;
+        /**
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth": boolean;
     }
     interface VarsityLanding {
         "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
@@ -758,9 +913,6 @@ export namespace Components {
         "showall": boolean;
     }
     interface VarsityWeather {
-    }
-    interface VideoBanner {
-        "url": string;
     }
     interface VideoEmbed {
         /**
@@ -786,18 +938,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAccordionContainerElement extends Components.AccordionContainer, HTMLStencilElement {
-    }
-    var HTMLAccordionContainerElement: {
-        prototype: HTMLAccordionContainerElement;
-        new (): HTMLAccordionContainerElement;
-    };
-    interface HTMLAccordionDropdownElement extends Components.AccordionDropdown, HTMLStencilElement {
-    }
-    var HTMLAccordionDropdownElement: {
-        prototype: HTMLAccordionDropdownElement;
-        new (): HTMLAccordionDropdownElement;
-    };
     interface HTMLAddVarsityScoresElement extends Components.AddVarsityScores, HTMLStencilElement {
     }
     var HTMLAddVarsityScoresElement: {
@@ -810,23 +950,11 @@ declare global {
         prototype: HTMLCampaignAimElement;
         new (): HTMLCampaignAimElement;
     };
-    interface HTMLCampaignAimContainerElement extends Components.CampaignAimContainer, HTMLStencilElement {
-    }
-    var HTMLCampaignAimContainerElement: {
-        prototype: HTMLCampaignAimContainerElement;
-        new (): HTMLCampaignAimContainerElement;
-    };
     interface HTMLCampaignNewsElement extends Components.CampaignNews, HTMLStencilElement {
     }
     var HTMLCampaignNewsElement: {
         prototype: HTMLCampaignNewsElement;
         new (): HTMLCampaignNewsElement;
-    };
-    interface HTMLCampaignPageElement extends Components.CampaignPage, HTMLStencilElement {
-    }
-    var HTMLCampaignPageElement: {
-        prototype: HTMLCampaignPageElement;
-        new (): HTMLCampaignPageElement;
     };
     interface HTMLCampaignTabsElement extends Components.CampaignTabs, HTMLStencilElement {
     }
@@ -881,6 +1009,12 @@ declare global {
     var HTMLElectionsTabElement: {
         prototype: HTMLElectionsTabElement;
         new (): HTMLElectionsTabElement;
+    };
+    interface HTMLEventsListingElement extends Components.EventsListing, HTMLStencilElement {
+    }
+    var HTMLEventsListingElement: {
+        prototype: HTMLEventsListingElement;
+        new (): HTMLEventsListingElement;
     };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
@@ -1062,11 +1196,23 @@ declare global {
         prototype: HTMLNewsCardElement;
         new (): HTMLNewsCardElement;
     };
+    interface HTMLPageBannerElement extends Components.PageBanner, HTMLStencilElement {
+    }
+    var HTMLPageBannerElement: {
+        prototype: HTMLPageBannerElement;
+        new (): HTMLPageBannerElement;
+    };
     interface HTMLPageContentElement extends Components.PageContent, HTMLStencilElement {
     }
     var HTMLPageContentElement: {
         prototype: HTMLPageContentElement;
         new (): HTMLPageContentElement;
+    };
+    interface HTMLPageFooterElement extends Components.PageFooter, HTMLStencilElement {
+    }
+    var HTMLPageFooterElement: {
+        prototype: HTMLPageFooterElement;
+        new (): HTMLPageFooterElement;
     };
     interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {
     }
@@ -1097,6 +1243,12 @@ declare global {
     var HTMLProfileCardLayoutElement: {
         prototype: HTMLProfileCardLayoutElement;
         new (): HTMLProfileCardLayoutElement;
+    };
+    interface HTMLProfileCardModalElement extends Components.ProfileCardModal, HTMLStencilElement {
+    }
+    var HTMLProfileCardModalElement: {
+        prototype: HTMLProfileCardModalElement;
+        new (): HTMLProfileCardModalElement;
     };
     interface HTMLProfileLogoCardElement extends Components.ProfileLogoCard, HTMLStencilElement {
     }
@@ -1145,12 +1297,6 @@ declare global {
     var HTMLProjectSocialsElement: {
         prototype: HTMLProjectSocialsElement;
         new (): HTMLProjectSocialsElement;
-    };
-    interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
-    }
-    var HTMLPurpleButtonElement: {
-        prototype: HTMLPurpleButtonElement;
-        new (): HTMLPurpleButtonElement;
     };
     interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {
     }
@@ -1254,12 +1400,6 @@ declare global {
         prototype: HTMLVarsityWeatherElement;
         new (): HTMLVarsityWeatherElement;
     };
-    interface HTMLVideoBannerElement extends Components.VideoBanner, HTMLStencilElement {
-    }
-    var HTMLVideoBannerElement: {
-        prototype: HTMLVideoBannerElement;
-        new (): HTMLVideoBannerElement;
-    };
     interface HTMLVideoEmbedElement extends Components.VideoEmbed, HTMLStencilElement {
     }
     var HTMLVideoEmbedElement: {
@@ -1279,13 +1419,9 @@ declare global {
         new (): HTMLVideoGalleryStackedElement;
     };
     interface HTMLElementTagNameMap {
-        "accordion-container": HTMLAccordionContainerElement;
-        "accordion-dropdown": HTMLAccordionDropdownElement;
         "add-varsity-scores": HTMLAddVarsityScoresElement;
         "campaign-aim": HTMLCampaignAimElement;
-        "campaign-aim-container": HTMLCampaignAimContainerElement;
         "campaign-news": HTMLCampaignNewsElement;
-        "campaign-page": HTMLCampaignPageElement;
         "campaign-tabs": HTMLCampaignTabsElement;
         "candidate-display": HTMLCandidateDisplayElement;
         "candidate-upload": HTMLCandidateUploadElement;
@@ -1295,6 +1431,7 @@ declare global {
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "elections-tab": HTMLElectionsTabElement;
+        "events-listing": HTMLEventsListingElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1325,12 +1462,15 @@ declare global {
         "modal-backdrop": HTMLModalBackdropElement;
         "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
+        "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
+        "page-footer": HTMLPageFooterElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
         "primary-button": HTMLPrimaryButtonElement;
         "profile-card": HTMLProfileCardElement;
         "profile-card-layout": HTMLProfileCardLayoutElement;
+        "profile-card-modal": HTMLProfileCardModalElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "project-card": HTMLProjectCardElement;
@@ -1339,7 +1479,6 @@ declare global {
         "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
         "project-socials": HTMLProjectSocialsElement;
-        "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
         "scroll-observer": HTMLScrollObserverElement;
@@ -1357,41 +1496,43 @@ declare global {
         "varsity-total-score": HTMLVarsityTotalScoreElement;
         "varsity-upcoming": HTMLVarsityUpcomingElement;
         "varsity-weather": HTMLVarsityWeatherElement;
-        "video-banner": HTMLVideoBannerElement;
         "video-embed": HTMLVideoEmbedElement;
         "video-gallery": HTMLVideoGalleryElement;
         "video-gallery-stacked": HTMLVideoGalleryStackedElement;
     }
 }
 declare namespace LocalJSX {
-    interface AccordionContainer {
-    }
-    interface AccordionDropdown {
-        "header"?: string;
-    }
     interface AddVarsityScores {
         "year"?: string;
     }
     interface CampaignAim {
     }
-    interface CampaignAimContainer {
-        "campaignname"?: string;
-    }
     interface CampaignNews {
+        /**
+          * The MSL organisation ID where the news is kept - filled in automatically by campaign-tabs parent
+         */
         "newsid"?: string;
-    }
-    interface CampaignPage {
-        "campaignId"?: number;
-        "name"?: string;
     }
     interface CampaignTabs {
+        /**
+          * The URL of the facebook page or group
+         */
         "facebook"?: string;
+        /**
+          * The MSL organisation ID where the news is kept
+         */
         "newsid"?: string;
-        "socials"?: string;
+        /**
+          * The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation.
+         */
         "strategydoc"?: string;
     }
     interface CandidateDisplay {
         "data"?: any;
+        /**
+          * Lazy option in profile cards
+         */
+        "nolazy"?: boolean;
     }
     interface CandidateUpload {
         /**
@@ -1449,6 +1590,28 @@ declare namespace LocalJSX {
         "tabtitle"?: string;
         "type"?: 'single' | 'multiple' | 'groupings';
     }
+    interface EventsListing {
+        /**
+          * Choose the card component for each event
+         */
+        "cardtype"?: 'label' | 'text' | 'profile';
+        /**
+          * Show event cards in a column
+         */
+        "col"?: boolean;
+        /**
+          * The Call To Action text in the link on profile cards
+         */
+        "cta"?: string;
+        /**
+          * The MSL event tag to filter events
+         */
+        "eventtag": string;
+        /**
+          * The max number of events to display
+         */
+        "limit"?: string;
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -1505,6 +1668,9 @@ declare namespace LocalJSX {
         "videotitle"?: string;
     }
     interface GetInvolved {
+        /**
+          * The typeform URL
+         */
         "typeform"?: string;
     }
     interface GridLanding {
@@ -1515,7 +1681,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface GroupTab {
+        /**
+          * Set this Group Tab as the active tab
+         */
         "active"?: boolean;
+        /**
+          * The exact post names as appeared in MSL, separated by a pipe character |
+         */
         "exclude"?: string;
         "regex"?: string;
         "replace"?: string;
@@ -1702,6 +1874,14 @@ declare namespace LocalJSX {
          */
         "autoexit"?: boolean;
         /**
+          * Supply a custom function to be invoked when modal is opened
+         */
+        "enterfn"?: () => void;
+        /**
+          * Supply a custom function to be invoked when modal is closed
+         */
+        "exitfn"?: () => void;
+        /**
           * Set position to absolute or other. Defaults to fixed
          */
         "position"?: string;
@@ -1804,6 +1984,10 @@ declare namespace LocalJSX {
          */
         "contentimage"?: boolean;
         /**
+          * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
+         */
+        "customtransform"?: string;
+        /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
         "desktopwidth"?: string;
@@ -1812,6 +1996,14 @@ declare namespace LocalJSX {
          */
         "focusarea"?: string;
         "image"?: string;
+        /**
+          * If set to false, it will keep any existing cloudinary transforms
+         */
+        "keeptransforms"?: boolean;
+        /**
+          * Remove lazy-loading functionality. Retains Object Fit positioing
+         */
+        "nolazy"?: boolean;
         /**
           * If you want to render an img element in a responsive container without object positioning
          */
@@ -1851,7 +2043,61 @@ declare namespace LocalJSX {
         "newslink"?: string;
         "newstitle"?: string;
     }
+    interface PageBanner {
+        /**
+          * Supply a background image for the banner
+         */
+        "bgimage"?: string;
+        /**
+          * The colours for the background & text of <project-heading>, separated with a comma. eg "text colour, bg colour"
+         */
+        "colourscheme"?: string;
+        /**
+          * The <h2> heading for the section
+         */
+        "heading"?: string;
+        /**
+          * Supply an image for the banner
+         */
+        "image"?: string;
+        /**
+          * Supply a custom height for the banner image
+         */
+        "imageheight"?: string;
+        /**
+          * Supply an custom width for the banner image
+         */
+        "imagewidth"?: string;
+        /**
+          * If a landing page
+         */
+        "landing"?: boolean;
+        /**
+          * The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.
+         */
+        "pagetitle"?: string;
+        /**
+          * The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"
+         */
+        "pagetitlecolours"?: string;
+        /**
+          * The paragraph text. If you need text links or separate paragraphs, rather insert HTML.
+         */
+        "text"?: string;
+        /**
+          * Supply a video URL
+         */
+        "video"?: string;
+    }
     interface PageContent {
+    }
+    interface PageFooter {
+        "bgcolor"?: string;
+        "colone"?: string;
+        "colthree"?: string;
+        "coltwo"?: string;
+        "logo"?: string;
+        "textcolor"?: string;
     }
     interface PresetCard {
         "dimensions"?: string;
@@ -1871,7 +2117,7 @@ declare namespace LocalJSX {
          */
         "cta"?: string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid"?: string;
         /**
@@ -1886,7 +2132,51 @@ declare namespace LocalJSX {
           * The title for the card - usually a full name
          */
         "name"?: string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy"?: boolean;
         "onEmitClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position"?: string;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn"?: () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn"?: () => void;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta"?: string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink"?: string;
+    }
+    interface ProfileCardLayout {
+    }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta"?: string;
+        /**
+          * The image URL
+         */
+        "image"?: string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link"?: string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name"?: string;
         /**
           * A sub heading - usually a position or field title
          */
@@ -1899,8 +2189,6 @@ declare namespace LocalJSX {
           * A second URL link for the bottom right of the card
          */
         "secondlink"?: string;
-    }
-    interface ProfileCardLayout {
     }
     interface ProfileLogoCard {
         /**
@@ -1951,6 +2239,10 @@ declare namespace LocalJSX {
           * Position the content of the card along the Y axis
          */
         "aligny"?: string;
+        /**
+          * If displaying events, set a custom URL for 'all events' in place of dynamically created URL
+         */
+        "alleventsurl"?: string;
         /**
           * Display an event listing
          */
@@ -2042,10 +2334,6 @@ declare namespace LocalJSX {
          */
         "slotr"?: string;
     }
-    interface PurpleButton {
-        "link"?: string;
-        "whitetext"?: boolean;
-    }
     interface QuickLink {
         "to"?: string;
     }
@@ -2103,9 +2391,14 @@ declare namespace LocalJSX {
     }
     interface UserLogin {
         /**
+          * Provide a custom callback.
+         */
+        "callbackFn"?: (token: string) => void;
+        /**
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth"?: boolean;
     }
     interface VarsityLanding {
         "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
@@ -2126,9 +2419,6 @@ declare namespace LocalJSX {
         "showall"?: boolean;
     }
     interface VarsityWeather {
-    }
-    interface VideoBanner {
-        "url"?: string;
     }
     interface VideoEmbed {
         /**
@@ -2153,13 +2443,9 @@ declare namespace LocalJSX {
         "playlist": any;
     }
     interface IntrinsicElements {
-        "accordion-container": AccordionContainer;
-        "accordion-dropdown": AccordionDropdown;
         "add-varsity-scores": AddVarsityScores;
         "campaign-aim": CampaignAim;
-        "campaign-aim-container": CampaignAimContainer;
         "campaign-news": CampaignNews;
-        "campaign-page": CampaignPage;
         "campaign-tabs": CampaignTabs;
         "candidate-display": CandidateDisplay;
         "candidate-upload": CandidateUpload;
@@ -2169,6 +2455,7 @@ declare namespace LocalJSX {
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "elections-tab": ElectionsTab;
+        "events-listing": EventsListing;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -2199,12 +2486,15 @@ declare namespace LocalJSX {
         "modal-backdrop": ModalBackdrop;
         "my-component": MyComponent;
         "news-card": NewsCard;
+        "page-banner": PageBanner;
         "page-content": PageContent;
+        "page-footer": PageFooter;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
         "primary-button": PrimaryButton;
         "profile-card": ProfileCard;
         "profile-card-layout": ProfileCardLayout;
+        "profile-card-modal": ProfileCardModal;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "project-card": ProjectCard;
@@ -2213,7 +2503,6 @@ declare namespace LocalJSX {
         "project-image": ProjectImage;
         "project-page": ProjectPage;
         "project-socials": ProjectSocials;
-        "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
         "scroll-observer": ScrollObserver;
@@ -2231,7 +2520,6 @@ declare namespace LocalJSX {
         "varsity-total-score": VarsityTotalScore;
         "varsity-upcoming": VarsityUpcoming;
         "varsity-weather": VarsityWeather;
-        "video-banner": VideoBanner;
         "video-embed": VideoEmbed;
         "video-gallery": VideoGallery;
         "video-gallery-stacked": VideoGalleryStacked;
@@ -2241,13 +2529,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "accordion-container": LocalJSX.AccordionContainer & JSXBase.HTMLAttributes<HTMLAccordionContainerElement>;
-            "accordion-dropdown": LocalJSX.AccordionDropdown & JSXBase.HTMLAttributes<HTMLAccordionDropdownElement>;
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
-            "campaign-aim-container": LocalJSX.CampaignAimContainer & JSXBase.HTMLAttributes<HTMLCampaignAimContainerElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
-            "campaign-page": LocalJSX.CampaignPage & JSXBase.HTMLAttributes<HTMLCampaignPageElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
@@ -2257,6 +2541,7 @@ declare module "@stencil/core" {
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
+            "events-listing": LocalJSX.EventsListing & JSXBase.HTMLAttributes<HTMLEventsListingElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;
@@ -2287,12 +2572,15 @@ declare module "@stencil/core" {
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
+            "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
+            "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
             "profile-card": LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
+            "profile-card-modal": LocalJSX.ProfileCardModal & JSXBase.HTMLAttributes<HTMLProfileCardModalElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
@@ -2301,7 +2589,6 @@ declare module "@stencil/core" {
             "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
             "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
-            "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
             "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;
@@ -2319,7 +2606,6 @@ declare module "@stencil/core" {
             "varsity-total-score": LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
             "varsity-upcoming": LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
             "varsity-weather": LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
-            "video-banner": LocalJSX.VideoBanner & JSXBase.HTMLAttributes<HTMLVideoBannerElement>;
             "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
             "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
             "video-gallery-stacked": LocalJSX.VideoGalleryStacked & JSXBase.HTMLAttributes<HTMLVideoGalleryStackedElement>;

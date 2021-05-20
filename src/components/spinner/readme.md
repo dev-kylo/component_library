@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `show`   | `show`    |             | `boolean` | `true`  |
+| Property | Attribute | Description           | Type      | Default  |
+| -------- | --------- | --------------------- | --------- | -------- |
+| `margin` | `margin`  | Set margin of spinner | `string`  | `'auto'` |
+| `show`   | `show`    | Display the spinner   | `boolean` | `true`   |
 
 
 ## Dependencies

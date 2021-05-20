@@ -18,11 +18,13 @@ export class TabContent {
         const classes = {
             'tab-content': true,
             'tab-content-active' : this.isSelected
-        }
+        };
+        const id =this.name.replace(/\s+/g, '');
+        const label = `tab_${id}`;
 
-        if(this.isSelected){
+        if (this.isSelected){
             return (
-                <section class={classes} role="tabpanel" aria-labelledby={this.name}>
+                <section class={classes} aria-hidden="false" id={id} role="tabpanel" aria-labelledby={label}>
                     <slot></slot>
                 </section>
             );
@@ -30,7 +32,7 @@ export class TabContent {
 
         else {
             return (
-                <section class={classes} tabindex="-1" hidden role="tabpanel" aria-labelledby={this.name}>
+                <section class={classes} id={id} tabindex="-1" aria-hidden="true" hidden role="tabpanel" aria-labelledby={label}>
                     <slot></slot>
                 </section>
             );

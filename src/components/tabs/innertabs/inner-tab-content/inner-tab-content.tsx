@@ -22,8 +22,11 @@ export class InnerTabContent {
             'tab-content-active' : this.isSelected
         }
 
+        const id =this.name.replace(/\s+/g, '');
+        const label = `tab_${id}`;
+
         return (
-            <section class={classes} hidden={this.isSelected} role="tabpanel" aria-labelledby={this.name}>
+            <section class={classes} hidden={this.isSelected} aria-hidden={this.isSelected} role="tabpanel" aria-labelledby={label}>
                 <slot></slot>
             </section>
         );

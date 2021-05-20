@@ -14,13 +14,22 @@ export class KclsuModal {
     @Prop() autoexit:boolean = false;
     /** Set position to absolute or other. Defaults to fixed */
     @Prop() position:string = 'fixed';
+    /** Supply a custom function to be invoked when modal is closed */
+    @Prop() exitfn: () => void;
+    /** Supply a custom function to be invoked when modal is opened */
+    @Prop() enterfn: () => void;
 
-    // @Watch('show') watchHandler(newVal){
-    //     console.log("The modal is now showing:" + newVal)
-    // }
+
+    componentDidLoad(){
+        if (this.enterfn) this.enterfn();
+    }
 
     @Listen('exitModal') exitHandler(){
-        if (this.autoexit) this.show = false;
+        if (this.autoexit){
+            this.show = false;
+            if (this.exitfn)
+                this.exitfn();
+        } 
     }
 
     render() {

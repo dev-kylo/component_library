@@ -7,26 +7,21 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type     | Default     |
-| ------------- | ------------- | ----------- | -------- | ----------- |
-| `facebook`    | `facebook`    |             | `string` | `undefined` |
-| `newsid`      | `newsid`      |             | `string` | `undefined` |
-| `socials`     | `socials`     |             | `string` | `undefined` |
-| `strategydoc` | `strategydoc` |             | `string` | `undefined` |
+| Property      | Attribute     | Description                                                                                           | Type     | Default     |
+| ------------- | ------------- | ----------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `facebook`    | `facebook`    | The URL of the facebook page or group                                                                 | `string` | `undefined` |
+| `newsid`      | `newsid`      | The MSL organisation ID where the news is kept                                                        | `string` | `undefined` |
+| `strategydoc` | `strategydoc` | The URL of the document for the Strategy Doc uploaded under Resources for that campaign organisation. | `string` | `undefined` |
 
 
 ## Dependencies
-
-### Used by
-
- - [campaign-page](../campaign-page)
 
 ### Depends on
 
 - [page-content](../../../containers/page-content)
 - [kclsu-tabs-container](../../../tabs/kclsu-tabs)
 - [campaign-news](../campaign-news)
-- [primary-button](../../../buttons/primary-button)
+- [kclsu-button](../../../buttons/kclsu-button)
 
 ### Graph
 ```mermaid
@@ -34,9 +29,9 @@ graph TD;
   campaign-tabs --> page-content
   campaign-tabs --> kclsu-tabs-container
   campaign-tabs --> campaign-news
-  campaign-tabs --> primary-button
+  campaign-tabs --> kclsu-button
   campaign-news --> news-card
-  campaign-page --> campaign-tabs
+  kclsu-button --> flex-container
   style campaign-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

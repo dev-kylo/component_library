@@ -1,0 +1,287 @@
+@import '../../../global/globalstyles.css';
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: bree_serifbold, bree-serif, serif;
+}
+
+
+#banner-grid {
+	display: grid;
+    /* min-height: 400px; */
+    overflow: hidden;
+	grid-template-columns: 7.5% 5% 75% 5% 7.5%;
+    margin-bottom:2em;
+}
+
+.landing-rows {
+	grid-template-rows:
+    minmax(200px, 85%)
+    80px
+    auto
+}
+
+.media-rows{
+    grid-template-rows:
+    minmax(200px, 75%)/** Set to 300 to allow for 3 row h1 headings */
+    150px
+    auto  
+}
+
+.headingonly-rows {
+	grid-template-rows:
+    minmax(200px, 75%)
+    150px
+    auto
+}
+
+.section {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 2;
+    background-color: var(--purple);
+
+  }
+
+.banner-content{
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    z-index: 100;
+    width: 100%;
+    padding: 3em 0;
+}
+
+.breadcrumbs{
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+    z-index: 100;
+    margin-top: 30px;
+    height: 100%;
+}
+
+#pagebanner {
+    position: relative;
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 2;
+    /* margin-top: -13em;
+    margin-right: auto;
+    margin-left: auto; */
+    width: 100%;
+    max-width: 1032px;
+    height: auto;
+    padding: 0 15px;
+    margin: auto;
+}
+
+#overlap {
+    width: 100%;
+    height: auto;
+    grid-column: 2 / span 3;
+    grid-row: 2 / span 2;
+}
+
+
+.heading-container {
+    max-width: 55%;
+    min-width: 550px;
+    margin-left: 4em;
+    margin-top: 2em;
+}
+
+.landing-heading {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.heading {
+    display: inline;
+    padding-top: 35px;
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+.heading h1 {
+    display: inline;
+    margin-bottom: 35px;
+}
+
+.subtitle {
+    line-height: 42px;
+    width: 60%;
+    margin: 2em auto;
+}
+
+.subtext {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+section, h2, p {
+    text-align: center;
+}
+
+section {
+    margin-top: 15px;
+    margin-bottom: 120px;
+    max-width: 90%;
+};
+
+.slotted {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: #444;
+    font-weight: 400;
+}
+
+#floating_shape {
+    position: absolute;
+    transform: rotate(90deg);
+    width: 140px;
+    height: auto;
+    top: -50px;
+    right: -60px;
+}
+
+
+@media (max-width: 1300px){
+  .grid {
+    grid-template-columns: 10% 80% 10%;
+  }
+  .heading-container {
+    min-width: 550px;
+    margin-left: 2em;
+}
+  
+}
+
+@media (max-width: 800px){
+    #banner-grid {
+        grid-template-columns: 5% 90% 5%;
+    } 
+    .section {
+        grid-column: 1 / span 3;
+      }
+    
+    .banner-content{
+        grid-column: 2 / span 1;
+    }
+    
+    .breadcrumbs{
+        grid-column: 2 / span 1;
+    }
+    
+    #pagebanner {
+        grid-column: 2 / span 1;
+    } 
+
+
+    #overlap {
+        grid-column: 2 / span 1;
+    }
+
+    .heading-container{
+        max-width: 80%;
+        margin-left: 3em;
+        min-width: 500px;
+    }
+    
+
+    #floating_shape {
+        transform: rotate(0deg);
+        width: 120px;
+    }
+
+    .subtitle {
+        line-height: 38px;
+        width: 90%;
+        margin: 2em auto;
+    }
+    .subtext {
+        width: 90%;
+
+    }
+
+}
+
+
+@media (max-width: 600px){
+    .headingonly-rows{
+        grid-template-rows:
+        minmax(200px, 75%)/** Set to 300 to allow for 3 row h1 headings */
+        80px
+        auto
+    } 
+
+    .heading {
+        padding-top: 22px;
+        padding-bottom: 11px;
+        /* margin-left: 2px; */
+    }
+    .heading h1 {
+        line-height: 50px;
+        margin-right: 2px;
+        /* margin: 5px; */
+        padding: 4px;
+    }
+
+    .heading-container{
+        min-width: auto;
+        max-width: 75%;
+        margin-left: 10px; /** Compensate for box shadow to line heading with page banner on left side*/
+    }
+
+    #pagebanner {
+        padding: 0;
+        max-width: auto;
+        width: 100%;
+    }
+
+    #floating_shape {
+        transform: rotate(0deg);
+        width: 100px;
+    }
+
+}
+
+@media (max-width: 480px){
+    .heading-container{
+        min-width: auto;
+        max-width: 90%;
+        margin-left: 10px; /** Compensate for box shadow to line heading with page banner on left side*/
+    }
+}
+
+@media (min-width: 600px){
+    section {
+        max-width: 80%
+    } 
+}
+
+@media (min-width: 1200px){
+    section {
+        max-width: 60%
+    }  
+}
+
+@media (min-width: 1400px){
+    section {
+        max-width: 45%
+    }  
+}
+
+
+

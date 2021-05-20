@@ -10,7 +10,7 @@ import { Component, h, Prop, State, Element } from '@stencil/core';
 
 export class LazyImage {
 
-    @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
+    @Prop() image: string;
     /** Use standard CSS object-position values to set a focus area on the image. EG 'center left' */
     @Prop() focusarea: string = 'center';
     /** Image will scale into view */
@@ -27,6 +27,12 @@ export class LazyImage {
     @Prop() thumbnail: boolean = false;
     /** If the image is being used only as thumbnail, such as project-cards and image-text components */
     @Prop() contentimage: boolean = false;
+    /** Remove lazy-loading functionality. Retains Object Fit positioing */
+    @Prop() nolazy: boolean = false;
+    /** If set to false, it will keep any existing cloudinary transforms */
+    @Prop() keeptransforms: boolean = false;
+    /** Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format  */
+    @Prop() customtransform: string;
 
     @Element() el: HTMLElement;
 
@@ -50,7 +56,9 @@ export class LazyImage {
         let imageWidth = this.width;
         let loadingImage, loadedImage;
         const loadingTransforms = 'c_fill,f_auto,fl_any_format.flatten,g_center,q_10,w_20/e_saturation:-10';
-        const loadedTransforms = `c_fill,f_auto,fl_any_format,w_${imageWidth}`;
+        let loadedTransforms = `c_fill,f_auto,fl_any_format,w_${imageWidth}`;
+
+        if (this.customtransform) loadedTransforms = this.customtransform;
 
         if (this.image && this.image.includes('kclsu.org')) {
             loadingImage = `https://res.cloudinary.com/kclsu-media/image/fetch/${loadingTransforms}/${this.image}`;
@@ -60,9 +68,15 @@ export class LazyImage {
         else if (this.image && this.image.includes('res.cloudinary.com')){
 
             const existingTransforms = /upload\/[\w,]*\//;
-            if (existingTransforms.test(this.image)){
+            if (existingTransforms.test(this.image) && !this.keeptransforms){
+                //IF THERE ARE CLOUDINARY TRANSFORMS PRESENT ALREADY AND WE WANT REMOVED
                 loadingImage = this.image.replace(existingTransforms, `upload/${loadingTransforms}/`);
                 loadedImage = this.image.replace(existingTransforms, `upload/${loadedTransforms}/`);
+            }
+            else if (existingTransforms.test(this.image)){
+                //IF THERE ARE CLOUDINARY TRANSFORMS PRESENT ALREADY AND WE WANT TO KEEP
+                loadingImage = this.image.replace(existingTransforms, `upload/${loadingTransforms}/`);
+                loadedImage = this.image;
             }
             else {
                 loadingImage = this.image.replace('upload/', `upload/${loadingTransforms}/`);
@@ -74,7 +88,7 @@ export class LazyImage {
         else {
             //LOAD KCLSU LOGO
             loadingImage = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'
-            loadedImage = this.image;
+            loadedImage = 'https://res.cloudinary.com/kclsu-media/image/upload/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
         }
     
 
@@ -87,8 +101,20 @@ export class LazyImage {
             "plainimg": this.plainimg
         }
 
+        // if (this.nolazy) return (
+        //     <div class={cs}>
+        //         <img 
+        //             style={objectPosition} 
+        //             class={!this.plainimg? this.imageclasses.join(' ') : ''} 
+        //             alt={this.alt}
+        //             data-src={loadedImage}
+        //             src={loadedImage}
+        //         ></img>
+        //     </div>
+        // )
 
-        return (
+
+       return (
             <div class={cs}>
                 <scroll-observer lazy-image animation={!this.animatein? '' : 'scaleIn'}>
                     <img 
@@ -96,7 +122,7 @@ export class LazyImage {
                         class={!this.plainimg? this.imageclasses.join(' ') : ''} 
                         alt={this.alt}
                         data-src={loadedImage}
-                        src={loadingImage}
+                        src={ !this.nolazy ? loadingImage : loadedImage }
                     ></img>
                 </scroll-observer>
             </div>

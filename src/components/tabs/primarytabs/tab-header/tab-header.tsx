@@ -36,18 +36,21 @@ export class TabHeader {
             'tab-header': true,
             'tab-header-active': this.active
         }
+        let name = this.name.replace(/\s+/g, '');
+        const href = `#`;
+        const id = `tab_${name}`;
 
         if (this.active){
             return (
                 <li role="presentation" class={classes} >
-                    <a href="#" onClick={(e) => this.onClick(e)} id={this.name} aria-selected="true" role="tab" ><slot></slot></a>
+                    <a href={href} onClick={(e) => this.onClick(e)} id={id} aria-controls={name} aria-selected="true" role="tab" ><slot></slot></a>
                 </li>
             );
         }
         else {
             return (
                 <li role="presentation" class={classes} >
-                    <a href="#" onClick={(e) => this.onClick(e)} id={this.name} role="tab" ><slot></slot></a>
+                    <a href={href} onClick={(e) => this.onClick(e)} id={id} aria-controls={name} role="tab" ><slot></slot></a>
                 </li>
             );
         }

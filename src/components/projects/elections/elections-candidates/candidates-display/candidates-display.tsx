@@ -10,6 +10,8 @@ import { Component, h, Prop } from '@stencil/core';
 export class CandidatesDisplay {
 
     @Prop() data;
+    /** Lazy option in profile cards  */
+    @Prop() nolazy = false;
     
     render() {
         const cards = !this.data? null
@@ -40,6 +42,7 @@ export class CandidatesDisplay {
                                 cta='Manifesto'
                                 secondcta = 'Breakdown'
                                 secondlink = {candidate.ResultsLink}
+                                nolazy={this.nolazy}
                             />
                 })
 
