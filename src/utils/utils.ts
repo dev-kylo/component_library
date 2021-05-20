@@ -88,6 +88,7 @@ export function makeRequest< T extends {}>(url: string, type:any, data?:any) : P
 }
 
 
+
 export function fetchElementAttributes(parent, element){
   const els = Array.from(parent.querySelectorAll(element)) as any;
   const result = els.map(el => {

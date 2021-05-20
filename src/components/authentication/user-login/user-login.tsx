@@ -20,7 +20,7 @@ export class UserLogin {
     @Prop() database!: string;
     /** Provide a custom callback.*/
     @Prop() callbackFn: (token: string) => void;
-    
+    @Prop() unsignedauth: boolean;
     
     //Modal visibility
     @State() modalOpen: boolean = true;
@@ -32,7 +32,7 @@ export class UserLogin {
     @Element() host: HTMLElement;
 
     componentDidLoad(){
-        //Check for an existing valid token, and if none display the modal
+        //Check for an existing valid token, and if none display the modal    
         this.modalOpen = !this.checkForValidExistingToken();//See if a user token is stored in local storage
     }
 
@@ -50,7 +50,7 @@ export class UserLogin {
     }
 
     validateTokenExpiry(expiryTime){
-        return expiryTime > Date.now();
+        return +expiryTime > Date.now();
     }
 
     clearToken(){
@@ -76,11 +76,16 @@ export class UserLogin {
         .then(data => {
             this.loading=false;
 
-            if (!data.idToken) throw new Error(data.error.message)
+            if (!data.idToken) throw new Error(data.error.message);
+
             else {
                 const expirationDate:any = new Date(new Date().getTime() + +data.expiresIn * 1000);
                 localStorage.setItem('kclsu_token', data.idToken);
                 localStorage.setItem('tokenExpireDate', expirationDate.getTime()); 
+
+                //FUTURE change - keep token and expiry in a single object
+                //localStorage.setItem('kclsu_token', JSON.stringify({ token: data.idToken, expiryDate: expirationDate}));
+
                 this.token = data.idToken;
                 this.modalOpen = false;
                 //If a callback arg was supplied, invoke the callback

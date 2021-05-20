@@ -892,6 +892,7 @@ export namespace Components {
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth": boolean;
     }
     interface VarsityLanding {
         "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
@@ -2397,6 +2398,7 @@ declare namespace LocalJSX {
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth"?: boolean;
     }
     interface VarsityLanding {
         "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
