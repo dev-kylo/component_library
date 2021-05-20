@@ -56,11 +56,11 @@ export class CampaignTabs {
                 <h2>HOW IT WORKS</h2>
                 <div>
                     <h3>How do campaigns work?</h3>
-                    <p>For a campaign to be officially supported by KCLSU, it needs to have the support of our student membership which is done through an online petition. Add your name to the petition to support the campaign.</p>
-                    <p><em>To support this campaign as an association member, please update your eligibility on your voting profile.</em>&nbsp;You can find out more information about how to update your voting profile <a href="https://www.kclsu.org/elections/eligibilityexplained/">here</a></p>
-                    <p>Campaigns need to be supported by <em>150 KCLSU members</em> to become a KCLSU supported campaign <em>or 75 Association members</em> to become a KCLSU Association Supported campaign.</p>
-                    <p>Once the threshold is reached, it means the campaign will receive guidance and support from KCLSU staff to create a strategy and deliver the campaign aim. </p>
-                    <p>To find out more about this campaign and how to get involved, be sure to&nbsp;join up!</p>
+                    <p>KCLSU is a charity and so has charitable aims and purpose. Our union campaigns must seek to further these.</p>
+                    <p>Union Campaigns aim to challenge, influence and change structures, policies and behaviours that affect the lived student experience of KCLSU members as students of King’s College London.</p>
+                    <p>Union Campaigns are campaigns to make change for students at KCL that have a democratic mandate from our membership.</p>
+                    <p>Union Campaigns are developed based on the manifestos of our elected Officer Team or through our elected Network Committees, Union Development Committees and Academic Associations.</p>
+                    <p>We also support our student members to campaign for change. You can <a href="https://kclsu.typeform.com/to/EbYqUb" class="link">submit a campaign idea here</a>, and our campaigns team will help you to work with our elected student representatives or build engagement through seeking campaign support from 50 student members and approval from our student officer team.</p>
                 </div>
                 {!this.strategydoc ? null : <h2>STRATEGY</h2> }
                 {!this.strategydoc ?  null : 

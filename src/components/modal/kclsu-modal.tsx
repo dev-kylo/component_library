@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen, Watch } from '@stencil/core';
+import { Component, h, Prop, Listen } from '@stencil/core';
 
 
 @Component({
@@ -22,10 +22,6 @@ export class KclsuModal {
 
     componentDidLoad(){
         if (this.enterfn) this.enterfn();
-    }
-
-    @Watch('show') watchHandler(newVal){    
-        if (this.enterfn && newVal === true) this.enterfn();
     }
 
     @Listen('exitModal') exitHandler(){

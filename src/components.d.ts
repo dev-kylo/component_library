@@ -590,6 +590,14 @@ export namespace Components {
     }
     interface PageContent {
     }
+    interface PageFooter {
+        "bgcolor": string;
+        "colone": string;
+        "colthree": string;
+        "coltwo": string;
+        "logo": string;
+        "textcolor": string;
+    }
     interface PresetCard {
         "dimensions": string;
         "presetid": string;
@@ -606,7 +614,7 @@ export namespace Components {
          */
         "cta": string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid": string;
         /**
@@ -630,6 +638,14 @@ export namespace Components {
          */
         "position": string;
         /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn": () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn": () => void;
+        /**
           * The text for the secondary text link bottom right
          */
         "secondcta": string;
@@ -639,6 +655,36 @@ export namespace Components {
         "secondlink": string;
     }
     interface ProfileCardLayout {
+    }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta": string;
+        /**
+          * The image URL
+         */
+        "image": string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link": string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name": string;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position": string;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta": string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink": string;
     }
     interface ProfileLogoCard {
         /**
@@ -784,10 +830,6 @@ export namespace Components {
          */
         "slotr": string;
     }
-    interface PurpleButton {
-        "link": string;
-        "whitetext": boolean;
-    }
     interface QuickLink {
         "to": string;
     }
@@ -850,6 +892,7 @@ export namespace Components {
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth": boolean;
     }
     interface VarsityLanding {
         "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
@@ -1165,6 +1208,12 @@ declare global {
         prototype: HTMLPageContentElement;
         new (): HTMLPageContentElement;
     };
+    interface HTMLPageFooterElement extends Components.PageFooter, HTMLStencilElement {
+    }
+    var HTMLPageFooterElement: {
+        prototype: HTMLPageFooterElement;
+        new (): HTMLPageFooterElement;
+    };
     interface HTMLPresetCardElement extends Components.PresetCard, HTMLStencilElement {
     }
     var HTMLPresetCardElement: {
@@ -1194,6 +1243,12 @@ declare global {
     var HTMLProfileCardLayoutElement: {
         prototype: HTMLProfileCardLayoutElement;
         new (): HTMLProfileCardLayoutElement;
+    };
+    interface HTMLProfileCardModalElement extends Components.ProfileCardModal, HTMLStencilElement {
+    }
+    var HTMLProfileCardModalElement: {
+        prototype: HTMLProfileCardModalElement;
+        new (): HTMLProfileCardModalElement;
     };
     interface HTMLProfileLogoCardElement extends Components.ProfileLogoCard, HTMLStencilElement {
     }
@@ -1242,12 +1297,6 @@ declare global {
     var HTMLProjectSocialsElement: {
         prototype: HTMLProjectSocialsElement;
         new (): HTMLProjectSocialsElement;
-    };
-    interface HTMLPurpleButtonElement extends Components.PurpleButton, HTMLStencilElement {
-    }
-    var HTMLPurpleButtonElement: {
-        prototype: HTMLPurpleButtonElement;
-        new (): HTMLPurpleButtonElement;
     };
     interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {
     }
@@ -1415,11 +1464,13 @@ declare global {
         "news-card": HTMLNewsCardElement;
         "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
+        "page-footer": HTMLPageFooterElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
         "primary-button": HTMLPrimaryButtonElement;
         "profile-card": HTMLProfileCardElement;
         "profile-card-layout": HTMLProfileCardLayoutElement;
+        "profile-card-modal": HTMLProfileCardModalElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "project-card": HTMLProjectCardElement;
@@ -1428,7 +1479,6 @@ declare global {
         "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
         "project-socials": HTMLProjectSocialsElement;
-        "purple-button": HTMLPurpleButtonElement;
         "quick-link": HTMLQuickLinkElement;
         "quick-links": HTMLQuickLinksElement;
         "scroll-observer": HTMLScrollObserverElement;
@@ -2041,6 +2091,14 @@ declare namespace LocalJSX {
     }
     interface PageContent {
     }
+    interface PageFooter {
+        "bgcolor"?: string;
+        "colone"?: string;
+        "colthree"?: string;
+        "coltwo"?: string;
+        "logo"?: string;
+        "textcolor"?: string;
+    }
     interface PresetCard {
         "dimensions"?: string;
         "onSelectPreset"?: (event: CustomEvent<any>) => void;
@@ -2059,7 +2117,7 @@ declare namespace LocalJSX {
          */
         "cta"?: string;
         /**
-          * The ID string for click events. Only applies to card's bottom right link- DEVELOPER USE
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
          */
         "emitid"?: string;
         /**
@@ -2084,6 +2142,14 @@ declare namespace LocalJSX {
          */
         "position"?: string;
         /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn"?: () => void;
+        /**
+          * A call back function to be supplied for the second (right hand side) call to action
+         */
+        "secondaryfn"?: () => void;
+        /**
           * The text for the secondary text link bottom right
          */
         "secondcta"?: string;
@@ -2093,6 +2159,36 @@ declare namespace LocalJSX {
         "secondlink"?: string;
     }
     interface ProfileCardLayout {
+    }
+    interface ProfileCardModal {
+        /**
+          * The text for the primary text link bottom left
+         */
+        "cta"?: string;
+        /**
+          * The image URL
+         */
+        "image"?: string;
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link"?: string;
+        /**
+          * The title for the card - usually a full name
+         */
+        "name"?: string;
+        /**
+          * A sub heading - usually a position or field title
+         */
+        "position"?: string;
+        /**
+          * The text for the secondary text link bottom right
+         */
+        "secondcta"?: string;
+        /**
+          * A second URL link for the bottom right of the card
+         */
+        "secondlink"?: string;
     }
     interface ProfileLogoCard {
         /**
@@ -2238,10 +2334,6 @@ declare namespace LocalJSX {
          */
         "slotr"?: string;
     }
-    interface PurpleButton {
-        "link"?: string;
-        "whitetext"?: boolean;
-    }
     interface QuickLink {
         "to"?: string;
     }
@@ -2306,6 +2398,7 @@ declare namespace LocalJSX {
           * The name of the database area. For example: projectx
          */
         "database": string;
+        "unsignedauth"?: boolean;
     }
     interface VarsityLanding {
         "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
@@ -2395,11 +2488,13 @@ declare namespace LocalJSX {
         "news-card": NewsCard;
         "page-banner": PageBanner;
         "page-content": PageContent;
+        "page-footer": PageFooter;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
         "primary-button": PrimaryButton;
         "profile-card": ProfileCard;
         "profile-card-layout": ProfileCardLayout;
+        "profile-card-modal": ProfileCardModal;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "project-card": ProjectCard;
@@ -2408,7 +2503,6 @@ declare namespace LocalJSX {
         "project-image": ProjectImage;
         "project-page": ProjectPage;
         "project-socials": ProjectSocials;
-        "purple-button": PurpleButton;
         "quick-link": QuickLink;
         "quick-links": QuickLinks;
         "scroll-observer": ScrollObserver;
@@ -2480,11 +2574,13 @@ declare module "@stencil/core" {
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
             "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
+            "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
             "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
             "profile-card": LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
+            "profile-card-modal": LocalJSX.ProfileCardModal & JSXBase.HTMLAttributes<HTMLProfileCardModalElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
@@ -2493,7 +2589,6 @@ declare module "@stencil/core" {
             "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
             "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
-            "purple-button": LocalJSX.PurpleButton & JSXBase.HTMLAttributes<HTMLPurpleButtonElement>;
             "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
             "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
             "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;

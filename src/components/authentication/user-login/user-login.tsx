@@ -20,7 +20,7 @@ export class UserLogin {
     @Prop() database!: string;
     /** Provide a custom callback.*/
     @Prop() callbackFn: (token: string) => void;
-    
+    @Prop() unsignedauth: boolean;
     
     //Modal visibility
     @State() modalOpen: boolean = true;
@@ -32,26 +32,33 @@ export class UserLogin {
     @Element() host: HTMLElement;
 
     componentDidLoad(){
-        this.checkAuthentication();//See if a user token is stored in local storage
+        //Check for an existing valid token, and if none display the modal    
+        this.modalOpen = !this.checkForValidExistingToken();//See if a user token is stored in local storage
     }
 
-    private checkAuthentication(){
+    private checkForValidExistingToken(){
         const token = localStorage.getItem('kclsu_token');
-        if (token){
-            const expirationDate:Date = new Date(localStorage.getItem('tokenExpireDate'));
-            if (new Date() < expirationDate){
-                this.token = token;
-                if (this.callbackFn) this.callbackFn(token);
-                this.modalOpen = false;
-            }
-            else {
-                localStorage.removeItem('kclsu_token');
-                localStorage.removeItem('tokenExpireDate')
-            }
+        const tokenExpiry = localStorage.getItem('tokenExpireDate');
+        if (!token) return false; //This will show the modal
+
+        if (this.validateTokenExpiry(tokenExpiry)){
+            if (this.callbackFn) this.callbackFn(token);
+            return true; //This will hide the modal
         }
+        this.clearToken();
+        return false;
+    }
+
+    validateTokenExpiry(expiryTime){
+        return +expiryTime > Date.now();
+    }
+
+    clearToken(){
+        localStorage.removeItem('kclsu_token');
+        localStorage.removeItem('tokenExpireDate')
     }
     
-    @Listen('emitClick') buttonClick(e:Event){
+    @Listen('emitClick') clickHandler(e:Event){
         e.preventDefault();
         this.clearErrors();
         this.email = (this.host.shadowRoot.getElementById('email') as HTMLInputElement).value;
@@ -69,11 +76,16 @@ export class UserLogin {
         .then(data => {
             this.loading=false;
 
-            if (!data.idToken) throw new Error(data.error.message)
+            if (!data.idToken) throw new Error(data.error.message);
+
             else {
                 const expirationDate:any = new Date(new Date().getTime() + +data.expiresIn * 1000);
                 localStorage.setItem('kclsu_token', data.idToken);
-                localStorage.setItem('tokenExpireDate', expirationDate); 
+                localStorage.setItem('tokenExpireDate', expirationDate.getTime()); 
+
+                //FUTURE change - keep token and expiry in a single object
+                //localStorage.setItem('kclsu_token', JSON.stringify({ token: data.idToken, expiryDate: expirationDate}));
+
                 this.token = data.idToken;
                 this.modalOpen = false;
                 //If a callback arg was supplied, invoke the callback
@@ -82,7 +94,7 @@ export class UserLogin {
         })
         .catch(er => {
             this.loading= false;
-            this.error = er;
+            this.error = er.toString();
         }) 
     }
 
@@ -99,30 +111,37 @@ export class UserLogin {
         this.inputerrors = {};
         this.error = '';
     }
-    
+
     render() {
         let emailError = null, passwordError = null;
-        //If error object contains these fields, render a span element to show error.
-        if (this.inputerrors.hasOwnProperty('email')) emailError = <span class="error">{this.inputerrors.email.join(' ')}</span> 
+        const fetchError = this.error? <span class="error">{this.error}</span> : null;
+        if (this.inputerrors.hasOwnProperty('email')) emailError = <span class="error">{this.inputerrors.email.join(' ')}</span> //If error object contains these fields, render a span element to show error.
         if (this.inputerrors.hasOwnProperty('password')) passwordError = <span class="error">{this.inputerrors.password.join(' ')}</span> 
         
         return (
             <kclsu-modal show={this.modalOpen}>
                 <form>
-                    <span class="title">Login with details provided</span>
+
+                    <span class="title">Login to KCLSU Media Manager</span>
+                    
                     <div class="inputfield">
                         <label> Email</label>
                         <input type="email" value='' id="email" />
-                        {emailError}
+                        { emailError }
                     </div>
+
                     <div class="inputfield">
                         <label> Password</label>
                         <input type="password" value='' id="password" />
-                        {passwordError}
+                        { passwordError }
                     </div>
+
                     <kclsu-button center emitid="userlogin">Login</kclsu-button>  
-                    <div style={{"position": "relative"}}><loading-spinner show={this.loading}></loading-spinner></div>
-                    <span class="error">{this.error? `${this.error} !`: ''}</span>           
+                    
+                    <loading-spinner show={this.loading}></loading-spinner>
+                    
+                    { fetchError }  
+                            
                 </form>
             </kclsu-modal>
         );
