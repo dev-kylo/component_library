@@ -74,7 +74,7 @@ import dedent from 'ts-dedent';
 
 ### Try It
 
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withSource="open" >
   <Story name="Build Your Own" component="image-text" args={{
     card: false,
     hideimage: false,
@@ -115,8 +115,9 @@ import dedent from 'ts-dedent';
       >${args.content}</image-text>
     `}
   </Story>
-  <ArgsTable story="Build Your Own"/>
 </Canvas>
+
+<ArgsTable story="Build Your Own"/>
 
 ## More Info
 

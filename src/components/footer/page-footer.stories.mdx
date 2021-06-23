@@ -1,0 +1,98 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+# `<page-footer>`
+
+<Meta
+  title="Footer/Page Footer"
+  component="page-footer"
+  argTypes={{
+    logo: { type: 'string' },
+    colone: { type: 'string' },
+    coltwo: { type: 'string' },
+    colthree: { type: 'string' },
+    col1content: { type: 'string' },
+    col2content: { type: 'string' },
+    col3content: { type: 'string' },
+    bgcolor: {
+      control: {
+        type: 'color',
+        presetColors: [
+          { title: 'black', color: '#000000' },
+          { title: '--purple', color: '#502669' },
+          { title: '--light-teal', color:'#5EBDB0' },
+          { title: '--mid-teal', color:'#1BA39C' },
+          { title: '--dark-teal', color: '#15847F' },
+          { title: '--orange', color: '#e6582A' },
+          { title: '--grey', color: '#444' },
+          { title: '--warm-grey', color: '#C1C1C1' },
+          { title: '--light-grey', color: '#E8E8E2' },
+          { title: '--secondary-navy', color: '#0C2F46' },
+          { title: '--secondary-pink', color: '#EE7D79' },
+          { title: '--secondary-periwinkle', color: '#5F5BA3' },
+          { title: '--secondary-mustard', color: '#F49E25' },
+        ],
+      },
+    },
+    textcolor: {
+      control: {
+        type: 'color',
+        presetColors: [
+          { title: 'black', color: '#000000' },
+          { title: '--purple', color: '#502669' },
+          { title: '--light-teal', color:'#5EBDB0' },
+          { title: '--mid-teal', color:'#1BA39C' },
+          { title: '--dark-teal', color: '#15847F' },
+          { title: '--orange', color: '#e6582A' },
+          { title: '--grey', color: '#444' },
+          { title: '--warm-grey', color: '#C1C1C1' },
+          { title: '--light-grey', color: '#E8E8E2' },
+          { title: '--secondary-navy', color: '#0C2F46' },
+          { title: '--secondary-pink', color: '#EE7D79' },
+          { title: '--secondary-periwinkle', color: '#5F5BA3' },
+          { title: '--secondary-mustard', color: '#F49E25' },
+        ],
+      },
+    },
+  }}
+/>
+
+## Build your Own
+
+<Canvas withToolbar={true} isExpanded withSource="open">
+  <Story name="Build Your Own" component="page-footer" args={{
+    bgcolor: '',
+    textcolor: '',
+    logo: '',
+    colone: 'One',
+    coltwo: 'Two',
+    colthree: 'Three',
+    col1content: 'The first column',
+    col2content: 'The second column',
+    col3content: 'The third column',
+  }}>
+    {args => html`
+      <page-footer
+          bgcolor="${ifDefined(args.bgcolor || undefined)}"
+          textcolor="${ifDefined(args.textcolor || undefined)}"
+          logo="${ifDefined(args.logo || undefined)}"
+          colone="${args.colone}"
+          coltwo="${args.coltwo}"
+          colthree="${args.colthree}">
+        <div slot="col1">${args.col1content}</div>
+        <div slot="col2">${args.col2content}</div>
+        <div slot="col3">${args.col3content}</div>
+      </page-footer>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

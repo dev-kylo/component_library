@@ -26,8 +26,6 @@ import dedent from 'ts-dedent';
 
 # `<label-card>`
 
-## Content
-
 ### Example
 
 ```html
@@ -45,7 +43,7 @@ import dedent from 'ts-dedent';
 
 ### Try It
 
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withSource="open" >
   <Story name="Build Your Own" component="label-card" args={{
     cardtitle: '',
     buttontitle: '',
@@ -72,11 +70,12 @@ import dedent from 'ts-dedent';
           ?highlightText="${args.highlightText}"
           ?reverse="${args.reverse}"
           ?smallestheight="${args.smallestheight}"
-      ></label-card>
+      > </label-card>
     `}
   </Story>
-  <ArgsTable story="Build Your Own"/>
 </Canvas>
+
+<ArgsTable story="Build Your Own"/>
 
 ## More Info
 

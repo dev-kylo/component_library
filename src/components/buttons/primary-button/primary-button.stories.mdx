@@ -16,14 +16,15 @@ import readme from './readme.md';
   }}
 />
 
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withSource="open" >
   <Story name="Primary Button" component="primary-button" args={{ to: '', content: 'Button' }}>
     {args => html`
       <primary-button to="${args.to}">${args.content}<primary-button/>
     `}
   </Story>
-  <ArgsTable story="Primary Button"/>
 </Canvas>
+
+<ArgsTable story="Primary Button"/>
 
 ## More Info
 

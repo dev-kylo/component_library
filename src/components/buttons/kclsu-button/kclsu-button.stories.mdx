@@ -36,7 +36,7 @@ import readme from './readme.md';
     },
     link: {
       category: 'Behaviour',
-      control: 'text',
+      control: 'string',
       description: 'The URL to link to',
     },
     newtab: {
@@ -79,13 +79,14 @@ import readme from './readme.md';
     },
     fixedwidth: {
       category: 'Layout',
-      control: 'text',
+      control: 'string',
       description: 'Give the button a fixed width',
       table: { defaultValue: { summary: false } },
     },
     margin: {
       category: 'Layout',
-      control: 'text',
+      control: 'string',
+      // could also be number if you add px or some such in the story fn template
       description: 'specify a margin, otherwise uses default',
       table: { defaultValue: { summary: false } },
     },
@@ -106,7 +107,7 @@ To set the button's text, use the `text` attribute, or simply add text as a chil
 ```
 
 ### Try It
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withToolbar={true} withSource="open" >
   <Story name="Content" component="kclsu-button" args={{
     content: 'Button Content',
     text: '',
@@ -117,8 +118,9 @@ To set the button's text, use the `text` attribute, or simply add text as a chil
         text="${ifDefined(args.text || undefined)}"
       >${args.content}</kclsu-button>`}
   </Story>
-  <ArgsTable story="Content" include={ ['content','icon','text'] }/>
 </Canvas>
+
+<ArgsTable story="Content" include={ ['content','icon','text'] }/>
 
 ## Behaviour
 
@@ -131,7 +133,7 @@ There are three options which control the button's behaviour. Add the `link` att
 ```
 
 ### Try It
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withToolbar={true} withSource="open" >
   <Story name="Behaviour" component="kclsu-button" args={{
     content: 'Button Behaviour',
     link:undefined,
@@ -145,14 +147,9 @@ There are three options which control the button's behaviour. Add the `link` att
         ?download="${args.download}"
       >${args.content}</kclsu-button>`}
   </Story>
-  <ArgsTable story="Behaviour" include={ [
-    'content',
-    'link',
-    'newtab',
-    'download'
-  ] }/>
 </Canvas>
 
+<ArgsTable story="Behaviour" include={ [ 'content', 'link', 'newtab', 'download' ] }/>
 
 ## Appearance
 
@@ -166,7 +163,7 @@ Set the `purple` attribute to use the secondary colour pallete. Set the `rounded
 ```
 
 ### Try It
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withToolbar={true} withSource="open" >
   <Story name="Appearance" component="kclsu-button" args={{
     content: 'Button Appearance',
     purple: false,
@@ -182,18 +179,13 @@ Set the `purple` attribute to use the secondary colour pallete. Set the `rounded
         ?verysmall="${args.verysmall}"
       >${args.content}</kclsu-button>`}
   </Story>
-  <ArgsTable story="Appearance" include={ [
-    'content',
-    'purple',
-    'rounded',
-    'small',
-    'verysmall',
-  ] }/>
 </Canvas>
+
+<ArgsTable story="Appearance" include={ [ 'content', 'purple', 'rounded', 'small', 'verysmall', ] }/>
 
 ## Build your Own
 
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withToolbar={true} withSource="open" >
   <Story name="Build Your Own" component="kclsu-button">
     {args => html`<kclsu-button
       ?small="${args.small}"
@@ -211,8 +203,9 @@ Set the `purple` attribute to use the secondary colour pallete. Set the `rounded
       margin="${ifDefined(args.margin || undefined)}"
     >${args.content||'My Button'}</kclsu-button>`}
   </Story>
-  <ArgsTable story="Build Your Own"/>
 </Canvas>
+
+<ArgsTable story="Build Your Own"/>
 
 ## More Info
 

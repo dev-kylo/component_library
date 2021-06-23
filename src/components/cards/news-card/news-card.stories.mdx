@@ -25,12 +25,13 @@ import dedent from 'ts-dedent';
 
 ### Try It
 
-<Canvas isColumn={true} withSource={true} isExpanded={true}>
+<Canvas withSource="open" >
   <Story name="Build Your Own" component="news-card" args={{ newslink: '/news/new.html', newstitle: 'New News!' }}>
     {args => html`<news-card newslink="${args.newslink}" newstitle="${args.newstitle}"> </news-card>`}
   </Story>
-  <ArgsTable story="Build Your Own"/>
 </Canvas>
+
+<ArgsTable story="Build Your Own"/>
 
 ## More Info
 

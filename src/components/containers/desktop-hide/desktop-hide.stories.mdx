@@ -1,0 +1,44 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Containers/Hide on Desktop"
+  component="desktop-hide"
+  argTypes={{
+    hidetablet: { type: 'boolean', description: 'In addition to hiding all children content in screens desktop + bigger, this will hide content in screens tablet + bigger' },
+  }}
+/>
+
+# `<desktop-hide>`
+
+### Example
+
+```html
+<desktop-hide cardtitle="Kyle"> </desktop-hide>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="desktop-hide" args={{
+    content: 'Contents',
+    hidetablet: false
+  }}>
+    {args => html`
+      <desktop-hide
+        ?hidetablet="${args.hidetablet}"
+      >${args.content}</desktop-hide>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />
