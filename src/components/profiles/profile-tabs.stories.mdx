@@ -1,0 +1,52 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+<Meta
+  title="Tabs/Profiles"
+  component="profile-tabs"
+  argTypes={{
+    headings: {
+      type: 'array'
+    },
+    activeid: {
+      type: 'text'
+    },
+    database: {
+      type: 'text'
+    },
+  }}
+  decorators={[/* TODO: write a decorator to mock the database */]}
+/>
+
+# `<profile-tabs>`
+
+### Example
+
+```html
+<profile-tabs> </profile-tabs>
+```
+
+### Try It
+
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Fetching from the Database" component="profile-tabs" args={{
+    database: '',
+    headings: [
+      ['First Tab', 'Tab1', 'A maximum of two lines of text can go here. This is meant only as a brief introduction'],
+      ['Second Tab', 'Tab2']
+    ]
+  }}>
+    {args => html`
+      <profile-tabs database="${args.database}" .headings="${args.headings}"> </profile-tabs>
+    `}
+  </Story>
+  <ArgsTable story="Fetching from the Database"/>
+</Canvas>
+
+## More Info
+
+<Description markdown={readme} />

@@ -1,0 +1,83 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Labelled"
+  component="label-card"
+  argTypes={{
+    cardtitle: { type: 'string', description: 'The main title of the card' },
+    buttontitle: { type: 'string', description: 'If a button included, the text for the button' },
+    buttonlink: { type: 'string', description: 'If a button included, the link for the button' },
+    link: { type: 'string', description: 'The link for the card - NOT for the button' },
+    text: { type: 'string', description: 'The sub text beneath the title' },
+    cardheight: { type: 'number', description: 'Specify a fixed card height' },
+    cardwidth: { type: 'number', description: 'Specify a fixed card width' },
+    margin: { type: 'number', description: 'Give the card a custom margin' },
+    highlightText: { type: 'boolean', description: 'The main title of the card' },
+    reverse: { type: 'boolean', description: 'If image to be displayed on right hand side' },
+    smallestheight: { type: 'boolean', description: 'Make the card the smallest height possible' },
+  }}
+/>
+
+# `<label-card>`
+
+## Content
+
+### Example
+
+```html
+<label-card heading="Lorem ipsum">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.
+  </p>
+</label-card>
+```
+
+### Try It
+
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Build Your Own" component="label-card" args={{
+    cardtitle: '',
+    buttontitle: '',
+    buttonlink: '',
+    link: '',
+    text: '',
+    cardheight: 0,
+    cardwidth: 0,
+    margin: 0,
+    highlightText: false,
+    reverse: false,
+    smallestheight: false,
+  }}>
+    {args => html`
+      <label-card
+          cardtitle="${ifDefined(args.cardtitle || undefined)}"
+          buttontitle="${ifDefined(args.buttontitle || undefined)}"
+          buttonlink="${ifDefined(args.buttonlink || undefined)}"
+          link="${ifDefined(args.link || undefined)}"
+          text="${ifDefined(args.text || undefined)}"
+          cardheight="${ifDefined(args.cardheight ? (args.cardheight + 'px') : undefined)}"
+          cardwidth="${ifDefined(args.cardwidth ? (args.cardwidth + 'px') : undefined)}"
+          margin="${ifDefined(args.margin ? (args.margin + 'px') : undefined)}"
+          ?highlightText="${args.highlightText}"
+          ?reverse="${args.reverse}"
+          ?smallestheight="${args.smallestheight}"
+      ></label-card>
+    `}
+  </Story>
+  <ArgsTable story="Build Your Own"/>
+</Canvas>
+
+## More Info
+
+<Description markdown={readme} />
