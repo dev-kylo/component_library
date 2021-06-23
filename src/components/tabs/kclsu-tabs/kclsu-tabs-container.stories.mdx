@@ -1,0 +1,63 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+<Meta
+  title="Tabs"
+  component="tabs-container"
+  argTypes={{
+    active: {
+      type: 'select',
+      description: 'The initially active tab',
+      options: ["A", "B", "C"],
+    },
+    tabs: { type: 'array' },
+  }}
+/>
+
+# `<kclsu-tabs-container>`
+
+## Content
+
+### Example
+
+```html
+<tabs-container>
+  <tab-header name="A" active slot="tab-headers">a is the first letter</tab-header>,
+  <tab-content name="A" slot="tab-content">
+    <p>A, from the proto-caananite Aleph, is the first letter in the alphabet</p>
+  </tab-content>
+</tabs-container>
+```
+
+### Try It
+
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="With Tabs" component="tabs-container" args={{
+    active: 'A',
+    tabs: [
+      { name: 'A', summary: 'A', content: 'A, from the proto-caananite Aleph, is the first letter in the alphabet' },
+      { name: 'B', summary: 'B', content: 'B, originally meaning "house", is the second letter in the alphabet' },
+      { name: 'C', summary: 'C', content: 'For some reason, the Romans had it out for "G"' },
+    ],
+  }}>
+    {args => html`
+      <tabs-container>
+        ${args.tabs.map(tab => html`
+          <tab-header name="${tab.name}" ?active="${args.active === tab.name}" slot="tab-headers">${tab.summary}</tab-header>,
+          <tab-content name="${tab.name}" slot="tab-content">
+            <p>${tab.content}</p>
+          </tab-content>
+        `)}
+      </tabs-container>
+    `}
+  </Story>
+  <ArgsTable story="With Tabs" exclude="tabs"/>
+</Canvas>
+
+## More Info
+
+<Description markdown={readme} />

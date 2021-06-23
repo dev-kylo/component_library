@@ -8,7 +8,6 @@ const commonjs = fromRollup(commonjsRollup);
 /** @type {import('@web/dev-server').Config} */
 export default ({
   nodeResolve: true,
-  open: true,
   plugins: [
     commonjs({ include: '**/node_modules/@stencil/core/**/*.js' }),
     esbuildPlugin({ ts: true, tsx: true }),

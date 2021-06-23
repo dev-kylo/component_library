@@ -1,39 +1,5 @@
+<link rel="stylesheet" href="./dist/kclsu-comopnents/kclsu-components.css" />
 <script type="module">
-  import { defineCustomElements } from '../dist/custom-elements/index.js';
+  import { defineCustomElements } from './esm/loader.js';
   defineCustomElements();
-  const template = document.createElement('template');
-  template.innerHTML = `
-    <style>
-      button {}
-    </style>
-    <button>Copy Code</button>
-  `;
-
-  customElements.define('copy-story', class CopyStory extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' }).append(template.content.cloneNode(true));
-      this.shadowRoot.querySelector('button').addEventListener('click', () => this.copy())
-    }
-
-    getElement() {
-      return this
-        .closest('.docs-story')
-        .querySelector('[id^="story--"] div *:defined')
-    }
-
-    getElementCode() {
-      return this.getElement()
-        .outerHTML
-        .replace(/<!---->/g, '');
-    }
-
-    async copy() {
-      navigator.clipboard.writeText(this.getElementCode());
-    }
-  })
-
-  setTimeout(() => {
-    document.querySelector('.docs-story').append(document.createElement('copy-story'));
-  }, 100);
 </script>

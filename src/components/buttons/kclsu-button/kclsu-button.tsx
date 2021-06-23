@@ -27,15 +27,15 @@ export class KclsuButton {
     @Prop() verysmall: boolean;
     /** Makes the link download */
     @Prop() download: boolean;
-    /** Centers the button in the page */
+    /** Centres the button in the page */
     @Prop() center: boolean;
-    /** Adds icon to the page */
+    /** Adds icon to the button */
     @Prop() icon: string;
-    /** Opens the link in a new tab*/
+    /** Opens the link in a new tab */
     @Prop() newtab: boolean;
-    /** Give the button a fixed width*/
+    /** Give the button a fixed width */
     @Prop() fixedwidth: string;
-    /** specifiy a margin, otherwise uses default*/
+    /** specify a margin, otherwise uses default */
     @Prop() margin: string = '15px';
     /** Provide a custom click function handler. Use emitid rather if a parent component is listening for event.*/
     @Prop() clickfn: () => void;

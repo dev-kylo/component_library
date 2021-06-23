@@ -1,0 +1,219 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+<Meta
+  title="Button"
+  component="kclsu-button"
+  argTypes={{
+    content: {
+      category: 'Content',
+      control: 'text',
+      description: 'Text content for the button',
+    },
+    // TODO: implement icon
+    // icon: {
+    //   category: 'Content',
+    //   control: 'text',
+    //   description: 'Adds an icon to the button',
+    // },
+    text: {
+      category: 'Content',
+      control: 'text',
+      description: 'The text for the button',
+    },
+    // BEHAVIOUR
+    download: {
+      category: 'Behaviour',
+      control: 'boolean',
+      description: 'Makes the link download',
+      table: { defaultValue: { summary: false } },
+    },
+    link: {
+      category: 'Behaviour',
+      control: 'text',
+      description: 'The URL to link to',
+    },
+    newtab: {
+      category: 'Behaviour',
+      control: 'boolean',
+      description: 'Opens the link in a new tab',
+      table: { defaultValue: { summary: false } },
+    },
+    // APPEARANCE
+    purple: {
+      category: 'Appearance',
+      control: 'boolean',
+      description: 'Make the button a secondary purple button',
+      table: { defaultValue: { summary: false } },
+    },
+    rounded: {
+      category: 'Appearance',
+      control: 'boolean',
+      description: 'Give the button rounded corners',
+      table: { defaultValue: { summary: false } },
+    },
+    small: {
+      category: 'Appearance',
+      control: 'boolean',
+      description: 'Make the button small',
+      table: { defaultValue: { summary: false } },
+    },
+    verysmall: {
+      category: 'Appearance',
+      control: 'boolean',
+      description: 'Make the button very small',
+      table: { defaultValue: { summary: false } },
+    },
+    // LAYOUT
+    center: {
+      category: 'Layout',
+      control: 'boolean',
+      description: 'Centres the button in the page',
+      table: { defaultValue: { summary: false } },
+    },
+    fixedwidth: {
+      category: 'Layout',
+      control: 'text',
+      description: 'Give the button a fixed width',
+      table: { defaultValue: { summary: false } },
+    },
+    margin: {
+      category: 'Layout',
+      control: 'text',
+      description: 'specify a margin, otherwise uses default',
+      table: { defaultValue: { summary: false } },
+    },
+  }}
+/>
+
+# `<kclsu-button>`
+
+## Content
+
+To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
+
+<!-- TODO: implement icon -->
+<!-- To add an icon to the button, use the `icon` attribute -->
+
+### Example
+
+```html
+<kclsu-button>My Button</kclsu-button>
+```
+
+### Try It
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Content" component="kclsu-button" args={{
+    content: 'Button Content',
+    text: '',
+  }}>
+    {args => html`
+      <kclsu-button
+        icon="${ifDefined(args.icon || undefined)}"
+        text="${ifDefined(args.text || undefined)}"
+      >${args.content}</kclsu-button>`}
+  </Story>
+  <ArgsTable story="Content" include={ ['content','icon','text'] }/>
+</Canvas>
+
+## Behaviour
+
+There are three options which control the button's behaviour. Add the `link` attribute to make the button a link to a new page. If you also add the `newtab` attribute, the link will open in a new tab. Alternately, add the `download` attribute to make the button download the link as a file.
+
+### Example
+
+```html
+<kclsu-button link="/">Go Home</kclsu-button>
+```
+
+### Try It
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Behaviour" component="kclsu-button" args={{
+    content: 'Button Behaviour',
+    link:undefined,
+    newtab: false,
+    download: false,
+  }}>
+    {args => html`
+      <kclsu-button
+        link="${ifDefined(args.link)}"
+        ?newtab="${args.newtab}"
+        ?download="${args.download}"
+      >${args.content}</kclsu-button>`}
+  </Story>
+  <ArgsTable story="Behaviour" include={ [
+    'content',
+    'link',
+    'newtab',
+    'download'
+  ] }/>
+</Canvas>
+
+
+## Appearance
+
+There are four options to customize the button's appearance.
+Set the `purple` attribute to use the secondary colour pallete. Set the `rounded` attribute to give the button rounded corners. Set the `small` or `verysmall` attributes to decrease the button's size.
+
+### Example
+
+```html
+<kclsu-button purple rounded verysmall>Mini Button</kclsu-button>
+```
+
+### Try It
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Appearance" component="kclsu-button" args={{
+    content: 'Button Appearance',
+    purple: false,
+    rounded: false,
+    small: false,
+    verysmall: false,
+  }}>
+    {args => html`
+      <kclsu-button
+        ?purple="${args.purple}"
+        ?rounded="${args.rounded}"
+        ?small="${args.small}"
+        ?verysmall="${args.verysmall}"
+      >${args.content}</kclsu-button>`}
+  </Story>
+  <ArgsTable story="Appearance" include={ [
+    'content',
+    'purple',
+    'rounded',
+    'small',
+    'verysmall',
+  ] }/>
+</Canvas>
+
+## Build your Own
+
+<Canvas isColumn={true} withSource={true} isExpanded={true}>
+  <Story name="Build Your Own" component="kclsu-button">
+    {args => html`<kclsu-button
+      ?small="${args.small}"
+      ?purple="${args.purple}"
+      ?newtab="${args.newtab}"
+      ?rounded="${args.rounded}"
+      ?verysmall="${args.verysmall}"
+      ?center="${args.center}"
+      ?download="${args.download}"
+      link="${ifDefined(args.link || undefined)}"
+      text="${ifDefined(args.text || undefined)}"
+      emitid="${ifDefined(args.emitid || undefined)}"
+      icon="${ifDefined(args.icon || undefined)}"
+      fixedwidth="${ifDefined(args.fixedwidth || undefined)}"
+      margin="${ifDefined(args.margin || undefined)}"
+    >${args.content||'My Button'}</kclsu-button>`}
+  </Story>
+  <ArgsTable story="Build Your Own"/>
+</Canvas>
+
+## More Info
+
+<Description markdown={readme} />
