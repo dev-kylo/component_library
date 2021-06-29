@@ -19,7 +19,7 @@
 ### Depends on
 
 - [page-content](../../../containers/page-content)
-- [kclsu-tabs-container](../../../tabs/kclsu-tabs)
+- [kclsu-tabs-container](../../../tabs/kclsu-tabs-jquery)
 - [campaign-news](../campaign-news)
 - [kclsu-button](../../../buttons/kclsu-button)
 
