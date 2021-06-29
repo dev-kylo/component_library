@@ -1,22 +1,16 @@
-# kclsu-tabs-container
+# kclsu-tabs
 
 
 
 <!-- Auto Generated Below -->
 
 
-## Dependencies
+## Properties
 
-### Used by
+| Property   | Attribute  | Description | Type      | Default |
+| ---------- | ---------- | ----------- | --------- | ------- |
+| `innertab` | `innertab` |             | `boolean` | `false` |
 
- - [campaign-tabs](../../projects/campaigns/campaign-tabs)
-
-### Graph
-```mermaid
-graph TD;
-  campaign-tabs --> kclsu-tabs-container
-  style kclsu-tabs-container fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

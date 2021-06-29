@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Variants } from "./components/tabs/kclsu-tabs/tabtypes";
 export namespace Components {
     interface AddVarsityScores {
         "year": string;
@@ -275,6 +276,7 @@ export namespace Components {
     }
     interface InnerTabHeader {
         "active": boolean;
+        "index": number;
         "name": string;
     }
     interface InnerTabsContainer {
@@ -411,6 +413,10 @@ export namespace Components {
           * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector": string;
+    }
+    interface KclsuTabs {
+        "focusFirstTab": () => Promise<void>;
+        "variant": Variants;
     }
     interface KclsuTabsContainer {
     }
@@ -857,6 +863,11 @@ export namespace Components {
         "maxtotal": any;
         "supportname": string;
     }
+    interface TabArea {
+        "active": boolean;
+        "findFocus": () => Promise<void>;
+        "name": string;
+    }
     interface TabContent {
         "active": boolean;
         "name": string;
@@ -865,6 +876,18 @@ export namespace Components {
         "active": boolean;
         "index": string;
         "name": string;
+    }
+    interface TabTitle {
+        /**
+          * Is the tab title active, and corresponding tab area visible
+         */
+        "active": boolean;
+        "addFocus": () => Promise<void>;
+        /**
+          * A unique name, matching the name of the tab area component
+         */
+        "name": string;
+        "variant": Variants;
     }
     interface TabsContainer {
         "innertab": boolean;
@@ -1142,6 +1165,12 @@ declare global {
         prototype: HTMLKclsuSearchElement;
         new (): HTMLKclsuSearchElement;
     };
+    interface HTMLKclsuTabsElement extends Components.KclsuTabs, HTMLStencilElement {
+    }
+    var HTMLKclsuTabsElement: {
+        prototype: HTMLKclsuTabsElement;
+        new (): HTMLKclsuTabsElement;
+    };
     interface HTMLKclsuTabsContainerElement extends Components.KclsuTabsContainer, HTMLStencilElement {
     }
     var HTMLKclsuTabsContainerElement: {
@@ -1334,6 +1363,12 @@ declare global {
         prototype: HTMLSupportProgressElement;
         new (): HTMLSupportProgressElement;
     };
+    interface HTMLTabAreaElement extends Components.TabArea, HTMLStencilElement {
+    }
+    var HTMLTabAreaElement: {
+        prototype: HTMLTabAreaElement;
+        new (): HTMLTabAreaElement;
+    };
     interface HTMLTabContentElement extends Components.TabContent, HTMLStencilElement {
     }
     var HTMLTabContentElement: {
@@ -1345,6 +1380,12 @@ declare global {
     var HTMLTabHeaderElement: {
         prototype: HTMLTabHeaderElement;
         new (): HTMLTabHeaderElement;
+    };
+    interface HTMLTabTitleElement extends Components.TabTitle, HTMLStencilElement {
+    }
+    var HTMLTabTitleElement: {
+        prototype: HTMLTabTitleElement;
+        new (): HTMLTabTitleElement;
     };
     interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {
     }
@@ -1453,6 +1494,7 @@ declare global {
         "kclsu-countdown": HTMLKclsuCountdownElement;
         "kclsu-modal": HTMLKclsuModalElement;
         "kclsu-search": HTMLKclsuSearchElement;
+        "kclsu-tabs": HTMLKclsuTabsElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
         "label-card": HTMLLabelCardElement;
         "last-year-scores": HTMLLastYearScoresElement;
@@ -1485,8 +1527,10 @@ declare global {
         "show-support": HTMLShowSupportElement;
         "support-option": HTMLSupportOptionElement;
         "support-progress": HTMLSupportProgressElement;
+        "tab-area": HTMLTabAreaElement;
         "tab-content": HTMLTabContentElement;
         "tab-header": HTMLTabHeaderElement;
+        "tab-title": HTMLTabTitleElement;
         "tabs-container": HTMLTabsContainerElement;
         "text-card": HTMLTextCardElement;
         "user-login": HTMLUserLoginElement;
@@ -1773,8 +1817,10 @@ declare namespace LocalJSX {
     }
     interface InnerTabHeader {
         "active"?: boolean;
+        "index"?: number;
         "name"?: string;
         "onSelectInnerTab"?: (event: CustomEvent<any>) => void;
+        "onSelectInnerTabByIndex"?: (event: CustomEvent<any>) => void;
     }
     interface InnerTabsContainer {
         "innertab"?: boolean;
@@ -1911,6 +1957,9 @@ declare namespace LocalJSX {
           * If searching the text of an HTML element, provide the element's selector - tag, class or id
          */
         "selector"?: string;
+    }
+    interface KclsuTabs {
+        "variant"?: Variants;
     }
     interface KclsuTabsContainer {
     }
@@ -2361,6 +2410,10 @@ declare namespace LocalJSX {
         "maxtotal"?: any;
         "supportname"?: string;
     }
+    interface TabArea {
+        "active"?: boolean;
+        "name"?: string;
+    }
     interface TabContent {
         "active"?: boolean;
         "name"?: string;
@@ -2371,6 +2424,19 @@ declare namespace LocalJSX {
         "name"?: string;
         "onSelectTab"?: (event: CustomEvent<any>) => void;
         "onSelectTabByIndex"?: (event: CustomEvent<any>) => void;
+    }
+    interface TabTitle {
+        /**
+          * Is the tab title active, and corresponding tab area visible
+         */
+        "active"?: boolean;
+        /**
+          * A unique name, matching the name of the tab area component
+         */
+        "name"?: string;
+        "onSelectFocussableElement"?: (event: CustomEvent<any>) => void;
+        "onSelectTabName"?: (event: CustomEvent<any>) => void;
+        "variant"?: Variants;
     }
     interface TabsContainer {
         "innertab"?: boolean;
@@ -2477,6 +2543,7 @@ declare namespace LocalJSX {
         "kclsu-countdown": KclsuCountdown;
         "kclsu-modal": KclsuModal;
         "kclsu-search": KclsuSearch;
+        "kclsu-tabs": KclsuTabs;
         "kclsu-tabs-container": KclsuTabsContainer;
         "label-card": LabelCard;
         "last-year-scores": LastYearScores;
@@ -2509,8 +2576,10 @@ declare namespace LocalJSX {
         "show-support": ShowSupport;
         "support-option": SupportOption;
         "support-progress": SupportProgress;
+        "tab-area": TabArea;
         "tab-content": TabContent;
         "tab-header": TabHeader;
+        "tab-title": TabTitle;
         "tabs-container": TabsContainer;
         "text-card": TextCard;
         "user-login": UserLogin;
@@ -2563,6 +2632,7 @@ declare module "@stencil/core" {
             "kclsu-countdown": LocalJSX.KclsuCountdown & JSXBase.HTMLAttributes<HTMLKclsuCountdownElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
             "kclsu-search": LocalJSX.KclsuSearch & JSXBase.HTMLAttributes<HTMLKclsuSearchElement>;
+            "kclsu-tabs": LocalJSX.KclsuTabs & JSXBase.HTMLAttributes<HTMLKclsuTabsElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
             "label-card": LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
@@ -2595,8 +2665,10 @@ declare module "@stencil/core" {
             "show-support": LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
             "support-option": LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
             "support-progress": LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
+            "tab-area": LocalJSX.TabArea & JSXBase.HTMLAttributes<HTMLTabAreaElement>;
             "tab-content": LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
             "tab-header": LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
+            "tab-title": LocalJSX.TabTitle & JSXBase.HTMLAttributes<HTMLTabTitleElement>;
             "tabs-container": LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
             "text-card": LocalJSX.TextCard & JSXBase.HTMLAttributes<HTMLTextCardElement>;
             "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;
