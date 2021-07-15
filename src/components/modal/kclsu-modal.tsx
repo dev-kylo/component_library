@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen } from '@stencil/core';
+import { Component, h, Prop, Listen, Element } from '@stencil/core';
 
 
 @Component({
@@ -19,32 +19,49 @@ export class KclsuModal {
     /** Supply a custom function to be invoked when modal is opened */
     @Prop() enterfn: () => void;
 
+    styles = {
+        in:  'translate(-50%, -50%)',
+        out: 'translate(-200vh, -200vw)',
+    };
+
+    @Element() host: HTMLElement;
 
     componentDidLoad(){
         if (this.enterfn) this.enterfn();
+        this.animate(this.styles);
     }
 
     @Listen('exitModal') exitHandler(){
         if (this.autoexit){
             this.show = false;
+            this.animate(this.styles)
             if (this.exitfn)
                 this.exitfn();
         } 
     }
 
+    animate(styles){
+        const modal = this.host.shadowRoot.querySelector('.Modal') as HTMLElement;
+        modal.style.position = this.position;
+
+        if (this.show) {
+            modal.style.display = "block";
+            modal.style.transform = styles.in;
+            modal.style.opacity = '1';
+        } else {
+            modal.style.transform = styles.out;
+            modal.style.opacity = '0';
+            modal.addEventListener("transitionend", () => modal.style.display = "none")
+        }
+
+    }
+
     render() {
-
-        let styles = {
-            'transform': this.show? 'translate(-50%, -50%)' : 'translate(-200vh, -200vw)',
-            'opacity': this.show? '1' : '0',
-            'position': this.position || 'fixed'
-        };
-
         return ([
             <modal-backdrop showbg={this.show}></modal-backdrop>,
-            <div class="Modal" style={styles}>
+            <dialog class="Modal" open={this.show}>
                 <slot></slot>
-            </div>
+            </dialog>
         ]);
     }
 }
