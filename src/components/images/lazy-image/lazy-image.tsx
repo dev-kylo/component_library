@@ -101,17 +101,6 @@ export class LazyImage {
             "plainimg": this.plainimg
         }
 
-        // if (this.nolazy) return (
-        //     <div class={cs}>
-        //         <img 
-        //             style={objectPosition} 
-        //             class={!this.plainimg? this.imageclasses.join(' ') : ''} 
-        //             alt={this.alt}
-        //             data-src={loadedImage}
-        //             src={loadedImage}
-        //         ></img>
-        //     </div>
-        // )
 
 
        return (
