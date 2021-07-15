@@ -1,5 +1,5 @@
 import { Component, h, Element, State, Listen, Prop, Method } from '@stencil/core';
-import { TabGrouping, Variants } from './tabtypes';
+import { TabArea, TabTitle, Variants} from './tabtypes';
 
 
 @Component({
@@ -14,54 +14,41 @@ export class KclsuTabs {
 
   @Element() host: HTMLElement;
 
-  @State() allTabsGroups: TabGrouping[];
-
+  @State() allTabsTitles: TabTitle;
+  @State() allTabsAreas: TabArea;
   @Prop() variant : Variants = 'primary';
-
+  
+  firstTab: string;
 
   componentDidLoad() {
-    let headersGroup;
-    let contentGroup;
+
     (async () => {
+
       await customElements.whenDefined('tab-title');
       await customElements.whenDefined('tab-area');
 
-      headersGroup = Array.from(this.host.children).filter(el => el.tagName === 'TAB-TITLE');
-      contentGroup = Array.from(this.host.children).filter(el => el.tagName === 'TAB-AREA');
+      const headersGroup = Array.from(this.host.children).filter(el => el.tagName === 'TAB-TITLE') as HTMLTabTitleElement[];
+      const contentGroup = Array.from(this.host.children).filter(el => el.tagName === 'TAB-AREA') as HTMLTabAreaElement[];
+      
+      this.firstTab = headersGroup[0].name;
 
       let headersObject = {}, contentObject = {};
       for (let i = 0; i < headersGroup.length; i++){
         headersObject[headersGroup[i].name] = headersGroup[i];
         contentObject[contentGroup[i].name] = contentGroup[i];
       }
+
+      this.allTabsAreas = contentObject;
+      this.allTabsTitles = headersObject
       
       console.log(headersObject)
       console.log(contentObject)
-
-      // console.log({headersGroup})
-      // console.log({contentGroup})
-
-      this.allTabsGroups = headersGroup.map(headerEl => {
-        const cont = contentGroup.find(contEl => {
-          return headerEl.name === contEl.name;
-        })
-
-
-        return {
-          header: headerEl,
-          content: cont
-        }
-      });
-
-      this.allTabsGroups.forEach((group: TabGrouping) => {
-        group.header.variant =  this.variant;
-    })
     })()
   }
 
 
-  confirmCurrentTab(name: string){
-    return this.allTabsGroups.find(group => group.header.name === name);
+  confirmExistingTab(name: string){
+    return !!this.allTabsTitles[name] && !!this.allTabsAreas[name]
   }
 
   @Listen('selectFocussableElement')
@@ -82,45 +69,46 @@ export class KclsuTabs {
     }
   }
 
-  private toggleActiveTab(tabgroup: TabGrouping, active: boolean){
-    tabgroup.header.active = active;
-    tabgroup.content.active = active ;
+  private toggleActiveTab(name: string, active: boolean){
+    this.allTabsTitles[name].active = active;
+    this.allTabsAreas[name].active = active ;
   }
 
 
   private selectGroup(name: string, withFocus = false){
 
-    if (this.confirmCurrentTab(name)){
-      this.allTabsGroups.forEach((tabgroup: TabGrouping) => {
-          
-        if (tabgroup.header.name === name){
-            this.toggleActiveTab(tabgroup, true);
-            if (withFocus){
-              tabgroup.content.findFocus();
-            }
-        } else this.toggleActiveTab(tabgroup, false)
-          
-        })
+    console.log('confirming exists')
+    console.log(this.confirmExistingTab(name))
+
+    if (this.confirmExistingTab(name)){
+      for (const key in this.allTabsTitles){
+        console.log(key)
+        if (key === name){
+          this.toggleActiveTab(name, true);
+          if (withFocus){
+            this.allTabsAreas[key].findFocus();
+          }
+        }
+        else this.toggleActiveTab(key, false);
+      }
     }
   }
 
   private unSelectAllTabs(): void{
-    this.allTabsGroups.forEach((tabgroup: TabGrouping) => {
-      tabgroup.header.active = false;
-      tabgroup.content.active = false;
-    });
+    for (const key in this.allTabsTitles){
+      this.toggleActiveTab(key, false)
+    }
   }
 
   @Method()
   focusFirstTab(){
-    const firsTabTitle = this.allTabsGroups[0].header as HTMLTabTitleElement;
-    console.log(firsTabTitle)
-    firsTabTitle.addFocus();
+    this.allTabsTitles[this.firstTab].addFocus();
   }
 
   render() {
     const containerClasses = `kclsu-tabs kclsu-tabs-${this.variant}`;
-    const titleClasses = `kclsu-tabs-${this.variant}-titles`
+    const titleClasses = `kclsu-tabs-${this.variant}-titles`;
+
     return (
       <div role="presentation" class={containerClasses}>
         <ul role="tablist" class={titleClasses}>
