@@ -43,7 +43,6 @@ export class TabTitle {
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent){
       if (ev.key === 'Enter'){
-        console.log('Enter pressed on ' + this.name)
         this.selectFocussableElement.emit(this.name);
       }
     }
@@ -57,7 +56,6 @@ export class TabTitle {
     @Method()
     addFocus(){
         const el = this.element.shadowRoot.querySelector('a') as HTMLElement;
-        console.log(el)
         el.focus();
     }
 

@@ -41,8 +41,6 @@ export class KclsuTabs {
       this.allTabsAreas = contentObject;
       this.allTabsTitles = headersObject
       
-      console.log(headersObject)
-      console.log(contentObject)
     })()
   }
 
@@ -77,12 +75,8 @@ export class KclsuTabs {
 
   private selectGroup(name: string, withFocus = false){
 
-    console.log('confirming exists')
-    console.log(this.confirmExistingTab(name))
-
     if (this.confirmExistingTab(name)){
       for (const key in this.allTabsTitles){
-        console.log(key)
         if (key === name){
           this.toggleActiveTab(name, true);
           if (withFocus){
@@ -101,7 +95,7 @@ export class KclsuTabs {
   }
 
   @Method()
-  focusFirstTab(){
+  async focusFirstTab(){
     this.allTabsTitles[this.firstTab].addFocus();
   }
 
