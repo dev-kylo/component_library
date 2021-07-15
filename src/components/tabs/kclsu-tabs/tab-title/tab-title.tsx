@@ -55,7 +55,6 @@ export class TabTitle {
     
     @Method()
     async addFocus(){
-        console.log('add Focus')
         const el = this.element.shadowRoot.querySelector('a') as HTMLElement;
         el.focus();
     }

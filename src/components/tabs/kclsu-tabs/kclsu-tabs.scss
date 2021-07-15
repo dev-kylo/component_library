@@ -17,6 +17,13 @@
         padding: 0;
         list-style: none;
         background-color: transparent;
+        
+        @media (max-width: 1200px){
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
     }
 
     @media (max-width: 780px){
