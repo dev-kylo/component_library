@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element, Event, EventEmitter, State } from '@stencil/core';
+import { Component, Prop, h, Element, Event, EventEmitter, State, Method } from '@stencil/core';
 
 @Component({
   tag: 'profile-card',
@@ -70,15 +70,16 @@ export class ProfileCard {
     if (link) 
       return <a class="link" target="_blank" href={link}>{text}</a>
     else return <a class="link" role="button" tabindex="0" onClick={e => this.clickHandler(e, callback)}>{text}</a> 
-    
+  }
+
+  @Method()
+  async addFocus(){
+    const firstLink = this.host.shadowRoot.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
   
   render() {
 
-        
-    // let nameLink = !this.link ? <a onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> :  <a target="_blank" href={this.link? this.link : ''}><span class="name">{this.name}</span></a>
-    // let firstlink = !this.link ? <a class="link"  onClick={e => this.clickHandler(e)}>{this.cta}</a> :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta}</a>
-    // let secondlink = !this.secondlink? '' : <a class="link" target="_blank" href={this.secondlink}>{this.secondcta}</a>
 
     let nameLink = this.createNameButton();
     let primarybtn = this.createTextButton('primary');

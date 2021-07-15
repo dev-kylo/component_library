@@ -39,7 +39,7 @@ export class KclsuTabs {
       }
 
       this.allTabsAreas = contentObject;
-      this.allTabsTitles = headersObject
+      this.allTabsTitles = headersObject;
       
     })()
   }
@@ -57,6 +57,14 @@ export class KclsuTabs {
   @Listen('selectTabName')
   onSelectedTab(event: CustomEvent) {
     this.selectGroup(event.detail);
+  }
+
+  @Listen('closeArea')
+  onCloseArea(event: CustomEvent){
+    const tabName = event.detail;
+    if (this.confirmExistingTab(tabName)){
+      this.allTabsTitles[tabName].addFocus();
+    }
   }
 
 

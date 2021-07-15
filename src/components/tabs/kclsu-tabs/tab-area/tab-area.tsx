@@ -1,4 +1,6 @@
-import { Component, h, Element, Prop, State, Watch, Method} from '@stencil/core';
+import { Component, h, Element, Prop, State, Watch, Method, Listen, Event, EventEmitter} from '@stencil/core';
+import { KeysPressed } from '../tabtypes';
+
 
 @Component({
     tag: 'tab-area',
@@ -12,8 +14,14 @@ export class TabArea {
     @Prop() active: boolean = false;
 
     @Element() element: HTMLElement;
+    
     @State() isSelected: boolean = this.active;
 
+    @Event() closeArea: EventEmitter;
+    
+    keysPressed: KeysPressed = {};
+    hasKeyboardFocus: boolean = false;
+    
     componentDidLoad(){
         this.element.slot = 'tab-content';
     }
@@ -21,31 +29,46 @@ export class TabArea {
     @Watch('active') 
     onActiveChanged(newValue: boolean) {
       this.isSelected = newValue;
+      this.hasKeyboardFocus = false;
     }
 
     @Method()
     findFocus(){
         const nestedTabs = this.element.querySelector('kclsu-tabs') as HTMLKclsuTabsElement;
         const firstfocusableElement = this.element.querySelector(
-            'a, kclsu-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
-        ) as HTMLElement;
-        
-        
-        //const firstChild = this.element.firstElementChild as HTMLElement;
-
-        // console.log(' --  nested tabs component inside?  ' + !!nestedTabs + ' --');
-        // console.log(' -- focussable element inside?  ' + !!firstfocusableElement+ ' --');
-        //console.log({nestedTabs, firstfocusableElement, firstChild});
-        console.log({nestedTab: nestedTabs, firstfocusableElName: firstfocusableElement});
-        // console.log('--- first child is ----')
-        // console.log(firstChild)
+            'a, kclsu-button, profile-card, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+        ) as HTMLKclsuButtonElement | HTMLProfileCardElement |  HTMLElement;
+   
         if (nestedTabs) nestedTabs.focusFirstTab();
         else if(firstfocusableElement){
             if (firstfocusableElement.tagName === 'KCLSU-BUTTON'){
                 const btn = firstfocusableElement as HTMLKclsuButtonElement;
                 btn.addFocus();
+            }
+            else if(firstfocusableElement.tagName === 'PROFILE-CARD'){
+                const card = firstfocusableElement as HTMLProfileCardElement;
+                card.addFocus();
             } else firstfocusableElement.focus();
+
+            this.hasKeyboardFocus = true;
         }        
+    }
+
+    @Listen('keydown')
+    handleKeyDown(ev: KeyboardEvent){
+        this.keysPressed[ev.key] = true;
+
+      if (this.keysPressed['Shift'] && ev.key === 'ArrowUp'){
+        if (this.hasKeyboardFocus){
+            this.active = false;
+            this.closeArea.emit(this.name);
+        }
+      }
+    }
+
+    @Listen('keyup')
+    handleUp(ev: KeyboardEvent){
+        delete this.keysPressed[ev.key];
     }
     
     render() {
