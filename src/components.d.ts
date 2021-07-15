@@ -616,6 +616,7 @@ export namespace Components {
         "to": string;
     }
     interface ProfileCard {
+        "addFocus": () => Promise<void>;
         /**
           * The text for the primary text link bottom left
          */
@@ -2414,6 +2415,7 @@ declare namespace LocalJSX {
     interface TabArea {
         "active"?: boolean;
         "name"?: string;
+        "onCloseArea"?: (event: CustomEvent<any>) => void;
     }
     interface TabContent {
         "active"?: boolean;

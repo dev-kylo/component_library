@@ -1,7 +1,3 @@
-// export type TabGrouping = {
-//     header: HTMLTabTitleElement;
-//     content: HTMLTabAreaElement;
-//   }
  
 export type TabTitle = {
   [key: string] : HTMLTabTitleElement
@@ -13,6 +9,6 @@ export type TabArea = {
 
 export type Variants = 'primary' | 'secondary' | 'tertiary';
 
-export type TabGrouping = {
-
+export type KeysPressed = {
+  [key: string] : boolean;
 }
