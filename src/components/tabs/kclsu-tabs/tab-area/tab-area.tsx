@@ -29,17 +29,23 @@ export class TabArea {
         const firstfocusableElement = this.element.querySelector(
             'a, kclsu-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
         ) as HTMLElement;
+        
+        
         //const firstChild = this.element.firstElementChild as HTMLElement;
 
         // console.log(' --  nested tabs component inside?  ' + !!nestedTabs + ' --');
         // console.log(' -- focussable element inside?  ' + !!firstfocusableElement+ ' --');
-        // console.log({nestedTabs, firstfocusableElement, firstChild});
-        // console.log({nestedName: nestedTabs.tagName, firstfocusableElName: firstfocusableElement.tagName});
+        //console.log({nestedTabs, firstfocusableElement, firstChild});
+        console.log({nestedTab: nestedTabs, firstfocusableElName: firstfocusableElement});
         // console.log('--- first child is ----')
         // console.log(firstChild)
         if (nestedTabs) nestedTabs.focusFirstTab();
-        else if(firstfocusableElement) firstfocusableElement.focus();
-        
+        else if(firstfocusableElement){
+            if (firstfocusableElement.tagName === 'KCLSU-BUTTON'){
+                const btn = firstfocusableElement as HTMLKclsuButtonElement;
+                btn.addFocus();
+            } else firstfocusableElement.focus();
+        }        
     }
     
     render() {

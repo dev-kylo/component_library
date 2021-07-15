@@ -283,6 +283,7 @@ export namespace Components {
         "innertab": boolean;
     }
     interface KclsuButton {
+        "addFocus": () => Promise<void>;
         /**
           * Centers the button in the page
          */
