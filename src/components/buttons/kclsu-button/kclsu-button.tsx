@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method, Element} from '@stencil/core';
 
 type btnClass = 'green' | 'rounded' | 'purple' | 'verysmall' | 'big' | 'small';
 type btnStyle = { margin:string }
@@ -40,6 +40,8 @@ export class KclsuButton {
     /** Provide a custom click function handler. Use emitid rather if a parent component is listening for event.*/
     @Prop() clickfn: () => void;
 
+    @Element() host: HTMLElement;
+
 
     @Event()emitClick:EventEmitter;
 
@@ -53,7 +55,15 @@ export class KclsuButton {
         this.emitClick.emit(this.emitid) ;
     }
 
+    @Method()
+    async addFocus(){
+        let button = this.link ? this.host.shadowRoot.querySelector('a')
+                                : this.host.shadowRoot.querySelector('button');
 
+        Promise.resolve(button.focus());
+    }
+
+    
     render() {
 
         //SET BTN MARGIN
