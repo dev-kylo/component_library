@@ -34,6 +34,11 @@ export class KclsuTabs {
 
       let headersObject = {}, contentObject = {};
       for (let i = 0; i < headersGroup.length; i++){
+        
+        //Assign styling variant
+        headersGroup[i].variant = this.variant;
+
+        //Add to state
         headersObject[headersGroup[i].name] = headersGroup[i];
         contentObject[contentGroup[i].name] = contentGroup[i];
       }
