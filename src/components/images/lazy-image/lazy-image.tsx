@@ -17,10 +17,16 @@ export class LazyImage {
     @Prop() animatein: boolean = false;
     /** A width for the image in pixels */
     @Prop() width:string;
+    /** If setting width for mobile and desktop, use width property for mobile and this property for desktop */
+    @Prop() desktopwidth: string;
     /** The alt tag of the image */
     @Prop() alt: string = '';
     /** If you want to render an img element in a responsive container without object positioning */
     @Prop() plainimg: boolean = false;
+    /** If the image is being used only as thumbnail, such as in event cards, label cards and profile cards */
+    @Prop() thumbnail: boolean = false;
+    /** If the image is being used only as thumbnail, such as project-cards and image-text components */
+    @Prop() contentimage: boolean = false;
     /** Remove lazy-loading functionality. Retains Object Fit positioing */
     @Prop() nolazy: boolean = false;
     /** If set to false, it will keep any existing cloudinary transforms */
@@ -30,7 +36,6 @@ export class LazyImage {
 
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'unknown';
     breakPoints:number[] = [1920, 1600, 1366, 1024, 768, 640];
-
 
     @Element() el: HTMLElement;
 
@@ -62,6 +67,8 @@ export class LazyImage {
     }
 
     createTransformation(width:number): string {
+        //progressive_jpeg
+        //return `c_lfill,w_${width},fl_progressive:steep`;
         return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
@@ -73,24 +80,31 @@ export class LazyImage {
     render() {
 
         let objectPosition = {
-            'object-position': this.focusarea
+            'object-position': this.focusarea,
+            'background-color': 'blue'
          };
+
 
         const classes = {
             "loadingimage": !this.plainimg? true : false,
-            "plainimg": this.plainimg
+            "plainimg": this.plainimg,
         }
 
         return (
             <div class={classes}>
+
                 <img
+                    loading="lazy"
                     style={objectPosition}
+                    class={!this.plainimg? this.imageclasses.join(' ') : ''}
                     src={this.image}
-                    srcset={this.createSrcSet()}
+                    srcSet={this.createSrcSet()}
                     alt={this.alt}
                 />
             </div>
         )
+
+        //<img src={this.createUrl(this.image, this.createTransformation(10))}></img>
 
     //    return (
     //         <div class={cs}>
