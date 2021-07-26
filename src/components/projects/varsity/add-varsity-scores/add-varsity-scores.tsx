@@ -11,7 +11,7 @@ export class AddVarsityScores {
     @State() eventsData;
     @State() modalOpen;
     @State() token;
-    @State() logInModalOpen = !this.token;
+    @State() logInModalOpen = false;
     @State() activeID;
     @State() error;
 

@@ -2,12 +2,12 @@ export const categories = {
     officers: {
         id: 'SO',
         title: 'Student Officers',
-        innertabs: this.studentofficers.split('|')
+        // innertabs: this.studentofficers.split('|')
     },
     network: {
         id: 'NO',
         title: 'Network Officers',
-        innertabs: this.networkofficers.split('|')
+        // innertabs: this.networkofficers.split('|')
     },
     nus: {
         id: 'NUS',
@@ -17,6 +17,6 @@ export const categories = {
     academic: {
         id: 'ACADEMIC',
         title: 'Academic',
-        innertabs: this.academicgroups.split('|')
+        // innertabs: this.academicgroups.split('|')
     }
 };

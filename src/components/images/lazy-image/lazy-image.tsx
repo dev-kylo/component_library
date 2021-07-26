@@ -68,8 +68,8 @@ export class LazyImage {
 
     createTransformation(width:number): string {
         //progressive_jpeg
-        //return `f_jpg,c_lfill,w_${width},fl_progressive:steep`;
-        return `c_lfill,f_auto,fl_any_format,w_${width}`;
+        return `f_jpg,c_lfill,w_${width},fl_progressive:steep`;
+        //return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
     createSrcSet(){
@@ -103,22 +103,6 @@ export class LazyImage {
 
             </div>
         )
-
-        //<img src={this.createUrl(this.image, this.createTransformation(10))}></img>
-
-    //    return (
-    //         <div class={cs}>
-    //             <scroll-observer lazy-image animation={!this.animatein? '' : 'scaleIn'}>
-    //                 <img 
-    //                     style={objectPosition} 
-    //                     class={!this.plainimg? this.imageclasses.join(' ') : ''} 
-    //                     alt={this.alt}
-    //                     data-src={loadedImage}
-    //                     src={ !this.nolazy ? loadingImage : loadedImage }
-    //                 ></img>
-    //             </scroll-observer>
-    //         </div>
-    //     );
 
 
     }
