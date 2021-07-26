@@ -1,0 +1,80 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Profile Logo"
+  component="profile-logo-card"
+  argTypes={{
+    cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
+    link: { type: 'string', description: '' },
+    image: { type: 'string', description: '' },
+    logo: { type: 'string', description: '' },
+    imagefocus: { type: 'string', description: '' },
+    logocolour: {
+      description: 'OPTIONAL - if you are using a transparent text icon and need to set a background colour',
+      control: {
+        type: 'color',
+        presetColors: [
+          { title: 'black', color: '#000000' },
+          { title: '--purple', color: '#502669' },
+          { title: '--light-teal', color:'#5EBDB0' },
+          { title: '--mid-teal', color:'#1BA39C' },
+          { title: '--dark-teal', color: '#15847F' },
+          { title: '--orange', color: '#e6582A' },
+          { title: '--grey', color: '#444' },
+          { title: '--warm-grey', color: '#C1C1C1' },
+          { title: '--light-grey', color: '#E8E8E2' },
+          { title: '--secondary-navy', color: '#0C2F46' },
+          { title: '--secondary-pink', color: '#EE7D79' },
+          { title: '--secondary-periwinkle', color: '#5F5BA3' },
+          { title: '--secondary-mustard', color: '#F49E25' },
+        ],
+      }
+    },
+  }}
+/>
+
+# `<profile-logo-card>`
+
+### Example
+
+```html
+<profile-logo-card cardtitle="Kyle"> </profile-logo-card>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="profile-logo-card" args={{
+    cardtitle: 'Kyle',
+    link: '/kyle',
+    image: '',
+    logo: 'Engineer',
+    logocolour: 'https://github.com',
+    imagefocus: '',
+  }}>
+    {args => html`
+      <profile-logo-card
+        cardtitle="${ifDefined(args.cardtitle || undefined)}"
+        logo="${ifDefined(args.logo || undefined)}"
+        link="${ifDefined(args.link || undefined)}"
+        logocolour="${ifDefined(args.logocolour || undefined)}"
+        cta="${ifDefined(args.cta || undefined)}"
+        secondcta="${ifDefined(args.secondcta || undefined)}"
+        image="${ifDefined(args.image || undefined)}"
+        ?nolazy="${args.nolazy}"
+      > </profile-logo-card>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

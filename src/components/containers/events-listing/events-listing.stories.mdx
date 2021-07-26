@@ -1,0 +1,59 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Containers/Events Listing"
+  component="events-listing"
+  argTypes={{
+    col: { type: 'boolean', description: 'Show event cards in a column' },
+    eventtag: { type: 'string', description: 'The MSL event tag to filter events' },
+    limit: { type: 'number', description: 'The max number of events to display' },
+    cta: { type: 'string', description: 'the Call to Action text in the link on profile cards' },
+    cardtype: {
+      description: 'The MSL event tag to filter events',
+      control: { type: 'select', },
+      options: ['label', 'text', 'profile'],
+    },
+  }}
+/>
+
+# `<events-listing>`
+
+### Example
+
+```html
+<events-listing cardtype="label"> </events-listing>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="events-listing" args={{
+    col: false,
+    eventtag: '',
+    limit: 0,
+    cta: '',
+    cardtype: 'label'
+  }}>
+    {args => html`
+      <events-listing
+        ?col="${args.col}"
+        eventtag="${ifDefined(args.eventtag || undefined)}"
+        limit="${ifDefined(args.limit || undefined)}"
+        cta="${ifDefined(args.cta || undefined)}"
+        cardtype="${ifDefined(args.cardtype || undefined)}"
+      > </events-listing>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

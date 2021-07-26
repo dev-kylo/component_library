@@ -1,0 +1,124 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Image and Text"
+  component="image-text"
+  argTypes={{
+    heading: { type: 'string', description: 'The title at the top of the text' },
+    card: { type: 'boolean', description: 'This turns the component into a card, rather than just an image/text layout' },
+    text: { type: 'string', description: 'The paragraph text' },
+    image: { type: 'string', description: 'The image link (get from Cloudinary)' },
+    imagewidth: {
+      description: 'Provide a set % width for the image. Takes a  number without the %',
+      control: {
+        type: 'range',
+        min: 1,
+        max: 100,
+        step: 1,
+      },
+    },
+    'switch': { type: 'boolean', description: 'Switch the side the image is' },
+    textcolour: {
+      description: 'Choose the colour for the paragraph',
+      control: {
+        type: 'color',
+        presetColors: [
+          { title: 'black', color: '#000000' },
+          { title: '--purple', color: '#502669' },
+          { title: '--light-teal', color:'#5EBDB0' },
+          { title: '--mid-teal', color:'#1BA39C' },
+          { title: '--dark-teal', color: '#15847F' },
+          { title: '--orange', color: '#e6582A' },
+          { title: '--grey', color: '#444' },
+          { title: '--warm-grey', color: '#C1C1C1' },
+          { title: '--light-grey', color: '#E8E8E2' },
+          { title: '--secondary-navy', color: '#0C2F46' },
+          { title: '--secondary-pink', color: '#EE7D79' },
+          { title: '--secondary-periwinkle', color: '#5F5BA3' },
+          { title: '--secondary-mustard', color: '#F49E25' },
+        ],
+      }
+    },
+    smalltext: { type: 'boolean', description: 'Applies to MOBILE / TABLET <780px screens only. Paragraph and heading sizes' },
+    imagezoom: { type: 'boolean', description: 'Animate the image (scale in) on' },
+    reversestack: { type: 'boolean', description: 'When the image and content stack, reverse the order so the image is on' },
+    hideimage: { type: 'boolean', description: 'Applies to mobilescreen displays only. Will hide the image and display content only' },
+    mobilescreen: { type: 'boolean' },
+  }}
+/>
+
+# `<image-text>`
+
+## Content
+
+### Example
+
+```html
+<image-text heading="Lorem ipsum">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+    deserunt mollit anim id est laborum.
+  </p>
+</image-text>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="image-text" args={{
+    card: false,
+    hideimage: false,
+    imagezoom: false,
+    mobilescreen: false,
+    reversestack: false,
+    smalltext: false,
+    'switch': false,
+    heading: 'Lorem Ipsum',
+    text: dedent`
+      dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+      exercitation ullamco laboris.
+    `,
+    content: dedent`
+      Tristique nulla aliquet enim tortor at auctor urna nunc. Quam lacus suspendisse
+      faucibus interdum posuere. Amet nisl purus in mollis nunc sed id semper. Id aliquet
+      vulputate mi.
+    `,
+    image: '',
+    imagewidth: '',
+    textcolour: '',
+  }}>
+    {args => html`
+      <image-text
+          ?card="${args.card}"
+          ?hideimage=${args.hideimage}
+          ?imagezoom=${args.imagezoom}
+          ?mobilescreen=${args.mobilescreen}
+          ?reversestack=${args.reversestack}
+          ?smalltext=${args.smalltext}
+          ?switch=${args.switch}
+          heading="${ifDefined(args.heading || undefined)}"
+          image="${ifDefined(args.image || undefined)}"
+          textcolour="${ifDefined(args.textcolour || undefined)}"
+          imagewidth="${ifDefined(args.imagewidth || undefined)}"
+          text="${ifDefined(args.text || undefined)}"
+      >${args.content}</image-text>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

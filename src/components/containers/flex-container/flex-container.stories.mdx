@@ -1,0 +1,65 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Containers/Flex"
+  component="flex-container"
+  argTypes={{
+    alignx: { type: 'radio', options: ['center', 'end', 'start', 'space-around', 'space-between']},
+    aligny: { type: 'radio', options: ['baseline', 'center', 'end', 'start', 'stretch']},
+    direction: { type: 'radio', options: ['column', 'column-reverse', 'row', 'row-reverse']},
+    fillcontainer: { type: 'boolean', description: 'Ensure the container stretches the full width and height of parent container' },
+    mobcolumn: { type: 'boolean', description: 'In mobile display in column direction - NOT YET' },
+    wrap: { type: 'boolean' },
+    renderlist: { type: 'boolean' },
+  }}
+/>
+
+# `<flex-container>`
+
+### Example
+
+```html
+<flex-container cardtitle="Kyle"> </flex-container>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="flex-container" args={{
+    alignx: 'center',
+    aligny: 'center',
+    direction: 'row',
+    fillcontainer: false,
+    mobcolumn: false,
+    wrap: false,
+    renderlist: false,
+  }}>
+    {args => html`
+<flex-container
+    alignx="${ifDefined(args.alignx || undefined)}"
+    aligny="${ifDefined(args.aligny || undefined)}"
+    direction="${ifDefined(args.direction || undefined)}"
+    ?fillcontainer="${args.fillcontainer}"
+    ?mobcolumn="${args.mobcolumn}"
+    ?wrap="${args.wrap}"
+    ?renderlist="${args.renderlist}">
+  <div>A</div>
+  <div>B</div>
+  <div>C</div>
+  <div>D</div>
+</flex-container>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

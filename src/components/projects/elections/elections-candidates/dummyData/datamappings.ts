@@ -2,11 +2,13 @@ export const categories = {
     officers: {
         id: 'SO',
         title: 'Student Officers',
+        // @ts-expect-error
         innertabs: this.studentofficers.split('|')
     },
     network: {
         id: 'NO',
         title: 'Network Officers',
+        // @ts-expect-error
         innertabs: this.networkofficers.split('|')
     },
     nus: {
@@ -17,6 +19,7 @@ export const categories = {
     academic: {
         id: 'ACADEMIC',
         title: 'Academic',
+        // @ts-expect-error
         innertabs: this.academicgroups.split('|')
     }
 };

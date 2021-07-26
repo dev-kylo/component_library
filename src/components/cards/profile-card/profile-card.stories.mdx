@@ -1,0 +1,64 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Profile"
+  component="profile-card"
+  argTypes={{
+    name: { type: 'string', description: 'The title for the card - usually a full name' },
+    position: { type: 'string', description: '' },
+    link: { type: 'string', description: '' },
+    secondlink: { type: 'string', description: '' },
+    cta: { type: 'string', description: '' },
+    secondcta: { type: 'string', description: '' },
+    image: { type: 'string', description: '' },
+    nolazy: { type: 'boolean', description: '' },
+  }}
+/>
+
+# `<profile-card>`
+
+### Example
+
+```html
+<profile-card name="Kyle"> </profile-card>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="profile-card" args={{
+    name: 'Kyle',
+    position: 'Engineer',
+    link: '/kyle',
+    secondlink: 'https://github.com',
+    cta: '',
+    secondcta: '',
+    image: '',
+    nolazy: false,
+  }}>
+    {args => html`
+      <profile-card
+        name="${ifDefined(args.name || undefined)}"
+        position="${ifDefined(args.position || undefined)}"
+        link="${ifDefined(args.link || undefined)}"
+        secondlink="${ifDefined(args.secondlink || undefined)}"
+        cta="${ifDefined(args.cta || undefined)}"
+        secondcta="${ifDefined(args.secondcta || undefined)}"
+        image="${ifDefined(args.image || undefined)}"
+        ?nolazy="${args.nolazy}"
+      > </profile-card>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

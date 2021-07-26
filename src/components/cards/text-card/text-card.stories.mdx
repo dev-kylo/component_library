@@ -1,0 +1,49 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Text"
+  component="text-card"
+  argTypes={{
+    cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
+    link: { type: 'string', description: '' },
+    subtext: { type: 'string', description: '' },
+  }}
+/>
+
+# `<text-card>`
+
+### Example
+
+```html
+<text-card cardtitle="Kyle"> </text-card>
+```
+
+### Try It
+
+<Canvas withSource="open" >
+  <Story name="Build Your Own" component="text-card" args={{
+    cardtitle: 'Kyle',
+    link: '/kyle',
+    subtext: '',
+  }}>
+    {args => html`
+      <text-card
+        cardtitle="${ifDefined(args.cardtitle || undefined)}"
+        link="${ifDefined(args.link || undefined)}"
+        subtext="${ifDefined(args.logocolour || undefined)}"
+      > </text-card>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Build Your Own"/>
+
+## More Info
+
+<Description markdown={readme} />

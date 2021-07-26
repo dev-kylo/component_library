@@ -4,7 +4,7 @@ import { Component, h, Prop, State, Element} from '@stencil/core';
 @Component({
     tag: 'image-slider-auto',
     styleUrl: 'image-slider-auto.css',
-    
+
 })
 export class ImageSliderAuto {
 
@@ -24,7 +24,7 @@ export class ImageSliderAuto {
 
     componentDidLoad(){
         this.oldWay();
-        this.timer = setInterval(() => this.oldWay(), this.interval);
+        this.timer = setInterval(() => this.oldWay(), this.interval) as unknown as number;
     }
 
     oldWay(){
@@ -35,9 +35,9 @@ export class ImageSliderAuto {
                 if(!slides[i].classList.contains('hide'))slides[i].classList.add('hide');
                 if(slides[i].classList.contains('show')){
                     slides[i].classList.remove('show')
-                } 
+                }
             }
-      
+
             this.slideI++;
             if (this.slideI > slides.length) {this.slideI = 1}
             slides[this.slideI-1].classList.remove('hide');
