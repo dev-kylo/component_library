@@ -282,7 +282,7 @@ export namespace Components {
     }
     interface KclsuButton {
         /**
-          * Centers the button in the page
+          * Centres the button in the page
          */
         "center": boolean;
         /**
@@ -302,7 +302,7 @@ export namespace Components {
          */
         "fixedwidth": string;
         /**
-          * Adds icon to the page
+          * Adds icon to the button
          */
         "icon": string;
         /**
@@ -310,7 +310,7 @@ export namespace Components {
          */
         "link": string;
         /**
-          * specifiy a margin, otherwise uses default
+          * specify a margin, otherwise uses default
          */
         "margin": string;
         /**
@@ -1781,7 +1781,7 @@ declare namespace LocalJSX {
     }
     interface KclsuButton {
         /**
-          * Centers the button in the page
+          * Centres the button in the page
          */
         "center"?: boolean;
         /**
@@ -1801,7 +1801,7 @@ declare namespace LocalJSX {
          */
         "fixedwidth"?: string;
         /**
-          * Adds icon to the page
+          * Adds icon to the button
          */
         "icon"?: string;
         /**
@@ -1809,7 +1809,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
-          * specifiy a margin, otherwise uses default
+          * specify a margin, otherwise uses default
          */
         "margin"?: string;
         /**
