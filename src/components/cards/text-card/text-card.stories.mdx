@@ -12,7 +12,7 @@ import dedent from 'ts-dedent';
   argTypes={{
     cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
     link: { type: 'string', description: '' },
-    subtext: { type: 'string', description: '' },
+    subtext: { type: 'string', description: 'Subtext for the card' },
   }}
 />
 
@@ -36,7 +36,7 @@ import dedent from 'ts-dedent';
       <text-card
         cardtitle="${ifDefined(args.cardtitle || undefined)}"
         link="${ifDefined(args.link || undefined)}"
-        subtext="${ifDefined(args.logocolour || undefined)}"
+        subtext="${ifDefined(args.subtext || undefined)}"
       > </text-card>
     `}
   </Story>

@@ -6,7 +6,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import readme from './readme.md';
 
 <Meta
-  title="Loading Spinner"
+  title="Other UI/Loading Spinner"
   component="loading-spinner"
   argTypes={{
     show: {
@@ -27,25 +27,29 @@ import readme from './readme.md';
 
 To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
 
-<!-- TODO: implement icon -->
-<!-- To add an icon to the button, use the `icon` attribute -->
 
 ### Example
 
+```html
+<loading-spinner show="true"></loading-spinner>
+```
+
 ### Try It
 
-<Canvas withSource="open" >
+<Canvas withSource="open" withToolbar={true} >
   <Story name="Spinner" component="loading-spinner" args={{
     show: true,
     margin: 'auto',
   }}>
     {args => html`
-      <loading-spinner
+      <div style="position: relative; height: 150px">
+        <loading-spinner
         ?show="${ifDefined(args.show)}"
         margin="${ifDefined(args.margin || undefined)}"
-      ></loading-spinner>`}
+        ></loading-spinner>
+      </div>`}
   </Story>
-  <ArgsTable story="Spinner"/>
+  
 </Canvas>
 
 ## More Info

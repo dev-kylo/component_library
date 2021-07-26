@@ -7,19 +7,19 @@ import readme from './readme.md';
 import dedent from 'ts-dedent';
 
 <Meta
-  title="Cards/Labelled"
+  title="Cards/Label"
   component="label-card"
   argTypes={{
-    cardtitle: { type: 'string', description: 'The main title of the card' },
-    buttontitle: { type: 'string', description: 'If a button included, the text for the button' },
-    buttonlink: { type: 'string', description: 'If a button included, the link for the button' },
+    cardtitle: { type:{name: 'string', required: true}, description: 'The main title of the card'},
     link: { type: 'string', description: 'The link for the card - NOT for the button' },
     text: { type: 'string', description: 'The sub text beneath the title' },
-    cardheight: { type: 'number', description: 'Specify a fixed card height' },
-    cardwidth: { type: 'number', description: 'Specify a fixed card width' },
+    reverse: { type: 'boolean', description: 'If image to be displayed on right hand side' },
+    buttonlink: { type: 'string', description: 'ONLY if a button included, the link for the button' },
+    buttontitle: { type: 'string', description: 'ONLY If a button included, the text for the button', required:'true' },
+    cardheight: { control: { type: 'range', min: 60, max: 400, step: 20 }, description: 'Specify a fixed card height' },
+    cardwidth: { type: 'number', description: 'Specify a fixed card width (pixels)' },
     margin: { type: 'number', description: 'Give the card a custom margin' },
     highlightText: { type: 'boolean', description: 'The main title of the card' },
-    reverse: { type: 'boolean', description: 'If image to be displayed on right hand side' },
     smallestheight: { type: 'boolean', description: 'Make the card the smallest height possible' },
   }}
 />
@@ -29,32 +29,23 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<label-card heading="Lorem ipsum">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-    deserunt mollit anim id est laborum.
-  </p>
-</label-card>
+<label-card heading="Lorem ipsum"></label-card>
 ```
 
 ### Try It
 
 <Canvas withSource="open" >
   <Story name="Build Your Own" component="label-card" args={{
-    cardtitle: '',
-    buttontitle: '',
-    buttonlink: '',
+    cardtitle: 'Title for card',
     link: '',
-    text: '',
+    text: 'Subtext goes here',
+    reverse: false,
     cardheight: 0,
     cardwidth: 0,
     margin: 0,
+    buttontitle: '',
+    buttonlink: '',
     highlightText: false,
-    reverse: false,
     smallestheight: false,
   }}>
     {args => html`
