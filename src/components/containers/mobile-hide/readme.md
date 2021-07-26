@@ -1,6 +1,6 @@
 # mobile-hide
 
-
+Use this component to hide content on mobile screens.
 
 <!-- Auto Generated Below -->
 

@@ -6,7 +6,7 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
     storySort: {
-      order: ['Getting Started'],
+      order: ['Getting Started', 'Buttons', 'Cards', 'Media', 'Layouts', 'Other UI', 'Interfaces', 'Dynamic', 'Wrappers', 'Templates', 'MSL Dependents'],
     },
   },
   controls: {
