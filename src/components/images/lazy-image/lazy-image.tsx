@@ -68,7 +68,7 @@ export class LazyImage {
 
     createTransformation(width:number): string {
         //progressive_jpeg
-        //return `c_lfill,w_${width},fl_progressive:steep`;
+        //return `f_jpg,c_lfill,w_${width},fl_progressive:steep`;
         return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
@@ -81,7 +81,6 @@ export class LazyImage {
 
         let objectPosition = {
             'object-position': this.focusarea,
-            'background-color': 'blue'
          };
 
 
@@ -101,6 +100,7 @@ export class LazyImage {
                     srcSet={this.createSrcSet()}
                     alt={this.alt}
                 />
+
             </div>
         )
 
