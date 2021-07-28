@@ -529,7 +529,7 @@ export namespace Components {
     }
     interface MobileHide {
         /**
-          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+          * In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller
          */
         "hidetablet": boolean;
     }
@@ -539,7 +539,13 @@ export namespace Components {
     interface MyComponent {
     }
     interface NewsCard {
+        /**
+          * The MSL link for the news post
+         */
         "newslink": string;
+        /**
+          * The title for the news post
+         */
         "newstitle": string;
     }
     interface PageBanner {
@@ -2029,7 +2035,7 @@ declare namespace LocalJSX {
     }
     interface MobileHide {
         /**
-          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+          * In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller
          */
         "hidetablet"?: boolean;
     }
@@ -2040,7 +2046,13 @@ declare namespace LocalJSX {
     interface MyComponent {
     }
     interface NewsCard {
+        /**
+          * The MSL link for the news post
+         */
         "newslink"?: string;
+        /**
+          * The title for the news post
+         */
         "newstitle"?: string;
     }
     interface PageBanner {

@@ -7,7 +7,7 @@ import readme from './readme.md';
 import dedent from 'ts-dedent';
 
 <Meta
-  title="Cards/News"
+  title="Dependents/News Card"
   component="news-card"
   argTypes={{
     newslink: { type: 'string' },
@@ -20,18 +20,18 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<news-card newslink="/news/new.html" newstitle="New News!"> </news-card>
+<news-card newslink="/newspost" newstitle="KCLSU Update!"> </news-card>
 ```
 
-### Try It
+### Build Your Own
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="news-card" args={{ newslink: '/news/new.html', newstitle: 'New News!' }}>
+  <Story name="Basic" component="news-card" args={{ newslink: '/news/new', newstitle: 'New News!' }}>
     {args => html`<news-card newslink="${args.newslink}" newstitle="${args.newstitle}"> </news-card>`}
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Basic"/>
 
 ## More Info
 

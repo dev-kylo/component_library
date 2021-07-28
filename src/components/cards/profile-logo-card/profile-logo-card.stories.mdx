@@ -11,10 +11,16 @@ import dedent from 'ts-dedent';
   component="profile-logo-card"
   argTypes={{
     cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
-    link: { type: 'string', description: '' },
-    image: { type: 'string', description: '' },
-    logo: { type: 'string', description: '' },
-    imagefocus: { type: 'string', description: '' },
+    link: { type: 'string', description: 'The URL for the card to link to' },
+    image: { type: 'string', description: 'The background image of the card. Defaults to kclsu logo.' },
+    logo: { type: 'string', description: 'The logo image URL. ' },
+    imagefocus: { 
+      description: 'Set the focus for the background image.',
+      control: {
+        type:'select',
+      },
+      options: ['center', 'top', 'bottom', 'right', 'left']
+    },
     logocolour: {
       description: 'OPTIONAL - if you are using a transparent text icon and need to set a background colour',
       control: {
@@ -47,34 +53,30 @@ import dedent from 'ts-dedent';
 <profile-logo-card cardtitle="Kyle"> </profile-logo-card>
 ```
 
-### Try It
+### Build your own
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="profile-logo-card" args={{
-    cardtitle: 'Kyle',
-    link: '/kyle',
-    image: '',
-    logo: 'Engineer',
-    logocolour: 'https://github.com',
-    imagefocus: '',
+  <Story name="Basic" component="profile-logo-card" args={{
+    cardtitle: 'The Vault',
+    link: '/',
+    image: 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,w_400/v1575907128/website_uploads/Spaces/Shack/The_Shack_2_jz3bqi.jpg',
+    logo: 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,w_400/website_uploads/KCLSU%20Brand/theshedsq_tfkruj.png',
+    logocolour: '#EE7D79',
+    imagefocus: 'center',
   }}>
     {args => html`
       <profile-logo-card
         cardtitle="${ifDefined(args.cardtitle || undefined)}"
         logo="${ifDefined(args.logo || undefined)}"
+        image="${ifDefined(args.image || undefined)}"
         link="${ifDefined(args.link || undefined)}"
         logocolour="${ifDefined(args.logocolour || undefined)}"
-        cta="${ifDefined(args.cta || undefined)}"
-        secondcta="${ifDefined(args.secondcta || undefined)}"
-        image="${ifDefined(args.image || undefined)}"
-        ?nolazy="${args.nolazy}"
+        imagefocus="${ifDefined(args.imagefocus || undefined)}"
       > </profile-logo-card>
     `}
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
-
-## More Info
+<ArgsTable story="Basic"/>
 
 <Description markdown={readme} />

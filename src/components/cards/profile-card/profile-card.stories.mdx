@@ -11,13 +11,12 @@ import dedent from 'ts-dedent';
   component="profile-card"
   argTypes={{
     name: { type: 'string', description: 'The title for the card - usually a full name' },
-    position: { type: 'string', description: '' },
-    link: { type: 'string', description: '' },
-    secondlink: { type: 'string', description: '' },
-    cta: { type: 'string', description: '' },
-    secondcta: { type: 'string', description: '' },
-    image: { type: 'string', description: '' },
-    nolazy: { type: 'boolean', description: '' },
+    position: { type: 'string', description: 'This is the subtitle. Usually a role or position for the person.' },
+    image: { type: 'string', description: 'The profile image URL. Defaults to the kclsu logo.' },
+    link: { type: 'string', description: 'The click through URL the primary text link (bottom left) will link to.' },
+    cta: { type: 'string', description: 'The text for the primary link (bottom left). Defaults to "Find out more" ' },
+    secondlink: { type: 'string', description: 'You have the option to ' },
+    secondcta: { type: 'string', description: 'The text for the link (if you want one) on the bottom right of the card' }
   }}
 />
 
@@ -26,21 +25,20 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<profile-card name="Kyle"> </profile-card>
+<profile-card name="Reggie"  position="KCLSU legend" image=""> </profile-card>
 ```
 
-### Try It
+### Build your own
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="profile-card" args={{
-    name: 'Kyle',
-    position: 'Engineer',
-    link: '/kyle',
-    secondlink: 'https://github.com',
+  <Story name="Basic" component="profile-card" args={{
+    name: 'Reggie the Lion',
+    position: 'KCLSU legend',
+    link: '/',
+    image: 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,g_face,h_500,w_600/v1572888109/website_uploads/KCLSU%20Brand/IMG_8629_ksieps.jpg',
     cta: '',
+    secondlink: '',
     secondcta: '',
-    image: '',
-    nolazy: false,
   }}>
     {args => html`
       <profile-card
@@ -51,14 +49,13 @@ import dedent from 'ts-dedent';
         cta="${ifDefined(args.cta || undefined)}"
         secondcta="${ifDefined(args.secondcta || undefined)}"
         image="${ifDefined(args.image || undefined)}"
-        ?nolazy="${args.nolazy}"
       > </profile-card>
     `}
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Basic"/>
 
-## More Info
+## More Advanced Options
 
 <Description markdown={readme} />

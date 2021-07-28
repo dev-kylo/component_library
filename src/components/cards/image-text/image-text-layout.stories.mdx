@@ -7,7 +7,7 @@ import readme from './readme.md';
 import dedent from 'ts-dedent';
 
 <Meta
-  title="Cards/Image and Text"
+  title="Layouts/Image next to Text"
   component="image-text"
   argTypes={{
     heading: { type: 'string', description: 'The title at the top of the text' },
@@ -58,18 +58,18 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<image-text heading="Card Heading" image="/image.jpg" card="true">
+<image-text heading="Card Heading" image="/image.jpg">
   
   <p>Text goes here</p>
 
 </image-text>
 ```
 
-### Build your own
+### Try It
 
 <Canvas withSource="open" >
   <Story name="Basic" component="image-text" args={{
-    card: true,
+    card: false,
     smalltext: false,
     'switch': false,
     heading: 'Lorem Ipsum',
@@ -96,11 +96,15 @@ import dedent from 'ts-dedent';
 <ArgsTable story="Basic" include={ [ 'card', 'text', 'heading', 'image', 'imagewidth' ] }/>
 
 ## Advanced 
+Here are some more advanced options if you need more control over how the component renders.
+
+Also look at the full list of controls/attributes in the list at the bottom.
+
 <Canvas withSource="open" >
   <Story name="Advanced" component="image-text" args={{
     content: dedent`
       Tristique nulla aliquet enim tortor at auctor urna nunc. Quam lacus suspendisse.`,
-    card: true,
+    card: false,
     hideimage: false,
     imagezoom: false,
     mobilescreen: false,

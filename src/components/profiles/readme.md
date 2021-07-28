@@ -1,6 +1,9 @@
-# profile-tabs
+## profile-tabs info
 
+This component renders a tab interface, with embedded profile cards. 
 
+Besides the database URL from where the data will bne fetched, the component needs to know the following information:
+- 
 
 <!-- Auto Generated Below -->
 

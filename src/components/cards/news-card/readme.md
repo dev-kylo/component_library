@@ -1,9 +1,7 @@
-# news-card
 
-
-
+### News Card info
 <!-- Auto Generated Below -->
-
+This is an MSL dependent componet. It relies on the appropriate styles and scripts on the kclsu website.
 
 ## Properties
 

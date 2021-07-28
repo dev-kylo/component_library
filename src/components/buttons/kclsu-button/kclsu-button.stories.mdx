@@ -87,10 +87,11 @@ import readme from './readme.md';
 <!-- To add an icon to the button, use the `icon` attribute -->
 
 
-### Editor
+### Build your own
 <Canvas withToolbar={true} withSource="open" >
-  <Story name="Try it" component="kclsu-button" args={{
-    content: 'Button Content',
+  <Story name="Basic" component="kclsu-button" args={{
+    content: 'Click me',
+    link: '/',
     center: false,
     purple: false,
     newtab: false,
@@ -98,7 +99,7 @@ import readme from './readme.md';
   }}>
     {args => html`
       <kclsu-button
-        icon="${ifDefined(args.icon || undefined)}"
+        link="${ifDefined(args.link || undefined)}"
         center="${ifDefined(args.center || undefined)}"
         purple="${ifDefined(args.purple || undefined)}"
         newtab="${ifDefined(args.newtab || undefined)}"
@@ -107,16 +108,19 @@ import readme from './readme.md';
   </Story>
 </Canvas>
 
-<ArgsTable story="Try it" include={ ['content','icon', 'center', 'purple', 'newtab', 'rounded'] }/>
+<ArgsTable story="Basic" include={ ['content','link', 'center', 'purple', 'newtab', 'rounded'] }/>
 
 ## Instructions
-<Canvas>
-  <Story name="Instructions"></Story>
-</Canvas>
-
 To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
 
-## Appearance
+Using the component controls listed above, you can do the following:
+ 
+- Create a primary standard teal button
+- Create a secondary purple button
+- control the size - big or small
+- center the button in the page
+
+### Appearance
 
 There are four options to customize the button's appearance.
 Set the `purple` attribute to use the secondary colour pallete. Set the `rounded` attribute to give the button rounded corners. Set the `small` or `verysmall` attributes to decrease the button's size.
@@ -127,31 +131,10 @@ Set the `purple` attribute to use the secondary colour pallete. Set the `rounded
 <kclsu-button purple rounded verysmall>Mini Button</kclsu-button>
 ```
 
-### Try It
-<Canvas withToolbar={true} withSource="open" >
-  <Story name="Styles" component="kclsu-button" args={{
-    content: 'Button Appearance',
-    purple: false,
-    rounded: false,
-    small: false,
-    verysmall: false,
-  }}>
-    {args => html`
-      <kclsu-button
-        ?purple="${args.purple}"
-        ?rounded="${args.rounded}"
-        ?small="${args.small}"
-        ?verysmall="${args.verysmall}"
-      >${args.content}</kclsu-button>`}
-  </Story>
-</Canvas>
-
-<ArgsTable story="Styles" include={ [ 'content', 'purple', 'rounded', 'small', 'verysmall', ] }/>
-
 ## All Controls
 
 <Canvas withToolbar={true} withSource="open" >
-  <Story name="All Controls" component="kclsu-button">
+  <Story name="Advanced" component="kclsu-button">
     {args => html`<kclsu-button
       ?small="${args.small}"
       ?purple="${args.purple}"
@@ -170,7 +153,7 @@ Set the `purple` attribute to use the secondary colour pallete. Set the `rounded
   </Story>
 </Canvas>
 
-<ArgsTable story="All Controls"/>
+<ArgsTable story="Advanced"/>
 
 <Description markdown={readme} />
 

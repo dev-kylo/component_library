@@ -11,15 +11,14 @@ import dedent from 'ts-dedent';
   component="label-card"
   argTypes={{
     cardtitle: { type:{name: 'string', required: true}, description: 'The main title of the card'},
-    link: { type: 'string', description: 'The link for the card - NOT for the button' },
+    link: { type: 'string', description: 'The click through link for the card - any URL' },
     text: { type: 'string', description: 'The sub text beneath the title' },
     reverse: { type: 'boolean', description: 'If image to be displayed on right hand side' },
-    buttonlink: { type: 'string', description: 'ONLY if a button included, the link for the button' },
+    buttonlink: { type: 'string', description: 'ONLY if you want a button inside the card and not the whole card to be clickable, the link for the button' },
     buttontitle: { type: 'string', description: 'ONLY If a button included, the text for the button', required:'true' },
     cardheight: { control: { type: 'range', min: 60, max: 400, step: 20 }, description: 'Specify a fixed card height' },
-    cardwidth: { type: 'number', description: 'Specify a fixed card width (pixels)' },
+    cardwidth: { type: 'number', description: 'Specify a fixed card width (pixels). Be careful of responsiveness' },
     margin: { type: 'number', description: 'Give the card a custom margin' },
-    highlightText: { type: 'boolean', description: 'The main title of the card' },
     smallestheight: { type: 'boolean', description: 'Make the card the smallest height possible' },
   }}
 />
@@ -29,13 +28,42 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<label-card heading="Lorem ipsum"></label-card>
+<label-card heading="Lorem ipsum" text="Some subtext" link="/"></label-card>
 ```
 
-### Try It
+### Build your own
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="label-card" args={{
+  <Story name="Basic" component="label-card" args={{
+    cardtitle: 'Title for card',
+    link: '',
+    text: 'Subtext goes here'
+  }}>
+    {args => html`
+      <label-card
+          cardtitle="${ifDefined(args.cardtitle || undefined)}"
+          link="${ifDefined(args.link || undefined)}"
+          text="${ifDefined(args.text || undefined)}"
+      > </label-card>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" include={['cardtitle', 'link', 'text']}/>
+
+## Instructions
+Here are a few things to know about label-card components:
+- the card will fill the width of the container
+  * this means that if you put the card in a full screen width container on desktop, it will stretch from side to side.
+  * Rather put it in a container with a defined width, or set a fixed width in the advanced options below.
+- If you don't have an image to use, rather use a text-card component instead
+- Try avoid using embedded buttons, like in the advanced options below. If you want it to link somewhere, link the entire card with the 'link' control
+
+
+
+## Advanced
+<Canvas withSource="open" >
+  <Story name="Advanced" component="label-card" args={{
     cardtitle: 'Title for card',
     link: '',
     text: 'Subtext goes here',
@@ -51,10 +79,10 @@ import dedent from 'ts-dedent';
     {args => html`
       <label-card
           cardtitle="${ifDefined(args.cardtitle || undefined)}"
-          buttontitle="${ifDefined(args.buttontitle || undefined)}"
-          buttonlink="${ifDefined(args.buttonlink || undefined)}"
           link="${ifDefined(args.link || undefined)}"
           text="${ifDefined(args.text || undefined)}"
+          buttontitle="${ifDefined(args.buttontitle || undefined)}"
+          buttonlink="${ifDefined(args.buttonlink || undefined)}"
           cardheight="${ifDefined(args.cardheight ? (args.cardheight + 'px') : undefined)}"
           cardwidth="${ifDefined(args.cardwidth ? (args.cardwidth + 'px') : undefined)}"
           margin="${ifDefined(args.margin ? (args.margin + 'px') : undefined)}"
@@ -66,8 +94,8 @@ import dedent from 'ts-dedent';
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Advanced" />
 
-## More Info
+
 
 <Description markdown={readme} />

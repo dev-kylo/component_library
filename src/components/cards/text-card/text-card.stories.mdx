@@ -10,8 +10,8 @@ import dedent from 'ts-dedent';
   title="Cards/Text"
   component="text-card"
   argTypes={{
-    cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
-    link: { type: 'string', description: '' },
+    cardtitle: { type: 'string', description: 'The title for the card.' },
+    link: { type: 'string', description: 'The click through link for the card. Optional' },
     subtext: { type: 'string', description: 'Subtext for the card' },
   }}
 />
@@ -21,16 +21,16 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<text-card cardtitle="Kyle"> </text-card>
+<text-card cardtitle="Card title" subtext="Any sub text" link="/click-through-link"></text-card>
 ```
 
-### Try It
+### Build your own
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="text-card" args={{
-    cardtitle: 'Kyle',
-    link: '/kyle',
-    subtext: '',
+  <Story name="Basic" component="text-card" args={{
+    cardtitle: 'Card title',
+    link: '/click-through-link',
+    subtext: 'Any sub text to go in the card',
   }}>
     {args => html`
       <text-card
@@ -42,8 +42,7 @@ import dedent from 'ts-dedent';
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Basic"/>
 
-## More Info
 
 <Description markdown={readme} />

@@ -6,7 +6,7 @@ import { Component, Prop, h, Element, Event, EventEmitter, State } from '@stenci
   shadow: true
 })
 
-export class ProfileCard{
+export class ProfileCard {
   /** The title for the card - usually a full name */
   @Prop() name: string;
   /** A sub heading - usually a position or field title */
