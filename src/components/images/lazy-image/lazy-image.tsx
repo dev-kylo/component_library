@@ -34,8 +34,12 @@ export class LazyImage {
     /** Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format  */
     @Prop() customtransform: string;
 
+    @Prop() mobileProportion: string = "100";
+    @Prop() desktopProportion: string = "100";
+
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'unknown';
-    breakPoints:number[] = [1920, 1600, 1366, 1024, 768, 640];
+    desktopBreakPoints:number[] = [1920, 1600, 1366];
+    mobileBreakPoints:number[] = [1024, 768, 640];
 
     @Element() el: HTMLElement;
 
@@ -67,13 +71,19 @@ export class LazyImage {
     }
 
     createTransformation(width:number): string {
-        //progressive_jpeg
-        return `f_jpg,c_lfill,w_${width},fl_progressive:steep`;
+        return `f_jpg,c_lfill,w_${width},fl_progressive:steep`; //progressive_jpeg
         //return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
+    createSrc(width: number): string {
+        return `${this.createUrl(this.image, this.createTransformation(width))} ${width}w,`
+    }
+
     createSrcSet(){
-        return this.breakPoints.map(width => `${this.createUrl(this.image, this.createTransformation(width))} ${width}w,`).join(' ');
+        return this.desktopBreakPoints
+            .map(width => this.createSrc(width * +this.desktopProportion / 100))
+            .concat(this.mobileBreakPoints.map(width => this.createSrc(width * +this.mobileProportion / 100)))
+            .join(' ')
     }
 
     

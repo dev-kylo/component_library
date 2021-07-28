@@ -494,6 +494,7 @@ export namespace Components {
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform": string;
+        "desktopProportion": string;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
@@ -507,6 +508,7 @@ export namespace Components {
           * If set to false, it will keep any existing cloudinary transforms
          */
         "keeptransforms": boolean;
+        "mobileProportion": string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -2038,6 +2040,7 @@ declare namespace LocalJSX {
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform"?: string;
+        "desktopProportion"?: string;
         /**
           * If setting width for mobile and desktop, use width property for mobile and this property for desktop
          */
@@ -2051,6 +2054,7 @@ declare namespace LocalJSX {
           * If set to false, it will keep any existing cloudinary transforms
          */
         "keeptransforms"?: boolean;
+        "mobileProportion"?: string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
