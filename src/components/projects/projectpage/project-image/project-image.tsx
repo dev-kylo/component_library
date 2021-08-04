@@ -16,7 +16,11 @@ export class ProjectImage {
 
     render() {
         return (
-            <lazy-image  focusarea={this.focusarea} alt={this.alt || ''} image={this.link}></lazy-image>
+            <lazy-image  
+                focusarea={this.focusarea} 
+                alt={this.alt || ''} 
+                image={this.link}
+            ></lazy-image>
         );
     }
 }

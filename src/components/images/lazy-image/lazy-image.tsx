@@ -10,32 +10,28 @@ import { Component, h, Prop, State, Element } from '@stencil/core';
 
 export class LazyImage {
 
+    /** The image URL. Must be a kclsu, cloudinary or kclsu firebase url*/
     @Prop() image: string;
+    /** The alt tag of the image */
+    @Prop() alt: string = '';
     /** Use standard CSS object-position values to set a focus area on the image. EG 'center left' */
     @Prop() focusarea: string = 'center';
     /** Image will scale into view */
     @Prop() animatein: boolean = false;
-    /** A width for the image in pixels */
-    @Prop() width:string;
-    /** If setting width for mobile and desktop, use width property for mobile and this property for desktop */
-    @Prop() desktopwidth: string;
-    /** The alt tag of the image */
-    @Prop() alt: string = '';
+    /** A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint */
+    @Prop() ratio:string;
     /** If you want to render an img element in a responsive container without object positioning */
     @Prop() plainimg: boolean = false;
-    /** If the image is being used only as thumbnail, such as in event cards, label cards and profile cards */
-    @Prop() thumbnail: boolean = false;
-    /** If the image is being used only as thumbnail, such as project-cards and image-text components */
-    @Prop() contentimage: boolean = false;
     /** Remove lazy-loading functionality. Retains Object Fit positioing */
     @Prop() nolazy: boolean = false;
-    /** If set to false, it will keep any existing cloudinary transforms */
-    @Prop() keeptransforms: boolean = false;
     /** Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format  */
     @Prop() customtransform: string;
-
-    @Prop() mobileProportion: string = "100";
-    @Prop() desktopProportion: string = "100";
+    /** The % percentage of mobile screens the image will take up. Number only without percent symbol */
+    @Prop() mobile: string = "100";
+    /** The % percentage of desktop screens the image will take up. Number only without percent symbol */
+    @Prop() desktop: string = "100";
+    /** Set a minimum pixel width for the image rendered */
+    @Prop() minwidth: string;
 
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'unknown';
     desktopBreakPoints:number[] = [1920, 1600, 1366];
@@ -71,23 +67,27 @@ export class LazyImage {
     }
 
     createTransformation(width:number): string {
-        return `f_jpg,c_lfill,w_${width},fl_progressive:steep`; //progressive_jpeg
+        let dimensions = !this.ratio || !this.suppliedwidth ? `w_${width}` : `w_${width},h_${Math.round(width/+this.ratio)}`
+        return `f_jpg,c_fill,${dimensions},fl_progressive:steep`; //progressive_jpeg
         //return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
     createSrc(width: number): string {
+         if (this.minwidth && width < +this.minwidth) return '';
         return `${this.createUrl(this.image, this.createTransformation(width))} ${width}w,`
     }
 
     createSrcSet(){
         return this.desktopBreakPoints
-            .map(width => this.createSrc(width * +this.desktopProportion / 100))
-            .concat(this.mobileBreakPoints.map(width => this.createSrc(width * +this.mobileProportion / 100)))
+            .map(width => this.createSrc(width * +this.desktop / 100))
+            .concat(this.mobileBreakPoints.map(width => this.createSrc(width * +this.mobile / 100)))
             .join(' ')
     }
 
     
     render() {
+
+        console.log(this.ratio)
 
         let objectPosition = {
             'object-position': this.focusarea,

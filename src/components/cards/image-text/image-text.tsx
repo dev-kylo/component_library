@@ -91,7 +91,13 @@ export class ImageText {
                         <slot></slot>
                     </div>
                     <div class="image" style={imageWidth}>
-                        <lazy-image contentimage focusarea={this.focusarea} image={this.image} animatein={this.imagezoom}></lazy-image>
+                        <lazy-image 
+                            focusarea={this.focusarea} 
+                            image={this.image} 
+                            animatein={this.imagezoom}
+                            mobile="90"
+                            desktop="35"
+                        ></lazy-image>
                     </div>
                     
                 </div>

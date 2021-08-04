@@ -29,7 +29,7 @@ export class GalleryThumbnailStacked {
         return (
             <div class="card" onClick={e => this.clickHandler(e)} style={activeStyle}>
                 <div class="image">
-                    <lazy-image thumbnail image={this.image} alt=""></lazy-image>
+                    <lazy-image mobile="10" desktop="10" image={this.image} alt=""></lazy-image>
                 </div>
                 <div class="content">
                     <span class="title" style={activeStyle}>{this.videotitle}</span>
