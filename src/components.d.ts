@@ -966,6 +966,10 @@ export namespace Components {
           * The Youtube URL for any given playlist
          */
         "playlist": any;
+        /**
+          * This will randomise the order of the thumbnails
+         */
+        "shuffle": boolean;
     }
 }
 declare global {
@@ -2522,6 +2526,10 @@ declare namespace LocalJSX {
           * The Youtube URL for any given playlist
          */
         "playlist": any;
+        /**
+          * This will randomise the order of the thumbnails
+         */
+        "shuffle"?: boolean;
     }
     interface IntrinsicElements {
         "add-varsity-scores": AddVarsityScores;

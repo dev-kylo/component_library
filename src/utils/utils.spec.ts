@@ -1,4 +1,4 @@
-import { format, createArrayFromString } from './utils';
+import { format, createArrayFromString, shuffleArray } from './utils';
 
 describe('format', () => {
   it('returns empty string for no names defined', () => {
@@ -17,6 +17,17 @@ describe('createArrayFromString()', () => {
     expect(createArrayFromString(str2, ',')).toHaveLength(1)
     expect(createArrayFromString(str3, ',')[0]).toEqual('Guys Campus')
     expect(createArrayFromString(str4, '|')).toHaveLength(4);
+  })
+})
+
+describe('shuffleArray()', () => {
+  it ('returns the array in a random order', async () => {
+    const ar = [1 ,2 , 3, 4, 5, 6];
+    const copy = [...ar];
+    shuffleArray(ar);
+    expect(ar).toHaveLength(6);
+    expect(ar).not.toBe(copy);
+
   })
 })
 

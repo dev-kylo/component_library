@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Listen } from '@stencil/core';
-
+import { shuffleArray } from '../../../utils/utils';
 
 @Component({
     tag: 'video-gallery-stacked',
@@ -10,6 +10,8 @@ export class VideoGalleryStacked {
 
     /** The Youtube URL for any given playlist */
     @Prop() playlist!: any;
+    /** This will randomise the order of the thumbnails */
+    @Prop() shuffle: boolean = false;
 
     @State() videos: any;
     @State() active: string;
@@ -25,7 +27,8 @@ export class VideoGalleryStacked {
                 .then(res => res.json())
                 .then(data => {
                     this.videos = data.items;
-                    this.active = data.items[0].snippet.resourceId.videoId;
+                    if (this.shuffle)shuffleArray(this.videos);
+                    this.active = this.videos[0].snippet.resourceId.videoId;
                 });
         }
     }
