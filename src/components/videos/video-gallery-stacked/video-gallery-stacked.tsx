@@ -31,20 +31,18 @@ export class VideoGalleryStacked {
     }
 
     @Listen('emitClick')
-        changeActive(event: CustomEvent){
-            this.loading = true;
-            this.active = event.detail;
-            this.timer = setTimeout(() => {
-                this.loading = false;
-                clearTimeout(this.timer)
-            }, 800)
-        }
+    changeActive(event: CustomEvent){
+        this.loading = true;
+        this.active = event.detail;
+        
+    }   
 
     createThumbnails(){
         if (this.videos){
            return this.videos.map(video => {
                let active=false
                 if (video.snippet.resourceId.videoId === this.active) active=true
+                console.log(video.snippet.thumbnails.medium.url)
                 return (
                     <gallery-thumbnail-stacked
                         videotitle={video.snippet.title}
@@ -57,16 +55,14 @@ export class VideoGalleryStacked {
     }
     
     render() {
-        let opacity = this.loading? {'opacity': '0'} : {'opacity': '1'};
-
+        
         return (
             <div class="gallery-container">
                 <div class="gallery-flex">
                     <div class="video-container">
-                        <div class="video-inner-container" style={opacity}>
+                        <div class="video-inner-container">
                             {this.videos? <video-embed embedid={this.active}></video-embed> : ''}
                         </div>
-                        <loading-spinner show={this.loading}></loading-spinner>
                     </div>
                     <div class="thumbnails">
                         {this.createThumbnails()}

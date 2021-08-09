@@ -24,7 +24,7 @@ export class ImageSliderAuto {
 
     componentDidLoad(){
         this.oldWay();
-        this.timer = setInterval(() => this.oldWay(), this.interval) as unknown as number;
+        // this.timer = setInterval(() => this.oldWay(), this.interval);
     }
 
     oldWay(){

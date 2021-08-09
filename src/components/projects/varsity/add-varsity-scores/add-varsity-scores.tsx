@@ -11,8 +11,7 @@ export class AddVarsityScores {
     @State() eventsData;
     @State() modalOpen;
     @State() token;
-    // @ts-expect-error
-    @State() logInModalOpen = !this.token;
+    @State() logInModalOpen = null;
     @State() activeID;
     @State() error;
 
