@@ -59,7 +59,12 @@ export class LabelCard {
                 <a href={this.link} target="_blank" class="link">
                     <div class="card" style={cardStyle}>
                         <div class="image">
-                            <lazy-image thumbnail animatein image={this.image}></lazy-image>
+                            <lazy-image
+                                animatein 
+                                image={this.image}
+                                mobile="25"
+                                desktop="10"
+                            ></lazy-image>
                         </div>
                         <div class="content">
                             <span class="title" style={headingStyle}>{this.cardtitle}</span>
@@ -73,7 +78,12 @@ export class LabelCard {
         else return (
             <div class="card" style={cardStyle}>
                 <div class="image">
-                    <lazy-image animatein image={this.image}></lazy-image>
+                    <lazy-image 
+                        animatein 
+                        image={this.image}
+                        mobile="25"
+                        desktop="10"
+                    ></lazy-image>
                 </div>
                 <div class="content">
                     <span class="title" style={headingStyle}>{this.cardtitle}</span>

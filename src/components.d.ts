@@ -487,26 +487,29 @@ export namespace Components {
          */
         "animatein": boolean;
         /**
-          * If the image is being used only as thumbnail, such as project-cards and image-text components
-         */
-        "contentimage": boolean;
-        /**
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform": string;
         /**
-          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+          * The % percentage of desktop screens the image will take up. Number only without percent symbol
          */
-        "desktopwidth": string;
+        "desktop": string;
         /**
           * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea": string;
+        /**
+          * The image URL. Must be a kclsu, cloudinary or kclsu firebase url
+         */
         "image": string;
         /**
-          * If set to false, it will keep any existing cloudinary transforms
+          * Set a minimum pixel width for the image rendered
          */
-        "keeptransforms": boolean;
+        "minwidth": string;
+        /**
+          * The % percentage of mobile screens the image will take up. Number only without percent symbol
+         */
+        "mobile": string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -516,13 +519,9 @@ export namespace Components {
          */
         "plainimg": boolean;
         /**
-          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+          * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
-        "thumbnail": boolean;
-        /**
-          * A width for the image in pixels
-         */
-        "width": string;
+        "ratio": string;
     }
     interface LoadingSpinner {
         /**
@@ -2041,26 +2040,29 @@ declare namespace LocalJSX {
          */
         "animatein"?: boolean;
         /**
-          * If the image is being used only as thumbnail, such as project-cards and image-text components
-         */
-        "contentimage"?: boolean;
-        /**
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform"?: string;
         /**
-          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+          * The % percentage of desktop screens the image will take up. Number only without percent symbol
          */
-        "desktopwidth"?: string;
+        "desktop"?: string;
         /**
           * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea"?: string;
+        /**
+          * The image URL. Must be a kclsu, cloudinary or kclsu firebase url
+         */
         "image"?: string;
         /**
-          * If set to false, it will keep any existing cloudinary transforms
+          * Set a minimum pixel width for the image rendered
          */
-        "keeptransforms"?: boolean;
+        "minwidth"?: string;
+        /**
+          * The % percentage of mobile screens the image will take up. Number only without percent symbol
+         */
+        "mobile"?: string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -2070,13 +2072,9 @@ declare namespace LocalJSX {
          */
         "plainimg"?: boolean;
         /**
-          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+          * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
-        "thumbnail"?: boolean;
-        /**
-          * A width for the image in pixels
-         */
-        "width"?: string;
+        "ratio"?: string;
     }
     interface LoadingSpinner {
         /**

@@ -19,7 +19,7 @@ export class ImageSliderAuto {
     @Element() host: HTMLElement;
 
 
-    timer : number;
+    timer : any;
     slideI = 0;
 
     componentDidLoad(){

@@ -88,7 +88,13 @@ export class ProfileCard {
     return (
       <div class="profile-card">
         <div class="image">
-          <lazy-image thumbnail nolazy={this.nolazy} animatein image={this.image}></lazy-image>
+          <lazy-image 
+            nolazy={this.nolazy} 
+            animatein 
+            image={this.image}
+            mobile="80"
+            desktop="12"
+          ></lazy-image>
         </div>
         <div class="label">
           {nameLink}

@@ -55,7 +55,7 @@ export class PageBanner{
 
         let text= this.text && this.landing? <p class="subtext" style={textcolour}>{this.text}</p>: null;
         let heading = this.heading && this.landing? <h2 class="subtitle" style={textcolour}>{this.heading}</h2> : null;
-        let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" thumbnail></lazy-image></div> : null;
+        let shape = !this.landing ? <div id="floating_shape"><lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1615198635/website_uploads/Graphics/geometricshapes_kftod0.png" mobile="33" desktop="10"></lazy-image></div> : null;
         const headingClass = this.landing? 'landing-heading' : 'heading-container';
         const rowClass = this.landing? 'landing-rows' 
                         : this.image? 'media-rows'
@@ -79,9 +79,12 @@ export class PageBanner{
             image = (
                 <div id="pagebanner">
                     <lazy-image 
-                        customtransform={`c_fill,f_auto,fl_any_format,w_${this.imagewidth},h_${this.imageheight}`}
-                        image={this.image}>
-                    </lazy-image>
+                        ratio={`${+this.imagewidth / +this.imageheight}`}
+                        image={this.image}
+                        mobile="90"
+                        desktop="80"
+                        suppliedwidth="780"
+                    ></lazy-image>
                     {shape}
                 </div>
             )
