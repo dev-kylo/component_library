@@ -1,0 +1,82 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Cards/Profile Logo"
+  component="profile-logo-card"
+  argTypes={{
+    cardtitle: { type: 'string', description: 'The title for the card - usually a full cardtitle' },
+    link: { type: 'string', description: 'The URL for the card to link to' },
+    image: { type: 'string', description: 'The background image of the card. Defaults to kclsu logo.' },
+    logo: { type: 'string', description: 'The logo image URL. ' },
+    imagefocus: { 
+      description: 'Set the focus for the background image.',
+      control: {
+        type:'select',
+      },
+      options: ['center', 'top', 'bottom', 'right', 'left']
+    },
+    logocolour: {
+      description: 'OPTIONAL - if you are using a transparent text icon and need to set a background colour',
+      control: {
+        type: 'color',
+        presetColors: [
+          { title: 'black', color: '#000000' },
+          { title: '--purple', color: '#502669' },
+          { title: '--light-teal', color:'#5EBDB0' },
+          { title: '--mid-teal', color:'#1BA39C' },
+          { title: '--dark-teal', color: '#15847F' },
+          { title: '--orange', color: '#e6582A' },
+          { title: '--grey', color: '#444' },
+          { title: '--warm-grey', color: '#C1C1C1' },
+          { title: '--light-grey', color: '#E8E8E2' },
+          { title: '--secondary-navy', color: '#0C2F46' },
+          { title: '--secondary-pink', color: '#EE7D79' },
+          { title: '--secondary-periwinkle', color: '#5F5BA3' },
+          { title: '--secondary-mustard', color: '#F49E25' },
+        ],
+      }
+    },
+  }}
+/>
+
+# `<profile-logo-card>`
+
+### Example
+
+```html
+<profile-logo-card cardtitle="Kyle"> </profile-logo-card>
+```
+
+### Build your own
+
+<Canvas withSource="open" >
+  <Story name="Basic" component="profile-logo-card" args={{
+    cardtitle: 'The Vault',
+    link: '/',
+    image: 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,w_400/v1575907128/website_uploads/Spaces/Shack/The_Shack_2_jz3bqi.jpg',
+    logo: 'https://res.cloudinary.com/kclsu-media/image/upload/c_fill,f_auto,fl_any_format,w_400/website_uploads/KCLSU%20Brand/theshedsq_tfkruj.png',
+    logocolour: '#EE7D79',
+    imagefocus: 'center',
+  }}>
+    {args => html`
+      <profile-logo-card
+        cardtitle="${ifDefined(args.cardtitle || undefined)}"
+        logo="${ifDefined(args.logo || undefined)}"
+        image="${ifDefined(args.image || undefined)}"
+        link="${ifDefined(args.link || undefined)}"
+        logocolour="${ifDefined(args.logocolour || undefined)}"
+        imagefocus="${ifDefined(args.imagefocus || undefined)}"
+      > </profile-logo-card>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic"/>
+
+<Description markdown={readme} />

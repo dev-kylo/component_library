@@ -1,15 +1,15 @@
 # mobile-hide
 
-
+Use this component to hide content on mobile screens.
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property     | Attribute    | Description                                                                                                        | Type      | Default |
-| ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------ | --------- | ------- |
-| `hidetablet` | `hidetablet` | In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller | `boolean` | `false` |
+| Property     | Attribute    | Description                                                                                              | Type      | Default |
+| ------------ | ------------ | -------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `hidetablet` | `hidetablet` | In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller | `boolean` | `false` |
 
 
 ----------------------------------------------

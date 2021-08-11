@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Variants } from "./components/tabs/kclsu-tabs/tabtypes";
 export namespace Components {
     interface AddVarsityScores {
         "year": string;
@@ -275,14 +276,16 @@ export namespace Components {
     }
     interface InnerTabHeader {
         "active": boolean;
+        "index": number;
         "name": string;
     }
     interface InnerTabsContainer {
         "innertab": boolean;
     }
     interface KclsuButton {
+        "addFocus": () => Promise<void>;
         /**
-          * Centers the button in the page
+          * Centres the button in the page
          */
         "center": boolean;
         /**
@@ -302,7 +305,7 @@ export namespace Components {
          */
         "fixedwidth": string;
         /**
-          * Adds icon to the page
+          * Adds icon to the button
          */
         "icon": string;
         /**
@@ -310,7 +313,7 @@ export namespace Components {
          */
         "link": string;
         /**
-          * specifiy a margin, otherwise uses default
+          * specify a margin, otherwise uses default
          */
         "margin": string;
         /**
@@ -412,6 +415,10 @@ export namespace Components {
          */
         "selector": string;
     }
+    interface KclsuTabs {
+        "focusFirstTab": () => Promise<void>;
+        "variant": Variants;
+    }
     interface KclsuTabsContainer {
     }
     interface LabelCard {
@@ -480,26 +487,29 @@ export namespace Components {
          */
         "animatein": boolean;
         /**
-          * If the image is being used only as thumbnail, such as project-cards and image-text components
-         */
-        "contentimage": boolean;
-        /**
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform": string;
         /**
-          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+          * The % percentage of desktop screens the image will take up. Number only without percent symbol
          */
-        "desktopwidth": string;
+        "desktop": string;
         /**
           * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea": string;
+        /**
+          * The image URL. Must be a kclsu, cloudinary or kclsu firebase url
+         */
         "image": string;
         /**
-          * If set to false, it will keep any existing cloudinary transforms
+          * Set a minimum pixel width for the image rendered
          */
-        "keeptransforms": boolean;
+        "minwidth": string;
+        /**
+          * The % percentage of mobile screens the image will take up. Number only without percent symbol
+         */
+        "mobile": string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -509,13 +519,13 @@ export namespace Components {
          */
         "plainimg": boolean;
         /**
-          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+          * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
-        "thumbnail": boolean;
+        "ratio": string;
         /**
-          * A width for the image in pixels
+          * Set a minimum pixel width for the image rendered
          */
-        "width": string;
+        "suppliedwidth": string;
     }
     interface LoadingSpinner {
         /**
@@ -529,7 +539,7 @@ export namespace Components {
     }
     interface MobileHide {
         /**
-          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+          * In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller
          */
         "hidetablet": boolean;
     }
@@ -539,7 +549,13 @@ export namespace Components {
     interface MyComponent {
     }
     interface NewsCard {
+        /**
+          * The MSL link for the news post
+         */
         "newslink": string;
+        /**
+          * The title for the news post
+         */
         "newstitle": string;
     }
     interface PageBanner {
@@ -609,6 +625,7 @@ export namespace Components {
         "to": string;
     }
     interface ProfileCard {
+        "addFocus": () => Promise<void>;
         /**
           * The text for the primary text link bottom left
          */
@@ -857,6 +874,11 @@ export namespace Components {
         "maxtotal": any;
         "supportname": string;
     }
+    interface TabArea {
+        "active": boolean;
+        "findFocus": () => Promise<void>;
+        "name": string;
+    }
     interface TabContent {
         "active": boolean;
         "name": string;
@@ -865,6 +887,18 @@ export namespace Components {
         "active": boolean;
         "index": string;
         "name": string;
+    }
+    interface TabTitle {
+        /**
+          * Is the tab title active, and corresponding tab area visible
+         */
+        "active": boolean;
+        "addFocus": () => Promise<void>;
+        /**
+          * A unique name, matching the name of the tab area component
+         */
+        "name": string;
+        "variant": Variants;
     }
     interface TabsContainer {
         "innertab": boolean;
@@ -935,6 +969,10 @@ export namespace Components {
           * The Youtube URL for any given playlist
          */
         "playlist": any;
+        /**
+          * This will randomise the order of the thumbnails
+         */
+        "shuffle": boolean;
     }
 }
 declare global {
@@ -1142,6 +1180,12 @@ declare global {
         prototype: HTMLKclsuSearchElement;
         new (): HTMLKclsuSearchElement;
     };
+    interface HTMLKclsuTabsElement extends Components.KclsuTabs, HTMLStencilElement {
+    }
+    var HTMLKclsuTabsElement: {
+        prototype: HTMLKclsuTabsElement;
+        new (): HTMLKclsuTabsElement;
+    };
     interface HTMLKclsuTabsContainerElement extends Components.KclsuTabsContainer, HTMLStencilElement {
     }
     var HTMLKclsuTabsContainerElement: {
@@ -1334,6 +1378,12 @@ declare global {
         prototype: HTMLSupportProgressElement;
         new (): HTMLSupportProgressElement;
     };
+    interface HTMLTabAreaElement extends Components.TabArea, HTMLStencilElement {
+    }
+    var HTMLTabAreaElement: {
+        prototype: HTMLTabAreaElement;
+        new (): HTMLTabAreaElement;
+    };
     interface HTMLTabContentElement extends Components.TabContent, HTMLStencilElement {
     }
     var HTMLTabContentElement: {
@@ -1345,6 +1395,12 @@ declare global {
     var HTMLTabHeaderElement: {
         prototype: HTMLTabHeaderElement;
         new (): HTMLTabHeaderElement;
+    };
+    interface HTMLTabTitleElement extends Components.TabTitle, HTMLStencilElement {
+    }
+    var HTMLTabTitleElement: {
+        prototype: HTMLTabTitleElement;
+        new (): HTMLTabTitleElement;
     };
     interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {
     }
@@ -1453,6 +1509,7 @@ declare global {
         "kclsu-countdown": HTMLKclsuCountdownElement;
         "kclsu-modal": HTMLKclsuModalElement;
         "kclsu-search": HTMLKclsuSearchElement;
+        "kclsu-tabs": HTMLKclsuTabsElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
         "label-card": HTMLLabelCardElement;
         "last-year-scores": HTMLLastYearScoresElement;
@@ -1485,8 +1542,10 @@ declare global {
         "show-support": HTMLShowSupportElement;
         "support-option": HTMLSupportOptionElement;
         "support-progress": HTMLSupportProgressElement;
+        "tab-area": HTMLTabAreaElement;
         "tab-content": HTMLTabContentElement;
         "tab-header": HTMLTabHeaderElement;
+        "tab-title": HTMLTabTitleElement;
         "tabs-container": HTMLTabsContainerElement;
         "text-card": HTMLTextCardElement;
         "user-login": HTMLUserLoginElement;
@@ -1773,15 +1832,17 @@ declare namespace LocalJSX {
     }
     interface InnerTabHeader {
         "active"?: boolean;
+        "index"?: number;
         "name"?: string;
         "onSelectInnerTab"?: (event: CustomEvent<any>) => void;
+        "onSelectInnerTabByIndex"?: (event: CustomEvent<any>) => void;
     }
     interface InnerTabsContainer {
         "innertab"?: boolean;
     }
     interface KclsuButton {
         /**
-          * Centers the button in the page
+          * Centres the button in the page
          */
         "center"?: boolean;
         /**
@@ -1801,7 +1862,7 @@ declare namespace LocalJSX {
          */
         "fixedwidth"?: string;
         /**
-          * Adds icon to the page
+          * Adds icon to the button
          */
         "icon"?: string;
         /**
@@ -1809,7 +1870,7 @@ declare namespace LocalJSX {
          */
         "link"?: string;
         /**
-          * specifiy a margin, otherwise uses default
+          * specify a margin, otherwise uses default
          */
         "margin"?: string;
         /**
@@ -1912,6 +1973,9 @@ declare namespace LocalJSX {
          */
         "selector"?: string;
     }
+    interface KclsuTabs {
+        "variant"?: Variants;
+    }
     interface KclsuTabsContainer {
     }
     interface LabelCard {
@@ -1980,26 +2044,29 @@ declare namespace LocalJSX {
          */
         "animatein"?: boolean;
         /**
-          * If the image is being used only as thumbnail, such as project-cards and image-text components
-         */
-        "contentimage"?: boolean;
-        /**
           * Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format
          */
         "customtransform"?: string;
         /**
-          * If setting width for mobile and desktop, use width property for mobile and this property for desktop
+          * The % percentage of desktop screens the image will take up. Number only without percent symbol
          */
-        "desktopwidth"?: string;
+        "desktop"?: string;
         /**
           * Use standard CSS object-position values to set a focus area on the image. EG 'center left'
          */
         "focusarea"?: string;
+        /**
+          * The image URL. Must be a kclsu, cloudinary or kclsu firebase url
+         */
         "image"?: string;
         /**
-          * If set to false, it will keep any existing cloudinary transforms
+          * Set a minimum pixel width for the image rendered
          */
-        "keeptransforms"?: boolean;
+        "minwidth"?: string;
+        /**
+          * The % percentage of mobile screens the image will take up. Number only without percent symbol
+         */
+        "mobile"?: string;
         /**
           * Remove lazy-loading functionality. Retains Object Fit positioing
          */
@@ -2009,13 +2076,13 @@ declare namespace LocalJSX {
          */
         "plainimg"?: boolean;
         /**
-          * If the image is being used only as thumbnail, such as in event cards, label cards and profile cards
+          * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
-        "thumbnail"?: boolean;
+        "ratio"?: string;
         /**
-          * A width for the image in pixels
+          * Set a minimum pixel width for the image rendered
          */
-        "width"?: string;
+        "suppliedwidth"?: string;
     }
     interface LoadingSpinner {
         /**
@@ -2029,7 +2096,7 @@ declare namespace LocalJSX {
     }
     interface MobileHide {
         /**
-          * In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller
+          * In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller
          */
         "hidetablet"?: boolean;
     }
@@ -2040,7 +2107,13 @@ declare namespace LocalJSX {
     interface MyComponent {
     }
     interface NewsCard {
+        /**
+          * The MSL link for the news post
+         */
         "newslink"?: string;
+        /**
+          * The title for the news post
+         */
         "newstitle"?: string;
     }
     interface PageBanner {
@@ -2361,6 +2434,11 @@ declare namespace LocalJSX {
         "maxtotal"?: any;
         "supportname"?: string;
     }
+    interface TabArea {
+        "active"?: boolean;
+        "name"?: string;
+        "onCloseArea"?: (event: CustomEvent<any>) => void;
+    }
     interface TabContent {
         "active"?: boolean;
         "name"?: string;
@@ -2371,6 +2449,19 @@ declare namespace LocalJSX {
         "name"?: string;
         "onSelectTab"?: (event: CustomEvent<any>) => void;
         "onSelectTabByIndex"?: (event: CustomEvent<any>) => void;
+    }
+    interface TabTitle {
+        /**
+          * Is the tab title active, and corresponding tab area visible
+         */
+        "active"?: boolean;
+        /**
+          * A unique name, matching the name of the tab area component
+         */
+        "name"?: string;
+        "onSelectFocussableElement"?: (event: CustomEvent<any>) => void;
+        "onSelectTabName"?: (event: CustomEvent<any>) => void;
+        "variant"?: Variants;
     }
     interface TabsContainer {
         "innertab"?: boolean;
@@ -2441,6 +2532,10 @@ declare namespace LocalJSX {
           * The Youtube URL for any given playlist
          */
         "playlist": any;
+        /**
+          * This will randomise the order of the thumbnails
+         */
+        "shuffle"?: boolean;
     }
     interface IntrinsicElements {
         "add-varsity-scores": AddVarsityScores;
@@ -2477,6 +2572,7 @@ declare namespace LocalJSX {
         "kclsu-countdown": KclsuCountdown;
         "kclsu-modal": KclsuModal;
         "kclsu-search": KclsuSearch;
+        "kclsu-tabs": KclsuTabs;
         "kclsu-tabs-container": KclsuTabsContainer;
         "label-card": LabelCard;
         "last-year-scores": LastYearScores;
@@ -2509,8 +2605,10 @@ declare namespace LocalJSX {
         "show-support": ShowSupport;
         "support-option": SupportOption;
         "support-progress": SupportProgress;
+        "tab-area": TabArea;
         "tab-content": TabContent;
         "tab-header": TabHeader;
+        "tab-title": TabTitle;
         "tabs-container": TabsContainer;
         "text-card": TextCard;
         "user-login": UserLogin;
@@ -2563,6 +2661,7 @@ declare module "@stencil/core" {
             "kclsu-countdown": LocalJSX.KclsuCountdown & JSXBase.HTMLAttributes<HTMLKclsuCountdownElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;
             "kclsu-search": LocalJSX.KclsuSearch & JSXBase.HTMLAttributes<HTMLKclsuSearchElement>;
+            "kclsu-tabs": LocalJSX.KclsuTabs & JSXBase.HTMLAttributes<HTMLKclsuTabsElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
             "label-card": LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
             "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
@@ -2595,8 +2694,10 @@ declare module "@stencil/core" {
             "show-support": LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
             "support-option": LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
             "support-progress": LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
+            "tab-area": LocalJSX.TabArea & JSXBase.HTMLAttributes<HTMLTabAreaElement>;
             "tab-content": LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
             "tab-header": LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
+            "tab-title": LocalJSX.TabTitle & JSXBase.HTMLAttributes<HTMLTabTitleElement>;
             "tabs-container": LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
             "text-card": LocalJSX.TextCard & JSXBase.HTMLAttributes<HTMLTextCardElement>;
             "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;

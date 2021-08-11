@@ -1,0 +1,57 @@
+import { ArgsTable, Canvas, Description, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+<Meta
+  title="Other UI/Loading Spinner"
+  component="loading-spinner"
+  argTypes={{
+    show: {
+      control: 'boolean',
+      description: 'Display the spinner',
+    },
+    margin: {
+      control: 'text',
+      description: 'Set margin of spinner',
+      table: { defaultValue: { summary: 'auto' } }
+    },
+  }}
+/>
+
+# `<loading-spinner>`
+
+## Content
+
+To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
+
+
+### Example
+
+```html
+<loading-spinner show="true"></loading-spinner>
+```
+
+### Try It
+
+<Canvas withSource="open" withToolbar={true} >
+  <Story name="Spinner" component="loading-spinner" args={{
+    show: true,
+    margin: 'auto',
+  }}>
+    {args => html`
+      <div style="position: relative; height: 150px">
+        <loading-spinner
+        ?show="${ifDefined(args.show)}"
+        margin="${ifDefined(args.margin || undefined)}"
+        ></loading-spinner>
+      </div>`}
+  </Story>
+  
+</Canvas>
+
+## More Info
+
+<Description markdown={readme} />

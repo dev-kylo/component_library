@@ -25,10 +25,10 @@ export class VideoEmbed {
     
     render() {
         let video;
-        if (this.url) video = !this.videoId ? <loading-spinner show></loading-spinner> : <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.videoId}`}></iframe>
+        if (this.url) video = !this.videoId ? '' : <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.videoId}`}></iframe>
         return (
             <div class="dc-video-container">
-                {this.embedid ? <iframe frameborder=" 0" src={`https://www.youtube.com/embed/${this.embedid}`}></iframe> : video}
+                {this.embedid ?  <iframe id="the-iframe" frameborder=" 0" src={`https://www.youtube.com/embed/${this.embedid}`}></iframe> : video}
             </div>
         );
     }

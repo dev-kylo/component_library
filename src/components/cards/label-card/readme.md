@@ -1,6 +1,4 @@
-# label-card
-
-
+## label-card info
 
 <!-- Auto Generated Below -->
 
@@ -44,7 +42,6 @@ graph TD;
   label-card --> kclsu-button
   label-card --> lazy-image
   kclsu-button --> flex-container
-  lazy-image --> scroll-observer
   events-listing --> label-card
   project-card-events --> label-card
   varsity-landing --> label-card

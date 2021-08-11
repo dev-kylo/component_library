@@ -1,6 +1,10 @@
-# image-text
+## image-text info
 
+You can use this component in 2 ways:
+1. As card, which gives the content area elavation and shadow
+2. As a layout, positioning the image and text side by side.
 
+The default is using it as a layout component. To make it a card, simply add the 'card' attribute.
 
 <!-- Auto Generated Below -->
 
@@ -38,7 +42,6 @@
 ```mermaid
 graph TD;
   image-text --> lazy-image
-  lazy-image --> scroll-observer
   project-card --> image-text
   style image-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

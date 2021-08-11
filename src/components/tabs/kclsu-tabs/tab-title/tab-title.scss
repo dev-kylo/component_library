@@ -1,0 +1,67 @@
+@import '../../../../global/globalstyles.css';
+
+.tab-title {
+    @include flex-me(center, center, true);
+    color: #502766;
+    background: #e8e8e2;
+    font-weight: 500;
+    list-style: none;
+    border-bottom: 3px solid transparent;
+    box-sizing: content-box;
+
+
+    @media (max-width: 599px) {
+        min-width: 100px;
+        margin: 0;
+        padding: 5px;
+    }
+
+    a {
+        cursor: pointer;
+        font-family: bree_serifbold, bree-serif, serif;
+        margin: 0 0 0px;
+        font-weight: 700;
+        color: #502766;
+    }
+
+    &-primary {
+        min-height: 40px;
+        padding: 12px;
+        background: #e8e8e2;
+        text-transform: uppercase;
+    }
+
+    &-secondary, &-tertiary {
+        padding: 5px;
+        background: transparent;
+    }
+
+    &-secondary {
+        min-height: 40px;
+        min-width: 100px;
+        margin: 0 1em;
+        padding: 5px;
+    }
+
+
+    &-tertiary {
+
+        a {
+            font-family: "Open Sans", Arial, sans-serif;
+            color: var(--purple);
+            border: none;
+            font-size: 14px;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+            padding: 0px 30px;
+            line-height: normal;
+
+        }
+    }
+    
+    &-active {
+        border-bottom: 3px solid #1BA39C;
+    }
+    
+}
+

@@ -1,0 +1,30 @@
+import { Meta, Source, Description } from '@storybook/addon-docs/blocks';
+import dedent from 'ts-dedent';
+import readme from '../../readme.md';
+
+<Meta title="Getting Started" />
+
+# KCLSU Components
+
+## Github
+<!-- TODO: update links -->
+- Repo: https://github.com/dutscher/stencil-storybook/blob/main/README
+- Issues: https://github.com/kylorobs/component_library
+
+
+## [README.md](https://github.com/kylorobs/readme.md)
+
+<Description markdown={readme} />
+
+<Source
+  language='html'
+  code={dedent`
+    <script type="module">
+      import { defineCustomElements, setAssetPath } from 'https://unpkg.com/kclsu-components@0.1.6/dist/esm/loader.mjs';
+      setAssetPath(document.currentScript.src);
+      defineCustomElements();
+    </script>
+    <link rel="stylesheet" href="/change/this/path.css" />
+    <kclsu-button>Hello!</kclsu-button>
+  `}
+/>

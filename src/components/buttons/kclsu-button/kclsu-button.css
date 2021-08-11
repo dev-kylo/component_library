@@ -24,6 +24,14 @@ button, a {
 }
 
 
+button:focus-visible, a:focus-visible {
+    outline: 4px dashed darkorange;
+}
+
+a:focus {
+    outline: 4px dashed darkorange;
+}
+
 .purple {
     border: 1px solid var(--purple);
     background-color: white;

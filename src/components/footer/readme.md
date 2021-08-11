@@ -27,7 +27,6 @@
 ```mermaid
 graph TD;
   page-footer --> lazy-image
-  lazy-image --> scroll-observer
   style page-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

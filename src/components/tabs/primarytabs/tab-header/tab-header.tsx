@@ -8,9 +8,6 @@ import { Component, h, Prop, Event, EventEmitter, Watch, Listen, Element} from '
 })
 export class TabHeader {
 
-
-    // @State() isSelected: boolean;
-
     @Prop() active: boolean = false;
     @Prop() name: string;
     @Prop() index: string;
@@ -25,7 +22,6 @@ export class TabHeader {
 
     componentDidLoad(){
         if (this.active) {
-            // this.isSelected = true;
             let link = this.element.querySelector('a');
             if(link) link.focus();
         };
@@ -35,7 +31,8 @@ export class TabHeader {
         const classes = {
             'tab-header': true,
             'tab-header-active': this.active
-        }
+        };
+
         let name = this.name.replace(/\s+/g, '');
         const href = `#`;
         const id = `tab_${name}`;

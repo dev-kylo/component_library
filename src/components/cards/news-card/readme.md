@@ -1,16 +1,14 @@
-# news-card
 
-
-
+### News Card info
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `newslink`  | `newslink`  |             | `string` | `undefined` |
-| `newstitle` | `newstitle` |             | `string` | `undefined` |
+| Property    | Attribute   | Description                    | Type     | Default     |
+| ----------- | ----------- | ------------------------------ | -------- | ----------- |
+| `newslink`  | `newslink`  | The MSL link for the news post | `string` | `undefined` |
+| `newstitle` | `newstitle` | The title for the news post    | `string` | `undefined` |
 
 
 ## Dependencies

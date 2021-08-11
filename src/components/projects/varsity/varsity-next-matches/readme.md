@@ -29,7 +29,6 @@ graph TD;
   label-card --> kclsu-button
   label-card --> lazy-image
   kclsu-button --> flex-container
-  lazy-image --> scroll-observer
   varsity-upcoming --> varsity-next-matches
   style varsity-next-matches fill:#f9f,stroke:#333,stroke-width:4px
 ```

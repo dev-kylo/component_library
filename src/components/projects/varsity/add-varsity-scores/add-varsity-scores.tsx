@@ -11,7 +11,7 @@ export class AddVarsityScores {
     @State() eventsData;
     @State() modalOpen;
     @State() token;
-    @State() logInModalOpen = !this.token;
+    @State() logInModalOpen = null;
     @State() activeID;
     @State() error;
 
@@ -24,7 +24,7 @@ export class AddVarsityScores {
             .then(res => res.json())
             .then(data => {
                 this.eventsData = data;
-            })              
+            })
     }
 
     @Listen('exitModal') closeModal(e){
@@ -47,7 +47,7 @@ export class AddVarsityScores {
                     scoreText = `Kings: ${node.score[0]} - UCL: ${node.score[1]}`;
                 }
             }
-            
+
             return <li data-id={node.Id} style={style}onClick={(e => this.clickListener(e))}>{node.Title}<br></br>{scoreText}</li>
         })
     }
@@ -79,7 +79,7 @@ export class AddVarsityScores {
         }
 
     }
-    
+
     submitScore(e){
         e.preventDefault();
         let element = e.target;
@@ -89,7 +89,7 @@ export class AddVarsityScores {
         let scores = !uclScore || !kingsScore ? [-1, -1] : [kingsScore, uclScore];
 
 
-        //CAN I USE FIND HERE? 
+        //CAN I USE FIND HERE?
         let duplicate = [...this.eventsData];
         for(let x = 0; x < duplicate.length; x++){
             if (duplicate[x].Id == this.activeID) {
@@ -124,17 +124,17 @@ export class AddVarsityScores {
                     this.eventsData = data;
                 }
             })
-            .catch(er => this.error = er); 
+            .catch(er => this.error = er);
     }
 
     clickListener(e){
         this.activeID = e.target.dataset.id;
         this.modalOpen = true;
     }
-    
-    
+
+
     render() {
-      
+
         let scoreCard = !this.modalOpen? '' : this.createScoreCard(this.activeID);
         return (
             [<h2 style={{"text-align": "center"}}> Add Scores to Database</h2>,
@@ -151,5 +151,3 @@ export class AddVarsityScores {
             ]);
     }
 }
-
-

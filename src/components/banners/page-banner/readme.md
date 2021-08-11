@@ -34,7 +34,6 @@
 graph TD;
   page-banner --> lazy-image
   page-banner --> flex-container
-  lazy-image --> scroll-observer
   style page-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,6 +1,6 @@
-# profile-logo-card
+## profile-logo-card info
 
-
+The cards are usually used for student groups, venues or external organisations.
 
 <!-- Auto Generated Below -->
 
@@ -27,7 +27,6 @@
 ```mermaid
 graph TD;
   profile-logo-card --> lazy-image
-  lazy-image --> scroll-observer
   style profile-logo-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

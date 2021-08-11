@@ -9,14 +9,14 @@
 
 | Property     | Attribute    | Description                                                                                              | Type         | Default     |
 | ------------ | ------------ | -------------------------------------------------------------------------------------------------------- | ------------ | ----------- |
-| `center`     | `center`     | Centers the button in the page                                                                           | `boolean`    | `undefined` |
+| `center`     | `center`     | Centres the button in the page                                                                           | `boolean`    | `undefined` |
 | `clickfn`    | --           | Provide a custom click function handler. Use emitid rather if a parent component is listening for event. | `() => void` | `undefined` |
 | `download`   | `download`   | Makes the link download                                                                                  | `boolean`    | `undefined` |
 | `emitid`     | `emitid`     | Event Listener name                                                                                      | `string`     | `undefined` |
 | `fixedwidth` | `fixedwidth` | Give the button a fixed width                                                                            | `string`     | `undefined` |
-| `icon`       | `icon`       | Adds icon to the page                                                                                    | `string`     | `undefined` |
+| `icon`       | `icon`       | Adds icon to the button                                                                                  | `string`     | `undefined` |
 | `link`       | `link`       | The URL to link to                                                                                       | `string`     | `undefined` |
-| `margin`     | `margin`     | specifiy a margin, otherwise uses default                                                                | `string`     | `'15px'`    |
+| `margin`     | `margin`     | specify a margin, otherwise uses default                                                                 | `string`     | `'15px'`    |
 | `newtab`     | `newtab`     | Opens the link in a new tab                                                                              | `boolean`    | `undefined` |
 | `purple`     | `purple`     | Make the button a secondary purple button                                                                | `boolean`    | `undefined` |
 | `rounded`    | `rounded`    | Give the button rounded corners                                                                          | `boolean`    | `undefined` |
@@ -30,6 +30,19 @@
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
 | `emitClick` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `addFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

@@ -2,7 +2,7 @@
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 25px; height: 0; overflow: hidden;
-    /* margin-bottom: 1em; */
+    background-color: var(--secondary-mustard);
     }
     
     .dc-video-container iframe,

@@ -8,7 +8,7 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class MobileHide {
 
-    /** In addition to hiding all children in screens mobile + smaller, this will hide content in screens tablet + smaller */
+    /** In addition to hiding all children in screens mobile, this will hide content in screens tablet + smaller */
     @Prop() hidetablet:boolean = false;
     
     render() {

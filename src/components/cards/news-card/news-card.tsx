@@ -7,7 +7,9 @@ import { Component, Prop, h } from '@stencil/core';
 
 export class NewsCard {
 
+  /** The MSL link for the news post */
   @Prop() newslink: string;
+  /** The title for the news post */
   @Prop() newstitle: string;
 
   render() {

@@ -26,7 +26,6 @@ graph TD;
   video-gallery --> gallery-thumbnail
   video-gallery --> video-embed
   video-gallery --> loading-spinner
-  video-embed --> loading-spinner
   style video-gallery fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

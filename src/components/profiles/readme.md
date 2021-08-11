@@ -1,6 +1,9 @@
-# profile-tabs
+## profile-tabs info
 
+This component renders a tab interface, with embedded profile cards. 
 
+Besides the database URL from where the data will bne fetched, the component needs to know the following information:
+- 
 
 <!-- Auto Generated Below -->
 
@@ -38,7 +41,6 @@ graph TD;
   profile-tabs --> tabs-container
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   full-bio --> kclsu-button
   full-bio --> flex-container
   kclsu-button --> flex-container

@@ -37,7 +37,6 @@
 ```mermaid
 graph TD;
   gallery-thumbnail-stacked --> lazy-image
-  lazy-image --> scroll-observer
   video-gallery-stacked --> gallery-thumbnail-stacked
   style gallery-thumbnail-stacked fill:#f9f,stroke:#333,stroke-width:4px
 ```

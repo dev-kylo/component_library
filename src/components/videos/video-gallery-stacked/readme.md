@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property                | Attribute  | Description                            | Type  | Default     |
-| ----------------------- | ---------- | -------------------------------------- | ----- | ----------- |
-| `playlist` _(required)_ | `playlist` | The Youtube URL for any given playlist | `any` | `undefined` |
+| Property                | Attribute  | Description                                     | Type      | Default     |
+| ----------------------- | ---------- | ----------------------------------------------- | --------- | ----------- |
+| `playlist` _(required)_ | `playlist` | The Youtube URL for any given playlist          | `any`     | `undefined` |
+| `shuffle`               | `shuffle`  | This will randomise the order of the thumbnails | `boolean` | `false`     |
 
 
 ## Dependencies
@@ -18,17 +19,13 @@
 
 - [gallery-thumbnail-stacked](gallery-thumbnail-stacked)
 - [video-embed](../video-embed)
-- [loading-spinner](../../spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   video-gallery-stacked --> gallery-thumbnail-stacked
   video-gallery-stacked --> video-embed
-  video-gallery-stacked --> loading-spinner
   gallery-thumbnail-stacked --> lazy-image
-  lazy-image --> scroll-observer
-  video-embed --> loading-spinner
   style video-gallery-stacked fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

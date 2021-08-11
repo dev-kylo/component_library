@@ -12,7 +12,7 @@ export class LoadingSpinner {
     @Prop() show: boolean = true;
     /** Set margin of spinner*/
     @Prop() margin: string = 'auto';
-    
+
     render() {
 
         const margin = {

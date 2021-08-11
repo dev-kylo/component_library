@@ -1,0 +1,43 @@
+@import '../../../../src/global/globalstyles.css';
+
+
+.kclsu-tabs {
+
+    &-primary {
+        margin: 4em;
+        
+
+        &-titles {
+            padding: 20px;
+            background-color: #e8e8e2;
+        }
+    }
+
+    &-secondary-titles, &-tertiary-titles  {
+        padding: 0;
+        list-style: none;
+        background-color: transparent;
+        
+        @media (max-width: 1200px){
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 780px){
+        margin: 0.5em;
+    }
+
+    ul {
+        @include flex-me(center, center);
+        margin: 0;
+        box-sizing: border-box;
+
+        @media (max-width: 780px){
+            padding: 10px
+        }
+
+    }
+}

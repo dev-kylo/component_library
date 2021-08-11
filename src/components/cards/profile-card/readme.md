@@ -1,16 +1,16 @@
-# profile-card
+## profile-card info
 
 This card is used to display a profile of someone. It contains an image, a title (name), a subtitle (position), and then 2 clickable links at the bottom.
 
 These clickable links can be configured as follows:
 
-## Primary Link
+### Primary Link
 A Primary clickable url link at the bottom left of the card. This url link is also used for the title (name) of the profile card. When clicked, a page will open on a new tab.
 
-## Secondary Link
+### Secondary Link
 A Secondary clickable url link at the bottom right of the card. When clicked, a page will open on a new tab. If no call to action text is supplied (using the secondcta attribute) this link will not display.
 
-## Swap Links for Callbacks
+### Swap Links for Callbacks
 Instead of supplying a URL link for both primary and secondary links, you can supply callback functions instead (primaryfn and secondaryfn attributes) 
 
 
@@ -41,6 +41,19 @@ Instead of supplying a URL link for both primary and secondary links, you can su
 | `emitClick` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `addFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by
@@ -60,7 +73,6 @@ Instead of supplying a URL link for both primary and secondary links, you can su
 graph TD;
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   candidate-display --> profile-card
   events-listing --> profile-card
   profile-card-modal --> profile-card

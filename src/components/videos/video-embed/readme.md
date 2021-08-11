@@ -20,14 +20,9 @@
  - [video-gallery](../video-gallery)
  - [video-gallery-stacked](../video-gallery-stacked)
 
-### Depends on
-
-- [loading-spinner](../../spinner)
-
 ### Graph
 ```mermaid
 graph TD;
-  video-embed --> loading-spinner
   video-gallery --> video-embed
   video-gallery-stacked --> video-embed
   style video-embed fill:#f9f,stroke:#333,stroke-width:4px

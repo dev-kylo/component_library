@@ -33,7 +33,6 @@ graph TD;
   candidate-display --> profile-card-layout
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   candidate-upload --> candidate-display
   elections-candidates --> candidate-display
   grouped-candidate-display --> candidate-display

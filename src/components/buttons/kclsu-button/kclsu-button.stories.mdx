@@ -1,0 +1,159 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+# `<kclsu-button>`
+
+<Meta
+  title="Buttons/Button"
+  component="kclsu-button"
+  argTypes={{
+    content: {
+      control: 'text',
+      description: 'Text content in the button',
+    },
+    // TODO: implement icon
+    // icon: {
+    //   control: 'text',
+    //   description: 'Adds an icon to the button',
+    // },
+    text: {
+      control: 'text',
+      description: 'Alternative control for text content in the button.',
+    },
+    center: {
+      control: 'boolean',
+      description: 'Centres the button in the page',
+      table: { defaultValue: { summary: false } },
+    },
+    link: {
+      control: 'string',
+      description: 'The URL to link to',
+    },
+    newtab: {
+      control: 'boolean',
+      description: 'Opens the link in a new tab',
+      table: { defaultValue: { summary: false } },
+    },
+    purple: {
+      control: 'boolean',
+      description: 'Make the button a secondary purple button',
+      table: { defaultValue: { summary: false } },
+    },
+    rounded: {
+      control: 'boolean',
+      description: 'Give the button rounded corners',
+      table: { defaultValue: { summary: false } },
+    },
+    small: {
+      control: 'boolean',
+      description: 'Make the button small',
+      table: { defaultValue: { summary: false } },
+    },
+    verysmall: {
+      control: 'boolean',
+      description: 'Make the button very small',
+      table: { defaultValue: { summary: false } },
+    },
+    fixedwidth: {
+      control: 'string',
+      description: 'Give the button a fixed width (pixels)',
+      table: { defaultValue: { summary: false } },
+    },
+    margin: {
+      control: 'string',
+      // could also be number if you add px or some such in the story fn template
+      description: 'specify a margin, otherwise uses default',
+      table: { defaultValue: { summary: false } },
+    },
+    download: {
+      control: 'boolean',
+      description: 'Makes the link download',
+      table: { defaultValue: { summary: false } },
+    },
+  }}
+/>
+
+### Example
+
+```html
+<kclsu-button link="/">My Button</kclsu-button>
+```
+
+<!-- TODO: implement icon -->
+<!-- To add an icon to the button, use the `icon` attribute -->
+
+
+### Build your own
+<Canvas withToolbar={true} withSource="open" >
+  <Story name="Basic" component="kclsu-button" args={{
+    content: 'Click me',
+    link: '/',
+    center: false,
+    purple: false,
+    newtab: false,
+    rounded: false
+  }}>
+    {args => html`
+      <kclsu-button
+        link="${ifDefined(args.link || undefined)}"
+        center="${ifDefined(args.center || undefined)}"
+        purple="${ifDefined(args.purple || undefined)}"
+        newtab="${ifDefined(args.newtab || undefined)}"
+        rounded="${ifDefined(args.rounded || undefined)}"
+      >${args.content}</kclsu-button>`}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" include={ ['content','link', 'center', 'purple', 'newtab', 'rounded'] }/>
+
+## Instructions
+To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
+
+Using the component controls listed above, you can do the following:
+ 
+- Create a primary standard teal button
+- Create a secondary purple button
+- control the size - big or small
+- center the button in the page
+
+### Appearance
+
+There are four options to customize the button's appearance.
+Set the `purple` attribute to use the secondary colour pallete. Set the `rounded` attribute to give the button rounded corners. Set the `small` or `verysmall` attributes to decrease the button's size.
+
+### Example
+
+```html
+<kclsu-button purple rounded verysmall>Mini Button</kclsu-button>
+```
+
+## All Controls
+
+<Canvas withToolbar={true} withSource="open" >
+  <Story name="Advanced" component="kclsu-button">
+    {args => html`<kclsu-button
+      ?small="${args.small}"
+      ?purple="${args.purple}"
+      ?newtab="${args.newtab}"
+      ?rounded="${args.rounded}"
+      ?verysmall="${args.verysmall}"
+      ?center="${args.center}"
+      ?download="${args.download}"
+      link="${ifDefined(args.link || undefined)}"
+      text="${ifDefined(args.text || undefined)}"
+      emitid="${ifDefined(args.emitid || undefined)}"
+      icon="${ifDefined(args.icon || undefined)}"
+      fixedwidth="${ifDefined(args.fixedwidth || undefined)}"
+      margin="${ifDefined(args.margin || undefined)}"
+    >${args.content||'My Button'}</kclsu-button>`}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Advanced"/>
+
+<Description markdown={readme} />
+

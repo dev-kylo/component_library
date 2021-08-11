@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element, Event, EventEmitter, State } from '@stencil/core';
+import { Component, Prop, h, Element, Event, EventEmitter, State, Method } from '@stencil/core';
 
 @Component({
   tag: 'profile-card',
@@ -6,7 +6,7 @@ import { Component, Prop, h, Element, Event, EventEmitter, State } from '@stenci
   shadow: true
 })
 
-export class ProfileCard{
+export class ProfileCard {
   /** The title for the card - usually a full name */
   @Prop() name: string;
   /** A sub heading - usually a position or field title */
@@ -70,15 +70,16 @@ export class ProfileCard{
     if (link) 
       return <a class="link" target="_blank" href={link}>{text}</a>
     else return <a class="link" role="button" tabindex="0" onClick={e => this.clickHandler(e, callback)}>{text}</a> 
-    
+  }
+
+  @Method()
+  async addFocus(){
+    const firstLink = this.host.shadowRoot.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
   
   render() {
 
-        
-    // let nameLink = !this.link ? <a onClick={e => this.clickHandler(e)}><span class="name">{this.name}</span></a> :  <a target="_blank" href={this.link? this.link : ''}><span class="name">{this.name}</span></a>
-    // let firstlink = !this.link ? <a class="link"  onClick={e => this.clickHandler(e)}>{this.cta}</a> :  <a class="link" target="_blank" href={this.link? this.link : ''}>{this.cta}</a>
-    // let secondlink = !this.secondlink? '' : <a class="link" target="_blank" href={this.secondlink}>{this.secondcta}</a>
 
     let nameLink = this.createNameButton();
     let primarybtn = this.createTextButton('primary');
@@ -87,7 +88,13 @@ export class ProfileCard{
     return (
       <div class="profile-card">
         <div class="image">
-          <lazy-image thumbnail nolazy={this.nolazy} animatein image={this.image}></lazy-image>
+          <lazy-image 
+            nolazy={this.nolazy} 
+            animatein 
+            image={this.image}
+            mobile="80"
+            desktop="12"
+          ></lazy-image>
         </div>
         <div class="label">
           {nameLink}

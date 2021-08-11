@@ -1,0 +1,27 @@
+
+.tab-content {
+    display: none;
+    background: #f1f1ee;
+    padding: 40px 30px;
+    transform: scaleY(0);
+    transform-origin: top;
+
+    @media (max-width: 780px){
+        padding: 1em;
+    }
+
+    &-active {
+        display: block;
+        animation: slowextend 0.7s ease-out forwards;
+    }
+}
+
+
+@keyframes slowextend {
+    from {
+        transform: scaleY(0.9);
+    }
+    to {
+        transform: scaleY(1);
+    }
+  }
