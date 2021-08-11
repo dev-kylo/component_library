@@ -41,7 +41,6 @@ graph TD;
   profile-tabs --> tabs-container
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   full-bio --> kclsu-button
   full-bio --> flex-container
   kclsu-button --> flex-container

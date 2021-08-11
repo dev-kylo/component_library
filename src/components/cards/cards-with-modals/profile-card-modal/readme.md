@@ -32,7 +32,6 @@ graph TD;
   profile-card-modal --> kclsu-modal
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   kclsu-modal --> modal-backdrop
   style profile-card-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```

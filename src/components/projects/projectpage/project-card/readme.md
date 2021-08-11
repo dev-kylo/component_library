@@ -38,7 +38,6 @@ graph TD;
   project-card --> project-card-events
   project-card --> scroll-observer
   image-text --> lazy-image
-  lazy-image --> scroll-observer
   project-card-events --> label-card
   project-card-events --> flex-container
   project-card-events --> kclsu-button

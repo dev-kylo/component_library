@@ -32,6 +32,19 @@
 | `emitClick` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `addFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

@@ -7,9 +7,22 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `innertab` | `innertab` |             | `boolean` | `false` |
+| Property  | Attribute | Description | Type                                     | Default     |
+| --------- | --------- | ----------- | ---------------------------------------- | ----------- |
+| `variant` | `variant` |             | `"primary" \| "secondary" \| "tertiary"` | `'primary'` |
+
+
+## Methods
+
+### `focusFirstTab() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

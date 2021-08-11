@@ -1,14 +1,14 @@
 
 ### News Card info
 <!-- Auto Generated Below -->
-This is an MSL dependent componet. It relies on the appropriate styles and scripts on the kclsu website.
+
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `newslink`  | `newslink`  |             | `string` | `undefined` |
-| `newstitle` | `newstitle` |             | `string` | `undefined` |
+| Property    | Attribute   | Description                    | Type     | Default     |
+| ----------- | ----------- | ------------------------------ | -------- | ----------- |
+| `newslink`  | `newslink`  | The MSL link for the news post | `string` | `undefined` |
+| `newstitle` | `newstitle` | The title for the news post    | `string` | `undefined` |
 
 
 ## Dependencies

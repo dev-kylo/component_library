@@ -35,7 +35,6 @@ graph TD;
   label-card --> kclsu-button
   label-card --> lazy-image
   kclsu-button --> flex-container
-  lazy-image --> scroll-observer
   project-card --> project-card-events
   style project-card-events fill:#f9f,stroke:#333,stroke-width:4px
 ```

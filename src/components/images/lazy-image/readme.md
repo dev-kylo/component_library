@@ -7,20 +7,20 @@
 
 ## Properties
 
-| Property          | Attribute         | Description                                                                                                         | Type      | Default     |
-| ----------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `alt`             | `alt`             | The alt tag of the image                                                                                            | `string`  | `''`        |
-| `animatein`       | `animatein`       | Image will scale into view                                                                                          | `boolean` | `false`     |
-| `contentimage`    | `contentimage`    | If the image is being used only as thumbnail, such as project-cards and image-text components                       | `boolean` | `false`     |
-| `customtransform` | `customtransform` | Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format | `string`  | `undefined` |
-| `desktopwidth`    | `desktopwidth`    | If setting width for mobile and desktop, use width property for mobile and this property for desktop                | `string`  | `undefined` |
-| `focusarea`       | `focusarea`       | Use standard CSS object-position values to set a focus area on the image. EG 'center left'                          | `string`  | `'center'`  |
-| `image`           | `image`           |                                                                                                                     | `string`  | `undefined` |
-| `keeptransforms`  | `keeptransforms`  | If set to false, it will keep any existing cloudinary transforms                                                    | `boolean` | `false`     |
-| `nolazy`          | `nolazy`          | Remove lazy-loading functionality. Retains Object Fit positioing                                                    | `boolean` | `false`     |
-| `plainimg`        | `plainimg`        | If you want to render an img element in a responsive container without object positioning                           | `boolean` | `false`     |
-| `thumbnail`       | `thumbnail`       | If the image is being used only as thumbnail, such as in event cards, label cards and profile cards                 | `boolean` | `false`     |
-| `width`           | `width`           | A width for the image in pixels                                                                                     | `string`  | `undefined` |
+| Property          | Attribute         | Description                                                                                                                               | Type      | Default     |
+| ----------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `alt`             | `alt`             | The alt tag of the image                                                                                                                  | `string`  | `''`        |
+| `animatein`       | `animatein`       | Image will scale into view                                                                                                                | `boolean` | `false`     |
+| `customtransform` | `customtransform` | Provide a custom cloudinary transformation. Must be in format: string,string,string eg: c_fill,f_auto,fl_any_format                       | `string`  | `undefined` |
+| `desktop`         | `desktop`         | The % percentage of desktop screens the image will take up. Number only without percent symbol                                            | `string`  | `"100"`     |
+| `focusarea`       | `focusarea`       | Use standard CSS object-position values to set a focus area on the image. EG 'center left'                                                | `string`  | `'center'`  |
+| `image`           | `image`           | The image URL. Must be a kclsu, cloudinary or kclsu firebase url                                                                          | `string`  | `undefined` |
+| `minwidth`        | `minwidth`        | Set a minimum pixel width for the image rendered                                                                                          | `string`  | `undefined` |
+| `mobile`          | `mobile`          | The % percentage of mobile screens the image will take up. Number only without percent symbol                                             | `string`  | `"100"`     |
+| `nolazy`          | `nolazy`          | Remove lazy-loading functionality. Retains Object Fit positioing                                                                          | `boolean` | `false`     |
+| `plainimg`        | `plainimg`        | If you want to render an img element in a responsive container without object positioning                                                 | `boolean` | `false`     |
+| `ratio`           | `ratio`           | A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint | `string`  | `undefined` |
+| `suppliedwidth`   | `suppliedwidth`   | Set a minimum pixel width for the image rendered                                                                                          | `string`  | `undefined` |
 
 
 ## Dependencies
@@ -36,14 +36,9 @@
  - [profile-logo-card](../../cards/profile-logo-card)
  - [project-image](../../projects/projectpage/project-image)
 
-### Depends on
-
-- [scroll-observer](../../scroll)
-
 ### Graph
 ```mermaid
 graph TD;
-  lazy-image --> scroll-observer
   gallery-thumbnail-stacked --> lazy-image
   image-text --> lazy-image
   label-card --> lazy-image

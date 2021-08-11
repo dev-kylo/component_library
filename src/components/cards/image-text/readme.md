@@ -42,7 +42,6 @@ The default is using it as a layout component. To make it a card, simply add the
 ```mermaid
 graph TD;
   image-text --> lazy-image
-  lazy-image --> scroll-observer
   project-card --> image-text
   style image-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

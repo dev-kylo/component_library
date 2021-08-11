@@ -17,13 +17,11 @@
 
 ### Used by
 
- - [lazy-image](../images/lazy-image)
  - [project-card](../projects/projectpage/project-card)
 
 ### Graph
 ```mermaid
 graph TD;
-  lazy-image --> scroll-observer
   project-card --> scroll-observer
   style scroll-observer fill:#f9f,stroke:#333,stroke-width:4px
 ```

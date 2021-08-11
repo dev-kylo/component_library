@@ -41,6 +41,19 @@ Instead of supplying a URL link for both primary and secondary links, you can su
 | `emitClick` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `addFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by
@@ -60,7 +73,6 @@ Instead of supplying a URL link for both primary and secondary links, you can su
 graph TD;
   profile-card --> lazy-image
   profile-card --> flex-container
-  lazy-image --> scroll-observer
   candidate-display --> profile-card
   events-listing --> profile-card
   profile-card-modal --> profile-card

@@ -13,6 +13,26 @@
 | `name`   | `name`    |             | `string`  | `undefined` |
 
 
+## Events
+
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `closeArea` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `findFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
