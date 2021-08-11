@@ -32,6 +32,8 @@ export class LazyImage {
     @Prop() desktop: string = "100";
     /** Set a minimum pixel width for the image rendered */
     @Prop() minwidth: string;
+    /** Set a minimum pixel width for the image rendered */
+    @Prop() suppliedwidth: string;
 
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'unknown';
     desktopBreakPoints:number[] = [1920, 1600, 1366];

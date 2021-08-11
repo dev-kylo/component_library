@@ -41,9 +41,6 @@ export class KclsuButton {
     @Prop() clickfn: () => void;
 
     @Element() host: HTMLElement;
-    
-
-    @Element() host: HTMLElement;
 
 
     @Event()emitClick:EventEmitter;

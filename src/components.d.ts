@@ -522,6 +522,10 @@ export namespace Components {
           * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
         "ratio": string;
+        /**
+          * Set a minimum pixel width for the image rendered
+         */
+        "suppliedwidth": string;
     }
     interface LoadingSpinner {
         /**
@@ -2075,6 +2079,10 @@ declare namespace LocalJSX {
           * A ratio for the image in decimal form. This will fetch the image from cloudinary with an appropriate height at each responsive breakpoint
          */
         "ratio"?: string;
+        /**
+          * Set a minimum pixel width for the image rendered
+         */
+        "suppliedwidth"?: string;
     }
     interface LoadingSpinner {
         /**

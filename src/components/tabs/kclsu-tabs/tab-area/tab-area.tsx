@@ -33,7 +33,7 @@ export class TabArea {
     }
 
     @Method()
-    findFocus(){
+    async findFocus(){
         const nestedTabs = this.element.querySelector('kclsu-tabs') as HTMLKclsuTabsElement;
         const firstfocusableElement = this.element.querySelector(
             'a, kclsu-button, profile-card, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
