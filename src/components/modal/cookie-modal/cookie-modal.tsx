@@ -13,7 +13,7 @@ type cookieConfig = {
 export class CookieModal {
 
     @Prop() config: cookieConfig;
-    @Prop() daysvalid: number;
+    @Prop() daysvalid: number = 30;
 
     @State() visible = true;
 
@@ -42,7 +42,7 @@ export class CookieModal {
         if (segments.length === 2) return segments.pop().split(';').shift();
     }
 
-    setCookies(cookieInputs = []): string[]{
+    applyCookieSetter(cookieInputs = []): string[]{
         let consentedCookies = [];
         if(cookieInputs.length > 0){
             cookieInputs.forEach(input => {
@@ -61,12 +61,11 @@ export class CookieModal {
             let cookie = `${this.cookiename}=${consentedCookies.join(',')}; path=/; max-age=${60 * 60 * 24 * +(this.daysvalid)}`
             document.cookie = cookie;
         }
-        
     }
 
     acceptHandler(){
         let checked = this.fetchAcceptedCookies();
-        let appliedcookies = this.setCookies(checked);
+        let appliedcookies = this.applyCookieSetter(checked);
         this.setConsentCookie(appliedcookies)
         this.visible = false;
     }
