@@ -14,6 +14,8 @@ export class KclsuModal {
     @Prop() autoexit:boolean = false;
     /** Set position to absolute or other. Defaults to fixed */
     @Prop() position:string = 'fixed';
+    /** Set custom width, height and background colour */
+    @Prop() custom:string;
     /** Supply a custom function to be invoked when modal is closed */
     @Prop() exitfn: () => void;
     /** Supply a custom function to be invoked when modal is opened */
@@ -46,7 +48,7 @@ export class KclsuModal {
 
         if (this.show) {
             modal.style.display = "block";
-            modal.style.transform = styles.in;
+            modal.style.transform =  this.custom ? 'inherit' : styles.in;
             modal.style.opacity = '1';
         } else {
             modal.style.transform = styles.out;
@@ -57,9 +59,21 @@ export class KclsuModal {
     }
 
     render() {
+
+        const classes = ['Modal'];
+        const style = {} as any;
+        if (!this.custom) classes.push('Modal-Standard');
+        else {
+            let customSpecs = this.custom.split(',');
+            style.width = customSpecs[0];
+            style.height = customSpecs[1];
+            style.backgroundColor =  'white';
+            style.bottom = 0;
+        }
+
         return ([
             <modal-backdrop showbg={this.show}></modal-backdrop>,
-            <dialog class="Modal" open={this.show}>
+            <dialog style={style} class={classes.join(' ')} open={this.show}>
                 <slot></slot>
             </dialog>
         ]);

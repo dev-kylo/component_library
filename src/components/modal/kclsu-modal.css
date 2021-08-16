@@ -1,7 +1,4 @@
 .Modal {
-    left: 50%;
-    top: 50%;
-    background-color: white;
     width: auto;
     min-width: 40%;
     border: 1px solid #ccc;
@@ -11,7 +8,13 @@
     transition: all 0.3s ease-out;
     max-height: 85%;
     overflow-y: scroll;
-    z-index: 500;
+    z-index: 2000;
+}
+
+.Modal-Standard {
+    left: 50%;
+    top: 50%;
+    background-color: white;
 }
 
 .Backdrop {
@@ -26,9 +29,12 @@
 
 @media (max-width: 800px) {
     .Modal {
-        width: 85%;
-        left: 50%;
         max-height: 70%;
         padding: 30px 15px;
+    }
+
+    .Modal-Standard {
+        width: 85%;
+        left: 50%;
     }
 }

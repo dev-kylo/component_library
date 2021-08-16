@@ -59,6 +59,9 @@ export namespace Components {
          */
         "public_id": string;
     }
+    interface CookieModal {
+        "configs": cookieConfig[];
+    }
     interface CreateVarsityData {
         "allowcreate": boolean;
         "allowupdate": boolean;
@@ -376,6 +379,10 @@ export namespace Components {
           * This will allow a user to click away and hide the modal when open
          */
         "autoexit": boolean;
+        /**
+          * Set custom width, height and background colour
+         */
+        "custom": string;
         /**
           * Supply a custom function to be invoked when modal is opened
          */
@@ -1018,6 +1025,12 @@ declare global {
         prototype: HTMLCloudinaryAppElement;
         new (): HTMLCloudinaryAppElement;
     };
+    interface HTMLCookieModalElement extends Components.CookieModal, HTMLStencilElement {
+    }
+    var HTMLCookieModalElement: {
+        prototype: HTMLCookieModalElement;
+        new (): HTMLCookieModalElement;
+    };
     interface HTMLCreateVarsityDataElement extends Components.CreateVarsityData, HTMLStencilElement {
     }
     var HTMLCreateVarsityDataElement: {
@@ -1482,6 +1495,7 @@ declare global {
         "candidate-display": HTMLCandidateDisplayElement;
         "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
+        "cookie-modal": HTMLCookieModalElement;
         "create-varsity-data": HTMLCreateVarsityDataElement;
         "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
@@ -1612,6 +1626,9 @@ declare namespace LocalJSX {
           * The Cloudinary image id - provided using the browser-side upload script, or using the the node server function
          */
         "public_id"?: string;
+    }
+    interface CookieModal {
+        "configs"?: cookieConfig[];
     }
     interface CreateVarsityData {
         "allowcreate"?: boolean;
@@ -1934,6 +1951,10 @@ declare namespace LocalJSX {
           * This will allow a user to click away and hide the modal when open
          */
         "autoexit"?: boolean;
+        /**
+          * Set custom width, height and background colour
+         */
+        "custom"?: string;
         /**
           * Supply a custom function to be invoked when modal is opened
          */
@@ -2545,6 +2566,7 @@ declare namespace LocalJSX {
         "candidate-display": CandidateDisplay;
         "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
+        "cookie-modal": CookieModal;
         "create-varsity-data": CreateVarsityData;
         "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
@@ -2634,6 +2656,7 @@ declare module "@stencil/core" {
             "candidate-display": LocalJSX.CandidateDisplay & JSXBase.HTMLAttributes<HTMLCandidateDisplayElement>;
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
+            "cookie-modal": LocalJSX.CookieModal & JSXBase.HTMLAttributes<HTMLCookieModalElement>;
             "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
             "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;

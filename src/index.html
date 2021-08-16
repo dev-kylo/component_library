@@ -17,6 +17,48 @@
 
 
 <body>
+
+
+
+<kclsu-modal custom="100vw, 60vh, white" show autoexit>
+  <div style="max-width: 1000px; margin: auto;">
+    <h1 style="text-align: center">You have control over your data</h1>
+    <flex-container alignx="space-around">
+      <div style="max-width: 500px">
+        <h2> Why do we use cookies</h2>
+        <p> Cookies allow us to provide the best experience using our kclsu website.</p>
+        <p>Read about  <a href="">how kclsu handles data </a>, and more steps you can take to protect your data.</p>
+      </div>
+      <div style="max-width: 400px">
+        <h2> Manage your cookies</h2>
+        <p>Please manage your cookie choices by switching the consent toggles on or off.</p>
+        <div style="margin: 1rem 0">
+          <label>Necessary cookies (required)</label>
+          <input type="checkbox" value="checked" ></input>
+        </div>
+        <div style="margin: 1rem 0">
+          <label>Google Analytics (optional)</label>
+          <input type="checkbox" value="Google Analytics"></input>
+        </div>
+        </flex-container>
+      </div>
+    </flex-container>
+    <div style="width: 100%; margin: 2rem">
+      <flex-container alignx="center">
+      <kclsu-button small > I Consent to these Cookies</kclsu-button>
+      <kclsu-button small purple> I Reject unneccesary cookies</kclsu-button>
+    </flex-container>
+    </div>
+  </div>
+</kclsu-modal>
+
+
+
+
+
+
+
+
 <div style="width: 500px; margin: 4em auto;">
 <video-gallery-stacked playlist="https://www.youtube.com/watch?v=JGwWNGJdvx8&list=PLhsz9CILh357zA1yMT-K5T9ZTNEU6Fl6n"></video-gallery-stacked>
 </div>
@@ -179,10 +221,10 @@
 
 
 
-  <page-banner image="https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/pexels-rodnae-productions-7158609_bldptr"></page-banner>
+  <!-- <page-banner image="https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/pexels-rodnae-productions-7158609_bldptr"></page-banner>
   <div style="height: 250vh; background: red"></div>
   <lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/pexels-rodnae-productions-7158609_bldptr"></lazy-image>
-  <div style="height: 200vh; background: red"></div>
+  <div style="height: 200vh; background: red"></div> -->
 <!--
 
 <lazy-image image="https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/pexels-rodnae-productions-7158609_bldptr"></lazy-image>
@@ -204,7 +246,13 @@
 
 
 
-   
+   <script>
+
+
+
+
+
+   </script>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
