@@ -1,62 +1,102 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element, State } from '@stencil/core';
 
 type cookieConfig = {
-    checkboxId : string,
-    optIn : () => void
+    [name: string] : () => void
 }
+
 
 @Component({
     tag: 'cookie-modal',
     styleUrl: 'cookie-modal.scss'
 })
+
 export class CookieModal {
 
-    @Prop() configs: cookieConfig[]
+    @Prop() config: cookieConfig;
+    @Prop() daysvalid: number;
+
+    @State() visible = true;
+
+    @Element() host: HTMLElement;
+
+    cookiename = 'kclsuconsentedcookies';
 
 
-    checkForExistingCookie(): boolean {
+    useExistingCookie(): boolean {
+        let existing = this.getCookie(this.cookiename);
+        if (existing){
+            let keys = existing.split(',');
+            keys.forEach((key: string) => this.config[key]());
+            return true;
+        }
         return false;
     }
 
     fetchAcceptedCookies(){
-
-
+        return Array.from(this.host.shadowRoot.querySelectorAll('input[type=checkbox]:checked'))
     }
 
-    setCookie(){
-
+    getCookie(name: string): string {
+        let value = `; ${document.cookie}`;
+        let segments = value.split(`; ${name}=`);
+        if (segments.length === 2) return segments.pop().split(';').shift();
     }
 
-    createCheckBox(): HTMLElement{
-        return (
-         <div>
-            <label>Google Analytics</label>
-            <input type="checkbox" value="Google Analytics"></input>
-          </div>
-        )
+    setCookies(cookieInputs = []): string[]{
+        let consentedCookies = [];
+        if(cookieInputs.length > 0){
+            cookieInputs.forEach(input => {
+                let key = input.data.cookiename.trim();
+                if(this.config[key]) {
+                    this.config[key]();
+                    consentedCookies.push(key);
+                }
+            })
+        }
+        return consentedCookies
     }
-    
+
+    setConsentCookie(consentedCookies: string[] = []): void{
+        if (consentedCookies.length  > 0){
+            let cookie = `${this.cookiename}=${consentedCookies.join(',')}; path=/; max-age=${60 * 60 * 24 * +(this.daysvalid)}`
+            document.cookie = cookie;
+        }
+        
+    }
+
+    acceptHandler(){
+        let checked = this.fetchAcceptedCookies();
+        let appliedcookies = this.setCookies(checked);
+        this.setConsentCookie(appliedcookies)
+        this.visible = false;
+    }
+
+    rejectHandler(){
+        this.visible = false;
+    }
+
     render() {
         return (
-            <kclsu-modal custom="100vw, 50vh, white" show autoexit>
+            <kclsu-modal custom="100vw, 50vh, white" show={this.visible}>
             <div>
               <h1>You have control over your data</h1>
               <flex-container alignx="space-around">
                 <div>
+                    <h2> Why do we use cookies?</h2>
                     <slot name="info"></slot>
                 </div>
                 <div>
-                  <h2> Current cookies tracked</h2>
-                    {this.createCheckBox()}
-                </div>
-                <div>
-                  <h2>Are you happy to accept these cookies?</h2>
-                  <flex-container>
-                    <kclsu-button > Accept</kclsu-button>
-                    <kclsu-button purple> Reject all</kclsu-button>
-                  </flex-container>
+                    <h2> Manage your cookies</h2>
+                    <p>Please manage your cookie choices by switching the consent toggles on or off.</p>
+                    <slot name="cookiecheckboxes"></slot>
                 </div>
               </flex-container>
+              <div >
+                 <flex-container>
+                    <kclsu-button clickfn={() => this.fetchAcceptedCookies()}> I Consent to these Cookies</kclsu-button>
+                    <kclsu-button purple clickfn={() => this.rejectHandler()}>  I Reject unneccesary cookies </kclsu-button>
+                  </flex-container>
+            </div>
             </div>
           </kclsu-modal>
         );
