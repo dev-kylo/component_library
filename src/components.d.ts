@@ -556,8 +556,6 @@ export namespace Components {
     interface ModalBackdrop {
         "showbg": boolean;
     }
-    interface MyComponent {
-    }
     interface NewsCard {
         /**
           * The MSL link for the news post
@@ -1244,12 +1242,6 @@ declare global {
         prototype: HTMLModalBackdropElement;
         new (): HTMLModalBackdropElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLNewsCardElement extends Components.NewsCard, HTMLStencilElement {
     }
     var HTMLNewsCardElement: {
@@ -1534,7 +1526,6 @@ declare global {
         "loading-spinner": HTMLLoadingSpinnerElement;
         "mobile-hide": HTMLMobileHideElement;
         "modal-backdrop": HTMLModalBackdropElement;
-        "my-component": HTMLMyComponentElement;
         "news-card": HTMLNewsCardElement;
         "page-banner": HTMLPageBannerElement;
         "page-content": HTMLPageContentElement;
@@ -2130,8 +2121,6 @@ declare namespace LocalJSX {
         "onExitModal"?: (event: CustomEvent<any>) => void;
         "showbg"?: boolean;
     }
-    interface MyComponent {
-    }
     interface NewsCard {
         /**
           * The MSL link for the news post
@@ -2607,7 +2596,6 @@ declare namespace LocalJSX {
         "loading-spinner": LoadingSpinner;
         "mobile-hide": MobileHide;
         "modal-backdrop": ModalBackdrop;
-        "my-component": MyComponent;
         "news-card": NewsCard;
         "page-banner": PageBanner;
         "page-content": PageContent;
@@ -2697,7 +2685,6 @@ declare module "@stencil/core" {
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
             "mobile-hide": LocalJSX.MobileHide & JSXBase.HTMLAttributes<HTMLMobileHideElement>;
             "modal-backdrop": LocalJSX.ModalBackdrop & JSXBase.HTMLAttributes<HTMLModalBackdropElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "news-card": LocalJSX.NewsCard & JSXBase.HTMLAttributes<HTMLNewsCardElement>;
             "page-banner": LocalJSX.PageBanner & JSXBase.HTMLAttributes<HTMLPageBannerElement>;
             "page-content": LocalJSX.PageContent & JSXBase.HTMLAttributes<HTMLPageContentElement>;
