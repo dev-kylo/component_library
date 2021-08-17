@@ -42,9 +42,7 @@ export class KclsuModal {
         } 
     }
 
-    @Watch('show') showHandler(newVal, oldVal){
-        console.log('CHANGE DETECTED')
-        console.log(`Newval: ${newVal} and Oldval: ${oldVal}`)
+    @Watch('show') showHandler(newVal, __){
         if (!newVal){
                 if (this.exitfn) this.exitfn(); 
         } else {
