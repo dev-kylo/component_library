@@ -20,6 +20,8 @@
 
 
 
+<!-- 
+
 <kclsu-modal custom="100vw, 60vh, white" show autoexit>
   <div style="max-width: 1000px; margin: auto;">
     <h1 style="text-align: center">You have control over your data</h1>
@@ -50,7 +52,7 @@
     </flex-container>
     </div>
   </div>
-</kclsu-modal>
+</kclsu-modal> -->
 
 
 
@@ -237,8 +239,28 @@
 
 
 
+<cookie-modal id="cookiecm" daysvalid="30" testmod>
 
+      <div slot="info"><!-- Don't remove this container-->
+        <p> Cookies allow us to provide the best experience using our kclsu website.</p>
+        <p>Read about  <a href="">how kclsu handles data </a>, and more steps you can take to protect your data.</p>
+      </div>
 
+      <div slot="cookiecheckboxes"><!-- Don't remove this container-->
+
+        <div style="margin: 1rem 0">
+          <label for="necessary">Necessary cookies (required)</label>
+          <input data-cookiename="necessary" id="necessary" type="checkbox" value="checked" checked disabled ></input>
+        </div>
+
+        <div style="margin: 1rem 0">
+          <label for="GA">Google Analytics (optional)</label>
+          <input data-cookiename="necessary" id="GA" type="checkbox" value="Google Analytics" checked></input>
+        </div>
+
+      </div>
+
+  </cookie-modal>
 
 
 
@@ -256,7 +278,14 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      let parent = document.getElementById('cookiecm');
+      let mod = document.getElementById('cookiecm');
 
+      let config = {
+        'test': () => { console.log('I am a test cookie')}
+      };
+      parent.config = config;
+      // parent.appendChild(cookie);
     })
   </script>
 </body>

@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { cookieConfig } from "./components/modal/cookie-modal/types";
 import { Variants } from "./components/tabs/kclsu-tabs/tabtypes";
 export namespace Components {
     interface AddVarsityScores {
@@ -60,7 +61,9 @@ export namespace Components {
         "public_id": string;
     }
     interface CookieModal {
-        "configs": cookieConfig[];
+        "config": cookieConfig;
+        "daysvalid": number;
+        "testmod": boolean;
     }
     interface CreateVarsityData {
         "allowcreate": boolean;
@@ -1628,7 +1631,9 @@ declare namespace LocalJSX {
         "public_id"?: string;
     }
     interface CookieModal {
-        "configs"?: cookieConfig[];
+        "config"?: cookieConfig;
+        "daysvalid"?: number;
+        "testmod"?: boolean;
     }
     interface CreateVarsityData {
         "allowcreate"?: boolean;

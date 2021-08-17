@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen, Element } from '@stencil/core';
+import { Component, h, Prop, Listen, Element, Watch } from '@stencil/core';
 
 
 @Component({
@@ -42,7 +42,16 @@ export class KclsuModal {
         } 
     }
 
-    
+    @Watch('show') showHandler(newVal, oldVal){
+        console.log('CHANGE DETECTED')
+        console.log(`Newval: ${newVal} and Oldval: ${oldVal}`)
+        if (!newVal){
+                if (this.exitfn) this.exitfn(); 
+        } else {
+            if ((this.enterfn)) this.enterfn()
+        }
+        this.animate(this.styles);
+    }
 
     animate(styles){
         const modal = this.host.shadowRoot.querySelector('.Modal') as HTMLElement;

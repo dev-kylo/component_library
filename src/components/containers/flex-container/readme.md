@@ -24,6 +24,7 @@
 
  - [add-varsity-scores](../../projects/varsity/add-varsity-scores)
  - [cloudinary-app](../../projects/cloudinary)
+ - [cookie-modal](../../modal/cookie-modal)
  - [create-varsity-data](../../projects/varsity/create-varsity-data)
  - [events-listing](../events-listing)
  - [full-bio](../../profiles/bio)
@@ -46,6 +47,7 @@
 graph TD;
   add-varsity-scores --> flex-container
   cloudinary-app --> flex-container
+  cookie-modal --> flex-container
   create-varsity-data --> flex-container
   events-listing --> flex-container
   full-bio --> flex-container

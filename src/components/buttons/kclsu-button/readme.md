@@ -52,6 +52,7 @@ Type: `Promise<void>`
  - [campaign-tabs](../../projects/campaigns/campaign-tabs)
  - [candidate-upload](../../projects/elections/candidate_upload)
  - [cloudinary-app](../../projects/cloudinary)
+ - [cookie-modal](../../modal/cookie-modal)
  - [full-bio](../../profiles/bio)
  - [get-involved](../../projects/campaigns/get-involved)
  - [label-card](../../cards/label-card)
@@ -71,6 +72,7 @@ graph TD;
   campaign-tabs --> kclsu-button
   candidate-upload --> kclsu-button
   cloudinary-app --> kclsu-button
+  cookie-modal --> kclsu-button
   full-bio --> kclsu-button
   get-involved --> kclsu-button
   label-card --> kclsu-button
