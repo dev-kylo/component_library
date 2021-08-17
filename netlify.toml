@@ -1,5 +1,5 @@
+[build]
+    command = “CI= npm run build.netlify”
+
 [build.environment]
   NODE_VERSION = "14.17.5"
-  
-[build]
-command = “CI= npm run netlify.build”
