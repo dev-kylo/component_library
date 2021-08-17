@@ -42,6 +42,8 @@ export class KclsuModal {
         } 
     }
 
+    
+
     animate(styles){
         const modal = this.host.shadowRoot.querySelector('.Modal') as HTMLElement;
         modal.style.position = this.position;

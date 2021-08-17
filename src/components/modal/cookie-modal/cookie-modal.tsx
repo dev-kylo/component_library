@@ -1,9 +1,5 @@
 import { Component, h, Prop, Element, State } from '@stencil/core';
-
-type cookieConfig = {
-    [name: string] : () => void
-}
-
+import { cookieConfig } from './types';
 
 @Component({
     tag: 'cookie-modal',
@@ -14,11 +10,13 @@ export class CookieModal {
 
     @Prop() config: cookieConfig;
     @Prop() daysvalid: number = 30;
+    @Prop() testmod: boolean = false;
+    
+    @State() visible: boolean = true;
 
-    @State() visible = true;
-
+    
     @Element() host: HTMLElement;
-
+    
     cookiename = 'kclsuconsentedcookies';
 
 
@@ -63,11 +61,20 @@ export class CookieModal {
         }
     }
 
+
     acceptHandler(){
-        let checked = this.fetchAcceptedCookies();
-        let appliedcookies = this.applyCookieSetter(checked);
-        this.setConsentCookie(appliedcookies)
-        this.visible = false;
+        console.log(this.testmod);
+       
+        if (this.testmod) {
+            this.visible = false;
+            console.log(this.visible)
+        } else {
+            console.log('Running rest of code')
+            let checked = this.fetchAcceptedCookies();
+            let appliedcookies = this.applyCookieSetter(checked);
+            this.setConsentCookie(appliedcookies)
+            this.visible = false;
+        }
     }
 
     rejectHandler(){
@@ -75,25 +82,28 @@ export class CookieModal {
     }
 
     render() {
+        console.log('rendering')
         return (
-            <kclsu-modal custom="100vw, 50vh, white" show={this.visible}>
-            <div>
-              <h1>You have control over your data</h1>
-              <flex-container alignx="space-around">
-                <div>
-                    <h2> Why do we use cookies?</h2>
+            <kclsu-modal custom="100vw, 65vh, white" show={this.visible}>
+            <div id="canvas">
+              <span>You have control over your data</span>
+              <flex-container alignx="space-around" wrap>
+                <div id="info">
+                    <span> Why do we use cookies</span>
                     <slot name="info"></slot>
                 </div>
-                <div>
-                    <h2> Manage your cookies</h2>
+                <div id="cookielist">
+                    <span> Manage your cookies</span>
                     <p>Please manage your cookie choices by switching the consent toggles on or off.</p>
+                    <div>
                     <slot name="cookiecheckboxes"></slot>
+                    </div>
                 </div>
               </flex-container>
-              <div >
-                 <flex-container>
-                    <kclsu-button clickfn={() => this.fetchAcceptedCookies()}> I Consent to these Cookies</kclsu-button>
-                    <kclsu-button purple clickfn={() => this.rejectHandler()}>  I Reject unneccesary cookies </kclsu-button>
+              <div id="buttons">
+                 <flex-container alignx="center" wrap>
+                    <kclsu-button small clickfn={this.acceptHandler.bind(this)}> I Consent to these Cookies</kclsu-button>
+                    <kclsu-button small purple clickfn={this.rejectHandler.bind(this)}>  I Reject unneccesary cookies </kclsu-button>
                   </flex-container>
             </div>
             </div>

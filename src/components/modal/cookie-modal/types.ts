@@ -1,4 +1,3 @@
 export type cookieConfig = {
-    cookieName : string,
-    optIn : () => void
+    [name: string] : () => void
 }

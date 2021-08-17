@@ -1,0 +1,63 @@
+
+@import '../../../global/globalstyles.css';
+
+$teal: var(--mid-teal);
+
+#canvas {
+    padding: 1rem;
+    overflow: hidden;
+    &::before {
+        content: '';
+        border-top: 1rem solid #15847F;
+        width: 100vw;
+        height: 20px;
+        top:0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
+
+    span {
+        display: block;
+        color: #502669;
+        font-family: bree_serifsemibold, bree-serif, serif;
+        font-weight: 600;
+        font-size: 28px;
+        text-align: center;
+        margin: 1rem;
+        margin-left: 0;
+        
+    }
+
+    #info {
+        width: 100%;
+        max-width: 450px;
+        
+        span {
+            font-size: 22px;
+            text-align:left;
+            margin-left: 0;
+        }
+    }
+    
+    #cookielist {
+        width: 100%;
+        max-width: 450px;
+        span {
+            text-align:left;
+            font-size: 22px;
+            margin-bottom: 0;
+        }
+
+        div {
+            background-color: #e4e2e2;
+            padding: 0 1rem;
+            margin: 0;
+        }
+    }
+    
+    #buttons {
+        padding: 1rem;
+    }
+}
