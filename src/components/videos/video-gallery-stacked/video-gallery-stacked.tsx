@@ -45,7 +45,7 @@ export class VideoGalleryStacked {
            return this.videos.map(video => {
                let active=false
                 if (video.snippet.resourceId.videoId === this.active) active=true
-                console.log(video.snippet.thumbnails.medium.url)
+                // console.log(video.snippet.thumbnails.medium.url)
                 return (
                     <gallery-thumbnail-stacked
                         videotitle={video.snippet.title}

@@ -3,6 +3,7 @@ import { cookieConfig } from './types';
 
 @Component({
     tag: 'cookie-modal',
+    shadow: true,
     styleUrl: 'cookie-modal.scss'
 })
 
@@ -10,28 +11,34 @@ export class CookieModal {
 
     @Prop() config: cookieConfig;
     @Prop() daysvalid: number = 30;
-    @Prop() testmod: boolean = false;
+    @Prop() devmode: boolean = false;
     
     @State() visible: boolean = true;
 
     
     @Element() host: HTMLElement;
     
-    cookiename = 'kclsuconsentedcookies';
+    cookiename = '__kclsuconsentedcookies';
+
+    componentWillLoad(){
+        this.visible = !this.useExistingCookie();
+    }
 
 
     useExistingCookie(): boolean {
         let existing = this.getCookie(this.cookiename);
         if (existing){
+            if (existing === 'none') return true;
+            // Fire the callback functions for any cookie setters
             let keys = existing.split(',');
             keys.forEach((key: string) => this.config[key]());
             return true;
-        }
+        } 
         return false;
     }
 
     fetchAcceptedCookies(){
-        return Array.from(this.host.shadowRoot.querySelectorAll('input[type=checkbox]:checked'))
+        return Array.from(this.host.querySelectorAll('input[type=checkbox]:checked'))
     }
 
     getCookie(name: string): string {
@@ -44,7 +51,7 @@ export class CookieModal {
         let consentedCookies = [];
         if(cookieInputs.length > 0){
             cookieInputs.forEach(input => {
-                let key = input.data.cookiename.trim();
+                let key = input.dataset.cookiename.trim();
                 if(this.config[key]) {
                     this.config[key]();
                     consentedCookies.push(key);
@@ -54,35 +61,27 @@ export class CookieModal {
         return consentedCookies
     }
 
-    setConsentCookie(consentedCookies: string[] = []): void{
-        if (consentedCookies.length  > 0){
-            let cookie = `${this.cookiename}=${consentedCookies.join(',')}; path=/; max-age=${60 * 60 * 24 * +(this.daysvalid)}`
-            document.cookie = cookie;
-        }
+    setConsentCookie(consentedCookies?: string[]): void{
+        let cookieVal = consentedCookies && consentedCookies.length  > 0 ? consentedCookies.join(',') : 'none';
+        let cookie = `${this.cookiename}=${cookieVal}; path=/; max-age=${60 * 60 * 24 * +(this.daysvalid)}`
+        document.cookie = cookie;
     }
 
 
     acceptHandler(){
-        console.log(this.testmod);
-       
-        if (this.testmod) {
-            this.visible = false;
-            console.log(this.visible)
-        } else {
-            console.log('Running rest of code')
-            let checked = this.fetchAcceptedCookies();
-            let appliedcookies = this.applyCookieSetter(checked);
-            this.setConsentCookie(appliedcookies)
-            this.visible = false;
-        }
+        if (this.devmode) return this.visible = false;
+        let checked = this.fetchAcceptedCookies();
+        let appliedcookies = this.applyCookieSetter(checked);
+        this.setConsentCookie(appliedcookies)
+        this.visible = false;
     }
 
     rejectHandler(){
         this.visible = false;
+        this.setConsentCookie();
     }
 
     render() {
-        console.log('rendering')
         return (
             <kclsu-modal custom="100vw, 65vh, white" show={this.visible}>
             <div id="canvas">
@@ -94,10 +93,7 @@ export class CookieModal {
                 </div>
                 <div id="cookielist">
                     <span> Manage your cookies</span>
-                    <p>Please manage your cookie choices by switching the consent toggles on or off.</p>
-                    <div>
                     <slot name="cookiecheckboxes"></slot>
-                    </div>
                 </div>
               </flex-container>
               <div id="buttons">
@@ -105,7 +101,7 @@ export class CookieModal {
                     <kclsu-button small clickfn={this.acceptHandler.bind(this)}> I Consent to these Cookies</kclsu-button>
                     <kclsu-button small purple clickfn={this.rejectHandler.bind(this)}>  I Reject unneccesary cookies </kclsu-button>
                   </flex-container>
-            </div>
+               </div>
             </div>
           </kclsu-modal>
         );

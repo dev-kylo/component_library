@@ -63,7 +63,7 @@ export namespace Components {
     interface CookieModal {
         "config": cookieConfig;
         "daysvalid": number;
-        "testmod": boolean;
+        "devmode": boolean;
     }
     interface CreateVarsityData {
         "allowcreate": boolean;
@@ -1633,7 +1633,7 @@ declare namespace LocalJSX {
     interface CookieModal {
         "config"?: cookieConfig;
         "daysvalid"?: number;
-        "testmod"?: boolean;
+        "devmode"?: boolean;
     }
     interface CreateVarsityData {
         "allowcreate"?: boolean;

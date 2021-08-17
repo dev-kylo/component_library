@@ -239,7 +239,7 @@
 
 
 
-<cookie-modal id="cookiecm" daysvalid="30" testmod>
+<cookie-modal id="cookiecm" daysvalid="30" >
 
       <div slot="info"><!-- Don't remove this container-->
         <p> Cookies allow us to provide the best experience using our kclsu website.</p>
@@ -247,7 +247,9 @@
       </div>
 
       <div slot="cookiecheckboxes"><!-- Don't remove this container-->
-
+        
+        <p>Please manage your cookie choices by selecting or unselecting the check boxes.</p>
+        
         <div style="margin: 1rem 0">
           <label for="necessary">Necessary cookies (required)</label>
           <input data-cookiename="necessary" id="necessary" type="checkbox" value="checked" checked disabled ></input>
@@ -255,7 +257,13 @@
 
         <div style="margin: 1rem 0">
           <label for="GA">Google Analytics (optional)</label>
-          <input data-cookiename="necessary" id="GA" type="checkbox" value="Google Analytics" checked></input>
+          <input data-cookiename="test" id="GA" type="checkbox" value="Google Analytics" checked></input>
+        </div>
+
+
+        <div style="margin: 1rem 0">
+          <label for="GA">Facebook (optional)</label>
+          <input data-cookiename="fcb" id="GA" type="checkbox" value="Google Analytics" checked></input>
         </div>
 
       </div>
@@ -282,7 +290,8 @@
       let mod = document.getElementById('cookiecm');
 
       let config = {
-        'test': () => { console.log('I am a test cookie')}
+        'test': () => { console.log('I am a test cookie')},
+        'fcb': () => { console.log('I am a facebook cookie')}
       };
       parent.config = config;
       // parent.appendChild(cookie);

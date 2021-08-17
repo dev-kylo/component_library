@@ -89,7 +89,7 @@ export class LazyImage {
     
     render() {
 
-        console.log(this.ratio)
+
 
         let objectPosition = {
             'object-position': this.focusarea,
