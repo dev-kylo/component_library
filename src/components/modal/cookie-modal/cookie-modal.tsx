@@ -78,6 +78,7 @@ export class CookieModal {
 
     rejectHandler(){
         this.visible = false;
+        if (this.devmode) return;
         this.setConsentCookie();
     }
 
