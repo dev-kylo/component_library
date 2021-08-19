@@ -35,7 +35,7 @@ export class LazyImage {
     /** Set a minimum pixel width for the image rendered */
     @Prop() suppliedwidth: string;
 
-    urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'unknown';
+    urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'youtube' | 'unknown';
     desktopBreakPoints:number[] = [1920, 1600, 1366];
     mobileBreakPoints:number[] = [1024, 768, 640];
 
@@ -51,13 +51,17 @@ export class LazyImage {
             this.urlOrigin = 'cloudinary';
         } else if (this.image.includes('firebase')){
             this.urlOrigin = 'firebase';
+        } else if (this.image.includes('i.ytimg.com')){
+            this.urlOrigin = 'youtube';
         }  else this.urlOrigin = 'unknown';
     }
+
 
     createUrl(url, transforms): string{
         switch (this.urlOrigin){
             case 'kclsu' : 
-                return `https://res.cloudinary.com/kclsu-media/image/fetch/${transforms}/${url}`
+                case 'youtube' :
+                    return `https://res.cloudinary.com/kclsu-media/image/fetch/${transforms}/${url}`
             case 'cloudinary':
                 const existingTransforms = /upload\/[\w,]*\//;
                 if (existingTransforms.test(url)){

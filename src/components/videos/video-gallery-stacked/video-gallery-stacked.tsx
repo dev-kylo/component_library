@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Listen } from '@stencil/core';
+import { Component, h, Prop, State, Listen, Element } from '@stencil/core';
 import { shuffleArray } from '../../../utils/utils';
 
 @Component({
@@ -13,9 +13,12 @@ export class VideoGalleryStacked {
     /** This will randomise the order of the thumbnails */
     @Prop() shuffle: boolean = false;
 
+    @Element() host: HTMLElement;
+
     @State() videos: any;
     @State() active: string;
     @State() loading: boolean = false;
+    @State() carouselPosition: number = 0;
 
     timer;
 
@@ -37,8 +40,42 @@ export class VideoGalleryStacked {
     changeActive(event: CustomEvent){
         this.loading = true;
         this.active = event.detail;
+        let host  = this.host.shadowRoot;
+        console.log('host')
+        console.log(host);
+        let thumbnailComponents = Array.from(host.querySelectorAll('gallery-thumbnail-stacked'));
         
-    }   
+        let selected = thumbnailComponents.find(comp => comp.emitid === '2Vv-BfVoq4g')
+        // console.log('thumbnial elements')
+        // console.log(thumbnailComponents);
+        console.log('selected')
+        console.log(selected)
+        let div = selected.shadowRoot.querySelector(`.vid_2Vv-BfVoq4g`);
+        console.log(div);
+        
+        div.scrollIntoView(false);
+
+        //console.log(this.host.shadowRoot.querySelector("." + event.detail));
+        // this.host.shadowRoot.querySelector("." + event.detail).scrollIntoView();
+    } 
+    
+    calculateCarousel(direction: string){
+        let host  = this.host.shadowRoot;
+        let thumbnailComponents = Array.from(host.querySelectorAll('gallery-thumbnail-stacked'));
+        
+        if (direction = "L"){
+            if (this.carouselPosition > 0){
+                this.carouselPosition--;
+                this.scrollIntoView()
+            } else {
+                this.carouselPosition++;
+            }
+        }
+    }
+
+    scrollIntoView(){
+        
+    }
 
     createThumbnails(){
         if (this.videos){

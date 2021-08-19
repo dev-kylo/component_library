@@ -27,7 +27,7 @@ export class GalleryThumbnailStacked {
         let activeStyle= !this.active? {} : {"background-color": "teal", "color": "white"};
 
         return (
-            <div class="card" onClick={e => this.clickHandler(e)} style={activeStyle}>
+            <div class={`card vid_${this.emitid}`} onClick={e => this.clickHandler(e)} style={activeStyle}>
                 <div class="image">
                     <lazy-image mobile="10" desktop="10" image={this.image} alt=""></lazy-image>
                 </div>
