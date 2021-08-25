@@ -978,6 +978,10 @@ export namespace Components {
          */
         "playlist": any;
         /**
+          * This will display the current selected video. Desktop and tablet only
+         */
+        "showcurrent": boolean;
+        /**
           * This will randomise the order of the thumbnails
          */
         "shuffle": boolean;
@@ -2547,6 +2551,10 @@ declare namespace LocalJSX {
           * The Youtube URL for any given playlist
          */
         "playlist": any;
+        /**
+          * This will display the current selected video. Desktop and tablet only
+         */
+        "showcurrent"?: boolean;
         /**
           * This will randomise the order of the thumbnails
          */

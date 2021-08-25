@@ -12,15 +12,18 @@ export class VideoGalleryStacked {
     @Prop() playlist!: any;
     /** This will randomise the order of the thumbnails */
     @Prop() shuffle: boolean = false;
+    /** This will display the current selected video. Desktop and tablet only */
+    @Prop() showcurrent: boolean = false;
 
     @Element() host: HTMLElement;
 
     @State() videos: any;
     @State() active: string;
     @State() loading: boolean = false;
-    @State() carouselPosition: number = 0;
+    @State() carouselPosition: number = 2;
 
     timer;
+    thumbnailComponents;
 
     componentDidLoad(){
         if(!this.active){
@@ -32,49 +35,42 @@ export class VideoGalleryStacked {
                     this.videos = data.items;
                     if (this.shuffle)shuffleArray(this.videos);
                     this.active = this.videos[0].snippet.resourceId.videoId;
+                    console.log(this.videos[0])
                 });
         }
+    }
+
+    componentDidUpdate(){
+        let host  = this.host.shadowRoot;
+        this.thumbnailComponents = Array.from(host.querySelectorAll('gallery-thumbnail-stacked'));
     }
 
     @Listen('emitClick')
     changeActive(event: CustomEvent){
         this.loading = true;
         this.active = event.detail;
-        let host  = this.host.shadowRoot;
-        console.log('host')
-        console.log(host);
-        let thumbnailComponents = Array.from(host.querySelectorAll('gallery-thumbnail-stacked'));
-        
-        let selected = thumbnailComponents.find(comp => comp.emitid === '2Vv-BfVoq4g')
-        // console.log('thumbnial elements')
-        // console.log(thumbnailComponents);
-        console.log('selected')
-        console.log(selected)
-        let div = selected.shadowRoot.querySelector(`.vid_2Vv-BfVoq4g`);
-        console.log(div);
-        
-        div.scrollIntoView(false);
+        this.carouselPosition = this.getVideoIndex(event.detail)
 
         //console.log(this.host.shadowRoot.querySelector("." + event.detail));
         // this.host.shadowRoot.querySelector("." + event.detail).scrollIntoView();
     } 
     
-    calculateCarousel(direction: string){
-        let host  = this.host.shadowRoot;
-        let thumbnailComponents = Array.from(host.querySelectorAll('gallery-thumbnail-stacked'));
+    shiftCarousel(direction: string){
+        let newPosition = direction === 'L' ? +this.carouselPosition -  1 : +this.carouselPosition + 1;
+        let shiftToId = this.videos[newPosition].snippet.resourceId.videoId;
+        let selected = this.thumbnailComponents.find(comp => comp.emitid === shiftToId)
+        console.log('Next Thumbnail to Scroll to:')
         
-        if (direction = "L"){
-            if (this.carouselPosition > 0){
-                this.carouselPosition--;
-                this.scrollIntoView()
-            } else {
-                this.carouselPosition++;
-            }
-        }
+        
+        let div = selected.shadowRoot.querySelector(`.vid_${shiftToId}`);
+        console.log(div)
+        div.scrollIntoView({ behavior: 'smooth', block: "end", inline: "nearest" });
+        
+        this.carouselPosition =  newPosition;
     }
 
-    scrollIntoView(){
-        
+    getVideoIndex(id){
+        return this.videos.findIndex(vid => vid.snippet.resourceId.videoId === id)
     }
 
     createThumbnails(){
@@ -104,9 +100,23 @@ export class VideoGalleryStacked {
                             {this.videos? <video-embed embedid={this.active}></video-embed> : ''}
                         </div>
                     </div>
-                    <div class="thumbnails">
-                        {this.createThumbnails()}
+                    <div id="thumbnails-container">
+                        <div class="thumbnails">
+                            {this.createThumbnails()}
+                        </div>
+                        <div id="controls">
+                            <div role="button" onClick={() => this.shiftCarousel('L')}></div>
+                            <div role="button" onClick={() => this.shiftCarousel('R')}></div>
+                        </div>
                     </div>
+                    <flex-container alignx="space-between">
+                        <mobile-hide>
+                           {this.active && this.showcurrent ? <aside>-- {this.videos[this.getVideoIndex(this.active)].snippet.title}</aside> : ''} 
+                        </mobile-hide>
+                        
+                        {this.videos ? <aside>{this.getVideoIndex(this.active) + 1} / {this.videos.length}</aside> : ''}
+                    </flex-container>
+                    {/* <button onClick={() => this.shiftCarousel('R')}>Shift</button> */}
                 </div>
             </div>
         );
