@@ -11,6 +11,20 @@ export namespace Components {
     interface AddVarsityScores {
         "year": string;
     }
+    interface ArrowButton {
+        /**
+          * The callback function for the button
+         */
+        "callback": () => void;
+        /**
+          * The direction the arrow should point
+         */
+        "direction": string;
+        /**
+          * The direction the arrow should point
+         */
+        "purple": boolean;
+    }
     interface CampaignAim {
     }
     interface CampaignNews {
@@ -994,6 +1008,12 @@ declare global {
         prototype: HTMLAddVarsityScoresElement;
         new (): HTMLAddVarsityScoresElement;
     };
+    interface HTMLArrowButtonElement extends Components.ArrowButton, HTMLStencilElement {
+    }
+    var HTMLArrowButtonElement: {
+        prototype: HTMLArrowButtonElement;
+        new (): HTMLArrowButtonElement;
+    };
     interface HTMLCampaignAimElement extends Components.CampaignAim, HTMLStencilElement {
     }
     var HTMLCampaignAimElement: {
@@ -1488,6 +1508,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "add-varsity-scores": HTMLAddVarsityScoresElement;
+        "arrow-button": HTMLArrowButtonElement;
         "campaign-aim": HTMLCampaignAimElement;
         "campaign-news": HTMLCampaignNewsElement;
         "campaign-tabs": HTMLCampaignTabsElement;
@@ -1575,6 +1596,20 @@ declare global {
 declare namespace LocalJSX {
     interface AddVarsityScores {
         "year"?: string;
+    }
+    interface ArrowButton {
+        /**
+          * The callback function for the button
+         */
+        "callback"?: () => void;
+        /**
+          * The direction the arrow should point
+         */
+        "direction"?: string;
+        /**
+          * The direction the arrow should point
+         */
+        "purple"?: boolean;
     }
     interface CampaignAim {
     }
@@ -2562,6 +2597,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "add-varsity-scores": AddVarsityScores;
+        "arrow-button": ArrowButton;
         "campaign-aim": CampaignAim;
         "campaign-news": CampaignNews;
         "campaign-tabs": CampaignTabs;
@@ -2651,6 +2687,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
+            "arrow-button": LocalJSX.ArrowButton & JSXBase.HTMLAttributes<HTMLArrowButtonElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
             "campaign-tabs": LocalJSX.CampaignTabs & JSXBase.HTMLAttributes<HTMLCampaignTabsElement>;

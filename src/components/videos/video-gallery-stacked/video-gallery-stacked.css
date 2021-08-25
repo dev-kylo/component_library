@@ -58,23 +58,16 @@ aside:nth-child(2){
 
 #controls > div[role="button"] {
     position: absolute;
-    width: 0; 
-    height: 0; 
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent; 
-    background-color: red;
-    z-index: 1000;
+    z-index: 100;
     top: 50%;
     transform: translate(0, -50%);
 }
 
-#controls > div[role="button"]:nth-child(1){
+#controls > div:nth-child(1){
     left: 0;
-    border-right:60px solid blue; 
 }
-#controls > div[role="button"]:nth-child(2){
+#controls > div:nth-child(2){
     right: 0;    
-    border-left: 60px solid green;
 }
 
 

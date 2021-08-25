@@ -1,0 +1,61 @@
+@import '../../../global/globalstyles.css';
+
+
+button {
+    width: 50px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+button:focus-visible {
+    outline: 2px dashed var(--orange);
+}
+
+button:hover{
+    filter:brightness(1.2)
+}
+
+span {
+    border: solid #ffffffe0;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+}
+
+.teal {
+    background-color: var(--mid-teal);
+}
+
+.purple {
+    background-color: var(--purple);
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}

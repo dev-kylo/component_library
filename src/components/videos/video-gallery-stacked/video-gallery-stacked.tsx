@@ -55,7 +55,7 @@ export class VideoGalleryStacked {
         // this.host.shadowRoot.querySelector("." + event.detail).scrollIntoView();
     } 
     
-    shiftCarousel(direction: string){
+    shiftCarousel(direction: string): void{
         let newPosition = direction === 'L' ? +this.carouselPosition -  1 : +this.carouselPosition + 1;
         let shiftToId = this.videos[newPosition].snippet.resourceId.videoId;
         let selected = this.thumbnailComponents.find(comp => comp.emitid === shiftToId)
@@ -105,8 +105,10 @@ export class VideoGalleryStacked {
                             {this.createThumbnails()}
                         </div>
                         <div id="controls">
-                            <div role="button" onClick={() => this.shiftCarousel('L')}></div>
-                            <div role="button" onClick={() => this.shiftCarousel('R')}></div>
+                            <arrow-button purple direction="left" callback={() => this.shiftCarousel('L')}></arrow-button>
+                            <arrow-button purple direction="right" callback={() => this.shiftCarousel('R')}></arrow-button>
+                            {/* <div role="button" onClick={() => this.shiftCarousel('L')}></div>
+                            <div role="button" onClick={() => this.shiftCarousel('R')}></div> */}
                         </div>
                     </div>
                     <flex-container alignx="space-between">
