@@ -50,23 +50,24 @@ export class VideoGalleryStacked {
         this.loading = true;
         this.active = event.detail;
         this.carouselPosition = this.getVideoIndex(event.detail)
-
-        //console.log(this.host.shadowRoot.querySelector("." + event.detail));
-        // this.host.shadowRoot.querySelector("." + event.detail).scrollIntoView();
     } 
+
+    validPositionCheck(newPosition: number){
+        return newPosition === this.videos.length - 1 ? this.videos.length - 3
+        : newPosition < 0 ? 0
+        : newPosition;
+    }
     
     shiftCarousel(direction: string): void{
-        let newPosition = direction === 'L' ? +this.carouselPosition -  1 : +this.carouselPosition + 1;
+        let newPosition = direction === 'L' ? this.validPositionCheck(+this.carouselPosition -  1) : this.validPositionCheck(+this.carouselPosition + 1);
         let shiftToId = this.videos[newPosition].snippet.resourceId.videoId;
         let selected = this.thumbnailComponents.find(comp => comp.emitid === shiftToId)
-        console.log('Next Thumbnail to Scroll to:')
-        
         
         let div = selected.shadowRoot.querySelector(`.vid_${shiftToId}`);
-        console.log(div)
-        div.scrollIntoView({ behavior: 'smooth', block: "end", inline: "nearest" });
+        div.scrollIntoView({ behavior: 'smooth', block: "end"});
+
+        this.carouselPosition = newPosition;
         
-        this.carouselPosition =  newPosition;
     }
 
     getVideoIndex(id){
@@ -76,9 +77,8 @@ export class VideoGalleryStacked {
     createThumbnails(){
         if (this.videos){
            return this.videos.map(video => {
-               let active=false
-                if (video.snippet.resourceId.videoId === this.active) active=true
-                // console.log(video.snippet.thumbnails.medium.url)
+               let active = video.snippet.resourceId.videoId === this.active;
+                
                 return (
                     <gallery-thumbnail-stacked
                         videotitle={video.snippet.title}
@@ -107,8 +107,6 @@ export class VideoGalleryStacked {
                         <div id="controls">
                             <arrow-button purple direction="left" callback={() => this.shiftCarousel('L')}></arrow-button>
                             <arrow-button purple direction="right" callback={() => this.shiftCarousel('R')}></arrow-button>
-                            {/* <div role="button" onClick={() => this.shiftCarousel('L')}></div>
-                            <div role="button" onClick={() => this.shiftCarousel('R')}></div> */}
                         </div>
                     </div>
                     <flex-container alignx="space-between">
@@ -118,7 +116,7 @@ export class VideoGalleryStacked {
                         
                         {this.videos ? <aside>{this.getVideoIndex(this.active) + 1} / {this.videos.length}</aside> : ''}
                     </flex-container>
-                    {/* <button onClick={() => this.shiftCarousel('R')}>Shift</button> */}
+                    
                 </div>
             </div>
         );
