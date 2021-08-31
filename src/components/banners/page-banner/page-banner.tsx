@@ -83,7 +83,6 @@ export class PageBanner{
                         image={this.image}
                         mobile="90"
                         desktop="80"
-                        suppliedwidth="780"
                     ></lazy-image>
                     {shape}
                 </div>

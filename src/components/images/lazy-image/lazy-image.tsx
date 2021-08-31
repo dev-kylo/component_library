@@ -32,8 +32,10 @@ export class LazyImage {
     @Prop() desktop: string = "100";
     /** Set a minimum pixel width for the image rendered */
     @Prop() minwidth: string;
-    /** Set a minimum pixel width for the image rendered */
+    /** Recommended. Provide the exact width for the image supplied */
     @Prop() suppliedwidth: string;
+    /** Render image an a PNG with transparency */
+    @Prop() withtransparency: boolean;
 
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'youtube' | 'unknown';
     desktopBreakPoints:number[] = [1920, 1600, 1366];
@@ -73,8 +75,11 @@ export class LazyImage {
     }
 
     createTransformation(width:number): string {
-        let dimensions = !this.ratio || !this.suppliedwidth ? `w_${width}` : `w_${width},h_${Math.round(width/+this.ratio)}`
-        return `f_jpg,c_fill,${dimensions},fl_progressive:steep`; //progressive_jpeg
+        let dimensions = !this.ratio ? `w_${width}` : `w_${width},h_${Math.round(width/+this.ratio)}`
+        if (this.withtransparency) return `f_png,c_fill,${dimensions}`
+        else return `f_jpg,c_fill,${dimensions},fl_progressive:steep`; //progressive_jpeg
+        
+        //LEGACY TRANSFORMATION
         //return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }
 
@@ -123,3 +128,4 @@ export class LazyImage {
 
     }
 }
+

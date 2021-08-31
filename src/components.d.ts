@@ -547,9 +547,13 @@ export namespace Components {
          */
         "ratio": string;
         /**
-          * Set a minimum pixel width for the image rendered
+          * Recommended. Provide the exact width for the image supplied
          */
         "suppliedwidth": string;
+        /**
+          * Render image an a PNG with transparency
+         */
+        "withtransparency": boolean;
     }
     interface LoadingSpinner {
         /**
@@ -844,6 +848,10 @@ export namespace Components {
           * The image URL link
          */
         "link": string;
+        /**
+          * If the image is pixelated, you could set a minium width for the rendered image
+         */
+        "minwidth": string;
     }
     interface ProjectPage {
         /**
@@ -2136,9 +2144,13 @@ declare namespace LocalJSX {
          */
         "ratio"?: string;
         /**
-          * Set a minimum pixel width for the image rendered
+          * Recommended. Provide the exact width for the image supplied
          */
         "suppliedwidth"?: string;
+        /**
+          * Render image an a PNG with transparency
+         */
+        "withtransparency"?: boolean;
     }
     interface LoadingSpinner {
         /**
@@ -2436,6 +2448,10 @@ declare namespace LocalJSX {
           * The image URL link
          */
         "link"?: string;
+        /**
+          * If the image is pixelated, you could set a minium width for the rendered image
+         */
+        "minwidth"?: string;
     }
     interface ProjectPage {
         /**
