@@ -66,10 +66,10 @@ export class ElectionsCandidates {
             const uid =field.tabtitle;
 
             return ([
-                <tab-header name={uid} active={active} slot="tab-headers"> {field.tabtitle}</tab-header>,
-                <tab-content name={uid} active={active} slot="tab-content"> 
+                <tab-title name={uid} active={active}> {field.tabtitle}</tab-title>,
+                <tab-area name={uid} active={active}> 
                         {this.organiseInnerTabs(field)}
-                </tab-content>
+                </tab-area>
             ])
         })
     }
@@ -81,7 +81,7 @@ export class ElectionsCandidates {
             inner = (<candidate-display data={helpers.filterSinglePosts(field.posts[0], this.data)}></candidate-display>)
         }
         else {
-            inner = <inner-tabs-container> {this.createInnerTabs(field)}</inner-tabs-container>
+            inner = <kclsu-tabs variant='secondary'> {this.createInnerTabs(field)}</kclsu-tabs>
         }    
 
         return inner;
@@ -112,10 +112,10 @@ export class ElectionsCandidates {
             }
 
             return ([
-                <inner-tab-header active={title ==='All' || i===0} name={title} slot="tab-headers"> {tabtitle} </inner-tab-header>,
-                <inner-tab-content active={title ==='All' || i===0} name={title} slot="tab-content">     
+                <tab-title active={title ==='All' || i===0} name={title}> {tabtitle} </tab-title>,
+                <tab-area active={title ==='All' || i===0} name={title}>     
                         <candidate-display data={filterFunction()}></candidate-display>
-                </inner-tab-content>
+                </tab-area>
             ])
         })
     }
@@ -123,10 +123,10 @@ export class ElectionsCandidates {
     else {
         return item.groupings.map((group: mappedGroupingI, i) => {
             return ([
-            <inner-tab-header active={group.active} name={ group.tabtitle + i} slot="tab-headers"> {group.tabtitle} </inner-tab-header>,
-                <inner-tab-content active={group.active} name={group.tabtitle+ i} slot="tab-content">     
-                        <grouped-candidate-display data={helpers.filterPostGroupings(group, this.data, this.results)}></grouped-candidate-display>  
-                </inner-tab-content>
+            <tab-title active={group.active} name={ group.tabtitle + i}> {group.tabtitle} </tab-title>,
+            <tab-area active={group.active} name={group.tabtitle+ i}>     
+                    <grouped-candidate-display data={helpers.filterPostGroupings(group, this.data, this.results)}></grouped-candidate-display>  
+            </tab-area>
             ])
         })
 
@@ -139,11 +139,11 @@ export class ElectionsCandidates {
         if (!this.data) return <div style={{"height": "50vh", "position": "relative"}}><loading-spinner /></div>
 
         else return (
-            <tabs-container>
+            <kclsu-tabs>
 
                { this.createTabs()}
         
-            </tabs-container>
+            </kclsu-tabs>
         );
     }
 }

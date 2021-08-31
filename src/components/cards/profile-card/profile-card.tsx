@@ -29,6 +29,8 @@ export class ProfileCard {
   @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
   /** Applies to lazy loading of images. Remove lazy loading */
   @Prop() nolazy: boolean = false;
+  /** Specifiy which part of the image to focus on. Defaults to center */
+  @Prop() imagefocus: 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces' = 'center'
 
   @State() imageloading: boolean = true;
   @State() imageclasses:any = ['fit', 'hide']
@@ -85,6 +87,7 @@ export class ProfileCard {
     let primarybtn = this.createTextButton('primary');
     let secondarybtn = this.createTextButton('secondary');
 
+
     return (
       <div class="profile-card">
         <div class="image">
@@ -94,6 +97,8 @@ export class ProfileCard {
             image={this.image}
             mobile="80"
             desktop="12"
+            focusarea={this.imagefocus}
+            customtransform="g_face"
           ></lazy-image>
         </div>
         <div class="label">

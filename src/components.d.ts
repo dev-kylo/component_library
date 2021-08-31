@@ -49,10 +49,6 @@ export namespace Components {
     }
     interface CandidateDisplay {
         "data": any;
-        /**
-          * Lazy option in profile cards
-         */
-        "nolazy": boolean;
     }
     interface CandidateUpload {
         /**
@@ -664,6 +660,10 @@ export namespace Components {
           * The image URL
          */
         "image": string;
+        /**
+          * Specifiy which part of the image to focus on. Defaults to center
+         */
+        "imagefocus": 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces';
         /**
           * The URL link for the primary text link on the bottom left of the card
          */
@@ -1643,10 +1643,6 @@ declare namespace LocalJSX {
     }
     interface CandidateDisplay {
         "data"?: any;
-        /**
-          * Lazy option in profile cards
-         */
-        "nolazy"?: boolean;
     }
     interface CandidateUpload {
         /**
@@ -2263,6 +2259,10 @@ declare namespace LocalJSX {
           * The image URL
          */
         "image"?: string;
+        /**
+          * Specifiy which part of the image to focus on. Defaults to center
+         */
+        "imagefocus"?: 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces';
         /**
           * The URL link for the primary text link on the bottom left of the card
          */

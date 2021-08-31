@@ -23,6 +23,7 @@
     width:100%;
     position: relative;
     height: 250px;
+    background: lightgrey;
 }
 
 .fit {

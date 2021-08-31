@@ -20,8 +20,12 @@
 @keyframes slowextend {
     from {
         transform: scaleY(0.9);
+        opacity: 0;
     }
     to {
         transform: scaleY(1);
+        opacity: 1;
     }
   }
+
+  

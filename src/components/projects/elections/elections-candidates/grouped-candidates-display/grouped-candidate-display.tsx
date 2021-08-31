@@ -13,61 +13,55 @@ export class GroupedCandidates {
     
     @State() activePosition;
     @State() current;
+    @State() tabs;
 
     @Element() host: HTMLElement;
 
+    lookup = {};
 
-    createSubLinks(){
-        let positions = [];
-        let nodes:HTMLSpanElement[] = []
-        if (this.data){
-            for (let x = 0; x < this.data.length; x++){
-                let current = this.data[x];
-                let post = current.Post.Title || current.Post;
-                if (!positions.find(p => p.trim() === post.trim())){
-                let link = <li role="tab" id={post} data-candidates={current} class="academic_sub" aria-selected="false" onClick={ e => this.clickHandler(e)}>{post}</li>
-                    positions.push(post);
-                    nodes.push(link)
-                }
+
+    componentDidLoad(){
+        console.log(this.data)
+        for (let x = 0; x < this.data.length; x++){
+            let current = this.data[x];
+            let post = (current.Post.Title || current.Post).replace(/\s/g, "");
+            if (post in this.lookup){
+                this.lookup[post].push(current);
+            } else {
+                this.lookup[post] = [current];
             }
-            return nodes;
         }
+
+        this.createTabs();
+        
     }
 
 
-    clickHandler(e){
-        e.preventDefault();
-        this.current= '';
-        let collection:HTMLCollection = e.target.parentNode.children;
-        for(let x = 0; x < collection.length; x++){
-           collection[x].setAttribute('style', 'color:  #502669');
-           collection[x].setAttribute('aria-selected', 'false');
+    createTabs(){
+        let tabs:any = []
+        for (let key in this.lookup){
+            let candidates = this.lookup[key];
+            let post =  candidates[0].Post.Title || candidates[0].Post;
+            tabs.push(<tab-title name={key}>{ post }</tab-title>)
+            tabs.push(<tab-area name={key}>
+                <candidate-display data={candidates}></candidate-display>
+            </tab-area>); 
         }
-         e.target.style.color = '#e45b2c';
-         e.target.setAttribute('aria-selected', 'true');
-         this.current = e.target.textContent;
+            
+        this.tabs = tabs;
     }
-
+    
     
     render() {
-        let candidates = !this.current ? '' : <candidate-display
-                                                    nolazy 
-                                                    data={this.data.filter(candidate => {
-                                                        let title = candidate.Post.Title || candidate.Post;
-                                                        return title.trim() === this.current.trim()
-                                                    })}
-                                              ></candidate-display>;
-        return (
-            <div role="presentation">
-                <div class="positions" role="presentation">
-                    <ul class="submenu" role="tablist">
-                        {this.createSubLinks()}
-                    </ul>
-                </div>
-                <section role="tabpanel" aria-labelledby={this.current}>
-                    {candidates}
-                </section>
-            </div>
-        );
+
+
+        if (this.tabs){
+            return  (
+                <kclsu-tabs variant='tertiary'>
+                    {this.tabs}
+                </kclsu-tabs>
+            ) ;
+        }
+        else return ''
     }
 }

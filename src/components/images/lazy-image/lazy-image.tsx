@@ -76,9 +76,16 @@ export class LazyImage {
 
     createTransformation(width:number): string {
         let dimensions = !this.ratio ? `w_${width}` : `w_${width},h_${Math.round(width/+this.ratio)}`
-        if (this.withtransparency) return `f_png,c_fill,${dimensions}`
-        else return `f_jpg,c_fill,${dimensions},fl_progressive:steep`; //progressive_jpeg
+        let transforms;
+        if (this.withtransparency) transforms = `f_png,c_fill,${dimensions}`
+        else transforms = `f_jpg,c_fill,${dimensions},fl_progressive:steep`; //progressive_jpeg
         
+        if (this.customtransform){
+            transforms = transforms + ',' + this.customtransform
+        }
+
+        return transforms;
+
         //LEGACY TRANSFORMATION
         //return `c_lfill,f_auto,fl_any_format,w_${width}`;
     }

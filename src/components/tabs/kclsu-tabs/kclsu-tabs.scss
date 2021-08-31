@@ -13,8 +13,23 @@
         }
     }
 
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+        box-sizing: border-box;
+
+        @media (max-width: 780px){
+            padding: 10px
+        }
+
+
+    }
+
+
     &-secondary-titles, &-tertiary-titles  {
-        padding: 0;
+        padding: 0 2em;
         list-style: none;
         background-color: transparent;
         
@@ -24,20 +39,11 @@
             flex-wrap: wrap;
             align-items: center;
         }
+
     }
 
     @media (max-width: 780px){
         margin: 0.5em;
     }
 
-    ul {
-        @include flex-me(center, center);
-        margin: 0;
-        box-sizing: border-box;
-
-        @media (max-width: 780px){
-            padding: 10px
-        }
-
-    }
 }
