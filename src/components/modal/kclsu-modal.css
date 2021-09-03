@@ -27,6 +27,14 @@
     background-color: rgba(0, 0, 0, 0.5)
 }
 
+.Exit {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 50px;
+    height: auto;
+}
+
 @media (max-width: 800px) {
     .Modal {
         max-height: 70%;

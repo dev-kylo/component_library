@@ -9,7 +9,7 @@ import { Component, h, Prop, Listen, Element, Watch } from '@stencil/core';
 export class KclsuModal {
 
     /** Controls when the modal is open and visible or not */
-    @Prop() show:boolean = false;
+    @Prop({ mutable: true }) show:boolean = false;
     /** This will allow a user to click away and hide the modal when open */
     @Prop() autoexit:boolean = false;
     /** Set position to absolute or other. Defaults to fixed */
@@ -41,6 +41,7 @@ export class KclsuModal {
                 this.exitfn();
         } 
     }
+    
 
     @Watch('show') showHandler(newVal, __){
         if (!newVal){
@@ -69,6 +70,8 @@ export class KclsuModal {
 
     render() {
 
+        console.log('rendering new modal')
+
         const classes = ['Modal'];
         const style = {} as any;
         if (!this.custom) classes.push('Modal-Standard');
@@ -83,6 +86,9 @@ export class KclsuModal {
         return ([
             <modal-backdrop showbg={this.show}></modal-backdrop>,
             <dialog style={style} class={classes.join(' ')} open={this.show}>
+                <div class="Exit">
+                    {this.autoexit && <exit-button purple callback={() => this.exitHandler()}></exit-button>}
+                </div>
                 <slot></slot>
             </dialog>
         ]);

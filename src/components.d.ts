@@ -133,6 +133,16 @@ export namespace Components {
          */
         "limit": string;
     }
+    interface ExitButton {
+        /**
+          * The callback function for the button
+         */
+        "callback": () => void;
+        /**
+          * Change the colour of the exit button to purple
+         */
+        "purple": boolean;
+    }
     interface FlexContainer {
         /**
           * The same as the 'justify-content' flex property along the x axis
@@ -1100,6 +1110,12 @@ declare global {
         prototype: HTMLEventsListingElement;
         new (): HTMLEventsListingElement;
     };
+    interface HTMLExitButtonElement extends Components.ExitButton, HTMLStencilElement {
+    }
+    var HTMLExitButtonElement: {
+        prototype: HTMLExitButtonElement;
+        new (): HTMLExitButtonElement;
+    };
     interface HTMLFlexContainerElement extends Components.FlexContainer, HTMLStencilElement {
     }
     var HTMLFlexContainerElement: {
@@ -1530,6 +1546,7 @@ declare global {
         "elections-footer": HTMLElectionsFooterElement;
         "elections-tab": HTMLElectionsTabElement;
         "events-listing": HTMLEventsListingElement;
+        "exit-button": HTMLExitButtonElement;
         "flex-container": HTMLFlexContainerElement;
         "full-bio": HTMLFullBioElement;
         "fullwidth-beige-strip": HTMLFullwidthBeigeStripElement;
@@ -1726,6 +1743,16 @@ declare namespace LocalJSX {
           * The max number of events to display
          */
         "limit"?: string;
+    }
+    interface ExitButton {
+        /**
+          * The callback function for the button
+         */
+        "callback"?: () => void;
+        /**
+          * Change the colour of the exit button to purple
+         */
+        "purple"?: boolean;
     }
     interface FlexContainer {
         /**
@@ -2627,6 +2654,7 @@ declare namespace LocalJSX {
         "elections-footer": ElectionsFooter;
         "elections-tab": ElectionsTab;
         "events-listing": EventsListing;
+        "exit-button": ExitButton;
         "flex-container": FlexContainer;
         "full-bio": FullBio;
         "fullwidth-beige-strip": FullwidthBeigeStrip;
@@ -2717,6 +2745,7 @@ declare module "@stencil/core" {
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
             "events-listing": LocalJSX.EventsListing & JSXBase.HTMLAttributes<HTMLEventsListingElement>;
+            "exit-button": LocalJSX.ExitButton & JSXBase.HTMLAttributes<HTMLExitButtonElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;
             "full-bio": LocalJSX.FullBio & JSXBase.HTMLAttributes<HTMLFullBioElement>;
             "fullwidth-beige-strip": LocalJSX.FullwidthBeigeStrip & JSXBase.HTMLAttributes<HTMLFullwidthBeigeStripElement>;

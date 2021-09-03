@@ -1,0 +1,50 @@
+@import '../../../global/globalstyles.css';
+
+
+button {
+    width: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 20000;
+    background: transparent;
+    transition: border 1s ease-out;
+}
+
+button:focus-visible {
+    outline: 2px dashed var(--orange);
+}
+
+button:hover{
+    filter:brightness(1.2);
+    border: 1px solid var(--purple);
+}
+
+div{
+    height: 27px;
+    position: relative;
+    width: 3px;
+    transform: rotate(45deg);
+}
+div:after {
+    content: "";
+    height: 3px;
+    left: -12px;
+    position: absolute;
+    top: 12px;
+    width: 27px;
+  }
+
+  .white, .white:after {
+    background: white;
+  }
+
+  .purple, .purple:after {
+    background: var(--purple);
+  }

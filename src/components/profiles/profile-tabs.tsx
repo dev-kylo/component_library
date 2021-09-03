@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Listen } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 
 @Component({
@@ -59,9 +59,10 @@ export class ProfileTabs {
                        position={category}
                        emitid={profile.key}
                        image={profile.url} 
+                       primaryfn={() => this.openModal(profile.key)}
                        cta='learn more'
-                       secondcta = 'upcoming'
-                       secondlink = {profile.upcomingEvent}
+                       secondcta = {profile.upcomingEvent? 'upcoming' : ''}
+                       secondlink = {profile.upcomingEvent || ''}
                    />
        })
     }
@@ -71,20 +72,19 @@ export class ProfileTabs {
     }
 
 
-    @Listen('emitClick')
-    onEmittedClick(event:CustomEvent){
-        this.activebio = event.detail;
+    openModal(id){
+        console.log('setting modal to open');
+        this.activebio = id;
         this.modalopen = true;
     }
 
-    @Listen('exitModal') closeModal(){
+    closeHandler(){
         this.modalopen= false;
     }
 
-
     render() {
         return ([
-            <kclsu-modal show={this.modalopen}>
+            <kclsu-modal exitfn={this.closeHandler.bind(this)} autoexit show={this.modalopen}>
                 {this.modalopen? this.launchBio(): ''}
             </kclsu-modal>,
             <kclsu-tabs>
