@@ -33,13 +33,13 @@ export class ProfileTabs {
             let activeTab = ar[1] === this.activeid? true : false;
             let description = !ar[2]? '' : ar[2];
             return ([
-                <tab-header name={ar[1]} active={activeTab} slot="tab-headers"> {ar[0]}</tab-header>,
-                <tab-content name={ar[1]} active={activeTab} slot="tab-content"> 
+                <tab-title name={ar[1]} active={activeTab}> {ar[0]}</tab-title>,
+                <tab-area name={ar[1]} active={activeTab}> 
                     <p>{description}</p>
                     <profile-card-layout>
                         {this.profiles? this.mapToCards(this.profiles, ar[1], ar[0]) : ''}
                     </profile-card-layout>
-                </tab-content>
+                </tab-area>
             ])
         })
     }
@@ -87,9 +87,9 @@ export class ProfileTabs {
             <kclsu-modal show={this.modalopen}>
                 {this.modalopen? this.launchBio(): ''}
             </kclsu-modal>,
-            <tabs-container>
+            <kclsu-tabs>
                 {this.createTabs()}
-            </tabs-container>
+            </kclsu-tabs>
         ]);
     }
 }

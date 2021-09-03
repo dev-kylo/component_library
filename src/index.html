@@ -18,75 +18,7 @@
 
 <body>
 
-
-  <elections-candidates results electionid="164" >
-
-    <elections-tab
-      combineresults="true"
-      tabtitle="Student Officers"
-      posts="President (full-time, paid) | Vice President Education (Health) (full time, paid) | Vice President Activities & Development (full-time, paid) | Vice President Education (Arts & Sciences) (full time, paid) | Vice President Welfare & Community (full-time, paid) | Vice President Postgraduate (full-time, paid)"  
-      type="multiple" 
-      active
-      regex="\(full-time, paid\) | \(full time, paid\) | Vice-President | Vice President"
-      replace=" |  | VP | VP"
-    ></elections-tab>
-
-    <elections-tab 
-      tabtitle="NUS Delegates" 
-      posts="NUS National Conference Delegate" 
-      type="single"
-      regex=" (9 places)"
-      replace=" " 
-    ></elections-tab>
-
-    <elections-tab tabtitle="Academic" type="grouping" >
-
-      <group-tab
-        active
-        tabtitle="Bioscience Students' Association" 
-        searchterms="Bioscience"
-        regex="Bioscience Students' Association - "
-        replace=" "
-        exclude="Bioscience Students' Association - Education Director Bioscience Programmes (PSRB/Professionally Regulated) | Bioscience Students' Association - Vice-President Bioscience Programmes (PSRB/Professionally Regulated) | Bioscience Students' Association - Welfare Director Bioscience Programmes (PSRB/Professionally Regulated)"
-      ></group-tab>
-
-      <group-tab 
-        tabtitle="Dental Student Council" 
-        searchterms="Dental"
-        regex="Dental Student Council - "
-        replace=" "
-        exclude="Dental Student Council - Academic Director | Dental Student Council - IT and Publicity Officer | Dental Student Council - PAL Events Officer | Dental Student Council - Secretary | Dental Student Council - Vice Chair"
-      ></group-tab>
-
-      <group-tab 
-        tabtitle="KBS SA" 
-        searchterms="King's Business School"
-        regex="King's Business School Students' Association - "
-        replace=" "
-        exclude="King's Business School Students' Association - Head of Diversity & Inclusion"
-      ></group-tab>
-
-      <group-tab 
-        tabtitle="Law Council" 
-        searchterms="Law Council"
-        regex="Law Council - "
-        replace=" "
-        exclude="Law Council - Politics, Philosophy & Law 4th Year Representative | Law Council - Public Relations Officer"
-      ></group-tab>
-
-      <group-tab 
-        tabtitle="MSA" 
-        searchterms="MSA"
-        regex="MSA - "
-        replace=" "
-        exclude="MSA - Balls Officer | MSA - Diversity & Inclusion Officer | MSA - Halfway Ball Committee Chair | MSA - Societies Liaison Officer | MSA - Sponsorship Officer | MSA - Sports Liaison Officer | MSA - Treasurer"
-      ></group-tab>
-
-    </elections-tab>
-
-  </elections-candidates>
-
-
+  <div id="profiles"></div>
 
 
 
@@ -111,7 +43,14 @@
 
    <script>
 
-
+     document.addEventListener('DOMContentLoaded', () => {
+      let parent = document.getElementById('profiles');
+      profiles.innerHTML = `
+      <profile-tabs activeid="upcoming"
+                  database="https://bush-house-sessions.firebaseio.com/artists.json"
+                  headings='[["Coming Up", "upcoming"], ["Artists (Xhibit)", "xhibitArtists"], ["Creators (Xtend)", "specialActs"], ["Performers (Xpress)", "performers"]]'></profile-tabs> 
+      `
+     })
 
 
 

@@ -64,6 +64,8 @@ export class LazyImage {
             case 'kclsu' : 
                 case 'youtube' :
                     return `https://res.cloudinary.com/kclsu-media/image/fetch/${transforms}/${url}`
+            case 'firebase':
+                return `${url}`
             case 'cloudinary':
                 const existingTransforms = /upload\/[\w,]*\//;
                 if (existingTransforms.test(url)){
