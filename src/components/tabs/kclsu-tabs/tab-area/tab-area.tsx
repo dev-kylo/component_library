@@ -12,6 +12,7 @@ export class TabArea {
 
     @Prop() name: string;
     @Prop() active: boolean = false;
+    @Prop() pagemodal: boolean = false;
 
     @Element() element: HTMLElement;
     
@@ -21,9 +22,11 @@ export class TabArea {
     
     keysPressed: KeysPressed = {};
     hasKeyboardFocus: boolean = false;
+    modalEl;
     
     componentDidLoad(){
         this.element.slot = 'tab-content';
+        if (this.pagemodal) this.modalEl = document.querySelector('kclsu-modal')!;
     }
 
     @Watch('active') 
@@ -56,6 +59,8 @@ export class TabArea {
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent){
+        if (this.pagemodal && this.modalEl.show) return;
+
         this.keysPressed[ev.key] = true;
 
       if (this.keysPressed['Shift'] && ev.key === 'ArrowUp'){
@@ -68,6 +73,7 @@ export class TabArea {
 
     @Listen('keyup')
     handleUp(ev: KeyboardEvent){
+        if (this.pagemodal && this.modalEl.show) return;
         delete this.keysPressed[ev.key];
     }
     

@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Method, Element } from '@stencil/core';
 
 
 @Component({
@@ -12,15 +12,25 @@ export class ExitButton {
     /** Change the colour of the exit button to purple */
     @Prop() purple:boolean = false;
 
+    @Element() host: HTMLElement;
+
     clickHandler(e){
         e.preventDefault();
         this.callback();
+    }
+
+    @Method()
+    async addFocus(){
+        console.log('finding focus on btton')
+        let button = this.host.shadowRoot.querySelector('.exitIcon')! as HTMLButtonElement;
+        console.log(button)
+        Promise.resolve(button.focus());
     }
     
     render() {
 
         return (
-            <button onClick={this.callback}>
+            <button class="exitIcon" onClick={this.callback}>
                 <div class={`${this.purple? 'purple' : 'white'}`}></div>
             </button>
         );

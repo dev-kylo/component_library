@@ -85,7 +85,7 @@ export class ProfileTabs {
     render() {
         return ([
             <kclsu-modal exitfn={this.closeHandler.bind(this)} autoexit show={this.modalopen}>
-                {this.modalopen? this.launchBio(): ''}
+                { this.modalopen? this.launchBio(): '' }
             </kclsu-modal>,
             <kclsu-tabs>
                 {this.createTabs()}

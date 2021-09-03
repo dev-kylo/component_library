@@ -134,6 +134,7 @@ export namespace Components {
         "limit": string;
     }
     interface ExitButton {
+        "addFocus": () => Promise<void>;
         /**
           * The callback function for the button
          */
@@ -918,6 +919,7 @@ export namespace Components {
         "active": boolean;
         "findFocus": () => Promise<void>;
         "name": string;
+        "pagemodal": boolean;
     }
     interface TabContent {
         "active": boolean;
@@ -938,6 +940,7 @@ export namespace Components {
           * A unique name, matching the name of the tab area component
          */
         "name": string;
+        "pagemodal": boolean;
         "variant": Variants;
     }
     interface TabsContainer {
@@ -2535,6 +2538,7 @@ declare namespace LocalJSX {
         "active"?: boolean;
         "name"?: string;
         "onCloseArea"?: (event: CustomEvent<any>) => void;
+        "pagemodal"?: boolean;
     }
     interface TabContent {
         "active"?: boolean;
@@ -2558,6 +2562,7 @@ declare namespace LocalJSX {
         "name"?: string;
         "onSelectFocussableElement"?: (event: CustomEvent<any>) => void;
         "onSelectTabName"?: (event: CustomEvent<any>) => void;
+        "pagemodal"?: boolean;
         "variant"?: Variants;
     }
     interface TabsContainer {

@@ -17,10 +17,14 @@ export class KclsuTabs {
   @State() allTabsTitles: TabTitle;
   @State() allTabsAreas: TabArea;
   @Prop() variant : Variants = 'primary';
+ 
   
+  pagemodal: any;
   firstTab: string;
 
   componentDidLoad() {
+
+    this.pagemodal = document.querySelector('kclsu-modal');
 
     (async () => {
 
@@ -37,6 +41,10 @@ export class KclsuTabs {
         
         //Assign styling variant
         headersGroup[i].variant = this.variant;
+
+        //Inform Tab Titles and Tab Areas if there is a modal
+        headersGroup[i].pagemodal = !!this.pagemodal;
+        contentGroup[i].pagemodal = !!this.pagemodal;
 
         //Add to state
         headersObject[headersGroup[i].name] = headersGroup[i];
@@ -56,6 +64,7 @@ export class KclsuTabs {
 
   @Listen('selectFocussableElement')
   onSelectFocussableElement(evt: CustomEvent<string>){
+     if(this.pagemodal && this.pagemodal.show) return;
      this.selectGroup(evt.detail, true)
   }
 
@@ -75,6 +84,9 @@ export class KclsuTabs {
 
   @Listen('keydown')
   handleKeyDown(ev: KeyboardEvent){
+    const modal = document.querySelector('kclsu-modal');
+    if (modal && modal.show) return;
+
     if (ev.key === 'Escape'){ 
      this.unSelectAllTabs();
     }

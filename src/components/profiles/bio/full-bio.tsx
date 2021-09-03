@@ -6,7 +6,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
     tag: 'full-bio',
     styleUrl: 'full-bio.css',
-    shadow: true
+    shadow: false
 })
 export class FullBio {
 

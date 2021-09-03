@@ -10,11 +10,14 @@ import { Variants } from '../tabtypes';
 export class TabTitle {
 
     /** Is the tab title active, and corresponding tab area visible */
-    @Prop() active: boolean = false;
+    @Prop({mutable: true}) active: boolean = false;
     /** A unique name, matching the name of the tab area component */
     @Prop() name: string;
     //Do not set directly - handed down from parent. Set in the kclsu-tabs component
     @Prop() variant: Variants = 'primary';
+    @Prop() pagemodal: boolean = false;
+
+    modalEl: any;
     
 
     @Element() element: HTMLElement;
@@ -31,6 +34,7 @@ export class TabTitle {
             let link = this.element.querySelector('a');
             if(link) link.focus();
         };
+        if (this.pagemodal) this.modalEl = document.querySelector('kclsu-modal')!;
     }
 
 
@@ -42,6 +46,7 @@ export class TabTitle {
 
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent){
+      if (this.pagemodal && this.modalEl.show) return;
       if (ev.key === 'Enter'){
         this.selectFocussableElement.emit(this.name);
       }
