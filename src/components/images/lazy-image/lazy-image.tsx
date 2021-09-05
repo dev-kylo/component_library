@@ -68,6 +68,7 @@ export class LazyImage {
                 return `${url}`
             case 'cloudinary':
                 const existingTransforms = /upload\/[\w,]*\//;
+                url = url.replace('http://', 'https://');
                 if (existingTransforms.test(url)){
                     //IF THERE ARE CLOUDINARY TRANSFORMS PRESENT ALREADY AND WE WANT REMOVED
                     return url.replace(existingTransforms, `upload/${transforms}/`);
