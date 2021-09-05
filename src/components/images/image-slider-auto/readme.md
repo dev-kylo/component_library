@@ -21,19 +21,6 @@
 | `---------------------------------------- animation slide-in-right ----------------------------------------` |             |
 
 
-## Dependencies
-
-### Used by
-
- - [varsity-landing](../../projects/varsity/varsity-landing)
-
-### Graph
-```mermaid
-graph TD;
-  varsity-landing --> image-slider-auto
-  style image-slider-auto fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

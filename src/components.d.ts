@@ -282,18 +282,6 @@ export namespace Components {
          */
         "textcolour": string;
     }
-    interface InnerTabContent {
-        "active": boolean;
-        "name": string;
-    }
-    interface InnerTabHeader {
-        "active": boolean;
-        "index": number;
-        "name": string;
-    }
-    interface InnerTabsContainer {
-        "innertab": boolean;
-    }
     interface KclsuButton {
         "addFocus": () => Promise<void>;
         /**
@@ -1105,24 +1093,6 @@ declare global {
         prototype: HTMLImageTextElement;
         new (): HTMLImageTextElement;
     };
-    interface HTMLInnerTabContentElement extends Components.InnerTabContent, HTMLStencilElement {
-    }
-    var HTMLInnerTabContentElement: {
-        prototype: HTMLInnerTabContentElement;
-        new (): HTMLInnerTabContentElement;
-    };
-    interface HTMLInnerTabHeaderElement extends Components.InnerTabHeader, HTMLStencilElement {
-    }
-    var HTMLInnerTabHeaderElement: {
-        prototype: HTMLInnerTabHeaderElement;
-        new (): HTMLInnerTabHeaderElement;
-    };
-    interface HTMLInnerTabsContainerElement extends Components.InnerTabsContainer, HTMLStencilElement {
-    }
-    var HTMLInnerTabsContainerElement: {
-        prototype: HTMLInnerTabsContainerElement;
-        new (): HTMLInnerTabsContainerElement;
-    };
     interface HTMLKclsuButtonElement extends Components.KclsuButton, HTMLStencilElement {
     }
     var HTMLKclsuButtonElement: {
@@ -1379,9 +1349,6 @@ declare global {
         "grouped-candidate-display": HTMLGroupedCandidateDisplayElement;
         "image-slider-auto": HTMLImageSliderAutoElement;
         "image-text": HTMLImageTextElement;
-        "inner-tab-content": HTMLInnerTabContentElement;
-        "inner-tab-header": HTMLInnerTabHeaderElement;
-        "inner-tabs-container": HTMLInnerTabsContainerElement;
         "kclsu-button": HTMLKclsuButtonElement;
         "kclsu-countdown": HTMLKclsuCountdownElement;
         "kclsu-modal": HTMLKclsuModalElement;
@@ -1697,20 +1664,6 @@ declare namespace LocalJSX {
           * Choose the colour for the paragraph text
          */
         "textcolour"?: string;
-    }
-    interface InnerTabContent {
-        "active"?: boolean;
-        "name"?: string;
-    }
-    interface InnerTabHeader {
-        "active"?: boolean;
-        "index"?: number;
-        "name"?: string;
-        "onSelectInnerTab"?: (event: CustomEvent<any>) => void;
-        "onSelectInnerTabByIndex"?: (event: CustomEvent<any>) => void;
-    }
-    interface InnerTabsContainer {
-        "innertab"?: boolean;
     }
     interface KclsuButton {
         /**
@@ -2390,9 +2343,6 @@ declare namespace LocalJSX {
         "grouped-candidate-display": GroupedCandidateDisplay;
         "image-slider-auto": ImageSliderAuto;
         "image-text": ImageText;
-        "inner-tab-content": InnerTabContent;
-        "inner-tab-header": InnerTabHeader;
-        "inner-tabs-container": InnerTabsContainer;
         "kclsu-button": KclsuButton;
         "kclsu-countdown": KclsuCountdown;
         "kclsu-modal": KclsuModal;
@@ -2464,9 +2414,6 @@ declare module "@stencil/core" {
             "grouped-candidate-display": LocalJSX.GroupedCandidateDisplay & JSXBase.HTMLAttributes<HTMLGroupedCandidateDisplayElement>;
             "image-slider-auto": LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
             "image-text": LocalJSX.ImageText & JSXBase.HTMLAttributes<HTMLImageTextElement>;
-            "inner-tab-content": LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
-            "inner-tab-header": LocalJSX.InnerTabHeader & JSXBase.HTMLAttributes<HTMLInnerTabHeaderElement>;
-            "inner-tabs-container": LocalJSX.InnerTabsContainer & JSXBase.HTMLAttributes<HTMLInnerTabsContainerElement>;
             "kclsu-button": LocalJSX.KclsuButton & JSXBase.HTMLAttributes<HTMLKclsuButtonElement>;
             "kclsu-countdown": LocalJSX.KclsuCountdown & JSXBase.HTMLAttributes<HTMLKclsuCountdownElement>;
             "kclsu-modal": LocalJSX.KclsuModal & JSXBase.HTMLAttributes<HTMLKclsuModalElement>;

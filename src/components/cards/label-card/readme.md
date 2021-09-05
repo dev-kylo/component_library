@@ -28,8 +28,6 @@
 
  - [events-listing](../../containers/events-listing)
  - [project-card-events](../../projects/projectpage/project-card/project-card-events)
- - [varsity-landing](../../projects/varsity/varsity-landing)
- - [varsity-next-matches](../../projects/varsity/varsity-next-matches)
 
 ### Depends on
 
@@ -44,8 +42,6 @@ graph TD;
   kclsu-button --> flex-container
   events-listing --> label-card
   project-card-events --> label-card
-  varsity-landing --> label-card
-  varsity-next-matches --> label-card
   style label-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

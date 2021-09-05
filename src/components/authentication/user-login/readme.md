@@ -18,7 +18,6 @@
 
 ### Used by
 
- - [add-varsity-scores](../../projects/varsity/add-varsity-scores)
  - [candidate-upload](../../projects/elections/candidate_upload)
 
 ### Depends on
@@ -36,7 +35,6 @@ graph TD;
   kclsu-modal --> modal-backdrop
   kclsu-modal --> exit-button
   kclsu-button --> flex-container
-  add-varsity-scores --> user-login
   candidate-upload --> user-login
   style user-login fill:#f9f,stroke:#333,stroke-width:4px
 ```

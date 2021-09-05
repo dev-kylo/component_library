@@ -95,7 +95,7 @@ export class ProjectCardEvents {
                 <h3 style={{"padding" : "1em", "text-align": "center"}}>{this.heading}</h3>
                 <slot></slot>   
                 <flex-container alignx="space-around" aligny="center" wrap>
-                    {cards.length > 0 ? cards : noevents}
+                    {cards.length > 0 ? cards : ''}
                     {this.data && this.data.length === 0 ? noevents : ''}
                 </flex-container>
                 <kclsu-button center link={buttonUrl} margin="2em 1em" newtab> {buttonmsg} </kclsu-button>
