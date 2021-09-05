@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                    | Type     | Default     |
-| ----------- | ----------- | -------------------------------------------------------------- | -------- | ----------- |
-| `alt`       | `alt`       | The alt tage for the image                                     | `string` | `undefined` |
-| `focusarea` | `focusarea` | Choose an area of the image to focus: top, left, right, bottom | `string` | `'center'`  |
-| `link`      | `link`      | The image URL link                                             | `string` | `undefined` |
+| Property    | Attribute   | Description                                                                    | Type     | Default     |
+| ----------- | ----------- | ------------------------------------------------------------------------------ | -------- | ----------- |
+| `alt`       | `alt`       | The alt tage for the image                                                     | `string` | `undefined` |
+| `focusarea` | `focusarea` | Choose an area of the image to focus: top, left, right, bottom                 | `string` | `'center'`  |
+| `link`      | `link`      | The image URL link                                                             | `string` | `undefined` |
+| `minwidth`  | `minwidth`  | If the image is pixelated, you could set a minium width for the rendered image | `string` | `''`        |
 
 
 ## Dependencies

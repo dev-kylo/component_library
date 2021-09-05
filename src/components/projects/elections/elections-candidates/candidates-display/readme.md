@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                  | Type      | Default     |
-| -------- | --------- | ---------------------------- | --------- | ----------- |
-| `data`   | `data`    |                              | `any`     | `undefined` |
-| `nolazy` | `nolazy`  | Lazy option in profile cards | `boolean` | `false`     |
+| Property | Attribute | Description | Type  | Default     |
+| -------- | --------- | ----------- | ----- | ----------- |
+| `data`   | `data`    |             | `any` | `undefined` |
 
 
 ## Dependencies

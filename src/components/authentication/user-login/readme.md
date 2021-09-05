@@ -34,6 +34,7 @@ graph TD;
   user-login --> kclsu-button
   user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   kclsu-button --> flex-container
   add-varsity-scores --> user-login
   candidate-upload --> user-login

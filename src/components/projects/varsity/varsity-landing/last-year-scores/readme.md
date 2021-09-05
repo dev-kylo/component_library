@@ -22,6 +22,7 @@ graph TD;
   last-year-scores --> flex-container
   last-year-scores --> kclsu-modal
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   varsity-landing --> last-year-scores
   style last-year-scores fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -30,6 +30,7 @@ graph TD;
   user-login --> kclsu-button
   user-login --> loading-spinner
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   kclsu-button --> flex-container
   style add-varsity-scores fill:#f9f,stroke:#333,stroke-width:4px
 ```

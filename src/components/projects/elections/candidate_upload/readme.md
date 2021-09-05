@@ -37,6 +37,7 @@ graph TD;
   profile-card --> lazy-image
   profile-card --> flex-container
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   user-login --> kclsu-modal
   user-login --> kclsu-button
   user-login --> loading-spinner

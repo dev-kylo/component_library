@@ -30,6 +30,7 @@ graph TD;
   varsity-upcoming --> kclsu-modal
   varsity-upcoming --> varsity-next-matches
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   varsity-next-matches --> label-card
   label-card --> kclsu-button
   label-card --> lazy-image

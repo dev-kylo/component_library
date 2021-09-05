@@ -33,6 +33,7 @@ graph TD;
   profile-card --> lazy-image
   profile-card --> flex-container
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   style profile-card-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

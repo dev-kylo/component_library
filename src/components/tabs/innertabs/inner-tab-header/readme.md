@@ -22,19 +22,6 @@
 | `selectInnerTabByIndex` |             | `CustomEvent<any>` |
 
 
-## Dependencies
-
-### Used by
-
- - [elections-candidates](../../../projects/elections/elections-candidates)
-
-### Graph
-```mermaid
-graph TD;
-  elections-candidates --> inner-tab-header
-  style inner-tab-header fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

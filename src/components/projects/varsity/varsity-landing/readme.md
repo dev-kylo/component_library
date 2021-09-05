@@ -46,6 +46,7 @@ graph TD;
   varsity-upcoming --> kclsu-modal
   varsity-upcoming --> varsity-next-matches
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   varsity-next-matches --> label-card
   last-year-scores --> flex-container
   last-year-scores --> kclsu-modal

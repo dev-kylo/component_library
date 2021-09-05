@@ -29,6 +29,7 @@ graph TD;
   create-varsity-data --> flex-container
   create-varsity-data --> kclsu-modal
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   style create-varsity-data fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

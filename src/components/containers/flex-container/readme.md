@@ -41,6 +41,7 @@
  - [varsity-landing](../../projects/varsity/varsity-landing)
  - [varsity-total-score](../../projects/varsity/varsity-landing/varsity-total-score)
  - [varsity-weather](../../projects/varsity/varsity-landing/varsity-weather)
+ - [video-gallery-stacked](../../videos/video-gallery-stacked)
 
 ### Graph
 ```mermaid
@@ -64,6 +65,7 @@ graph TD;
   varsity-landing --> flex-container
   varsity-total-score --> flex-container
   varsity-weather --> flex-container
+  video-gallery-stacked --> flex-container
   style flex-container fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

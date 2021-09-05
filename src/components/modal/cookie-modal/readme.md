@@ -29,6 +29,7 @@ graph TD;
   cookie-modal --> flex-container
   cookie-modal --> kclsu-button
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   kclsu-button --> flex-container
   style cookie-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -20,12 +20,18 @@
 
 ### Depends on
 
+- [tab-title](../../../../tabs/kclsu-tabs/tab-title)
+- [tab-area](../../../../tabs/kclsu-tabs/tab-area)
 - [candidate-display](../candidates-display)
+- [kclsu-tabs](../../../../tabs/kclsu-tabs)
 
 ### Graph
 ```mermaid
 graph TD;
+  grouped-candidate-display --> tab-title
+  grouped-candidate-display --> tab-area
   grouped-candidate-display --> candidate-display
+  grouped-candidate-display --> kclsu-tabs
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
   profile-card --> lazy-image

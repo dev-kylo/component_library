@@ -21,30 +21,31 @@ Besides the database URL from where the data will bne fetched, the component nee
 
 ### Depends on
 
-- [tab-header](../tabs/primarytabs/tab-header)
-- [tab-content](../tabs/primarytabs/tab-content)
+- [tab-title](../tabs/kclsu-tabs/tab-title)
+- [tab-area](../tabs/kclsu-tabs/tab-area)
 - [profile-card-layout](../containers/profile-card-layout)
 - [profile-card](../cards/profile-card)
 - [full-bio](bio)
 - [kclsu-modal](../modal)
-- [tabs-container](../tabs/primarytabs)
+- [kclsu-tabs](../tabs/kclsu-tabs)
 
 ### Graph
 ```mermaid
 graph TD;
-  profile-tabs --> tab-header
-  profile-tabs --> tab-content
+  profile-tabs --> tab-title
+  profile-tabs --> tab-area
   profile-tabs --> profile-card-layout
   profile-tabs --> profile-card
   profile-tabs --> full-bio
   profile-tabs --> kclsu-modal
-  profile-tabs --> tabs-container
+  profile-tabs --> kclsu-tabs
   profile-card --> lazy-image
   profile-card --> flex-container
   full-bio --> kclsu-button
   full-bio --> flex-container
   kclsu-button --> flex-container
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   style profile-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

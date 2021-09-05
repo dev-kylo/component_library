@@ -35,6 +35,7 @@ graph TD;
   preset-controls --> flex-container
   preset-controls --> kclsu-button
   kclsu-modal --> modal-backdrop
+  kclsu-modal --> exit-button
   style cloudinary-app fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
