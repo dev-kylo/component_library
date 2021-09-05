@@ -1,6 +1,6 @@
 {
   "name": "kclsu-components",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "KCLSU UI component library built with Stencil Js web components",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
