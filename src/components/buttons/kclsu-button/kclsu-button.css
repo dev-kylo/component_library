@@ -19,17 +19,18 @@ button, a {
     -webkit-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
     -moz-box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
     box-shadow: 4px 3px 9px -2px rgba(0, 0, 0, .3);
+    transition-property: border, color, background-color;
     transition-duration: 1s;
     padding: 10px 30px;
 }
 
 
 button:focus-visible, a:focus-visible {
-    outline: 4px dashed darkorange;
+    outline: 2px dashed var(--purple);
 }
 
 a:focus {
-    outline: 4px dashed darkorange;
+    outline: 2px dashed var(--purple);
 }
 
 .purple {

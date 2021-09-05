@@ -84,26 +84,26 @@ export class CookieModal {
 
     render() {
         return (
-            <kclsu-modal custom="100vw, 65vh, white" show={this.visible}>
-            <div id="canvas">
-              <span>You have control over your data</span>
-              <flex-container alignx="space-around" wrap>
-                <div id="info">
-                    <span> Why do we use cookies</span>
-                    <slot name="info"></slot>
+            <kclsu-modal slotparents="#cookiecm" custom="100vw, 65vh, white" show={this.visible}>
+                <div id="canvas">
+                    <span>You have control over your data</span>
+                    <flex-container id="consentText" alignx="space-around" wrap>
+                        <div id="info">
+                            <span> Why do we use cookies</span>
+                            <slot name="info"></slot>
+                        </div>
+                        <div id="cookielist">
+                            <span> Manage your cookies</span>
+                            <slot name="cookiecheckboxes"></slot>
+                        </div>
+                    </flex-container>
+                    <div id="buttons">
+                        <flex-container alignx="center" wrap>
+                            <kclsu-button small clickfn={this.acceptHandler.bind(this)}> I Consent to these Cookies</kclsu-button>
+                            <kclsu-button small purple clickfn={this.rejectHandler.bind(this)}>  I Reject unneccesary cookies </kclsu-button>
+                        </flex-container>
+                    </div>
                 </div>
-                <div id="cookielist">
-                    <span> Manage your cookies</span>
-                    <slot name="cookiecheckboxes"></slot>
-                </div>
-              </flex-container>
-              <div id="buttons">
-                 <flex-container alignx="center" wrap>
-                    <kclsu-button small clickfn={this.acceptHandler.bind(this)}> I Consent to these Cookies</kclsu-button>
-                    <kclsu-button small purple clickfn={this.rejectHandler.bind(this)}>  I Reject unneccesary cookies </kclsu-button>
-                  </flex-container>
-               </div>
-            </div>
           </kclsu-modal>
         );
     }

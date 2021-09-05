@@ -1,6 +1,6 @@
 # campaign-tabs
 
-
+This component relies on the jquery tabs component in the global scope.
 
 <!-- Auto Generated Below -->
 

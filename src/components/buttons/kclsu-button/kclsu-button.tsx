@@ -59,8 +59,6 @@ export class KclsuButton {
     async addFocus(){
         let button = this.link ? this.host.shadowRoot.querySelector('a')
                                 : this.host.shadowRoot.querySelector('button');
-        console.log('adding focus here');
-        console.log(button)
         Promise.resolve(button.focus());
     }
 

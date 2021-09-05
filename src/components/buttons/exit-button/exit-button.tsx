@@ -21,9 +21,7 @@ export class ExitButton {
 
     @Method()
     async addFocus(){
-        console.log('finding focus on btton')
         let button = this.host.shadowRoot.querySelector('.exitIcon')! as HTMLButtonElement;
-        console.log(button)
         Promise.resolve(button.focus());
     }
     

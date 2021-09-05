@@ -55,6 +55,10 @@
 } 
 
 
+.titlelink span :focus-visible{
+    outline: 2px dashed var(--purple);
+}
+
 .position {
     font-family: 'open sans';
     color: var(--grey);

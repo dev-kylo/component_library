@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element, Event, EventEmitter, State, Method } from '@stencil/core';
+import { Component, Prop, h, Element, Event, EventEmitter, State, Method} from '@stencil/core';
 
 @Component({
   tag: 'profile-card',
@@ -47,9 +47,9 @@ export class ProfileCard {
 
   createNameButton(){
     if (this.link) 
-      return <a target="_blank" href={this.link}><span class="name">{this.name}</span></a>
+      return <a target="_blank" class="titlelink" href={this.link}><span class="name">{this.name}</span></a>
     
-    else return <a role="button" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a> 
+    else return <a role="button" class="titlelink" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a> 
   }
 
   createTextButton(type: 'primary' | 'secondary'){
@@ -79,6 +79,8 @@ export class ProfileCard {
     const firstLink = this.host.shadowRoot.querySelector('a');
     if (firstLink) firstLink.focus();
   }
+
+
   
   render() {
 

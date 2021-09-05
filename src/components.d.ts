@@ -408,13 +408,17 @@ export namespace Components {
          */
         "custom": string;
         /**
-          * Supply a custom function to be invoked when modal is opened
+          * Supply a callback function to be invoked when modal is opened
          */
         "enterfn": () => void;
         /**
-          * Supply a custom function to be invoked when modal is closed
+          * Supply a callback function to be invoked when modal is closed
          */
         "exitfn": () => void;
+        /**
+          * Provide a comma separated list of container web components inside the modal - for trapping focus
+         */
+        "innercmps": string;
         /**
           * Set position to absolute or other. Defaults to fixed
          */
@@ -423,6 +427,10 @@ export namespace Components {
           * Controls when the modal is open and visible or not
          */
         "show": boolean;
+        /**
+          * Provide a comma separated list of element selectors which contain slotted content
+         */
+        "slotparents": string;
     }
     interface KclsuSearch {
         /**
@@ -2025,13 +2033,17 @@ declare namespace LocalJSX {
          */
         "custom"?: string;
         /**
-          * Supply a custom function to be invoked when modal is opened
+          * Supply a callback function to be invoked when modal is opened
          */
         "enterfn"?: () => void;
         /**
-          * Supply a custom function to be invoked when modal is closed
+          * Supply a callback function to be invoked when modal is closed
          */
         "exitfn"?: () => void;
+        /**
+          * Provide a comma separated list of container web components inside the modal - for trapping focus
+         */
+        "innercmps"?: string;
         /**
           * Set position to absolute or other. Defaults to fixed
          */
@@ -2040,6 +2052,10 @@ declare namespace LocalJSX {
           * Controls when the modal is open and visible or not
          */
         "show"?: boolean;
+        /**
+          * Provide a comma separated list of element selectors which contain slotted content
+         */
+        "slotparents"?: string;
     }
     interface KclsuSearch {
         /**

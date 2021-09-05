@@ -1,5 +1,5 @@
 import { Component, h, Prop, Listen, Element, Watch} from '@stencil/core';
-
+import { createArrayFromString } from '../../utils/utils';
 
 @Component({
     tag: 'kclsu-modal',
@@ -16,9 +16,13 @@ export class KclsuModal {
     @Prop() position:string = 'fixed';
     /** Set custom width, height and background colour */
     @Prop() custom:string;
-    /** Supply a custom function to be invoked when modal is closed */
+    /** Provide a comma separated list of container web components inside the modal - for trapping focus */
+    @Prop() innercmps: string;
+    /** Provide a comma separated list of element selectors which contain slotted content */
+    @Prop() slotparents: string;
+    /** Supply a callback function to be invoked when modal is closed */
     @Prop() exitfn: () => void;
-    /** Supply a custom function to be invoked when modal is opened */
+    /** Supply a callback function to be invoked when modal is opened */
     @Prop() enterfn: () => void;
     @Element() host: HTMLElement;
 
@@ -33,48 +37,28 @@ export class KclsuModal {
     componentDidLoad(){
         if (this.enterfn) this.enterfn();
         this.animate(this.styles);
-
-        this.focusables = this.host.shadowRoot.querySelectorAll(
-            'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
-        )as any;
+        this.findFocusableElements();
 
         document.addEventListener('keydown', (e) => {
 
-
             if (this.show && e.key === 'Tab'){
                 e.preventDefault();
-                let focusables = Array.from(this.host.querySelectorAll(
-                    'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
-                )) as any;
-                focusables.unshift(this.host.shadowRoot.querySelector('exit-button'));
-                console.log(focusables);
+                // if(this.focusables.length <=1) this.findFocusableElements();
+                let focusables = this.focusables;
          
                 let indexToFocus = this.currentFocusIndex;
                 indexToFocus = indexToFocus === focusables.length - 1 ? 0 : indexToFocus + 1;
-                console.log(indexToFocus)
+                
                 this.findFocus(focusables[indexToFocus]);
                 this.currentFocusIndex = indexToFocus;
             }
     
-
-            // if(this.show){
-            //     console.log('keydown and finding')
-            //     this.findFocus(this.focusables[0])
-
-            //     if (e.shiftKey){
-            //         indexToFocus = indexToFocus === 0 ? this.focusables.length - 1 : indexToFocus - 1;
-            //     } else {
-            //         indexToFocus = indexToFocus === this.focusables.length - 1 ? 0 : indexToFocus + 1;
-            //     }
-            //     console.log(this.focusables.length)
-            //     console.log('Index to focus:' + indexToFocus)
-            //     this.findFocus(this.focusables[indexToFocus]);
-            //     this.currentFocusIndex = indexToFocus;
-            // }
-
-          
-
+        
         });
+    }
+
+    componentDidUpdate(){
+        if(this.focusables.length <=1) this.findFocusableElements();
     }
 
 
@@ -105,6 +89,42 @@ export class KclsuModal {
         } 
     }
 
+    findFocusableElements(){
+        let ar = Array.from(this.host.querySelectorAll(
+            'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+        )) as any;
+        let slotFocusables = [];
+        let innerCmpFocusables = [];
+        if (this.slotparents){
+            let cmps = createArrayFromString(this.slotparents, ',');
+            cmps.forEach(selector => {
+                let el: HTMLElement = document.querySelector(selector);
+                if(el){
+                    slotFocusables = Array.from(el.querySelectorAll(
+                        'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+                    )) as any;
+                }
+            })
+        }
+        if (this.innercmps){
+            let cmps = createArrayFromString(this.innercmps, ',');
+            cmps.forEach(selector => {
+                let el: HTMLElement = this.host.querySelector(selector);
+                if(el){
+                    innerCmpFocusables = Array.from(el.querySelectorAll(
+                        'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+                    )) as any;
+                }
+            })
+        }
+
+        if(this.autoexit) ar.unshift(this.host.shadowRoot.querySelector('exit-button'));
+        ar = ar.concat(innerCmpFocusables).concat(slotFocusables);   
+        this.focusables = ar;
+        console.log(ar)
+        return ar;   
+    }
+
     
 
     @Watch('show') showHandler(newVal, __){
@@ -113,10 +133,7 @@ export class KclsuModal {
         } else {
             this.currentFocusIndex = 0;
       
-            this.focusables = Array.from(this.host.querySelectorAll(
-                'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
-            )) as any;
-            this.focusables.unshift(this.host.shadowRoot.querySelector('exit-button'));
+            this.findFocusableElements();
             
             if ((this.enterfn)) this.enterfn()
         }
@@ -141,8 +158,6 @@ export class KclsuModal {
 
 
     render() {
-
-        console.log('rendering new modal')
 
         const classes = ['Modal'];
         const style = {} as any;

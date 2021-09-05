@@ -61,18 +61,15 @@ p a {
     text-decoration-style: dotted
 }
 
+
+
 p a:focus,
 p a:hover {
     color: #1ba39c;
     text-decoration: none
 }
 
-/* p {
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 32px;
-  color: #444;
-} */
+
 
 em {
     background: #cce9e6;

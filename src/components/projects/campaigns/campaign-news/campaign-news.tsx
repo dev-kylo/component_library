@@ -12,12 +12,15 @@ export class CampaignNews {
   @State() data;
 
   componentDidLoad() {
-    let url = `https://kclsu-heroku.herokuapp.com/newslist/${this.newsid}`
-    fetch(url)
-        .then(res => res.json())
-        .then(newsData => {
-            this.data = newsData;
-        })
+    if (this.newsid){
+      let url = `https://kclsu-heroku.herokuapp.com/newslist/${this.newsid}`
+      fetch(url)
+          .then(res => res.json())
+          .then(newsData => {
+              this.data = newsData;
+          })
+          .catch(er => console.log(er))
+    }
   }
 
   render() {

@@ -18,7 +18,7 @@ button {
 }
 
 button:focus-visible {
-    outline: 2px dashed var(--orange);
+    outline: 2px dashed var(--purple);
 }
 
 button:hover{

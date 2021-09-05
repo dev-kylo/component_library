@@ -47,7 +47,7 @@ export class TabTitle {
     @Listen('keydown')
     handleKeyDown(ev: KeyboardEvent){
       if (this.pagemodal && this.modalEl.show) return;
-      if (ev.key === 'Enter'){
+      if (ev.key === 'Enter'){  
         this.selectFocussableElement.emit(this.name);
       }
     }
