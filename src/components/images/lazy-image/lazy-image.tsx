@@ -38,7 +38,7 @@ export class LazyImage {
     @Prop() withtransparency: boolean;
 
     urlOrigin: 'kclsu' | 'cloudinary' | 'firebase' | 'youtube' | 'unknown';
-    desktopBreakPoints:number[] = [1920, 1600, 1366];
+    desktopBreakPoints:number[] = [1920, 1600, 1366, 1250, 1100];
     mobileBreakPoints:number[] = [1024, 768, 640];
 
     @Element() el: HTMLElement;
@@ -99,8 +99,8 @@ export class LazyImage {
 
     createSrcSet(){
         return this.desktopBreakPoints
-            .map(width => this.createSrc(width * +this.desktop / 100))
-            .concat(this.mobileBreakPoints.map(width => this.createSrc(width * +this.mobile / 100)))
+            .map(width => this.createSrc(Math.floor(width * +this.desktop / 100)))
+            .concat(this.mobileBreakPoints.map(width => this.createSrc(Math.floor(width * +this.mobile / 100))))
             .join(' ')
     }
 

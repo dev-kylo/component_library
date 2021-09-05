@@ -26,7 +26,7 @@ export class ProfileCard {
   /** A call back function to be supplied for the second (right hand side) call to action*/
   @Prop() secondaryfn: () => void;
   /** The image URL */
-  @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg';
+  @Prop() image: string;
   /** Applies to lazy loading of images. Remove lazy loading */
   @Prop() nolazy: boolean = false;
   /** Specifiy which part of the image to focus on. Defaults to center */
@@ -96,11 +96,12 @@ export class ProfileCard {
           <lazy-image 
             nolazy={this.nolazy} 
             animatein 
-            image={this.image}
-            mobile="80"
-            desktop="12"
+            image={this.image || 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'}
+            mobile="90"
+            desktop="20"
             focusarea={this.imagefocus}
             customtransform="g_face"
+            minwidth="300"
           ></lazy-image>
         </div>
         <div class="label">

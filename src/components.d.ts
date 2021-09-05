@@ -8,9 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { cookieConfig } from "./components/modal/cookie-modal/types";
 import { Variants } from "./components/tabs/kclsu-tabs/tabtypes";
 export namespace Components {
-    interface AddVarsityScores {
-        "year": string;
-    }
     interface ArrowButton {
         /**
           * The callback function for the button
@@ -74,13 +71,6 @@ export namespace Components {
         "config": cookieConfig;
         "daysvalid": number;
         "devmode": boolean;
-    }
-    interface CreateVarsityData {
-        "allowcreate": boolean;
-        "allowupdate": boolean;
-        "msltag": string;
-        "test": boolean;
-        "year": string;
     }
     interface DesktopHide {
         /**
@@ -229,11 +219,6 @@ export namespace Components {
     }
     interface GroupedCandidateDisplay {
         "data": any;
-    }
-    interface ImageFitContainer {
-        "alt": string;
-        "classes": string;
-        "src": string;
     }
     interface ImageSliderAuto {
         "classes": string;
@@ -514,8 +499,6 @@ export namespace Components {
          */
         "text": string;
     }
-    interface LastYearScores {
-    }
     interface LazyImage {
         /**
           * The alt tag of the image
@@ -662,9 +645,6 @@ export namespace Components {
     }
     interface PresetControls {
     }
-    interface PrimaryButton {
-        "to": string;
-    }
     interface ProfileCard {
         "addFocus": () => Promise<void>;
         /**
@@ -717,36 +697,6 @@ export namespace Components {
         "secondlink": string;
     }
     interface ProfileCardLayout {
-    }
-    interface ProfileCardModal {
-        /**
-          * The text for the primary text link bottom left
-         */
-        "cta": string;
-        /**
-          * The image URL
-         */
-        "image": string;
-        /**
-          * The URL link for the primary text link on the bottom left of the card
-         */
-        "link": string;
-        /**
-          * The title for the card - usually a full name
-         */
-        "name": string;
-        /**
-          * A sub heading - usually a position or field title
-         */
-        "position": string;
-        /**
-          * The text for the secondary text link bottom right
-         */
-        "secondcta": string;
-        /**
-          * A second URL link for the bottom right of the card
-         */
-        "secondlink": string;
     }
     interface ProfileLogoCard {
         /**
@@ -896,12 +846,6 @@ export namespace Components {
          */
         "slotr": string;
     }
-    interface QuickLink {
-        "to": string;
-    }
-    interface QuickLinks {
-        "name": string;
-    }
     interface ScrollObserver {
         /**
           * Select the animation name for the child component on intersection. Choose from list of supplied animations
@@ -929,15 +873,6 @@ export namespace Components {
         "name": string;
         "pagemodal": boolean;
     }
-    interface TabContent {
-        "active": boolean;
-        "name": string;
-    }
-    interface TabHeader {
-        "active": boolean;
-        "index": string;
-        "name": string;
-    }
     interface TabTitle {
         /**
           * Is the tab title active, and corresponding tab area visible
@@ -950,9 +885,6 @@ export namespace Components {
         "name": string;
         "pagemodal": boolean;
         "variant": Variants;
-    }
-    interface TabsContainer {
-        "innertab": boolean;
     }
     interface TextCard {
         /**
@@ -978,26 +910,6 @@ export namespace Components {
          */
         "database": string;
         "unsignedauth": boolean;
-    }
-    interface VarsityLanding {
-        "currentDate": { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
-        "year": string;
-    }
-    interface VarsityNextMatches {
-        "data": any;
-    }
-    interface VarsityRace {
-        "data": any;
-        "target": number;
-    }
-    interface VarsityTotalScore {
-        "scores": any;
-    }
-    interface VarsityUpcoming {
-        "data": any;
-        "showall": boolean;
-    }
-    interface VarsityWeather {
     }
     interface VideoEmbed {
         /**
@@ -1031,12 +943,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAddVarsityScoresElement extends Components.AddVarsityScores, HTMLStencilElement {
-    }
-    var HTMLAddVarsityScoresElement: {
-        prototype: HTMLAddVarsityScoresElement;
-        new (): HTMLAddVarsityScoresElement;
-    };
     interface HTMLArrowButtonElement extends Components.ArrowButton, HTMLStencilElement {
     }
     var HTMLArrowButtonElement: {
@@ -1084,12 +990,6 @@ declare global {
     var HTMLCookieModalElement: {
         prototype: HTMLCookieModalElement;
         new (): HTMLCookieModalElement;
-    };
-    interface HTMLCreateVarsityDataElement extends Components.CreateVarsityData, HTMLStencilElement {
-    }
-    var HTMLCreateVarsityDataElement: {
-        prototype: HTMLCreateVarsityDataElement;
-        new (): HTMLCreateVarsityDataElement;
     };
     interface HTMLDesktopHideElement extends Components.DesktopHide, HTMLStencilElement {
     }
@@ -1193,12 +1093,6 @@ declare global {
         prototype: HTMLGroupedCandidateDisplayElement;
         new (): HTMLGroupedCandidateDisplayElement;
     };
-    interface HTMLImageFitContainerElement extends Components.ImageFitContainer, HTMLStencilElement {
-    }
-    var HTMLImageFitContainerElement: {
-        prototype: HTMLImageFitContainerElement;
-        new (): HTMLImageFitContainerElement;
-    };
     interface HTMLImageSliderAutoElement extends Components.ImageSliderAuto, HTMLStencilElement {
     }
     var HTMLImageSliderAutoElement: {
@@ -1271,12 +1165,6 @@ declare global {
         prototype: HTMLLabelCardElement;
         new (): HTMLLabelCardElement;
     };
-    interface HTMLLastYearScoresElement extends Components.LastYearScores, HTMLStencilElement {
-    }
-    var HTMLLastYearScoresElement: {
-        prototype: HTMLLastYearScoresElement;
-        new (): HTMLLastYearScoresElement;
-    };
     interface HTMLLazyImageElement extends Components.LazyImage, HTMLStencilElement {
     }
     var HTMLLazyImageElement: {
@@ -1337,12 +1225,6 @@ declare global {
         prototype: HTMLPresetControlsElement;
         new (): HTMLPresetControlsElement;
     };
-    interface HTMLPrimaryButtonElement extends Components.PrimaryButton, HTMLStencilElement {
-    }
-    var HTMLPrimaryButtonElement: {
-        prototype: HTMLPrimaryButtonElement;
-        new (): HTMLPrimaryButtonElement;
-    };
     interface HTMLProfileCardElement extends Components.ProfileCard, HTMLStencilElement {
     }
     var HTMLProfileCardElement: {
@@ -1354,12 +1236,6 @@ declare global {
     var HTMLProfileCardLayoutElement: {
         prototype: HTMLProfileCardLayoutElement;
         new (): HTMLProfileCardLayoutElement;
-    };
-    interface HTMLProfileCardModalElement extends Components.ProfileCardModal, HTMLStencilElement {
-    }
-    var HTMLProfileCardModalElement: {
-        prototype: HTMLProfileCardModalElement;
-        new (): HTMLProfileCardModalElement;
     };
     interface HTMLProfileLogoCardElement extends Components.ProfileLogoCard, HTMLStencilElement {
     }
@@ -1409,18 +1285,6 @@ declare global {
         prototype: HTMLProjectSocialsElement;
         new (): HTMLProjectSocialsElement;
     };
-    interface HTMLQuickLinkElement extends Components.QuickLink, HTMLStencilElement {
-    }
-    var HTMLQuickLinkElement: {
-        prototype: HTMLQuickLinkElement;
-        new (): HTMLQuickLinkElement;
-    };
-    interface HTMLQuickLinksElement extends Components.QuickLinks, HTMLStencilElement {
-    }
-    var HTMLQuickLinksElement: {
-        prototype: HTMLQuickLinksElement;
-        new (): HTMLQuickLinksElement;
-    };
     interface HTMLScrollObserverElement extends Components.ScrollObserver, HTMLStencilElement {
     }
     var HTMLScrollObserverElement: {
@@ -1451,29 +1315,11 @@ declare global {
         prototype: HTMLTabAreaElement;
         new (): HTMLTabAreaElement;
     };
-    interface HTMLTabContentElement extends Components.TabContent, HTMLStencilElement {
-    }
-    var HTMLTabContentElement: {
-        prototype: HTMLTabContentElement;
-        new (): HTMLTabContentElement;
-    };
-    interface HTMLTabHeaderElement extends Components.TabHeader, HTMLStencilElement {
-    }
-    var HTMLTabHeaderElement: {
-        prototype: HTMLTabHeaderElement;
-        new (): HTMLTabHeaderElement;
-    };
     interface HTMLTabTitleElement extends Components.TabTitle, HTMLStencilElement {
     }
     var HTMLTabTitleElement: {
         prototype: HTMLTabTitleElement;
         new (): HTMLTabTitleElement;
-    };
-    interface HTMLTabsContainerElement extends Components.TabsContainer, HTMLStencilElement {
-    }
-    var HTMLTabsContainerElement: {
-        prototype: HTMLTabsContainerElement;
-        new (): HTMLTabsContainerElement;
     };
     interface HTMLTextCardElement extends Components.TextCard, HTMLStencilElement {
     }
@@ -1486,42 +1332,6 @@ declare global {
     var HTMLUserLoginElement: {
         prototype: HTMLUserLoginElement;
         new (): HTMLUserLoginElement;
-    };
-    interface HTMLVarsityLandingElement extends Components.VarsityLanding, HTMLStencilElement {
-    }
-    var HTMLVarsityLandingElement: {
-        prototype: HTMLVarsityLandingElement;
-        new (): HTMLVarsityLandingElement;
-    };
-    interface HTMLVarsityNextMatchesElement extends Components.VarsityNextMatches, HTMLStencilElement {
-    }
-    var HTMLVarsityNextMatchesElement: {
-        prototype: HTMLVarsityNextMatchesElement;
-        new (): HTMLVarsityNextMatchesElement;
-    };
-    interface HTMLVarsityRaceElement extends Components.VarsityRace, HTMLStencilElement {
-    }
-    var HTMLVarsityRaceElement: {
-        prototype: HTMLVarsityRaceElement;
-        new (): HTMLVarsityRaceElement;
-    };
-    interface HTMLVarsityTotalScoreElement extends Components.VarsityTotalScore, HTMLStencilElement {
-    }
-    var HTMLVarsityTotalScoreElement: {
-        prototype: HTMLVarsityTotalScoreElement;
-        new (): HTMLVarsityTotalScoreElement;
-    };
-    interface HTMLVarsityUpcomingElement extends Components.VarsityUpcoming, HTMLStencilElement {
-    }
-    var HTMLVarsityUpcomingElement: {
-        prototype: HTMLVarsityUpcomingElement;
-        new (): HTMLVarsityUpcomingElement;
-    };
-    interface HTMLVarsityWeatherElement extends Components.VarsityWeather, HTMLStencilElement {
-    }
-    var HTMLVarsityWeatherElement: {
-        prototype: HTMLVarsityWeatherElement;
-        new (): HTMLVarsityWeatherElement;
     };
     interface HTMLVideoEmbedElement extends Components.VideoEmbed, HTMLStencilElement {
     }
@@ -1542,7 +1352,6 @@ declare global {
         new (): HTMLVideoGalleryStackedElement;
     };
     interface HTMLElementTagNameMap {
-        "add-varsity-scores": HTMLAddVarsityScoresElement;
         "arrow-button": HTMLArrowButtonElement;
         "campaign-aim": HTMLCampaignAimElement;
         "campaign-news": HTMLCampaignNewsElement;
@@ -1551,7 +1360,6 @@ declare global {
         "candidate-upload": HTMLCandidateUploadElement;
         "cloudinary-app": HTMLCloudinaryAppElement;
         "cookie-modal": HTMLCookieModalElement;
-        "create-varsity-data": HTMLCreateVarsityDataElement;
         "desktop-hide": HTMLDesktopHideElement;
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
@@ -1569,7 +1377,6 @@ declare global {
         "grid-landing-item": HTMLGridLandingItemElement;
         "group-tab": HTMLGroupTabElement;
         "grouped-candidate-display": HTMLGroupedCandidateDisplayElement;
-        "image-fit-container": HTMLImageFitContainerElement;
         "image-slider-auto": HTMLImageSliderAutoElement;
         "image-text": HTMLImageTextElement;
         "inner-tab-content": HTMLInnerTabContentElement;
@@ -1582,7 +1389,6 @@ declare global {
         "kclsu-tabs": HTMLKclsuTabsElement;
         "kclsu-tabs-container": HTMLKclsuTabsContainerElement;
         "label-card": HTMLLabelCardElement;
-        "last-year-scores": HTMLLastYearScoresElement;
         "lazy-image": HTMLLazyImageElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
         "mobile-hide": HTMLMobileHideElement;
@@ -1593,10 +1399,8 @@ declare global {
         "page-footer": HTMLPageFooterElement;
         "preset-card": HTMLPresetCardElement;
         "preset-controls": HTMLPresetControlsElement;
-        "primary-button": HTMLPrimaryButtonElement;
         "profile-card": HTMLProfileCardElement;
         "profile-card-layout": HTMLProfileCardLayoutElement;
-        "profile-card-modal": HTMLProfileCardModalElement;
         "profile-logo-card": HTMLProfileLogoCardElement;
         "profile-tabs": HTMLProfileTabsElement;
         "project-card": HTMLProjectCardElement;
@@ -1605,34 +1409,20 @@ declare global {
         "project-image": HTMLProjectImageElement;
         "project-page": HTMLProjectPageElement;
         "project-socials": HTMLProjectSocialsElement;
-        "quick-link": HTMLQuickLinkElement;
-        "quick-links": HTMLQuickLinksElement;
         "scroll-observer": HTMLScrollObserverElement;
         "show-support": HTMLShowSupportElement;
         "support-option": HTMLSupportOptionElement;
         "support-progress": HTMLSupportProgressElement;
         "tab-area": HTMLTabAreaElement;
-        "tab-content": HTMLTabContentElement;
-        "tab-header": HTMLTabHeaderElement;
         "tab-title": HTMLTabTitleElement;
-        "tabs-container": HTMLTabsContainerElement;
         "text-card": HTMLTextCardElement;
         "user-login": HTMLUserLoginElement;
-        "varsity-landing": HTMLVarsityLandingElement;
-        "varsity-next-matches": HTMLVarsityNextMatchesElement;
-        "varsity-race": HTMLVarsityRaceElement;
-        "varsity-total-score": HTMLVarsityTotalScoreElement;
-        "varsity-upcoming": HTMLVarsityUpcomingElement;
-        "varsity-weather": HTMLVarsityWeatherElement;
         "video-embed": HTMLVideoEmbedElement;
         "video-gallery": HTMLVideoGalleryElement;
         "video-gallery-stacked": HTMLVideoGalleryStackedElement;
     }
 }
 declare namespace LocalJSX {
-    interface AddVarsityScores {
-        "year"?: string;
-    }
     interface ArrowButton {
         /**
           * The callback function for the button
@@ -1696,13 +1486,6 @@ declare namespace LocalJSX {
         "config"?: cookieConfig;
         "daysvalid"?: number;
         "devmode"?: boolean;
-    }
-    interface CreateVarsityData {
-        "allowcreate"?: boolean;
-        "allowupdate"?: boolean;
-        "msltag"?: string;
-        "test"?: boolean;
-        "year"?: string;
     }
     interface DesktopHide {
         /**
@@ -1852,11 +1635,6 @@ declare namespace LocalJSX {
     }
     interface GroupedCandidateDisplay {
         "data"?: any;
-    }
-    interface ImageFitContainer {
-        "alt"?: string;
-        "classes"?: string;
-        "src"?: string;
     }
     interface ImageSliderAuto {
         "classes"?: string;
@@ -2138,8 +1916,6 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
-    interface LastYearScores {
-    }
     interface LazyImage {
         /**
           * The alt tag of the image
@@ -2289,9 +2065,6 @@ declare namespace LocalJSX {
     interface PresetControls {
         "onSubmitEdits"?: (event: CustomEvent<any>) => void;
     }
-    interface PrimaryButton {
-        "to"?: string;
-    }
     interface ProfileCard {
         /**
           * The text for the primary text link bottom left
@@ -2344,36 +2117,6 @@ declare namespace LocalJSX {
         "secondlink"?: string;
     }
     interface ProfileCardLayout {
-    }
-    interface ProfileCardModal {
-        /**
-          * The text for the primary text link bottom left
-         */
-        "cta"?: string;
-        /**
-          * The image URL
-         */
-        "image"?: string;
-        /**
-          * The URL link for the primary text link on the bottom left of the card
-         */
-        "link"?: string;
-        /**
-          * The title for the card - usually a full name
-         */
-        "name"?: string;
-        /**
-          * A sub heading - usually a position or field title
-         */
-        "position"?: string;
-        /**
-          * The text for the secondary text link bottom right
-         */
-        "secondcta"?: string;
-        /**
-          * A second URL link for the bottom right of the card
-         */
-        "secondlink"?: string;
     }
     interface ProfileLogoCard {
         /**
@@ -2523,12 +2266,6 @@ declare namespace LocalJSX {
          */
         "slotr"?: string;
     }
-    interface QuickLink {
-        "to"?: string;
-    }
-    interface QuickLinks {
-        "name"?: string;
-    }
     interface ScrollObserver {
         /**
           * Select the animation name for the child component on intersection. Choose from list of supplied animations
@@ -2556,17 +2293,6 @@ declare namespace LocalJSX {
         "onCloseArea"?: (event: CustomEvent<any>) => void;
         "pagemodal"?: boolean;
     }
-    interface TabContent {
-        "active"?: boolean;
-        "name"?: string;
-    }
-    interface TabHeader {
-        "active"?: boolean;
-        "index"?: string;
-        "name"?: string;
-        "onSelectTab"?: (event: CustomEvent<any>) => void;
-        "onSelectTabByIndex"?: (event: CustomEvent<any>) => void;
-    }
     interface TabTitle {
         /**
           * Is the tab title active, and corresponding tab area visible
@@ -2580,9 +2306,6 @@ declare namespace LocalJSX {
         "onSelectTabName"?: (event: CustomEvent<any>) => void;
         "pagemodal"?: boolean;
         "variant"?: Variants;
-    }
-    interface TabsContainer {
-        "innertab"?: boolean;
     }
     interface TextCard {
         /**
@@ -2608,26 +2331,6 @@ declare namespace LocalJSX {
          */
         "database": string;
         "unsignedauth"?: boolean;
-    }
-    interface VarsityLanding {
-        "currentDate"?: { weekday: string; day: any; month: string; year: any; hours: any; minutes: any; };
-        "year"?: string;
-    }
-    interface VarsityNextMatches {
-        "data"?: any;
-    }
-    interface VarsityRace {
-        "data"?: any;
-        "target"?: number;
-    }
-    interface VarsityTotalScore {
-        "scores"?: any;
-    }
-    interface VarsityUpcoming {
-        "data"?: any;
-        "showall"?: boolean;
-    }
-    interface VarsityWeather {
     }
     interface VideoEmbed {
         /**
@@ -2660,7 +2363,6 @@ declare namespace LocalJSX {
         "shuffle"?: boolean;
     }
     interface IntrinsicElements {
-        "add-varsity-scores": AddVarsityScores;
         "arrow-button": ArrowButton;
         "campaign-aim": CampaignAim;
         "campaign-news": CampaignNews;
@@ -2669,7 +2371,6 @@ declare namespace LocalJSX {
         "candidate-upload": CandidateUpload;
         "cloudinary-app": CloudinaryApp;
         "cookie-modal": CookieModal;
-        "create-varsity-data": CreateVarsityData;
         "desktop-hide": DesktopHide;
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
@@ -2687,7 +2388,6 @@ declare namespace LocalJSX {
         "grid-landing-item": GridLandingItem;
         "group-tab": GroupTab;
         "grouped-candidate-display": GroupedCandidateDisplay;
-        "image-fit-container": ImageFitContainer;
         "image-slider-auto": ImageSliderAuto;
         "image-text": ImageText;
         "inner-tab-content": InnerTabContent;
@@ -2700,7 +2400,6 @@ declare namespace LocalJSX {
         "kclsu-tabs": KclsuTabs;
         "kclsu-tabs-container": KclsuTabsContainer;
         "label-card": LabelCard;
-        "last-year-scores": LastYearScores;
         "lazy-image": LazyImage;
         "loading-spinner": LoadingSpinner;
         "mobile-hide": MobileHide;
@@ -2711,10 +2410,8 @@ declare namespace LocalJSX {
         "page-footer": PageFooter;
         "preset-card": PresetCard;
         "preset-controls": PresetControls;
-        "primary-button": PrimaryButton;
         "profile-card": ProfileCard;
         "profile-card-layout": ProfileCardLayout;
-        "profile-card-modal": ProfileCardModal;
         "profile-logo-card": ProfileLogoCard;
         "profile-tabs": ProfileTabs;
         "project-card": ProjectCard;
@@ -2723,25 +2420,14 @@ declare namespace LocalJSX {
         "project-image": ProjectImage;
         "project-page": ProjectPage;
         "project-socials": ProjectSocials;
-        "quick-link": QuickLink;
-        "quick-links": QuickLinks;
         "scroll-observer": ScrollObserver;
         "show-support": ShowSupport;
         "support-option": SupportOption;
         "support-progress": SupportProgress;
         "tab-area": TabArea;
-        "tab-content": TabContent;
-        "tab-header": TabHeader;
         "tab-title": TabTitle;
-        "tabs-container": TabsContainer;
         "text-card": TextCard;
         "user-login": UserLogin;
-        "varsity-landing": VarsityLanding;
-        "varsity-next-matches": VarsityNextMatches;
-        "varsity-race": VarsityRace;
-        "varsity-total-score": VarsityTotalScore;
-        "varsity-upcoming": VarsityUpcoming;
-        "varsity-weather": VarsityWeather;
         "video-embed": VideoEmbed;
         "video-gallery": VideoGallery;
         "video-gallery-stacked": VideoGalleryStacked;
@@ -2751,7 +2437,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "add-varsity-scores": LocalJSX.AddVarsityScores & JSXBase.HTMLAttributes<HTMLAddVarsityScoresElement>;
             "arrow-button": LocalJSX.ArrowButton & JSXBase.HTMLAttributes<HTMLArrowButtonElement>;
             "campaign-aim": LocalJSX.CampaignAim & JSXBase.HTMLAttributes<HTMLCampaignAimElement>;
             "campaign-news": LocalJSX.CampaignNews & JSXBase.HTMLAttributes<HTMLCampaignNewsElement>;
@@ -2760,7 +2445,6 @@ declare module "@stencil/core" {
             "candidate-upload": LocalJSX.CandidateUpload & JSXBase.HTMLAttributes<HTMLCandidateUploadElement>;
             "cloudinary-app": LocalJSX.CloudinaryApp & JSXBase.HTMLAttributes<HTMLCloudinaryAppElement>;
             "cookie-modal": LocalJSX.CookieModal & JSXBase.HTMLAttributes<HTMLCookieModalElement>;
-            "create-varsity-data": LocalJSX.CreateVarsityData & JSXBase.HTMLAttributes<HTMLCreateVarsityDataElement>;
             "desktop-hide": LocalJSX.DesktopHide & JSXBase.HTMLAttributes<HTMLDesktopHideElement>;
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
@@ -2778,7 +2462,6 @@ declare module "@stencil/core" {
             "grid-landing-item": LocalJSX.GridLandingItem & JSXBase.HTMLAttributes<HTMLGridLandingItemElement>;
             "group-tab": LocalJSX.GroupTab & JSXBase.HTMLAttributes<HTMLGroupTabElement>;
             "grouped-candidate-display": LocalJSX.GroupedCandidateDisplay & JSXBase.HTMLAttributes<HTMLGroupedCandidateDisplayElement>;
-            "image-fit-container": LocalJSX.ImageFitContainer & JSXBase.HTMLAttributes<HTMLImageFitContainerElement>;
             "image-slider-auto": LocalJSX.ImageSliderAuto & JSXBase.HTMLAttributes<HTMLImageSliderAutoElement>;
             "image-text": LocalJSX.ImageText & JSXBase.HTMLAttributes<HTMLImageTextElement>;
             "inner-tab-content": LocalJSX.InnerTabContent & JSXBase.HTMLAttributes<HTMLInnerTabContentElement>;
@@ -2791,7 +2474,6 @@ declare module "@stencil/core" {
             "kclsu-tabs": LocalJSX.KclsuTabs & JSXBase.HTMLAttributes<HTMLKclsuTabsElement>;
             "kclsu-tabs-container": LocalJSX.KclsuTabsContainer & JSXBase.HTMLAttributes<HTMLKclsuTabsContainerElement>;
             "label-card": LocalJSX.LabelCard & JSXBase.HTMLAttributes<HTMLLabelCardElement>;
-            "last-year-scores": LocalJSX.LastYearScores & JSXBase.HTMLAttributes<HTMLLastYearScoresElement>;
             "lazy-image": LocalJSX.LazyImage & JSXBase.HTMLAttributes<HTMLLazyImageElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
             "mobile-hide": LocalJSX.MobileHide & JSXBase.HTMLAttributes<HTMLMobileHideElement>;
@@ -2802,10 +2484,8 @@ declare module "@stencil/core" {
             "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "preset-card": LocalJSX.PresetCard & JSXBase.HTMLAttributes<HTMLPresetCardElement>;
             "preset-controls": LocalJSX.PresetControls & JSXBase.HTMLAttributes<HTMLPresetControlsElement>;
-            "primary-button": LocalJSX.PrimaryButton & JSXBase.HTMLAttributes<HTMLPrimaryButtonElement>;
             "profile-card": LocalJSX.ProfileCard & JSXBase.HTMLAttributes<HTMLProfileCardElement>;
             "profile-card-layout": LocalJSX.ProfileCardLayout & JSXBase.HTMLAttributes<HTMLProfileCardLayoutElement>;
-            "profile-card-modal": LocalJSX.ProfileCardModal & JSXBase.HTMLAttributes<HTMLProfileCardModalElement>;
             "profile-logo-card": LocalJSX.ProfileLogoCard & JSXBase.HTMLAttributes<HTMLProfileLogoCardElement>;
             "profile-tabs": LocalJSX.ProfileTabs & JSXBase.HTMLAttributes<HTMLProfileTabsElement>;
             "project-card": LocalJSX.ProjectCard & JSXBase.HTMLAttributes<HTMLProjectCardElement>;
@@ -2814,25 +2494,14 @@ declare module "@stencil/core" {
             "project-image": LocalJSX.ProjectImage & JSXBase.HTMLAttributes<HTMLProjectImageElement>;
             "project-page": LocalJSX.ProjectPage & JSXBase.HTMLAttributes<HTMLProjectPageElement>;
             "project-socials": LocalJSX.ProjectSocials & JSXBase.HTMLAttributes<HTMLProjectSocialsElement>;
-            "quick-link": LocalJSX.QuickLink & JSXBase.HTMLAttributes<HTMLQuickLinkElement>;
-            "quick-links": LocalJSX.QuickLinks & JSXBase.HTMLAttributes<HTMLQuickLinksElement>;
             "scroll-observer": LocalJSX.ScrollObserver & JSXBase.HTMLAttributes<HTMLScrollObserverElement>;
             "show-support": LocalJSX.ShowSupport & JSXBase.HTMLAttributes<HTMLShowSupportElement>;
             "support-option": LocalJSX.SupportOption & JSXBase.HTMLAttributes<HTMLSupportOptionElement>;
             "support-progress": LocalJSX.SupportProgress & JSXBase.HTMLAttributes<HTMLSupportProgressElement>;
             "tab-area": LocalJSX.TabArea & JSXBase.HTMLAttributes<HTMLTabAreaElement>;
-            "tab-content": LocalJSX.TabContent & JSXBase.HTMLAttributes<HTMLTabContentElement>;
-            "tab-header": LocalJSX.TabHeader & JSXBase.HTMLAttributes<HTMLTabHeaderElement>;
             "tab-title": LocalJSX.TabTitle & JSXBase.HTMLAttributes<HTMLTabTitleElement>;
-            "tabs-container": LocalJSX.TabsContainer & JSXBase.HTMLAttributes<HTMLTabsContainerElement>;
             "text-card": LocalJSX.TextCard & JSXBase.HTMLAttributes<HTMLTextCardElement>;
             "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;
-            "varsity-landing": LocalJSX.VarsityLanding & JSXBase.HTMLAttributes<HTMLVarsityLandingElement>;
-            "varsity-next-matches": LocalJSX.VarsityNextMatches & JSXBase.HTMLAttributes<HTMLVarsityNextMatchesElement>;
-            "varsity-race": LocalJSX.VarsityRace & JSXBase.HTMLAttributes<HTMLVarsityRaceElement>;
-            "varsity-total-score": LocalJSX.VarsityTotalScore & JSXBase.HTMLAttributes<HTMLVarsityTotalScoreElement>;
-            "varsity-upcoming": LocalJSX.VarsityUpcoming & JSXBase.HTMLAttributes<HTMLVarsityUpcomingElement>;
-            "varsity-weather": LocalJSX.VarsityWeather & JSXBase.HTMLAttributes<HTMLVarsityWeatherElement>;
             "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
             "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
             "video-gallery-stacked": LocalJSX.VideoGalleryStacked & JSXBase.HTMLAttributes<HTMLVideoGalleryStackedElement>;

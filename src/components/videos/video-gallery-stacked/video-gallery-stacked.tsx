@@ -35,7 +35,7 @@ export class VideoGalleryStacked {
                     this.videos = data.items;
                     if (this.shuffle)shuffleArray(this.videos);
                     this.active = this.videos[0].snippet.resourceId.videoId;
-                    console.log(this.videos[0])
+
                 });
         }
     }
