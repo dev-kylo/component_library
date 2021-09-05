@@ -95,6 +95,7 @@ export class ImageText {
                             focusarea={this.focusarea} 
                             image={this.image} 
                             animatein={this.imagezoom}
+                            minwidth="400"
                             mobile="95"
                             desktop="40"
                         ></lazy-image>
