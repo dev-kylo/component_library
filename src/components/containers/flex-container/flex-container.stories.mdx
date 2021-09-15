@@ -10,13 +10,11 @@ import dedent from 'ts-dedent';
   title="Layouts/Flex"
   component="flex-container"
   argTypes={{
-    alignx: { type: 'radio', options: ['center', 'end', 'start', 'space-around', 'space-between']},
-    aligny: { type: 'radio', options: ['baseline', 'center', 'end', 'start', 'stretch']},
-    direction: { type: 'radio', options: ['column', 'column-reverse', 'row', 'row-reverse']},
-    fillcontainer: { type: 'boolean', description: 'Ensure the container stretches the full width and height of parent container' },
-    mobcolumn: { type: 'boolean', description: 'In mobile display in column direction - NOT YET' },
-    wrap: { type: 'boolean' },
-    renderlist: { type: 'boolean' },
+    alignx: { type: 'radio', description:'Set the X axis alignment. Use CSS Flex justify-content values', options: ['center', 'end', 'start', 'space-around', 'space-between']},
+    aligny: { type: 'radio', description: 'Set the Y axis alignment. Use CSS Flex align-items values', options: ['baseline', 'center', 'end', 'start', 'stretch']},
+    direction: { type: 'radio', description:'Same as the CSS Flex flow properties.',  options: ['column', 'column-reverse', 'row', 'row-reverse']},
+    fillcontainer: { type: 'boolean', description: 'Ensure the container stretches the full width and height of parent container' },  
+    wrap: { type: 'boolean', description: 'Elements will wrap.' }
   }}
 />
 
@@ -25,19 +23,36 @@ import dedent from 'ts-dedent';
 ### Example
 
 ```html
-<flex-container cardtitle="Kyle"> </flex-container>
+<flex-container cardtitle="Kyle"></flex-container>
 ```
 
 ### Try It
 
 <Canvas withSource="open" >
-  <Story name="Build Your Own" component="flex-container" args={{
+  <Story name="Basic" component="flex-container" args={{
     alignx: 'center',
     aligny: 'center',
+  }}>
+    {args => html`
+<flex-container
+    alignx="${ifDefined(args.alignx || undefined)}"
+    aligny="${ifDefined(args.aligny || undefined)}">
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+</flex-container>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic" include={ ['alignx', 'aligny']}/>
+
+
+<Canvas withSource="open" >
+  <Story name="Advanced-2" component="flex-container" args={{
+    alignx: 'space-around',
+    aligny: 'center',
     direction: 'row',
-    fillcontainer: false,
-    mobcolumn: false,
-    wrap: false,
+    fillcontainer: true,
+    wrap: true,
     renderlist: false,
   }}>
     {args => html`
@@ -46,19 +61,43 @@ import dedent from 'ts-dedent';
     aligny="${ifDefined(args.aligny || undefined)}"
     direction="${ifDefined(args.direction || undefined)}"
     ?fillcontainer="${args.fillcontainer}"
-    ?mobcolumn="${args.mobcolumn}"
-    ?wrap="${args.wrap}"
-    ?renderlist="${args.renderlist}">
-  <div>A</div>
-  <div>B</div>
-  <div>C</div>
-  <div>D</div>
+    ?wrap="${args.wrap}">
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
 </flex-container>
     `}
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Advanced-2"/>
+
+
+<Canvas withSource="open" >
+  <Story name="Advanced-3" component="flex-container" args={{
+    alignx: 'space-around',
+    aligny: 'center',
+    direction: 'row',
+    fillcontainer: true,
+    wrap: true,
+    renderlist: false,
+  }}>
+    {args => html`
+<flex-container
+    alignx="${ifDefined(args.alignx || undefined)}"
+    aligny="${ifDefined(args.aligny || undefined)}"
+    direction="${ifDefined(args.direction || undefined)}"
+    ?fillcontainer="${args.fillcontainer}"
+    ?wrap="${args.wrap}"
+    ?renderlist="${args.renderlist}">
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+</flex-container>
+    `}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Advanced-3"/>
 
 ## More Info
 

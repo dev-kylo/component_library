@@ -1,0 +1,69 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+import dedent from 'ts-dedent';
+
+<Meta
+  title="Dependents/Beige Strip"
+  component="fullwidth-beige-strip"
+/>
+
+# `<fullwidth-beige-strip>`
+
+### Copy
+
+```html
+    <fullwidth-beige-strip>
+        <!-- Add your html inside here -->
+    </fullwidth-beige-strip>
+```
+
+This is a container for a central column of content. It is the equivalent of the Centre Column Template inside the MSL Skin
+
+### Screenshot
+
+
+![Screenshot of container](https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/Screenshot_2021-09-14_at_16.24.34_iqddx5)
+
+### Example
+
+<Canvas withSource="open" >
+  <Story name="Basic" component="fullwidth-beige-strip">
+    {args => html`
+        <fullwidth-beige-strip >
+            <!-- Add your html here -->
+        </fullwidth-beige-strip>
+    `}
+  </Story>
+</Canvas>
+
+
+### Using MSL Classes
+You can use this html instead of using a component.
+
+```html
+
+<!--BEIGE STRIP -->
+<div class="row ulStyle liBullet">
+    <div class="container">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
+
+            //CONTENT GOES HERE
+
+        </div>
+    </div>
+    <!-- Container ends -->
+</div>
+<!--BEIGE STRIP ENDS -->
+
+```
+
+
+## More Info
+
+<Description markdown={readme} />
+
+

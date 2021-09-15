@@ -7,7 +7,7 @@ import readme from './readme.md';
 
 <Meta
   title="Interfaces/Tabs"
-  component="tabs-container"
+  component="kclsu-tabs"
   argTypes={{
     active: {
       type: 'select',
@@ -18,41 +18,50 @@ import readme from './readme.md';
   }}
 />
 
-# `<kclsu-tabs-container>`
+# `<kclsu-tabs>`
 
 ## Content
 
 ### Example
 
 ```html
-<tabs-container>
-  <tab-header name="A" active slot="tab-headers">a is the first letter</tab-header>,
-  <tab-content name="A" slot="tab-content">
+<kclsu-tabs>
+  
+  <tab-title name="A" active>Title A</tab-title>,
+  <tab-area name="A">
     <p>A, from the proto-caananite Aleph, is the first letter in the alphabet</p>
-  </tab-content>
-</tabs-container>
+  </tab-area>
+  
+  <tab-title name="B" active>Title B</tab-title>,
+  <tab-area name="B">
+    <p>B all the way</p>
+  </tab-area>
+
+</kclsu-tabs>
 ```
 
 ### Try It
 
 <Canvas withSource="open" >
-  <Story name="With Content" component="tabs-container" args={{
+  <Story name="With Content" component="kclsu-tabs" args={{
     active: 'A',
     tabs: [
       { name: 'A', summary: 'A', content: 'A, from the proto-caananite Aleph, is the first letter in the alphabet' },
       { name: 'B', summary: 'B', content: 'B, originally meaning "house", is the second letter in the alphabet' },
-      { name: 'C', summary: 'C', content: 'For some reason, the Romans had it out for "G"' },
+      { name: 'C', summary: 'C', content: 'For some reason, the Romans had it out for "C"' },
     ],
   }}>
     {args => html`
-      <tabs-container>
+    <div style="width: 80vw; margin: auto; height: auto">
+      <kclsu-tabs>
         ${args.tabs.map(tab => html`
-          <tab-header name="${tab.name}" ?active="${args.active === tab.name}" slot="tab-headers">${tab.summary}</tab-header>,
-          <tab-content name="${tab.name}" slot="tab-content">
+          <tab-title name="${tab.name}" ?active="${args.active === tab.name}" >${tab.summary}</tab-title>,
+          <tab-area name="${tab.name}">
             <p>${tab.content}</p>
-          </tab-content>
+          </tab-area>
         `)}
-      </tabs-container>
+      </kclsu-tabs>
+      </div>
     `}
   </Story>
   <ArgsTable story="With Content" exclude="tabs"/>

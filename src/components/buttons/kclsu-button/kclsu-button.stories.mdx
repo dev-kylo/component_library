@@ -8,21 +8,12 @@ import readme from './readme.md';
 # `<kclsu-button>`
 
 <Meta
-  title="Buttons/Button"
+  title="Buttons/Primary"
   component="kclsu-button"
   argTypes={{
-    content: {
-      control: 'text',
-      description: 'Text content in the button',
-    },
-    // TODO: implement icon
-    // icon: {
-    //   control: 'text',
-    //   description: 'Adds an icon to the button',
-    // },
     text: {
       control: 'text',
-      description: 'Alternative control for text content in the button.',
+      description: ' Text content in the button.',
     },
     center: {
       control: 'boolean',
@@ -74,6 +65,10 @@ import readme from './readme.md';
       description: 'Makes the link download',
       table: { defaultValue: { summary: false } },
     },
+    clickfn: { 
+        action: 'clicked',
+        description: 'A callback function to for the button click.',
+    } 
   }}
 />
 
@@ -90,8 +85,7 @@ import readme from './readme.md';
 ### Build your own
 <Canvas withToolbar={true} withSource="open" >
   <Story name="Basic" component="kclsu-button" args={{
-    content: 'Click me',
-    link: '/',
+    text: 'Click me',
     center: false,
     purple: false,
     newtab: false,
@@ -104,11 +98,11 @@ import readme from './readme.md';
         purple="${ifDefined(args.purple || undefined)}"
         newtab="${ifDefined(args.newtab || undefined)}"
         rounded="${ifDefined(args.rounded || undefined)}"
-      >${args.content}</kclsu-button>`}
+      >${args.text}</kclsu-button>`}
   </Story>
 </Canvas>
 
-<ArgsTable story="Basic" include={ ['content','link', 'center', 'purple', 'newtab', 'rounded'] }/>
+<ArgsTable story="Basic" include={ ['text','link', 'center', 'purple', 'newtab', 'rounded'] }/>
 
 ## Instructions
 To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.

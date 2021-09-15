@@ -14,11 +14,11 @@ export namespace Components {
          */
         "callback": () => void;
         /**
-          * The direction the arrow should point
+          * Set the direction of the arrow button (and the side of the containing element it appears on)
          */
         "direction": string;
         /**
-          * The direction the arrow should point
+          * Turn the button purple
          */
         "purple": boolean;
     }
@@ -558,6 +558,13 @@ export namespace Components {
         "hidetablet": boolean;
     }
     interface ModalBackdrop {
+        /**
+          * NEVER set directly. Set in parent component
+         */
+        "position": string;
+        /**
+          * NEVER set directly. Set in parent component
+         */
         "showbg": boolean;
     }
     interface NewsCard {
@@ -1396,11 +1403,11 @@ declare namespace LocalJSX {
          */
         "callback"?: () => void;
         /**
-          * The direction the arrow should point
+          * Set the direction of the arrow button (and the side of the containing element it appears on)
          */
         "direction"?: string;
         /**
-          * The direction the arrow should point
+          * Turn the button purple
          */
         "purple"?: boolean;
     }
@@ -1941,6 +1948,13 @@ declare namespace LocalJSX {
     }
     interface ModalBackdrop {
         "onExitModal"?: (event: CustomEvent<any>) => void;
+        /**
+          * NEVER set directly. Set in parent component
+         */
+        "position"?: string;
+        /**
+          * NEVER set directly. Set in parent component
+         */
         "showbg"?: boolean;
     }
     interface NewsCard {

@@ -171,7 +171,7 @@ export class KclsuModal {
         }
 
         return ([
-            <modal-backdrop showbg={this.show}></modal-backdrop>,
+            <modal-backdrop position={this.position} showbg={this.show}></modal-backdrop>,
             <dialog style={style} class={classes.join(' ')} open={this.show}>
                 <div class="Exit">
                     {this.autoexit && <exit-button purple callback={() => this.exitHandler()}></exit-button>}

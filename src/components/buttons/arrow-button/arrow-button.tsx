@@ -9,9 +9,9 @@ import { Component, h, Prop } from '@stencil/core';
 export class ArrowButton {
     /** The callback function for the button */
     @Prop() callback: () => void;
-    /** The direction the arrow should point */
+    /** Set the direction of the arrow button (and the side of the containing element it appears on) */
     @Prop() direction:string = 'left';
-    /** The direction the arrow should point */
+    /** Turn the button purple */
     @Prop() purple:boolean = false;
 
     clickHandler(e){

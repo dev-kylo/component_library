@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                          | Type         | Default     |
-| ----------- | ----------- | ------------------------------------ | ------------ | ----------- |
-| `callback`  | --          | The callback function for the button | `() => void` | `undefined` |
-| `direction` | `direction` | The direction the arrow should point | `string`     | `'left'`    |
-| `purple`    | `purple`    | The direction the arrow should point | `boolean`    | `false`     |
+| Property    | Attribute   | Description                                                                                  | Type         | Default     |
+| ----------- | ----------- | -------------------------------------------------------------------------------------------- | ------------ | ----------- |
+| `callback`  | --          | The callback function for the button                                                         | `() => void` | `undefined` |
+| `direction` | `direction` | Set the direction of the arrow button (and the side of the containing element it appears on) | `string`     | `'left'`    |
+| `purple`    | `purple`    | Turn the button purple                                                                       | `boolean`    | `false`     |
 
 
 ## Dependencies

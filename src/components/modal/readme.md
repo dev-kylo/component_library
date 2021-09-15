@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `showbg` | `showbg`  |             | `boolean` | `undefined` |
+| Property   | Attribute  | Description                                 | Type      | Default     |
+| ---------- | ---------- | ------------------------------------------- | --------- | ----------- |
+| `position` | `position` | NEVER set directly. Set in parent component | `string`  | `undefined` |
+| `showbg`   | `showbg`   | NEVER set directly. Set in parent component | `boolean` | `undefined` |
 
 
 ## Events

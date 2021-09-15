@@ -7,8 +7,10 @@ import { Component, h, Prop, EventEmitter, Event} from '@stencil/core';
 })
 export class ModalBackdrop {
 
-
+    /** NEVER set directly. Set in parent component */
     @Prop() showbg: boolean;
+    /** NEVER set directly. Set in parent component */
+    @Prop() position: string;
     @Event() exitModal: EventEmitter;
 
     clickHandler(e){
@@ -16,8 +18,10 @@ export class ModalBackdrop {
     }
     
     render() {
+
+
         return (
-            this.showbg? <div class='Backdrop' onClick={(e) => this.clickHandler(e)}></div> : null
+            this.showbg? <div style={{"position": this.position}} class='Backdrop' onClick={(e) => this.clickHandler(e)}></div> : null
         );
     }
 }
