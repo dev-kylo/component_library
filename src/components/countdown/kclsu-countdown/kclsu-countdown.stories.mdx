@@ -8,41 +8,25 @@ import readme from './readme.md';
 # `<kclsu-countdown>`
 
 <Meta
-  title="Buttons/Countdown"
+  title="Other UI/Countdown Clock"
   component="kclsu-countdown"
   argTypes={{
     date: {
       control: 'date',
-      description: 'The date to countdown to. Must match date string format.',
+      description: 'The date to countdown to. Must match date text format.',
     },
     text: {
       control: 'text',
       description: 'The text beneath the countdown',
     },
-    textcolour: {
-      control: 'text',
-      description: 'Optional: set a colour for the text beneath the countdown.',
-    },
-    fontsize: {
-      control: 'text',
-      description: 'Optional: set a fixed font-size for tablet, desktop and wider',
-    },
-    width: { 
-        control: 
-            { type: 'range',
-             min: 60, 
-             max: 400, 
-             step: 20 }, 
-        description: 'The width of the countdown clock - in Pixels ONLY' 
-    },
-    margin: {
-      control: 'text',
-      description: 'Add margin to the countdown',
-    },
-    purple: {
+    msgbg: {
       control: 'boolean',
-      description: 'Give the message text a white block background.',
+      description: 'Give the message text a shadowed white block background.',
       table: { defaultValue: { summary: false } },
+    },
+    textcolour: {
+      control: 'color',
+      description: 'Optional: set a colour for the text beneath the countdown.',
     }
   }}
 />
@@ -50,7 +34,7 @@ import readme from './readme.md';
 ### Example
 
 ```html
-    <kclsu-countdown date='Sepember 20, 2022, 11:00:00'></kclsu-countdown>
+    <kclsu-countdown date='Sepember 20, 2022, 11:00:00' text='Until something happens'></kclsu-countdown>
 ```
 
 
@@ -62,23 +46,31 @@ import readme from './readme.md';
   }}>
     {args => html`
       <kclsu-countdown
-        date="${ifDefined(args.link || undefined)}"
-        text="${ifDefined(args.link || undefined)}"
+        date="${ifDefined(new Date(args.date) || undefined)}"
+        text="${ifDefined(args.text || undefined)}"
       ></kclsu-countdown>`}
   </Story>
 </Canvas>
 
 <ArgsTable story="Basic" include={ ['date', 'text'] }/>
 
-## Instructions
-To set the button's text, use the `text` attribute, or simply add text as a child of the element. If you set the `text` attribute as well as adding child text, the attribute value will prefix the contents.
+### Advanced
+<Canvas withToolbar={true} withSource="open" >
+  <Story name="Advanced" component="kclsu-countdown" args={{
+    date: 'Sepember 20, 2022, 11:00:00',
+    text: 'Until something happens'
+  }}>
+    {args => html`
+      <kclsu-countdown
+        date="${ifDefined(new Date(args.date) || undefined)}"
+        text="${ifDefined(args.text || undefined)}"
+        msgbg="${ifDefined(args.msgbg || undefined)}"
+        textcolour="${ifDefined(args.textcolour || undefined)}"
+      ></kclsu-countdown>`}
+  </Story>
+</Canvas>
 
-Using the component controls listed above, you can do the following:
- 
-- Create a primary standard teal button
-- Create a secondary purple button
-- control the size - big or small
-- center the button in the page
+<ArgsTable story="Advanced" />
 
 ### Appearance
 
