@@ -1,0 +1,42 @@
+import { html } from 'lit-html';
+import {Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Dependents/Jquery Tabs"
+/>
+
+# MSL JQUERY tabs
+Please rather use the 'kclsu-tabs' component found under 'Interfaces'. Unless you have many tabs, and you would like the tabs to become accordions on mobile devices. 
+The 'kclsu-tabs' component currently does not transition to accordions in mobile view.
+NOTE: This code snippet below relies on MSL scripts & styles, which must be attached for the tabs to work:
+
+
+### Necessary Script
+tabs.js
+
+### Screenshot
+![Screenshot of tabs](https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/Screenshot_2021-09-15_at_11.31.06_slncum)
+
+### Copy 
+Remember to replace all the { } with valid values.
+
+```html
+<!--TABS CONTAINER-->
+<div class="tabs">
+
+<!--First Tab -->
+   <h2> {​ TITLE_1 }​ </h2>
+    <div>
+    {​ CONTENT_1 }​ 
+    </div>
+
+<!--Second Tab -->
+    <h2> {​ TITLE_2 }​ </h2>
+    <div>
+    {​ CONTENT_2 }​ 
+    </div>
+
+</div>
+<!--END OF TABS CONTAINER-->
+```
+

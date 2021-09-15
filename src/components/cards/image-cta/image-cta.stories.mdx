@@ -1,0 +1,53 @@
+import { html } from 'lit-html';
+import {Meta} from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Dependents/Image CTAs"
+/>
+
+# `<image-cta>`
+This is a Call To Action UI card. See example on home page.
+NOTE: There is currently NO component for this. Use the html snipper below which relies on MSL scripts & styles. 
+
+### Screenshot
+![Screenshot of image-ctas](https://res.cloudinary.com/kclsu-media/image/upload/w_800/v1/temporary/Screenshot_2021-09-15_at_11.06.03_mfnsks)
+
+### Copy
+Remember to replace all the { } with valid values.
+
+```html
+<div class="imageNav container">
+
+<!-- CARD NUMBER 1 -->
+    <div class="card green col-md-4">
+        <img src="{​IMAGE_URL}​" alt="{​IMAGE_ALT}​" />
+        <span>
+            <h4> {TITLE}​ </h4>
+            <p >{​TEXT}​ </p>
+            <div class="buttonCTA arrow blueBorder"><a href="{​BTN_LINK}​">{​BTN_TEXT}​</a></div>
+        </span>
+    </div>
+
+<!-- CARD NUMBER 2 -->
+    <div class="card yellow col-md-4">
+        <img src="{​IMAGE_URL}​" alt="{​IMAGE_ALT}​" />
+        <span>
+            <h4>{​TITLE}​</h4>
+            <p>{​TEXT}​</p>
+            <div class="buttonCTA arrow purpleBorder"><a href="{​BTN_LINK}​">{​BTN_TEXT}​</a></div>
+        </span>
+    </div>
+
+<!-- CARD NUMBER 3 -->
+    <div class="card blue col-md-4">
+        <img src="{​IMAGE_URL}​" alt="{​IMAGE_ALT}​" />
+        <span>
+            <h4>{​TITLE}​</h4>
+            <p>{​TEXT}​</p>
+            <div class="buttonCTA arrow"><a href="{​BTN_LINK}​">{​BTN_TEXT}​</a></div>
+        </span>
+    </div>
+</div>
+```
+
+

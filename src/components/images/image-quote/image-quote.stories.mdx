@@ -1,0 +1,29 @@
+import { html } from 'lit-html';
+import {Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Dependents/Image Quote"
+/>
+
+# `MSL Image Quote`
+Make sure all images have used the Cloudinary Image preset.
+NOTE: There is currently NO component for this. Use the html snippet below which relies on MSL scripts & styles:
+
+
+### Screenshot
+![Screenshot of image quote](https://res.cloudinary.com/kclsu-media/image/upload/v1/temporary/Screenshot_2021-09-15_at_11.23.05_uhjz40)
+
+### Copy
+Remember to replace all the { } with valid values.
+
+```html
+<!-- QUOTE -->
+<div id="sectionQuote">
+    <img class="quoteImage" src=" {​​​​ URL }​​​​ " alt="{​​​​ ALT }​​​​" />
+    <div class="quote">
+        <blockquote>  {​​​​ QUOTE }​​​​  </blockquote>
+        <p class="quoteAuthor">- {​​​​ NAME }​​​​</p>
+    </div>
+</div>
+```
+

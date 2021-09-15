@@ -1,0 +1,42 @@
+import { html } from 'lit-html';
+import {Meta} from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Dependents/Image Gallery"
+/>
+
+# `MSL Image Gallery Slider`
+Make sure all images have used the Cloudinary Image Gallery preset.
+NOTE: There is currently NO component for this. Use the html snipper below which relies on MSL scripts & styles:
+
+### Necessary styles
+gallery-carousel.css
+
+### Necessary scripts
+gallery-carousel.js
+
+### Screenshot
+![Screenshot of gallery slider](https://res.cloudinary.com/kclsu-media/image/upload/w_1000/v1/temporary/Screenshot_2021-09-15_at_11.16.46_zowe1m)
+
+### Copy
+Remember to replace all the { } with valid values.
+
+```html
+<!-- Gallery -->
+
+<div class="ulStyle gallery philosophy carousel">
+    <div class="col-xl-12 ev-search no-padding m-filter container">
+        <h2 class="centered">Gallery</h2>
+    </div>
+
+    <div class="carouselSlick">
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+        <div><img src="{​​​​IMAGE_URL}​​​​" alt="{​​​​IMAGE_ALT}​​​​" /></div>
+    </div>
+</div>
+```
+
