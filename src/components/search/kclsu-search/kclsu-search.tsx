@@ -44,6 +44,7 @@ export class KclsuSearch {
 
     searchByAttr(term: string): void{ 
         let searchables = this.host.querySelectorAll(this.containerselector);
+        console.log(searchables);
         searchables.forEach(item => 
             this.performSearch(item, item[this.attr].toLowerCase(), term)); 
     }
