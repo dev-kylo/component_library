@@ -11,14 +11,17 @@ import readme from './readme.md';
   title="Other UI/Page Banner"
   component="page-banner"
   argTypes={{
-    content: { type: 'text' },
     pagetitle: {
       type: 'string',
-      description: 'The <h1> heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.',
+      description: 'The h1 heading for a page. There should only be one pagetitle for page. Use the heading attribute for other titles.',
     },
     heading: {
       type: 'string',
-      description: 'The <h2> heading for the section',
+      description: 'The h2 heading for the section',
+    },
+    landing: {
+      type: 'boolean',
+      description: 'If a landing page, set this to adapt the styling.',
     },
     text: {
       type: 'text',
@@ -33,10 +36,6 @@ import readme from './readme.md';
       type: 'string',
       description: 'The colours for the <h1> heading, separated with a comma. eg "h1 colour, bg colour"',
       table: { defaultValue: { summary: "white, #1BA39C" } },
-    },
-    bgimage: {
-      type: 'string',
-      description: 'Supply an image for the banner',
     },
     image: {
       type: 'string',
@@ -59,35 +58,25 @@ import readme from './readme.md';
         step: 2,
       },
       description: 'Supply an custom height for the banner image',
-    },
-    video: {
-      type: 'string',
-      description: 'Supply a video URL',
-    },
-    landing: {
-      type: 'boolean',
-      description: 'If a landing page',
-    },
+    }
   }}
 />
 
 ## Build your Own
 
-<Canvas withToolbar={true} withSource="open" args={{
-  landing: false,
-  pagetitle: '',
+<Canvas withToolbar={true} withSource="open">
+  <Story name="Basic" component="page-banner" args={{
+  landing: true,
+  pagetitle: 'I am a Page Title',
   content: '',
   heading: '',
-  text: '',
+  text: 'A one stop shop for everything you need to know.',
   colourscheme: '',
   pagetitlecolours: '',
-  bgimage: '',
-  image: '',
+  image: 'https://res.cloudinary.com/kclsu-media/image/upload/w_400/v1/temporary/Gymbox_orxl4l',
   imagewidth: '',
   imageheight: '',
-  video: '',
-}}>
-  <Story name="Build Your Own" component="page-banner">
+  }}>
     {args => html`<page-banner
       ?landing="${args.landing}"
       pagetitle="${ifDefined(args.pagetitle || undefined)}"
@@ -100,11 +89,11 @@ import readme from './readme.md';
       imagewidth="${ifDefined(args.imagewidth || undefined)}"
       imageheight="${ifDefined(args.imageheight || undefined)}"
       video="${ifDefined(args.video || undefined)}"
-    >${args.content||'My Banner'}</page-banner>`}
+    >${args.content}</page-banner>`}
   </Story>
 </Canvas>
 
-<ArgsTable story="Build Your Own"/>
+<ArgsTable story="Basic"/>
 
 ## More Info
 

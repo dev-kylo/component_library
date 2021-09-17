@@ -14,16 +14,23 @@ import dedent from 'ts-dedent';
     aligny: { type: 'radio', description: 'Set the Y axis alignment. Use CSS Flex align-items values', options: ['baseline', 'center', 'end', 'start', 'stretch']},
     direction: { type: 'radio', description:'Same as the CSS Flex flow properties.',  options: ['column', 'column-reverse', 'row', 'row-reverse']},
     fillcontainer: { type: 'boolean', description: 'Ensure the container stretches the full width and height of parent container' },  
-    wrap: { type: 'boolean', description: 'Elements will wrap.' }
+    wrap: { type: 'boolean', description: 'Elements will wrap, and instead of squeezing onto one line they will go one under another when there is no more space.' }
   }}
 />
 
 # `<flex-container>`
 
+### Used for
+If you need to center something on a page, or have 2+ things lined up next to each other.
+
 ### Example
 
 ```html
-<flex-container cardtitle="Kyle"></flex-container>
+<flex-container alignx="center">
+
+  <!-- HTML elements go here -->
+
+</flex-container>
 ```
 
 ### Try It
@@ -53,7 +60,6 @@ import dedent from 'ts-dedent';
     direction: 'row',
     fillcontainer: true,
     wrap: true,
-    renderlist: false,
   }}>
     {args => html`
 <flex-container
@@ -79,7 +85,6 @@ import dedent from 'ts-dedent';
     direction: 'row',
     fillcontainer: true,
     wrap: true,
-    renderlist: false,
   }}>
     {args => html`
 <flex-container
@@ -89,9 +94,11 @@ import dedent from 'ts-dedent';
     ?fillcontainer="${args.fillcontainer}"
     ?wrap="${args.wrap}"
     ?renderlist="${args.renderlist}">
-  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
-  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
-  <div style="margin: 1rem; width:250px; height: 100px; background: red"></div>
+    
+  <div style="margin: 1rem; width:150px; height: 100px; background: red"></div>
+  <div style="margin: 1rem; width:150px; height: 100px; background: red"></div>
+  <div style="margin: 1rem; width:150px; height: 100px; background: red"></div>
+  
 </flex-container>
     `}
   </Story>

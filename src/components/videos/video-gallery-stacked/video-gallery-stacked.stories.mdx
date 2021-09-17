@@ -1,0 +1,43 @@
+import { ArgsTable, Canvas, Description, Meta, Source, Story } from '@storybook/addon-docs/blocks';
+
+import { html } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import readme from './readme.md';
+
+# `<video-gallery-stacked>`
+
+<Meta
+  title="Media/Video Gallery"
+  component="video-gallery-stacked"
+  argTypes={{
+    playlist: {
+      type: 'string',
+      description: 'The full Youtube URL for any given playlist',
+    },
+    shuffle: {
+      type: 'boolean',
+      description: 'shuffle the order of the videos',
+    },
+  }}
+/>
+
+## Build your Own
+
+<Canvas withToolbar={true} withSource="open">
+  <Story name="Basic" component="video-gallery-stacked" args={{
+    playlist: 'https://www.youtube.com/watch?v=dhNLuZ866PA&list=PLYSmFQx35pli-jBasvbIfBXDVb1s9Y77F',
+    shuffle: false
+  }}>
+    {args => html`<video-gallery-stacked
+      playlist="${ifDefined(args.playlist|| undefined)}"
+      shuffle="${ifDefined(args.shuffle || undefined)}"
+    >${args.content}</video-gallery-stacked>`}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Basic"/>
+
+## More Info
+
+<Description markdown={readme} />
