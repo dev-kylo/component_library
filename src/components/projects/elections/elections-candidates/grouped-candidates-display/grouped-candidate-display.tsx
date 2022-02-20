@@ -29,7 +29,6 @@ export class GroupedCandidates {
 
 
     componentDidLoad() {
-        console.log(this.data)
         for (let x = 0; x < this.data.length; x++) {
             let current = this.data[x];
             let post = (current.Post.Title || current.Post).replace(/\s/g, "");
