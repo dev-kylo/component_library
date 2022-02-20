@@ -54,7 +54,7 @@ export class ProfileCard {
 
   createNameButton() {
     if (this.link)
-      return <a target="_blank" class="titlelink" href={this.link}><span class="name">{this.name}</span></a>
+      return <a target="_blank" rel="noopener noreferrer" class="titlelink" href={this.link}><span class="name">{this.name}</span></a>
 
     else return <a role="button" class="titlelink" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a>
   }
@@ -77,7 +77,7 @@ export class ProfileCard {
 
     if (!text) return '';
     if (link)
-      return <a class="link" target="_blank" href={link}>{text}</a>
+      return <a class="link" rel="noopener noreferrer" target="_blank" href={link}>{text}</a>
     else return <a class="link" role="button" tabindex="0" onClick={e => this.clickHandler(e, callback)} onKeyDown={e => this.keyDownHandler(e, callback)}>{text}</a>
   }
 

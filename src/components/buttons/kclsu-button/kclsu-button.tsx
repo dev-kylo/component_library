@@ -1,7 +1,7 @@
-import { Component, h, Prop, Event, EventEmitter, Method, Element} from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 
 type btnClass = 'green' | 'rounded' | 'purple' | 'verysmall' | 'big' | 'small';
-type btnStyle = { margin:string }
+type btnStyle = { margin: string }
 
 @Component({
     tag: 'kclsu-button',
@@ -43,46 +43,46 @@ export class KclsuButton {
     @Element() host: HTMLElement;
 
 
-    @Event()emitClick:EventEmitter;
+    @Event() emitClick: EventEmitter;
 
-    clickHandler( e:Event ){
+    clickHandler(e: Event) {
         e.preventDefault();
         this.clickfn();
     }
 
-    emitHandler( e:Event ){
+    emitHandler(e: Event) {
         e.preventDefault();
-        this.emitClick.emit(this.emitid) ;
+        this.emitClick.emit(this.emitid);
     }
 
     @Method()
-    async addFocus(){
+    async addFocus() {
         let button = this.link ? this.host.shadowRoot.querySelector('a')
-                                : this.host.shadowRoot.querySelector('button');
+            : this.host.shadowRoot.querySelector('button');
         Promise.resolve(button.focus());
     }
 
-    
+
     render() {
 
         //SET BTN MARGIN
-        const style:btnStyle = {
+        const style: btnStyle = {
             'margin': this.margin
         };
 
         //SET BUTTON CLASSES
-        let classes:btnClass[] =  [];
-        !this.purple? classes.push('green') : classes.push('purple');
-        this.rounded? classes.push('rounded') : null;
+        let classes: btnClass[] = [];
+        !this.purple ? classes.push('green') : classes.push('purple');
+        this.rounded ? classes.push('rounded') : null;
         if (this.small) classes.push('small');
         else if (this.verysmall) classes.push('verysmall');
         else classes.push('big');
 
         //BTN CLICK WILL EITHER NAVIGATE AWAY OR EMIT EVENT
-        let btn : null | HTMLLinkElement | HTMLButtonElement;
+        let btn: null | HTMLLinkElement | HTMLButtonElement;
 
         if (this.link)
-            btn = <a role="button" href={this.link} target={this.newtab? "_blank" : "_self"}  class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
+            btn = <a role="button" href={this.link} target={this.newtab ? "_blank" : "_self"} rel={this.newtab ? "noopener noreferrer" : ""} class={classes.join(' ')} style={style}>{this.text}<slot></slot></a>
 
 
         else if (this.emitid)
@@ -94,7 +94,7 @@ export class KclsuButton {
         else btn = <button class={classes.join(' ')} style={style}>{this.text}<slot></slot></button>;
 
         return (
-            <flex-container alignx={this.center? 'center' : 'flex-start'} >
+            <flex-container alignx={this.center ? 'center' : 'flex-start'} >
                 {btn}
             </flex-container>
         )

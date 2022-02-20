@@ -1,4 +1,4 @@
-import { Component, h, Prop} from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 
 @Component({
@@ -22,15 +22,15 @@ export class ProfileLogoCard {
 
     render() {
         const bg = {
-            "background-color": this.logocolour? this.logocolour : 'white'
+            "background-color": this.logocolour ? this.logocolour : 'white'
         }
 
 
         return (
-            <a target="_blank" href={this.link}>
+            <a target="_blank" rel="noopener noreferrer" href={this.link}>
                 <div class="profile-card">
                     <div class="background">
-                        <lazy-image  mobile="90" desktop="20" minwidth="350" animatein focusarea={this.imagefocus} image={this.image}></lazy-image>
+                        <lazy-image mobile="90" desktop="20" minwidth="350" animatein focusarea={this.imagefocus} image={this.image}></lazy-image>
                     </div>
                     <div class="logoContainer" style={bg}>
                         {this.logo && <lazy-image mobile="10" desktop="30" minwidth="100" animatein image={this.logo}></lazy-image>}
