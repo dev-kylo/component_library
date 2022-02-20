@@ -46,6 +46,18 @@ export namespace Components {
     }
     interface CandidateDisplay {
         "data": any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "emitpostid": boolean;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "fallbackbreakdownurl": any;
+        /**
+          * Using legacy data
+         */
+        "legacy": boolean;
     }
     interface CandidateUpload {
         /**
@@ -83,6 +95,14 @@ export namespace Components {
           * The election ID from MSL!
          */
         "electionid": string;
+        /**
+          * Choose to use a single page to keep all post result breakdowns. Appears on each candidate profile card, in the breakdown link
+         */
+        "fallbackbreakdownurl": any;
+        /**
+          * Use the legacy system for results
+         */
+        "legacy": boolean;
         /**
           * Filter out RON profiles in the candidate listing
          */
@@ -219,6 +239,18 @@ export namespace Components {
     }
     interface GroupedCandidateDisplay {
         "data": any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "emitpostid": boolean;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "fallbackbreakdownurl": any;
+        /**
+          * Using legacy data
+         */
+        "legacy": boolean;
     }
     interface ImageSliderAuto {
         "classes": string;
@@ -1435,6 +1467,18 @@ declare namespace LocalJSX {
     }
     interface CandidateDisplay {
         "data"?: any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "emitpostid"?: boolean;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "fallbackbreakdownurl"?: any;
+        /**
+          * Using legacy data
+         */
+        "legacy"?: boolean;
     }
     interface CandidateUpload {
         /**
@@ -1472,6 +1516,14 @@ declare namespace LocalJSX {
           * The election ID from MSL!
          */
         "electionid"?: string;
+        /**
+          * Choose to use a single page to keep all post result breakdowns. Appears on each candidate profile card, in the breakdown link
+         */
+        "fallbackbreakdownurl"?: any;
+        /**
+          * Use the legacy system for results
+         */
+        "legacy"?: boolean;
         /**
           * Filter out RON profiles in the candidate listing
          */
@@ -1609,6 +1661,18 @@ declare namespace LocalJSX {
     }
     interface GroupedCandidateDisplay {
         "data"?: any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "emitpostid"?: boolean;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "fallbackbreakdownurl"?: any;
+        /**
+          * Using legacy data
+         */
+        "legacy"?: boolean;
     }
     interface ImageSliderAuto {
         "classes"?: string;
