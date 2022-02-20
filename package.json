@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@rollup/plugin-commonjs": "^19.0.0",
-    "@stencil/core": "^2.6.0",
+    "@stencil/core": "^2.13.0",
     "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-docs": "^6.2.9",

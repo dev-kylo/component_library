@@ -7,9 +7,13 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type  | Default     |
-| -------- | --------- | ----------- | ----- | ----------- |
-| `data`   | `data`    |             | `any` | `undefined` |
+| Property               | Attribute              | Description                                             | Type               | Default     |
+| ---------------------- | ---------------------- | ------------------------------------------------------- | ------------------ | ----------- |
+| `data`                 | `data`                 |                                                         | `any`              | `undefined` |
+| `electionid`           | `electionid`           | URL for a page to hold breakdowns, as a fallback option | `number \| string` | `undefined` |
+| `emitpostid`           | `emitpostid`           | URL for a page to hold breakdowns, as a fallback option | `boolean`          | `false`     |
+| `fallbackbreakdownurl` | `fallbackbreakdownurl` | URL for a page to hold breakdowns, as a fallback option | `any`              | `undefined` |
+| `legacy`               | `legacy`               | Using legacy data                                       | `boolean`          | `false`     |
 
 
 ## Dependencies

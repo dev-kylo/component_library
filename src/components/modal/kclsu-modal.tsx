@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen, Element, Watch} from '@stencil/core';
+import { Component, h, Prop, Listen, Element, Watch } from '@stencil/core';
 import { createArrayFromString } from '../../utils/utils';
 
 @Component({
@@ -9,13 +9,13 @@ import { createArrayFromString } from '../../utils/utils';
 export class KclsuModal {
 
     /** Controls when the modal is open and visible or not */
-    @Prop({ mutable: true }) show:boolean = false;
+    @Prop({ mutable: true }) show: boolean = false;
     /** This will allow a user to click away and hide the modal when open */
-    @Prop() autoexit:boolean = false;
+    @Prop() autoexit: boolean = false;
     /** Set position to absolute or other. Defaults to fixed */
-    @Prop() position:string = 'fixed';
+    @Prop() position: string = 'fixed';
     /** Set custom width, height and background colour */
-    @Prop() custom:string;
+    @Prop() custom: string;
     /** Provide a comma separated list of container web components inside the modal - for trapping focus */
     @Prop() innercmps: string;
     /** Provide a comma separated list of element selectors which contain slotted content */
@@ -26,91 +26,91 @@ export class KclsuModal {
     @Prop() enterfn: () => void;
     @Element() host: HTMLElement;
 
-    focusables:any[] = [];
+    focusables: any[] = [];
     currentFocusIndex = 0;
 
     styles = {
-        in:  'translate(-50%, -50%)',
+        in: 'translate(-50%, -50%)',
         out: 'translate(-200vh, -200vw)',
     };
 
-    componentDidLoad(){
+    componentDidLoad() {
         if (this.enterfn) this.enterfn();
         this.animate(this.styles);
         this.findFocusableElements();
 
         document.addEventListener('keydown', (e) => {
 
-            if (this.show && e.key === 'Tab'){
+            if (this.show && e.key === 'Tab') {
                 e.preventDefault();
                 // if(this.focusables.length <=1) this.findFocusableElements();
                 let focusables = this.focusables;
-         
+
                 let indexToFocus = this.currentFocusIndex;
                 indexToFocus = indexToFocus === focusables.length - 1 ? 0 : indexToFocus + 1;
-                
+
                 this.findFocus(focusables[indexToFocus]);
                 this.currentFocusIndex = indexToFocus;
             }
-    
-        
+
+
         });
     }
 
-    componentDidUpdate(){
-        if(this.focusables.length <=1) this.findFocusableElements();
+    componentDidUpdate() {
+        if (this.focusables.length <= 1) this.findFocusableElements();
     }
 
 
-    findFocus(el){
-        if(el){
-            if (el.tagName === 'KCLSU-BUTTON'){
+    findFocus(el) {
+        if (el) {
+            if (el.tagName === 'KCLSU-BUTTON') {
                 const btn = el as HTMLKclsuButtonElement;
                 btn.addFocus();
             }
-            else if(el.tagName === 'PROFILE-CARD'){
+            else if (el.tagName === 'PROFILE-CARD') {
                 const card = el as HTMLProfileCardElement;
                 card.addFocus();
-            } else if(el.tagName === 'EXIT-BUTTON'){
+            } else if (el.tagName === 'EXIT-BUTTON') {
                 const btn = el as HTMLExitButtonElement;
                 btn.addFocus();
             } else el.focus();
 
-        } 
+        }
     }
 
-    @Listen('exitModal') exitHandler(){
+    @Listen('exitModal') exitHandler() {
         this.currentFocusIndex = 0;
-        if (this.autoexit){
+        if (this.autoexit) {
             this.show = false;
             this.animate(this.styles)
             if (this.exitfn)
                 this.exitfn();
-        } 
+        }
     }
 
-    findFocusableElements(){
+    findFocusableElements() {
         let ar = Array.from(this.host.querySelectorAll(
             'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
         )) as any;
         let slotFocusables = [];
         let innerCmpFocusables = [];
-        if (this.slotparents){
+        if (this.slotparents) {
             let cmps = createArrayFromString(this.slotparents, ',');
             cmps.forEach(selector => {
                 let el: HTMLElement = document.querySelector(selector);
-                if(el){
+                if (el) {
                     slotFocusables = Array.from(el.querySelectorAll(
                         'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
                     )) as any;
                 }
             })
         }
-        if (this.innercmps){
+        if (this.innercmps) {
             let cmps = createArrayFromString(this.innercmps, ',');
             cmps.forEach(selector => {
                 let el: HTMLElement = this.host.querySelector(selector);
-                if(el){
+                if (el) {
                     innerCmpFocusables = Array.from(el.querySelectorAll(
                         'a, kclsu-button, exit-button, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
                     )) as any;
@@ -118,35 +118,34 @@ export class KclsuModal {
             })
         }
 
-        if(this.autoexit) ar.unshift(this.host.shadowRoot.querySelector('exit-button'));
-        ar = ar.concat(innerCmpFocusables).concat(slotFocusables);   
+        if (this.autoexit) ar.unshift(this.host.shadowRoot.querySelector('exit-button'));
+        ar = ar.concat(innerCmpFocusables).concat(slotFocusables);
         this.focusables = ar;
-        console.log(ar)
-        return ar;   
+        return ar;
     }
 
-    
 
-    @Watch('show') showHandler(newVal, __){
-        if (!newVal){
-            if (this.exitfn) this.exitfn(); 
+
+    @Watch('show') showHandler(newVal, __) {
+        if (!newVal) {
+            if (this.exitfn) this.exitfn();
         } else {
             this.currentFocusIndex = 0;
-      
+
             this.findFocusableElements();
-            
+
             if ((this.enterfn)) this.enterfn()
         }
         this.animate(this.styles);
     }
 
-    animate(styles){
+    animate(styles) {
         const modal = this.host.shadowRoot.querySelector('.Modal') as HTMLElement;
         modal.style.position = this.position;
 
         if (this.show) {
             modal.style.display = "block";
-            modal.style.transform =  this.custom ? 'inherit' : styles.in;
+            modal.style.transform = this.custom ? 'inherit' : styles.in;
             modal.style.opacity = '1';
         } else {
             modal.style.transform = styles.out;
@@ -166,7 +165,7 @@ export class KclsuModal {
             let customSpecs = this.custom.split(',');
             style.width = customSpecs[0];
             style.height = customSpecs[1];
-            style.backgroundColor =  'white';
+            style.backgroundColor = 'white';
             style.bottom = 0;
         }
 

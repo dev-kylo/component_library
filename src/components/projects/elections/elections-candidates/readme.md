@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute    | Description                                                          | Type      | Default     |
-| ------------ | ------------ | -------------------------------------------------------------------- | --------- | ----------- |
-| `electionid` | `electionid` | The election ID from MSL!                                            | `string`  | `undefined` |
-| `removeron`  | `removeron`  | Filter out RON profiles in the candidate listing                     | `boolean` | `false`     |
-| `results`    | `results`    | Set to true to display results data. False to display All Candidates | `boolean` | `false`     |
+| Property               | Attribute              | Description                                                                                                                   | Type      | Default     |
+| ---------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `electionid`           | `electionid`           | The election ID from MSL!                                                                                                     | `string`  | `undefined` |
+| `fallbackbreakdownurl` | `fallbackbreakdownurl` | Choose to use a single page to keep all post result breakdowns. Appears on each candidate profile card, in the breakdown link | `any`     | `undefined` |
+| `legacy`               | `legacy`               | Use the legacy system for results                                                                                             | `boolean` | `false`     |
+| `removeron`            | `removeron`            | Filter out RON profiles in the candidate listing                                                                              | `boolean` | `false`     |
+| `results`              | `results`              | Set to true to display results data. False to display All Candidates                                                          | `boolean` | `false`     |
 
 
 ## Dependencies
