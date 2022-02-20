@@ -16,11 +16,13 @@ export class CandidatesDisplay {
     @Prop() fallbackbreakdownurl;
     /** URL for a page to hold breakdowns, as a fallback option*/
     @Prop() emitpostid: boolean = false;
+    /** URL for a page to hold breakdowns, as a fallback option*/
+    @Prop() electionid: string | number;
 
 
 
     render() {
-        console.log(this.data);
+
         const cards = !this.data ? null
             :
             this.data
@@ -47,9 +49,9 @@ export class CandidatesDisplay {
                         link={candidate.ManifestoLink || candidate.ManifestoUrl}
                         image={image}
                         cta='Manifesto'
-                        secondcta='Breakdown'
-                        secondlink={this.emitpostid && this.fallbackbreakdownurl}
-                        emitid={this.emitpostid && !this.legacy && candidate.Post.Id}
+                        secondcta={this.emitpostid ? 'Breakdown' : ''}
+                        secondlink={this.fallbackbreakdownurl ? this.fallbackbreakdownurl : undefined}
+                        emitid={this.emitpostid && !this.legacy && JSON.stringify({ post: candidate.Post.Id, election: this.electionid })}
                     />
                 })
 

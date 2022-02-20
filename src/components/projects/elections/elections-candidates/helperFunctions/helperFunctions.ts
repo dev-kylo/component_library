@@ -60,7 +60,7 @@ export function filterMutliplePosts(ar: string[], data: mslCandidateI[]) {
     return candidatesArrays.reduce((acc, cur) => acc.concat(cur));
 }
 
-export function filterPostGroupings(group: mappedGroupingI, data: any, results: boolean) {
+export function filterPostGroupings(group: mappedGroupingI, data: any) {
     //THIS WILL RETURN AN ARRAY OF CANDIDATES WHOSE POST TITLES INCLUDE THE ACADEMIC GROUP TYPE - EG BIOSCIENCE
     const filtered = data.filter((candidate: mslCandidateI) => {
         let post = candidate.Post.Title || candidate.Post;
@@ -80,25 +80,24 @@ export function filterPostGroupings(group: mappedGroupingI, data: any, results: 
 
     //IF GROUP HAS REPLACE STRINGS
     if (group.regex) {
-        return regexReplace<mappedGroupingI>(group, filtered, results);
+        return regexReplace<mappedGroupingI>(group, filtered);
     }
 
     return filtered;
 }
 
-export function regexReplace<T extends regexReplaceI>(group: T, filtered: mslCandidateI[], results: boolean): mslCandidateI[] {
+export function regexReplace<T extends regexReplaceI>(group: T, filtered: mslCandidateI[]): mslCandidateI[] {
 
     return filtered.map((cand) => {
         const candidate = { ...cand };
-        let post = regReplace(candidate.Post?.Title || candidate.Post, group);
-        console.log(post)
+        let post = regReplace(candidate.Post.Title || candidate.Post, group);
         // IF LEGACY?
-        // if (results) {
-        //     candidate.Post = post;
-        // }
-
-        candidate.Post = { ...cand.Post };
-        candidate.Post.Title = post;
+        if (typeof candidate.Post === 'string') {
+            candidate.Post = post;
+        } else {
+            candidate.Post = { ...cand.Post };
+            candidate.Post.Title = post;
+        }
 
         return candidate;
     })

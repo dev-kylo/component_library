@@ -49,6 +49,10 @@ export namespace Components {
         /**
           * URL for a page to hold breakdowns, as a fallback option
          */
+        "electionid": string | number;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
         "emitpostid": boolean;
         /**
           * URL for a page to hold breakdowns, as a fallback option
@@ -239,6 +243,10 @@ export namespace Components {
     }
     interface GroupedCandidateDisplay {
         "data": any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "electionid": number;
         /**
           * URL for a page to hold breakdowns, as a fallback option
          */
@@ -1470,6 +1478,10 @@ declare namespace LocalJSX {
         /**
           * URL for a page to hold breakdowns, as a fallback option
          */
+        "electionid"?: string | number;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
         "emitpostid"?: boolean;
         /**
           * URL for a page to hold breakdowns, as a fallback option
@@ -1661,6 +1673,10 @@ declare namespace LocalJSX {
     }
     interface GroupedCandidateDisplay {
         "data"?: any;
+        /**
+          * URL for a page to hold breakdowns, as a fallback option
+         */
+        "electionid"?: number;
         /**
           * URL for a page to hold breakdowns, as a fallback option
          */

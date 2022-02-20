@@ -1,4 +1,4 @@
-import { Component, Prop, h, Element, Event, EventEmitter, State, Method} from '@stencil/core';
+import { Component, Prop, h, Element, Event, EventEmitter, State, Method } from '@stencil/core';
 
 @Component({
   tag: 'profile-card',
@@ -33,55 +33,62 @@ export class ProfileCard {
   @Prop() imagefocus: 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces' = 'center'
 
   @State() imageloading: boolean = true;
-  @State() imageclasses:any = ['fit', 'hide']
-  
+  @State() imageclasses: any = ['fit', 'hide']
+
   @Element() host: HTMLElement;
 
-  @Event()emitClick:EventEmitter;
+  @Event() emitClick: EventEmitter;
 
-  clickHandler(e: Event, cb: () => void){
-      e.preventDefault();
+  clickHandler(e: Event, cb: () => void) {
+    e.preventDefault();
+    if (cb) cb();
+    else if (this.emitid) this.emitClick.emit(this.emitid)
+  }
+
+  keyDownHandler(e: KeyboardEvent, cb: () => void) {
+    if (e.code === 'Enter') {
       if (cb) cb();
       else if (this.emitid) this.emitClick.emit(this.emitid)
+    }
   }
 
-  createNameButton(){
-    if (this.link) 
+  createNameButton() {
+    if (this.link)
       return <a target="_blank" class="titlelink" href={this.link}><span class="name">{this.name}</span></a>
-    
-    else return <a role="button" class="titlelink" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a> 
+
+    else return <a role="button" class="titlelink" tabindex="0" onClick={e => this.clickHandler(e, this.primaryfn)}><span class="name">{this.name}</span></a>
   }
 
-  createTextButton(type: 'primary' | 'secondary'){
+  createTextButton(type: 'primary' | 'secondary') {
     let link, text, callback;
-    
+
     switch (type) {
       case 'primary':
         link = this.link;
         text = this.cta;
         callback = this.primaryfn;
-      break;
-      case 'secondary': 
+        break;
+      case 'secondary':
         link = this.secondlink;
         text = this.secondcta;
         callback = this.secondaryfn;
-      break;
+        break;
     }
 
     if (!text) return '';
-    if (link) 
+    if (link)
       return <a class="link" target="_blank" href={link}>{text}</a>
-    else return <a class="link" role="button" tabindex="0" onClick={e => this.clickHandler(e, callback)}>{text}</a> 
+    else return <a class="link" role="button" tabindex="0" onClick={e => this.clickHandler(e, callback)} onKeyDown={e => this.keyDownHandler(e, callback)}>{text}</a>
   }
 
   @Method()
-  async addFocus(){
+  async addFocus() {
     const firstLink = this.host.shadowRoot.querySelector('a');
     if (firstLink) firstLink.focus();
   }
 
 
-  
+
   render() {
 
 
@@ -93,9 +100,9 @@ export class ProfileCard {
     return (
       <div class="profile-card">
         <div class="image">
-          <lazy-image 
-            nolazy={this.nolazy} 
-            animatein 
+          <lazy-image
+            nolazy={this.nolazy}
+            animatein
             image={this.image || 'https://res.cloudinary.com/kclsu-media/image/upload/f_auto,fl_any_format,g_center,q_100/v1581516201/website_uploads/KCLSU%20Brand/Bzcl1r6L_400x400_se7grm.jpg'}
             mobile="90"
             desktop="20"

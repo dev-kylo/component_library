@@ -89,7 +89,7 @@ export class ElectionsCandidates {
         /** DEPENDING ON FIELD TYPE, CREATE EITHER INNER TABBS CONTAINER OR A CANDIDATE DISPLAY */
         let inner;
         if (field.type === 'single') {
-            inner = (<candidate-display fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterSinglePosts(field.posts[0], this.data)}></candidate-display>)
+            inner = (<candidate-display electionid={+this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterSinglePosts(field.posts[0], this.data)}></candidate-display>)
         }
         else {
             inner = <kclsu-tabs variant='secondary'> {this.createInnerTabs(field)}</kclsu-tabs>
@@ -125,7 +125,7 @@ export class ElectionsCandidates {
                 return ([
                     <tab-title active={title === 'All' || i === 0} name={title}> {tabtitle} </tab-title>,
                     <tab-area active={title === 'All' || i === 0} name={title}>
-                        <candidate-display fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={filterFunction()}></candidate-display>
+                        <candidate-display electionid={+this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={filterFunction()}></candidate-display>
                     </tab-area>
                 ])
             })
@@ -136,7 +136,7 @@ export class ElectionsCandidates {
                 return ([
                     <tab-title active={group.active} name={group.tabtitle + i}> {group.tabtitle} </tab-title>,
                     <tab-area active={group.active} name={group.tabtitle + i}>
-                        <grouped-candidate-display fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterPostGroupings(group, this.data, this.results)}></grouped-candidate-display>
+                        <grouped-candidate-display electionid={+this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterPostGroupings(group, this.data)}></grouped-candidate-display>
                     </tab-area>
                 ])
             })

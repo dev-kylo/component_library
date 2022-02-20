@@ -16,6 +16,8 @@ export class GroupedCandidates {
     @Prop() fallbackbreakdownurl;
     /** URL for a page to hold breakdowns, as a fallback option*/
     @Prop() emitpostid: boolean = false;
+    /** URL for a page to hold breakdowns, as a fallback option*/
+    @Prop() electionid: number;
 
     @State() activePosition;
     @State() current;
@@ -50,7 +52,7 @@ export class GroupedCandidates {
             let post = candidates[0].Post.Title || candidates[0].Post;
             tabs.push(<tab-title name={key}>{post}</tab-title>)
             tabs.push(<tab-area name={key}>
-                <candidate-display fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.emitpostid} legacy={this.legacy} data={candidates}></candidate-display>
+                <candidate-display electionid={this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.emitpostid} legacy={this.legacy} data={candidates}></candidate-display>
             </tab-area>);
         }
 
