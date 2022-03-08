@@ -476,6 +476,10 @@ export namespace Components {
     }
     interface LabelCard {
         /**
+          * Add a custom shadow colour to the card
+         */
+        "boxshadow": string;
+        /**
           * If a button included, the link for the button
          */
         "buttonlink": string;
@@ -516,10 +520,6 @@ export namespace Components {
          */
         "reverse": boolean;
         /**
-          * Add a custom shadow colour to the card
-         */
-        "shadowColour": string;
-        /**
           * Make the card the smallest height possible
          */
         "smallestheight": boolean;
@@ -531,6 +531,9 @@ export namespace Components {
           * The sub text beneath the title
          */
         "text": string;
+        /**
+          * the teal border on the left side of the card
+         */
         "withleftborder": boolean;
     }
     interface LazyImage {
@@ -1911,6 +1914,10 @@ declare namespace LocalJSX {
     }
     interface LabelCard {
         /**
+          * Add a custom shadow colour to the card
+         */
+        "boxshadow"?: string;
+        /**
           * If a button included, the link for the button
          */
         "buttonlink"?: string;
@@ -1951,10 +1958,6 @@ declare namespace LocalJSX {
          */
         "reverse"?: boolean;
         /**
-          * Add a custom shadow colour to the card
-         */
-        "shadowColour"?: string;
-        /**
           * Make the card the smallest height possible
          */
         "smallestheight"?: boolean;
@@ -1966,6 +1969,9 @@ declare namespace LocalJSX {
           * The sub text beneath the title
          */
         "text"?: string;
+        /**
+          * the teal border on the left side of the card
+         */
         "withleftborder"?: boolean;
     }
     interface LazyImage {

@@ -35,14 +35,11 @@ export class LabelCard {
     /** The image URL for the card. Defaults to the kclsu logo */
     @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/v1573644938/website_uploads/KCLSU%20Brand/db75df131542437eb3da2415c7f91fc6_hhoknp.jpg';
     /** Add a custom shadow colour to the card */
-    @Prop() shadowColour: string;
+    @Prop() boxshadow: string;
+    /** the teal border on the left side of the card */
     @Prop() withleftborder: boolean = true;
 
     render() {
-
-        if (this.shadowColour) {
-
-        }
 
         let text = null;
         if (this.text) text = <p>{this.text}</p>;
@@ -55,7 +52,8 @@ export class LabelCard {
             'flex-direction': `${!this.reverse ? 'row' : 'row-reverse'}`,
             'height': `${this.cardheight ? this.cardheight : this.smallestheight ? '60px' : !this.text ? '80px' : '120px'}`,
             'width': `${this.cardwidth ? this.cardwidth : 'auto'}`,
-            'margin': `${this.margin ? this.margin : '0'}`
+            'margin': `${this.margin ? this.margin : '0'}`,
+            'box-shadow': `${this.boxshadow || '0.5px 3px 5px 0px rgba(0, 0, 0, 0.15)'}`
         }
 
         let headingStyle = this.smallheading ? { 'font-size': '18px', 'margin': '0!important' } : { 'font-size': '20px' };
