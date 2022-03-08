@@ -1,6 +1,7 @@
 export interface mappedTabI extends regexReplaceI {
     tabtitle: string,
     type: tabType,
+    injectcandidates?: string;
     posts?: string[],
     active?: boolean,
     combineresults?: boolean,

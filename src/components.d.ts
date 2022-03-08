@@ -121,6 +121,7 @@ export namespace Components {
     interface ElectionsTab {
         "active": boolean;
         "combineresults": boolean;
+        "injectcandidates": string;
         "posts": string;
         "tabtitle": string;
         "type": 'single' | 'multiple' | 'groupings';
@@ -1550,6 +1551,7 @@ declare namespace LocalJSX {
     interface ElectionsTab {
         "active"?: boolean;
         "combineresults"?: boolean;
+        "injectcandidates"?: string;
         "posts"?: string;
         "tabtitle"?: string;
         "type"?: 'single' | 'multiple' | 'groupings';

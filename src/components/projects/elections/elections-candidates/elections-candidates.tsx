@@ -88,7 +88,11 @@ export class ElectionsCandidates {
     organiseInnerTabs(field: mappedTabI) {
         /** DEPENDING ON FIELD TYPE, CREATE EITHER INNER TABBS CONTAINER OR A CANDIDATE DISPLAY */
         let inner;
-        if (field.type === 'single') {
+        if (field.type === 'single' && field.injectcandidates) {
+            const candidates = JSON.parse(field.injectcandidates);
+            inner = (<candidate-display electionid={+this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterSinglePosts(field.posts[0], this.data).concat(candidates)}></candidate-display>)
+        }
+        else if (field.type === 'single') {
             inner = (<candidate-display electionid={+this.electionid} fallbackbreakdownurl={this.fallbackbreakdownurl} emitpostid={this.results} legacy={this.legacy} data={helpers.filterSinglePosts(field.posts[0], this.data)}></candidate-display>)
         }
         else {

@@ -12,7 +12,8 @@ export class ElectionsTab {
     @Prop() type: 'single' | 'multiple' | 'groupings';
     @Prop() combineresults: boolean;
     @Prop() active: boolean;
-    
+    @Prop() injectcandidates: string;
+
     render() {
         return null
     }
