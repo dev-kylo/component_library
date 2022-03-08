@@ -1,139 +1,139 @@
 @import '../../../global/globalstyles.css';
 
 .link {
-    margin: 0;
-    background: transparent;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    display: block;
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  display: block;
 }
 
-.card:hover{
-    box-shadow: 3px 5px 5px 0px rgba(0,0,0,0.15);
-    transform: translate(2px, 2px);
-    background: transparent;
+.card:hover {
+  box-shadow: 3px 5px 5px 0px rgba(0, 0, 0, 0.15);
+  transform: translate(2px, 2px);
+  background: transparent;
 }
 
 .card {
-    height: 100%;
-    display: flex;
-    background: #fff;
-    position: relative;
-    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
-    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
-    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
-    border: 1px solid #eaeaea;
-    min-height: 40px; 
-    list-style: none;
-    transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
+  height: 100%;
+  display: flex;
+  background: #fff;
+  position: relative;
+  -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: .5px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0.5px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid #eaeaea;
+  min-height: 40px;
+  list-style: none;
+  transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
 }
 
-.card::before {
-    content: "";
-    background: var(--light-teal);
-    position: absolute;
-    left: -5px;
-    top: 0;
-    width: 4px;
-    height: 100%;
+.cardborder::before {
+  content: "";
+  background: var(--light-teal);
+  position: absolute;
+  left: -5px;
+  top: 0;
+  width: 4px;
+  height: 100%;
 }
 
 .image {
-    justify-self: flex-start;
-    width: 40%;
-    height: auto;
-    padding: 5px;
+  justify-self: flex-start;
+  width: 40%;
+  height: auto;
+  padding: 5px;
 }
 
-@media (max-width: 500px){
-    .image {
-        width: 20%;
-    }  
+@media (max-width: 500px) {
+  .image {
+    width: 20%;
+  }
 }
 
 .title {
-    margin: 5px 0 15px 0;
-    line-height: 22px;
-    font-weight: 500;
-    line-height: 1.1;
-    color: var(--purple);
-    padding: 0 10px;
-    display: inline-block;
-    font-weight: bold;
-    font-family: bree_serifsemibold, bree-serif, serif;
-    font-weight: 600;
+  margin: 5px 0 15px 0;
+  line-height: 22px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--purple);
+  padding: 0 10px;
+  display: inline-block;
+  font-weight: bold;
+  font-family: bree_serifsemibold, bree-serif, serif;
+  font-weight: 600;
 }
 
 
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0 0.5em;
-    text-align: center;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0.5em;
+  text-align: center;
 }
 
 a {
-    display: table;
-    padding: 0 15px;
-    margin: 15px 20px 10px;
-    color: white;
-    background: var(--dark-teal);
-    border-radius: 30px;
-    font-size: 14px;
+  display: table;
+  padding: 0 15px;
+  margin: 15px 20px 10px;
+  color: white;
+  background: var(--dark-teal);
+  border-radius: 30px;
+  font-size: 14px;
 }
 
 .content p {
-    font-size: 14px;
-    line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .content kclsu-button {
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  .image {
+    justify-self: flex-start;
+    min-width: 30%;
+    height: auto;
+  }
+
+  .title {
     margin-bottom: 5px;
+  }
+
+  .content p {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+    margin: 0.2em 0;
+  }
+
+
+  .content kclsu-button {
+    width: 90%;
+  }
+
+  a {
+    margin: 1em 0;
+  }
 }
 
-@media only screen and (max-width: 500px){
-    .image {
-        justify-self: flex-start;
-        min-width:30%;
-        height: auto;
-    }
+@media only screen and (max-width: 350px) {
 
-    .title {
-        margin-bottom: 5px;
-    }
+  .title {
+    font-size: 16px;
+  }
 
-    .content p {
-        font-family: "Open Sans", Arial, sans-serif;
-        font-size: 14px;
-        max-width: 100%;
-        text-align: center;
-        margin: 0.2em 0;
-    }
-
-
-    .content kclsu-button {
-        width: 90%;
-    }
-
-    a {
-        margin: 1em 0;
-    }
-}
-
-@media only screen and (max-width: 350px){
-
-    .title{
-        font-size: 16px;
-    }
-
-    a {
-        margin: 0;
-    }
+  a {
+    margin: 0;
+  }
 }

@@ -516,6 +516,10 @@ export namespace Components {
          */
         "reverse": boolean;
         /**
+          * Add a custom shadow colour to the card
+         */
+        "shadowColour": string;
+        /**
           * Make the card the smallest height possible
          */
         "smallestheight": boolean;
@@ -527,6 +531,7 @@ export namespace Components {
           * The sub text beneath the title
          */
         "text": string;
+        "withleftborder": boolean;
     }
     interface LazyImage {
         /**
@@ -1946,6 +1951,10 @@ declare namespace LocalJSX {
          */
         "reverse"?: boolean;
         /**
+          * Add a custom shadow colour to the card
+         */
+        "shadowColour"?: string;
+        /**
           * Make the card the smallest height possible
          */
         "smallestheight"?: boolean;
@@ -1957,6 +1966,7 @@ declare namespace LocalJSX {
           * The sub text beneath the title
          */
         "text"?: string;
+        "withleftborder"?: boolean;
     }
     interface LazyImage {
         /**

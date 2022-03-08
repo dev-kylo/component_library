@@ -34,8 +34,15 @@ export class LabelCard {
     @Prop() smallestheight: boolean;
     /** The image URL for the card. Defaults to the kclsu logo */
     @Prop() image: string = 'https://res.cloudinary.com/kclsu-media/image/upload/v1573644938/website_uploads/KCLSU%20Brand/db75df131542437eb3da2415c7f91fc6_hhoknp.jpg';
+    /** Add a custom shadow colour to the card */
+    @Prop() shadowColour: string;
+    @Prop() withleftborder: boolean = true;
 
     render() {
+
+        if (this.shadowColour) {
+
+        }
 
         let text = null;
         if (this.text) text = <p>{this.text}</p>;
@@ -57,7 +64,7 @@ export class LabelCard {
         if (this.link) {
             return (
                 <a href={this.link} target="_blank" rel="noopener noreferrer" class="link">
-                    <div class="card" style={cardStyle}>
+                    <div class={`card ${this.withleftborder ? 'cardborder' : ''}`} style={cardStyle}>
                         <div class="image">
                             <lazy-image
                                 animatein
