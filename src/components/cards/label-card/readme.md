@@ -7,6 +7,7 @@
 
 | Property         | Attribute        | Description                                            | Type      | Default                                                                                                                                       |
 | ---------------- | ---------------- | ------------------------------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `boxshadow`      | `boxshadow`      | Add a custom shadow colour to the card                 | `string`  | `undefined`                                                                                                                                   |
 | `buttonlink`     | `buttonlink`     | If a button included, the link for the button          | `string`  | `undefined`                                                                                                                                   |
 | `buttontitle`    | `buttontitle`    | If a button included, the text for the button          | `string`  | `'Find out more'`                                                                                                                             |
 | `cardheight`     | `cardheight`     | Specify a fixed cardheight                             | `string`  | `undefined`                                                                                                                                   |
@@ -20,6 +21,7 @@
 | `smallestheight` | `smallestheight` | Make the card the smallest height possible             | `boolean` | `undefined`                                                                                                                                   |
 | `smallheading`   | `smallheading`   | This will reduce the size of the heading in the card   | `boolean` | `undefined`                                                                                                                                   |
 | `text`           | `text`           | The sub text beneath the title                         | `string`  | `undefined`                                                                                                                                   |
+| `withleftborder` | `withleftborder` | the teal border on the left side of the card           | `boolean` | `true`                                                                                                                                        |
 
 
 ## Dependencies

@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property         | Attribute        | Description | Type                                    | Default     |
-| ---------------- | ---------------- | ----------- | --------------------------------------- | ----------- |
-| `active`         | `active`         |             | `boolean`                               | `undefined` |
-| `combineresults` | `combineresults` |             | `boolean`                               | `undefined` |
-| `posts`          | `posts`          |             | `string`                                | `undefined` |
-| `tabtitle`       | `tabtitle`       |             | `string`                                | `undefined` |
-| `type`           | `type`           |             | `"groupings" \| "multiple" \| "single"` | `undefined` |
+| Property           | Attribute          | Description | Type                                    | Default     |
+| ------------------ | ------------------ | ----------- | --------------------------------------- | ----------- |
+| `active`           | `active`           |             | `boolean`                               | `undefined` |
+| `combineresults`   | `combineresults`   |             | `boolean`                               | `undefined` |
+| `injectcandidates` | `injectcandidates` |             | `string`                                | `undefined` |
+| `posts`            | `posts`            |             | `string`                                | `undefined` |
+| `tabtitle`         | `tabtitle`         |             | `string`                                | `undefined` |
+| `type`             | `type`             |             | `"groupings" \| "multiple" \| "single"` | `undefined` |
 
 
 ----------------------------------------------
