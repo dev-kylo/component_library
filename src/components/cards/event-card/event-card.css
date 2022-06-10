@@ -1,0 +1,201 @@
+@import '../../../global/globalstyles.css';
+
+
+.event-card-wrapper {
+    -webkit-box-shadow: -5px -2px 2px 4px rgb(25, 163, 156, 0.6);
+    box-shadow: -6px -5px 1px 0px rgb(25, 163, 156, 0.6);
+    width: 100%;
+    max-width: 400px; 
+    min-height: 400px;
+}
+
+.event-card {
+    width: 100%;
+    /* min-width: 200px; */
+    max-width: 400px; 
+    min-height: 400px;
+    display: inline-block;
+    list-style: none;
+    -webkit-box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: .5px 3px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0.5px 3px 5px 0px rgba(0,0,0,0.15);
+    overflow:hidden;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.image {
+    width:100%;
+    position: relative;
+    height: 250px;
+    background-image: url('https://res.cloudinary.com/kclsu-media/image/upload/c_scale,o_16,w_800/v1630663527/website_uploads/Prof_ylbozd.png');
+    background: lightgrey;
+    transition-duration: 2.5s;
+}
+
+.image:hover {
+    overflow:hidden;
+    transform: scale(1.05);
+}
+
+.fit {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+.contentBox {
+    margin: 0;
+    padding: 0 1em;
+    background-color: white;
+    height: 100%;
+}
+
+.name { 
+    color: var(--purple);
+    font-family: bree_serifsemibold, bree-serif, serif;
+    font-size: 18px; 
+    font-weight: 600;
+    margin-bottom: 0px;
+    text-transform: capitalize;
+    cursor: pointer;
+    margin-bottom: 30px;
+} 
+
+
+.titlelink span :focus-visible{
+    outline: 2px dashed var(--purple);
+}
+
+.date {
+    font-family: 'open sans';
+    margin-top: 15px;
+    color: var(--grey);
+    font-size: 14px;
+    margin-bottom: 0;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    line-height: normal;
+    
+}
+
+.link{
+    margin: 5px;
+    display: inline-block;
+    font-size: 14px;
+    color: var(--dark-teal);
+    border-bottom: 1px dashed var(--dark-teal);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none
+}
+
+span {
+    display: block;
+}
+
+
+
+/* @media only screen and (max-width: 1030px){
+    .event-card {
+        width: 215px;
+    }
+
+    .fit, .image {
+        height: 180px;
+    }
+
+.label {
+    margin: 0;
+    padding: 0.5em;
+}
+}
+
+@media only screen and (max-width: 780px){
+    .position {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 630px) and (max-width: 780px){
+    .event-card {
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 630px){
+    .event-card {
+        width: 215px;
+    }
+
+    .name {
+        line-height: 25px;
+    }
+}
+
+@media only screen and (min-width: 466px) and (max-width: 530px){
+    .event-card {
+        width: 180px;
+    }
+
+    .fit, .image {
+        height: 180px;
+    }
+}
+
+@media only screen and (min-width: 430px) and (max-width: 465px){
+    .event-card {
+        width: 160px;
+    }
+
+    .fit, .image {
+        height: 180px;
+    }
+}
+
+
+@media only screen and (max-width: 436px){
+    .event-card {
+        width: 230px;
+    }
+    .fit, .image {
+        height: 200px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .label {
+        margin: 0;
+        padding: 0.3em;
+    }
+} */
+
+.scale-in-center {
+	animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+  @keyframes scale-in-center {
+    0% {
+        transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

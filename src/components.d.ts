@@ -126,6 +126,41 @@ export namespace Components {
         "tabtitle": string;
         "type": 'single' | 'multiple' | 'groupings';
     }
+    interface EventCard {
+        "addFocus": () => Promise<void>;
+        /**
+          * The title for the card - usually a full name
+         */
+        "cardtitle": string;
+        /**
+          * A sub heading - usually the date
+         */
+        "date": string;
+        /**
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
+         */
+        "emitid": string;
+        /**
+          * The image URL
+         */
+        "image": string;
+        /**
+          * Specifiy which part of the image to focus on. Defaults to center
+         */
+        "imagefocus": 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces';
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link": string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy": boolean;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn": () => void;
+    }
     interface EventsListing {
         /**
           * Choose the card component for each event
@@ -1059,6 +1094,12 @@ declare global {
         prototype: HTMLElectionsTabElement;
         new (): HTMLElectionsTabElement;
     };
+    interface HTMLEventCardElement extends Components.EventCard, HTMLStencilElement {
+    }
+    var HTMLEventCardElement: {
+        prototype: HTMLEventCardElement;
+        new (): HTMLEventCardElement;
+    };
     interface HTMLEventsListingElement extends Components.EventsListing, HTMLStencilElement {
     }
     var HTMLEventsListingElement: {
@@ -1390,6 +1431,7 @@ declare global {
         "elections-candidates": HTMLElectionsCandidatesElement;
         "elections-footer": HTMLElectionsFooterElement;
         "elections-tab": HTMLElectionsTabElement;
+        "event-card": HTMLEventCardElement;
         "events-listing": HTMLEventsListingElement;
         "exit-button": HTMLExitButtonElement;
         "flex-container": HTMLFlexContainerElement;
@@ -1563,6 +1605,41 @@ declare namespace LocalJSX {
         "posts"?: string;
         "tabtitle"?: string;
         "type"?: 'single' | 'multiple' | 'groupings';
+    }
+    interface EventCard {
+        /**
+          * The title for the card - usually a full name
+         */
+        "cardtitle"?: string;
+        /**
+          * A sub heading - usually the date
+         */
+        "date"?: string;
+        /**
+          * The ID string for click events, using Stencil's Emitter. Only applies to card's bottom right link- DEVELOPER USE
+         */
+        "emitid"?: string;
+        /**
+          * The image URL
+         */
+        "image"?: string;
+        /**
+          * Specifiy which part of the image to focus on. Defaults to center
+         */
+        "imagefocus"?: 'center' | 'top' | 'bottom' | 'right' | 'left' | 'faces';
+        /**
+          * The URL link for the primary text link on the bottom left of the card
+         */
+        "link"?: string;
+        /**
+          * Applies to lazy loading of images. Remove lazy loading
+         */
+        "nolazy"?: boolean;
+        "onEmitClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * A call back function to be supplied for the first (left hand side) call to action, as well as the clickable name
+         */
+        "primaryfn"?: () => void;
     }
     interface EventsListing {
         /**
@@ -2440,6 +2517,7 @@ declare namespace LocalJSX {
         "elections-candidates": ElectionsCandidates;
         "elections-footer": ElectionsFooter;
         "elections-tab": ElectionsTab;
+        "event-card": EventCard;
         "events-listing": EventsListing;
         "exit-button": ExitButton;
         "flex-container": FlexContainer;
@@ -2511,6 +2589,7 @@ declare module "@stencil/core" {
             "elections-candidates": LocalJSX.ElectionsCandidates & JSXBase.HTMLAttributes<HTMLElectionsCandidatesElement>;
             "elections-footer": LocalJSX.ElectionsFooter & JSXBase.HTMLAttributes<HTMLElectionsFooterElement>;
             "elections-tab": LocalJSX.ElectionsTab & JSXBase.HTMLAttributes<HTMLElectionsTabElement>;
+            "event-card": LocalJSX.EventCard & JSXBase.HTMLAttributes<HTMLEventCardElement>;
             "events-listing": LocalJSX.EventsListing & JSXBase.HTMLAttributes<HTMLEventsListingElement>;
             "exit-button": LocalJSX.ExitButton & JSXBase.HTMLAttributes<HTMLExitButtonElement>;
             "flex-container": LocalJSX.FlexContainer & JSXBase.HTMLAttributes<HTMLFlexContainerElement>;

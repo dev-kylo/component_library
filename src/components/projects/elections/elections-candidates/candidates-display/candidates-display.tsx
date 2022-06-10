@@ -23,6 +23,9 @@ export class CandidatesDisplay {
 
     render() {
 
+        console.log('RECEIVED')
+        console.log(this.data)
+
         const cards = !this.data ? null
             :
             this.data
