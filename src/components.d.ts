@@ -979,17 +979,6 @@ export namespace Components {
          */
         "subtext": string;
     }
-    interface UserLogin {
-        /**
-          * Provide a custom callback.
-         */
-        "callbackFn": (token: string) => void;
-        /**
-          * The name of the database area. For example: projectx
-         */
-        "database": string;
-        "unsignedauth": boolean;
-    }
     interface VideoEmbed {
         /**
           * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
@@ -1394,12 +1383,6 @@ declare global {
         prototype: HTMLTextCardElement;
         new (): HTMLTextCardElement;
     };
-    interface HTMLUserLoginElement extends Components.UserLogin, HTMLStencilElement {
-    }
-    var HTMLUserLoginElement: {
-        prototype: HTMLUserLoginElement;
-        new (): HTMLUserLoginElement;
-    };
     interface HTMLVideoEmbedElement extends Components.VideoEmbed, HTMLStencilElement {
     }
     var HTMLVideoEmbedElement: {
@@ -1481,7 +1464,6 @@ declare global {
         "tab-area": HTMLTabAreaElement;
         "tab-title": HTMLTabTitleElement;
         "text-card": HTMLTextCardElement;
-        "user-login": HTMLUserLoginElement;
         "video-embed": HTMLVideoEmbedElement;
         "video-gallery": HTMLVideoGalleryElement;
         "video-gallery-stacked": HTMLVideoGalleryStackedElement;
@@ -2463,17 +2445,6 @@ declare namespace LocalJSX {
          */
         "subtext"?: string;
     }
-    interface UserLogin {
-        /**
-          * Provide a custom callback.
-         */
-        "callbackFn"?: (token: string) => void;
-        /**
-          * The name of the database area. For example: projectx
-         */
-        "database": string;
-        "unsignedauth"?: boolean;
-    }
     interface VideoEmbed {
         /**
           * The id of the Youtube Video - found in the URL eg youtube.com/watch?v={VIDEO_ID}
@@ -2567,7 +2538,6 @@ declare namespace LocalJSX {
         "tab-area": TabArea;
         "tab-title": TabTitle;
         "text-card": TextCard;
-        "user-login": UserLogin;
         "video-embed": VideoEmbed;
         "video-gallery": VideoGallery;
         "video-gallery-stacked": VideoGalleryStacked;
@@ -2639,7 +2609,6 @@ declare module "@stencil/core" {
             "tab-area": LocalJSX.TabArea & JSXBase.HTMLAttributes<HTMLTabAreaElement>;
             "tab-title": LocalJSX.TabTitle & JSXBase.HTMLAttributes<HTMLTabTitleElement>;
             "text-card": LocalJSX.TextCard & JSXBase.HTMLAttributes<HTMLTextCardElement>;
-            "user-login": LocalJSX.UserLogin & JSXBase.HTMLAttributes<HTMLUserLoginElement>;
             "video-embed": LocalJSX.VideoEmbed & JSXBase.HTMLAttributes<HTMLVideoEmbedElement>;
             "video-gallery": LocalJSX.VideoGallery & JSXBase.HTMLAttributes<HTMLVideoGalleryElement>;
             "video-gallery-stacked": LocalJSX.VideoGalleryStacked & JSXBase.HTMLAttributes<HTMLVideoGalleryStackedElement>;
