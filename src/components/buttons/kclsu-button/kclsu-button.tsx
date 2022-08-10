@@ -1,7 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 
 type btnClass = 'green' | 'rounded' | 'purple' | 'verysmall' | 'big' | 'small';
-type btnStyle = { margin: string }
+type btnStyle = { margin: string, width?: string }
 
 @Component({
     tag: 'kclsu-button',
@@ -64,11 +64,14 @@ export class KclsuButton {
 
 
     render() {
+        //SCREEN MEDIA QUERY
+        const mql = window.matchMedia('(max-width: 480px)');
+        const isMobile = mql.matches;
 
-        //SET BTN MARGIN
         const style: btnStyle = {
             'margin': this.margin
         };
+        if (!isMobile && this.fixedwidth) style.width = this.fixedwidth;
 
         //SET BUTTON CLASSES
         let classes: btnClass[] = [];
