@@ -150,7 +150,9 @@ export class KclsuModal {
         } else {
             modal.style.transform = styles.out;
             modal.style.opacity = '0';
-            modal.addEventListener("transitionend", () => modal.style.display = "none")
+            modal.addEventListener("transitionend", () => {
+                if (modal.style.transform === styles.out) modal.style.display = "none"
+            })
         }
 
     }

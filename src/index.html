@@ -6,68 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>KCLSU Components</title>
   <script type="module" src="/build/kclsu-components.esm.js"></script>
-   <script nomodule src="/build/kclsu-components.js"></script>
+  <script nomodule src="/build/kclsu-components.js"></script>
   <!--Fonts-->
   <link rel="stylesheet" href="https://use.typekit.net/mgu1jus.css">
+
   <style>
-    #postsContainer {
-      /* display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-      justify-content: space-around; */
-      /* min-height: 120vh; */
-      width: 100%;
-      display: grid;
-      column-gap: 15px;
-      row-gap: 15px;
-      grid-template-columns: 1fr;
-      margin: auto;
+    input[type=submit] {
+      cursor: pointer;
+      box-sizing: border-box;
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 3px;
+      position: relative;
+      font-size: 14px;
+      box-shadow: rgb(0 0 0 / 30%) 4px 3px 9px -2px;
+      transition-duration: 1s;
+      background-color: white;
+      border: 1px solid red;
+      color: red;
+      margin-left: 1em;
+
     }
 
-
-    @media only screen and (min-width: 600px){
-        #postsContainer {
-          grid-template-columns: 1fr 1fr;
-          margin: auto;
-      }
+    input[type=submit]:hover {
+      border: 1px solid red;
+      background-color: red;
+      color: white;
     }
 
-    @media only screen and (min-width: 780px){
-        #postsContainer {
-          grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    @media only screen and (min-width: 1050px){
-        #postsContainer {
-          max-width: 1000px;
-          margin: auto;
-          column-gap: 30px;
-          row-gap: 30px;
-      }
+    input[type=submit]:disabled {
+      border: 1px solid gray;
+      color: gray;
     }
   </style>
 </head>
 
-  <body>
 
-    <div style="display: flex; justify-content: center; align-content: center; margin-bottom: 30px">
-      <input type="search" id="search" />
-      <kclsu-button small id="searchButton">Search</kclsu-button>
-    </div>
-    <div id="postsContainer"></div>
+<body>
 
-    <!-- <event-card
-      cardtitle="TTO Lunchtime Screening 1"
-      link="/"
-      date="17th May"
-      image="https://www.kclsu.org/asset/Event/6013/FilmFestival2022_WebEventCard-1.jpg"
-    ></event-card> -->
+  <h2> Component Library </h2>
 
-  
-   <script src="./assets/NewsListing.js"></script>
+  <script>
 
-  </body>
 
- 
-  </html>
+  </script>
+
+</body>
+
+
+</html>
