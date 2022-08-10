@@ -28,6 +28,7 @@
 
 ### Used by
 
+ - [event-card](../../cards/event-card)
  - [gallery-thumbnail-stacked](../../videos/video-gallery-stacked/gallery-thumbnail-stacked)
  - [image-text](../../cards/image-text)
  - [label-card](../../cards/label-card)
@@ -40,6 +41,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  event-card --> lazy-image
   gallery-thumbnail-stacked --> lazy-image
   image-text --> lazy-image
   label-card --> lazy-image

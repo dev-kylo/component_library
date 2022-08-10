@@ -21,7 +21,6 @@
 - [candidate-display](../elections-candidates/candidates-display)
 - [loading-spinner](../../../spinner)
 - [kclsu-modal](../../../modal)
-- [user-login](../../../authentication/user-login)
 - [kclsu-button](../../../buttons/kclsu-button)
 
 ### Graph
@@ -30,7 +29,6 @@ graph TD;
   candidate-upload --> candidate-display
   candidate-upload --> loading-spinner
   candidate-upload --> kclsu-modal
-  candidate-upload --> user-login
   candidate-upload --> kclsu-button
   candidate-display --> profile-card
   candidate-display --> profile-card-layout
@@ -38,9 +36,6 @@ graph TD;
   profile-card --> flex-container
   kclsu-modal --> modal-backdrop
   kclsu-modal --> exit-button
-  user-login --> kclsu-modal
-  user-login --> kclsu-button
-  user-login --> loading-spinner
   kclsu-button --> flex-container
   style candidate-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
